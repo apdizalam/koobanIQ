@@ -1,0 +1,91 @@
+# KOBANIQ continuous integration.
+# Checks every workspace: packages/shared, backend, Admin-dashboard, landing, app-frontend.
+# No deployment steps: CI only verifies the code.
+name: CI
+
+on:
+  push:
+    branches: [main, backend, admin, frontend]
+  pull_request:
+    branches: [main]
+
+# Read-only token: CI never writes to the repository.
+permissions:
+  contents: read
+
+# A newer push to the same branch or PR cancels the older run.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '24' # Node.js LTS (approved: LTS 20+)
+  HUSKY: '0' # git hooks are for local commits, not CI
+
+jobs:
+  quality:
+    name: Lint, format, typecheck and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies (root lockfile, all workspaces)
+        run: npm ci
+
+      - name: ESLint (all workspaces)
+        run: npm run lint
+
+      - name: Prettier format check
+        run: npm run format:check
+
+      - name: TypeScript typecheck (workspaces with a typecheck script)
+        run: npm run typecheck
+
+      - name: Production builds (shared, backend, admin, landing)
+        run: npm run build
+
+      - name: Mobile Android bundle (Expo)
+        run: npx expo export --platform android --output-dir "$RUNNER_TEMP/expo-export"
+        working-directory: app-frontend
+
+  backend-tests:
+    name: Backend tests (MongoDB Atlas test database)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_ENV: test
+      # Dedicated least-privilege Atlas user for the kobaniq_test database.
+      # GitHub masks secret values in logs.
+      MONGODB_URI: ${{ secrets.MONGODB_URI_TEST }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Require the test database secret
+        run: |
+          if [ -z "$MONGODB_URI" ]; then
+            echo "::error title=Missing secret::Repository secret MONGODB_URI_TEST is not set, so the backend tests cannot run. Add it under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Install dependencies (root lockfile, all workspaces)
+        run: npm ci
+
+      - name: Run backend tests
+        run: npm test

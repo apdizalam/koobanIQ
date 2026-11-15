@@ -63,7 +63,12 @@ const stateNames: Record<number, string> = {
 };
 
 /** Live database status: connection state plus a ping round trip. */
-export async function getDbStatus(): Promise<{ ok: boolean; state: string; name?: string; latencyMs?: number }> {
+export async function getDbStatus(): Promise<{
+  ok: boolean;
+  state: string;
+  name?: string;
+  latencyMs?: number;
+}> {
   const readyState = mongoose.connection.readyState as number;
   const state = stateNames[readyState] ?? 'unknown';
   const db = mongoose.connection.db;

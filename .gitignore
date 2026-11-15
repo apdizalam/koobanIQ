@@ -1,0 +1,18 @@
+# KOBANIQ repo-wide ignores (each app may add its own .gitignore)
+
+# dependencies
+node_modules/
+
+# environment files: never commit secrets
+.env
+.env.*
+!.env.example
+
+# build output
+dist/
+*.tsbuildinfo
+
+# logs and OS files
+npm-debug.log*
+.DS_Store
+Thumbs.db

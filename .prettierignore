@@ -1,0 +1,18 @@
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+web-build/
+.expo/
+android/
+ios/
+*.tsbuildinfo
+.husky/_/
+
+# Lockfiles are written by npm
+package-lock.json
+
+# Environment files are never formatted or committed
+.env
+.env.*
+!.env.example
