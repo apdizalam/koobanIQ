@@ -1,0 +1,26 @@
+{
+  "name": "kobaniq",
+  "version": "0.1.0",
+  "private": true,
+  "description": "KOBANIQ monorepo: mobile app, admin dashboard, landing page, API server and shared package",
+  "workspaces": [
+    "packages/shared",
+    "backend",
+    "Admin-dashboard",
+    "landing",
+    "app-frontend"
+  ],
+  "scripts": {
+    "dev:server": "npm run dev -w backend",
+    "dev:admin": "npm run dev -w admin-dashboard",
+    "dev:landing": "npm run dev -w landing",
+    "dev:mobile": "npm run start -w app-frontend",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
