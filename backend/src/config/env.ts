@@ -6,7 +6,12 @@ export type NodeEnv = 'development' | 'test' | 'staging' | 'production';
 
 function readNodeEnv(): NodeEnv {
   const value = process.env.NODE_ENV ?? 'development';
-  if (value === 'development' || value === 'test' || value === 'staging' || value === 'production') {
+  if (
+    value === 'development' ||
+    value === 'test' ||
+    value === 'staging' ||
+    value === 'production'
+  ) {
     return value;
   }
   return 'development';

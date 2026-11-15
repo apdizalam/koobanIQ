@@ -21,7 +21,9 @@ async function run() {
   if (found?.note !== note) {
     throw new Error('Read-back mismatch: inserted document was not returned');
   }
-  console.log(`DB check OK: inserted and read back a document in ${mongoose.connection.db?.databaseName}`);
+  console.log(
+    `DB check OK: inserted and read back a document in ${mongoose.connection.db?.databaseName}`,
+  );
 }
 
 run()
