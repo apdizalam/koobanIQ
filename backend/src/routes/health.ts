@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getDbStatus } from '../lib/db.js';
+import { getDbStatus } from '../services/dbStatus.js';
 
 export const healthRouter = Router();
 
