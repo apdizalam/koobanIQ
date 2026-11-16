@@ -37,3 +37,19 @@ export function parseRegisterBody(body: unknown): {
     preferredLanguage: b.preferredLanguage as Language | undefined,
   };
 }
+
+/** Checks the login body; throws 400 VALIDATION_ERROR listing each missing field. */
+export function parseLoginBody(body: unknown): { email: string; password: string } {
+  const b = (body ?? {}) as Record<string, unknown>;
+  const details: Record<string, string> = {};
+  if (typeof b.email !== 'string' || b.email.trim() === '') {
+    details.email = 'Email is required';
+  }
+  if (typeof b.password !== 'string' || b.password === '') {
+    details.password = 'Password is required';
+  }
+  if (Object.keys(details).length > 0) {
+    throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', details);
+  }
+  return { email: b.email as string, password: b.password as string };
+}

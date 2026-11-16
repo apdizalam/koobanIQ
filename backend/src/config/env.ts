@@ -1,3 +1,4 @@
+import { randomBytes } from 'node:crypto';
 import dotenv from 'dotenv';
 
 dotenv.config({ quiet: true });
@@ -27,10 +28,29 @@ const defaultDbName: Record<NodeEnv, string> = {
   production: 'kobaniq_prod',
 };
 
+/**
+ * Secret for signing access tokens. Required in staging and production. In
+ * development and tests a random one is made at start-up (tokens then stop
+ * working after a restart).
+ */
+function readAccessSecret(): string {
+  const value = process.env.JWT_ACCESS_SECRET;
+  if (value) return value;
+  if (nodeEnv === 'production' || nodeEnv === 'staging') {
+    throw new Error('JWT_ACCESS_SECRET is not set. Add it to backend/.env (see .env.example).');
+  }
+  return randomBytes(48).toString('base64url');
+}
+
 export const env = {
   nodeEnv,
   port: Number(process.env.PORT ?? 5000),
   // MONGODB_URI is the documented name; MONGO_URI is accepted for existing local .env files.
   mongoUri: process.env.MONGODB_URI ?? process.env.MONGO_URI ?? '',
   mongoDbName: process.env.MONGODB_DB_NAME ?? defaultDbName[nodeEnv],
+  jwtAccessSecret: readAccessSecret(),
+  /** Access token lifetime, e.g. "15m" (architecture doc: 15 minutes). */
+  jwtAccessTtl: process.env.JWT_ACCESS_TTL ?? '15m',
+  /** Refresh token lifetime in days (architecture doc: 30 days). */
+  refreshTokenDays: Number(process.env.REFRESH_TOKEN_DAYS ?? 30),
 };
