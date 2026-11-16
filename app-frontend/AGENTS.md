@@ -39,3 +39,23 @@ Docs: https://docs.expo.dev/eas/index.md
 - If `ios/` and `android/` directories do not exist, they are generated (Continuous Native Generation). Never create or edit them by hand — configure native behavior in `app.json` and config plugins.
 - Expo Go only includes its bundled native modules. After adding a library with native code, the app needs a development build: `npx expo run:ios|android` locally, or `eas build --profile development`.
 - Prefer recommended Expo modules over third-party libraries, and check your available skills before adding dependencies. Docs: https://docs.expo.dev/versions/latest/index.md
+
+## Folder structure
+
+```
+App.tsx                 root component (fonts, theme, first screen)
+assets/icons/           SVG icons used by <Icon>
+assets/images/          app icon, splash and favicon (referenced from app.json)
+src/components/ui/      one reusable UI component per file (Button, Input, Chip, ...)
+src/components/index.ts small re-export of the ui components
+src/hooks/              React hooks (useAppFonts, useSchemeOverride)
+src/screens/            screens (until Expo Router routes are added)
+src/theme/              ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
+                        createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
+src/types/              domain types shared by several files (match.ts)
+src/utils/              pure helpers (contrast.ts, hitSlop.ts)
+```
+
+Add `src/services/` (API calls), `src/constants/` (non-design app constants) and
+`src/components/layout/` when the first file for them exists. Never define colors or
+spacing outside `src/theme/`.

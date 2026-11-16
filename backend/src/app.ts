@@ -3,6 +3,7 @@ import cors from 'cors';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFound } from './middleware/notFound.js';
 import { authRouter } from './routes/auth.js';
+import { notFound } from './middleware/notFound.js';
 import { healthRouter } from './routes/health.js';
 import { meRouter } from './routes/me.js';
 
@@ -17,7 +18,6 @@ export function createApp() {
   app.use('/api/v1/me', meRouter);
 
   app.use(notFound);
-  app.use(errorHandler);
 
   return app;
 }
