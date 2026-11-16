@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
-import { ActivityIndicator, View, useColorScheme } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
+import { useAppFonts } from './src/hooks/useAppFonts';
+import { useSchemeOverride } from './src/hooks/useSchemeOverride';
 import { DesignSystemPreview } from './src/screens/DesignSystemPreview';
-import { ThemeProvider, colors, useAppFonts, type ColorScheme } from './src/theme';
+import { ThemeProvider, colors } from './src/theme';
 
 export default function App() {
   const fontsLoaded = useAppFonts();
-  const systemScheme: ColorScheme = useColorScheme() === 'dark' ? 'dark' : 'light';
-  const [override, setOverride] = useState<ColorScheme | null>(null);
-  const scheme = override ?? systemScheme;
+  const { scheme, toggleScheme } = useSchemeOverride();
 
   if (!fontsLoaded) {
     return (
@@ -27,10 +26,7 @@ export default function App() {
 
   return (
     <ThemeProvider preference={scheme}>
-      <DesignSystemPreview
-        scheme={scheme}
-        onToggleScheme={() => setOverride(scheme === 'light' ? 'dark' : 'light')}
-      />
+      <DesignSystemPreview scheme={scheme} onToggleScheme={toggleScheme} />
       <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
     </ThemeProvider>
   );

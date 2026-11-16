@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { useTheme, type ColorTokens } from '../theme';
-
-export type MatchCategory = 'strong' | 'good' | 'potential' | 'gap';
+import { useTheme, type ColorTokens } from '../../theme';
+import type { MatchCategory } from '../../types/match';
 
 export interface MatchBadgeProps {
   category: MatchCategory;

@@ -1,5 +1,6 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
-import { hitSlopFor, useTheme } from '../theme';
+import { useTheme } from '../../theme';
+import { hitSlopFor } from '../../utils/hitSlop';
 
 export interface ChipProps {
   label: string;

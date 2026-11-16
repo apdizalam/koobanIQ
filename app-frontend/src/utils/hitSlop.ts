@@ -1,5 +1,5 @@
 import type { Insets } from 'react-native';
-import { sizes } from './tokens';
+import { sizes } from '../theme/spacing';
 
 /**
  * Extra touch area so a visually smaller control still has a

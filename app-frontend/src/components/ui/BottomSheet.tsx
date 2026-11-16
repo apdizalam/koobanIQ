@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Modal, Pressable, StyleSheet, Text, View } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export interface BottomSheetProps {
   visible: boolean;

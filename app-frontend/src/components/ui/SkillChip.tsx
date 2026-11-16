@@ -1,9 +1,9 @@
 import { Pressable, StyleSheet, Text } from 'react-native';
-import { hitSlopFor, useTheme } from '../theme';
+import { useTheme } from '../../theme';
+import type { SkillStatus } from '../../types/match';
+import { hitSlopFor } from '../../utils/hitSlop';
 import { CHIP_VISUAL_HEIGHT } from './Chip';
 import { Icon } from './Icon';
-
-export type SkillStatus = 'assessed' | 'self-reported';
 
 export interface SkillChipProps {
   skill: string;

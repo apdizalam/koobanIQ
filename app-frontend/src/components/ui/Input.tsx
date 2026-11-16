@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, type TextInputProps } from 'react-native';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 import { Icon, type IconName } from './Icon';
 
 export interface InputProps extends Omit<TextInputProps, 'style'> {

@@ -1,12 +1,13 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { useTheme } from '../theme';
-import { MatchBadge, type MatchCategory } from './MatchBadge';
+import { useTheme } from '../../theme';
+import type { JobMatch } from '../../types/match';
+import { MatchBadge } from './MatchBadge';
 
 export interface JobCardProps {
   title: string;
   company: string;
   location: string;
-  match: { category: MatchCategory; label: string; score: number };
+  match: JobMatch;
   /** Product rule 5: every match shows why it matched. Required. */
   explanation: string;
   saved: boolean;

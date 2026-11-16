@@ -2,8 +2,8 @@ import { Image } from 'expo-image';
 
 /** Icons exported from Figma (Design System → Icons, 2px stroke). */
 const icons = {
-  check: require('../../assets/icons/check.svg'),
-  mail: require('../../assets/icons/mail.svg'),
+  check: require('../../../assets/icons/check.svg'),
+  mail: require('../../../assets/icons/mail.svg'),
 } as const;
 
 export type IconName = keyof typeof icons;

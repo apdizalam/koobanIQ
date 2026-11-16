@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Svg, { Circle } from 'react-native-svg';
-import { useTheme } from '../theme';
+import { useTheme } from '../../theme';
 
 export interface ScoreRingProps {
   /** Score 0–100. */
