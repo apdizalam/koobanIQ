@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { notFound } from './middleware/notFound.js';
 import { healthRouter } from './routes/health.js';
 
 export function createApp() {
@@ -10,13 +11,7 @@ export function createApp() {
 
   app.use('/api/v1/health', healthRouter);
 
-  app.use((_req, res) => {
-    res.status(404).json({
-      data: null,
-      error: { code: 'NOT_FOUND', message: 'Route not found' },
-      meta: {},
-    });
-  });
+  app.use(notFound);
 
   return app;
 }
