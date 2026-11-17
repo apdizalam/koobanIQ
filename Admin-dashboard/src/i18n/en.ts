@@ -27,6 +27,11 @@ export const en = {
   overview: {
     title: 'Overview',
     comingSoon: 'Live counts arrive with the Overview task (TIQ-24).',
+    serverCheck: {
+      checking: 'Checking admin access with the server…',
+      ok: 'Admin access confirmed by the server.',
+      failed: 'Could not confirm admin access with the server.',
+    },
   },
   loading: 'Loading…',
 } as const;
