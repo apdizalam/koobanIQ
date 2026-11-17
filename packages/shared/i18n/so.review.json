@@ -539,6 +539,142 @@
     "state": "pending",
     "en": "Loading…"
   },
+  "mobile.auth.appName": {
+    "state": "pending",
+    "en": "KOBANIQ"
+  },
+  "mobile.auth.language.continue": {
+    "state": "pending",
+    "en": "Continue"
+  },
+  "mobile.auth.language.subtitle": {
+    "state": "pending",
+    "en": "You can change it any time in Settings."
+  },
+  "mobile.auth.language.title": {
+    "state": "pending",
+    "en": "Choose your language"
+  },
+  "mobile.auth.onboarding.cv.approve": {
+    "state": "pending",
+    "en": "Approve before export"
+  },
+  "mobile.auth.onboarding.cv.body": {
+    "state": "pending",
+    "en": "Build a CV for each job from your real profile, in English or Somali. Nothing is invented, and you approve it before you export."
+  },
+  "mobile.auth.onboarding.cv.card": {
+    "state": "pending",
+    "en": "CV · Junior Mobile Developer"
+  },
+  "mobile.auth.onboarding.cv.language": {
+    "state": "pending",
+    "en": "English"
+  },
+  "mobile.auth.onboarding.cv.title": {
+    "state": "pending",
+    "en": "A CV for every job"
+  },
+  "mobile.auth.onboarding.jobs.body": {
+    "state": "pending",
+    "en": "Search the job sources you choose in Somaliland, Somalia and remote. Every match tells you why it fits — and which skills are missing."
+  },
+  "mobile.auth.onboarding.jobs.company": {
+    "state": "pending",
+    "en": "Hargeisa Tech Hub"
+  },
+  "mobile.auth.onboarding.jobs.explanation": {
+    "state": "pending",
+    "en": "Matches 4 of 5 required skills. Missing: GraphQL."
+  },
+  "mobile.auth.onboarding.jobs.jobTitle": {
+    "state": "pending",
+    "en": "Junior Mobile Developer"
+  },
+  "mobile.auth.onboarding.jobs.location": {
+    "state": "pending",
+    "en": "Hargeisa"
+  },
+  "mobile.auth.onboarding.jobs.match": {
+    "state": "pending",
+    "en": "Strong match"
+  },
+  "mobile.auth.onboarding.jobs.save": {
+    "state": "pending",
+    "en": "Save"
+  },
+  "mobile.auth.onboarding.jobs.saved": {
+    "state": "pending",
+    "en": "Saved"
+  },
+  "mobile.auth.onboarding.jobs.title": {
+    "state": "pending",
+    "en": "Real jobs, clearly explained"
+  },
+  "mobile.auth.onboarding.next": {
+    "state": "pending",
+    "en": "Next"
+  },
+  "mobile.auth.onboarding.skills.assessed": {
+    "state": "pending",
+    "en": "Assessed — verified by a quiz"
+  },
+  "mobile.auth.onboarding.skills.body": {
+    "state": "pending",
+    "en": "Take short adaptive quizzes to verify your skills — always optional. Results measure knowledge, not proof of real-world experience."
+  },
+  "mobile.auth.onboarding.skills.card": {
+    "state": "pending",
+    "en": "Your skill profile"
+  },
+  "mobile.auth.onboarding.skills.selfReported": {
+    "state": "pending",
+    "en": "Self-reported — from your profile"
+  },
+  "mobile.auth.onboarding.skills.title": {
+    "state": "pending",
+    "en": "Know what you actually know"
+  },
+  "mobile.auth.onboarding.skip": {
+    "state": "pending",
+    "en": "Skip"
+  },
+  "mobile.auth.onboarding.start": {
+    "state": "pending",
+    "en": "Create my account"
+  },
+  "mobile.auth.onboarding.step": {
+    "state": "pending",
+    "en": "Step {{current}} of {{total}}"
+  },
+  "mobile.auth.placeholder.back": {
+    "state": "pending",
+    "en": "Back"
+  },
+  "mobile.auth.placeholder.body": {
+    "state": "pending",
+    "en": "This screen is built in the next part of this task."
+  },
+  "mobile.auth.placeholder.title": {
+    "state": "pending",
+    "en": "Coming in the next step"
+  },
+  "mobile.auth.welcome.body": {
+    "state": "pending",
+    "en": "AI-powered career intelligence: verify what you know, discover real jobs that fit, and build tailored CVs."
+  },
+  "mobile.auth.welcome.haveAccount": {
+    "state": "pending",
+    "en": "I already have an account"
+  },
+  "mobile.auth.welcome.start": {
+    "state": "pending",
+    "en": "Get started"
+  },
+  "mobile.auth.welcome.tagline": {
+    "state": "pending",
+    "en": "Know Your Skills.\nFind Your Opportunity."
+  },
   "mobile.preview.buttons.ghost": {
     "state": "pending",
     "en": "Skip for now"

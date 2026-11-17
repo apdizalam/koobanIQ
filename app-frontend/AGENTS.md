@@ -43,19 +43,26 @@ Docs: https://docs.expo.dev/eas/index.md
 ## Folder structure
 
 ```
-App.tsx                 root component (fonts, theme, first screen)
-assets/icons/           SVG icons used by <Icon>
-assets/images/          app icon, splash and favicon (referenced from app.json)
-src/components/ui/      one reusable UI component per file (Button, Input, Chip, ...)
-src/components/index.ts small re-export of the ui components
-src/hooks/              React hooks (useAppFonts, useSchemeOverride)
-src/screens/            screens (until Expo Router routes are added)
-src/theme/              ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
-                        createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
-src/types/              domain types shared by several files (match.ts)
-src/utils/              pure helpers (contrast.ts, hitSlop.ts)
+src/app/                   Expo Router routes (every file is a screen; _layout.tsx files are navigators)
+  _layout.tsx              root: fonts, theme, translations, Stack
+  index.tsx                start: redirects to /welcome (later: Home when signed in)
+  (auth)/                  screens before sign-in: welcome, language, onboarding, login, sign-up
+  design-system.tsx        developer preview of all components (kobaniq://design-system)
+assets/icons/              SVG icons used by <Icon>
+assets/images/             app icon, splash and favicon (referenced from app.json)
+src/components/ui/         one reusable UI component per file (Button, Input, Chip, BackButton, ...)
+src/components/layout/     page building blocks (Screen with safe-area padding, ComingNext)
+src/components/onboarding/ onboarding illustrations
+src/components/index.ts    small re-export of the original ui components
+src/constants/             non-design app constants (api.ts)
+src/hooks/                 React hooks (useAppFonts, useSchemeOverride)
+src/i18n/                  i18next setup using the shared packages/shared/i18n files
+src/screens/               screen bodies reused by routes (DesignSystemPreview)
+src/theme/                 ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
+                           createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
+src/types/                 domain types shared by several files (match.ts)
+src/utils/                 pure helpers (contrast.ts, hitSlop.ts)
 ```
 
-Add `src/services/` (API calls), `src/constants/` (non-design app constants) and
-`src/components/layout/` when the first file for them exists. Never define colors or
-spacing outside `src/theme/`.
+Add `src/services/` (API calls) when the first file for it exists. Never define colors or
+spacing outside `src/theme/`. Keep tests out of `src/app` (Expo Router would treat them as routes).

@@ -276,6 +276,56 @@
         "close": "Xir",
         "body": "Waxyaabaha xaashidu halkan ayay galayaan."
       }
+    },
+    "auth": {
+      "appName": "KOBANIQ",
+      "welcome": {
+        "tagline": "Ogow Xirfadahaaga.\nHel Fursaddaada.",
+        "body": "Garasho xirfadeed oo AI ku shaqaysa: xaqiiji waxaad taqaan, hel shaqooyin dhab ah oo kugu habboon, oo samee CV-yo kuu gaar ah.",
+        "start": "Bilow",
+        "haveAccount": "Horey ayaan akoon u lahaa"
+      },
+      "language": {
+        "title": "Dooro luqaddaada",
+        "subtitle": "Waad beddeli kartaa wakhti kasta oo Dejinta ah.",
+        "continue": "Sii wad"
+      },
+      "onboarding": {
+        "skip": "Ka bood",
+        "next": "Xiga",
+        "start": "Samee akoonkayga",
+        "step": "Tallaabada {{current}} ee {{total}}",
+        "skills": {
+          "title": "Ogow waxaad dhab ahaan taqaan",
+          "body": "Qaado imtixaanno gaagaaban oo isbeddela si aad u xaqiijiso xirfadahaaga — had iyo jeer waa ikhtiyaari. Natiijooyinku waxay cabbiraan aqoonta, ma aha caddayn khibrad dhab ah.",
+          "card": "Muuqaalka xirfadahaaga",
+          "assessed": "La qiimeeyay — imtixaan ayaa xaqiijiyay",
+          "selfReported": "Is-sheeg — muuqaalkaaga ayuu ka yimid"
+        },
+        "jobs": {
+          "title": "Shaqooyin dhab ah, si cad loo sharxay",
+          "body": "Ka raadi ilaha shaqooyinka aad doorato Somaliland, Soomaaliya iyo meel fog. Isku-beeg kastaa wuxuu kuu sheegayaa sababta uu kuugu habboon yahay — iyo xirfadaha maqan.",
+          "jobTitle": "Horumariye Mobile oo bilow ah",
+          "company": "Hargeisa Tech Hub",
+          "location": "Hargeysa",
+          "match": "Isku-beeg xooggan",
+          "explanation": "Wuxuu buuxiyaa 4 ka mid ah 5 xirfadood. Maqan: GraphQL.",
+          "save": "Kaydi",
+          "saved": "La kaydiyay"
+        },
+        "cv": {
+          "title": "CV shaqo kasta",
+          "body": "Samee CV shaqo kasta oo ka yimid muuqaalkaaga dhabta ah, Ingiriisi ama Soomaali. Waxba lama abuuro, adiguna waad ansixisaa ka hor intaadan dhoofin.",
+          "card": "CV · Horumariye Mobile oo bilow ah",
+          "language": "Soomaali",
+          "approve": "Ansixi ka hor dhoofinta"
+        }
+      },
+      "placeholder": {
+        "title": "Waxay imanaysaa tallaabada xigta",
+        "body": "Shaashaddan waxaa la dhisayaa qaybta xigta ee hawshan.",
+        "back": "Dib u noqo"
+      }
     }
   }
 }

@@ -276,6 +276,56 @@
         "close": "Close",
         "body": "Sheet content goes here."
       }
+    },
+    "auth": {
+      "appName": "KOBANIQ",
+      "welcome": {
+        "tagline": "Know Your Skills.\nFind Your Opportunity.",
+        "body": "AI-powered career intelligence: verify what you know, discover real jobs that fit, and build tailored CVs.",
+        "start": "Get started",
+        "haveAccount": "I already have an account"
+      },
+      "language": {
+        "title": "Choose your language",
+        "subtitle": "You can change it any time in Settings.",
+        "continue": "Continue"
+      },
+      "onboarding": {
+        "skip": "Skip",
+        "next": "Next",
+        "start": "Create my account",
+        "step": "Step {{current}} of {{total}}",
+        "skills": {
+          "title": "Know what you actually know",
+          "body": "Take short adaptive quizzes to verify your skills — always optional. Results measure knowledge, not proof of real-world experience.",
+          "card": "Your skill profile",
+          "assessed": "Assessed — verified by a quiz",
+          "selfReported": "Self-reported — from your profile"
+        },
+        "jobs": {
+          "title": "Real jobs, clearly explained",
+          "body": "Search the job sources you choose in Somaliland, Somalia and remote. Every match tells you why it fits — and which skills are missing.",
+          "jobTitle": "Junior Mobile Developer",
+          "company": "Hargeisa Tech Hub",
+          "location": "Hargeisa",
+          "match": "Strong match",
+          "explanation": "Matches 4 of 5 required skills. Missing: GraphQL.",
+          "save": "Save",
+          "saved": "Saved"
+        },
+        "cv": {
+          "title": "A CV for every job",
+          "body": "Build a CV for each job from your real profile, in English or Somali. Nothing is invented, and you approve it before you export.",
+          "card": "CV · Junior Mobile Developer",
+          "language": "English",
+          "approve": "Approve before export"
+        }
+      },
+      "placeholder": {
+        "title": "Coming in the next step",
+        "body": "This screen is built in the next part of this task.",
+        "back": "Back"
+      }
     }
   }
 }
