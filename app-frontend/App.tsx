@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ActivityIndicator, View } from 'react-native';
+import './src/i18n';
 import { useAppFonts } from './src/hooks/useAppFonts';
 import { useSchemeOverride } from './src/hooks/useSchemeOverride';
 import { DesignSystemPreview } from './src/screens/DesignSystemPreview';

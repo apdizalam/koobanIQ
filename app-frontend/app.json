@@ -20,6 +20,6 @@
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-image", "expo-font"]
+    "plugins": ["expo-image", "expo-font", "expo-localization"]
   }
 }

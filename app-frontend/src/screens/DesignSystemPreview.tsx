@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
   BottomSheet,
@@ -10,50 +11,21 @@ import {
   ScoreRing,
   SkillChip,
 } from '../components';
+import { LanguageSwitcher } from '../components/ui/LanguageSwitcher';
 import { useTheme, type ColorScheme } from '../theme';
+import type { MatchCategory } from '../types/match';
 
 /**
- * Developer preview of the design system (TIQ-2). Sample text lives in one
- * object so it can move to the translation files when i18n lands (TIQ-30).
+ * Developer preview of the design system (TIQ-2). All text comes from the
+ * shared translation files (packages/shared/i18n → mobile.preview).
  */
-const sample = {
-  title: 'KOBANIQ design system',
-  toggle: { light: 'Switch to dark', dark: 'Switch to light' },
-  buttons: {
-    primary: 'Continue',
-    secondary: 'Upload CV',
-    ghost: 'Skip for now',
-    loading: 'Saving',
-  },
-  input: { label: 'Email', placeholder: 'you@example.com', error: 'Enter a valid email address' },
-  chips: ['Somaliland', 'Somalia', 'Remote'],
-  skills: {
-    assessed: 'React Native',
-    selfReported: 'Figma',
-    assessedLabel: 'assessed',
-    selfLabel: 'self-reported',
-  },
-  matches: [
-    { category: 'strong', label: 'Strong match', score: 92 },
-    { category: 'good', label: 'Good match', score: 78 },
-    { category: 'potential', label: 'Potential', score: 61 },
-    { category: 'gap', label: 'Skill gap', score: 40 },
-  ] as const,
-  job: {
-    title: 'Junior Mobile Developer',
-    company: 'Hargeisa Tech Hub',
-    location: 'Hargeisa',
-    explanation: 'Matches 4 of 5 required skills: React Native, TypeScript, Git, REST APIs.',
-    save: { save: 'Save', saved: 'Saved' },
-  },
-  ring: 'Skill score',
-  sheet: {
-    open: 'Open bottom sheet',
-    title: 'Filter jobs',
-    close: 'Close',
-    body: 'Sheet content goes here.',
-  },
-};
+const CHIPS = ['somaliland', 'somalia', 'remote'] as const;
+const MATCHES: { category: MatchCategory; score: number }[] = [
+  { category: 'strong', score: 92 },
+  { category: 'good', score: 78 },
+  { category: 'potential', score: 61 },
+  { category: 'gap', score: 40 },
+];
 
 interface Props {
   scheme: ColorScheme;
@@ -61,42 +33,57 @@ interface Props {
 }
 
 export function DesignSystemPreview({ scheme, onToggleScheme }: Props) {
+  const { t } = useTranslation();
   const { colors, typography, spacing } = useTheme();
-  const [selectedChip, setSelectedChip] = useState(sample.chips[0]);
+  const [selectedChip, setSelectedChip] = useState<(typeof CHIPS)[number]>(CHIPS[0]);
   const [saved, setSaved] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const noop = () => undefined;
+  const match = (category: MatchCategory, score: number) => ({
+    category,
+    label: t(`mobile.preview.matches.${category}`),
+    score,
+  });
 
   return (
     <ScrollView
       style={{ backgroundColor: colors.background }}
       contentContainerStyle={{ padding: spacing.screen, gap: spacing.xxl, paddingTop: 56 }}
     >
-      <Text style={[typography.display, { color: colors.text }]}>{sample.title}</Text>
-      <Button variant="secondary" label={sample.toggle[scheme]} onPress={onToggleScheme} />
+      <LanguageSwitcher />
+      <Text style={[typography.display, { color: colors.text }]}>{t('mobile.preview.title')}</Text>
+      <Button
+        variant="secondary"
+        label={t(`mobile.preview.toggle.${scheme}`)}
+        onPress={onToggleScheme}
+      />
 
       <View style={styles.group}>
-        <Button label={sample.buttons.primary} onPress={noop} />
-        <Button variant="secondary" label={sample.buttons.secondary} onPress={noop} />
-        <Button variant="ghost" label={sample.buttons.ghost} onPress={noop} />
-        <Button label={sample.buttons.loading} onPress={noop} loading />
+        <Button label={t('mobile.preview.buttons.primary')} onPress={noop} />
+        <Button variant="secondary" label={t('mobile.preview.buttons.secondary')} onPress={noop} />
+        <Button variant="ghost" label={t('mobile.preview.buttons.ghost')} onPress={noop} />
+        <Button label={t('mobile.preview.buttons.loading')} onPress={noop} loading />
       </View>
 
       <View style={styles.group}>
-        <Input label={sample.input.label} icon="mail" placeholder={sample.input.placeholder} />
         <Input
-          label={sample.input.label}
+          label={t('mobile.preview.input.label')}
           icon="mail"
-          placeholder={sample.input.placeholder}
-          errorMessage={sample.input.error}
+          placeholder={t('mobile.preview.input.placeholder')}
+        />
+        <Input
+          label={t('mobile.preview.input.label')}
+          icon="mail"
+          placeholder={t('mobile.preview.input.placeholder')}
+          errorMessage={t('mobile.preview.input.error')}
         />
       </View>
 
       <View style={styles.row}>
-        {sample.chips.map((chip) => (
+        {CHIPS.map((chip) => (
           <Chip
             key={chip}
-            label={chip}
+            label={t(`mobile.preview.chips.${chip}`)}
             selected={chip === selectedChip}
             onPress={() => setSelectedChip(chip)}
           />
@@ -105,45 +92,51 @@ export function DesignSystemPreview({ scheme, onToggleScheme }: Props) {
 
       <View style={styles.row}>
         <SkillChip
-          skill={sample.skills.assessed}
+          skill={t('mobile.preview.skills.assessed')}
           status="assessed"
-          statusLabel={sample.skills.assessedLabel}
+          statusLabel={t('mobile.preview.skills.assessedLabel')}
         />
         <SkillChip
-          skill={sample.skills.selfReported}
+          skill={t('mobile.preview.skills.selfReported')}
           status="self-reported"
-          statusLabel={sample.skills.selfLabel}
+          statusLabel={t('mobile.preview.skills.selfLabel')}
         />
       </View>
 
       <View style={styles.row}>
-        {sample.matches.map((m) => (
-          <MatchBadge key={m.category} category={m.category} label={m.label} score={m.score} />
+        {MATCHES.map((m) => (
+          <MatchBadge key={m.category} {...match(m.category, m.score)} />
         ))}
       </View>
 
       <JobCard
-        title={sample.job.title}
-        company={sample.job.company}
-        location={sample.job.location}
-        match={sample.matches[0]}
-        explanation={sample.job.explanation}
+        title={t('mobile.preview.job.title')}
+        company={t('mobile.preview.job.company')}
+        location={t('mobile.preview.job.location')}
+        match={match('strong', 92)}
+        explanation={t('mobile.preview.job.explanation')}
         saved={saved}
-        saveLabels={sample.job.save}
+        saveLabels={{ save: t('mobile.preview.job.save'), saved: t('mobile.preview.job.saved') }}
         onToggleSave={() => setSaved((s) => !s)}
       />
 
-      <ScoreRing score={78} label={sample.ring} />
+      <ScoreRing score={78} label={t('mobile.preview.ring')} />
 
-      <Button variant="secondary" label={sample.sheet.open} onPress={() => setSheetOpen(true)} />
+      <Button
+        variant="secondary"
+        label={t('mobile.preview.sheet.open')}
+        onPress={() => setSheetOpen(true)}
+      />
       <BottomSheet
         visible={sheetOpen}
         onClose={() => setSheetOpen(false)}
-        title={sample.sheet.title}
-        closeLabel={sample.sheet.close}
+        title={t('mobile.preview.sheet.title')}
+        closeLabel={t('mobile.preview.sheet.close')}
       >
-        <Text style={[typography.body, { color: colors.text }]}>{sample.sheet.body}</Text>
-        <Button label={sample.sheet.close} onPress={() => setSheetOpen(false)} />
+        <Text style={[typography.body, { color: colors.text }]}>
+          {t('mobile.preview.sheet.body')}
+        </Text>
+        <Button label={t('mobile.preview.sheet.close')} onPress={() => setSheetOpen(false)} />
       </BottomSheet>
     </ScrollView>
   );

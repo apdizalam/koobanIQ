@@ -102,5 +102,57 @@
         }
       }
     }
+  },
+  "mobile": {
+    "preview": {
+      "title": "Nidaamka naqshadda KOBANIQ",
+      "toggle": {
+        "light": "U beddel madow",
+        "dark": "U beddel iftiin"
+      },
+      "buttons": {
+        "primary": "Sii wad",
+        "secondary": "Soo geli CV",
+        "ghost": "Hadda ka bood",
+        "loading": "Waa la kaydinayaa"
+      },
+      "input": {
+        "label": "Iimayl",
+        "placeholder": "you@example.com",
+        "error": "Geli iimayl sax ah"
+      },
+      "chips": {
+        "somaliland": "Somaliland",
+        "somalia": "Soomaaliya",
+        "remote": "Meel fog"
+      },
+      "skills": {
+        "assessed": "React Native",
+        "selfReported": "Figma",
+        "assessedLabel": "la qiimeeyay",
+        "selfLabel": "is-sheeg"
+      },
+      "matches": {
+        "strong": "Isku-beeg xooggan",
+        "good": "Isku-beeg wanaagsan",
+        "potential": "Suurtagal",
+        "gap": "Farqi xirfadeed"
+      },
+      "job": {
+        "title": "Horumariye Mobile oo bilow ah",
+        "company": "Hargeisa Tech Hub",
+        "location": "Hargeysa",
+        "explanation": "Wuxuu buuxiyaa 4 ka mid ah 5-ta xirfadood ee loo baahan yahay: React Native, TypeScript, Git, REST APIs.",
+        "save": "Kaydi",
+        "saved": "La kaydiyay"
+      },
+      "ring": "Dhibcaha xirfadda",
+      "sheet": {
+        "open": "Fur xaashida hoose",
+        "title": "Shaandhee shaqooyinka",
+        "close": "Xir",
+        "body": "Waxyaabaha xaashidu halkan ayay galayaan."
+      }
+    }
   }
 }
