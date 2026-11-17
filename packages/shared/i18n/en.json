@@ -133,5 +133,57 @@
         }
       }
     }
+  },
+  "mobile": {
+    "preview": {
+      "title": "KOBANIQ design system",
+      "toggle": {
+        "light": "Switch to dark",
+        "dark": "Switch to light"
+      },
+      "buttons": {
+        "primary": "Continue",
+        "secondary": "Upload CV",
+        "ghost": "Skip for now",
+        "loading": "Saving"
+      },
+      "input": {
+        "label": "Email",
+        "placeholder": "you@example.com",
+        "error": "Enter a valid email address"
+      },
+      "chips": {
+        "somaliland": "Somaliland",
+        "somalia": "Somalia",
+        "remote": "Remote"
+      },
+      "skills": {
+        "assessed": "React Native",
+        "selfReported": "Figma",
+        "assessedLabel": "assessed",
+        "selfLabel": "self-reported"
+      },
+      "matches": {
+        "strong": "Strong match",
+        "good": "Good match",
+        "potential": "Potential",
+        "gap": "Skill gap"
+      },
+      "job": {
+        "title": "Junior Mobile Developer",
+        "company": "Hargeisa Tech Hub",
+        "location": "Hargeisa",
+        "explanation": "Matches 4 of 5 required skills: React Native, TypeScript, Git, REST APIs.",
+        "save": "Save",
+        "saved": "Saved"
+      },
+      "ring": "Skill score",
+      "sheet": {
+        "open": "Open bottom sheet",
+        "title": "Filter jobs",
+        "close": "Close",
+        "body": "Sheet content goes here."
+      }
+    }
   }
 }

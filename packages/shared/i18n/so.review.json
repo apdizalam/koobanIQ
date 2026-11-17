@@ -271,6 +271,134 @@
     "state": "pending",
     "en": "Loading…"
   },
+  "mobile.preview.buttons.ghost": {
+    "state": "pending",
+    "en": "Skip for now"
+  },
+  "mobile.preview.buttons.loading": {
+    "state": "pending",
+    "en": "Saving"
+  },
+  "mobile.preview.buttons.primary": {
+    "state": "pending",
+    "en": "Continue"
+  },
+  "mobile.preview.buttons.secondary": {
+    "state": "pending",
+    "en": "Upload CV"
+  },
+  "mobile.preview.chips.remote": {
+    "state": "pending",
+    "en": "Remote"
+  },
+  "mobile.preview.chips.somalia": {
+    "state": "pending",
+    "en": "Somalia"
+  },
+  "mobile.preview.chips.somaliland": {
+    "state": "pending",
+    "en": "Somaliland"
+  },
+  "mobile.preview.input.error": {
+    "state": "pending",
+    "en": "Enter a valid email address"
+  },
+  "mobile.preview.input.label": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "mobile.preview.input.placeholder": {
+    "state": "pending",
+    "en": "you@example.com"
+  },
+  "mobile.preview.job.company": {
+    "state": "pending",
+    "en": "Hargeisa Tech Hub"
+  },
+  "mobile.preview.job.explanation": {
+    "state": "pending",
+    "en": "Matches 4 of 5 required skills: React Native, TypeScript, Git, REST APIs."
+  },
+  "mobile.preview.job.location": {
+    "state": "pending",
+    "en": "Hargeisa"
+  },
+  "mobile.preview.job.save": {
+    "state": "pending",
+    "en": "Save"
+  },
+  "mobile.preview.job.saved": {
+    "state": "pending",
+    "en": "Saved"
+  },
+  "mobile.preview.job.title": {
+    "state": "pending",
+    "en": "Junior Mobile Developer"
+  },
+  "mobile.preview.matches.gap": {
+    "state": "pending",
+    "en": "Skill gap"
+  },
+  "mobile.preview.matches.good": {
+    "state": "pending",
+    "en": "Good match"
+  },
+  "mobile.preview.matches.potential": {
+    "state": "pending",
+    "en": "Potential"
+  },
+  "mobile.preview.matches.strong": {
+    "state": "pending",
+    "en": "Strong match"
+  },
+  "mobile.preview.ring": {
+    "state": "pending",
+    "en": "Skill score"
+  },
+  "mobile.preview.sheet.body": {
+    "state": "pending",
+    "en": "Sheet content goes here."
+  },
+  "mobile.preview.sheet.close": {
+    "state": "pending",
+    "en": "Close"
+  },
+  "mobile.preview.sheet.open": {
+    "state": "pending",
+    "en": "Open bottom sheet"
+  },
+  "mobile.preview.sheet.title": {
+    "state": "pending",
+    "en": "Filter jobs"
+  },
+  "mobile.preview.skills.assessed": {
+    "state": "pending",
+    "en": "React Native"
+  },
+  "mobile.preview.skills.assessedLabel": {
+    "state": "pending",
+    "en": "assessed"
+  },
+  "mobile.preview.skills.selfLabel": {
+    "state": "pending",
+    "en": "self-reported"
+  },
+  "mobile.preview.skills.selfReported": {
+    "state": "pending",
+    "en": "Figma"
+  },
+  "mobile.preview.title": {
+    "state": "pending",
+    "en": "KOBANIQ design system"
+  },
+  "mobile.preview.toggle.dark": {
+    "state": "pending",
+    "en": "Switch to light"
+  },
+  "mobile.preview.toggle.light": {
+    "state": "pending",
+    "en": "Switch to dark"
+  },
   "server.errors.ACCOUNT_SUSPENDED": {
     "state": "pending",
     "en": "This account is suspended"
