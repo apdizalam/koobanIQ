@@ -2,16 +2,19 @@ import { test, before, after } from 'node:test';
 import assert from 'node:assert/strict';
 import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
+import type { Request } from 'express';
 import { createApp } from '../src/app.js';
+import { RUN_ID, testDomain } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { AuditLog } from '../src/models/AuditLog.js';
 import { RefreshToken } from '../src/models/RefreshToken.js';
 import { User } from '../src/models/User.js';
+import { recordAudit } from '../src/services/auditService.js';
 import { promoteToAdmin } from '../src/services/userService.js';
 
-// Every account made here uses this domain so cleanup never touches real users.
-const DOMAIN = '@audit-test.kobaniq.invalid';
-const DOMAIN_RE = /@audit-test\.kobaniq\.invalid$/;
+// Every account made here uses this run's own domain, so cleanup never touches real
+// users or another test run's users.
+const { DOMAIN, DOMAIN_RE } = testDomain('audit');
 const PASSWORD = 'correct-horse-3';
 
 let server: Server;
@@ -84,8 +87,15 @@ test('an admin using an admin route is not logged as denied', async () => {
   assert.equal(await AuditLog.countDocuments({ actorId: id }), 0);
 });
 
-test('a request without a token is rejected before the role check (nothing to log)', async () => {
-  const before = await AuditLog.estimatedDocumentCount();
-  assert.equal((await adminAccess()).status, 401);
-  assert.equal(await AuditLog.estimatedDocumentCount(), before);
+test('a request without a token is rejected before the role check (401)', async () => {
+  const res = await adminAccess();
+  assert.equal(res.status, 401);
+  assert.equal((await res.json()).error.code, 'AUTH_REQUIRED');
+});
+
+test('recordAudit writes nothing when nobody is signed in', async () => {
+  // Counting every audit record would also see other test runs; this target is unique to this run.
+  const targetType = `no-user-check-${RUN_ID}`;
+  await recordAudit({} as Request, { action: 'test.no_user', targetType });
+  assert.equal(await AuditLog.countDocuments({ targetType }), 0);
 });

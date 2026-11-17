@@ -4,14 +4,15 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import mongoose from 'mongoose';
 import { createApp } from '../src/app.js';
+import { RUN_ID } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { User } from '../src/models/User.js';
 import { getOverview } from '../src/services/overviewService.js';
 import { promoteToAdmin } from '../src/services/userService.js';
 
-// Own database: other test files add and remove users at the same time,
+// Own database per run: other test files and other CI jobs add and remove users,
 // which would make exact counts flaky. It is dropped at the end.
-const DB_NAME = 'kobaniq_test_overview';
+const DB_NAME = `kobaniq_test_overview_${RUN_ID}`;
 const HOUR = 60 * 60 * 1000;
 const DAY = 24 * HOUR;
 const now = new Date();
