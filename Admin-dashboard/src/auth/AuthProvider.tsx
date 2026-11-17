@@ -1,26 +1,47 @@
-import { useCallback, useMemo, useState, type ReactNode } from 'react';
-import { logout as apiLogout } from '../services/authApi';
-import type { Session } from '../types/auth';
+import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import type { PublicUser } from '../types/auth';
 import { AuthContext, type AuthState } from './authContext';
+import { browserStorage, createSessionManager } from './sessionManager';
 import { signInAdmin } from './signInAdmin';
 
-/** Holds the signed-in admin's session. Tokens live in memory only (for now). */
+/** Holds the signed-in admin and keeps the session alive across reloads. */
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [session, setSession] = useState<Session | null>(null);
+  const [user, setUser] = useState<PublicUser | null>(null);
+  const [restoring, setRestoring] = useState(() => browserStorage.get() !== null);
+  // When a refresh fails the session ends; clearing `user` lets the guard send us to /login.
+  const [manager] = useState(() => createSessionManager(browserStorage, () => setUser(null)));
 
-  const signIn = useCallback(async (email: string, password: string) => {
-    setSession(await signInAdmin(email, password));
-  }, []);
+  useEffect(() => {
+    if (!restoring) return;
+    let active = true;
+    // restore() is shared, so React's double effect in development still refreshes only once.
+    void manager.restore().then((restored) => {
+      if (!active) return;
+      setUser(restored);
+      setRestoring(false);
+    });
+    return () => {
+      active = false;
+    };
+  }, [manager, restoring]);
+
+  const signIn = useCallback(
+    async (email: string, password: string) => {
+      const session = await signInAdmin(email, password);
+      manager.start(session);
+      setUser(session.user);
+    },
+    [manager],
+  );
 
   const signOut = useCallback(async () => {
-    const refreshToken = session?.refreshToken;
-    setSession(null);
-    if (refreshToken) await apiLogout(refreshToken).catch(() => undefined);
-  }, [session]);
+    setUser(null);
+    await manager.signOut();
+  }, [manager]);
 
   const value = useMemo<AuthState>(
-    () => ({ user: session?.user ?? null, signIn, signOut }),
-    [session, signIn, signOut],
+    () => ({ restoring, user, signIn, signOut, request: manager.request }),
+    [restoring, user, signIn, signOut, manager],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
