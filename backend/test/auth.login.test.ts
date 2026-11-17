@@ -4,15 +4,16 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import jwt from 'jsonwebtoken';
 import { createApp } from '../src/app.js';
+import { testDomain } from './support/testRun.js';
 import { env } from '../src/config/env.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { hashToken } from '../src/lib/tokens.js';
 import { RefreshToken } from '../src/models/RefreshToken.js';
 import { User } from '../src/models/User.js';
 
-// Every account made here uses this domain so cleanup never touches real users.
-const DOMAIN = '@login-test.kobaniq.invalid';
-const DOMAIN_RE = /@login-test\.kobaniq\.invalid$/;
+// Every account made here uses this run's own domain, so cleanup never touches real
+// users or another test run's users.
+const { DOMAIN, DOMAIN_RE } = testDomain('login');
 const PASSWORD = 'correct-horse-9';
 
 let server: Server;
