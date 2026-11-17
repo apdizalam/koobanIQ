@@ -9,7 +9,8 @@
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test test/**/*.test.ts",
-    "db:check": "tsx src/scripts/db-check.ts"
+    "db:check": "tsx src/scripts/db-check.ts",
+    "admin:promote": "tsx src/scripts/make-admin.ts"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^26.6.6",
     "nodemon": "^3.1.14",
     "tsx": "^4.23.15",
