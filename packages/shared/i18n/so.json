@@ -39,7 +39,8 @@
       "nothingToUpdate": "Wax la cusboonaysiiyo ma jiro",
       "periodInvalid": "Waa inuu ahaadaa day, week, month ama year",
       "roleInvalid": "Waa inuu ahaadaa \"user\" ama \"admin\"",
-      "statusInvalid": "Waa inuu ahaadaa \"active\" ama \"suspended\""
+      "statusInvalid": "Waa inuu ahaadaa \"active\" ama \"suspended\"",
+      "auditActionInvalid": "Waa inuu ahaadaa mid ka mid ah ficillada hubinta"
     }
   },
   "admin": {

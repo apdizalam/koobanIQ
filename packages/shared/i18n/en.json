@@ -39,7 +39,8 @@
       "nothingToUpdate": "Nothing to update",
       "periodInvalid": "Must be day, week, month or year",
       "roleInvalid": "Must be \"user\" or \"admin\"",
-      "statusInvalid": "Must be \"active\" or \"suspended\""
+      "statusInvalid": "Must be \"active\" or \"suspended\"",
+      "auditActionInvalid": "Must be one of the audit actions"
     }
   },
   "admin": {

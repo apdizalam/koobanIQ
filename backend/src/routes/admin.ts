@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
+import { getAuditLogs } from '../controllers/adminAuditController.js';
 import {
   getUser,
   getUsers,
@@ -24,3 +25,6 @@ adminRouter.get('/users/:id', getUser);
 adminRouter.patch('/users/:id/status', patchUserStatus);
 adminRouter.patch('/users/:id/role', patchUserRole);
 adminRouter.delete('/users/:id', removeUser);
+
+// Audit log (read-only).
+adminRouter.get('/audit-logs', getAuditLogs);

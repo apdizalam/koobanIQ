@@ -467,6 +467,10 @@
     "state": "pending",
     "en": "Some fields are invalid"
   },
+  "server.validation.auditActionInvalid": {
+    "state": "pending",
+    "en": "Must be one of the audit actions"
+  },
   "server.validation.emailInvalid": {
     "state": "pending",
     "en": "Enter a valid email address"
