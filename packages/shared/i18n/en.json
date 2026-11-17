@@ -7,6 +7,37 @@
     },
     "loading": "Loading…"
   },
+  "server": {
+    "errors": {
+      "VALIDATION_ERROR": "Some fields are invalid",
+      "EMAIL_TAKEN": "An account with this email already exists",
+      "INVALID_CREDENTIALS": "Email or password is incorrect",
+      "ACCOUNT_SUSPENDED": "This account is suspended",
+      "AUTH_REQUIRED": "Sign in to continue",
+      "INVALID_TOKEN": "Access token is invalid",
+      "TOKEN_EXPIRED": "Access token has expired",
+      "INVALID_REFRESH_TOKEN": "Refresh token is invalid or expired",
+      "REFRESH_TOKEN_REUSED": "This session was ended for safety. Please log in again",
+      "FORBIDDEN": "You do not have access to this page",
+      "USER_NOT_FOUND": "No account with this email",
+      "NOT_FOUND": "Route not found",
+      "INVALID_JSON": "Request body is not valid JSON",
+      "INTERNAL_ERROR": "Something went wrong",
+      "DB_UNAVAILABLE": "Database is not reachable"
+    },
+    "validation": {
+      "emailInvalid": "Enter a valid email address",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "passwordTooShort": "Password must be at least {{min}} characters",
+      "passwordTooLong": "Password must be at most {{max}} characters",
+      "languageInvalid": "Must be \"en\" or \"so\"",
+      "refreshTokenRequired": "Refresh token is required",
+      "fieldNotEditable": "This field cannot be changed here",
+      "nothingToUpdate": "Nothing to update",
+      "periodInvalid": "Must be day, week, month or year"
+    }
+  },
   "admin": {
     "appName": "KOBANIQ Admin",
     "login": {

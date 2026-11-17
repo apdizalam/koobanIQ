@@ -16,7 +16,7 @@ export async function getAdminOverview(req: Request, res: Response) {
   const period = req.query.period ?? 'week';
   if (!isPeriod(period)) {
     throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', {
-      period: 'Must be day, week, month or year',
+      period: 'periodInvalid',
     });
   }
   res.json({ data: await getOverview(period), error: null, meta: {} });
