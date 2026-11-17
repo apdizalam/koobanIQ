@@ -1,6 +1,6 @@
-import type { en } from '../i18n/en';
+import type en from '@kobaniq/shared/i18n/en.json';
 
-export type NavKey = keyof (typeof en)['nav']['items'];
+export type NavKey = keyof (typeof en)['admin']['nav']['items'];
 
 export interface NavItem {
   key: NavKey;

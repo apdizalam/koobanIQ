@@ -12,8 +12,11 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@kobaniq/shared": "^0.1.0",
+    "i18next": "^27.1.4",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "react-i18next": "^18.0.2",
     "react-router": "^8.5.1"
   },
   "devDependencies": {

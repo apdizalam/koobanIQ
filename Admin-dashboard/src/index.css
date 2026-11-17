@@ -346,6 +346,21 @@ a.nav-link:hover {
   color: var(--on-primary);
 }
 
+.segmented-small .segment {
+  min-width: 0;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.login-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .segment:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
@@ -467,7 +482,7 @@ h2.section-title {
     padding: 12px 16px;
   }
 
-  .topbar-user .muted {
+  .topbar-email {
     display: none;
   }
 

@@ -1,0 +1,106 @@
+{
+  "common": {
+    "language": {
+      "label": "Luqadda",
+      "en": "English",
+      "so": "Soomaali"
+    },
+    "loading": "Waa la soo rarayaa…"
+  },
+  "admin": {
+    "appName": "KOBANIQ Admin",
+    "login": {
+      "title": "Soo gal",
+      "subtitle": "Guddiga maamulka",
+      "email": "Iimayl",
+      "password": "Erayga sirta ah",
+      "submit": "Soo gal",
+      "submitting": "Waa la soo galayaa…"
+    },
+    "errors": {
+      "invalidCredentials": "Iimaylka ama erayga sirta ah waa khalad.",
+      "noAccess": "Ogolaansho ma lihid. Akoonkani maaha maamule, sidaas darteed waa lagaa saaray.",
+      "suspended": "Akoonkan waa la hakiyay.",
+      "network": "Seerfarka lama gaari karo. Ma shaqaynayaa backend-ku?",
+      "generic": "Khalad ayaa dhacay. Fadlan isku day mar kale.",
+      "required": "Geli iimaylkaaga iyo erayga sirta ah."
+    },
+    "shell": {
+      "signedInAs": "Waxaad ku gashay",
+      "logout": "Ka bax",
+      "openMenu": "Fur liiska",
+      "closeMenu": "Xir liiska"
+    },
+    "nav": {
+      "label": "Qaybaha maamulka",
+      "soon": "Dhawaan",
+      "items": {
+        "overview": "Guudmar",
+        "users": "Isticmaalayaasha",
+        "skills": "Xirfadaha & qiimaynta",
+        "cvs": "CV-yada",
+        "jobs": "Shaqooyinka & isku-beegidda",
+        "sources": "Ilaha shaqooyinka",
+        "runs": "Baadhitaannada",
+        "interviews": "Wareysiyada",
+        "usage": "Isticmaalka",
+        "notifications": "Ogeysiisyada",
+        "reports": "Warbixinnada",
+        "audit": "Diiwaanka hubinta"
+      }
+    },
+    "overview": {
+      "title": "Guudmar",
+      "subtitle": "Tirooyin toos ah oo ka yimid kaydka xogta.",
+      "periodLabel": "Muddada",
+      "periods": {
+        "day": "Maalin",
+        "week": "Toddobaad",
+        "month": "Bil",
+        "year": "Sannad"
+      },
+      "periodHint": {
+        "day": "24-kii saac ee la soo dhaafay",
+        "week": "7-dii maalmood ee la soo dhaafay",
+        "month": "30-kii maalmood ee la soo dhaafay",
+        "year": "365-tii maalmood ee la soo dhaafay"
+      },
+      "updatedAt": "La cusboonaysiiyay {{time}}.",
+      "cards": {
+        "totalUsers": "Isticmaalayaasha oo dhan",
+        "newUsers": "Isticmaalayaal cusub",
+        "activeUsers": "Isticmaalayaal firfircoon",
+        "admins": "Maamulayaasha",
+        "suspended": "Akoonnada la hakiyay",
+        "languages": "Luqadda app-ka"
+      },
+      "languageSplit": "Ingiriisi {{en}} · Soomaali {{so}}",
+      "empty": "Weli isticmaalayaal ma jiraan. Tirooyinku halkan ayay ka muuqan doonaan marka dadku is diiwaangeliyaan.",
+      "error": "Tirooyinka lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "soonTitle": "Waxay la imaan doonaan hawlaha dambe",
+      "soon": {
+        "assessments": {
+          "label": "Qiimaynta",
+          "note": "Waa la tirin doonaa marka qiimayntu jirto (TIQ-13)."
+        },
+        "cvs": {
+          "label": "CV-yada",
+          "note": "Waa la tirin doonaa marka samaynta CV-ga la dhiso (TIQ-9)."
+        },
+        "runs": {
+          "label": "Baadhitaannada",
+          "note": "Waa la tirin doonaa marka baadhitaannada shaqooyinku jiraan (TIQ-16)."
+        },
+        "failedJobs": {
+          "label": "Hawlaha fashilmay",
+          "note": "Waa la tirin doonaa marka hawlaha gadaasha jiraan (TIQ-16)."
+        },
+        "aiUsage": {
+          "label": "Isticmaalka AI-ga",
+          "note": "Waa la tirin doonaa marka la socodka isticmaalku jiro (TIQ-23)."
+        }
+      }
+    }
+  }
+}
