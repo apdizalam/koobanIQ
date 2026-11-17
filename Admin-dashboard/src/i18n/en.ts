@@ -23,10 +23,30 @@ export const en = {
   shell: {
     signedInAs: 'Signed in as',
     logout: 'Log out',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+  },
+  nav: {
+    label: 'Admin sections',
+    soon: 'Soon',
+    items: {
+      overview: 'Overview',
+      users: 'Users',
+      skills: 'Skills & assessments',
+      cvs: 'CVs',
+      jobs: 'Jobs & matching',
+      sources: 'Job sources',
+      runs: 'Research runs',
+      interviews: 'Interviews',
+      usage: 'Usage',
+      notifications: 'Notifications',
+      reports: 'Reports',
+      audit: 'Audit log',
+    },
   },
   overview: {
     title: 'Overview',
-    comingSoon: 'Live counts arrive with the Overview task (TIQ-24).',
+    comingSoon: 'Live counts are coming next in this task (TIQ-24).',
     serverCheck: {
       checking: 'Checking admin access with the server…',
       ok: 'Admin access confirmed by the server.',

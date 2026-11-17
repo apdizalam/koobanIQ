@@ -160,11 +160,83 @@ h1 {
   cursor: default;
 }
 
-/* Signed-in shell */
-.topbar {
+/* Signed-in shell: sidebar on the left, top bar + page on the right */
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+}
+
+.shell-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px 12px;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-brand {
+  padding: 4px 12px 20px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-input);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+a.nav-link:hover {
+  background: var(--primary-soft);
+}
+
+.nav-link-active {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-link-disabled {
+  color: var(--text-muted);
+  cursor: default;
+}
+
+.nav-soon {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: 16px;
   padding: 12px 24px;
   background: var(--surface);
@@ -178,7 +250,25 @@ h1 {
   font-size: 13px;
 }
 
+.menu-button {
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin-right: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-input);
+  background: transparent;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
 .content {
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px;
@@ -216,9 +306,58 @@ h1 {
   color: var(--error-text);
 }
 
+/* Tablets and phones: the sidebar slides in from the left via the ☰ button. */
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 260px;
+    z-index: 20;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar-open {
+    transform: translateX(0);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    border: 0;
+    background: rgba(32, 43, 56, 0.48);
+  }
+
+  .menu-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 600px) {
   .topbar {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 12px 16px;
+  }
+
+  .topbar-user .muted {
+    display: none;
+  }
+
+  .content {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
   }
 }
