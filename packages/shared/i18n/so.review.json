@@ -543,6 +543,54 @@
     "state": "pending",
     "en": "KOBANIQ"
   },
+  "mobile.auth.errors.emailInvalid": {
+    "state": "pending",
+    "en": "Enter a valid email address."
+  },
+  "mobile.auth.errors.emailTaken": {
+    "state": "pending",
+    "en": "An account with this email already exists. Log in instead."
+  },
+  "mobile.auth.errors.generic": {
+    "state": "pending",
+    "en": "Something went wrong. Please try again."
+  },
+  "mobile.auth.errors.invalidCredentials": {
+    "state": "pending",
+    "en": "Email or password is incorrect."
+  },
+  "mobile.auth.errors.network": {
+    "state": "pending",
+    "en": "Cannot reach the server. Check your internet connection."
+  },
+  "mobile.auth.errors.passwordRequired": {
+    "state": "pending",
+    "en": "Enter your password."
+  },
+  "mobile.auth.errors.passwordTooLong": {
+    "state": "pending",
+    "en": "Use at most 128 characters."
+  },
+  "mobile.auth.errors.passwordTooShort": {
+    "state": "pending",
+    "en": "Use at least 8 characters."
+  },
+  "mobile.auth.errors.suspended": {
+    "state": "pending",
+    "en": "This account is suspended. Contact support."
+  },
+  "mobile.auth.home.body": {
+    "state": "pending",
+    "en": "Signed in as {{email}}. The real Home screen comes with the next task."
+  },
+  "mobile.auth.home.logout": {
+    "state": "pending",
+    "en": "Log out"
+  },
+  "mobile.auth.home.title": {
+    "state": "pending",
+    "en": "You are signed in"
+  },
   "mobile.auth.language.continue": {
     "state": "pending",
     "en": "Continue"
@@ -554,6 +602,62 @@
   "mobile.auth.language.title": {
     "state": "pending",
     "en": "Choose your language"
+  },
+  "mobile.auth.later.forgot": {
+    "state": "pending",
+    "en": "Password reset arrives once email sending is set up."
+  },
+  "mobile.auth.later.google": {
+    "state": "pending",
+    "en": "Google sign-in arrives in a later update."
+  },
+  "mobile.auth.login.createAccount": {
+    "state": "pending",
+    "en": "Create an account"
+  },
+  "mobile.auth.login.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "mobile.auth.login.emailPlaceholder": {
+    "state": "pending",
+    "en": "you@example.com"
+  },
+  "mobile.auth.login.forgot": {
+    "state": "pending",
+    "en": "Forgot password?"
+  },
+  "mobile.auth.login.google": {
+    "state": "pending",
+    "en": "Continue with Google"
+  },
+  "mobile.auth.login.newHere": {
+    "state": "pending",
+    "en": "New to KOBANIQ?"
+  },
+  "mobile.auth.login.or": {
+    "state": "pending",
+    "en": "or"
+  },
+  "mobile.auth.login.password": {
+    "state": "pending",
+    "en": "Password"
+  },
+  "mobile.auth.login.submit": {
+    "state": "pending",
+    "en": "Log in"
+  },
+  "mobile.auth.login.submitting": {
+    "state": "pending",
+    "en": "Logging in…"
+  },
+  "mobile.auth.login.subtitle": {
+    "state": "pending",
+    "en": "Log in to see your matches and continue your assessments."
+  },
+  "mobile.auth.login.title": {
+    "state": "pending",
+    "en": "Welcome back"
   },
   "mobile.auth.onboarding.cv.approve": {
     "state": "pending",
@@ -658,6 +762,42 @@
   "mobile.auth.placeholder.title": {
     "state": "pending",
     "en": "Coming in the next step"
+  },
+  "mobile.auth.signUp.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "mobile.auth.signUp.haveAccount": {
+    "state": "pending",
+    "en": "Already have an account?"
+  },
+  "mobile.auth.signUp.logIn": {
+    "state": "pending",
+    "en": "Log in"
+  },
+  "mobile.auth.signUp.password": {
+    "state": "pending",
+    "en": "Password"
+  },
+  "mobile.auth.signUp.passwordHint": {
+    "state": "pending",
+    "en": "At least 8 characters."
+  },
+  "mobile.auth.signUp.submit": {
+    "state": "pending",
+    "en": "Create account"
+  },
+  "mobile.auth.signUp.submitting": {
+    "state": "pending",
+    "en": "Creating account…"
+  },
+  "mobile.auth.signUp.subtitle": {
+    "state": "pending",
+    "en": "Free for everyone. Your language: {{language}}."
+  },
+  "mobile.auth.signUp.title": {
+    "state": "pending",
+    "en": "Create your account"
   },
   "mobile.auth.welcome.body": {
     "state": "pending",

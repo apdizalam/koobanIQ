@@ -2,10 +2,11 @@ import '../i18n';
 import { Stack } from 'expo-router';
 import { ActivityIndicator, View, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AuthProvider } from '../auth/AuthProvider';
 import { useAppFonts } from '../hooks/useAppFonts';
 import { ThemeProvider, colors } from '../theme';
 
-/** Root of every screen: fonts, light/dark theme from the phone, translations, navigation. */
+/** Root of every screen: fonts, light/dark theme from the phone, translations, sign-in, navigation. */
 export default function RootLayout() {
   const fontsLoaded = useAppFonts();
   const scheme = useColorScheme() === 'dark' ? 'dark' : 'light';
@@ -28,7 +29,9 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <ThemeProvider preference="system">
-        <Stack screenOptions={{ headerShown: false }} />
+        <AuthProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+        </AuthProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );

@@ -20,7 +20,7 @@
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": ["expo-image", "expo-font", "expo-localization", "expo-router"],
+    "plugins": ["expo-image", "expo-font", "expo-localization", "expo-router", "expo-secure-store"],
     "scheme": "kobaniq"
   }
 }

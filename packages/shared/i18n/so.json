@@ -325,6 +325,51 @@
         "title": "Waxay imanaysaa tallaabada xigta",
         "body": "Shaashaddan waxaa la dhisayaa qaybta xigta ee hawshan.",
         "back": "Dib u noqo"
+      },
+      "login": {
+        "title": "Ku soo dhowow mar kale",
+        "subtitle": "Soo gal si aad u aragto isku-beegyadaada oo aad u sii wadato qiimaynadaada.",
+        "email": "Iimayl",
+        "emailPlaceholder": "adiga@tusaale.com",
+        "password": "Erayga sirta ah",
+        "forgot": "Ma ilowday erayga sirta ah?",
+        "submit": "Soo gal",
+        "submitting": "Waa la soo galayaa…",
+        "or": "ama",
+        "google": "Ku sii wad Google",
+        "newHere": "Ku cusub KOBANIQ?",
+        "createAccount": "Samee akoon"
+      },
+      "signUp": {
+        "title": "Samee akoonkaaga",
+        "subtitle": "Bilaash qof walba. Luqaddaada: {{language}}.",
+        "email": "Iimayl",
+        "password": "Erayga sirta ah",
+        "passwordHint": "Ugu yaraan 8 xaraf.",
+        "submit": "Samee akoon",
+        "submitting": "Akoonka waa la samaynayaa…",
+        "haveAccount": "Horey ma u lahayd akoon?",
+        "logIn": "Soo gal"
+      },
+      "errors": {
+        "emailInvalid": "Geli iimayl sax ah.",
+        "passwordRequired": "Geli erayga sirta ah.",
+        "passwordTooShort": "Isticmaal ugu yaraan 8 xaraf.",
+        "passwordTooLong": "Isticmaal ugu badnaan 128 xaraf.",
+        "invalidCredentials": "Iimaylka ama erayga sirta ah waa khalad.",
+        "emailTaken": "Akoon leh iimaylkan horay ayuu u jiray. Halkii soo gal.",
+        "suspended": "Akoonkan waa la hakiyay. La xiriir taageerada.",
+        "network": "Seerfarka lama gaari karo. Hubi xiriirka internetkaaga.",
+        "generic": "Khalad ayaa dhacay. Fadlan isku day mar kale."
+      },
+      "later": {
+        "forgot": "Dib u dejinta erayga sirta ah waxay imanaysaa marka dirista iimaylka la diyaariyo.",
+        "google": "Ku-gelitaanka Google wuxuu imanayaa cusboonaysiin dambe."
+      },
+      "home": {
+        "title": "Waad soo gashay",
+        "body": "Waxaad ku gashay {{email}}. Shaashadda dhabta ah ee Hoyga waxay la imanaysaa hawsha xigta.",
+        "logout": "Ka bax"
       }
     }
   }
