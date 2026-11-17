@@ -1,0 +1,10 @@
+export type Period = 'day' | 'week' | 'month' | 'year';
+
+/** GET /api/v1/admin/overview answer (backend services/overviewService.ts). */
+export interface Overview {
+  period: Period;
+  since: string;
+  generatedAt: string;
+  users: { total: number; admins: number; suspended: number; new: number; active: number };
+  languages: { en: number; so: number };
+}

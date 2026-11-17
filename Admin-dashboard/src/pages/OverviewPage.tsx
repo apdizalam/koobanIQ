@@ -1,32 +1,65 @@
-import { useEffect, useState } from 'react';
-import { useAuth } from '../auth/authContext';
+import { SoonCard, StatCard } from '../components/ui/StatCard';
+import { useOverview } from '../hooks/useOverview';
 import { en } from '../i18n/en';
 
-type ServerCheck = 'checking' | 'ok' | 'failed';
+const t = en.overview;
+const SOON_KEYS = ['assessments', 'cvs', 'runs', 'failedJobs', 'aiUsage'] as const;
 
-/** Placeholder until the Overview task (TIQ-24) adds live counts. */
+/** Admin Overview: live user numbers + cards for features that are not built yet. */
 export function OverviewPage() {
-  const { request } = useAuth();
-  const [check, setCheck] = useState<ServerCheck>('checking');
-
-  // A real signed-in API call: if the access token has expired, it is refreshed silently.
-  useEffect(() => {
-    let active = true;
-    request('/admin/access')
-      .then(() => active && setCheck('ok'))
-      .catch(() => active && setCheck('failed'));
-    return () => {
-      active = false;
-    };
-  }, [request]);
+  const { state, reload } = useOverview('week');
+  const data = state.status === 'ready' ? state.data : null;
+  const value = (n: number | undefined) => (state.status === 'loading' ? null : (n ?? 0));
 
   return (
-    <section className="card">
-      <h1>{en.overview.title}</h1>
-      <p className="muted">{en.overview.comingSoon}</p>
-      <p className={`status status-${check}`} role="status">
-        {en.overview.serverCheck[check]}
-      </p>
-    </section>
+    <>
+      <header className="page-header">
+        <h1>{t.title}</h1>
+        <p className="muted">
+          {t.subtitle}
+          {data ? ` ${t.updatedAt} ${new Date(data.generatedAt).toLocaleTimeString()}.` : null}
+        </p>
+      </header>
+
+      {state.status === 'error' ? (
+        <div className="alert alert-row" role="alert">
+          <span>{t.error}</span>
+          <button type="button" className="button-secondary" onClick={reload}>
+            {t.retry}
+          </button>
+        </div>
+      ) : (
+        <>
+          {data && data.users.total === 0 ? (
+            <p className="card muted" role="status">
+              {t.empty}
+            </p>
+          ) : null}
+          <section className="stat-grid" aria-label={t.title}>
+            <StatCard label={t.cards.totalUsers} value={value(data?.users.total)} />
+            <StatCard label={t.cards.newUsers} value={value(data?.users.new)} hint={t.lastWeek} />
+            <StatCard
+              label={t.cards.activeUsers}
+              value={value(data?.users.active)}
+              hint={t.lastWeek}
+            />
+            <StatCard label={t.cards.admins} value={value(data?.users.admins)} />
+            <StatCard label={t.cards.suspended} value={value(data?.users.suspended)} />
+            <StatCard
+              label={t.cards.languages}
+              value={value(data ? data.languages.en + data.languages.so : undefined)}
+              hint={data ? t.languageSplit(data.languages.en, data.languages.so) : undefined}
+            />
+          </section>
+        </>
+      )}
+
+      <h2 className="section-title">{t.soonTitle}</h2>
+      <section className="stat-grid" aria-label={t.soonTitle}>
+        {SOON_KEYS.map((key) => (
+          <SoonCard key={key} label={t.soon[key].label} note={t.soon[key].note} />
+        ))}
+      </section>
+    </>
   );
 }
