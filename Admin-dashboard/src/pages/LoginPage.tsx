@@ -1,35 +1,41 @@
 import { useState, type FormEvent } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../auth/authContext';
-import { en } from '../i18n/en';
+import { LanguageSwitcher } from '../components/ui/LanguageSwitcher';
 import { ApiError } from '../services/api';
 
-/** Turns an API error into the sentence shown under the form. */
-function errorMessage(err: unknown): string {
-  if (!(err instanceof ApiError)) return en.errors.generic;
+type ErrorKey =
+  'invalidCredentials' | 'noAccess' | 'suspended' | 'network' | 'required' | 'generic';
+
+/** Which message to show under the form for an API error. */
+function errorKey(err: unknown): ErrorKey {
+  if (!(err instanceof ApiError)) return 'generic';
   switch (err.code) {
     case 'INVALID_CREDENTIALS':
-      return en.errors.invalidCredentials;
+      return 'invalidCredentials';
     case 'NO_ACCESS':
-      return en.errors.noAccess;
+      return 'noAccess';
     case 'ACCOUNT_SUSPENDED':
-      return en.errors.suspended;
+      return 'suspended';
     case 'NETWORK_ERROR':
-      return en.errors.network;
+      return 'network';
     case 'VALIDATION_ERROR':
-      return en.errors.required;
+      return 'required';
     default:
-      return en.errors.generic;
+      return 'generic';
   }
 }
 
 export function LoginPage() {
+  const { t } = useTranslation();
   const { user, signIn } = useAuth();
   const navigate = useNavigate();
   const from = (useLocation().state as { from?: string } | null)?.from ?? '/';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  // Store the key, not the sentence, so the message follows a language switch.
+  const [error, setError] = useState<ErrorKey | null>(null);
   const [busy, setBusy] = useState(false);
 
   if (user) return <Navigate to={from} replace />;
@@ -37,7 +43,7 @@ export function LoginPage() {
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
     if (!email.trim() || !password) {
-      setError(en.errors.required);
+      setError('required');
       return;
     }
     setBusy(true);
@@ -46,7 +52,7 @@ export function LoginPage() {
       await signIn(email.trim(), password);
       navigate(from, { replace: true });
     } catch (err) {
-      setError(errorMessage(err));
+      setError(errorKey(err));
       setPassword('');
     } finally {
       setBusy(false);
@@ -56,12 +62,15 @@ export function LoginPage() {
   return (
     <main className="login">
       <form className="card login-card" onSubmit={onSubmit} noValidate>
-        <p className="brand">{en.appName}</p>
-        <h1>{en.login.title}</h1>
-        <p className="muted">{en.login.subtitle}</p>
+        <div className="login-top">
+          <p className="brand">{t('admin.appName')}</p>
+          <LanguageSwitcher />
+        </div>
+        <h1>{t('admin.login.title')}</h1>
+        <p className="muted">{t('admin.login.subtitle')}</p>
 
         <label className="field">
-          <span>{en.login.email}</span>
+          <span>{t('admin.login.email')}</span>
           <input
             type="email"
             autoComplete="username"
@@ -73,7 +82,7 @@ export function LoginPage() {
         </label>
 
         <label className="field">
-          <span>{en.login.password}</span>
+          <span>{t('admin.login.password')}</span>
           <input
             type="password"
             autoComplete="current-password"
@@ -85,12 +94,12 @@ export function LoginPage() {
 
         {error ? (
           <p className="alert" role="alert">
-            {error}
+            {t(`admin.errors.${error}`)}
           </p>
         ) : null}
 
         <button type="submit" className="button-primary" disabled={busy}>
-          {busy ? en.login.submitting : en.login.submit}
+          {busy ? t('admin.login.submitting') : t('admin.login.submit')}
         </button>
       </form>
     </main>

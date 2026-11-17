@@ -1,11 +1,13 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate } from 'react-router';
 import { useAuth } from '../../auth/authContext';
-import { en } from '../../i18n/en';
+import { LanguageSwitcher } from '../ui/LanguageSwitcher';
 import { Sidebar } from './Sidebar';
 
-/** Sidebar + top bar (signed-in admin, log out) around every admin page. */
+/** Sidebar + top bar (language, signed-in admin, log out) around every admin page. */
 export function AdminLayout() {
+  const { t } = useTranslation();
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -22,7 +24,7 @@ export function AdminLayout() {
         <button
           type="button"
           className="sidebar-backdrop"
-          aria-label={en.shell.closeMenu}
+          aria-label={t('admin.shell.closeMenu')}
           onClick={() => setMenuOpen(false)}
         />
       ) : null}
@@ -32,7 +34,7 @@ export function AdminLayout() {
           <button
             type="button"
             className="menu-button"
-            aria-label={menuOpen ? en.shell.closeMenu : en.shell.openMenu}
+            aria-label={menuOpen ? t('admin.shell.closeMenu') : t('admin.shell.openMenu')}
             aria-expanded={menuOpen}
             aria-controls="admin-sidebar"
             onClick={() => setMenuOpen((open) => !open)}
@@ -47,11 +49,12 @@ export function AdminLayout() {
             </svg>
           </button>
           <div className="topbar-user">
-            <span className="muted">
-              {en.shell.signedInAs} <strong>{user?.email}</strong>
+            <LanguageSwitcher />
+            <span className="muted topbar-email">
+              {t('admin.shell.signedInAs')} <strong>{user?.email}</strong>
             </span>
             <button type="button" className="button-secondary" onClick={onLogout}>
-              {en.shell.logout}
+              {t('admin.shell.logout')}
             </button>
           </div>
         </header>

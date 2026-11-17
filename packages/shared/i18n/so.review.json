@@ -1,0 +1,274 @@
+{
+  "admin.appName": {
+    "state": "pending",
+    "en": "KOBANIQ Admin"
+  },
+  "admin.errors.generic": {
+    "state": "pending",
+    "en": "Something went wrong. Please try again."
+  },
+  "admin.errors.invalidCredentials": {
+    "state": "pending",
+    "en": "Email or password is incorrect."
+  },
+  "admin.errors.network": {
+    "state": "pending",
+    "en": "Cannot reach the server. Is the backend running?"
+  },
+  "admin.errors.noAccess": {
+    "state": "pending",
+    "en": "No access. This account is not an admin, so you have been signed out."
+  },
+  "admin.errors.required": {
+    "state": "pending",
+    "en": "Enter your email and password."
+  },
+  "admin.errors.suspended": {
+    "state": "pending",
+    "en": "This account is suspended."
+  },
+  "admin.login.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "admin.login.password": {
+    "state": "pending",
+    "en": "Password"
+  },
+  "admin.login.submit": {
+    "state": "pending",
+    "en": "Sign in"
+  },
+  "admin.login.submitting": {
+    "state": "pending",
+    "en": "Signing in…"
+  },
+  "admin.login.subtitle": {
+    "state": "pending",
+    "en": "Admin dashboard"
+  },
+  "admin.login.title": {
+    "state": "pending",
+    "en": "Sign in"
+  },
+  "admin.nav.items.audit": {
+    "state": "pending",
+    "en": "Audit log"
+  },
+  "admin.nav.items.cvs": {
+    "state": "pending",
+    "en": "CVs"
+  },
+  "admin.nav.items.interviews": {
+    "state": "pending",
+    "en": "Interviews"
+  },
+  "admin.nav.items.jobs": {
+    "state": "pending",
+    "en": "Jobs & matching"
+  },
+  "admin.nav.items.notifications": {
+    "state": "pending",
+    "en": "Notifications"
+  },
+  "admin.nav.items.overview": {
+    "state": "pending",
+    "en": "Overview"
+  },
+  "admin.nav.items.reports": {
+    "state": "pending",
+    "en": "Reports"
+  },
+  "admin.nav.items.runs": {
+    "state": "pending",
+    "en": "Research runs"
+  },
+  "admin.nav.items.skills": {
+    "state": "pending",
+    "en": "Skills & assessments"
+  },
+  "admin.nav.items.sources": {
+    "state": "pending",
+    "en": "Job sources"
+  },
+  "admin.nav.items.usage": {
+    "state": "pending",
+    "en": "Usage"
+  },
+  "admin.nav.items.users": {
+    "state": "pending",
+    "en": "Users"
+  },
+  "admin.nav.label": {
+    "state": "pending",
+    "en": "Admin sections"
+  },
+  "admin.nav.soon": {
+    "state": "pending",
+    "en": "Soon"
+  },
+  "admin.overview.cards.activeUsers": {
+    "state": "pending",
+    "en": "Active users"
+  },
+  "admin.overview.cards.admins": {
+    "state": "pending",
+    "en": "Admins"
+  },
+  "admin.overview.cards.languages": {
+    "state": "pending",
+    "en": "App language"
+  },
+  "admin.overview.cards.newUsers": {
+    "state": "pending",
+    "en": "New users"
+  },
+  "admin.overview.cards.suspended": {
+    "state": "pending",
+    "en": "Suspended accounts"
+  },
+  "admin.overview.cards.totalUsers": {
+    "state": "pending",
+    "en": "Total users"
+  },
+  "admin.overview.empty": {
+    "state": "pending",
+    "en": "No users yet. Numbers appear here as soon as people sign up."
+  },
+  "admin.overview.error": {
+    "state": "pending",
+    "en": "Could not load the numbers. Check that the backend is running."
+  },
+  "admin.overview.languageSplit": {
+    "state": "pending",
+    "en": "English {{en}} · Somali {{so}}"
+  },
+  "admin.overview.periodHint.day": {
+    "state": "pending",
+    "en": "last 24 hours"
+  },
+  "admin.overview.periodHint.month": {
+    "state": "pending",
+    "en": "last 30 days"
+  },
+  "admin.overview.periodHint.week": {
+    "state": "pending",
+    "en": "last 7 days"
+  },
+  "admin.overview.periodHint.year": {
+    "state": "pending",
+    "en": "last 365 days"
+  },
+  "admin.overview.periodLabel": {
+    "state": "pending",
+    "en": "Time period"
+  },
+  "admin.overview.periods.day": {
+    "state": "pending",
+    "en": "Day"
+  },
+  "admin.overview.periods.month": {
+    "state": "pending",
+    "en": "Month"
+  },
+  "admin.overview.periods.week": {
+    "state": "pending",
+    "en": "Week"
+  },
+  "admin.overview.periods.year": {
+    "state": "pending",
+    "en": "Year"
+  },
+  "admin.overview.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.overview.soon.aiUsage.label": {
+    "state": "pending",
+    "en": "AI usage"
+  },
+  "admin.overview.soon.aiUsage.note": {
+    "state": "pending",
+    "en": "Counted once usage tracking exists (TIQ-23)."
+  },
+  "admin.overview.soon.assessments.label": {
+    "state": "pending",
+    "en": "Assessments"
+  },
+  "admin.overview.soon.assessments.note": {
+    "state": "pending",
+    "en": "Counted once assessments exist (TIQ-13)."
+  },
+  "admin.overview.soon.cvs.label": {
+    "state": "pending",
+    "en": "CVs"
+  },
+  "admin.overview.soon.cvs.note": {
+    "state": "pending",
+    "en": "Counted once CV generation exists (TIQ-9)."
+  },
+  "admin.overview.soon.failedJobs.label": {
+    "state": "pending",
+    "en": "Failed jobs"
+  },
+  "admin.overview.soon.failedJobs.note": {
+    "state": "pending",
+    "en": "Counted once background jobs exist (TIQ-16)."
+  },
+  "admin.overview.soon.runs.label": {
+    "state": "pending",
+    "en": "Research runs"
+  },
+  "admin.overview.soon.runs.note": {
+    "state": "pending",
+    "en": "Counted once job research runs exist (TIQ-16)."
+  },
+  "admin.overview.soonTitle": {
+    "state": "pending",
+    "en": "Coming with later tasks"
+  },
+  "admin.overview.subtitle": {
+    "state": "pending",
+    "en": "Live numbers from the database."
+  },
+  "admin.overview.title": {
+    "state": "pending",
+    "en": "Overview"
+  },
+  "admin.overview.updatedAt": {
+    "state": "pending",
+    "en": "Updated {{time}}."
+  },
+  "admin.shell.closeMenu": {
+    "state": "pending",
+    "en": "Close menu"
+  },
+  "admin.shell.logout": {
+    "state": "pending",
+    "en": "Log out"
+  },
+  "admin.shell.openMenu": {
+    "state": "pending",
+    "en": "Open menu"
+  },
+  "admin.shell.signedInAs": {
+    "state": "pending",
+    "en": "Signed in as"
+  },
+  "common.language.en": {
+    "state": "pending",
+    "en": "English"
+  },
+  "common.language.label": {
+    "state": "pending",
+    "en": "Language"
+  },
+  "common.language.so": {
+    "state": "pending",
+    "en": "Soomaali"
+  },
+  "common.loading": {
+    "state": "pending",
+    "en": "Loading…"
+  }
+}

@@ -1,6 +1,6 @@
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router';
 import { NAV_ITEMS } from '../../constants/navigation';
-import { en } from '../../i18n/en';
 
 interface SidebarProps {
   /** On small screens the sidebar slides in; `open` controls it there. */
@@ -10,10 +10,11 @@ interface SidebarProps {
 
 /** Left navigation with every admin section; unbuilt sections are shown but disabled. */
 export function Sidebar({ open, onNavigate }: SidebarProps) {
+  const { t } = useTranslation();
   return (
     <aside className={`sidebar${open ? ' sidebar-open' : ''}`} id="admin-sidebar">
-      <p className="brand sidebar-brand">{en.appName}</p>
-      <nav aria-label={en.nav.label}>
+      <p className="brand sidebar-brand">{t('admin.appName')}</p>
+      <nav aria-label={t('admin.nav.label')}>
         <ul className="nav-list">
           {NAV_ITEMS.map((item) => (
             <li key={item.key}>
@@ -24,12 +25,12 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
                   onClick={onNavigate}
                   className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}
                 >
-                  {en.nav.items[item.key]}
+                  {t(`admin.nav.items.${item.key}`)}
                 </NavLink>
               ) : (
                 <span className="nav-link nav-link-disabled" aria-disabled="true">
-                  {en.nav.items[item.key]}
-                  <span className="nav-soon">{en.nav.soon}</span>
+                  {t(`admin.nav.items.${item.key}`)}
+                  <span className="nav-soon">{t('admin.nav.soon')}</span>
                 </span>
               )}
             </li>
