@@ -65,6 +65,11 @@ before(async () => {
     body: { role: 'admin' },
   });
   const gone = await account('gone@audit.invalid');
+  await call(`/admin/users/${gone.id}/status`, {
+    method: 'PATCH',
+    token: adminToken,
+    body: { status: 'suspended' },
+  });
   await call(`/admin/users/${gone.id}`, { method: 'DELETE', token: adminToken });
 });
 
@@ -78,15 +83,20 @@ test('lists every record newest first, with who, what, target and before/after',
   const res = await call('/admin/audit-logs', { token: adminToken });
   const body = await res.json();
   assert.equal(res.status, 200);
-  assert.equal(body.data.total, 4);
+  assert.equal(body.data.total, 5);
   assert.deepEqual(
     body.data.items.map((i: { action: string }) => i.action),
-    ['user.delete', 'user.role_change', 'user.suspend', 'admin.access_denied'],
+    ['user.delete', 'user.suspend', 'user.role_change', 'user.suspend', 'admin.access_denied'],
   );
 
-  const [deleted, roleChange, suspend, denied] = body.data.items;
+  const [deleted, suspendBeforeDelete, roleChange, suspend, denied] = body.data.items;
   assert.equal(deleted.actor, 'boss@audit.invalid');
   assert.equal(deleted.target, 'gone@audit.invalid', 'a deleted user still shows by email');
+  assert.equal(
+    suspendBeforeDelete.target,
+    'gone@audit.invalid',
+    'older rows about a deleted user show the email too',
+  );
   assert.deepEqual(roleChange.before, { role: 'user' });
   assert.deepEqual(roleChange.after, { role: 'admin' });
   assert.equal(roleChange.target, 'helper@audit.invalid');
@@ -101,14 +111,16 @@ test('filters by action and pages through results', async () => {
   ).json();
   assert.deepEqual(
     only.data.items.map((i: { action: string }) => i.action),
-    ['user.suspend'],
+    ['user.suspend', 'user.suspend'],
   );
 
   const page2 = await (
     await call('/admin/audit-logs?limit=3&page=2', { token: adminToken })
   ).json();
-  assert.equal(page2.data.items.length, 1);
-  assert.equal(page2.data.items[0].action, 'admin.access_denied');
+  assert.deepEqual(
+    page2.data.items.map((i: { action: string }) => i.action),
+    ['user.suspend', 'admin.access_denied'],
+  );
 
   const bad = await call('/admin/audit-logs?action=user.hack', { token: adminToken });
   assert.equal(bad.status, 400);

@@ -47,12 +47,25 @@ export async function listAuditLogs({ action, page, limit }: ListAuditQuery) {
   const users = await User.find({ _id: { $in: [...userIds] } }, { email: 1 }).lean();
   const emailOf = new Map(users.map((u) => [String(u._id), u.email]));
 
+  // Deleted users are no longer in `users`; their delete record keeps the email,
+  // so older rows about them (e.g. an earlier suspend) still show who it was.
+  const missing = [...userIds].filter((id) => !emailOf.has(id));
+  if (missing.length > 0) {
+    const deletes = await AuditLog.find(
+      { action: 'user.delete', targetId: { $in: missing } },
+      { targetId: 1, before: 1 },
+    ).lean();
+    for (const record of deletes) {
+      const email = (record.before as Snapshot)?.email;
+      if (record.targetId && typeof email === 'string') emailOf.set(record.targetId, email);
+    }
+  }
+
   const items = logs.map((log) => {
     const before = log.before as Snapshot;
     let target = log.targetId ?? null;
     if (log.targetType === 'user' && log.targetId) {
-      // A deleted user is no longer in `users`; the delete record keeps the email.
-      target = emailOf.get(log.targetId) ?? (before?.email as string | undefined) ?? log.targetId;
+      target = emailOf.get(log.targetId) ?? log.targetId;
     }
     return {
       id: String(log._id),
