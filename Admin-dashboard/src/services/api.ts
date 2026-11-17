@@ -29,6 +29,9 @@ export async function apiRequest<T>(
   const headers: Record<string, string> = {};
   if (options.body !== undefined) headers['Content-Type'] = 'application/json';
   if (options.accessToken) headers.Authorization = `Bearer ${options.accessToken}`;
+  // The UI language (i18n sets <html lang>), so the server can answer in it.
+  const language = typeof document === 'undefined' ? '' : document.documentElement.lang;
+  if (language) headers['Accept-Language'] = language;
 
   let res: Response;
   try {

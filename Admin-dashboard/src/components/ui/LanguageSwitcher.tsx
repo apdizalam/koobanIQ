@@ -1,9 +1,21 @@
 import { useTranslation } from 'react-i18next';
-import { LANGUAGES } from '../../i18n/language';
+import { useAuth } from '../../auth/authContext';
+import { markLanguageChosenWhileSignedOut } from '../../auth/languageSync';
+import { LANGUAGES, type Language } from '../../i18n/language';
 
-/** English / Soomaali switch. Each option is written in its own language. */
+/**
+ * English / Soomaali switch. Each option is written in its own language.
+ * Signed in, the choice is saved to the account (see AuthProvider).
+ */
 export function LanguageSwitcher() {
   const { t, i18n } = useTranslation();
+  const { user } = useAuth();
+
+  function choose(language: Language) {
+    if (!user) markLanguageChosenWhileSignedOut();
+    void i18n.changeLanguage(language);
+  }
+
   return (
     <div className="segmented segmented-small" role="group" aria-label={t('common.language.label')}>
       {LANGUAGES.map((language) => {
@@ -15,7 +27,7 @@ export function LanguageSwitcher() {
             lang={language}
             className={`segment${active ? ' segment-active' : ''}`}
             aria-pressed={active}
-            onClick={() => void i18n.changeLanguage(language)}
+            onClick={() => choose(language)}
           >
             {t(`common.language.${language}`)}
           </button>
