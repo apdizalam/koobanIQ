@@ -47,7 +47,14 @@ export const en = {
   overview: {
     title: 'Overview',
     subtitle: 'Live numbers from the database.',
-    lastWeek: 'last 7 days',
+    periodLabel: 'Time period',
+    periods: { day: 'Day', week: 'Week', month: 'Month', year: 'Year' },
+    periodHint: {
+      day: 'last 24 hours',
+      week: 'last 7 days',
+      month: 'last 30 days',
+      year: 'last 365 days',
+    },
     updatedAt: 'Updated',
     cards: {
       totalUsers: 'Total users',

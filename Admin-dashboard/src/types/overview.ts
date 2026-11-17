@@ -1,4 +1,8 @@
-export type Period = 'day' | 'week' | 'month' | 'year';
+export const PERIODS = ['day', 'week', 'month', 'year'] as const;
+export type Period = (typeof PERIODS)[number];
+
+export const isPeriod = (value: unknown): value is Period =>
+  typeof value === 'string' && (PERIODS as readonly string[]).includes(value);
 
 /** GET /api/v1/admin/overview answer (backend services/overviewService.ts). */
 export interface Overview {

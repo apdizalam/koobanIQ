@@ -296,6 +296,61 @@ a.nav-link:hover {
   margin-bottom: 12px;
 }
 
+.page-header-row {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.page-title {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+}
+
+.segment {
+  min-width: 64px;
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.segment:hover {
+  color: var(--text);
+}
+
+.segment-active {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.segment-active:hover {
+  color: var(--on-primary);
+}
+
+.segment:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
 h2.section-title {
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: 16px;
