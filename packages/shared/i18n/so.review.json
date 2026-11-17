@@ -407,6 +407,10 @@
     "state": "pending",
     "en": "Sign in to continue"
   },
+  "server.errors.CANNOT_CHANGE_SELF": {
+    "state": "pending",
+    "en": "You cannot change your own account here"
+  },
   "server.errors.DB_UNAVAILABLE": {
     "state": "pending",
     "en": "Database is not reachable"
@@ -438,6 +442,10 @@
   "server.errors.INVALID_TOKEN": {
     "state": "pending",
     "en": "Access token is invalid"
+  },
+  "server.errors.LAST_ADMIN": {
+    "state": "pending",
+    "en": "At least one active admin must remain"
   },
   "server.errors.NOT_FOUND": {
     "state": "pending",
@@ -498,5 +506,13 @@
   "server.validation.refreshTokenRequired": {
     "state": "pending",
     "en": "Refresh token is required"
+  },
+  "server.validation.roleInvalid": {
+    "state": "pending",
+    "en": "Must be \"user\" or \"admin\""
+  },
+  "server.validation.statusInvalid": {
+    "state": "pending",
+    "en": "Must be \"active\" or \"suspended\""
   }
 }

@@ -23,7 +23,9 @@
       "NOT_FOUND": "Wadadan lama helin",
       "INVALID_JSON": "Xogta codsigu maaha JSON sax ah",
       "INTERNAL_ERROR": "Khalad ayaa dhacay",
-      "DB_UNAVAILABLE": "Kaydka xogta lama gaari karo"
+      "DB_UNAVAILABLE": "Kaydka xogta lama gaari karo",
+      "CANNOT_CHANGE_SELF": "Halkan kama beddeli kartid akoonkaaga",
+      "LAST_ADMIN": "Waa inuu jiraa ugu yaraan hal maamule oo firfircoon"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -35,7 +37,9 @@
       "refreshTokenRequired": "Furaha cusboonaysiinta waa loo baahan yahay",
       "fieldNotEditable": "Meeshan halkan lagama beddeli karo",
       "nothingToUpdate": "Wax la cusboonaysiiyo ma jiro",
-      "periodInvalid": "Waa inuu ahaadaa day, week, month ama year"
+      "periodInvalid": "Waa inuu ahaadaa day, week, month ama year",
+      "roleInvalid": "Waa inuu ahaadaa \"user\" ama \"admin\"",
+      "statusInvalid": "Waa inuu ahaadaa \"active\" ama \"suspended\""
     }
   },
   "admin": {

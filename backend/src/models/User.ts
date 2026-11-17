@@ -7,6 +7,7 @@ export const LANGUAGES = ['en', 'so'] as const;
 export const AUTH_PROVIDERS = ['local', 'google'] as const;
 
 export type Role = (typeof ROLES)[number];
+export type UserStatus = (typeof USER_STATUSES)[number];
 export type Language = (typeof LANGUAGES)[number];
 
 /** `users` collection — see Notion "7 · Architecture" → Database schema. */
