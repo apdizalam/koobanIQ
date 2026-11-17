@@ -21,7 +21,7 @@ export function Sidebar({ open, onNavigate }: SidebarProps) {
               {item.available ? (
                 <NavLink
                   to={item.path}
-                  end
+                  end={item.path === '/'}
                   onClick={onNavigate}
                   className={({ isActive }) => `nav-link${isActive ? ' nav-link-active' : ''}`}
                 >

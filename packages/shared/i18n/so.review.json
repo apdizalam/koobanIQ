@@ -3,6 +3,78 @@
     "state": "pending",
     "en": "KOBANIQ Admin"
   },
+  "admin.audit.actionFilter": {
+    "state": "pending",
+    "en": "Action"
+  },
+  "admin.audit.actions.admin_access_denied": {
+    "state": "pending",
+    "en": "Admin access denied"
+  },
+  "admin.audit.actions.user_delete": {
+    "state": "pending",
+    "en": "Deleted a user"
+  },
+  "admin.audit.actions.user_reactivate": {
+    "state": "pending",
+    "en": "Reactivated a user"
+  },
+  "admin.audit.actions.user_role_change": {
+    "state": "pending",
+    "en": "Changed a role"
+  },
+  "admin.audit.actions.user_suspend": {
+    "state": "pending",
+    "en": "Suspended a user"
+  },
+  "admin.audit.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.audit.columns.action": {
+    "state": "pending",
+    "en": "Action"
+  },
+  "admin.audit.columns.change": {
+    "state": "pending",
+    "en": "Change"
+  },
+  "admin.audit.columns.target": {
+    "state": "pending",
+    "en": "Target"
+  },
+  "admin.audit.columns.when": {
+    "state": "pending",
+    "en": "When"
+  },
+  "admin.audit.columns.who": {
+    "state": "pending",
+    "en": "Who"
+  },
+  "admin.audit.deleted": {
+    "state": "pending",
+    "en": "Account deleted"
+  },
+  "admin.audit.empty": {
+    "state": "pending",
+    "en": "No records yet."
+  },
+  "admin.audit.error": {
+    "state": "pending",
+    "en": "Could not load the audit log. Check that the backend is running."
+  },
+  "admin.audit.noChange": {
+    "state": "pending",
+    "en": "—"
+  },
+  "admin.audit.subtitle": {
+    "state": "pending",
+    "en": "Every change an admin made, and every blocked attempt to open the admin area."
+  },
+  "admin.audit.title": {
+    "state": "pending",
+    "en": "Audit log"
+  },
   "admin.errors.generic": {
     "state": "pending",
     "en": "Something went wrong. Please try again."
@@ -254,6 +326,202 @@
   "admin.shell.signedInAs": {
     "state": "pending",
     "en": "Signed in as"
+  },
+  "admin.users.actions.delete": {
+    "state": "pending",
+    "en": "Delete account"
+  },
+  "admin.users.actions.makeAdmin": {
+    "state": "pending",
+    "en": "Make admin"
+  },
+  "admin.users.actions.makeUser": {
+    "state": "pending",
+    "en": "Make normal user"
+  },
+  "admin.users.actions.reactivate": {
+    "state": "pending",
+    "en": "Reactivate"
+  },
+  "admin.users.actions.suspend": {
+    "state": "pending",
+    "en": "Suspend"
+  },
+  "admin.users.actions.title": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.users.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.users.back": {
+    "state": "pending",
+    "en": "Back to users"
+  },
+  "admin.users.columns.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "admin.users.columns.joined": {
+    "state": "pending",
+    "en": "Joined"
+  },
+  "admin.users.columns.language": {
+    "state": "pending",
+    "en": "Language"
+  },
+  "admin.users.columns.lastActive": {
+    "state": "pending",
+    "en": "Last active"
+  },
+  "admin.users.columns.role": {
+    "state": "pending",
+    "en": "Role"
+  },
+  "admin.users.columns.status": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.users.confirm.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.users.confirm.delete": {
+    "state": "pending",
+    "en": "Delete {{email}} for good? This cannot be undone."
+  },
+  "admin.users.confirm.makeAdmin": {
+    "state": "pending",
+    "en": "Make {{email}} an admin? They get full access to this dashboard."
+  },
+  "admin.users.confirm.makeUser": {
+    "state": "pending",
+    "en": "Make {{email}} a normal user? They lose access to this dashboard."
+  },
+  "admin.users.confirm.reactivate": {
+    "state": "pending",
+    "en": "Reactivate {{email}}? They can log in again."
+  },
+  "admin.users.confirm.suspend": {
+    "state": "pending",
+    "en": "Suspend {{email}}? They are signed out on every device and cannot log in until reactivated."
+  },
+  "admin.users.confirm.yes": {
+    "state": "pending",
+    "en": "Yes, continue"
+  },
+  "admin.users.done.delete": {
+    "state": "pending",
+    "en": "{{email}} was deleted."
+  },
+  "admin.users.done.makeAdmin": {
+    "state": "pending",
+    "en": "{{email}} is now an admin."
+  },
+  "admin.users.done.makeUser": {
+    "state": "pending",
+    "en": "{{email}} is now a normal user."
+  },
+  "admin.users.done.reactivate": {
+    "state": "pending",
+    "en": "{{email}} is active again."
+  },
+  "admin.users.done.suspend": {
+    "state": "pending",
+    "en": "{{email}} is suspended."
+  },
+  "admin.users.emailVerified": {
+    "state": "pending",
+    "en": "Email verified"
+  },
+  "admin.users.empty": {
+    "state": "pending",
+    "en": "No users match these filters."
+  },
+  "admin.users.error": {
+    "state": "pending",
+    "en": "Could not load users. Check that the backend is running."
+  },
+  "admin.users.never": {
+    "state": "pending",
+    "en": "Never"
+  },
+  "admin.users.next": {
+    "state": "pending",
+    "en": "Next"
+  },
+  "admin.users.no": {
+    "state": "pending",
+    "en": "No"
+  },
+  "admin.users.notFound": {
+    "state": "pending",
+    "en": "This user no longer exists."
+  },
+  "admin.users.previous": {
+    "state": "pending",
+    "en": "Previous"
+  },
+  "admin.users.range": {
+    "state": "pending",
+    "en": "{{from}}–{{to}} of {{total}}"
+  },
+  "admin.users.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.users.roleFilter": {
+    "state": "pending",
+    "en": "Role"
+  },
+  "admin.users.roles.admin": {
+    "state": "pending",
+    "en": "Admin"
+  },
+  "admin.users.roles.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.users.search": {
+    "state": "pending",
+    "en": "Search by email"
+  },
+  "admin.users.searchLabel": {
+    "state": "pending",
+    "en": "Search users"
+  },
+  "admin.users.sessions": {
+    "state": "pending",
+    "en": "Signed-in devices"
+  },
+  "admin.users.statusFilter": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.users.statuses.active": {
+    "state": "pending",
+    "en": "Active"
+  },
+  "admin.users.statuses.suspended": {
+    "state": "pending",
+    "en": "Suspended"
+  },
+  "admin.users.subtitle": {
+    "state": "pending",
+    "en": "Everyone with a KOBANIQ account."
+  },
+  "admin.users.title": {
+    "state": "pending",
+    "en": "Users"
+  },
+  "admin.users.yes": {
+    "state": "pending",
+    "en": "Yes"
+  },
+  "admin.users.you": {
+    "state": "pending",
+    "en": "This is your own account. Another admin must change it."
   },
   "common.language.en": {
     "state": "pending",

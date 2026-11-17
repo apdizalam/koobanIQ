@@ -137,6 +137,93 @@
           "note": "Waa la tirin doonaa marka la socodka isticmaalku jiro (TIQ-23)."
         }
       }
+    },
+    "users": {
+      "title": "Isticmaalayaasha",
+      "subtitle": "Qof kasta oo leh akoon KOBANIQ.",
+      "search": "Ku raadi iimayl",
+      "searchLabel": "Raadi isticmaalayaal",
+      "roleFilter": "Doorka",
+      "statusFilter": "Xaaladda",
+      "all": "Dhammaan",
+      "roles": {
+        "user": "Isticmaale",
+        "admin": "Maamule"
+      },
+      "statuses": {
+        "active": "Firfircoon",
+        "suspended": "La hakiyay"
+      },
+      "columns": {
+        "email": "Iimayl",
+        "role": "Doorka",
+        "status": "Xaaladda",
+        "language": "Luqadda",
+        "lastActive": "Markii ugu dambaysay",
+        "joined": "Ku biiray"
+      },
+      "never": "Weligiis",
+      "empty": "Isticmaale ku habboon shaandhooyinkan ma jiro.",
+      "error": "Isticmaalayaasha lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "range": "{{from}}–{{to}} ee {{total}}",
+      "previous": "Hore",
+      "next": "Xiga",
+      "back": "Ku noqo isticmaalayaasha",
+      "sessions": "Qalabka ku jira",
+      "you": "Kani waa akoonkaaga. Maamule kale ayaa beddeli kara.",
+      "emailVerified": "Iimaylka la xaqiijiyay",
+      "yes": "Haa",
+      "no": "Maya",
+      "notFound": "Isticmaalahan hadda ma jiro.",
+      "actions": {
+        "title": "Ficillada",
+        "suspend": "Hakii",
+        "reactivate": "Dib u fur",
+        "makeAdmin": "Ka dhig maamule",
+        "makeUser": "Ka dhig isticmaale caadi ah",
+        "delete": "Tirtir akoonka"
+      },
+      "confirm": {
+        "suspend": "Ma hakinaysaa {{email}}? Qalab kasta waa laga saarayaa mana soo geli karo ilaa dib loo furo.",
+        "reactivate": "Dib ma u furaysaa {{email}}? Wuu soo geli karaa mar kale.",
+        "makeAdmin": "Ma ka dhigaysaa {{email}} maamule? Wuxuu helayaa gelitaan buuxa oo guddigan ah.",
+        "makeUser": "Ma ka dhigaysaa {{email}} isticmaale caadi ah? Wuxuu waayayaa gelitaanka guddigan.",
+        "delete": "Ma tirtiraysaa {{email}} gebi ahaanba? Dib looma soo celin karo.",
+        "cancel": "Jooji",
+        "yes": "Haa, sii wad"
+      },
+      "done": {
+        "suspend": "{{email}} waa la hakiyay.",
+        "reactivate": "{{email}} mar kale waa firfircoon yahay.",
+        "makeAdmin": "{{email}} hadda waa maamule.",
+        "makeUser": "{{email}} hadda waa isticmaale caadi ah.",
+        "delete": "{{email}} waa la tirtiray."
+      }
+    },
+    "audit": {
+      "title": "Diiwaanka hubinta",
+      "subtitle": "Isbeddel kasta oo maamule sameeyay, iyo isku day kasta oo la diiday in la galo qaybta maamulka.",
+      "actionFilter": "Ficil",
+      "all": "Dhammaan",
+      "columns": {
+        "when": "Goorma",
+        "who": "Yaa",
+        "action": "Ficil",
+        "target": "Ku saabsan",
+        "change": "Isbeddel"
+      },
+      "actions": {
+        "admin_access_denied": "Gelitaan maamule oo la diiday",
+        "user_suspend": "Isticmaale la hakiyay",
+        "user_reactivate": "Isticmaale dib loo furay",
+        "user_role_change": "Door la beddelay",
+        "user_delete": "Isticmaale la tirtiray"
+      },
+      "deleted": "Akoonka waa la tirtiray",
+      "noChange": "—",
+      "empty": "Weli wax diiwaan ah ma jiraan.",
+      "error": "Diiwaanka hubinta lama soo dejin karo. Hubi in backend-ku shaqaynayo."
     }
   },
   "mobile": {
