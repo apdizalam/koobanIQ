@@ -407,6 +407,10 @@
     "state": "pending",
     "en": "Sign in to continue"
   },
+  "server.errors.CANNOT_CHANGE_SELF": {
+    "state": "pending",
+    "en": "You cannot change your own account here"
+  },
   "server.errors.DB_UNAVAILABLE": {
     "state": "pending",
     "en": "Database is not reachable"
@@ -439,6 +443,10 @@
     "state": "pending",
     "en": "Access token is invalid"
   },
+  "server.errors.LAST_ADMIN": {
+    "state": "pending",
+    "en": "At least one active admin must remain"
+  },
   "server.errors.NOT_FOUND": {
     "state": "pending",
     "en": "Route not found"
@@ -458,6 +466,10 @@
   "server.errors.VALIDATION_ERROR": {
     "state": "pending",
     "en": "Some fields are invalid"
+  },
+  "server.validation.auditActionInvalid": {
+    "state": "pending",
+    "en": "Must be one of the audit actions"
   },
   "server.validation.emailInvalid": {
     "state": "pending",
@@ -498,5 +510,13 @@
   "server.validation.refreshTokenRequired": {
     "state": "pending",
     "en": "Refresh token is required"
+  },
+  "server.validation.roleInvalid": {
+    "state": "pending",
+    "en": "Must be \"user\" or \"admin\""
+  },
+  "server.validation.statusInvalid": {
+    "state": "pending",
+    "en": "Must be \"active\" or \"suspended\""
   }
 }

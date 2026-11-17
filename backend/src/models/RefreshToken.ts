@@ -8,8 +8,8 @@ const refreshTokenSchema = new Schema(
     /** MongoDB deletes the record automatically once this time passes (TTL index). */
     expiresAt: { type: Date, required: true, index: { expires: 0 } },
     revokedAt: { type: Date },
-    /** Why it stopped working: swapped for a new pair, user logged out, or ended for safety. */
-    revokedReason: { type: String, enum: ['rotated', 'logout', 'reuse'] },
+    /** Why it stopped working: swapped for a new pair, user logged out, ended for safety, or by an admin. */
+    revokedReason: { type: String, enum: ['rotated', 'logout', 'reuse', 'admin'] },
     device: { type: String },
   },
   { timestamps: true },

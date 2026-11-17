@@ -23,7 +23,9 @@
       "NOT_FOUND": "Route not found",
       "INVALID_JSON": "Request body is not valid JSON",
       "INTERNAL_ERROR": "Something went wrong",
-      "DB_UNAVAILABLE": "Database is not reachable"
+      "DB_UNAVAILABLE": "Database is not reachable",
+      "CANNOT_CHANGE_SELF": "You cannot change your own account here",
+      "LAST_ADMIN": "At least one active admin must remain"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -35,7 +37,10 @@
       "refreshTokenRequired": "Refresh token is required",
       "fieldNotEditable": "This field cannot be changed here",
       "nothingToUpdate": "Nothing to update",
-      "periodInvalid": "Must be day, week, month or year"
+      "periodInvalid": "Must be day, week, month or year",
+      "roleInvalid": "Must be \"user\" or \"admin\"",
+      "statusInvalid": "Must be \"active\" or \"suspended\"",
+      "auditActionInvalid": "Must be one of the audit actions"
     }
   },
   "admin": {
