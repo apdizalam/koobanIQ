@@ -4,6 +4,7 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { createApp } from '../src/app.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
+import { AuditLog } from '../src/models/AuditLog.js';
 import { RefreshToken } from '../src/models/RefreshToken.js';
 import { User } from '../src/models/User.js';
 import { promoteToAdmin } from '../src/services/userService.js';
@@ -46,8 +47,9 @@ before(async () => {
 });
 
 after(async () => {
-  const users = await User.find({ email: DOMAIN_RE }, { _id: 1 }).lean();
-  await RefreshToken.deleteMany({ userId: { $in: users.map((u) => u._id) } });
+  const ids = (await User.find({ email: DOMAIN_RE }, { _id: 1 }).lean()).map((u) => u._id);
+  await RefreshToken.deleteMany({ userId: { $in: ids } });
+  await AuditLog.deleteMany({ actorId: { $in: ids } });
   await User.deleteMany({ email: DOMAIN_RE });
   server.close();
   await disconnectDB();
