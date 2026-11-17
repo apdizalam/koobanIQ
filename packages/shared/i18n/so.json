@@ -7,6 +7,37 @@
     },
     "loading": "Waa la soo rarayaa…"
   },
+  "server": {
+    "errors": {
+      "VALIDATION_ERROR": "Qaar ka mid ah meelaha waa khalad",
+      "EMAIL_TAKEN": "Akoon leh iimaylkan horay ayuu u jiray",
+      "INVALID_CREDENTIALS": "Iimaylka ama erayga sirta ah waa khalad",
+      "ACCOUNT_SUSPENDED": "Akoonkan waa la hakiyay",
+      "AUTH_REQUIRED": "Soo gal si aad u sii waddo",
+      "INVALID_TOKEN": "Furaha gelitaanku sax maaha",
+      "TOKEN_EXPIRED": "Furaha gelitaanku wuu dhacay",
+      "INVALID_REFRESH_TOKEN": "Furaha cusboonaysiintu sax maaha ama wuu dhacay",
+      "REFRESH_TOKEN_REUSED": "Fadhigan waa la joojiyay ammaan darteed. Fadlan mar kale soo gal",
+      "FORBIDDEN": "Ogolaansho uma lihid boggan",
+      "USER_NOT_FOUND": "Akoon leh iimaylkan ma jiro",
+      "NOT_FOUND": "Wadadan lama helin",
+      "INVALID_JSON": "Xogta codsigu maaha JSON sax ah",
+      "INTERNAL_ERROR": "Khalad ayaa dhacay",
+      "DB_UNAVAILABLE": "Kaydka xogta lama gaari karo"
+    },
+    "validation": {
+      "emailInvalid": "Geli iimayl sax ah",
+      "emailRequired": "Iimaylka waa loo baahan yahay",
+      "passwordRequired": "Erayga sirta ah waa loo baahan yahay",
+      "passwordTooShort": "Erayga sirta ahi waa inuu ahaadaa ugu yaraan {{min}} xaraf",
+      "passwordTooLong": "Erayga sirta ahi waa inuusan ka badnaan {{max}} xaraf",
+      "languageInvalid": "Waa inuu ahaadaa \"en\" ama \"so\"",
+      "refreshTokenRequired": "Furaha cusboonaysiinta waa loo baahan yahay",
+      "fieldNotEditable": "Meeshan halkan lagama beddeli karo",
+      "nothingToUpdate": "Wax la cusboonaysiiyo ma jiro",
+      "periodInvalid": "Waa inuu ahaadaa day, week, month ama year"
+    }
+  },
   "admin": {
     "appName": "KOBANIQ Admin",
     "login": {

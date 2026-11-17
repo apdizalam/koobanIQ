@@ -16,14 +16,14 @@ export async function updateMe(req: Request, res: Response) {
   const body = (req.body ?? {}) as Record<string, unknown>;
   const unknownFields = Object.keys(body).filter((key) => key !== 'preferredLanguage');
   const details: Record<string, string> = {};
-  for (const key of unknownFields) details[key] = 'This field cannot be changed here';
+  for (const key of unknownFields) details[key] = 'fieldNotEditable';
   if (!('preferredLanguage' in body) && unknownFields.length === 0) {
-    details.preferredLanguage = 'Nothing to update';
+    details.preferredLanguage = 'nothingToUpdate';
   } else if (
     'preferredLanguage' in body &&
     !(LANGUAGES as readonly unknown[]).includes(body.preferredLanguage)
   ) {
-    details.preferredLanguage = 'Must be "en" or "so"';
+    details.preferredLanguage = 'languageInvalid';
   }
   if (Object.keys(details).length > 0) {
     throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', details);

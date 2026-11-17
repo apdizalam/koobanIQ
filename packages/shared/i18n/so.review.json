@@ -270,5 +270,105 @@
   "common.loading": {
     "state": "pending",
     "en": "Loading…"
+  },
+  "server.errors.ACCOUNT_SUSPENDED": {
+    "state": "pending",
+    "en": "This account is suspended"
+  },
+  "server.errors.AUTH_REQUIRED": {
+    "state": "pending",
+    "en": "Sign in to continue"
+  },
+  "server.errors.DB_UNAVAILABLE": {
+    "state": "pending",
+    "en": "Database is not reachable"
+  },
+  "server.errors.EMAIL_TAKEN": {
+    "state": "pending",
+    "en": "An account with this email already exists"
+  },
+  "server.errors.FORBIDDEN": {
+    "state": "pending",
+    "en": "You do not have access to this page"
+  },
+  "server.errors.INTERNAL_ERROR": {
+    "state": "pending",
+    "en": "Something went wrong"
+  },
+  "server.errors.INVALID_CREDENTIALS": {
+    "state": "pending",
+    "en": "Email or password is incorrect"
+  },
+  "server.errors.INVALID_JSON": {
+    "state": "pending",
+    "en": "Request body is not valid JSON"
+  },
+  "server.errors.INVALID_REFRESH_TOKEN": {
+    "state": "pending",
+    "en": "Refresh token is invalid or expired"
+  },
+  "server.errors.INVALID_TOKEN": {
+    "state": "pending",
+    "en": "Access token is invalid"
+  },
+  "server.errors.NOT_FOUND": {
+    "state": "pending",
+    "en": "Route not found"
+  },
+  "server.errors.REFRESH_TOKEN_REUSED": {
+    "state": "pending",
+    "en": "This session was ended for safety. Please log in again"
+  },
+  "server.errors.TOKEN_EXPIRED": {
+    "state": "pending",
+    "en": "Access token has expired"
+  },
+  "server.errors.USER_NOT_FOUND": {
+    "state": "pending",
+    "en": "No account with this email"
+  },
+  "server.errors.VALIDATION_ERROR": {
+    "state": "pending",
+    "en": "Some fields are invalid"
+  },
+  "server.validation.emailInvalid": {
+    "state": "pending",
+    "en": "Enter a valid email address"
+  },
+  "server.validation.emailRequired": {
+    "state": "pending",
+    "en": "Email is required"
+  },
+  "server.validation.fieldNotEditable": {
+    "state": "pending",
+    "en": "This field cannot be changed here"
+  },
+  "server.validation.languageInvalid": {
+    "state": "pending",
+    "en": "Must be \"en\" or \"so\""
+  },
+  "server.validation.nothingToUpdate": {
+    "state": "pending",
+    "en": "Nothing to update"
+  },
+  "server.validation.passwordRequired": {
+    "state": "pending",
+    "en": "Password is required"
+  },
+  "server.validation.passwordTooLong": {
+    "state": "pending",
+    "en": "Password must be at most {{max}} characters"
+  },
+  "server.validation.passwordTooShort": {
+    "state": "pending",
+    "en": "Password must be at least {{min}} characters"
+  },
+  "server.validation.periodInvalid": {
+    "state": "pending",
+    "en": "Must be day, week, month or year"
+  },
+  "server.validation.refreshTokenRequired": {
+    "state": "pending",
+    "en": "Refresh token is required"
   }
 }
