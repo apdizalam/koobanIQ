@@ -53,3 +53,14 @@ export function parseLoginBody(body: unknown): { email: string; password: string
   }
   return { email: b.email as string, password: b.password as string };
 }
+
+/** Checks a body that carries `{ refreshToken }` (refresh and logout). */
+export function parseRefreshBody(body: unknown): { refreshToken: string } {
+  const b = (body ?? {}) as Record<string, unknown>;
+  if (typeof b.refreshToken !== 'string' || b.refreshToken === '') {
+    throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', {
+      refreshToken: 'Refresh token is required',
+    });
+  }
+  return { refreshToken: b.refreshToken };
+}

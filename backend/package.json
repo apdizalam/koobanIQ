@@ -9,7 +9,8 @@
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test test/**/*.test.ts",
-    "db:check": "tsx src/scripts/db-check.ts"
+    "db:check": "tsx src/scripts/db-check.ts",
+    "admin:promote": "tsx src/scripts/make-admin.ts"
   },
   "keywords": [],
   "author": "",
