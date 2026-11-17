@@ -195,6 +195,30 @@
         "makeUser": "{{email}} hadda waa isticmaale caadi ah.",
         "delete": "{{email}} waa la tirtiray."
       }
+    },
+    "audit": {
+      "title": "Diiwaanka hubinta",
+      "subtitle": "Isbeddel kasta oo maamule sameeyay, iyo isku day kasta oo la diiday in la galo qaybta maamulka.",
+      "actionFilter": "Ficil",
+      "all": "Dhammaan",
+      "columns": {
+        "when": "Goorma",
+        "who": "Yaa",
+        "action": "Ficil",
+        "target": "Ku saabsan",
+        "change": "Isbeddel"
+      },
+      "actions": {
+        "admin_access_denied": "Gelitaan maamule oo la diiday",
+        "user_suspend": "Isticmaale la hakiyay",
+        "user_reactivate": "Isticmaale dib loo furay",
+        "user_role_change": "Door la beddelay",
+        "user_delete": "Isticmaale la tirtiray"
+      },
+      "deleted": "Akoonka waa la tirtiray",
+      "noChange": "—",
+      "empty": "Weli wax diiwaan ah ma jiraan.",
+      "error": "Diiwaanka hubinta lama soo dejin karo. Hubi in backend-ku shaqaynayo."
     }
   },
   "mobile": {

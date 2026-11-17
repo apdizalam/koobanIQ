@@ -3,6 +3,78 @@
     "state": "pending",
     "en": "KOBANIQ Admin"
   },
+  "admin.audit.actionFilter": {
+    "state": "pending",
+    "en": "Action"
+  },
+  "admin.audit.actions.admin_access_denied": {
+    "state": "pending",
+    "en": "Admin access denied"
+  },
+  "admin.audit.actions.user_delete": {
+    "state": "pending",
+    "en": "Deleted a user"
+  },
+  "admin.audit.actions.user_reactivate": {
+    "state": "pending",
+    "en": "Reactivated a user"
+  },
+  "admin.audit.actions.user_role_change": {
+    "state": "pending",
+    "en": "Changed a role"
+  },
+  "admin.audit.actions.user_suspend": {
+    "state": "pending",
+    "en": "Suspended a user"
+  },
+  "admin.audit.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.audit.columns.action": {
+    "state": "pending",
+    "en": "Action"
+  },
+  "admin.audit.columns.change": {
+    "state": "pending",
+    "en": "Change"
+  },
+  "admin.audit.columns.target": {
+    "state": "pending",
+    "en": "Target"
+  },
+  "admin.audit.columns.when": {
+    "state": "pending",
+    "en": "When"
+  },
+  "admin.audit.columns.who": {
+    "state": "pending",
+    "en": "Who"
+  },
+  "admin.audit.deleted": {
+    "state": "pending",
+    "en": "Account deleted"
+  },
+  "admin.audit.empty": {
+    "state": "pending",
+    "en": "No records yet."
+  },
+  "admin.audit.error": {
+    "state": "pending",
+    "en": "Could not load the audit log. Check that the backend is running."
+  },
+  "admin.audit.noChange": {
+    "state": "pending",
+    "en": "—"
+  },
+  "admin.audit.subtitle": {
+    "state": "pending",
+    "en": "Every change an admin made, and every blocked attempt to open the admin area."
+  },
+  "admin.audit.title": {
+    "state": "pending",
+    "en": "Audit log"
+  },
   "admin.errors.generic": {
     "state": "pending",
     "en": "Something went wrong. Please try again."

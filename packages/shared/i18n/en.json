@@ -195,6 +195,30 @@
         "makeUser": "{{email}} is now a normal user.",
         "delete": "{{email}} was deleted."
       }
+    },
+    "audit": {
+      "title": "Audit log",
+      "subtitle": "Every change an admin made, and every blocked attempt to open the admin area.",
+      "actionFilter": "Action",
+      "all": "All",
+      "columns": {
+        "when": "When",
+        "who": "Who",
+        "action": "Action",
+        "target": "Target",
+        "change": "Change"
+      },
+      "actions": {
+        "admin_access_denied": "Admin access denied",
+        "user_suspend": "Suspended a user",
+        "user_reactivate": "Reactivated a user",
+        "user_role_change": "Changed a role",
+        "user_delete": "Deleted a user"
+      },
+      "deleted": "Account deleted",
+      "noChange": "—",
+      "empty": "No records yet.",
+      "error": "Could not load the audit log. Check that the backend is running."
     }
   },
   "mobile": {

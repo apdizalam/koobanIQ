@@ -22,5 +22,5 @@ export const NAV_ITEMS: NavItem[] = [
   { key: 'usage', path: '/usage', available: false },
   { key: 'notifications', path: '/notifications', available: false },
   { key: 'reports', path: '/reports', available: false },
-  { key: 'audit', path: '/audit-log', available: false },
+  { key: 'audit', path: '/audit-log', available: true },
 ];

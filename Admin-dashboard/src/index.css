@@ -614,6 +614,11 @@ h2.section-title {
   gap: 8px;
 }
 
+.cell-wrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .break-anywhere {
   overflow-wrap: anywhere;
 }
@@ -717,7 +722,7 @@ h2.section-title {
     display: none;
   }
 
-  .table td:first-child {
+  .table td {
     white-space: normal;
     overflow-wrap: anywhere;
   }
