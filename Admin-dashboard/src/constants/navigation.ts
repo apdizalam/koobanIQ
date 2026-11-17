@@ -12,7 +12,7 @@ export interface NavItem {
 /** Sidebar order follows the admin areas in Notion "KOBANIQ" → Admin dashboard. */
 export const NAV_ITEMS: NavItem[] = [
   { key: 'overview', path: '/', available: true },
-  { key: 'users', path: '/users', available: false },
+  { key: 'users', path: '/users', available: true },
   { key: 'skills', path: '/skills', available: false },
   { key: 'cvs', path: '/cvs', available: false },
   { key: 'jobs', path: '/jobs', available: false },

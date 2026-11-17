@@ -132,6 +132,69 @@
           "note": "Counted once usage tracking exists (TIQ-23)."
         }
       }
+    },
+    "users": {
+      "title": "Users",
+      "subtitle": "Everyone with a KOBANIQ account.",
+      "search": "Search by email",
+      "searchLabel": "Search users",
+      "roleFilter": "Role",
+      "statusFilter": "Status",
+      "all": "All",
+      "roles": {
+        "user": "User",
+        "admin": "Admin"
+      },
+      "statuses": {
+        "active": "Active",
+        "suspended": "Suspended"
+      },
+      "columns": {
+        "email": "Email",
+        "role": "Role",
+        "status": "Status",
+        "language": "Language",
+        "lastActive": "Last active",
+        "joined": "Joined"
+      },
+      "never": "Never",
+      "empty": "No users match these filters.",
+      "error": "Could not load users. Check that the backend is running.",
+      "retry": "Try again",
+      "range": "{{from}}–{{to}} of {{total}}",
+      "previous": "Previous",
+      "next": "Next",
+      "back": "Back to users",
+      "sessions": "Signed-in devices",
+      "you": "This is your own account. Another admin must change it.",
+      "emailVerified": "Email verified",
+      "yes": "Yes",
+      "no": "No",
+      "notFound": "This user no longer exists.",
+      "actions": {
+        "title": "Actions",
+        "suspend": "Suspend",
+        "reactivate": "Reactivate",
+        "makeAdmin": "Make admin",
+        "makeUser": "Make normal user",
+        "delete": "Delete account"
+      },
+      "confirm": {
+        "suspend": "Suspend {{email}}? They are signed out on every device and cannot log in until reactivated.",
+        "reactivate": "Reactivate {{email}}? They can log in again.",
+        "makeAdmin": "Make {{email}} an admin? They get full access to this dashboard.",
+        "makeUser": "Make {{email}} a normal user? They lose access to this dashboard.",
+        "delete": "Delete {{email}} for good? This cannot be undone.",
+        "cancel": "Cancel",
+        "yes": "Yes, continue"
+      },
+      "done": {
+        "suspend": "{{email}} is suspended.",
+        "reactivate": "{{email}} is active again.",
+        "makeAdmin": "{{email}} is now an admin.",
+        "makeUser": "{{email}} is now a normal user.",
+        "delete": "{{email}} was deleted."
+      }
     }
   },
   "mobile": {
