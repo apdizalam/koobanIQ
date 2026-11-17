@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getAdminAccess } from '../controllers/adminController.js';
+import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
 import { requireAuth } from '../middleware/requireAuth.js';
 import { requireRole } from '../middleware/requireRole.js';
 
@@ -9,3 +9,4 @@ export const adminRouter = Router();
 adminRouter.use(requireAuth, requireRole(['admin'], { auditDenied: true }));
 
 adminRouter.get('/access', getAdminAccess);
+adminRouter.get('/overview', getAdminOverview);
