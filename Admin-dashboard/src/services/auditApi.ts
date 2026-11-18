@@ -17,18 +17,22 @@ export const fetchAuditLogs = (
 /** Translation key for an action label, e.g. "user.role_change" → "user_role_change". */
 export const actionKey = (action: string) => action.replace(/\./g, '_');
 
+/** Bookkeeping fields that change on every save; not worth showing. */
+const IGNORED_FIELDS = new Set(['updatedAt']);
+
 /**
- * What changed, as plain pieces the page can translate, e.g.
- * [{ field: 'status', from: 'active', to: 'suspended' }]. Deletes and denied
- * attempts have no before→after pair.
+ * What changed, as raw pieces the page can translate, e.g.
+ * [{ field: 'status', from: 'active', to: 'suspended' }]. Values keep their type
+ * (lists stay lists, true/false stay booleans). Deletes and denied attempts have
+ * no before→after pair.
  */
-export function describeChange(entry: AuditEntry): { field: string; from: string; to: string }[] {
-  if (!entry.before || !entry.after) return [];
-  return Object.keys(entry.after)
-    .filter((field) => entry.before![field] !== entry.after![field])
-    .map((field) => ({
-      field,
-      from: String(entry.before![field] ?? ''),
-      to: String(entry.after![field] ?? ''),
-    }));
+export function describeChange(entry: AuditEntry): { field: string; from: unknown; to: unknown }[] {
+  const { before, after } = entry;
+  if (!before || !after) return [];
+  return Object.keys(after)
+    .filter((field) => !IGNORED_FIELDS.has(field))
+    .filter(
+      (field) => JSON.stringify(before[field] ?? null) !== JSON.stringify(after[field] ?? null),
+    )
+    .map((field) => ({ field, from: before[field] ?? null, to: after[field] ?? null }));
 }

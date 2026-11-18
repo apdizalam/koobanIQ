@@ -91,6 +91,14 @@
     "state": "pending",
     "en": "Audit log"
   },
+  "admin.audit.values.off": {
+    "state": "pending",
+    "en": "Off"
+  },
+  "admin.audit.values.on": {
+    "state": "pending",
+    "en": "On"
+  },
   "admin.errors.generic": {
     "state": "pending",
     "en": "Something went wrong. Please try again."
@@ -327,6 +335,50 @@
     "state": "pending",
     "en": "Updated {{time}}."
   },
+  "admin.regions.citiesLabel": {
+    "state": "pending",
+    "en": "{{region}} cities"
+  },
+  "admin.regions.count": {
+    "state": "pending",
+    "en": "{{count}} cities"
+  },
+  "admin.regions.error": {
+    "state": "pending",
+    "en": "Could not load the regions. Check that the backend is running."
+  },
+  "admin.regions.save": {
+    "state": "pending",
+    "en": "Save cities"
+  },
+  "admin.regions.saved": {
+    "state": "pending",
+    "en": "{{region}} cities saved."
+  },
+  "admin.regions.saving": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "admin.regions.subtitle": {
+    "state": "pending",
+    "en": "City suggestions users see when they filter jobs. One city per line."
+  },
+  "admin.regions.title": {
+    "state": "pending",
+    "en": "Regions and cities"
+  },
+  "admin.regions.tooLong": {
+    "state": "pending",
+    "en": "A city name can be at most 60 characters."
+  },
+  "admin.regions.tooMany": {
+    "state": "pending",
+    "en": "At most 100 cities per region."
+  },
+  "admin.regions.unchanged": {
+    "state": "pending",
+    "en": "No changes to save."
+  },
   "admin.shell.closeMenu": {
     "state": "pending",
     "en": "Close menu"
@@ -342,6 +394,206 @@
   "admin.shell.signedInAs": {
     "state": "pending",
     "en": "Signed in as"
+  },
+  "admin.sources.adapterMissing": {
+    "state": "pending",
+    "en": "Missing"
+  },
+  "admin.sources.adapterReady": {
+    "state": "pending",
+    "en": "Ready"
+  },
+  "admin.sources.badPriority": {
+    "state": "pending",
+    "en": "Enter a whole number from 0 to 1000."
+  },
+  "admin.sources.blocked.adapter": {
+    "state": "pending",
+    "en": "No adapter in the server yet"
+  },
+  "admin.sources.blocked.terms": {
+    "state": "pending",
+    "en": "Check the terms first"
+  },
+  "admin.sources.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.sources.columns.actions": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.sources.columns.adapter": {
+    "state": "pending",
+    "en": "Adapter"
+  },
+  "admin.sources.columns.health": {
+    "state": "pending",
+    "en": "Health"
+  },
+  "admin.sources.columns.priority": {
+    "state": "pending",
+    "en": "Order"
+  },
+  "admin.sources.columns.regions": {
+    "state": "pending",
+    "en": "Regions"
+  },
+  "admin.sources.columns.source": {
+    "state": "pending",
+    "en": "Source"
+  },
+  "admin.sources.columns.status": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.sources.columns.terms": {
+    "state": "pending",
+    "en": "Terms"
+  },
+  "admin.sources.confirm.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.sources.confirm.disable": {
+    "state": "pending",
+    "en": "Switch off {{name}}? Users can no longer choose it, and it is not searched."
+  },
+  "admin.sources.confirm.enable": {
+    "state": "pending",
+    "en": "Switch on {{name}}? Users can choose it for job research right away."
+  },
+  "admin.sources.confirm.yes": {
+    "state": "pending",
+    "en": "Yes, continue"
+  },
+  "admin.sources.disable": {
+    "state": "pending",
+    "en": "Switch off"
+  },
+  "admin.sources.done.disable": {
+    "state": "pending",
+    "en": "{{name}} is switched off."
+  },
+  "admin.sources.done.enable": {
+    "state": "pending",
+    "en": "{{name}} is switched on."
+  },
+  "admin.sources.done.update": {
+    "state": "pending",
+    "en": "{{name}} was saved."
+  },
+  "admin.sources.edit": {
+    "state": "pending",
+    "en": "Edit"
+  },
+  "admin.sources.editTitle": {
+    "state": "pending",
+    "en": "Edit {{name}}"
+  },
+  "admin.sources.employerTypesLabel": {
+    "state": "pending",
+    "en": "Employer types"
+  },
+  "admin.sources.empty": {
+    "state": "pending",
+    "en": "No job sources yet. The team adds a source as an adapter in the server plus a database record."
+  },
+  "admin.sources.enable": {
+    "state": "pending",
+    "en": "Switch on"
+  },
+  "admin.sources.error": {
+    "state": "pending",
+    "en": "Could not load the job sources. Check that the backend is running."
+  },
+  "admin.sources.health": {
+    "state": "pending",
+    "en": "{{percent}}% errors"
+  },
+  "admin.sources.lastSuccess": {
+    "state": "pending",
+    "en": "Last success {{time}}"
+  },
+  "admin.sources.needRegion": {
+    "state": "pending",
+    "en": "Choose at least one region."
+  },
+  "admin.sources.neverSucceeded": {
+    "state": "pending",
+    "en": "No successful run yet"
+  },
+  "admin.sources.noChanges": {
+    "state": "pending",
+    "en": "Nothing changed."
+  },
+  "admin.sources.none": {
+    "state": "pending",
+    "en": "None"
+  },
+  "admin.sources.priorityLabel": {
+    "state": "pending",
+    "en": "Order in the app (0–1000, lower first)"
+  },
+  "admin.sources.regionsLabel": {
+    "state": "pending",
+    "en": "Regions it covers"
+  },
+  "admin.sources.save": {
+    "state": "pending",
+    "en": "Save"
+  },
+  "admin.sources.saving": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "admin.sources.statuses.disabled": {
+    "state": "pending",
+    "en": "Off"
+  },
+  "admin.sources.statuses.enabled": {
+    "state": "pending",
+    "en": "On"
+  },
+  "admin.sources.subtitle": {
+    "state": "pending",
+    "en": "Where job research looks for jobs. A source can only be switched on after its terms were checked and the server has an adapter for it."
+  },
+  "admin.sources.termsChecked": {
+    "state": "pending",
+    "en": "Checked {{date}}"
+  },
+  "admin.sources.termsLink": {
+    "state": "pending",
+    "en": "Read terms"
+  },
+  "admin.sources.termsNotChecked": {
+    "state": "pending",
+    "en": "Not checked"
+  },
+  "admin.sources.title": {
+    "state": "pending",
+    "en": "Job sources"
+  },
+  "admin.sources.types.employer": {
+    "state": "pending",
+    "en": "Employer"
+  },
+  "admin.sources.types.government": {
+    "state": "pending",
+    "en": "Government"
+  },
+  "admin.sources.types.job_board": {
+    "state": "pending",
+    "en": "Job board"
+  },
+  "admin.sources.types.ngo_un": {
+    "state": "pending",
+    "en": "NGO / UN"
+  },
+  "admin.sources.types.partner": {
+    "state": "pending",
+    "en": "Partner"
   },
   "admin.users.actions.delete": {
     "state": "pending",

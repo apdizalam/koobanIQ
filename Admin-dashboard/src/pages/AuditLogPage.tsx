@@ -4,7 +4,17 @@ import { useAuth } from '../auth/authContext';
 import { useLoad } from '../hooks/useLoad';
 import { AUDIT_PAGE_SIZE, actionKey, describeChange, fetchAuditLogs } from '../services/auditApi';
 import { AUDIT_ACTIONS, type AuditAction, type AuditEntry } from '../types/audit';
+import {
+  EMPLOYER_TYPES,
+  REGION_KEYS,
+  type EmployerType,
+  type RegionKey,
+} from '../types/jobSources';
 import { formatDate } from '../utils/format';
+
+const isRegionKey = (v: string): v is RegionKey => (REGION_KEYS as readonly string[]).includes(v);
+const isEmployerType = (v: string): v is EmployerType =>
+  (EMPLOYER_TYPES as readonly string[]).includes(v);
 
 const isAction = (v: string | null): v is AuditAction =>
   v !== null && (AUDIT_ACTIONS as readonly string[]).includes(v);
@@ -33,22 +43,41 @@ export function AuditLogPage() {
     setParams(out, { replace: true });
   }
 
-  /** "Active" for status values, "Admin" for roles, otherwise the raw value. */
-  function value(field: string, raw: string) {
-    if (field === 'status' && (raw === 'active' || raw === 'suspended')) {
-      return t(`admin.users.statuses.${raw}`);
+  /**
+   * A changed value in the admin's language: "Active" for statuses, "Admin" for
+   * roles, "On/Off" for a source switch, region and employer-type names; lists
+   * are joined. Anything else is shown as it is.
+   */
+  function value(field: string, raw: unknown): string {
+    if (raw === null || raw === undefined || raw === '') return t('admin.audit.noChange');
+    if (Array.isArray(raw)) {
+      return raw.length === 0
+        ? t('admin.sources.none')
+        : raw.map((item) => value(field, item)).join(', ');
     }
-    if (field === 'role' && (raw === 'user' || raw === 'admin')) {
-      return t(`admin.users.roles.${raw}`);
+    if (field === 'enabled' && typeof raw === 'boolean') {
+      return t(`admin.audit.values.${raw ? 'on' : 'off'}`);
     }
-    return raw;
+    const text = String(raw);
+    if (field === 'status' && (text === 'active' || text === 'suspended')) {
+      return t(`admin.users.statuses.${text}`);
+    }
+    if (field === 'role' && (text === 'user' || text === 'admin')) {
+      return t(`admin.users.roles.${text}`);
+    }
+    if (field === 'regions' && isRegionKey(text)) return t(`common.region.${text}`);
+    if (field === 'employerTypes' && isEmployerType(text)) {
+      return t(`common.employerType.${text}`);
+    }
+    return text;
   }
 
   function change(entry: AuditEntry) {
     if (entry.action === 'user.delete') return t('admin.audit.deleted');
     const parts = describeChange(entry);
     if (parts.length === 0) return t('admin.audit.noChange');
-    return parts.map((p) => `${value(p.field, p.from)} → ${value(p.field, p.to)}`).join(', ');
+    // Parts are split by ";" because a list value already uses commas.
+    return parts.map((p) => `${value(p.field, p.from)} → ${value(p.field, p.to)}`).join('; ');
   }
 
   return (
@@ -126,7 +155,7 @@ export function AuditLogPage() {
                   </td>
                   <td className="cell-wrap">{entry.target ?? t('admin.audit.noChange')}</td>
                   <td className="col-optional">{entry.actor}</td>
-                  <td className="col-optional">{change(entry)}</td>
+                  <td className="col-optional cell-wrap">{change(entry)}</td>
                 </tr>
               ))}
             </tbody>

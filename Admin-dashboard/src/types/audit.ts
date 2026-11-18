@@ -5,6 +5,10 @@ export const AUDIT_ACTIONS = [
   'user.reactivate',
   'user.role_change',
   'user.delete',
+  'job_source.enable',
+  'job_source.disable',
+  'job_source.update',
+  'region.update',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 
