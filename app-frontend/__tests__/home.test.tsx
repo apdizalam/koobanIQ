@@ -78,6 +78,17 @@ describe('TIQ-7 End Test: bottom navigation', () => {
 });
 
 describe('TIQ-7 End Test: Home states', () => {
+  it('Tailor CV and Research jobs quick actions open their tabs', async () => {
+    routes['GET /me'] = ok({ user: user(EMAIL) });
+    await openApp();
+    await screen.findByTestId('home-skills');
+    await press('home-quick-cv');
+    expect(await screen.findByTestId('cv-screen')).toBeTruthy();
+    await press('tab-home');
+    await press('home-quick-jobs');
+    expect(await screen.findByTestId('jobs-screen')).toBeTruthy();
+  });
+
   it('shows loading, then the account from the API (GET /me), and empty states — no sample data', async () => {
     let answer: (() => void) | undefined;
     routes['GET /me'] = ok({ user: { ...user(EMAIL), preferredLanguage: 'en' } });
@@ -90,14 +101,18 @@ describe('TIQ-7 End Test: Home states', () => {
 
     await openApp();
     expect(await screen.findByTestId('home-loading')).toBeTruthy();
-    expect(screen.queryByTestId('home-account')).toBeNull();
+    expect(screen.queryByTestId('home-skills')).toBeNull();
 
     await act(async () => {
       answer?.();
     });
-    expect(await screen.findByTestId('home-account')).toBeTruthy();
+    expect(await screen.findByTestId('home-skills')).toBeTruthy();
     expect(screen.queryByTestId('home-loading')).toBeNull();
-    expect(screen.getByText(/Member since/)).toBeTruthy();
+    // Greeting uses the account email until the profile has a name (TIQ-6).
+    expect(screen.getByTestId('home-name')).toHaveTextContent('amina');
+    expect(screen.getByText('0 assessed')).toBeTruthy();
+    // Features not built yet are shown as "Soon" and can't be pressed.
+    expect(screen.getByTestId('home-quick-interview')).toBeDisabled();
     expect(
       screen.getByText('No job matches yet. Start a job search to see jobs that fit you.'),
     ).toBeTruthy();
@@ -115,7 +130,7 @@ describe('TIQ-7 End Test: Home states', () => {
 
     routes['GET /me'] = ok({ user: user(EMAIL) });
     await press('home-retry');
-    expect(await screen.findByTestId('home-account')).toBeTruthy();
+    expect(await screen.findByTestId('home-skills')).toBeTruthy();
     expect(screen.queryByTestId('home-error')).toBeNull();
   });
 
@@ -130,7 +145,7 @@ describe('TIQ-7 End Test: Home states', () => {
   it('a card action opens its tab', async () => {
     routes['GET /me'] = ok({ user: user(EMAIL) });
     await openApp();
-    await screen.findByTestId('home-account');
+    await screen.findByTestId('home-skills');
     await press('home-matches-action');
     expect(await screen.findByTestId('jobs-screen')).toBeTruthy();
     expect(screen).toHavePathname('/jobs');

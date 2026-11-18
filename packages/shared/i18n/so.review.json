@@ -1203,22 +1203,6 @@
     "state": "pending",
     "en": "Know Your Skills.\nFind Your Opportunity."
   },
-  "mobile.home.account.language": {
-    "state": "pending",
-    "en": "App language: {{language}}"
-  },
-  "mobile.home.account.memberSince": {
-    "state": "pending",
-    "en": "Member since {{date}}"
-  },
-  "mobile.home.account.title": {
-    "state": "pending",
-    "en": "Your account"
-  },
-  "mobile.home.cvs.action": {
-    "state": "pending",
-    "en": "Go to CV"
-  },
   "mobile.home.cvs.empty": {
     "state": "pending",
     "en": "No CVs yet. Your CVs will appear here."
@@ -1239,29 +1223,41 @@
     "state": "pending",
     "en": "Try again"
   },
-  "mobile.home.matches.action": {
+  "mobile.home.greeting.afternoon": {
     "state": "pending",
-    "en": "Go to Jobs"
+    "en": "Good afternoon,"
   },
-  "mobile.home.matches.empty": {
+  "mobile.home.greeting.evening": {
     "state": "pending",
-    "en": "No job matches yet. Start a job search to see jobs that fit you."
+    "en": "Good evening,"
   },
-  "mobile.home.matches.title": {
+  "mobile.home.greeting.morning": {
     "state": "pending",
-    "en": "Latest job matches"
+    "en": "Good morning,"
   },
-  "mobile.home.profile.action": {
+  "mobile.home.quick.assessSkill": {
     "state": "pending",
-    "en": "Go to Profile"
+    "en": "Assess skill"
   },
-  "mobile.home.profile.empty": {
+  "mobile.home.quick.practiceInterview": {
     "state": "pending",
-    "en": "Your profile is empty. Add your profession, experience and skills so KOBANIQ can write your CVs and find jobs that fit."
+    "en": "Practice interview"
   },
-  "mobile.home.profile.title": {
+  "mobile.home.quick.researchJobs": {
     "state": "pending",
-    "en": "Your profile"
+    "en": "Research jobs"
+  },
+  "mobile.home.quick.soon": {
+    "state": "pending",
+    "en": "Soon"
+  },
+  "mobile.home.quick.tailorCv": {
+    "state": "pending",
+    "en": "Tailor CV"
+  },
+  "mobile.home.quick.title": {
+    "state": "pending",
+    "en": "Quick actions"
   },
   "mobile.home.schedule.empty": {
     "state": "pending",
@@ -1271,17 +1267,37 @@
     "state": "pending",
     "en": "Next scheduled search"
   },
-  "mobile.home.skills.empty": {
+  "mobile.home.skillCard.action": {
     "state": "pending",
-    "en": "No skills yet. Once you add skills, you will see here which ones you rated yourself and which ones a test confirmed."
+    "en": "Add your skills"
   },
-  "mobile.home.skills.title": {
+  "mobile.home.skillCard.count": {
     "state": "pending",
-    "en": "Your skills"
+    "en": "{{count}} assessed"
+  },
+  "mobile.home.skillCard.empty": {
+    "state": "pending",
+    "en": "No skills yet. Add your skills, then take a short test to show employers what you really know."
+  },
+  "mobile.home.skillCard.title": {
+    "state": "pending",
+    "en": "Skill profile"
   },
   "mobile.home.title": {
     "state": "pending",
     "en": "Home"
+  },
+  "mobile.home.topMatch.empty": {
+    "state": "pending",
+    "en": "No job matches yet. Start a job search to see jobs that fit you."
+  },
+  "mobile.home.topMatch.seeAll": {
+    "state": "pending",
+    "en": "See all"
+  },
+  "mobile.home.topMatch.title": {
+    "state": "pending",
+    "en": "Top match today"
   },
   "mobile.preview.buttons.ghost": {
     "state": "pending",

@@ -535,33 +535,37 @@
         "generic": "Guudmarkaaga lama soo rari karin. Fadlan isku day mar kale.",
         "retry": "Isku day mar kale"
       },
-      "account": {
-        "title": "Akoonkaaga",
-        "memberSince": "Xubin tan iyo {{date}}",
-        "language": "Luqadda app-ka: {{language}}"
-      },
-      "profile": {
-        "title": "Astaantaada",
-        "empty": "Astaantaadu waa madhan tahay. Ku dar xirfaddaada, khibraddaada iyo xirfadahaaga si KOBANIQ ay kuugu qorto CV-yada oo ay kuu hesho shaqooyin ku habboon.",
-        "action": "U gudub Astaanta"
-      },
-      "skills": {
-        "title": "Xirfadahaaga",
-        "empty": "Weli xirfado ma jiraan. Markaad ku darto xirfado, halkan waxaad ku arki doontaa kuwa adigu qiimaysay iyo kuwa imtixaan xaqiijiyay."
-      },
-      "matches": {
-        "title": "Shaqooyinkii ugu dambeeyay ee kuu habboon",
-        "empty": "Weli shaqo kuu habboon ma jirto. Bilow raadin shaqo si aad u aragto shaqooyinka kugu habboon.",
-        "action": "U gudub Shaqooyinka"
-      },
       "cvs": {
         "title": "CV-yadii ugu dambeeyay",
-        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan.",
-        "action": "U gudub CV"
+        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan."
       },
       "schedule": {
         "title": "Raadinta xigta ee la qorsheeyay",
         "empty": "Ma jirto raadin la qorsheeyay. Hadhow waxaad u oggolaan kartaa KOBANIQ inay shaqooyin u raadiso jadwal ahaan."
+      },
+      "greeting": {
+        "morning": "Subax wanaagsan,",
+        "afternoon": "Galab wanaagsan,",
+        "evening": "Fiid wanaagsan,"
+      },
+      "skillCard": {
+        "title": "Astaanta xirfadaha",
+        "count": "{{count}} la qiimeeyay",
+        "empty": "Weli xirfado ma jiraan. Ku dar xirfadahaaga, kadibna samee imtixaan gaaban si aad loo-shaqeeyayaasha u tusto waxaad dhab ahaan taqaanno.",
+        "action": "Ku dar xirfadahaaga"
+      },
+      "quick": {
+        "title": "Ficillo degdeg ah",
+        "tailorCv": "Habee CV",
+        "researchJobs": "Raadi shaqooyin",
+        "assessSkill": "Qiimee xirfad",
+        "practiceInterview": "Ku tababar waraysi",
+        "soon": "Dhawaan"
+      },
+      "topMatch": {
+        "title": "Shaqada ugu habboon maanta",
+        "seeAll": "Dhammaan arag",
+        "empty": "Weli shaqo kuu habboon ma jirto. Bilow raadin shaqo si aad u aragto shaqooyinka kugu habboon."
       }
     },
     "profile": {

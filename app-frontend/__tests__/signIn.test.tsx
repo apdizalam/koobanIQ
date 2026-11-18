@@ -132,7 +132,7 @@ describe('Log in', () => {
       body: { email: 'amina@example.com', password: 'secret123' },
     });
     expect(screen).toHavePathname('/home');
-    expect(screen.getByTestId('home-email')).toHaveTextContent(/amina@example\.com/);
+    expect(screen.getByTestId('home-name')).toHaveTextContent('amina');
     expect(mockSecureStore.get(REFRESH_KEY)).toBe('refresh-1');
   });
 

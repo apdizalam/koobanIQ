@@ -65,7 +65,7 @@ src/screens/               screen bodies reused by routes (DesignSystemPreview)
 src/theme/                 ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
                            createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
 src/types/                 domain types shared by several files (match.ts, auth.ts)
-src/utils/                 pure helpers (contrast.ts, format.ts, hitSlop.ts, validation.ts with Zod)
+src/utils/                 pure helpers (contrast.ts, format.ts, greeting.ts, hitSlop.ts, validation.ts with Zod)
 ```
 
 Never define colors or

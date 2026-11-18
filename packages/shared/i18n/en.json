@@ -535,33 +535,37 @@
         "generic": "Your overview could not be loaded. Please try again.",
         "retry": "Try again"
       },
-      "account": {
-        "title": "Your account",
-        "memberSince": "Member since {{date}}",
-        "language": "App language: {{language}}"
-      },
-      "profile": {
-        "title": "Your profile",
-        "empty": "Your profile is empty. Add your profession, experience and skills so KOBANIQ can write your CVs and find jobs that fit.",
-        "action": "Go to Profile"
-      },
-      "skills": {
-        "title": "Your skills",
-        "empty": "No skills yet. Once you add skills, you will see here which ones you rated yourself and which ones a test confirmed."
-      },
-      "matches": {
-        "title": "Latest job matches",
-        "empty": "No job matches yet. Start a job search to see jobs that fit you.",
-        "action": "Go to Jobs"
-      },
       "cvs": {
         "title": "Recent CVs",
-        "empty": "No CVs yet. Your CVs will appear here.",
-        "action": "Go to CV"
+        "empty": "No CVs yet. Your CVs will appear here."
       },
       "schedule": {
         "title": "Next scheduled search",
         "empty": "No scheduled search. You can let KOBANIQ search for jobs on a schedule later."
+      },
+      "greeting": {
+        "morning": "Good morning,",
+        "afternoon": "Good afternoon,",
+        "evening": "Good evening,"
+      },
+      "skillCard": {
+        "title": "Skill profile",
+        "count": "{{count}} assessed",
+        "empty": "No skills yet. Add your skills, then take a short test to show employers what you really know.",
+        "action": "Add your skills"
+      },
+      "quick": {
+        "title": "Quick actions",
+        "tailorCv": "Tailor CV",
+        "researchJobs": "Research jobs",
+        "assessSkill": "Assess skill",
+        "practiceInterview": "Practice interview",
+        "soon": "Soon"
+      },
+      "topMatch": {
+        "title": "Top match today",
+        "seeAll": "See all",
+        "empty": "No job matches yet. Start a job search to see jobs that fit you."
       }
     },
     "profile": {
