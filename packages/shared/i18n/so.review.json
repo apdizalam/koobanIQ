@@ -667,6 +667,22 @@
     "state": "pending",
     "en": "Switch to dark"
   },
+  "server.email.resetPassword.body": {
+    "state": "pending",
+    "en": "Hello,\n\nYour KOBANIQ password reset code is: {{code}}\n\nEnter it in the app to choose a new password. The code works for {{minutes}} minutes.\n\nIf you did not ask to reset your password, you can ignore this email; your password stays the same.\n\nKOBANIQ"
+  },
+  "server.email.resetPassword.subject": {
+    "state": "pending",
+    "en": "Reset your KOBANIQ password"
+  },
+  "server.email.verifyEmail.body": {
+    "state": "pending",
+    "en": "Hello,\n\nYour KOBANIQ verification code is: {{code}}\n\nEnter it in the app to confirm your email. The code works for {{minutes}} minutes.\n\nIf you did not create a KOBANIQ account, you can ignore this email.\n\nKOBANIQ"
+  },
+  "server.email.verifyEmail.subject": {
+    "state": "pending",
+    "en": "Your KOBANIQ verification code"
+  },
   "server.errors.ACCOUNT_SUSPENDED": {
     "state": "pending",
     "en": "This account is suspended"
@@ -694,6 +710,10 @@
   "server.errors.INTERNAL_ERROR": {
     "state": "pending",
     "en": "Something went wrong"
+  },
+  "server.errors.INVALID_CODE": {
+    "state": "pending",
+    "en": "The code is wrong or has expired. Ask for a new one"
   },
   "server.errors.INVALID_CREDENTIALS": {
     "state": "pending",
@@ -727,6 +747,10 @@
     "state": "pending",
     "en": "Access token has expired"
   },
+  "server.errors.TOO_MANY_ATTEMPTS": {
+    "state": "pending",
+    "en": "Too many wrong codes. Ask for a new one"
+  },
   "server.errors.USER_NOT_FOUND": {
     "state": "pending",
     "en": "No account with this email"
@@ -738,6 +762,10 @@
   "server.validation.auditActionInvalid": {
     "state": "pending",
     "en": "Must be one of the audit actions"
+  },
+  "server.validation.codeInvalid": {
+    "state": "pending",
+    "en": "Enter the 6-digit code from the email"
   },
   "server.validation.emailInvalid": {
     "state": "pending",

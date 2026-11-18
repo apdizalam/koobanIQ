@@ -1,6 +1,22 @@
 import type { Request, Response } from 'express';
-import { parseLoginBody, parseRefreshBody, parseRegisterBody } from '../lib/validate.js';
-import { loginUser, logoutSession, refreshSession, registerUser } from '../services/authService.js';
+import {
+  parseEmailBody,
+  parseLoginBody,
+  parseRefreshBody,
+  parseRegisterBody,
+  parseResetPasswordBody,
+  parseVerifyEmailBody,
+} from '../lib/validate.js';
+import {
+  forgotPassword,
+  loginUser,
+  logoutSession,
+  refreshSession,
+  registerUser,
+  resendVerification,
+  resetPassword,
+  verifyEmail,
+} from '../services/authService.js';
 
 /** POST /api/v1/auth/register */
 export async function register(req: Request, res: Response) {
@@ -27,5 +43,44 @@ export async function refresh(req: Request, res: Response) {
 export async function logout(req: Request, res: Response) {
   const { refreshToken } = parseRefreshBody(req.body);
   await logoutSession(refreshToken);
+  res.status(204).end();
+}
+
+/** POST /api/v1/auth/verify-email `{ email, code }`: confirm the email with the emailed code. */
+export async function verifyEmailCode(req: Request, res: Response) {
+  const user = await verifyEmail(parseVerifyEmailBody(req.body));
+  res.status(200).json({ data: { user }, error: null, meta: {} });
+}
+
+/**
+ * Runs an email-sending step but never lets its outcome change the answer:
+ * resend and forgot always reply 204, so they can't reveal which emails have
+ * accounts. Delivery failures are logged for the team.
+ */
+async function quietly(step: () => Promise<void>) {
+  try {
+    await step();
+  } catch (err) {
+    console.error('Email step failed:', err instanceof Error ? err.message : err);
+  }
+}
+
+/** POST /api/v1/auth/verify-email/resend `{ email }`: always 204 (at most one code a minute). */
+export async function resendVerificationCode(req: Request, res: Response) {
+  const input = parseEmailBody(req.body);
+  await quietly(() => resendVerification(input));
+  res.status(204).end();
+}
+
+/** POST /api/v1/auth/forgot `{ email }`: emails a reset code if the account exists; always 204. */
+export async function forgot(req: Request, res: Response) {
+  const input = parseEmailBody(req.body);
+  await quietly(() => forgotPassword(input));
+  res.status(204).end();
+}
+
+/** POST /api/v1/auth/reset `{ email, code, password }`: set a new password; ends all sessions. */
+export async function reset(req: Request, res: Response) {
+  await resetPassword(parseResetPasswordBody(req.body));
   res.status(204).end();
 }

@@ -25,7 +25,9 @@
       "INTERNAL_ERROR": "Something went wrong",
       "DB_UNAVAILABLE": "Database is not reachable",
       "CANNOT_CHANGE_SELF": "You cannot change your own account here",
-      "LAST_ADMIN": "At least one active admin must remain"
+      "LAST_ADMIN": "At least one active admin must remain",
+      "INVALID_CODE": "The code is wrong or has expired. Ask for a new one",
+      "TOO_MANY_ATTEMPTS": "Too many wrong codes. Ask for a new one"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -40,7 +42,18 @@
       "periodInvalid": "Must be day, week, month or year",
       "roleInvalid": "Must be \"user\" or \"admin\"",
       "statusInvalid": "Must be \"active\" or \"suspended\"",
-      "auditActionInvalid": "Must be one of the audit actions"
+      "auditActionInvalid": "Must be one of the audit actions",
+      "codeInvalid": "Enter the 6-digit code from the email"
+    },
+    "email": {
+      "verifyEmail": {
+        "subject": "Your KOBANIQ verification code",
+        "body": "Hello,\n\nYour KOBANIQ verification code is: {{code}}\n\nEnter it in the app to confirm your email. The code works for {{minutes}} minutes.\n\nIf you did not create a KOBANIQ account, you can ignore this email.\n\nKOBANIQ"
+      },
+      "resetPassword": {
+        "subject": "Reset your KOBANIQ password",
+        "body": "Hello,\n\nYour KOBANIQ password reset code is: {{code}}\n\nEnter it in the app to choose a new password. The code works for {{minutes}} minutes.\n\nIf you did not ask to reset your password, you can ignore this email; your password stays the same.\n\nKOBANIQ"
+      }
     }
   },
   "admin": {

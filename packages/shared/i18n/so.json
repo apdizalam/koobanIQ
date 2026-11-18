@@ -25,7 +25,9 @@
       "INTERNAL_ERROR": "Khalad ayaa dhacay",
       "DB_UNAVAILABLE": "Kaydka xogta lama gaari karo",
       "CANNOT_CHANGE_SELF": "Halkan kama beddeli kartid akoonkaaga",
-      "LAST_ADMIN": "Waa inuu jiraa ugu yaraan hal maamule oo firfircoon"
+      "LAST_ADMIN": "Waa inuu jiraa ugu yaraan hal maamule oo firfircoon",
+      "INVALID_CODE": "Koodhku waa khalad ama wuu dhacay. Codso mid cusub",
+      "TOO_MANY_ATTEMPTS": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -40,7 +42,18 @@
       "periodInvalid": "Waa inuu ahaadaa day, week, month ama year",
       "roleInvalid": "Waa inuu ahaadaa \"user\" ama \"admin\"",
       "statusInvalid": "Waa inuu ahaadaa \"active\" ama \"suspended\"",
-      "auditActionInvalid": "Waa inuu ahaadaa mid ka mid ah ficillada hubinta"
+      "auditActionInvalid": "Waa inuu ahaadaa mid ka mid ah ficillada hubinta",
+      "codeInvalid": "Geli koodhka 6-da god ah ee iimaylka"
+    },
+    "email": {
+      "verifyEmail": {
+        "subject": "Koodhka xaqiijinta KOBANIQ",
+        "body": "Salaan,\n\nKoodhkaaga xaqiijinta KOBANIQ waa: {{code}}\n\nKu geli app-ka si aad u xaqiijiso iimaylkaaga. Koodhku wuxuu shaqaynayaa {{minutes}} daqiiqo.\n\nHaddii aadan samaysan akoon KOBANIQ, iska indho tir iimaylkan.\n\nKOBANIQ"
+      },
+      "resetPassword": {
+        "subject": "Dib u deji erayga sirta ah ee KOBANIQ",
+        "body": "Salaan,\n\nKoodhkaaga dib u dejinta erayga sirta ah ee KOBANIQ waa: {{code}}\n\nKu geli app-ka si aad u doorato eray sir ah oo cusub. Koodhku wuxuu shaqaynayaa {{minutes}} daqiiqo.\n\nHaddii aadan codsan dib u dejinta erayga sirta ah, iska indho tir iimaylkan; erayga sirta ahi isma beddelayo.\n\nKOBANIQ"
+      }
     }
   },
   "admin": {
