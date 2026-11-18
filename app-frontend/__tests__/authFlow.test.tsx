@@ -45,6 +45,25 @@ describe('new user flow (Notion 8 · User Flow)', () => {
     expect(screen).toHavePathname('/sign-up');
   });
 
+  it('Back on onboarding: previous slide, then the language screen', async () => {
+    await renderApp('/welcome');
+    await press('welcome-start');
+    await press('language-continue');
+    expect(screen).toHavePathname('/onboarding');
+
+    // Slide 3 shows "Create my account"; Back returns to slide 2 (button says Next again).
+    await press('onboarding-next');
+    await press('onboarding-next');
+    expect(screen.getByText('Create my account')).toBeTruthy();
+    await press('back');
+    expect(screen.queryByText('Create my account')).toBeNull();
+    expect(screen).toHavePathname('/onboarding');
+
+    await press('back');
+    await press('back');
+    expect(screen).toHavePathname('/language');
+  });
+
   it('Skip jumps straight to sign up', async () => {
     await renderApp('/onboarding');
     await press('onboarding-skip');
