@@ -44,7 +44,10 @@
       "TOO_MANY_ATTEMPTS": "Too many wrong codes. Ask for a new one",
       "JOB_SOURCE_NOT_FOUND": "Job source not found",
       "REGION_NOT_FOUND": "Region not found",
-      "SOURCE_TERMS_NOT_CHECKED": "This source can't be enabled until its terms have been checked"
+      "SOURCE_TERMS_NOT_CHECKED": "This source can't be enabled until its terms have been checked",
+      "NO_SOURCES_SELECTED": "Choose at least one job source",
+      "SOURCE_NOT_AVAILABLE": "One or more of the chosen sources are not available. Refresh the list and try again",
+      "SOURCE_ADAPTER_MISSING": "This source can't be enabled because the server has no adapter for it yet"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -65,7 +68,9 @@
       "employerTypeInvalid": "Must be one of the employer types",
       "priorityInvalid": "Must be a whole number from 0 to 1000",
       "enabledInvalid": "Must be true or false",
-      "citiesInvalid": "Must be a list of up to 100 city names (each up to 60 characters)"
+      "citiesInvalid": "Must be a list of up to 100 city names (each up to 60 characters)",
+      "sourceKeysInvalid": "Must be a list of source keys",
+      "filtersInvalid": "Filters must be short lists of words, a city name and employer types"
     },
     "email": {
       "verifyEmail": {

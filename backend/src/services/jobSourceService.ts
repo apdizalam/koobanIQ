@@ -1,5 +1,6 @@
 import type { Request } from 'express';
 import { AppError } from '../lib/errors.js';
+import { hasAdapter } from '../jobs/sources/registry.js';
 import {
   JobSource,
   toAdminJobSource,
@@ -38,13 +39,14 @@ export async function listRegions() {
 export async function listEnabledSources(regions?: RegionKey[]) {
   const filter = regions?.length ? { enabled: true, regions: { $in: regions } } : { enabled: true };
   const sources = await JobSource.find(filter).sort({ priority: 1, name: 1 });
-  return sources.map(toPublicJobSource);
+  // A source whose adapter is no longer in the server can't be searched, so it isn't offered.
+  return sources.filter((s) => hasAdapter(s.key)).map(toPublicJobSource);
 }
 
-/** GET /admin/job-sources: every source, enabled or not, with health and terms check. */
+/** GET /admin/job-sources: every source, enabled or not, with health, terms check and adapter. */
 export async function listAllSources() {
   const sources = await JobSource.find().sort({ priority: 1, name: 1 });
-  return sources.map(toAdminJobSource);
+  return sources.map((s) => ({ ...toAdminJobSource(s), hasAdapter: hasAdapter(s.key) }));
 }
 
 export interface SourceChanges {
@@ -68,6 +70,15 @@ export async function updateSource(req: Request, key: string, changes: SourceCha
       409,
       'SOURCE_TERMS_NOT_CHECKED',
       "This source can't be enabled until its terms have been checked",
+    );
+  }
+  // Doc 9 §7: a source = an adapter in the server + this record. Without the adapter
+  // it could be offered to users but never searched.
+  if (changes.enabled === true && !hasAdapter(source.key)) {
+    throw new AppError(
+      409,
+      'SOURCE_ADAPTER_MISSING',
+      "This source can't be enabled because the server has no adapter for it yet",
     );
   }
 

@@ -11,6 +11,7 @@ import { JobSource } from '../src/models/JobSource.js';
 import { Region } from '../src/models/Region.js';
 import { RefreshToken } from '../src/models/RefreshToken.js';
 import { User } from '../src/models/User.js';
+import { registerAdapter, unregisterAdapter } from '../src/jobs/sources/registry.js';
 import { ensureDefaultRegions } from '../src/services/jobSourceService.js';
 import { promoteToAdmin } from '../src/services/userService.js';
 
@@ -92,10 +93,19 @@ before(async () => {
       regions: ['somalia'],
       termsUrl: 'https://example.invalid/terms',
     }),
+    // Terms checked, but the server has no adapter for it.
+    testSource('test-no-adapter', { regions: ['somalia'], termsCheckedAt: checked }),
   ]);
+  // A source = adapter in the server + DB record (doc 9 §7); fake adapters here.
+  for (const key of FAKE_ADAPTER_KEYS) {
+    registerAdapter({ key, search: async () => [] });
+  }
 });
 
+const FAKE_ADAPTER_KEYS = ['test-sl-board', 'test-so-ngo', 'test-remote', 'test-unchecked'];
+
 after(async () => {
+  for (const key of FAKE_ADAPTER_KEYS) unregisterAdapter(key);
   server.close();
   await mongoose.connection.dropDatabase();
   await disconnectDB();
@@ -171,6 +181,19 @@ test('a source whose terms were not checked cannot be enabled', async () => {
   assert.equal(res.status, 409);
   assert.equal((await res.json()).error.code, 'SOURCE_TERMS_NOT_CHECKED');
   assert.equal((await JobSource.findOne({ key: 'test-unchecked' }))?.enabled, false);
+});
+
+test('a source without an adapter in the server cannot be enabled', async () => {
+  const res = await call('/admin/job-sources/test-no-adapter', {
+    method: 'PATCH',
+    token: adminToken,
+    body: { enabled: true },
+  });
+  assert.equal(res.status, 409);
+  assert.equal((await res.json()).error.code, 'SOURCE_ADAPTER_MISSING');
+  const list = await (await call('/admin/job-sources', { token: adminToken })).json();
+  const row = list.data.sources.find((s: { key: string }) => s.key === 'test-no-adapter');
+  assert.equal(row.hasAdapter, false);
 });
 
 test('disabling a source hides it from the app at once and is audited', async () => {

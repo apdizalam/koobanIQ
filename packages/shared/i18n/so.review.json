@@ -799,6 +799,10 @@
     "state": "pending",
     "en": "Route not found"
   },
+  "server.errors.NO_SOURCES_SELECTED": {
+    "state": "pending",
+    "en": "Choose at least one job source"
+  },
   "server.errors.REFRESH_TOKEN_REUSED": {
     "state": "pending",
     "en": "This session was ended for safety. Please log in again"
@@ -806,6 +810,14 @@
   "server.errors.REGION_NOT_FOUND": {
     "state": "pending",
     "en": "Region not found"
+  },
+  "server.errors.SOURCE_ADAPTER_MISSING": {
+    "state": "pending",
+    "en": "This source can't be enabled because the server has no adapter for it yet"
+  },
+  "server.errors.SOURCE_NOT_AVAILABLE": {
+    "state": "pending",
+    "en": "One or more of the chosen sources are not available. Refresh the list and try again"
   },
   "server.errors.SOURCE_TERMS_NOT_CHECKED": {
     "state": "pending",
@@ -859,6 +871,10 @@
     "state": "pending",
     "en": "This field cannot be changed here"
   },
+  "server.validation.filtersInvalid": {
+    "state": "pending",
+    "en": "Filters must be short lists of words, a city name and employer types"
+  },
   "server.validation.languageInvalid": {
     "state": "pending",
     "en": "Must be \"en\" or \"so\""
@@ -898,6 +914,10 @@
   "server.validation.roleInvalid": {
     "state": "pending",
     "en": "Must be \"user\" or \"admin\""
+  },
+  "server.validation.sourceKeysInvalid": {
+    "state": "pending",
+    "en": "Must be a list of source keys"
   },
   "server.validation.statusInvalid": {
     "state": "pending",

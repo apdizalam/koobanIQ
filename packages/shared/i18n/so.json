@@ -44,7 +44,10 @@
       "TOO_MANY_ATTEMPTS": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub",
       "JOB_SOURCE_NOT_FOUND": "Ilaha shaqada lama helin",
       "REGION_NOT_FOUND": "Gobolka lama helin",
-      "SOURCE_TERMS_NOT_CHECKED": "Ilahan lama shidi karo ilaa shuruudihiisa la hubiyo"
+      "SOURCE_TERMS_NOT_CHECKED": "Ilahan lama shidi karo ilaa shuruudihiisa la hubiyo",
+      "NO_SOURCES_SELECTED": "Dooro ugu yaraan hal ilo shaqo",
+      "SOURCE_NOT_AVAILABLE": "Hal ama in ka badan oo ka mid ah ilaha aad dooratay lama heli karo. Cusboonaysii liiska oo isku day mar kale",
+      "SOURCE_ADAPTER_MISSING": "Ilahan lama shidi karo sababtoo ah server-ku weli ma laha xiriirkiisa"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -65,7 +68,9 @@
       "employerTypeInvalid": "Waa inuu ahaadaa mid ka mid ah noocyada loo-shaqeeyaha",
       "priorityInvalid": "Waa inuu ahaadaa tiro dhan oo u dhaxaysa 0 ilaa 1000",
       "enabledInvalid": "Waa inuu ahaadaa true ama false",
-      "citiesInvalid": "Waa inuu ahaadaa liis ilaa 100 magaalo ah (mid kasta ilaa 60 xaraf)"
+      "citiesInvalid": "Waa inuu ahaadaa liis ilaa 100 magaalo ah (mid kasta ilaa 60 xaraf)",
+      "sourceKeysInvalid": "Waa inuu ahaadaa liis furayaasha ilaha",
+      "filtersInvalid": "Shaandhooyinku waa inay ahaadaan liisas erayo gaagaaban, magac magaalo iyo noocyada loo-shaqeeyaha"
     },
     "email": {
       "verifyEmail": {
