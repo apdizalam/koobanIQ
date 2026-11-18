@@ -47,7 +47,9 @@
       "SOURCE_TERMS_NOT_CHECKED": "Ilahan lama shidi karo ilaa shuruudihiisa la hubiyo",
       "NO_SOURCES_SELECTED": "Dooro ugu yaraan hal ilo shaqo",
       "SOURCE_NOT_AVAILABLE": "Hal ama in ka badan oo ka mid ah ilaha aad dooratay lama heli karo. Cusboonaysii liiska oo isku day mar kale",
-      "SOURCE_ADAPTER_MISSING": "Ilahan lama shidi karo sababtoo ah server-ku weli ma laha xiriirkiisa"
+      "SOURCE_ADAPTER_MISSING": "Ilahan lama shidi karo sababtoo ah server-ku weli ma laha xiriirkiisa",
+      "PROFILE_ITEM_NOT_FOUND": "Qoraalkan astaanta lama helin",
+      "PROFILE_SECTION_FULL": "Qaybtani way buuxday. Ka saar qoraal ka hor intaadan mid cusub ku darin"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -70,7 +72,17 @@
       "enabledInvalid": "Waa inuu ahaadaa true ama false",
       "citiesInvalid": "Waa inuu ahaadaa liis ilaa 100 magaalo ah (mid kasta ilaa 60 xaraf)",
       "sourceKeysInvalid": "Waa inuu ahaadaa liis furayaasha ilaha",
-      "filtersInvalid": "Shaandhooyinku waa inay ahaadaan liisas erayo gaagaaban, magac magaalo iyo noocyada loo-shaqeeyaha"
+      "filtersInvalid": "Shaandhooyinku waa inay ahaadaan liisas erayo gaagaaban, magac magaalo iyo noocyada loo-shaqeeyaha",
+      "required": "Goobtan waa qasab",
+      "textInvalid": "Waa inuu ahaadaa qoraal",
+      "textTooLong": "Qoraalkani aad buu u dheer yahay",
+      "phoneInvalid": "Geli lambar taleefan oo sax ah",
+      "choiceInvalid": "Dooro mid ka mid ah xulashooyinka",
+      "monthInvalid": "Isticmaal sanad iyo bil, tusaale ahaan 2024-09",
+      "yearInvalid": "Geli sanad u dhexeeya 1950 iyo 2100",
+      "urlInvalid": "Geli cinwaan shabakadeed oo dhammaystiran oo ku bilaabma http:// ama https://",
+      "listInvalid": "Waa inuu ahaadaa liis gaaban oo qoraallo sax ah",
+      "dateOrderInvalid": "Dhammaadku kama horrayn karo bilowga"
     },
     "email": {
       "verifyEmail": {

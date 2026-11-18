@@ -47,7 +47,9 @@
       "SOURCE_TERMS_NOT_CHECKED": "This source can't be enabled until its terms have been checked",
       "NO_SOURCES_SELECTED": "Choose at least one job source",
       "SOURCE_NOT_AVAILABLE": "One or more of the chosen sources are not available. Refresh the list and try again",
-      "SOURCE_ADAPTER_MISSING": "This source can't be enabled because the server has no adapter for it yet"
+      "SOURCE_ADAPTER_MISSING": "This source can't be enabled because the server has no adapter for it yet",
+      "PROFILE_ITEM_NOT_FOUND": "This profile entry was not found",
+      "PROFILE_SECTION_FULL": "This section is full. Remove an entry before adding a new one"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -70,7 +72,17 @@
       "enabledInvalid": "Must be true or false",
       "citiesInvalid": "Must be a list of up to 100 city names (each up to 60 characters)",
       "sourceKeysInvalid": "Must be a list of source keys",
-      "filtersInvalid": "Filters must be short lists of words, a city name and employer types"
+      "filtersInvalid": "Filters must be short lists of words, a city name and employer types",
+      "required": "This field is required",
+      "textInvalid": "Must be text",
+      "textTooLong": "This text is too long",
+      "phoneInvalid": "Enter a valid phone number",
+      "choiceInvalid": "Choose one of the options",
+      "monthInvalid": "Use year and month, for example 2024-09",
+      "yearInvalid": "Enter a year between 1950 and 2100",
+      "urlInvalid": "Enter a full web address starting with http:// or https://",
+      "listInvalid": "Must be a short list of valid entries",
+      "dateOrderInvalid": "The end cannot be before the start"
     },
     "email": {
       "verifyEmail": {

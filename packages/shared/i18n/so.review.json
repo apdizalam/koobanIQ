@@ -1423,6 +1423,14 @@
     "state": "pending",
     "en": "Choose at least one job source"
   },
+  "server.errors.PROFILE_ITEM_NOT_FOUND": {
+    "state": "pending",
+    "en": "This profile entry was not found"
+  },
+  "server.errors.PROFILE_SECTION_FULL": {
+    "state": "pending",
+    "en": "This section is full. Remove an entry before adding a new one"
+  },
   "server.errors.REFRESH_TOKEN_REUSED": {
     "state": "pending",
     "en": "This session was ended for safety. Please log in again"
@@ -1463,6 +1471,10 @@
     "state": "pending",
     "en": "Must be one of the audit actions"
   },
+  "server.validation.choiceInvalid": {
+    "state": "pending",
+    "en": "Choose one of the options"
+  },
   "server.validation.citiesInvalid": {
     "state": "pending",
     "en": "Must be a list of up to 100 city names (each up to 60 characters)"
@@ -1470,6 +1482,10 @@
   "server.validation.codeInvalid": {
     "state": "pending",
     "en": "Enter the 6-digit code from the email"
+  },
+  "server.validation.dateOrderInvalid": {
+    "state": "pending",
+    "en": "The end cannot be before the start"
   },
   "server.validation.emailInvalid": {
     "state": "pending",
@@ -1499,6 +1515,14 @@
     "state": "pending",
     "en": "Must be \"en\" or \"so\""
   },
+  "server.validation.listInvalid": {
+    "state": "pending",
+    "en": "Must be a short list of valid entries"
+  },
+  "server.validation.monthInvalid": {
+    "state": "pending",
+    "en": "Use year and month, for example 2024-09"
+  },
   "server.validation.nothingToUpdate": {
     "state": "pending",
     "en": "Nothing to update"
@@ -1519,6 +1543,10 @@
     "state": "pending",
     "en": "Must be day, week, month or year"
   },
+  "server.validation.phoneInvalid": {
+    "state": "pending",
+    "en": "Enter a valid phone number"
+  },
   "server.validation.priorityInvalid": {
     "state": "pending",
     "en": "Must be a whole number from 0 to 1000"
@@ -1531,6 +1559,10 @@
     "state": "pending",
     "en": "Must be somaliland, somalia or remote"
   },
+  "server.validation.required": {
+    "state": "pending",
+    "en": "This field is required"
+  },
   "server.validation.roleInvalid": {
     "state": "pending",
     "en": "Must be \"user\" or \"admin\""
@@ -1542,5 +1574,21 @@
   "server.validation.statusInvalid": {
     "state": "pending",
     "en": "Must be \"active\" or \"suspended\""
+  },
+  "server.validation.textInvalid": {
+    "state": "pending",
+    "en": "Must be text"
+  },
+  "server.validation.textTooLong": {
+    "state": "pending",
+    "en": "This text is too long"
+  },
+  "server.validation.urlInvalid": {
+    "state": "pending",
+    "en": "Enter a full web address starting with http:// or https://"
+  },
+  "server.validation.yearInvalid": {
+    "state": "pending",
+    "en": "Enter a year between 1950 and 2100"
   }
 }
