@@ -211,7 +211,9 @@ describe('signed-in area', () => {
     await type('login-email', 'amina@example.com');
     await type('login-password', 'secret123');
     await press('login-submit');
-    await press('home-logout');
+    // Log out lives on the Profile tab.
+    await press('tab-profile');
+    await press('profile-logout');
 
     expect(screen).toHavePathname('/welcome');
     expect(mockSecureStore.has(REFRESH_KEY)).toBe(false);

@@ -175,7 +175,10 @@ describe('App start (TIQ-5 slice 3)', () => {
     await launch();
     await screen.findByTestId('home-email');
     await act(async () => {
-      fireEvent.press(screen.getByTestId('home-logout'));
+      fireEvent.press(screen.getByTestId('tab-profile'));
+    });
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('profile-logout'));
     });
     expect(await screen.findByTestId('welcome-start')).toBeTruthy();
     expect(mockSecureStore.has(REFRESH_KEY)).toBe(false);

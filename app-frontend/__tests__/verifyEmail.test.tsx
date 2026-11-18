@@ -73,8 +73,8 @@ describe('Verify email (TIQ-5 slice 4)', () => {
     await type('verify-code', '12 34 56');
     await press('verify-submit');
 
-    expect(calls.at(-1)).toMatchObject({
-      route: 'POST /auth/verify-email',
+    // (Home then loads the account with GET /me, so look for the verify call itself.)
+    expect(calls.find((c) => c.route === 'POST /auth/verify-email')).toMatchObject({
       body: { email: EMAIL, code: '123456' },
     });
     expect(screen).toHavePathname('/home');

@@ -48,23 +48,24 @@ src/app/                   Expo Router routes (every file is a screen; _layout.t
   index.tsx                start: redirects to /welcome (later: Home when signed in)
   (auth)/                  screens before sign-in: welcome, language, onboarding, login, sign-up
   (app)/                   signed-in screens; its _layout sends signed-out visitors to /welcome
+    (tabs)/                bottom tabs: home, cv, jobs, reports, profile (_layout = tab bar)
   design-system.tsx        developer preview of all components (kobaniq://design-system)
 assets/icons/              SVG icons used by <Icon>
 assets/images/             app icon, splash and favicon (referenced from app.json)
 src/components/ui/         one reusable UI component per file (Button, Input, Chip, BackButton, ...)
 src/auth/                  sign-in state: AuthProvider/useAuth, refresh token in expo-secure-store
-src/components/layout/     page building blocks (Screen, AuthScreen for login/sign-up, ComingNext)
+src/components/layout/     page building blocks (Screen, TabScreen, TabComingSoon, AuthScreen, ComingNext)
 src/components/onboarding/ onboarding illustrations
 src/components/index.ts    small re-export of the original ui components
 src/constants/             non-design app constants (api.ts)
 src/hooks/                 React hooks (useAppFonts, useSchemeOverride)
 src/i18n/                  i18next setup using the shared packages/shared/i18n files
-src/services/              API calls: api.ts (fetch + ApiError), authApi.ts
+src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me)
 src/screens/               screen bodies reused by routes (DesignSystemPreview)
 src/theme/                 ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
                            createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
 src/types/                 domain types shared by several files (match.ts, auth.ts)
-src/utils/                 pure helpers (contrast.ts, hitSlop.ts, validation.ts with Zod)
+src/utils/                 pure helpers (contrast.ts, format.ts, hitSlop.ts, validation.ts with Zod)
 ```
 
 Never define colors or
