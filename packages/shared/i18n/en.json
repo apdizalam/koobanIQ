@@ -5,7 +5,21 @@
       "en": "English",
       "so": "Soomaali"
     },
-    "loading": "Loading…"
+    "loading": "Loading…",
+    "region": {
+      "somaliland": "Somaliland",
+      "somalia": "Somalia",
+      "remote": "Remote"
+    },
+    "employerType": {
+      "company": "Company",
+      "ngo": "NGO",
+      "un_agency": "UN agency",
+      "government": "Government",
+      "education": "Education",
+      "health": "Health",
+      "other": "Other"
+    }
   },
   "server": {
     "errors": {
@@ -25,7 +39,15 @@
       "INTERNAL_ERROR": "Something went wrong",
       "DB_UNAVAILABLE": "Database is not reachable",
       "CANNOT_CHANGE_SELF": "You cannot change your own account here",
-      "LAST_ADMIN": "At least one active admin must remain"
+      "LAST_ADMIN": "At least one active admin must remain",
+      "INVALID_CODE": "The code is wrong or has expired. Ask for a new one",
+      "TOO_MANY_ATTEMPTS": "Too many wrong codes. Ask for a new one",
+      "JOB_SOURCE_NOT_FOUND": "Job source not found",
+      "REGION_NOT_FOUND": "Region not found",
+      "SOURCE_TERMS_NOT_CHECKED": "This source can't be enabled until its terms have been checked",
+      "NO_SOURCES_SELECTED": "Choose at least one job source",
+      "SOURCE_NOT_AVAILABLE": "One or more of the chosen sources are not available. Refresh the list and try again",
+      "SOURCE_ADAPTER_MISSING": "This source can't be enabled because the server has no adapter for it yet"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -40,7 +62,25 @@
       "periodInvalid": "Must be day, week, month or year",
       "roleInvalid": "Must be \"user\" or \"admin\"",
       "statusInvalid": "Must be \"active\" or \"suspended\"",
-      "auditActionInvalid": "Must be one of the audit actions"
+      "auditActionInvalid": "Must be one of the audit actions",
+      "codeInvalid": "Enter the 6-digit code from the email",
+      "regionInvalid": "Must be somaliland, somalia or remote",
+      "employerTypeInvalid": "Must be one of the employer types",
+      "priorityInvalid": "Must be a whole number from 0 to 1000",
+      "enabledInvalid": "Must be true or false",
+      "citiesInvalid": "Must be a list of up to 100 city names (each up to 60 characters)",
+      "sourceKeysInvalid": "Must be a list of source keys",
+      "filtersInvalid": "Filters must be short lists of words, a city name and employer types"
+    },
+    "email": {
+      "verifyEmail": {
+        "subject": "Your KOBANIQ verification code",
+        "body": "Hello,\n\nYour KOBANIQ verification code is: {{code}}\n\nEnter it in the app to confirm your email. The code works for {{minutes}} minutes.\n\nIf you did not create a KOBANIQ account, you can ignore this email.\n\nKOBANIQ"
+      },
+      "resetPassword": {
+        "subject": "Reset your KOBANIQ password",
+        "body": "Hello,\n\nYour KOBANIQ password reset code is: {{code}}\n\nEnter it in the app to choose a new password. The code works for {{minutes}} minutes.\n\nIf you did not ask to reset your password, you can ignore this email; your password stays the same.\n\nKOBANIQ"
+      }
     }
   },
   "admin": {
@@ -218,7 +258,11 @@
         "user_suspend": "Suspended a user",
         "user_reactivate": "Reactivated a user",
         "user_role_change": "Changed a role",
-        "user_delete": "Deleted a user"
+        "user_delete": "Deleted a user",
+        "job_source_enable": "Enabled a job source",
+        "job_source_disable": "Disabled a job source",
+        "job_source_update": "Changed a job source",
+        "region_update": "Changed region cities"
       },
       "deleted": "Account deleted",
       "noChange": "—",

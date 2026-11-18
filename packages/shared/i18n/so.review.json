@@ -11,6 +11,22 @@
     "state": "pending",
     "en": "Admin access denied"
   },
+  "admin.audit.actions.job_source_disable": {
+    "state": "pending",
+    "en": "Disabled a job source"
+  },
+  "admin.audit.actions.job_source_enable": {
+    "state": "pending",
+    "en": "Enabled a job source"
+  },
+  "admin.audit.actions.job_source_update": {
+    "state": "pending",
+    "en": "Changed a job source"
+  },
+  "admin.audit.actions.region_update": {
+    "state": "pending",
+    "en": "Changed region cities"
+  },
   "admin.audit.actions.user_delete": {
     "state": "pending",
     "en": "Deleted a user"
@@ -523,6 +539,34 @@
     "state": "pending",
     "en": "This is your own account. Another admin must change it."
   },
+  "common.employerType.company": {
+    "state": "pending",
+    "en": "Company"
+  },
+  "common.employerType.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "common.employerType.government": {
+    "state": "pending",
+    "en": "Government"
+  },
+  "common.employerType.health": {
+    "state": "pending",
+    "en": "Health"
+  },
+  "common.employerType.ngo": {
+    "state": "pending",
+    "en": "NGO"
+  },
+  "common.employerType.other": {
+    "state": "pending",
+    "en": "Other"
+  },
+  "common.employerType.un_agency": {
+    "state": "pending",
+    "en": "UN agency"
+  },
   "common.language.en": {
     "state": "pending",
     "en": "English"
@@ -538,6 +582,18 @@
   "common.loading": {
     "state": "pending",
     "en": "Loading…"
+  },
+  "common.region.remote": {
+    "state": "pending",
+    "en": "Remote"
+  },
+  "common.region.somalia": {
+    "state": "pending",
+    "en": "Somalia"
+  },
+  "common.region.somaliland": {
+    "state": "pending",
+    "en": "Somaliland"
   },
   "mobile.preview.buttons.ghost": {
     "state": "pending",
@@ -667,6 +723,22 @@
     "state": "pending",
     "en": "Switch to dark"
   },
+  "server.email.resetPassword.body": {
+    "state": "pending",
+    "en": "Hello,\n\nYour KOBANIQ password reset code is: {{code}}\n\nEnter it in the app to choose a new password. The code works for {{minutes}} minutes.\n\nIf you did not ask to reset your password, you can ignore this email; your password stays the same.\n\nKOBANIQ"
+  },
+  "server.email.resetPassword.subject": {
+    "state": "pending",
+    "en": "Reset your KOBANIQ password"
+  },
+  "server.email.verifyEmail.body": {
+    "state": "pending",
+    "en": "Hello,\n\nYour KOBANIQ verification code is: {{code}}\n\nEnter it in the app to confirm your email. The code works for {{minutes}} minutes.\n\nIf you did not create a KOBANIQ account, you can ignore this email.\n\nKOBANIQ"
+  },
+  "server.email.verifyEmail.subject": {
+    "state": "pending",
+    "en": "Your KOBANIQ verification code"
+  },
   "server.errors.ACCOUNT_SUSPENDED": {
     "state": "pending",
     "en": "This account is suspended"
@@ -695,6 +767,10 @@
     "state": "pending",
     "en": "Something went wrong"
   },
+  "server.errors.INVALID_CODE": {
+    "state": "pending",
+    "en": "The code is wrong or has expired. Ask for a new one"
+  },
   "server.errors.INVALID_CREDENTIALS": {
     "state": "pending",
     "en": "Email or password is incorrect"
@@ -711,6 +787,10 @@
     "state": "pending",
     "en": "Access token is invalid"
   },
+  "server.errors.JOB_SOURCE_NOT_FOUND": {
+    "state": "pending",
+    "en": "Job source not found"
+  },
   "server.errors.LAST_ADMIN": {
     "state": "pending",
     "en": "At least one active admin must remain"
@@ -719,13 +799,37 @@
     "state": "pending",
     "en": "Route not found"
   },
+  "server.errors.NO_SOURCES_SELECTED": {
+    "state": "pending",
+    "en": "Choose at least one job source"
+  },
   "server.errors.REFRESH_TOKEN_REUSED": {
     "state": "pending",
     "en": "This session was ended for safety. Please log in again"
   },
+  "server.errors.REGION_NOT_FOUND": {
+    "state": "pending",
+    "en": "Region not found"
+  },
+  "server.errors.SOURCE_ADAPTER_MISSING": {
+    "state": "pending",
+    "en": "This source can't be enabled because the server has no adapter for it yet"
+  },
+  "server.errors.SOURCE_NOT_AVAILABLE": {
+    "state": "pending",
+    "en": "One or more of the chosen sources are not available. Refresh the list and try again"
+  },
+  "server.errors.SOURCE_TERMS_NOT_CHECKED": {
+    "state": "pending",
+    "en": "This source can't be enabled until its terms have been checked"
+  },
   "server.errors.TOKEN_EXPIRED": {
     "state": "pending",
     "en": "Access token has expired"
+  },
+  "server.errors.TOO_MANY_ATTEMPTS": {
+    "state": "pending",
+    "en": "Too many wrong codes. Ask for a new one"
   },
   "server.errors.USER_NOT_FOUND": {
     "state": "pending",
@@ -739,6 +843,14 @@
     "state": "pending",
     "en": "Must be one of the audit actions"
   },
+  "server.validation.citiesInvalid": {
+    "state": "pending",
+    "en": "Must be a list of up to 100 city names (each up to 60 characters)"
+  },
+  "server.validation.codeInvalid": {
+    "state": "pending",
+    "en": "Enter the 6-digit code from the email"
+  },
   "server.validation.emailInvalid": {
     "state": "pending",
     "en": "Enter a valid email address"
@@ -747,9 +859,21 @@
     "state": "pending",
     "en": "Email is required"
   },
+  "server.validation.employerTypeInvalid": {
+    "state": "pending",
+    "en": "Must be one of the employer types"
+  },
+  "server.validation.enabledInvalid": {
+    "state": "pending",
+    "en": "Must be true or false"
+  },
   "server.validation.fieldNotEditable": {
     "state": "pending",
     "en": "This field cannot be changed here"
+  },
+  "server.validation.filtersInvalid": {
+    "state": "pending",
+    "en": "Filters must be short lists of words, a city name and employer types"
   },
   "server.validation.languageInvalid": {
     "state": "pending",
@@ -775,13 +899,25 @@
     "state": "pending",
     "en": "Must be day, week, month or year"
   },
+  "server.validation.priorityInvalid": {
+    "state": "pending",
+    "en": "Must be a whole number from 0 to 1000"
+  },
   "server.validation.refreshTokenRequired": {
     "state": "pending",
     "en": "Refresh token is required"
   },
+  "server.validation.regionInvalid": {
+    "state": "pending",
+    "en": "Must be somaliland, somalia or remote"
+  },
   "server.validation.roleInvalid": {
     "state": "pending",
     "en": "Must be \"user\" or \"admin\""
+  },
+  "server.validation.sourceKeysInvalid": {
+    "state": "pending",
+    "en": "Must be a list of source keys"
   },
   "server.validation.statusInvalid": {
     "state": "pending",

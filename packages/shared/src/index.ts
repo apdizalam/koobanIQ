@@ -16,6 +16,22 @@ export type Role = (typeof ROLES)[number];
 export const USER_STATUSES = ['active', 'suspended'] as const;
 export type UserStatus = (typeof USER_STATUSES)[number];
 
+/** Job regions (doc 9 §2). Somaliland and Somalia are separate, selectable regions. */
+export const REGION_KEYS = ['somaliland', 'somalia', 'remote'] as const;
+export type RegionKey = (typeof REGION_KEYS)[number];
+
+/** Employer types a job source covers (doc 9 §4). */
+export const EMPLOYER_TYPES = [
+  'company',
+  'ngo',
+  'un_agency',
+  'government',
+  'education',
+  'health',
+  'other',
+] as const;
+export type EmployerType = (typeof EMPLOYER_TYPES)[number];
+
 /** Standard API response envelope: { data, error, meta }. */
 export interface ApiError {
   code: string;

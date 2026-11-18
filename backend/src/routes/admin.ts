@@ -8,6 +8,11 @@ import {
   patchUserStatus,
   removeUser,
 } from '../controllers/adminUsersController.js';
+import {
+  getAdminJobSources,
+  patchJobSource,
+  patchRegion,
+} from '../controllers/jobSourcesController.js';
 import { requireAuth } from '../middleware/requireAuth.js';
 import { requireRole } from '../middleware/requireRole.js';
 
@@ -28,3 +33,8 @@ adminRouter.delete('/users/:id', removeUser);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);
+
+// Job sources and regions (TIQ-32, doc 9 §8). Every change is written to auditLogs.
+adminRouter.get('/job-sources', getAdminJobSources);
+adminRouter.patch('/job-sources/:key', patchJobSource);
+adminRouter.patch('/regions/:key', patchRegion);

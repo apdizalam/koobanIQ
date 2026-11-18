@@ -53,4 +53,8 @@ export const env = {
   jwtAccessTtl: process.env.JWT_ACCESS_TTL ?? '15m',
   /** Refresh token lifetime in days (architecture doc: 30 days). */
   refreshTokenDays: Number(process.env.REFRESH_TOKEN_DAYS ?? 30),
+  /** Resend API key (resend.com). Empty in development: emails are printed in the terminal. */
+  resendApiKey: process.env.RESEND_API_KEY ?? '',
+  /** Sender shown in emails. Resend's test sender only delivers to the Resend account owner. */
+  emailFrom: process.env.EMAIL_FROM ?? 'KOBANIQ <onboarding@resend.dev>',
 };

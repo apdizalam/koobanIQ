@@ -58,6 +58,66 @@ export function parseLoginBody(body: unknown): { email: string; password: string
   return { email: b.email as string, password: b.password as string };
 }
 
+const CODE_RE = /^\d{6}$/;
+
+function emailField(b: Record<string, unknown>, details: Record<string, string>): string {
+  if (typeof b.email !== 'string' || !EMAIL_RE.test(b.email.trim())) {
+    details.email = 'emailInvalid';
+    return '';
+  }
+  return b.email;
+}
+
+function codeField(b: Record<string, unknown>, details: Record<string, string>): string {
+  const code = typeof b.code === 'string' ? b.code.trim() : '';
+  if (!CODE_RE.test(code)) details.code = 'codeInvalid';
+  return code;
+}
+
+function fail(details: Record<string, string>) {
+  if (Object.keys(details).length > 0) {
+    throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', details);
+  }
+}
+
+/** Checks `{ email }` (resend verification code, forgot password). */
+export function parseEmailBody(body: unknown): { email: string } {
+  const b = (body ?? {}) as Record<string, unknown>;
+  const details: Record<string, string> = {};
+  const email = emailField(b, details);
+  fail(details);
+  return { email };
+}
+
+/** Checks `{ email, code }` (verify email). The code is 6 digits. */
+export function parseVerifyEmailBody(body: unknown): { email: string; code: string } {
+  const b = (body ?? {}) as Record<string, unknown>;
+  const details: Record<string, string> = {};
+  const email = emailField(b, details);
+  const code = codeField(b, details);
+  fail(details);
+  return { email, code };
+}
+
+/** Checks `{ email, code, password }` (reset password with the emailed code). */
+export function parseResetPasswordBody(body: unknown): {
+  email: string;
+  code: string;
+  password: string;
+} {
+  const b = (body ?? {}) as Record<string, unknown>;
+  const details: Record<string, string> = {};
+  const email = emailField(b, details);
+  const code = codeField(b, details);
+  if (typeof b.password !== 'string' || b.password.length < PASSWORD_MIN) {
+    details.password = 'passwordTooShort';
+  } else if (b.password.length > PASSWORD_MAX) {
+    details.password = 'passwordTooLong';
+  }
+  fail(details);
+  return { email, code, password: b.password as string };
+}
+
 /** Checks a body that carries `{ refreshToken }` (refresh and logout). */
 export function parseRefreshBody(body: unknown): { refreshToken: string } {
   const b = (body ?? {}) as Record<string, unknown>;
