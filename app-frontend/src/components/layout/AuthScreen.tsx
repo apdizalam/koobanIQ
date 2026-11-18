@@ -13,6 +13,8 @@ interface AuthScreenProps {
   footer?: ReactNode;
   /** Show the back button (default). Off where there is nowhere to go back to. */
   showBack?: boolean;
+  /** What the back button does; default: go to the previous screen. */
+  onBack?: () => void;
 }
 
 /** Frame for Log in / Sign up: back button, title, form that stays above the keyboard. */
@@ -22,6 +24,7 @@ export function AuthScreen({
   children,
   footer,
   showBack = true,
+  onBack,
 }: AuthScreenProps) {
   const { colors, typography, spacing } = useTheme();
   return (
@@ -35,7 +38,7 @@ export function AuthScreen({
           contentContainerStyle={{ flexGrow: 1, padding: spacing.screen, gap: spacing.xl }}
           keyboardShouldPersistTaps="handled"
         >
-          {showBack ? <BackButton /> : null}
+          {showBack ? <BackButton onPress={onBack} /> : null}
           <View style={{ gap: spacing.sm }}>
             <Text accessibilityRole="header" style={[typography.display, { color: colors.text }]}>
               {title}

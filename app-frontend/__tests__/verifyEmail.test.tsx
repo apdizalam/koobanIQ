@@ -141,6 +141,16 @@ describe('Verify email (TIQ-5 slice 4)', () => {
     expect(mockSecureStore.has('kobaniq.refreshToken')).toBe(false);
   });
 
+  it('the back button leaves the unconfirmed account and opens Sign up', async () => {
+    routes['POST /auth/logout'] = { status: 204 };
+    await signUp();
+    await press('back');
+    expect(await screen.findByTestId('sign-up-submit')).toBeTruthy();
+    expect(screen).toHavePathname('/sign-up');
+    expect(mockSecureStore.has('kobaniq.refreshToken')).toBe(false);
+    expect(calls.some((c) => c.route === 'POST /auth/logout')).toBe(true);
+  });
+
   it('a signed-out visitor is sent to Welcome', async () => {
     await renderApp('/verify-email');
     expect(await screen.findByTestId('welcome-start')).toBeTruthy();

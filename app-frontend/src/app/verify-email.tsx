@@ -31,12 +31,14 @@ export default function VerifyEmailScreen() {
   const [fieldErrors, setFieldErrors] = useState<FieldErrors<{ code: string }>>({});
   const [notice, setNotice] = useState<Notice | null>(null);
   const [busy, setBusy] = useState(false);
+  /** Set by Back, so signing out does not also redirect to Welcome. */
+  const [leaving, setLeaving] = useState(false);
   // Straight after sign-up a code was just emailed, so "send a new code" waits a minute.
   const { sent } = useLocalSearchParams<{ sent?: string }>();
   const cooldown = useCooldown(RESEND_SECONDS, { startNow: sent === '1' });
 
   if (status === 'restoring') return <Splash />;
-  if (status === 'signedOut' || !user) return <Redirect href="/welcome" />;
+  if (status === 'signedOut' || !user) return leaving ? null : <Redirect href="/welcome" />;
   if (user.emailVerified) return <Redirect href="/home" />;
 
   async function submit() {
@@ -75,9 +77,19 @@ export default function VerifyEmailScreen() {
     router.replace('/welcome');
   }
 
+  /**
+   * Back: the account isn't confirmed, so leave it (sign out) and open Sign up
+   * to fix a mistyped email (Sign up also links to Log in).
+   */
+  async function goBack() {
+    setLeaving(true);
+    await signOut();
+    router.replace('/sign-up');
+  }
+
   return (
     <AuthScreen
-      showBack={false}
+      onBack={() => void goBack()}
       title={t('mobile.auth.verify.title')}
       subtitle={t('mobile.auth.verify.subtitle', { email: user.email })}
       footer={
