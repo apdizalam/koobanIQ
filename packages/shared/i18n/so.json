@@ -5,7 +5,21 @@
       "en": "English",
       "so": "Soomaali"
     },
-    "loading": "Waa la soo rarayaa…"
+    "loading": "Waa la soo rarayaa…",
+    "region": {
+      "somaliland": "Somaliland",
+      "somalia": "Soomaaliya",
+      "remote": "Fog (online)"
+    },
+    "employerType": {
+      "company": "Shirkad",
+      "ngo": "Hay’ad (NGO)",
+      "un_agency": "Hay’adda QM",
+      "government": "Dowladda",
+      "education": "Waxbarasho",
+      "health": "Caafimaad",
+      "other": "Kale"
+    }
   },
   "server": {
     "errors": {
@@ -25,7 +39,15 @@
       "INTERNAL_ERROR": "Khalad ayaa dhacay",
       "DB_UNAVAILABLE": "Kaydka xogta lama gaari karo",
       "CANNOT_CHANGE_SELF": "Halkan kama beddeli kartid akoonkaaga",
-      "LAST_ADMIN": "Waa inuu jiraa ugu yaraan hal maamule oo firfircoon"
+      "LAST_ADMIN": "Waa inuu jiraa ugu yaraan hal maamule oo firfircoon",
+      "INVALID_CODE": "Koodhku waa khalad ama wuu dhacay. Codso mid cusub",
+      "TOO_MANY_ATTEMPTS": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub",
+      "JOB_SOURCE_NOT_FOUND": "Ilaha shaqada lama helin",
+      "REGION_NOT_FOUND": "Gobolka lama helin",
+      "SOURCE_TERMS_NOT_CHECKED": "Ilahan lama shidi karo ilaa shuruudihiisa la hubiyo",
+      "NO_SOURCES_SELECTED": "Dooro ugu yaraan hal ilo shaqo",
+      "SOURCE_NOT_AVAILABLE": "Hal ama in ka badan oo ka mid ah ilaha aad dooratay lama heli karo. Cusboonaysii liiska oo isku day mar kale",
+      "SOURCE_ADAPTER_MISSING": "Ilahan lama shidi karo sababtoo ah server-ku weli ma laha xiriirkiisa"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -40,7 +62,25 @@
       "periodInvalid": "Waa inuu ahaadaa day, week, month ama year",
       "roleInvalid": "Waa inuu ahaadaa \"user\" ama \"admin\"",
       "statusInvalid": "Waa inuu ahaadaa \"active\" ama \"suspended\"",
-      "auditActionInvalid": "Waa inuu ahaadaa mid ka mid ah ficillada hubinta"
+      "auditActionInvalid": "Waa inuu ahaadaa mid ka mid ah ficillada hubinta",
+      "codeInvalid": "Geli koodhka 6-da god ah ee iimaylka",
+      "regionInvalid": "Waa inuu ahaadaa somaliland, somalia ama remote",
+      "employerTypeInvalid": "Waa inuu ahaadaa mid ka mid ah noocyada loo-shaqeeyaha",
+      "priorityInvalid": "Waa inuu ahaadaa tiro dhan oo u dhaxaysa 0 ilaa 1000",
+      "enabledInvalid": "Waa inuu ahaadaa true ama false",
+      "citiesInvalid": "Waa inuu ahaadaa liis ilaa 100 magaalo ah (mid kasta ilaa 60 xaraf)",
+      "sourceKeysInvalid": "Waa inuu ahaadaa liis furayaasha ilaha",
+      "filtersInvalid": "Shaandhooyinku waa inay ahaadaan liisas erayo gaagaaban, magac magaalo iyo noocyada loo-shaqeeyaha"
+    },
+    "email": {
+      "verifyEmail": {
+        "subject": "Koodhka xaqiijinta KOBANIQ",
+        "body": "Salaan,\n\nKoodhkaaga xaqiijinta KOBANIQ waa: {{code}}\n\nKu geli app-ka si aad u xaqiijiso iimaylkaaga. Koodhku wuxuu shaqaynayaa {{minutes}} daqiiqo.\n\nHaddii aadan samaysan akoon KOBANIQ, iska indho tir iimaylkan.\n\nKOBANIQ"
+      },
+      "resetPassword": {
+        "subject": "Dib u deji erayga sirta ah ee KOBANIQ",
+        "body": "Salaan,\n\nKoodhkaaga dib u dejinta erayga sirta ah ee KOBANIQ waa: {{code}}\n\nKu geli app-ka si aad u doorato eray sir ah oo cusub. Koodhku wuxuu shaqaynayaa {{minutes}} daqiiqo.\n\nHaddii aadan codsan dib u dejinta erayga sirta ah, iska indho tir iimaylkan; erayga sirta ahi isma beddelayo.\n\nKOBANIQ"
+      }
     }
   },
   "admin": {
@@ -218,12 +258,97 @@
         "user_suspend": "Isticmaale la hakiyay",
         "user_reactivate": "Isticmaale dib loo furay",
         "user_role_change": "Door la beddelay",
-        "user_delete": "Isticmaale la tirtiray"
+        "user_delete": "Isticmaale la tirtiray",
+        "job_source_enable": "Ilo shaqo ayaa la shiday",
+        "job_source_disable": "Ilo shaqo ayaa la damiyay",
+        "job_source_update": "Ilo shaqo ayaa la beddelay",
+        "region_update": "Magaalooyinka gobolka ayaa la beddelay"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",
       "empty": "Weli wax diiwaan ah ma jiraan.",
-      "error": "Diiwaanka hubinta lama soo dejin karo. Hubi in backend-ku shaqaynayo."
+      "error": "Diiwaanka hubinta lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
+      "values": {
+        "on": "Shidan",
+        "off": "Demisan"
+      }
+    },
+    "sources": {
+      "title": "Ilaha shaqooyinka",
+      "subtitle": "Halka baaritaanka shaqadu ka raadiyo shaqooyinka. Il waxaa la shidi karaa oo keliya marka shuruudaheeda la hubiyo oo server-ku leeyahay xiriirkeeda.",
+      "columns": {
+        "source": "Isha",
+        "regions": "Gobollada",
+        "status": "Xaaladda",
+        "terms": "Shuruudaha",
+        "adapter": "Xiriirka",
+        "health": "Caafimaadka",
+        "priority": "Kala horreynta",
+        "actions": "Ficillada"
+      },
+      "statuses": {
+        "enabled": "Shidan",
+        "disabled": "Demisan"
+      },
+      "types": {
+        "job_board": "Bogga shaqooyinka",
+        "ngo_un": "Hay’ad / QM",
+        "employer": "Loo-shaqeeye",
+        "government": "Dowladda",
+        "partner": "Iskaashade"
+      },
+      "termsChecked": "La hubiyay {{date}}",
+      "termsNotChecked": "Lama hubin",
+      "termsLink": "Akhri shuruudaha",
+      "adapterReady": "Diyaar",
+      "adapterMissing": "Ma jiro",
+      "health": "{{percent}}% khaladaad",
+      "lastSuccess": "Guushii u dambaysay {{time}}",
+      "neverSucceeded": "Weli ma jirto baaris guulaysatay",
+      "none": "Midna",
+      "enable": "Shid",
+      "disable": "Dami",
+      "edit": "Wax ka beddel",
+      "blocked": {
+        "terms": "Marka hore hubi shuruudaha",
+        "adapter": "Server-ku weli ma laha xiriirkeeda"
+      },
+      "confirm": {
+        "enable": "Ma shidaysaa {{name}}? Isticmaalayaashu isla markiiba way u dooran karaan baaritaanka shaqada.",
+        "disable": "Ma demisaa {{name}}? Isticmaalayaashu mar dambe ma dooran karaan, lagamana raadiyo.",
+        "cancel": "Jooji",
+        "yes": "Haa, sii wad"
+      },
+      "done": {
+        "enable": "{{name}} waa la shiday.",
+        "disable": "{{name}} waa la demiyay.",
+        "update": "{{name}} waa la keydiyay."
+      },
+      "editTitle": "Wax ka beddel {{name}}",
+      "regionsLabel": "Gobollada ay daboosho",
+      "employerTypesLabel": "Noocyada loo-shaqeeyaha",
+      "priorityLabel": "Kala horreynta app-ka (0–1000, kan yar ayaa hore)",
+      "needRegion": "Dooro ugu yaraan hal gobol.",
+      "badPriority": "Geli tiro dhan oo u dhaxaysa 0 ilaa 1000.",
+      "noChanges": "Waxba isma beddelin.",
+      "save": "Keydi",
+      "saving": "Waa la keydinayaa…",
+      "cancel": "Jooji",
+      "empty": "Weli ma jiraan ilo shaqo. Kooxda ayaa il ku darta: xiriir server-ka ku jira iyo diiwaan xog-ururin.",
+      "error": "Ilaha shaqooyinka lama soo rari karin. Hubi in backend-ku shaqaynayo."
+    },
+    "regions": {
+      "title": "Gobollada iyo magaalooyinka",
+      "subtitle": "Magaalooyinka la soo jeediyo marka isticmaalayaashu shaqooyinka shaandheeyaan. Hal magaalo sadar kasta.",
+      "citiesLabel": "Magaalooyinka {{region}}",
+      "count": "{{count}} magaalo",
+      "save": "Keydi magaalooyinka",
+      "saving": "Waa la keydinayaa…",
+      "saved": "Magaalooyinka {{region}} waa la keydiyay.",
+      "unchanged": "Ma jiraan isbeddel la keydiyo.",
+      "tooMany": "Ugu badnaan 100 magaalo gobol kasta.",
+      "tooLong": "Magaca magaalo waa inuusan ka badnaan 60 xaraf.",
+      "error": "Gobollada lama soo rari karin. Hubi in backend-ku shaqaynayo."
     }
   },
   "mobile": {

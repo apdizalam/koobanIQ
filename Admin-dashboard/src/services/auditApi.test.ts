@@ -23,6 +23,24 @@ describe('describeChange', () => {
     ).toEqual([{ field: 'status', from: 'active', to: 'suspended' }]);
   });
 
+  it('compares lists by value and ignores updatedAt (job source edits)', () => {
+    const before = { enabled: true, regions: ['somaliland'], priority: 100, updatedAt: '1' };
+    expect(
+      describeChange(
+        entry({
+          action: 'job_source.update',
+          before,
+          after: { ...before, regions: ['somaliland', 'somalia'], updatedAt: '2' },
+        }),
+      ),
+    ).toEqual([{ field: 'regions', from: ['somaliland'], to: ['somaliland', 'somalia'] }]);
+    expect(
+      describeChange(
+        entry({ action: 'job_source.disable', before, after: { ...before, enabled: false } }),
+      ),
+    ).toEqual([{ field: 'enabled', from: true, to: false }]);
+  });
+
   it('is empty when there is no before/after pair (delete, denied attempt)', () => {
     expect(describeChange(entry({ action: 'user.delete', before: { email: 'x@y.z' } }))).toEqual(
       [],

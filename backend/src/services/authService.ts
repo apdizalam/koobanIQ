@@ -3,6 +3,7 @@ import { hashPassword, verifyPassword } from '../lib/password.js';
 import { hashToken, issueRefreshToken, signAccessToken } from '../lib/tokens.js';
 import { RefreshToken } from '../models/RefreshToken.js';
 import { User, toPublicUser, type Language, type UserDocument } from '../models/User.js';
+import { sendCode, useCode } from './emailCodeService.js';
 
 export interface RegisterInput {
   email: string;
@@ -10,7 +11,11 @@ export interface RegisterInput {
   preferredLanguage?: Language;
 }
 
-/** Creates a local (email + password) account with role `user`. */
+/**
+ * Creates a local (email + password) account with role `user`, then emails a
+ * verification code in the account's language. If the email can't be sent the
+ * account still exists; the user can ask for a new code.
+ */
 export async function registerUser(input: RegisterInput) {
   const email = input.email.trim().toLowerCase();
   if (await User.exists({ email })) {
@@ -21,7 +26,68 @@ export async function registerUser(input: RegisterInput) {
     passwordHash: await hashPassword(input.password),
     preferredLanguage: input.preferredLanguage ?? 'en',
   });
+  try {
+    await sendCode(user, 'verifyEmail');
+  } catch (err) {
+    console.error('Verification email failed:', err instanceof Error ? err.message : err);
+  }
   return toPublicUser(user);
+}
+
+const normalise = (email: string) => email.trim().toLowerCase();
+
+/**
+ * Confirms the email address with the emailed code. Already verified: returns
+ * the user unchanged. Unknown email gets the same INVALID_CODE answer as a wrong
+ * code, so nobody can find out which emails have accounts.
+ */
+export async function verifyEmail(input: { email: string; code: string }) {
+  const user = await User.findOne({ email: normalise(input.email) });
+  if (!user) {
+    throw new AppError(400, 'INVALID_CODE', 'The code is wrong or has expired. Ask for a new one');
+  }
+  if (user.emailVerified) return toPublicUser(user);
+  await useCode(user._id, 'verifyEmail', input.code);
+  user.emailVerified = true;
+  await user.save();
+  return toPublicUser(user);
+}
+
+/** Sends a new verification code if the account exists and isn't verified yet. Always "ok". */
+export async function resendVerification(input: { email: string }) {
+  const user = await User.findOne({ email: normalise(input.email) });
+  if (!user || user.emailVerified || user.status !== 'active') return;
+  await sendCode(user, 'verifyEmail');
+}
+
+/**
+ * Emails a password-reset code to an active local account. Always "ok", even for
+ * unknown emails, so nobody can find out which emails have accounts.
+ */
+export async function forgotPassword(input: { email: string }) {
+  const user = await User.findOne({ email: normalise(input.email) });
+  if (!user || user.status !== 'active' || user.authProvider !== 'local') return;
+  await sendCode(user, 'resetPassword');
+}
+
+/**
+ * Sets a new password with the emailed code. Every existing session is ended
+ * (all refresh tokens revoked), so a stolen session stops working. Using the
+ * code also proves the email address, so the account becomes verified.
+ */
+export async function resetPassword(input: { email: string; code: string; password: string }) {
+  const user = await User.findOne({ email: normalise(input.email) });
+  if (!user || user.status !== 'active') {
+    throw new AppError(400, 'INVALID_CODE', 'The code is wrong or has expired. Ask for a new one');
+  }
+  await useCode(user._id, 'resetPassword', input.code);
+  user.passwordHash = await hashPassword(input.password);
+  user.emailVerified = true;
+  await user.save();
+  await RefreshToken.updateMany(
+    { userId: user._id, revokedAt: null },
+    { revokedAt: new Date(), revokedReason: 'passwordReset' },
+  );
 }
 
 export interface LoginInput {

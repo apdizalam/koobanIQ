@@ -11,6 +11,22 @@
     "state": "pending",
     "en": "Admin access denied"
   },
+  "admin.audit.actions.job_source_disable": {
+    "state": "pending",
+    "en": "Disabled a job source"
+  },
+  "admin.audit.actions.job_source_enable": {
+    "state": "pending",
+    "en": "Enabled a job source"
+  },
+  "admin.audit.actions.job_source_update": {
+    "state": "pending",
+    "en": "Changed a job source"
+  },
+  "admin.audit.actions.region_update": {
+    "state": "pending",
+    "en": "Changed region cities"
+  },
   "admin.audit.actions.user_delete": {
     "state": "pending",
     "en": "Deleted a user"
@@ -74,6 +90,14 @@
   "admin.audit.title": {
     "state": "pending",
     "en": "Audit log"
+  },
+  "admin.audit.values.off": {
+    "state": "pending",
+    "en": "Off"
+  },
+  "admin.audit.values.on": {
+    "state": "pending",
+    "en": "On"
   },
   "admin.errors.generic": {
     "state": "pending",
@@ -311,6 +335,50 @@
     "state": "pending",
     "en": "Updated {{time}}."
   },
+  "admin.regions.citiesLabel": {
+    "state": "pending",
+    "en": "{{region}} cities"
+  },
+  "admin.regions.count": {
+    "state": "pending",
+    "en": "{{count}} cities"
+  },
+  "admin.regions.error": {
+    "state": "pending",
+    "en": "Could not load the regions. Check that the backend is running."
+  },
+  "admin.regions.save": {
+    "state": "pending",
+    "en": "Save cities"
+  },
+  "admin.regions.saved": {
+    "state": "pending",
+    "en": "{{region}} cities saved."
+  },
+  "admin.regions.saving": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "admin.regions.subtitle": {
+    "state": "pending",
+    "en": "City suggestions users see when they filter jobs. One city per line."
+  },
+  "admin.regions.title": {
+    "state": "pending",
+    "en": "Regions and cities"
+  },
+  "admin.regions.tooLong": {
+    "state": "pending",
+    "en": "A city name can be at most 60 characters."
+  },
+  "admin.regions.tooMany": {
+    "state": "pending",
+    "en": "At most 100 cities per region."
+  },
+  "admin.regions.unchanged": {
+    "state": "pending",
+    "en": "No changes to save."
+  },
   "admin.shell.closeMenu": {
     "state": "pending",
     "en": "Close menu"
@@ -326,6 +394,206 @@
   "admin.shell.signedInAs": {
     "state": "pending",
     "en": "Signed in as"
+  },
+  "admin.sources.adapterMissing": {
+    "state": "pending",
+    "en": "Missing"
+  },
+  "admin.sources.adapterReady": {
+    "state": "pending",
+    "en": "Ready"
+  },
+  "admin.sources.badPriority": {
+    "state": "pending",
+    "en": "Enter a whole number from 0 to 1000."
+  },
+  "admin.sources.blocked.adapter": {
+    "state": "pending",
+    "en": "No adapter in the server yet"
+  },
+  "admin.sources.blocked.terms": {
+    "state": "pending",
+    "en": "Check the terms first"
+  },
+  "admin.sources.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.sources.columns.actions": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.sources.columns.adapter": {
+    "state": "pending",
+    "en": "Adapter"
+  },
+  "admin.sources.columns.health": {
+    "state": "pending",
+    "en": "Health"
+  },
+  "admin.sources.columns.priority": {
+    "state": "pending",
+    "en": "Order"
+  },
+  "admin.sources.columns.regions": {
+    "state": "pending",
+    "en": "Regions"
+  },
+  "admin.sources.columns.source": {
+    "state": "pending",
+    "en": "Source"
+  },
+  "admin.sources.columns.status": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.sources.columns.terms": {
+    "state": "pending",
+    "en": "Terms"
+  },
+  "admin.sources.confirm.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.sources.confirm.disable": {
+    "state": "pending",
+    "en": "Switch off {{name}}? Users can no longer choose it, and it is not searched."
+  },
+  "admin.sources.confirm.enable": {
+    "state": "pending",
+    "en": "Switch on {{name}}? Users can choose it for job research right away."
+  },
+  "admin.sources.confirm.yes": {
+    "state": "pending",
+    "en": "Yes, continue"
+  },
+  "admin.sources.disable": {
+    "state": "pending",
+    "en": "Switch off"
+  },
+  "admin.sources.done.disable": {
+    "state": "pending",
+    "en": "{{name}} is switched off."
+  },
+  "admin.sources.done.enable": {
+    "state": "pending",
+    "en": "{{name}} is switched on."
+  },
+  "admin.sources.done.update": {
+    "state": "pending",
+    "en": "{{name}} was saved."
+  },
+  "admin.sources.edit": {
+    "state": "pending",
+    "en": "Edit"
+  },
+  "admin.sources.editTitle": {
+    "state": "pending",
+    "en": "Edit {{name}}"
+  },
+  "admin.sources.employerTypesLabel": {
+    "state": "pending",
+    "en": "Employer types"
+  },
+  "admin.sources.empty": {
+    "state": "pending",
+    "en": "No job sources yet. The team adds a source as an adapter in the server plus a database record."
+  },
+  "admin.sources.enable": {
+    "state": "pending",
+    "en": "Switch on"
+  },
+  "admin.sources.error": {
+    "state": "pending",
+    "en": "Could not load the job sources. Check that the backend is running."
+  },
+  "admin.sources.health": {
+    "state": "pending",
+    "en": "{{percent}}% errors"
+  },
+  "admin.sources.lastSuccess": {
+    "state": "pending",
+    "en": "Last success {{time}}"
+  },
+  "admin.sources.needRegion": {
+    "state": "pending",
+    "en": "Choose at least one region."
+  },
+  "admin.sources.neverSucceeded": {
+    "state": "pending",
+    "en": "No successful run yet"
+  },
+  "admin.sources.noChanges": {
+    "state": "pending",
+    "en": "Nothing changed."
+  },
+  "admin.sources.none": {
+    "state": "pending",
+    "en": "None"
+  },
+  "admin.sources.priorityLabel": {
+    "state": "pending",
+    "en": "Order in the app (0–1000, lower first)"
+  },
+  "admin.sources.regionsLabel": {
+    "state": "pending",
+    "en": "Regions it covers"
+  },
+  "admin.sources.save": {
+    "state": "pending",
+    "en": "Save"
+  },
+  "admin.sources.saving": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "admin.sources.statuses.disabled": {
+    "state": "pending",
+    "en": "Off"
+  },
+  "admin.sources.statuses.enabled": {
+    "state": "pending",
+    "en": "On"
+  },
+  "admin.sources.subtitle": {
+    "state": "pending",
+    "en": "Where job research looks for jobs. A source can only be switched on after its terms were checked and the server has an adapter for it."
+  },
+  "admin.sources.termsChecked": {
+    "state": "pending",
+    "en": "Checked {{date}}"
+  },
+  "admin.sources.termsLink": {
+    "state": "pending",
+    "en": "Read terms"
+  },
+  "admin.sources.termsNotChecked": {
+    "state": "pending",
+    "en": "Not checked"
+  },
+  "admin.sources.title": {
+    "state": "pending",
+    "en": "Job sources"
+  },
+  "admin.sources.types.employer": {
+    "state": "pending",
+    "en": "Employer"
+  },
+  "admin.sources.types.government": {
+    "state": "pending",
+    "en": "Government"
+  },
+  "admin.sources.types.job_board": {
+    "state": "pending",
+    "en": "Job board"
+  },
+  "admin.sources.types.ngo_un": {
+    "state": "pending",
+    "en": "NGO / UN"
+  },
+  "admin.sources.types.partner": {
+    "state": "pending",
+    "en": "Partner"
   },
   "admin.users.actions.delete": {
     "state": "pending",
@@ -523,6 +791,34 @@
     "state": "pending",
     "en": "This is your own account. Another admin must change it."
   },
+  "common.employerType.company": {
+    "state": "pending",
+    "en": "Company"
+  },
+  "common.employerType.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "common.employerType.government": {
+    "state": "pending",
+    "en": "Government"
+  },
+  "common.employerType.health": {
+    "state": "pending",
+    "en": "Health"
+  },
+  "common.employerType.ngo": {
+    "state": "pending",
+    "en": "NGO"
+  },
+  "common.employerType.other": {
+    "state": "pending",
+    "en": "Other"
+  },
+  "common.employerType.un_agency": {
+    "state": "pending",
+    "en": "UN agency"
+  },
   "common.language.en": {
     "state": "pending",
     "en": "English"
@@ -538,6 +834,18 @@
   "common.loading": {
     "state": "pending",
     "en": "Loading…"
+  },
+  "common.region.remote": {
+    "state": "pending",
+    "en": "Remote"
+  },
+  "common.region.somalia": {
+    "state": "pending",
+    "en": "Somalia"
+  },
+  "common.region.somaliland": {
+    "state": "pending",
+    "en": "Somaliland"
   },
   "mobile.auth.appName": {
     "state": "pending",
@@ -1035,6 +1343,22 @@
     "state": "pending",
     "en": "Switch to dark"
   },
+  "server.email.resetPassword.body": {
+    "state": "pending",
+    "en": "Hello,\n\nYour KOBANIQ password reset code is: {{code}}\n\nEnter it in the app to choose a new password. The code works for {{minutes}} minutes.\n\nIf you did not ask to reset your password, you can ignore this email; your password stays the same.\n\nKOBANIQ"
+  },
+  "server.email.resetPassword.subject": {
+    "state": "pending",
+    "en": "Reset your KOBANIQ password"
+  },
+  "server.email.verifyEmail.body": {
+    "state": "pending",
+    "en": "Hello,\n\nYour KOBANIQ verification code is: {{code}}\n\nEnter it in the app to confirm your email. The code works for {{minutes}} minutes.\n\nIf you did not create a KOBANIQ account, you can ignore this email.\n\nKOBANIQ"
+  },
+  "server.email.verifyEmail.subject": {
+    "state": "pending",
+    "en": "Your KOBANIQ verification code"
+  },
   "server.errors.ACCOUNT_SUSPENDED": {
     "state": "pending",
     "en": "This account is suspended"
@@ -1063,6 +1387,10 @@
     "state": "pending",
     "en": "Something went wrong"
   },
+  "server.errors.INVALID_CODE": {
+    "state": "pending",
+    "en": "The code is wrong or has expired. Ask for a new one"
+  },
   "server.errors.INVALID_CREDENTIALS": {
     "state": "pending",
     "en": "Email or password is incorrect"
@@ -1079,6 +1407,10 @@
     "state": "pending",
     "en": "Access token is invalid"
   },
+  "server.errors.JOB_SOURCE_NOT_FOUND": {
+    "state": "pending",
+    "en": "Job source not found"
+  },
   "server.errors.LAST_ADMIN": {
     "state": "pending",
     "en": "At least one active admin must remain"
@@ -1087,13 +1419,37 @@
     "state": "pending",
     "en": "Route not found"
   },
+  "server.errors.NO_SOURCES_SELECTED": {
+    "state": "pending",
+    "en": "Choose at least one job source"
+  },
   "server.errors.REFRESH_TOKEN_REUSED": {
     "state": "pending",
     "en": "This session was ended for safety. Please log in again"
   },
+  "server.errors.REGION_NOT_FOUND": {
+    "state": "pending",
+    "en": "Region not found"
+  },
+  "server.errors.SOURCE_ADAPTER_MISSING": {
+    "state": "pending",
+    "en": "This source can't be enabled because the server has no adapter for it yet"
+  },
+  "server.errors.SOURCE_NOT_AVAILABLE": {
+    "state": "pending",
+    "en": "One or more of the chosen sources are not available. Refresh the list and try again"
+  },
+  "server.errors.SOURCE_TERMS_NOT_CHECKED": {
+    "state": "pending",
+    "en": "This source can't be enabled until its terms have been checked"
+  },
   "server.errors.TOKEN_EXPIRED": {
     "state": "pending",
     "en": "Access token has expired"
+  },
+  "server.errors.TOO_MANY_ATTEMPTS": {
+    "state": "pending",
+    "en": "Too many wrong codes. Ask for a new one"
   },
   "server.errors.USER_NOT_FOUND": {
     "state": "pending",
@@ -1107,6 +1463,14 @@
     "state": "pending",
     "en": "Must be one of the audit actions"
   },
+  "server.validation.citiesInvalid": {
+    "state": "pending",
+    "en": "Must be a list of up to 100 city names (each up to 60 characters)"
+  },
+  "server.validation.codeInvalid": {
+    "state": "pending",
+    "en": "Enter the 6-digit code from the email"
+  },
   "server.validation.emailInvalid": {
     "state": "pending",
     "en": "Enter a valid email address"
@@ -1115,9 +1479,21 @@
     "state": "pending",
     "en": "Email is required"
   },
+  "server.validation.employerTypeInvalid": {
+    "state": "pending",
+    "en": "Must be one of the employer types"
+  },
+  "server.validation.enabledInvalid": {
+    "state": "pending",
+    "en": "Must be true or false"
+  },
   "server.validation.fieldNotEditable": {
     "state": "pending",
     "en": "This field cannot be changed here"
+  },
+  "server.validation.filtersInvalid": {
+    "state": "pending",
+    "en": "Filters must be short lists of words, a city name and employer types"
   },
   "server.validation.languageInvalid": {
     "state": "pending",
@@ -1143,13 +1519,25 @@
     "state": "pending",
     "en": "Must be day, week, month or year"
   },
+  "server.validation.priorityInvalid": {
+    "state": "pending",
+    "en": "Must be a whole number from 0 to 1000"
+  },
   "server.validation.refreshTokenRequired": {
     "state": "pending",
     "en": "Refresh token is required"
   },
+  "server.validation.regionInvalid": {
+    "state": "pending",
+    "en": "Must be somaliland, somalia or remote"
+  },
   "server.validation.roleInvalid": {
     "state": "pending",
     "en": "Must be \"user\" or \"admin\""
+  },
+  "server.validation.sourceKeysInvalid": {
+    "state": "pending",
+    "en": "Must be a list of source keys"
   },
   "server.validation.statusInvalid": {
     "state": "pending",
