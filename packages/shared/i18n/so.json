@@ -401,6 +401,130 @@
         "close": "Xir",
         "body": "Waxyaabaha xaashidu halkan ayay galayaan."
       }
+    },
+    "auth": {
+      "appName": "KOBANIQ",
+      "welcome": {
+        "tagline": "Ogow Xirfadahaaga.\nHel Fursaddaada.",
+        "body": "Garasho xirfadeed oo AI ku shaqaysa: xaqiiji waxaad taqaan, hel shaqooyin dhab ah oo kugu habboon, oo samee CV-yo kuu gaar ah.",
+        "start": "Bilow",
+        "haveAccount": "Horey ayaan akoon u lahaa"
+      },
+      "language": {
+        "title": "Dooro luqaddaada",
+        "subtitle": "Waad beddeli kartaa wakhti kasta oo Dejinta ah.",
+        "continue": "Sii wad"
+      },
+      "onboarding": {
+        "skip": "Ka bood",
+        "next": "Xiga",
+        "start": "Samee akoonkayga",
+        "step": "Tallaabada {{current}} ee {{total}}",
+        "skills": {
+          "title": "Ogow waxaad dhab ahaan taqaan",
+          "body": "Qaado imtixaanno gaagaaban oo isbeddela si aad u xaqiijiso xirfadahaaga — had iyo jeer waa ikhtiyaari. Natiijooyinku waxay cabbiraan aqoonta, ma aha caddayn khibrad dhab ah.",
+          "card": "Muuqaalka xirfadahaaga",
+          "assessed": "La qiimeeyay — imtixaan ayaa xaqiijiyay",
+          "selfReported": "Is-sheeg — muuqaalkaaga ayuu ka yimid"
+        },
+        "jobs": {
+          "title": "Shaqooyin dhab ah, si cad loo sharxay",
+          "body": "Ka raadi ilaha shaqooyinka aad doorato Somaliland, Soomaaliya iyo meel fog. Isku-beeg kastaa wuxuu kuu sheegayaa sababta uu kuugu habboon yahay — iyo xirfadaha maqan.",
+          "jobTitle": "Horumariye Mobile oo bilow ah",
+          "company": "Hargeisa Tech Hub",
+          "location": "Hargeysa",
+          "match": "Isku-beeg xooggan",
+          "explanation": "Wuxuu buuxiyaa 4 ka mid ah 5 xirfadood. Maqan: GraphQL.",
+          "save": "Kaydi",
+          "saved": "La kaydiyay"
+        },
+        "cv": {
+          "title": "CV shaqo kasta",
+          "body": "Samee CV shaqo kasta oo ka yimid muuqaalkaaga dhabta ah, Ingiriisi ama Soomaali. Waxba lama abuuro, adiguna waad ansixisaa ka hor intaadan dhoofin.",
+          "card": "CV · Horumariye Mobile oo bilow ah",
+          "language": "Soomaali",
+          "approve": "Ansixi ka hor dhoofinta"
+        }
+      },
+      "placeholder": {
+        "title": "Waxay imanaysaa tallaabada xigta",
+        "body": "Shaashaddan waxaa la dhisayaa qaybta xigta ee hawshan.",
+        "back": "Dib u noqo"
+      },
+      "login": {
+        "title": "Ku soo dhowow mar kale",
+        "subtitle": "Soo gal si aad u aragto isku-beegyadaada oo aad u sii wadato qiimaynadaada.",
+        "email": "Iimayl",
+        "emailPlaceholder": "adiga@tusaale.com",
+        "password": "Erayga sirta ah",
+        "forgot": "Ma ilowday erayga sirta ah?",
+        "submit": "Soo gal",
+        "submitting": "Waa la soo galayaa…",
+        "or": "ama",
+        "google": "Ku sii wad Google",
+        "newHere": "Ku cusub KOBANIQ?",
+        "createAccount": "Samee akoon",
+        "passwordChanged": "Erayga sirta ah waa la beddelay. Ku gal erayga sirta ah ee cusub."
+      },
+      "signUp": {
+        "title": "Samee akoonkaaga",
+        "subtitle": "Bilaash qof walba. Luqaddaada: {{language}}.",
+        "email": "Iimayl",
+        "password": "Erayga sirta ah",
+        "passwordHint": "Ugu yaraan 8 xaraf.",
+        "submit": "Samee akoon",
+        "submitting": "Akoonka waa la samaynayaa…",
+        "haveAccount": "Horey ma u lahayd akoon?",
+        "logIn": "Soo gal"
+      },
+      "errors": {
+        "emailInvalid": "Geli iimayl sax ah.",
+        "passwordRequired": "Geli erayga sirta ah.",
+        "passwordTooShort": "Isticmaal ugu yaraan 8 xaraf.",
+        "passwordTooLong": "Isticmaal ugu badnaan 128 xaraf.",
+        "invalidCredentials": "Iimaylka ama erayga sirta ah waa khalad.",
+        "emailTaken": "Akoon leh iimaylkan horay ayuu u jiray. Halkii soo gal.",
+        "suspended": "Akoonkan waa la hakiyay. La xiriir taageerada.",
+        "network": "Seerfarka lama gaari karo. Hubi xiriirka internetkaaga.",
+        "generic": "Khalad ayaa dhacay. Fadlan isku day mar kale.",
+        "codeInvalid": "Geli koodhka 6-da god ah ee iimaylka.",
+        "invalidCode": "Koodhku waa khalad ama wuu dhacay. Codso mid cusub.",
+        "tooManyAttempts": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub."
+      },
+      "later": {
+        "google": "Ku-gelitaanka Google wuxuu imanayaa cusboonaysiin dambe."
+      },
+      "home": {
+        "title": "Waad soo gashay",
+        "body": "Waxaad ku gashay {{email}}. Shaashadda dhabta ah ee Hoyga waxay la imanaysaa hawsha xigta.",
+        "logout": "Ka bax"
+      },
+      "restoring": "Waxaa la hubinayaa gelitaankaaga…",
+      "verify": {
+        "title": "Hubi iimaylkaaga",
+        "subtitle": "Waxaan koodh 6 god ah u dirnay {{email}}. Geli si aad u xaqiijiso iimaylkaaga.",
+        "code": "Koodh",
+        "submit": "Xaqiiji iimaylka",
+        "submitting": "Waa la xaqiijinayaa…",
+        "resend": "Dir koodh cusub",
+        "resendIn": "Koodh cusub waad codsan kartaa {{seconds}} ilbiriqsi kadib",
+        "codeSent": "Koodh cusub ayaa kuu socda. Hubi sanduuqa iimaylka iyo spam-ka.",
+        "wrongEmail": "Iimaylka ma khaldan yahay?",
+        "logOut": "Ka bax"
+      },
+      "forgot": {
+        "title": "Ma ilowday erayga sirta ah?",
+        "subtitle": "Geli iimaylkaaga. Haddii uu leeyahay akoon KOBANIQ, waxaan kuu soo diri doonnaa koodh aad ku beddesho erayga sirta ah.",
+        "submit": "Dir koodhka",
+        "submitting": "Waa la dirayaa…"
+      },
+      "reset": {
+        "title": "Dooro eray sir ah oo cusub",
+        "subtitle": "Geli koodhka aan u dirnay {{email}} iyo erayga sirta ah ee cusub.",
+        "newPassword": "Eray sir ah oo cusub",
+        "submit": "Kaydi erayga sirta ah ee cusub",
+        "submitting": "Waa la kaydinayaa…"
+      }
     }
   }
 }

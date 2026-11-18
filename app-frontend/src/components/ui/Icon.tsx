@@ -4,6 +4,9 @@ import { Image } from 'expo-image';
 const icons = {
   check: require('../../../assets/icons/check.svg'),
   mail: require('../../../assets/icons/mail.svg'),
+  'arrow-left': require('../../../assets/icons/arrow-left.svg'),
+  lock: require('../../../assets/icons/lock.svg'),
+  sparkle: require('../../../assets/icons/sparkle.svg'),
 } as const;
 
 export type IconName = keyof typeof icons;

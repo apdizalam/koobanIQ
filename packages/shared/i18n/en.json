@@ -401,6 +401,130 @@
         "close": "Close",
         "body": "Sheet content goes here."
       }
+    },
+    "auth": {
+      "appName": "KOBANIQ",
+      "welcome": {
+        "tagline": "Know Your Skills.\nFind Your Opportunity.",
+        "body": "AI-powered career intelligence: verify what you know, discover real jobs that fit, and build tailored CVs.",
+        "start": "Get started",
+        "haveAccount": "I already have an account"
+      },
+      "language": {
+        "title": "Choose your language",
+        "subtitle": "You can change it any time in Settings.",
+        "continue": "Continue"
+      },
+      "onboarding": {
+        "skip": "Skip",
+        "next": "Next",
+        "start": "Create my account",
+        "step": "Step {{current}} of {{total}}",
+        "skills": {
+          "title": "Know what you actually know",
+          "body": "Take short adaptive quizzes to verify your skills — always optional. Results measure knowledge, not proof of real-world experience.",
+          "card": "Your skill profile",
+          "assessed": "Assessed — verified by a quiz",
+          "selfReported": "Self-reported — from your profile"
+        },
+        "jobs": {
+          "title": "Real jobs, clearly explained",
+          "body": "Search the job sources you choose in Somaliland, Somalia and remote. Every match tells you why it fits — and which skills are missing.",
+          "jobTitle": "Junior Mobile Developer",
+          "company": "Hargeisa Tech Hub",
+          "location": "Hargeisa",
+          "match": "Strong match",
+          "explanation": "Matches 4 of 5 required skills. Missing: GraphQL.",
+          "save": "Save",
+          "saved": "Saved"
+        },
+        "cv": {
+          "title": "A CV for every job",
+          "body": "Build a CV for each job from your real profile, in English or Somali. Nothing is invented, and you approve it before you export.",
+          "card": "CV · Junior Mobile Developer",
+          "language": "English",
+          "approve": "Approve before export"
+        }
+      },
+      "placeholder": {
+        "title": "Coming in the next step",
+        "body": "This screen is built in the next part of this task.",
+        "back": "Back"
+      },
+      "login": {
+        "title": "Welcome back",
+        "subtitle": "Log in to see your matches and continue your assessments.",
+        "email": "Email",
+        "emailPlaceholder": "you@example.com",
+        "password": "Password",
+        "forgot": "Forgot password?",
+        "submit": "Log in",
+        "submitting": "Logging in…",
+        "or": "or",
+        "google": "Continue with Google",
+        "newHere": "New to KOBANIQ?",
+        "createAccount": "Create an account",
+        "passwordChanged": "Your password was changed. Log in with your new password."
+      },
+      "signUp": {
+        "title": "Create your account",
+        "subtitle": "Free for everyone. Your language: {{language}}.",
+        "email": "Email",
+        "password": "Password",
+        "passwordHint": "At least 8 characters.",
+        "submit": "Create account",
+        "submitting": "Creating account…",
+        "haveAccount": "Already have an account?",
+        "logIn": "Log in"
+      },
+      "errors": {
+        "emailInvalid": "Enter a valid email address.",
+        "passwordRequired": "Enter your password.",
+        "passwordTooShort": "Use at least 8 characters.",
+        "passwordTooLong": "Use at most 128 characters.",
+        "invalidCredentials": "Email or password is incorrect.",
+        "emailTaken": "An account with this email already exists. Log in instead.",
+        "suspended": "This account is suspended. Contact support.",
+        "network": "Cannot reach the server. Check your internet connection.",
+        "generic": "Something went wrong. Please try again.",
+        "codeInvalid": "Enter the 6-digit code from the email.",
+        "invalidCode": "The code is wrong or has expired. Ask for a new one.",
+        "tooManyAttempts": "Too many wrong codes. Ask for a new one."
+      },
+      "later": {
+        "google": "Google sign-in arrives in a later update."
+      },
+      "home": {
+        "title": "You are signed in",
+        "body": "Signed in as {{email}}. The real Home screen comes with the next task.",
+        "logout": "Log out"
+      },
+      "restoring": "Checking your sign-in…",
+      "verify": {
+        "title": "Check your email",
+        "subtitle": "We sent a 6-digit code to {{email}}. Enter it to confirm your email.",
+        "code": "Code",
+        "submit": "Confirm email",
+        "submitting": "Confirming…",
+        "resend": "Send a new code",
+        "resendIn": "You can ask for a new code in {{seconds}} s",
+        "codeSent": "A new code is on its way. Check your inbox and spam folder.",
+        "wrongEmail": "Wrong email?",
+        "logOut": "Log out"
+      },
+      "forgot": {
+        "title": "Forgot your password?",
+        "subtitle": "Enter your email. If it has a KOBANIQ account, we'll send a code to reset your password.",
+        "submit": "Send code",
+        "submitting": "Sending…"
+      },
+      "reset": {
+        "title": "Choose a new password",
+        "subtitle": "Enter the code we sent to {{email}} and your new password.",
+        "newPassword": "New password",
+        "submit": "Save new password",
+        "submitting": "Saving…"
+      }
     }
   }
 }
