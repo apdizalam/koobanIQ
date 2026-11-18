@@ -22,6 +22,10 @@ export interface AuthState {
    * Signs the user out if the session is no longer valid.
    */
   getAccessToken: () => Promise<string>;
+  /** Confirms the signed-in user's email with the emailed code. */
+  verifyEmail: (code: string) => Promise<void>;
+  /** Emails the signed-in user a new verification code. */
+  resendVerification: () => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthState | null>(null);

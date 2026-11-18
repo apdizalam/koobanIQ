@@ -1,4 +1,4 @@
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
@@ -12,19 +12,25 @@ import { TextLink } from '../../components/ui/TextLink';
 import { useTheme } from '../../theme';
 import { check, loginSchema, type FieldErrors } from '../../utils/validation';
 
-type Notice = { kind: 'error'; key: RequestErrorKey } | { kind: 'info'; key: 'forgot' | 'google' };
+type Notice =
+  | { kind: 'error'; key: RequestErrorKey }
+  | { kind: 'info'; key: 'mobile.auth.later.google' | 'mobile.auth.login.passwordChanged' };
 
 /** Figma "03 · Log in": email, password, forgot password, Google, create an account. */
 export default function LoginScreen() {
   const { t } = useTranslation();
   const { signIn } = useAuth();
   const { colors, typography, spacing } = useTheme();
-  const [email, setEmail] = useState('');
+  // After "Reset password" the user arrives here with their email and a confirmation.
+  const params = useLocalSearchParams<{ email?: string; reset?: string }>();
+  const [email, setEmail] = useState(params.email ?? '');
   const [password, setPassword] = useState('');
   const [fieldErrors, setFieldErrors] = useState<FieldErrors<{ email: string; password: string }>>(
     {},
   );
-  const [notice, setNotice] = useState<Notice | null>(null);
+  const [notice, setNotice] = useState<Notice | null>(
+    params.reset === 'done' ? { kind: 'info', key: 'mobile.auth.login.passwordChanged' } : null,
+  );
   const [busy, setBusy] = useState(false);
 
   async function submit() {
@@ -95,7 +101,9 @@ export default function LoginScreen() {
         <TextLink
           label={t('mobile.auth.login.forgot')}
           align="flex-end"
-          onPress={() => setNotice({ kind: 'info', key: 'forgot' })}
+          onPress={() =>
+            router.push({ pathname: '/forgot-password', params: { email: email.trim() } })
+          }
           testID="login-forgot"
         />
       </View>
@@ -103,11 +111,7 @@ export default function LoginScreen() {
       {notice ? (
         <FormMessage
           tone={notice.kind}
-          text={
-            notice.kind === 'error'
-              ? t(`mobile.auth.errors.${notice.key}`)
-              : t(`mobile.auth.later.${notice.key}`)
-          }
+          text={notice.kind === 'error' ? t(`mobile.auth.errors.${notice.key}`) : t(notice.key)}
         />
       ) : null}
 
@@ -128,7 +132,7 @@ export default function LoginScreen() {
       <Button
         variant="secondary"
         label={t('mobile.auth.login.google')}
-        onPress={() => setNotice({ kind: 'info', key: 'google' })}
+        onPress={() => setNotice({ kind: 'info', key: 'mobile.auth.later.google' })}
         testID="login-google"
       />
     </AuthScreen>

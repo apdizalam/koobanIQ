@@ -19,18 +19,19 @@ jest.mock('expo-secure-store', () => ({
 
 const REFRESH_KEY = 'kobaniq.refreshToken';
 
-const user = (email: string, preferredLanguage = 'en') => ({
+// Accounts are verified unless a test says otherwise (unverified accounts go to Verify email).
+const user = (email: string, preferredLanguage = 'en', emailVerified = true) => ({
   id: 'u1',
   email,
   role: 'user',
   status: 'active',
-  emailVerified: false,
+  emailVerified,
   preferredLanguage,
   createdAt: '2026-11-17T00:00:00.000Z',
 });
 
-const session = (email: string, preferredLanguage = 'en') => ({
-  user: user(email, preferredLanguage),
+const session = (email: string, preferredLanguage = 'en', emailVerified = true) => ({
+  user: user(email, preferredLanguage, emailVerified),
   accessToken: 'access-1',
   accessTokenExpiresIn: 900,
   refreshToken: 'refresh-1',
@@ -144,10 +145,8 @@ describe('Log in', () => {
     expect(i18n.language).toBe('so');
   });
 
-  it('"Forgot password?" and Google say they come later', async () => {
+  it('Google says it comes later (Forgot password is tested in passwordReset.test.tsx)', async () => {
     await renderApp('/login');
-    await press('login-forgot');
-    expect(screen.getByText('Password reset arrives once email sending is set up.')).toBeTruthy();
     await press('login-google');
     expect(screen.getByText('Google sign-in arrives in a later update.')).toBeTruthy();
   });
@@ -175,12 +174,12 @@ describe('Sign up', () => {
     expect(screen).toHavePathname('/sign-up');
   });
 
-  it('creates the account in the chosen language, signs in and opens Home', async () => {
+  it('creates the account in the chosen language, signs in and opens Verify email', async () => {
     await act(async () => {
       await i18n.changeLanguage('so');
     });
-    routes['POST /auth/register'] = ok({ user: user('new@example.com', 'so') }, 201);
-    routes['POST /auth/login'] = ok(session('new@example.com', 'so'));
+    routes['POST /auth/register'] = ok({ user: user('new@example.com', 'so', false) }, 201);
+    routes['POST /auth/login'] = ok(session('new@example.com', 'so', false));
     await renderApp('/sign-up');
     await type('sign-up-email', 'new@example.com');
     await type('sign-up-password', 'secret123');
@@ -193,7 +192,8 @@ describe('Sign up', () => {
       preferredLanguage: 'so',
     });
     expect(calls[0].headers['Accept-Language']).toBe('so');
-    expect(screen).toHavePathname('/home');
+    // User Flow: sign-up → verify the emailed code → Home.
+    expect(screen).toHavePathname('/verify-email');
     expect(mockSecureStore.get(REFRESH_KEY)).toBe('refresh-1');
   });
 });

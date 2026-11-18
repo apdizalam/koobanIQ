@@ -543,6 +543,10 @@
     "state": "pending",
     "en": "KOBANIQ"
   },
+  "mobile.auth.errors.codeInvalid": {
+    "state": "pending",
+    "en": "Enter the 6-digit code from the email."
+  },
   "mobile.auth.errors.emailInvalid": {
     "state": "pending",
     "en": "Enter a valid email address."
@@ -554,6 +558,10 @@
   "mobile.auth.errors.generic": {
     "state": "pending",
     "en": "Something went wrong. Please try again."
+  },
+  "mobile.auth.errors.invalidCode": {
+    "state": "pending",
+    "en": "The code is wrong or has expired. Ask for a new one."
   },
   "mobile.auth.errors.invalidCredentials": {
     "state": "pending",
@@ -579,6 +587,26 @@
     "state": "pending",
     "en": "This account is suspended. Contact support."
   },
+  "mobile.auth.errors.tooManyAttempts": {
+    "state": "pending",
+    "en": "Too many wrong codes. Ask for a new one."
+  },
+  "mobile.auth.forgot.submit": {
+    "state": "pending",
+    "en": "Send code"
+  },
+  "mobile.auth.forgot.submitting": {
+    "state": "pending",
+    "en": "Sending…"
+  },
+  "mobile.auth.forgot.subtitle": {
+    "state": "pending",
+    "en": "Enter your email. If it has a KOBANIQ account, we'll send a code to reset your password."
+  },
+  "mobile.auth.forgot.title": {
+    "state": "pending",
+    "en": "Forgot your password?"
+  },
   "mobile.auth.home.body": {
     "state": "pending",
     "en": "Signed in as {{email}}. The real Home screen comes with the next task."
@@ -602,10 +630,6 @@
   "mobile.auth.language.title": {
     "state": "pending",
     "en": "Choose your language"
-  },
-  "mobile.auth.later.forgot": {
-    "state": "pending",
-    "en": "Password reset arrives once email sending is set up."
   },
   "mobile.auth.later.google": {
     "state": "pending",
@@ -642,6 +666,10 @@
   "mobile.auth.login.password": {
     "state": "pending",
     "en": "Password"
+  },
+  "mobile.auth.login.passwordChanged": {
+    "state": "pending",
+    "en": "Your password was changed. Log in with your new password."
   },
   "mobile.auth.login.submit": {
     "state": "pending",
@@ -763,6 +791,26 @@
     "state": "pending",
     "en": "Coming in the next step"
   },
+  "mobile.auth.reset.newPassword": {
+    "state": "pending",
+    "en": "New password"
+  },
+  "mobile.auth.reset.submit": {
+    "state": "pending",
+    "en": "Save new password"
+  },
+  "mobile.auth.reset.submitting": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "mobile.auth.reset.subtitle": {
+    "state": "pending",
+    "en": "Enter the code we sent to {{email}} and your new password."
+  },
+  "mobile.auth.reset.title": {
+    "state": "pending",
+    "en": "Choose a new password"
+  },
   "mobile.auth.restoring": {
     "state": "pending",
     "en": "Checking your sign-in…"
@@ -802,6 +850,46 @@
   "mobile.auth.signUp.title": {
     "state": "pending",
     "en": "Create your account"
+  },
+  "mobile.auth.verify.code": {
+    "state": "pending",
+    "en": "Code"
+  },
+  "mobile.auth.verify.codeSent": {
+    "state": "pending",
+    "en": "A new code is on its way. Check your inbox and spam folder."
+  },
+  "mobile.auth.verify.logOut": {
+    "state": "pending",
+    "en": "Log out"
+  },
+  "mobile.auth.verify.resend": {
+    "state": "pending",
+    "en": "Send a new code"
+  },
+  "mobile.auth.verify.resendIn": {
+    "state": "pending",
+    "en": "You can ask for a new code in {{seconds}} s"
+  },
+  "mobile.auth.verify.submit": {
+    "state": "pending",
+    "en": "Confirm email"
+  },
+  "mobile.auth.verify.submitting": {
+    "state": "pending",
+    "en": "Confirming…"
+  },
+  "mobile.auth.verify.subtitle": {
+    "state": "pending",
+    "en": "We sent a 6-digit code to {{email}}. Enter it to confirm your email."
+  },
+  "mobile.auth.verify.title": {
+    "state": "pending",
+    "en": "Check your email"
+  },
+  "mobile.auth.verify.wrongEmail": {
+    "state": "pending",
+    "en": "Wrong email?"
   },
   "mobile.auth.welcome.body": {
     "state": "pending",

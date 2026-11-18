@@ -39,7 +39,8 @@ export default function SignUpScreen() {
     setBusy(true);
     try {
       await signUp(result.data.email, result.data.password);
-      router.replace('/home');
+      // User Flow: sign-up → verify the emailed code → Home.
+      router.replace({ pathname: '/verify-email', params: { sent: '1' } });
     } catch (err) {
       const key = requestErrorKey(err);
       // "Email already used" belongs to the email field; other failures go in the box.

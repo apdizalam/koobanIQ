@@ -44,6 +44,10 @@
   },
   "jest": {
     "preset": "jest-expo",
-    "testTimeout": 20000
+    "testTimeout": 20000,
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/__tests__/support/"
+    ]
   }
 }

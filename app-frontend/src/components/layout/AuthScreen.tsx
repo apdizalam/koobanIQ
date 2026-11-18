@@ -11,10 +11,18 @@ interface AuthScreenProps {
   children: ReactNode;
   /** Pinned to the bottom of the screen (e.g. "New to KOBANIQ? Create an account"). */
   footer?: ReactNode;
+  /** Show the back button (default). Off where there is nowhere to go back to. */
+  showBack?: boolean;
 }
 
 /** Frame for Log in / Sign up: back button, title, form that stays above the keyboard. */
-export function AuthScreen({ title, subtitle, children, footer }: AuthScreenProps) {
+export function AuthScreen({
+  title,
+  subtitle,
+  children,
+  footer,
+  showBack = true,
+}: AuthScreenProps) {
   const { colors, typography, spacing } = useTheme();
   return (
     <SafeAreaView style={[styles.fill, { backgroundColor: colors.background }]}>
@@ -27,7 +35,7 @@ export function AuthScreen({ title, subtitle, children, footer }: AuthScreenProp
           contentContainerStyle={{ flexGrow: 1, padding: spacing.screen, gap: spacing.xl }}
           keyboardShouldPersistTaps="handled"
         >
-          <BackButton />
+          {showBack ? <BackButton /> : null}
           <View style={{ gap: spacing.sm }}>
             <Text accessibilityRole="header" style={[typography.display, { color: colors.text }]}>
               {title}

@@ -23,12 +23,13 @@ jest.mock('expo-secure-store', () => ({
 const REFRESH_KEY = 'kobaniq.refreshToken';
 const USER_KEY = 'kobaniq.user';
 
+// A verified account (unverified accounts are sent to Verify email; see verifyEmail.test.tsx).
 const user = (email: string, preferredLanguage = 'en') => ({
   id: 'u1',
   email,
   role: 'user',
   status: 'active',
-  emailVerified: false,
+  emailVerified: true,
   preferredLanguage,
   createdAt: '2026-11-17T00:00:00.000Z',
 });

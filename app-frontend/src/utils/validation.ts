@@ -6,7 +6,12 @@ export const PASSWORD_MAX = 128;
 
 /** Field error keys under mobile.auth.errors in the shared translation files. */
 export type FieldErrorKey =
-  'emailTaken' | 'emailInvalid' | 'passwordRequired' | 'passwordTooShort' | 'passwordTooLong';
+  | 'emailTaken'
+  | 'emailInvalid'
+  | 'passwordRequired'
+  | 'passwordTooShort'
+  | 'passwordTooLong'
+  | 'codeInvalid';
 
 const email = z
   .string()
@@ -25,6 +30,23 @@ export const signUpSchema = z.object({
     .min(PASSWORD_MIN, { error: 'passwordTooShort' })
     .max(PASSWORD_MAX, { error: 'passwordTooLong' }),
 });
+
+/** The 6-digit code from the email (spaces people type or paste are removed). */
+const code = z
+  .string()
+  .transform((value) => value.replace(/\s/g, ''))
+  .pipe(z.string().regex(/^\d{6}$/, { error: 'codeInvalid' }));
+
+const newPassword = z
+  .string()
+  .min(PASSWORD_MIN, { error: 'passwordTooShort' })
+  .max(PASSWORD_MAX, { error: 'passwordTooLong' });
+
+export const codeSchema = z.object({ code });
+
+export const emailSchema = z.object({ email });
+
+export const resetSchema = z.object({ code, password: newPassword });
 
 export type FieldErrors<T> = Partial<Record<keyof T, FieldErrorKey>>;
 

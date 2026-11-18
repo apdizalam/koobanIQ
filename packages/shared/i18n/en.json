@@ -338,7 +338,8 @@
         "or": "or",
         "google": "Continue with Google",
         "newHere": "New to KOBANIQ?",
-        "createAccount": "Create an account"
+        "createAccount": "Create an account",
+        "passwordChanged": "Your password was changed. Log in with your new password."
       },
       "signUp": {
         "title": "Create your account",
@@ -360,10 +361,12 @@
         "emailTaken": "An account with this email already exists. Log in instead.",
         "suspended": "This account is suspended. Contact support.",
         "network": "Cannot reach the server. Check your internet connection.",
-        "generic": "Something went wrong. Please try again."
+        "generic": "Something went wrong. Please try again.",
+        "codeInvalid": "Enter the 6-digit code from the email.",
+        "invalidCode": "The code is wrong or has expired. Ask for a new one.",
+        "tooManyAttempts": "Too many wrong codes. Ask for a new one."
       },
       "later": {
-        "forgot": "Password reset arrives once email sending is set up.",
         "google": "Google sign-in arrives in a later update."
       },
       "home": {
@@ -371,7 +374,32 @@
         "body": "Signed in as {{email}}. The real Home screen comes with the next task.",
         "logout": "Log out"
       },
-      "restoring": "Checking your sign-in…"
+      "restoring": "Checking your sign-in…",
+      "verify": {
+        "title": "Check your email",
+        "subtitle": "We sent a 6-digit code to {{email}}. Enter it to confirm your email.",
+        "code": "Code",
+        "submit": "Confirm email",
+        "submitting": "Confirming…",
+        "resend": "Send a new code",
+        "resendIn": "You can ask for a new code in {{seconds}} s",
+        "codeSent": "A new code is on its way. Check your inbox and spam folder.",
+        "wrongEmail": "Wrong email?",
+        "logOut": "Log out"
+      },
+      "forgot": {
+        "title": "Forgot your password?",
+        "subtitle": "Enter your email. If it has a KOBANIQ account, we'll send a code to reset your password.",
+        "submit": "Send code",
+        "submitting": "Sending…"
+      },
+      "reset": {
+        "title": "Choose a new password",
+        "subtitle": "Enter the code we sent to {{email}} and your new password.",
+        "newPassword": "New password",
+        "submit": "Save new password",
+        "submitting": "Saving…"
+      }
     }
   }
 }

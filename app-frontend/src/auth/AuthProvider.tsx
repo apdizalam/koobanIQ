@@ -2,7 +2,14 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import { useTranslation } from 'react-i18next';
 import { DEFAULT_LANGUAGE, isLanguage, type Language } from '../i18n/language';
 import { ApiError } from '../services/api';
-import { login, logout, refresh, register } from '../services/authApi';
+import {
+  login,
+  logout,
+  refresh,
+  register,
+  resendVerification as resendVerificationRequest,
+  verifyEmail as verifyEmailRequest,
+} from '../services/authApi';
 import type { PublicUser, Session } from '../types/auth';
 import { AuthContext, type AuthState, type AuthStatus } from './authContext';
 import { tokenStore, userStore } from './tokenStore';
@@ -146,9 +153,33 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (stored) await logout(stored).catch(() => undefined);
   }, [clearLocal]);
 
+  const verifyEmail = useCallback(
+    async (code: string) => {
+      if (!user) throw new ApiError(401, 'AUTH_REQUIRED', 'Not signed in');
+      const { user: verified } = await verifyEmailRequest(user.email, code);
+      await userStore.set(verified);
+      setUser(verified);
+    },
+    [user],
+  );
+
+  const resendVerification = useCallback(async () => {
+    if (!user) throw new ApiError(401, 'AUTH_REQUIRED', 'Not signed in');
+    await resendVerificationRequest(user.email);
+  }, [user]);
+
   const value = useMemo<AuthState>(
-    () => ({ status, user, signIn, signUp, signOut, getAccessToken }),
-    [status, user, signIn, signUp, signOut, getAccessToken],
+    () => ({
+      status,
+      user,
+      signIn,
+      signUp,
+      signOut,
+      getAccessToken,
+      verifyEmail,
+      resendVerification,
+    }),
+    [status, user, signIn, signUp, signOut, getAccessToken, verifyEmail, resendVerification],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
