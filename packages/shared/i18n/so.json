@@ -5,7 +5,21 @@
       "en": "English",
       "so": "Soomaali"
     },
-    "loading": "Waa la soo rarayaa…"
+    "loading": "Waa la soo rarayaa…",
+    "region": {
+      "somaliland": "Somaliland",
+      "somalia": "Soomaaliya",
+      "remote": "Fog (online)"
+    },
+    "employerType": {
+      "company": "Shirkad",
+      "ngo": "Hay’ad (NGO)",
+      "un_agency": "Hay’adda QM",
+      "government": "Dowladda",
+      "education": "Waxbarasho",
+      "health": "Caafimaad",
+      "other": "Kale"
+    }
   },
   "server": {
     "errors": {
@@ -27,7 +41,10 @@
       "CANNOT_CHANGE_SELF": "Halkan kama beddeli kartid akoonkaaga",
       "LAST_ADMIN": "Waa inuu jiraa ugu yaraan hal maamule oo firfircoon",
       "INVALID_CODE": "Koodhku waa khalad ama wuu dhacay. Codso mid cusub",
-      "TOO_MANY_ATTEMPTS": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub"
+      "TOO_MANY_ATTEMPTS": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub",
+      "JOB_SOURCE_NOT_FOUND": "Ilaha shaqada lama helin",
+      "REGION_NOT_FOUND": "Gobolka lama helin",
+      "SOURCE_TERMS_NOT_CHECKED": "Ilahan lama shidi karo ilaa shuruudihiisa la hubiyo"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -43,7 +60,12 @@
       "roleInvalid": "Waa inuu ahaadaa \"user\" ama \"admin\"",
       "statusInvalid": "Waa inuu ahaadaa \"active\" ama \"suspended\"",
       "auditActionInvalid": "Waa inuu ahaadaa mid ka mid ah ficillada hubinta",
-      "codeInvalid": "Geli koodhka 6-da god ah ee iimaylka"
+      "codeInvalid": "Geli koodhka 6-da god ah ee iimaylka",
+      "regionInvalid": "Waa inuu ahaadaa somaliland, somalia ama remote",
+      "employerTypeInvalid": "Waa inuu ahaadaa mid ka mid ah noocyada loo-shaqeeyaha",
+      "priorityInvalid": "Waa inuu ahaadaa tiro dhan oo u dhaxaysa 0 ilaa 1000",
+      "enabledInvalid": "Waa inuu ahaadaa true ama false",
+      "citiesInvalid": "Waa inuu ahaadaa liis ilaa 100 magaalo ah (mid kasta ilaa 60 xaraf)"
     },
     "email": {
       "verifyEmail": {
@@ -231,7 +253,11 @@
         "user_suspend": "Isticmaale la hakiyay",
         "user_reactivate": "Isticmaale dib loo furay",
         "user_role_change": "Door la beddelay",
-        "user_delete": "Isticmaale la tirtiray"
+        "user_delete": "Isticmaale la tirtiray",
+        "job_source_enable": "Ilo shaqo ayaa la shiday",
+        "job_source_disable": "Ilo shaqo ayaa la damiyay",
+        "job_source_update": "Ilo shaqo ayaa la beddelay",
+        "region_update": "Magaalooyinka gobolka ayaa la beddelay"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",

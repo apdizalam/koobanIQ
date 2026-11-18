@@ -1,9 +1,12 @@
 import { createApp } from './app.js';
 import { connectDB, disconnectDB } from './lib/db.js';
 import { env } from './config/env.js';
+import { ensureDefaultRegions } from './services/jobSourceService.js';
 
 async function main() {
   await connectDB();
+  // Somaliland / Somalia / Remote with doc 9's city lists (admin edits are kept).
+  await ensureDefaultRegions();
 
   const server = createApp().listen(env.port, () => {
     console.log(`KOBANIQ API listening on http://localhost:${env.port} (${env.nodeEnv})`);

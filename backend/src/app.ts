@@ -5,6 +5,7 @@ import { notFound } from './middleware/notFound.js';
 import { adminRouter } from './routes/admin.js';
 import { authRouter } from './routes/auth.js';
 import { healthRouter } from './routes/health.js';
+import { jobSourcesRouter, regionsRouter } from './routes/jobSources.js';
 import { meRouter } from './routes/me.js';
 
 export function createApp() {
@@ -16,6 +17,8 @@ export function createApp() {
   app.use('/api/v1/health', healthRouter);
   app.use('/api/v1/auth', authRouter);
   app.use('/api/v1/me', meRouter);
+  app.use('/api/v1/regions', regionsRouter);
+  app.use('/api/v1/job-sources', jobSourcesRouter);
   app.use('/api/v1/admin', adminRouter);
 
   app.use(notFound);
