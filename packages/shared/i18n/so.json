@@ -267,7 +267,88 @@
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",
       "empty": "Weli wax diiwaan ah ma jiraan.",
-      "error": "Diiwaanka hubinta lama soo dejin karo. Hubi in backend-ku shaqaynayo."
+      "error": "Diiwaanka hubinta lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
+      "values": {
+        "on": "Shidan",
+        "off": "Demisan"
+      }
+    },
+    "sources": {
+      "title": "Ilaha shaqooyinka",
+      "subtitle": "Halka baaritaanka shaqadu ka raadiyo shaqooyinka. Il waxaa la shidi karaa oo keliya marka shuruudaheeda la hubiyo oo server-ku leeyahay xiriirkeeda.",
+      "columns": {
+        "source": "Isha",
+        "regions": "Gobollada",
+        "status": "Xaaladda",
+        "terms": "Shuruudaha",
+        "adapter": "Xiriirka",
+        "health": "Caafimaadka",
+        "priority": "Kala horreynta",
+        "actions": "Ficillada"
+      },
+      "statuses": {
+        "enabled": "Shidan",
+        "disabled": "Demisan"
+      },
+      "types": {
+        "job_board": "Bogga shaqooyinka",
+        "ngo_un": "Hay’ad / QM",
+        "employer": "Loo-shaqeeye",
+        "government": "Dowladda",
+        "partner": "Iskaashade"
+      },
+      "termsChecked": "La hubiyay {{date}}",
+      "termsNotChecked": "Lama hubin",
+      "termsLink": "Akhri shuruudaha",
+      "adapterReady": "Diyaar",
+      "adapterMissing": "Ma jiro",
+      "health": "{{percent}}% khaladaad",
+      "lastSuccess": "Guushii u dambaysay {{time}}",
+      "neverSucceeded": "Weli ma jirto baaris guulaysatay",
+      "none": "Midna",
+      "enable": "Shid",
+      "disable": "Dami",
+      "edit": "Wax ka beddel",
+      "blocked": {
+        "terms": "Marka hore hubi shuruudaha",
+        "adapter": "Server-ku weli ma laha xiriirkeeda"
+      },
+      "confirm": {
+        "enable": "Ma shidaysaa {{name}}? Isticmaalayaashu isla markiiba way u dooran karaan baaritaanka shaqada.",
+        "disable": "Ma demisaa {{name}}? Isticmaalayaashu mar dambe ma dooran karaan, lagamana raadiyo.",
+        "cancel": "Jooji",
+        "yes": "Haa, sii wad"
+      },
+      "done": {
+        "enable": "{{name}} waa la shiday.",
+        "disable": "{{name}} waa la demiyay.",
+        "update": "{{name}} waa la keydiyay."
+      },
+      "editTitle": "Wax ka beddel {{name}}",
+      "regionsLabel": "Gobollada ay daboosho",
+      "employerTypesLabel": "Noocyada loo-shaqeeyaha",
+      "priorityLabel": "Kala horreynta app-ka (0–1000, kan yar ayaa hore)",
+      "needRegion": "Dooro ugu yaraan hal gobol.",
+      "badPriority": "Geli tiro dhan oo u dhaxaysa 0 ilaa 1000.",
+      "noChanges": "Waxba isma beddelin.",
+      "save": "Keydi",
+      "saving": "Waa la keydinayaa…",
+      "cancel": "Jooji",
+      "empty": "Weli ma jiraan ilo shaqo. Kooxda ayaa il ku darta: xiriir server-ka ku jira iyo diiwaan xog-ururin.",
+      "error": "Ilaha shaqooyinka lama soo rari karin. Hubi in backend-ku shaqaynayo."
+    },
+    "regions": {
+      "title": "Gobollada iyo magaalooyinka",
+      "subtitle": "Magaalooyinka la soo jeediyo marka isticmaalayaashu shaqooyinka shaandheeyaan. Hal magaalo sadar kasta.",
+      "citiesLabel": "Magaalooyinka {{region}}",
+      "count": "{{count}} magaalo",
+      "save": "Keydi magaalooyinka",
+      "saving": "Waa la keydinayaa…",
+      "saved": "Magaalooyinka {{region}} waa la keydiyay.",
+      "unchanged": "Ma jiraan isbeddel la keydiyo.",
+      "tooMany": "Ugu badnaan 100 magaalo gobol kasta.",
+      "tooLong": "Magaca magaalo waa inuusan ka badnaan 60 xaraf.",
+      "error": "Gobollada lama soo rari karin. Hubi in backend-ku shaqaynayo."
     }
   },
   "mobile": {

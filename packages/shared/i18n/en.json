@@ -267,7 +267,88 @@
       "deleted": "Account deleted",
       "noChange": "—",
       "empty": "No records yet.",
-      "error": "Could not load the audit log. Check that the backend is running."
+      "error": "Could not load the audit log. Check that the backend is running.",
+      "values": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    "sources": {
+      "title": "Job sources",
+      "subtitle": "Where job research looks for jobs. A source can only be switched on after its terms were checked and the server has an adapter for it.",
+      "columns": {
+        "source": "Source",
+        "regions": "Regions",
+        "status": "Status",
+        "terms": "Terms",
+        "adapter": "Adapter",
+        "health": "Health",
+        "priority": "Order",
+        "actions": "Actions"
+      },
+      "statuses": {
+        "enabled": "On",
+        "disabled": "Off"
+      },
+      "types": {
+        "job_board": "Job board",
+        "ngo_un": "NGO / UN",
+        "employer": "Employer",
+        "government": "Government",
+        "partner": "Partner"
+      },
+      "termsChecked": "Checked {{date}}",
+      "termsNotChecked": "Not checked",
+      "termsLink": "Read terms",
+      "adapterReady": "Ready",
+      "adapterMissing": "Missing",
+      "health": "{{percent}}% errors",
+      "lastSuccess": "Last success {{time}}",
+      "neverSucceeded": "No successful run yet",
+      "none": "None",
+      "enable": "Switch on",
+      "disable": "Switch off",
+      "edit": "Edit",
+      "blocked": {
+        "terms": "Check the terms first",
+        "adapter": "No adapter in the server yet"
+      },
+      "confirm": {
+        "enable": "Switch on {{name}}? Users can choose it for job research right away.",
+        "disable": "Switch off {{name}}? Users can no longer choose it, and it is not searched.",
+        "cancel": "Cancel",
+        "yes": "Yes, continue"
+      },
+      "done": {
+        "enable": "{{name}} is switched on.",
+        "disable": "{{name}} is switched off.",
+        "update": "{{name}} was saved."
+      },
+      "editTitle": "Edit {{name}}",
+      "regionsLabel": "Regions it covers",
+      "employerTypesLabel": "Employer types",
+      "priorityLabel": "Order in the app (0–1000, lower first)",
+      "needRegion": "Choose at least one region.",
+      "badPriority": "Enter a whole number from 0 to 1000.",
+      "noChanges": "Nothing changed.",
+      "save": "Save",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "empty": "No job sources yet. The team adds a source as an adapter in the server plus a database record.",
+      "error": "Could not load the job sources. Check that the backend is running."
+    },
+    "regions": {
+      "title": "Regions and cities",
+      "subtitle": "City suggestions users see when they filter jobs. One city per line.",
+      "citiesLabel": "{{region}} cities",
+      "count": "{{count}} cities",
+      "save": "Save cities",
+      "saving": "Saving…",
+      "saved": "{{region}} cities saved.",
+      "unchanged": "No changes to save.",
+      "tooMany": "At most 100 cities per region.",
+      "tooLong": "A city name can be at most 60 characters.",
+      "error": "Could not load the regions. Check that the backend is running."
     }
   },
   "mobile": {
