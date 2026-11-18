@@ -370,7 +370,8 @@
         "title": "You are signed in",
         "body": "Signed in as {{email}}. The real Home screen comes with the next task.",
         "logout": "Log out"
-      }
+      },
+      "restoring": "Checking your sign-in…"
     }
   }
 }

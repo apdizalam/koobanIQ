@@ -763,6 +763,10 @@
     "state": "pending",
     "en": "Coming in the next step"
   },
+  "mobile.auth.restoring": {
+    "state": "pending",
+    "en": "Checking your sign-in…"
+  },
   "mobile.auth.signUp.email": {
     "state": "pending",
     "en": "Email"

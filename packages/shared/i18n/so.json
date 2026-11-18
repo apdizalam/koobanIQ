@@ -370,7 +370,8 @@
         "title": "Waad soo gashay",
         "body": "Waxaad ku gashay {{email}}. Shaashadda dhabta ah ee Hoyga waxay la imanaysaa hawsha xigta.",
         "logout": "Ka bax"
-      }
+      },
+      "restoring": "Waxaa la hubinayaa gelitaankaaga…"
     }
   }
 }
