@@ -20,9 +20,17 @@ interface Envelope<T> {
 }
 
 /**
+ * Longest wait for an answer. Without a limit, a server the phone cannot reach
+ * (wrong Wi-Fi, router blocking devices, server off) leaves the request — and
+ * the button spinner — hanging for minutes.
+ */
+export const REQUEST_TIMEOUT_MS = 15_000;
+
+/**
  * Calls the KOBANIQ API and returns `data`. Sends the app language
  * (Accept-Language) so server messages come back in it. Throws ApiError;
- * status 0 + NETWORK_ERROR when the server can't be reached.
+ * status 0 + NETWORK_ERROR when the server can't be reached or doesn't
+ * answer within REQUEST_TIMEOUT_MS.
  */
 export async function apiRequest<T>(
   path: string,
@@ -32,19 +40,29 @@ export async function apiRequest<T>(
   if (options.body !== undefined) headers['Content-Type'] = 'application/json';
   if (options.accessToken) headers.Authorization = `Bearer ${options.accessToken}`;
 
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
   let res: Response;
+  let json: Envelope<T> | null;
   try {
-    res = await fetch(`${API_BASE_URL}${path}`, {
-      method: options.method ?? 'GET',
-      headers,
-      body: options.body === undefined ? undefined : JSON.stringify(options.body),
-    });
-  } catch {
-    throw new ApiError(0, 'NETWORK_ERROR', 'Cannot reach the server');
+    try {
+      res = await fetch(`${API_BASE_URL}${path}`, {
+        method: options.method ?? 'GET',
+        headers,
+        body: options.body === undefined ? undefined : JSON.stringify(options.body),
+        signal: controller.signal,
+      });
+    } catch {
+      throw new ApiError(0, 'NETWORK_ERROR', 'Cannot reach the server');
+    }
+    if (res.status === 204) return undefined as T;
+    // Reading the body is inside the time limit too.
+    json = (await res.json().catch(() => null)) as Envelope<T> | null;
+  } finally {
+    clearTimeout(timer);
   }
 
-  if (res.status === 204) return undefined as T;
-  const json = (await res.json().catch(() => null)) as Envelope<T> | null;
   if (!res.ok || !json || json.error) {
     throw new ApiError(
       res.status,
