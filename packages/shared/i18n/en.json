@@ -69,7 +69,8 @@
       "CV_GENERATION_IN_PROGRESS": "This CV is already being created. Try again in a moment",
       "PROFILE_INCOMPLETE": "Add your experience, education or skills to your profile before creating a CV",
       "SETTING_UNCHANGED": "The setting already has this value",
-      "CV_CONTACT_EMAIL_REQUIRED": "Add the email address to show on your CVs (Profile → Personal info) before creating a CV"
+      "CV_CONTACT_EMAIL_REQUIRED": "Add the email address to show on your CVs (Profile → Personal info) before creating a CV",
+      "CV_NOT_APPROVED": "Approve the CV before downloading it as a PDF"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",

@@ -11,7 +11,9 @@ const missingInfoSchema = new Schema(
  * version for one job description and one CV language. `content` is the
  * finished CV as shown to the user (facts from the profile at that time, AI
  * wording); it stays as generated even if the profile changes later.
- * Approval and PDF export come with TIQ-10.
+ * TIQ-10: draft → approved (user approves) → exported (first PDF download).
+ * Only the wording may be edited; editing an approved or exported CV makes a
+ * new draft version and keeps the approved one.
  */
 const cvSchema = new Schema(
   {
@@ -25,6 +27,11 @@ const cvSchema = new Schema(
     template: { type: String, default: 'classic' },
     content: { type: Schema.Types.Mixed, required: true },
     missingInfo: { type: [missingInfoSchema], default: [] },
+    approvedAt: { type: Date },
+    /** First PDF download. */
+    exportedAt: { type: Date },
+    /** The version this one was edited from (wording changes on an approved CV). */
+    editedFromId: { type: Schema.Types.ObjectId, ref: 'Cv' },
   },
   { timestamps: true },
 );
@@ -43,6 +50,8 @@ export function toPublicCv(cv: CvDocument, withContent = true) {
     version: cv.version,
     status: cv.status,
     template: cv.template,
+    approvedAt: cv.approvedAt ?? null,
+    exportedAt: cv.exportedAt ?? null,
     missingInfo: cv.missingInfo.map((m) => ({ type: m.type, ...(m.item ? { item: m.item } : {}) })),
     ...(withContent ? { content: cv.content } : {}),
     createdAt: cv.createdAt,
