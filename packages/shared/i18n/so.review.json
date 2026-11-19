@@ -1387,6 +1387,58 @@
     "state": "pending",
     "en": "Know Your Skills.\nFind Your Opportunity."
   },
+  "mobile.cv.edit.bullets": {
+    "state": "pending",
+    "en": "Bullet points: {{name}}"
+  },
+  "mobile.cv.edit.bulletsHint": {
+    "state": "pending",
+    "en": "One per line, at most {{max}}."
+  },
+  "mobile.cv.edit.factsNote": {
+    "state": "pending",
+    "en": "Job titles, employers, dates, schools, skills and languages come from your profile. To change them, edit your profile and generate the CV again."
+  },
+  "mobile.cv.edit.headline": {
+    "state": "pending",
+    "en": "Headline"
+  },
+  "mobile.cv.edit.newVersionNote": {
+    "state": "pending",
+    "en": "This CV is approved. Saving makes a new draft version; the approved one stays."
+  },
+  "mobile.cv.edit.required": {
+    "state": "pending",
+    "en": "This field is required."
+  },
+  "mobile.cv.edit.save": {
+    "state": "pending",
+    "en": "Save wording"
+  },
+  "mobile.cv.edit.subtitle": {
+    "state": "pending",
+    "en": "Change how your CV is worded. Facts come from your profile."
+  },
+  "mobile.cv.edit.summary": {
+    "state": "pending",
+    "en": "Profile summary"
+  },
+  "mobile.cv.edit.title": {
+    "state": "pending",
+    "en": "Edit wording"
+  },
+  "mobile.cv.edit.tooLong": {
+    "state": "pending",
+    "en": "Each bullet point can be at most 300 characters."
+  },
+  "mobile.cv.edit.tooLongText": {
+    "state": "pending",
+    "en": "This text is too long."
+  },
+  "mobile.cv.edit.tooMany": {
+    "state": "pending",
+    "en": "At most {{max}} bullet points."
+  },
   "mobile.cv.errors.network": {
     "state": "pending",
     "en": "Cannot reach the server, or it took too long. Check your internet connection and try again."
@@ -1607,6 +1659,18 @@
     "state": "pending",
     "en": "Profile"
   },
+  "mobile.cv.status.approved": {
+    "state": "pending",
+    "en": "Approved"
+  },
+  "mobile.cv.status.draft": {
+    "state": "pending",
+    "en": "Draft"
+  },
+  "mobile.cv.status.exported": {
+    "state": "pending",
+    "en": "Downloaded"
+  },
   "mobile.cv.tab.cvsTitle": {
     "state": "pending",
     "en": "Your CVs"
@@ -1643,6 +1707,22 @@
     "state": "pending",
     "en": "Generate again"
   },
+  "mobile.cv.view.approve": {
+    "state": "pending",
+    "en": "Approve CV"
+  },
+  "mobile.cv.view.approveHint": {
+    "state": "pending",
+    "en": "Check the CV, edit the wording if needed, then approve it to download it as a PDF."
+  },
+  "mobile.cv.view.approvedNotice": {
+    "state": "pending",
+    "en": "Approved. You can now download it as a PDF."
+  },
+  "mobile.cv.view.approving": {
+    "state": "pending",
+    "en": "Approving…"
+  },
   "mobile.cv.view.delete": {
     "state": "pending",
     "en": "Delete this CV"
@@ -1654,6 +1734,26 @@
   "mobile.cv.view.deleteFailed": {
     "state": "pending",
     "en": "The CV could not be deleted. Please try again."
+  },
+  "mobile.cv.view.download": {
+    "state": "pending",
+    "en": "Download PDF"
+  },
+  "mobile.cv.view.downloading": {
+    "state": "pending",
+    "en": "Preparing the PDF…"
+  },
+  "mobile.cv.view.edit": {
+    "state": "pending",
+    "en": "Edit wording"
+  },
+  "mobile.cv.view.editHintApproved": {
+    "state": "pending",
+    "en": "Editing makes a new draft version; this approved CV stays as it is."
+  },
+  "mobile.cv.view.noShare": {
+    "state": "pending",
+    "en": "This phone cannot open the share sheet. The PDF was saved in the app."
   },
   "mobile.cv.view.notFound": {
     "state": "pending",

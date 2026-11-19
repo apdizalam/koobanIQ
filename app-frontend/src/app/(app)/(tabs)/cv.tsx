@@ -85,6 +85,7 @@ export default function CvTab() {
                   detail={[
                     t(`common.language.${cv.language}`),
                     t('mobile.cv.version', { version: cv.version }),
+                    t(`mobile.cv.status.${cv.status}`),
                     formatDate(cv.createdAt, i18n.language),
                   ].join(' · ')}
                   onPress={() => router.push({ pathname: '/cv-view/[id]', params: { id: cv.id } })}

@@ -10,13 +10,16 @@ import {
 import { useAuth } from '../auth/authContext';
 import {
   addJobDescription,
+  approveCv,
   deleteCv,
+  downloadCvPdf,
+  editCv,
   fetchCv,
   fetchCvs,
   fetchJobDescriptions,
   generateCv,
 } from '../services/cvApi';
-import type { Cv, CvLanguage, JobDescription } from '../types/cv';
+import type { Cv, CvEdit, CvLanguage, JobDescription } from '../types/cv';
 
 export type CvStatus = 'loading' | 'ready' | 'error';
 
@@ -37,6 +40,11 @@ export interface CvState {
   /** One CV with its content. */
   loadCv: (id: string) => Promise<Cv>;
   removeCv: (id: string) => Promise<void>;
+  /** New wording; returns the CV (a new version when the CV was already approved). */
+  edit: (id: string, changes: CvEdit) => Promise<Cv>;
+  approve: (id: string) => Promise<Cv>;
+  /** The PDF bytes (approved CVs only); marks the CV exported on the server. */
+  downloadPdf: (id: string) => Promise<{ bytes: Uint8Array; fileName: string }>;
 }
 
 const CvContext = createContext<CvState | null>(null);
@@ -115,6 +123,44 @@ export function CvProvider({ children }: { children: ReactNode }) {
     [getAccessToken],
   );
 
+  /** Keep the list in step with one changed CV (new versions go first). */
+  const remember = useCallback((changed: Cv) => {
+    setCvs((now) =>
+      now.some((c) => c.id === changed.id)
+        ? now.map((c) => (c.id === changed.id ? { ...changed, content: undefined } : c))
+        : [{ ...changed, content: undefined }, ...now],
+    );
+  }, []);
+
+  const edit = useCallback<CvState['edit']>(
+    async (id, changes) => {
+      const { cv } = await editCv(await getAccessToken(), id, changes);
+      remember(cv);
+      return cv;
+    },
+    [getAccessToken, remember],
+  );
+
+  const approve = useCallback<CvState['approve']>(
+    async (id) => {
+      const { cv } = await approveCv(await getAccessToken(), id);
+      remember(cv);
+      return cv;
+    },
+    [getAccessToken, remember],
+  );
+
+  const downloadPdf = useCallback<CvState['downloadPdf']>(
+    async (id) => {
+      const file = await downloadCvPdf(await getAccessToken(), id);
+      setCvs((now) =>
+        now.map((c) => (c.id === id && c.status === 'approved' ? { ...c, status: 'exported' } : c)),
+      );
+      return file;
+    },
+    [getAccessToken],
+  );
+
   const value = useMemo<CvState>(
     () => ({
       status,
@@ -126,8 +172,11 @@ export function CvProvider({ children }: { children: ReactNode }) {
       generate,
       loadCv,
       removeCv,
+      edit,
+      approve,
+      downloadPdf,
     }),
-    [status, cvs, jobs, reload, addJob, generate, loadCv, removeCv],
+    [status, cvs, jobs, reload, addJob, generate, loadCv, removeCv, edit, approve, downloadPdf],
   );
   return <CvContext.Provider value={value}>{children}</CvContext.Provider>;
 }

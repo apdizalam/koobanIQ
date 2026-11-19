@@ -26,15 +26,33 @@ jest.mock('expo-document-picker', () => ({
       : { canceled: true, assets: null },
   ),
 }));
+const mockWritten: { name: string; bytes: Uint8Array }[] = [];
 jest.mock('expo-file-system', () => ({
-  File: jest.fn().mockImplementation(() => ({ size: 0, base64: async () => 'JVBERi0xLjQK' })),
+  Paths: { cache: { uri: 'file:///cache/' } },
+  File: jest.fn().mockImplementation((...parts: unknown[]) => {
+    const name = String(parts[parts.length - 1]);
+    return {
+      uri: `file:///cache/${name}`,
+      size: 0,
+      base64: async () => 'JVBERi0xLjQK',
+      create: jest.fn(),
+      write: jest.fn((bytes: Uint8Array) => mockWritten.push({ name, bytes })),
+    };
+  }),
+}));
+const mockShared: { uri: string; options: unknown }[] = [];
+jest.mock('expo-sharing', () => ({
+  isAvailableAsync: jest.fn(async () => true),
+  shareAsync: jest.fn(async (uri: string, options: unknown) => {
+    mockShared.push({ uri, options });
+  }),
 }));
 
 const EMAIL = 'amina@example.com';
 const JOB_TEXT =
   'Data Officer at Example Health Partnership (synthetic). Hargeisa. Requirements: Excel, SQL. Desirable: DHIS2. Apply by 2026-12-15.';
 
-type Reply = { status: number; body: unknown };
+type Reply = { status: number; body: unknown; pdf?: Uint8Array };
 const ok = (data: unknown, status = 200): Reply => ({ status, body: { data, error: null } });
 const fail = (status: number, code: string, message: string): Reply => ({
   status,
@@ -107,6 +125,7 @@ let jobs: ReturnType<typeof job>[];
 let cvs: Record<string, unknown>[];
 let jdReply: Reply | null;
 let generateReply: Reply | null;
+let pdfReply: Reply | null;
 let nextCv: number;
 const calls: { route: string; body: Record<string, unknown> }[] = [];
 
@@ -118,6 +137,9 @@ beforeEach(() => {
   cvs = [];
   jdReply = null;
   generateReply = null;
+  pdfReply = null;
+  mockWritten.length = 0;
+  mockShared.length = 0;
   nextCv = 1;
   calls.length = 0;
   globalThis.fetch = jest.fn(async (url: string, init: RequestInit = {}) => {
@@ -149,6 +171,48 @@ beforeEach(() => {
         cvs = [made, ...cvs];
         reply = ok({ cv: made }, 201);
       }
+    } else if (method === 'POST' && path.endsWith('/approve')) {
+      const found = cvs.find((c) => path === `/cvs/${c.id}/approve`);
+      if (found && found.status === 'draft') found.status = 'approved';
+      reply = found ? ok({ cv: found }) : fail(404, 'CV_NOT_FOUND', 'CV not found');
+    } else if (method === 'GET' && path.endsWith('/pdf')) {
+      const found = cvs.find((c) => path === `/cvs/${c.id}/pdf`);
+      if (pdfReply) reply = pdfReply;
+      else if (!found) reply = fail(404, 'CV_NOT_FOUND', 'CV not found');
+      else if (found.status === 'draft') {
+        reply = fail(409, 'CV_NOT_APPROVED', 'Approve the CV before downloading it as a PDF');
+      } else {
+        found.status = 'exported';
+        reply = { status: 200, body: null, pdf: new TextEncoder().encode('%PDF-1.3 test') };
+      }
+    } else if (method === 'PATCH' && path.startsWith('/cvs/')) {
+      const found = cvs.find((c) => path === `/cvs/${c.id}`) as ReturnType<typeof fullCv>;
+      const edited = {
+        ...found.content,
+        header: { ...found.content.header, headline: body.headline as string },
+        summary: body.summary as string,
+        experience: found.content.experience.map((e) => ({
+          ...e,
+          bullets:
+            (body.experience as { id: string; bullets: string[] }[] | undefined)?.find(
+              (x) => x.id === e.id,
+            )?.bullets ?? e.bullets,
+        })),
+      };
+      if (found.status === 'draft') {
+        found.content = edited;
+        reply = ok({ cv: found });
+      } else {
+        const copy = {
+          ...found,
+          id: `${found.id}-v2`,
+          version: found.version + 1,
+          status: 'draft',
+          content: edited,
+        };
+        cvs = [copy, ...cvs];
+        reply = ok({ cv: copy });
+      }
     } else if (method === 'GET' && path.startsWith('/cvs/')) {
       const found = cvs.find((c) => path.endsWith(String(c.id)));
       reply = found ? ok({ cv: found }) : fail(404, 'NOT_FOUND', 'CV not found');
@@ -156,7 +220,18 @@ beforeEach(() => {
       cvs = cvs.filter((c) => !path.endsWith(String(c.id)));
       reply = { status: 204, body: null };
     } else throw new TypeError('Network request failed');
-    return { ok: reply.status < 400, status: reply.status, json: async () => reply.body };
+    return {
+      ok: reply.status < 400,
+      status: reply.status,
+      json: async () => reply.body,
+      arrayBuffer: async () => reply.pdf?.buffer,
+      headers: {
+        get: (name: string) =>
+          name.toLowerCase() === 'content-disposition' && reply.pdf
+            ? 'attachment; filename="CV-Amina-Testcase-en-v1.pdf"'
+            : null,
+      },
+    };
   }) as unknown as typeof fetch;
 });
 
@@ -368,5 +443,86 @@ describe('TIQ-9: CV language, generation and the CV', () => {
     expect(calls.some((c) => c.route.startsWith('DELETE'))).toBe(false);
     await press('cv-delete-yes');
     expect(calls.some((c) => c.route === 'DELETE /cvs/new1')).toBe(true);
+  });
+});
+
+describe('TIQ-10: approve, edit the wording, download the PDF', () => {
+  beforeEach(() => {
+    jobs = [job('jd7', 'Data Officer')];
+  });
+
+  it('draft → Approve → Download PDF opens the share sheet; status follows', async () => {
+    cvs = [fullCv('cv5', 'en')];
+    await openApp('/cv-view/cv5');
+    expect(await screen.findByTestId('cv-status')).toHaveTextContent('Draft');
+    expect(screen.queryByTestId('cv-download')).toBeNull();
+
+    await press('cv-approve');
+    expect(calls.some((c) => c.route === 'POST /cvs/cv5/approve')).toBe(true);
+    expect(screen.getByTestId('cv-status')).toHaveTextContent('Approved');
+    expect(screen.getByText('Approved. You can now download it as a PDF.')).toBeTruthy();
+
+    await press('cv-download');
+    expect(calls.some((c) => c.route === 'GET /cvs/cv5/pdf')).toBe(true);
+    expect(mockWritten[0].name).toBe('CV-Amina-Testcase-en-v1.pdf');
+    expect(new TextDecoder().decode(mockWritten[0].bytes)).toBe('%PDF-1.3 test');
+    expect(mockShared[0]).toEqual({
+      uri: 'file:///cache/CV-Amina-Testcase-en-v1.pdf',
+      options: expect.objectContaining({ mimeType: 'application/pdf', UTI: 'com.adobe.pdf' }),
+    });
+    expect(screen.getByTestId('cv-status')).toHaveTextContent('Downloaded');
+  });
+
+  it("a refused download shows the server's reason", async () => {
+    cvs = [{ ...fullCv('cv5', 'en'), status: 'approved' }];
+    pdfReply = fail(409, 'CV_NOT_APPROVED', 'Approve the CV before downloading it as a PDF');
+    await openApp('/cv-view/cv5');
+    await screen.findByTestId('cv-download');
+    await press('cv-download');
+    expect(await screen.findByText('Approve the CV before downloading it as a PDF')).toBeTruthy();
+    expect(mockShared).toHaveLength(0);
+  });
+
+  it('edit a draft: wording only, one bullet per line, shown again on the CV', async () => {
+    cvs = [fullCv('cv5', 'en')];
+    await openApp('/cv-view/cv5');
+    await screen.findByTestId('cv-preview');
+    await press('cv-edit');
+    expect(screen).toHavePathname('/cv-edit/cv5');
+    expect(await screen.findByTestId('cv-edit-summary')).toBeTruthy();
+    expect(screen.getByTestId('cv-edit-bullets-e1').props.value).toBe('Entered survey forms.');
+
+    // Too many lines: refused here, nothing sent.
+    await type('cv-edit-bullets-e1', '1\n2\n3\n4\n5\n6\n7');
+    await press('cv-edit-save');
+    expect(screen.getByText('At most 6 bullet points.')).toBeTruthy();
+    expect(calls.some((c) => c.route.startsWith('PATCH'))).toBe(false);
+
+    await type('cv-edit-summary', '  Careful data clerk.  ');
+    await type('cv-edit-bullets-e1', '• Checked forms weekly.\n\n- Prepared tables.');
+    await press('cv-edit-save');
+    expect(calls.find((c) => c.route === 'PATCH /cvs/cv5')?.body).toEqual({
+      headline: 'Data clerk',
+      summary: 'Careful data clerk.',
+      experience: [{ id: 'e1', bullets: ['Checked forms weekly.', 'Prepared tables.'] }],
+    });
+    expect(screen).toHavePathname('/cv-view/cv5');
+    expect(await screen.findByText('Careful data clerk.')).toBeTruthy();
+    expect(screen.getByText('• Prepared tables.')).toBeTruthy();
+  });
+
+  it('edit an approved CV: a note first, then a new draft version opens', async () => {
+    cvs = [{ ...fullCv('cv5', 'en'), status: 'approved' }];
+    await openApp('/cv-edit/cv5');
+    expect(
+      await screen.findByText(
+        'This CV is approved. Saving makes a new draft version; the approved one stays.',
+      ),
+    ).toBeTruthy();
+    await type('cv-edit-summary', 'New wording.');
+    await press('cv-edit-save');
+    expect(screen).toHavePathname('/cv-view/cv5-v2');
+    expect(await screen.findByTestId('cv-status')).toHaveTextContent('Draft');
+    expect(cvs.find((c) => c.id === 'cv5')?.status).toBe('approved');
   });
 });

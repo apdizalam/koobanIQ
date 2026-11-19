@@ -907,7 +907,36 @@
         "otherLanguage": "Generate in {{language}}",
         "delete": "Delete this CV",
         "deleteConfirm": "Delete this CV? This cannot be undone.",
-        "deleteFailed": "The CV could not be deleted. Please try again."
+        "deleteFailed": "The CV could not be deleted. Please try again.",
+        "approve": "Approve CV",
+        "approving": "Approving…",
+        "approvedNotice": "Approved. You can now download it as a PDF.",
+        "approveHint": "Check the CV, edit the wording if needed, then approve it to download it as a PDF.",
+        "editHintApproved": "Editing makes a new draft version; this approved CV stays as it is.",
+        "download": "Download PDF",
+        "downloading": "Preparing the PDF…",
+        "noShare": "This phone cannot open the share sheet. The PDF was saved in the app.",
+        "edit": "Edit wording"
+      },
+      "status": {
+        "draft": "Draft",
+        "approved": "Approved",
+        "exported": "Downloaded"
+      },
+      "edit": {
+        "title": "Edit wording",
+        "subtitle": "Change how your CV is worded. Facts come from your profile.",
+        "headline": "Headline",
+        "summary": "Profile summary",
+        "bullets": "Bullet points: {{name}}",
+        "bulletsHint": "One per line, at most {{max}}.",
+        "tooMany": "At most {{max}} bullet points.",
+        "tooLong": "Each bullet point can be at most 300 characters.",
+        "tooLongText": "This text is too long.",
+        "required": "This field is required.",
+        "factsNote": "Job titles, employers, dates, schools, skills and languages come from your profile. To change them, edit your profile and generate the CV again.",
+        "newVersionNote": "This CV is approved. Saving makes a new draft version; the approved one stays.",
+        "save": "Save wording"
       }
     }
   }
