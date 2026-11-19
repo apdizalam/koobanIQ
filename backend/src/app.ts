@@ -9,6 +9,7 @@ import { jobSourcesRouter, regionsRouter } from './routes/jobSources.js';
 import { meRouter } from './routes/me.js';
 import { profileRouter } from './routes/profile.js';
 import { researchRouter } from './routes/research.js';
+import { skillsRouter } from './routes/skills.js';
 
 export function createApp() {
   const app = express();
@@ -20,6 +21,7 @@ export function createApp() {
   app.use('/api/v1/auth', authRouter);
   app.use('/api/v1/me', meRouter);
   app.use('/api/v1/profile', profileRouter);
+  app.use('/api/v1/skills', skillsRouter);
   app.use('/api/v1/regions', regionsRouter);
   app.use('/api/v1/job-sources', jobSourcesRouter);
   app.use('/api/v1/research', researchRouter);

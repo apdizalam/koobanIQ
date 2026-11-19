@@ -10,10 +10,11 @@ type Field =
   | { kind: 'choice'; values: readonly string[]; required?: boolean }
   | { kind: 'month'; required?: boolean }
   | { kind: 'year' }
+  | { kind: 'int'; min: number; max: number }
   | { kind: 'url' }
   | { kind: 'list'; values?: readonly string[]; maxItems: number; itemMax?: number };
 
-type Rules = Record<string, Field>;
+export type Rules = Record<string, Field>;
 
 const MONTH_RE = /^(19[5-9]\d|20\d\d|2100)-(0[1-9]|1[0-2])$/;
 const PHONE_RE = /^\+?[\d\s-]{6,20}$/;
@@ -113,6 +114,10 @@ function check(field: Field, raw: unknown): { value: unknown } | { error: string
       return Number.isInteger(raw) && Number(raw) >= YEAR_MIN && Number(raw) <= YEAR_MAX
         ? { value: raw }
         : { error: 'yearInvalid' };
+    case 'int':
+      return Number.isInteger(raw) && Number(raw) >= field.min && Number(raw) <= field.max
+        ? { value: raw }
+        : { error: 'numberInvalid' };
     case 'url':
       return typeof raw === 'string' && raw.length <= 300 && isUrl(raw.trim())
         ? { value: raw.trim() }
