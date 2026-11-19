@@ -30,7 +30,10 @@ export function Input({
         style={[
           styles.field,
           {
-            height: sizes.inputHeight,
+            // Multi-line fields (descriptions) grow; single-line ones keep the 48px design height.
+            ...(textInputProps.multiline
+              ? { minHeight: 112, alignItems: 'flex-start' as const, paddingVertical: 12 }
+              : { height: sizes.inputHeight }),
             borderRadius: radius.input,
             borderColor,
             backgroundColor: colors.surface,
@@ -51,6 +54,7 @@ export function Input({
             setFocused(false);
             onBlur?.(e);
           }}
+          textAlignVertical={textInputProps.multiline ? 'top' : 'center'}
           style={[styles.input, typography.body, { color: colors.text }]}
         />
       </View>

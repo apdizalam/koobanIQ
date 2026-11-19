@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 import { DEFAULT_LANGUAGE, isLanguage, type Language } from '../i18n/language';
 import { ApiError } from '../services/api';
 import {
@@ -10,6 +10,7 @@ import {
   resendVerification as resendVerificationRequest,
   verifyEmail as verifyEmailRequest,
 } from '../services/authApi';
+import { getMe, saveMyLanguage } from '../services/meApi';
 import type { PublicUser, Session } from '../types/auth';
 import { AuthContext, type AuthState, type AuthStatus } from './authContext';
 import { tokenStore, userStore } from './tokenStore';
@@ -26,6 +27,9 @@ const sessionEnded = (err: unknown): boolean =>
   err instanceof ApiError && (err.status === 401 || err.status === 403);
 
 /**
+ * Uses the app's one i18n instance (not useTranslation, whose i18n changes on every
+ * language switch and would re-run the session restore below).
+ *
  * Holds the signed-in user. Refresh token (and the public user, for offline
  * launches) in secure storage; access token in memory only.
  *
@@ -34,7 +38,6 @@ const sessionEnded = (err: unknown): boolean =>
  * (reusing one ends every session), so only one refresh ever runs at a time.
  */
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { i18n } = useTranslation();
   const [user, setUser] = useState<PublicUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>('restoring');
   const access = useRef<{ token: string; expiresAt: number } | null>(null);
@@ -42,7 +45,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const currentLanguage = useCallback(
     (): Language => (isLanguage(i18n.language) ? i18n.language : DEFAULT_LANGUAGE),
-    [i18n],
+    [],
   );
 
   /** Saves a new session. The account's saved language is used (it follows the user to any device). */
@@ -60,7 +63,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(session.user);
       setStatus('signedIn');
     },
-    [i18n, currentLanguage],
+    [currentLanguage],
   );
 
   /** Forgets the session on this phone (does not call the server). */
@@ -168,6 +171,28 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await resendVerificationRequest(user.email);
   }, [user]);
 
+  /** Keeps a fresh copy of the account from the server (screen + offline cache). */
+  const keepUser = useCallback(async (next: PublicUser) => {
+    await userStore.set(next);
+    setUser(next);
+  }, []);
+
+  const reloadUser = useCallback(async () => {
+    const { user: fresh } = await getMe(await getAccessToken());
+    await keepUser(fresh);
+    return fresh;
+  }, [getAccessToken, keepUser]);
+
+  const saveLanguage = useCallback(
+    async (language: Language) => {
+      // The screen switches at once; saving to the account follows.
+      if (language !== currentLanguage()) await i18n.changeLanguage(language);
+      const { user: saved } = await saveMyLanguage(await getAccessToken(), language);
+      await keepUser(saved);
+    },
+    [currentLanguage, getAccessToken, keepUser],
+  );
+
   const value = useMemo<AuthState>(
     () => ({
       status,
@@ -178,8 +203,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       getAccessToken,
       verifyEmail,
       resendVerification,
+      reloadUser,
+      saveLanguage,
     }),
-    [status, user, signIn, signUp, signOut, getAccessToken, verifyEmail, resendVerification],
+    [
+      status,
+      user,
+      signIn,
+      signUp,
+      signOut,
+      getAccessToken,
+      verifyEmail,
+      resendVerification,
+      reloadUser,
+      saveLanguage,
+    ],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

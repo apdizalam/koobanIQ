@@ -915,18 +915,6 @@
     "state": "pending",
     "en": "Forgot your password?"
   },
-  "mobile.auth.home.body": {
-    "state": "pending",
-    "en": "Signed in as {{email}}. The real Home screen comes with the next task."
-  },
-  "mobile.auth.home.logout": {
-    "state": "pending",
-    "en": "Log out"
-  },
-  "mobile.auth.home.title": {
-    "state": "pending",
-    "en": "You are signed in"
-  },
   "mobile.auth.language.continue": {
     "state": "pending",
     "en": "Continue"
@@ -1215,6 +1203,114 @@
     "state": "pending",
     "en": "Know Your Skills.\nFind Your Opportunity."
   },
+  "mobile.home.cvs.empty": {
+    "state": "pending",
+    "en": "No CVs yet. Your CVs will appear here."
+  },
+  "mobile.home.cvs.title": {
+    "state": "pending",
+    "en": "Recent CVs"
+  },
+  "mobile.home.error.generic": {
+    "state": "pending",
+    "en": "Your overview could not be loaded. Please try again."
+  },
+  "mobile.home.error.network": {
+    "state": "pending",
+    "en": "Cannot reach the server. Check your internet connection."
+  },
+  "mobile.home.error.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "mobile.home.greeting.afternoon": {
+    "state": "pending",
+    "en": "Good afternoon,"
+  },
+  "mobile.home.greeting.evening": {
+    "state": "pending",
+    "en": "Good evening,"
+  },
+  "mobile.home.greeting.morning": {
+    "state": "pending",
+    "en": "Good morning,"
+  },
+  "mobile.home.profileCard.action": {
+    "state": "pending",
+    "en": "Complete your profile"
+  },
+  "mobile.home.profileCard.body": {
+    "state": "pending",
+    "en": "A complete profile gives better CVs and job matches."
+  },
+  "mobile.home.profileCard.title": {
+    "state": "pending",
+    "en": "Your profile"
+  },
+  "mobile.home.quick.assessSkill": {
+    "state": "pending",
+    "en": "Assess skill"
+  },
+  "mobile.home.quick.practiceInterview": {
+    "state": "pending",
+    "en": "Practice interview"
+  },
+  "mobile.home.quick.researchJobs": {
+    "state": "pending",
+    "en": "Research jobs"
+  },
+  "mobile.home.quick.soon": {
+    "state": "pending",
+    "en": "Soon"
+  },
+  "mobile.home.quick.tailorCv": {
+    "state": "pending",
+    "en": "Tailor CV"
+  },
+  "mobile.home.quick.title": {
+    "state": "pending",
+    "en": "Quick actions"
+  },
+  "mobile.home.schedule.empty": {
+    "state": "pending",
+    "en": "No scheduled search. You can let KOBANIQ search for jobs on a schedule later."
+  },
+  "mobile.home.schedule.title": {
+    "state": "pending",
+    "en": "Next scheduled search"
+  },
+  "mobile.home.skillCard.action": {
+    "state": "pending",
+    "en": "Add your skills"
+  },
+  "mobile.home.skillCard.count": {
+    "state": "pending",
+    "en": "{{count}} assessed"
+  },
+  "mobile.home.skillCard.empty": {
+    "state": "pending",
+    "en": "No skills yet. Add your skills, then take a short test to show employers what you really know."
+  },
+  "mobile.home.skillCard.title": {
+    "state": "pending",
+    "en": "Skill profile"
+  },
+  "mobile.home.title": {
+    "state": "pending",
+    "en": "Home"
+  },
+  "mobile.home.topMatch.empty": {
+    "state": "pending",
+    "en": "No job matches yet. Start a job search to see jobs that fit you."
+  },
+  "mobile.home.topMatch.seeAll": {
+    "state": "pending",
+    "en": "See all"
+  },
+  "mobile.home.topMatch.title": {
+    "state": "pending",
+    "en": "Top match today"
+  },
   "mobile.preview.buttons.ghost": {
     "state": "pending",
     "en": "Skip for now"
@@ -1342,6 +1438,382 @@
   "mobile.preview.toggle.light": {
     "state": "pending",
     "en": "Switch to dark"
+  },
+  "mobile.profile.account": {
+    "state": "pending",
+    "en": "Account"
+  },
+  "mobile.profile.add": {
+    "state": "pending",
+    "en": "Add"
+  },
+  "mobile.profile.addTitle": {
+    "state": "pending",
+    "en": "Add: {{section}}"
+  },
+  "mobile.profile.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "mobile.profile.completion": {
+    "state": "pending",
+    "en": "Profile {{percent}}% complete"
+  },
+  "mobile.profile.delete": {
+    "state": "pending",
+    "en": "Delete"
+  },
+  "mobile.profile.deleteConfirm": {
+    "state": "pending",
+    "en": "Delete this entry? This cannot be undone."
+  },
+  "mobile.profile.deleteYes": {
+    "state": "pending",
+    "en": "Yes, delete"
+  },
+  "mobile.profile.editTitle": {
+    "state": "pending",
+    "en": "Edit: {{section}}"
+  },
+  "mobile.profile.emptySection": {
+    "state": "pending",
+    "en": "Nothing added yet."
+  },
+  "mobile.profile.entries_one": {
+    "state": "pending",
+    "en": "{{count}} entry"
+  },
+  "mobile.profile.entries_other": {
+    "state": "pending",
+    "en": "{{count}} entries"
+  },
+  "mobile.profile.fields.cities": {
+    "state": "pending",
+    "en": "Cities"
+  },
+  "mobile.profile.fields.city": {
+    "state": "pending",
+    "en": "City"
+  },
+  "mobile.profile.fields.degree": {
+    "state": "pending",
+    "en": "Degree or certificate"
+  },
+  "mobile.profile.fields.description": {
+    "state": "pending",
+    "en": "What you did"
+  },
+  "mobile.profile.fields.employer": {
+    "state": "pending",
+    "en": "Employer"
+  },
+  "mobile.profile.fields.employerTypes": {
+    "state": "pending",
+    "en": "Employer types"
+  },
+  "mobile.profile.fields.endDate": {
+    "state": "pending",
+    "en": "End"
+  },
+  "mobile.profile.fields.endYear": {
+    "state": "pending",
+    "en": "End year"
+  },
+  "mobile.profile.fields.field": {
+    "state": "pending",
+    "en": "Field of study"
+  },
+  "mobile.profile.fields.fullName": {
+    "state": "pending",
+    "en": "Full name"
+  },
+  "mobile.profile.fields.headline": {
+    "state": "pending",
+    "en": "Preferred job title"
+  },
+  "mobile.profile.fields.issuedOn": {
+    "state": "pending",
+    "en": "Issued"
+  },
+  "mobile.profile.fields.issuer": {
+    "state": "pending",
+    "en": "Issued by"
+  },
+  "mobile.profile.fields.jobTypes": {
+    "state": "pending",
+    "en": "Job type"
+  },
+  "mobile.profile.fields.language": {
+    "state": "pending",
+    "en": "Language"
+  },
+  "mobile.profile.fields.level": {
+    "state": "pending",
+    "en": "Level"
+  },
+  "mobile.profile.fields.name": {
+    "state": "pending",
+    "en": "Name"
+  },
+  "mobile.profile.fields.phone": {
+    "state": "pending",
+    "en": "Phone"
+  },
+  "mobile.profile.fields.profession": {
+    "state": "pending",
+    "en": "Profession"
+  },
+  "mobile.profile.fields.region": {
+    "state": "pending",
+    "en": "Region"
+  },
+  "mobile.profile.fields.regions": {
+    "state": "pending",
+    "en": "Regions"
+  },
+  "mobile.profile.fields.school": {
+    "state": "pending",
+    "en": "School or university"
+  },
+  "mobile.profile.fields.skills": {
+    "state": "pending",
+    "en": "Skills used"
+  },
+  "mobile.profile.fields.startDate": {
+    "state": "pending",
+    "en": "Start"
+  },
+  "mobile.profile.fields.startYear": {
+    "state": "pending",
+    "en": "Start year"
+  },
+  "mobile.profile.fields.summary": {
+    "state": "pending",
+    "en": "About you"
+  },
+  "mobile.profile.fields.title": {
+    "state": "pending",
+    "en": "Job title"
+  },
+  "mobile.profile.fields.titles": {
+    "state": "pending",
+    "en": "Job titles you want"
+  },
+  "mobile.profile.fields.url": {
+    "state": "pending",
+    "en": "Link"
+  },
+  "mobile.profile.fields.workModes": {
+    "state": "pending",
+    "en": "Work mode"
+  },
+  "mobile.profile.hints.endDate": {
+    "state": "pending",
+    "en": "Leave empty if you still work here"
+  },
+  "mobile.profile.hints.list": {
+    "state": "pending",
+    "en": "Separate with commas"
+  },
+  "mobile.profile.hints.month": {
+    "state": "pending",
+    "en": "Year-month, e.g. 2024-09"
+  },
+  "mobile.profile.itemGone": {
+    "state": "pending",
+    "en": "This entry no longer exists. Go back to see your list."
+  },
+  "mobile.profile.jobTypes.contract": {
+    "state": "pending",
+    "en": "Contract"
+  },
+  "mobile.profile.jobTypes.full_time": {
+    "state": "pending",
+    "en": "Full-time"
+  },
+  "mobile.profile.jobTypes.internship": {
+    "state": "pending",
+    "en": "Internship"
+  },
+  "mobile.profile.jobTypes.part_time": {
+    "state": "pending",
+    "en": "Part-time"
+  },
+  "mobile.profile.jobTypes.volunteer": {
+    "state": "pending",
+    "en": "Volunteer"
+  },
+  "mobile.profile.languageError.generic": {
+    "state": "pending",
+    "en": "The language changed on this phone, but it could not be saved to your account. Please choose it again."
+  },
+  "mobile.profile.languageError.network": {
+    "state": "pending",
+    "en": "The language changed on this phone, but it could not be saved to your account. Check your internet connection and choose it again."
+  },
+  "mobile.profile.languageHint": {
+    "state": "pending",
+    "en": "The app and messages from KOBANIQ use this language on all your devices."
+  },
+  "mobile.profile.languageSaved": {
+    "state": "pending",
+    "en": "Saved to your account."
+  },
+  "mobile.profile.levels.basic": {
+    "state": "pending",
+    "en": "Basic"
+  },
+  "mobile.profile.levels.conversational": {
+    "state": "pending",
+    "en": "Conversational"
+  },
+  "mobile.profile.levels.fluent": {
+    "state": "pending",
+    "en": "Fluent"
+  },
+  "mobile.profile.levels.native": {
+    "state": "pending",
+    "en": "Native"
+  },
+  "mobile.profile.loadError": {
+    "state": "pending",
+    "en": "Your profile could not be loaded. Check your internet connection and try again."
+  },
+  "mobile.profile.logout": {
+    "state": "pending",
+    "en": "Log out"
+  },
+  "mobile.profile.notAdded": {
+    "state": "pending",
+    "en": "Not added yet"
+  },
+  "mobile.profile.now": {
+    "state": "pending",
+    "en": "Now"
+  },
+  "mobile.profile.personalHint": {
+    "state": "pending",
+    "en": "Employers see this on your CVs. Only you can see and change it."
+  },
+  "mobile.profile.prefsSet": {
+    "state": "pending",
+    "en": "Set"
+  },
+  "mobile.profile.save": {
+    "state": "pending",
+    "en": "Save"
+  },
+  "mobile.profile.saving": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "mobile.profile.sectionHints.certifications": {
+    "state": "pending",
+    "en": "Certificates and licences."
+  },
+  "mobile.profile.sectionHints.education": {
+    "state": "pending",
+    "en": "Schools, universities and courses."
+  },
+  "mobile.profile.sectionHints.experience": {
+    "state": "pending",
+    "en": "Jobs, internships and volunteer work."
+  },
+  "mobile.profile.sectionHints.languages": {
+    "state": "pending",
+    "en": "Languages you speak and how well."
+  },
+  "mobile.profile.sectionHints.preferences": {
+    "state": "pending",
+    "en": "What kind of job you are looking for. Job research uses this."
+  },
+  "mobile.profile.sectionHints.projects": {
+    "state": "pending",
+    "en": "Things you built or worked on."
+  },
+  "mobile.profile.sections.certifications": {
+    "state": "pending",
+    "en": "Certifications"
+  },
+  "mobile.profile.sections.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "mobile.profile.sections.experience": {
+    "state": "pending",
+    "en": "Experience"
+  },
+  "mobile.profile.sections.languages": {
+    "state": "pending",
+    "en": "Languages"
+  },
+  "mobile.profile.sections.personal": {
+    "state": "pending",
+    "en": "Personal info"
+  },
+  "mobile.profile.sections.preferences": {
+    "state": "pending",
+    "en": "Job preferences"
+  },
+  "mobile.profile.sections.projects": {
+    "state": "pending",
+    "en": "Projects"
+  },
+  "mobile.profile.workModes.hybrid": {
+    "state": "pending",
+    "en": "Hybrid"
+  },
+  "mobile.profile.workModes.onsite": {
+    "state": "pending",
+    "en": "On-site"
+  },
+  "mobile.profile.workModes.remote": {
+    "state": "pending",
+    "en": "Remote"
+  },
+  "mobile.soon.cv.body": {
+    "state": "pending",
+    "en": "Soon you can paste a job description and create a CV for that job from your profile, in English or Somali."
+  },
+  "mobile.soon.cv.title": {
+    "state": "pending",
+    "en": "Your CVs will live here"
+  },
+  "mobile.soon.jobs.body": {
+    "state": "pending",
+    "en": "Soon you can choose regions and job sources in Somaliland and Somalia and get jobs that match you, each with an explanation."
+  },
+  "mobile.soon.jobs.title": {
+    "state": "pending",
+    "en": "Job search is coming"
+  },
+  "mobile.soon.reports.body": {
+    "state": "pending",
+    "en": "Reports on your CVs, tests and job searches appear once you start using those features."
+  },
+  "mobile.soon.reports.title": {
+    "state": "pending",
+    "en": "Your progress will show here"
+  },
+  "mobile.tabs.cv": {
+    "state": "pending",
+    "en": "CV"
+  },
+  "mobile.tabs.home": {
+    "state": "pending",
+    "en": "Home"
+  },
+  "mobile.tabs.jobs": {
+    "state": "pending",
+    "en": "Jobs"
+  },
+  "mobile.tabs.profile": {
+    "state": "pending",
+    "en": "Profile"
+  },
+  "mobile.tabs.reports": {
+    "state": "pending",
+    "en": "Reports"
   },
   "server.email.resetPassword.body": {
     "state": "pending",

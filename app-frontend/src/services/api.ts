@@ -5,18 +5,22 @@ import i18n from '../i18n';
 export class ApiError extends Error {
   readonly status: number;
   readonly code: string;
+  /** Per-field messages from the server (already in the app language), e.g. { title: "This field is required" }. */
+  readonly details: Record<string, string>;
 
-  constructor(status: number, code: string, message: string) {
+  constructor(status: number, code: string, message: string, details: Record<string, string> = {}) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
     this.code = code;
+    this.details = details;
   }
 }
 
 interface Envelope<T> {
   data: T | null;
   error: { code: string; message: string } | null;
+  meta?: { details?: Record<string, string> };
 }
 
 /**
@@ -68,6 +72,7 @@ export async function apiRequest<T>(
       res.status,
       json?.error?.code ?? 'UNKNOWN_ERROR',
       json?.error?.message ?? 'Request failed',
+      json?.meta?.details ?? {},
     );
   }
   return json.data as T;

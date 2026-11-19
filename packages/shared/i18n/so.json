@@ -506,11 +506,6 @@
       "later": {
         "google": "Ku-gelitaanka Google wuxuu imanayaa cusboonaysiin dambe."
       },
-      "home": {
-        "title": "Waad soo gashay",
-        "body": "Waxaad ku gashay {{email}}. Shaashadda dhabta ah ee Hoyga waxay la imanaysaa hawsha xigta.",
-        "logout": "Ka bax"
-      },
       "restoring": "Waxaa la hubinayaa gelitaankaaga…",
       "verify": {
         "title": "Hubi iimaylkaaga",
@@ -536,6 +531,173 @@
         "newPassword": "Eray sir ah oo cusub",
         "submit": "Kaydi erayga sirta ah ee cusub",
         "submitting": "Waa la kaydinayaa…"
+      }
+    },
+    "tabs": {
+      "home": "Hoyga",
+      "cv": "CV",
+      "jobs": "Shaqooyin",
+      "reports": "Warbixinno",
+      "profile": "Astaanta"
+    },
+    "home": {
+      "title": "Hoyga",
+      "error": {
+        "network": "Lama gaari karo server-ka. Hubi xiriirka internet-kaaga.",
+        "generic": "Guudmarkaaga lama soo rari karin. Fadlan isku day mar kale.",
+        "retry": "Isku day mar kale"
+      },
+      "cvs": {
+        "title": "CV-yadii ugu dambeeyay",
+        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan."
+      },
+      "schedule": {
+        "title": "Raadinta xigta ee la qorsheeyay",
+        "empty": "Ma jirto raadin la qorsheeyay. Hadhow waxaad u oggolaan kartaa KOBANIQ inay shaqooyin u raadiso jadwal ahaan."
+      },
+      "greeting": {
+        "morning": "Subax wanaagsan,",
+        "afternoon": "Galab wanaagsan,",
+        "evening": "Fiid wanaagsan,"
+      },
+      "skillCard": {
+        "title": "Astaanta xirfadaha",
+        "count": "{{count}} la qiimeeyay",
+        "empty": "Weli xirfado ma jiraan. Ku dar xirfadahaaga, kadibna samee imtixaan gaaban si aad loo-shaqeeyayaasha u tusto waxaad dhab ahaan taqaanno.",
+        "action": "Ku dar xirfadahaaga"
+      },
+      "quick": {
+        "title": "Ficillo degdeg ah",
+        "tailorCv": "Habee CV",
+        "researchJobs": "Raadi shaqooyin",
+        "assessSkill": "Qiimee xirfad",
+        "practiceInterview": "Ku tababar waraysi",
+        "soon": "Dhawaan"
+      },
+      "topMatch": {
+        "title": "Shaqada ugu habboon maanta",
+        "seeAll": "Dhammaan arag",
+        "empty": "Weli shaqo kuu habboon ma jirto. Bilow raadin shaqo si aad u aragto shaqooyinka kugu habboon."
+      },
+      "profileCard": {
+        "title": "Astaantaada",
+        "body": "Astaan dhammaystiran waxay keentaa CV-yo iyo shaqooyin kuugu habboon oo ka wanaagsan.",
+        "action": "Dhammaystir astaantaada"
+      }
+    },
+    "profile": {
+      "account": "Akoonka",
+      "languageHint": "App-ka iyo fariimaha KOBANIQ waxay luqaddan ku isticmaalaan dhammaan qalabkaaga.",
+      "languageSaved": "Waa lagu keydiyay akoonkaaga.",
+      "languageError": {
+        "network": "Luqaddu way ku beddelantay taleefankan, laakiin lagama keydin karin akoonkaaga. Hubi xiriirka internet-kaaga oo mar kale dooro.",
+        "generic": "Luqaddu way ku beddelantay taleefankan, laakiin lagama keydin karin akoonkaaga. Fadlan mar kale dooro."
+      },
+      "logout": "Ka bax",
+      "completion": "Astaanta {{percent}}% way dhammaystiran tahay",
+      "loadError": "Astaantaada lama soo rari karin. Hubi xiriirka internet-kaaga oo isku day mar kale.",
+      "notAdded": "Weli lama gelin",
+      "entries_one": "{{count}} qoraal",
+      "entries_other": "{{count}} qoraal",
+      "prefsSet": "La dejiyay",
+      "personalHint": "Loo-shaqeeyayaashu waxay tan ku arkaan CV-yadaada. Adiga keliya ayaa arki kara oo beddeli kara.",
+      "sections": {
+        "personal": "Macluumaadka shakhsiga",
+        "experience": "Khibrad",
+        "education": "Waxbarasho",
+        "projects": "Mashaariic",
+        "certifications": "Shahaadooyin",
+        "languages": "Luqadaha",
+        "preferences": "Doorashooyinka shaqada"
+      },
+      "sectionHints": {
+        "experience": "Shaqooyin, tababar shaqo iyo shaqo tabarruc ah.",
+        "education": "Dugsiyo, jaamacado iyo koorsooyin.",
+        "projects": "Waxyaabo aad dhistay ama ka shaqaysay.",
+        "certifications": "Shahaadooyin iyo liisanno.",
+        "languages": "Luqadaha aad ku hadasho iyo heerkaaga.",
+        "preferences": "Nooca shaqada aad raadinayso. Raadinta shaqadu tan ayay isticmaashaa."
+      },
+      "fields": {
+        "fullName": "Magaca oo buuxa",
+        "headline": "Magaca shaqada aad doorbidayso",
+        "profession": "Xirfadda",
+        "region": "Gobolka",
+        "city": "Magaalada",
+        "phone": "Taleefanka",
+        "summary": "Adiga naftaada",
+        "title": "Magaca shaqada",
+        "employer": "Loo-shaqeeyaha",
+        "startDate": "Bilowga",
+        "endDate": "Dhammaadka",
+        "description": "Waxaad qabatay",
+        "school": "Dugsiga ama jaamacadda",
+        "degree": "Shahaadada",
+        "field": "Qaybta waxbarashada",
+        "startYear": "Sanadka bilowga",
+        "endYear": "Sanadka dhammaadka",
+        "name": "Magaca",
+        "url": "Xiriiriye",
+        "skills": "Xirfadaha la isticmaalay",
+        "issuer": "Waxaa bixiyay",
+        "issuedOn": "La bixiyay",
+        "language": "Luqadda",
+        "level": "Heerka",
+        "titles": "Magacyada shaqooyinka aad rabto",
+        "regions": "Gobollada",
+        "cities": "Magaalooyinka",
+        "employerTypes": "Noocyada loo-shaqeeyaha",
+        "workModes": "Qaabka shaqada",
+        "jobTypes": "Nooca shaqada"
+      },
+      "hints": {
+        "month": "Sanad-bil, tusaale 2024-09",
+        "endDate": "Banaan ka tag haddii aad weli halkan ka shaqayso",
+        "list": "Ku kala saar hakad (,)"
+      },
+      "levels": {
+        "basic": "Aasaasi",
+        "conversational": "Wada-hadal",
+        "fluent": "Si fiican",
+        "native": "Luqadda hooyo"
+      },
+      "workModes": {
+        "onsite": "Goobta shaqada",
+        "hybrid": "Isku-dhaf",
+        "remote": "Fog (online)"
+      },
+      "jobTypes": {
+        "full_time": "Waqti buuxa",
+        "part_time": "Waqti dhiman",
+        "contract": "Qandaraas",
+        "internship": "Tababar shaqo",
+        "volunteer": "Tabarruc"
+      },
+      "now": "Hadda",
+      "add": "Ku dar",
+      "addTitle": "Ku dar: {{section}}",
+      "editTitle": "Wax ka beddel: {{section}}",
+      "emptySection": "Weli waxba lama gelin.",
+      "itemGone": "Qoraalkani mar dambe ma jiro. Dib u noqo si aad liiskaaga u aragto.",
+      "save": "Keydi",
+      "saving": "Waa la keydinayaa…",
+      "delete": "Tirtir",
+      "deleteConfirm": "Ma tirtirtaa qoraalkan? Tan dib looma celin karo.",
+      "deleteYes": "Haa, tirtir",
+      "cancel": "Jooji"
+    },
+    "soon": {
+      "cv": {
+        "title": "CV-yadaadu halkan ayay joogi doonaan",
+        "body": "Dhawaan waxaad dhejin kartaa sharaxaadda shaqo oo aad astaantaada ka samayn kartaa CV shaqadaas ku habboon, Ingiriisi ama Soomaali."
+      },
+      "jobs": {
+        "title": "Raadinta shaqadu way soo socotaa",
+        "body": "Dhawaan waxaad dooran kartaa gobollo iyo ilo shaqo oo Somaliland iyo Soomaaliya ah, waxaadna heli doontaa shaqooyin kugu habboon, mid kastana sharaxaad leh."
+      },
+      "reports": {
+        "title": "Horumarkaagu halkan ayuu ka muuqan doonaa",
+        "body": "Warbixinnada CV-yadaada, imtixaannadaada iyo raadintaada shaqo waxay soo muuqdaan markaad bilowdo isticmaalka qaybahaas."
       }
     }
   }

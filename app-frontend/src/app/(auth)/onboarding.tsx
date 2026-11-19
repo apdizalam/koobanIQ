@@ -17,6 +17,7 @@ import {
   SkillsIllustration,
 } from '../../components/onboarding/Illustrations';
 import { Screen } from '../../components/layout/Screen';
+import { BackButton } from '../../components/ui/BackButton';
 import { Button } from '../../components/ui/Button';
 import { PageDots } from '../../components/ui/PageDots';
 import { TextLink } from '../../components/ui/TextLink';
@@ -28,7 +29,11 @@ const SLIDES: { key: 'skills' | 'jobs' | 'cv'; Illustration: ComponentType }[] =
   { key: 'cv', Illustration: CvIllustration },
 ];
 
-/** Figma "02 · Onboarding": three slides (swipe or Next), Skip, page dots. */
+/**
+ * Figma "02 · Onboarding": three slides (swipe or Next), Skip, page dots.
+ * Back (owner request, not in the design): previous slide, or the language
+ * screen from the first slide.
+ */
 export default function OnboardingScreen() {
   const { t } = useTranslation();
   const { colors, typography, spacing } = useTheme();
@@ -45,6 +50,12 @@ export default function OnboardingScreen() {
     setIndex(next);
   }
 
+  function back() {
+    if (index > 0) goTo(index - 1);
+    else if (router.canGoBack()) router.back();
+    else router.replace('/language');
+  }
+
   function onSwipe(event: NativeSyntheticEvent<NativeScrollEvent>) {
     setIndex(Math.round(event.nativeEvent.contentOffset.x / slideWidth));
   }
@@ -52,7 +63,8 @@ export default function OnboardingScreen() {
   return (
     <Screen gap={spacing.lg}>
       <StatusBar style="auto" />
-      <View style={styles.skipRow}>
+      <View style={styles.topRow}>
+        <BackButton onPress={back} />
         {last ? null : (
           <TextLink
             label={t('mobile.auth.onboarding.skip')}
@@ -101,6 +113,6 @@ export default function OnboardingScreen() {
 }
 
 const styles = StyleSheet.create({
-  skipRow: { minHeight: 24, alignItems: 'flex-end' },
+  topRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   slides: { flex: 1 },
 });

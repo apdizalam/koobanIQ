@@ -101,7 +101,7 @@ describe('App start (TIQ-5 slice 3)', () => {
     routes['POST /auth/refresh'] = ok(session('amina@example.com', 'rotated-2'));
     await launch();
 
-    expect(await screen.findByTestId('home-email')).toHaveTextContent(/amina@example\.com/);
+    expect(await screen.findByTestId('home-name')).toHaveTextContent('amina');
     expect(screen).toHavePathname('/home');
     expect(refreshCalls()).toHaveLength(1);
     expect(refreshCalls()[0].body).toEqual({ refreshToken: 'saved-1' });
@@ -113,7 +113,7 @@ describe('App start (TIQ-5 slice 3)', () => {
     savedSession();
     routes['POST /auth/refresh'] = ok(session('amina@example.com', 'rotated-2', 'so'));
     await launch();
-    await screen.findByTestId('home-email');
+    await screen.findByTestId('home-name');
     expect(i18n.language).toBe('so');
   });
 
@@ -128,7 +128,7 @@ describe('App start (TIQ-5 slice 3)', () => {
     expect(await screen.findByTestId('splash')).toBeTruthy();
     expect(screen.queryByTestId('welcome-start')).toBeNull();
     await act(async () => release());
-    expect(await screen.findByTestId('home-email')).toBeTruthy();
+    expect(await screen.findByTestId('home-name')).toBeTruthy();
   });
 
   it.each([
@@ -148,7 +148,7 @@ describe('App start (TIQ-5 slice 3)', () => {
     savedSession('saved-1', 'amina@example.com');
     routes['POST /auth/refresh'] = 'offline';
     await launch();
-    expect(await screen.findByTestId('home-email')).toHaveTextContent(/amina@example\.com/);
+    expect(await screen.findByTestId('home-name')).toHaveTextContent('amina');
     expect(mockSecureStore.get(REFRESH_KEY)).toBe('saved-1');
   });
 
@@ -164,7 +164,7 @@ describe('App start (TIQ-5 slice 3)', () => {
     savedSession();
     routes['POST /auth/refresh'] = ok(session('amina@example.com', 'rotated-2'));
     await launch('/welcome');
-    expect(await screen.findByTestId('home-email')).toBeTruthy();
+    expect(await screen.findByTestId('home-name')).toBeTruthy();
     expect(screen).toHavePathname('/home');
   });
 
@@ -173,9 +173,12 @@ describe('App start (TIQ-5 slice 3)', () => {
     routes['POST /auth/refresh'] = ok(session('amina@example.com', 'rotated-2'));
     routes['POST /auth/logout'] = { status: 204 };
     await launch();
-    await screen.findByTestId('home-email');
+    await screen.findByTestId('home-name');
     await act(async () => {
-      fireEvent.press(screen.getByTestId('home-logout'));
+      fireEvent.press(screen.getByTestId('tab-profile'));
+    });
+    await act(async () => {
+      fireEvent.press(screen.getByTestId('profile-logout'));
     });
     expect(await screen.findByTestId('welcome-start')).toBeTruthy();
     expect(mockSecureStore.has(REFRESH_KEY)).toBe(false);

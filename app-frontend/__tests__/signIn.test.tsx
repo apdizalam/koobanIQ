@@ -132,7 +132,7 @@ describe('Log in', () => {
       body: { email: 'amina@example.com', password: 'secret123' },
     });
     expect(screen).toHavePathname('/home');
-    expect(screen.getByTestId('home-email')).toHaveTextContent(/amina@example\.com/);
+    expect(screen.getByTestId('home-name')).toHaveTextContent('amina');
     expect(mockSecureStore.get(REFRESH_KEY)).toBe('refresh-1');
   });
 
@@ -211,7 +211,9 @@ describe('signed-in area', () => {
     await type('login-email', 'amina@example.com');
     await type('login-password', 'secret123');
     await press('login-submit');
-    await press('home-logout');
+    // Log out lives on the Profile tab.
+    await press('tab-profile');
+    await press('profile-logout');
 
     expect(screen).toHavePathname('/welcome');
     expect(mockSecureStore.has(REFRESH_KEY)).toBe(false);

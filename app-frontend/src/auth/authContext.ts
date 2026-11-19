@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import type { Language } from '../i18n/language';
 import type { PublicUser } from '../types/auth';
 
 /**
@@ -26,6 +27,14 @@ export interface AuthState {
   verifyEmail: (code: string) => Promise<void>;
   /** Emails the signed-in user a new verification code. */
   resendVerification: () => Promise<void>;
+  /** Loads the account again from the server (GET /me) and keeps it for offline starts. */
+  reloadUser: () => Promise<PublicUser>;
+  /**
+   * Switches the app language at once and saves it to the account (PATCH /me),
+   * so it follows the user to any device. Throws if saving fails; the screen
+   * language is changed either way.
+   */
+  saveLanguage: (language: Language) => Promise<void>;
 }
 
 export const AuthContext = createContext<AuthState | null>(null);

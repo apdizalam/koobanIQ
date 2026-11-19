@@ -73,8 +73,8 @@ describe('Verify email (TIQ-5 slice 4)', () => {
     await type('verify-code', '12 34 56');
     await press('verify-submit');
 
-    expect(calls.at(-1)).toMatchObject({
-      route: 'POST /auth/verify-email',
+    // (Home then loads the account with GET /me, so look for the verify call itself.)
+    expect(calls.find((c) => c.route === 'POST /auth/verify-email')).toMatchObject({
       body: { email: EMAIL, code: '123456' },
     });
     expect(screen).toHavePathname('/home');
@@ -139,6 +139,16 @@ describe('Verify email (TIQ-5 slice 4)', () => {
     await press('verify-logout');
     expect(screen).toHavePathname('/welcome');
     expect(mockSecureStore.has('kobaniq.refreshToken')).toBe(false);
+  });
+
+  it('the back button leaves the unconfirmed account and opens Sign up', async () => {
+    routes['POST /auth/logout'] = { status: 204 };
+    await signUp();
+    await press('back');
+    expect(await screen.findByTestId('sign-up-submit')).toBeTruthy();
+    expect(screen).toHavePathname('/sign-up');
+    expect(mockSecureStore.has('kobaniq.refreshToken')).toBe(false);
+    expect(calls.some((c) => c.route === 'POST /auth/logout')).toBe(true);
   });
 
   it('a signed-out visitor is sent to Welcome', async () => {
