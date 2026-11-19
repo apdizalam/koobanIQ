@@ -629,7 +629,8 @@
       },
       "cvs": {
         "title": "Recent CVs",
-        "empty": "No CVs yet. Your CVs will appear here."
+        "empty": "No CVs yet. Your CVs will appear here.",
+        "open": "Open your CVs"
       },
       "schedule": {
         "title": "Next scheduled search",
@@ -863,6 +864,49 @@
       },
       "errors": {
         "network": "Cannot reach the server, or it took too long. Check your internet connection and try again."
+      },
+      "generate": {
+        "languageTitle": "CV language",
+        "languageHint": "Choose the language of this CV. It can differ from the app language.",
+        "create": "Create CV",
+        "writingShort": "Writing…",
+        "writing": "The AI is writing your CV from your profile. This can take up to a minute.",
+        "addEmail": "Add the email for your CVs"
+      },
+      "preview": {
+        "summary": "Profile",
+        "experience": "Experience",
+        "education": "Education",
+        "skills": "Skills",
+        "projects": "Projects",
+        "certifications": "Certifications",
+        "languages": "Languages",
+        "present": "present",
+        "assessed": "assessed"
+      },
+      "missing": {
+        "title": "Missing from your profile",
+        "hint": "The CV leaves these out. Add them to your profile, then tap Generate again.",
+        "items": {
+          "fullName": "Your full name",
+          "headline": "Your preferred job title",
+          "phone": "Your phone number",
+          "experience": "Work experience",
+          "education": "Education",
+          "skills": "Skills",
+          "languages": "Languages you speak",
+          "requiredSkill": "Required skill: {{item}}",
+          "preferredSkill": "Preferred skill: {{item}}"
+        }
+      },
+      "view": {
+        "title": "Your CV",
+        "notFound": "This CV could not be found. It may have been deleted.",
+        "again": "Generate again",
+        "otherLanguage": "Generate in {{language}}",
+        "delete": "Delete this CV",
+        "deleteConfirm": "Delete this CV? This cannot be undone.",
+        "deleteFailed": "The CV could not be deleted. Please try again."
       }
     }
   }

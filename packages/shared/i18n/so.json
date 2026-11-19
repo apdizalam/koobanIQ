@@ -629,7 +629,8 @@
       },
       "cvs": {
         "title": "CV-yadii ugu dambeeyay",
-        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan."
+        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan.",
+        "open": "Fur CV-yadaada"
       },
       "schedule": {
         "title": "Raadinta xigta ee la qorsheeyay",
@@ -863,6 +864,49 @@
       },
       "errors": {
         "network": "Server-ka lama gaari karo, ama wuu daahay. Hubi internetkaaga oo isku day mar kale."
+      },
+      "generate": {
+        "languageTitle": "Luqadda CV-ga",
+        "languageHint": "Dooro luqadda CV-gan. Waxay ka duwanaan kartaa luqadda app-ka.",
+        "create": "Samee CV",
+        "writingShort": "Waa la qorayaa…",
+        "writing": "AI-gu wuxuu CV-gaaga ka qorayaa astaantaada. Tani waxay qaadan kartaa ilaa daqiiqad.",
+        "addEmail": "Ku dar iimaylka CV-yadaada"
+      },
+      "preview": {
+        "summary": "Astaan",
+        "experience": "Khibrad shaqo",
+        "education": "Waxbarasho",
+        "skills": "Xirfado",
+        "projects": "Mashaariic",
+        "certifications": "Shahaadooyin",
+        "languages": "Luqado",
+        "present": "hadda",
+        "assessed": "la qiimeeyay"
+      },
+      "missing": {
+        "title": "Waxa ka maqan astaantaada",
+        "hint": "CV-gu kuma jiraan kuwan. Ku dar astaantaada, kadibna taabo Mar kale samee.",
+        "items": {
+          "fullName": "Magacaaga oo buuxa",
+          "headline": "Magaca shaqada aad rabto",
+          "phone": "Lambarka taleefankaaga",
+          "experience": "Khibrad shaqo",
+          "education": "Waxbarasho",
+          "skills": "Xirfado",
+          "languages": "Luqadaha aad ku hadasho",
+          "requiredSkill": "Xirfad loo baahan yahay: {{item}}",
+          "preferredSkill": "Xirfad la door bidayo: {{item}}"
+        }
+      },
+      "view": {
+        "title": "CV-gaaga",
+        "notFound": "CV-gan lama helin. Waxaa laga yaabaa in la tirtiray.",
+        "again": "Mar kale samee",
+        "otherLanguage": "Ku samee {{language}}",
+        "delete": "Tirtir CV-gan",
+        "deleteConfirm": "Ma tirtiraysaa CV-gan? Dib looma soo celin karo.",
+        "deleteFailed": "CV-ga lama tirtiri karin. Fadlan isku day mar kale."
       }
     }
   }

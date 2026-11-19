@@ -1391,6 +1391,30 @@
     "state": "pending",
     "en": "Cannot reach the server, or it took too long. Check your internet connection and try again."
   },
+  "mobile.cv.generate.addEmail": {
+    "state": "pending",
+    "en": "Add the email for your CVs"
+  },
+  "mobile.cv.generate.create": {
+    "state": "pending",
+    "en": "Create CV"
+  },
+  "mobile.cv.generate.languageHint": {
+    "state": "pending",
+    "en": "Choose the language of this CV. It can differ from the app language."
+  },
+  "mobile.cv.generate.languageTitle": {
+    "state": "pending",
+    "en": "CV language"
+  },
+  "mobile.cv.generate.writing": {
+    "state": "pending",
+    "en": "The AI is writing your CV from your profile. This can take up to a minute."
+  },
+  "mobile.cv.generate.writingShort": {
+    "state": "pending",
+    "en": "Writing…"
+  },
   "mobile.cv.job.deadline": {
     "state": "pending",
     "en": "Apply by {{date}}"
@@ -1503,6 +1527,86 @@
     "state": "pending",
     "en": "Job ad"
   },
+  "mobile.cv.missing.hint": {
+    "state": "pending",
+    "en": "The CV leaves these out. Add them to your profile, then tap Generate again."
+  },
+  "mobile.cv.missing.items.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "mobile.cv.missing.items.experience": {
+    "state": "pending",
+    "en": "Work experience"
+  },
+  "mobile.cv.missing.items.fullName": {
+    "state": "pending",
+    "en": "Your full name"
+  },
+  "mobile.cv.missing.items.headline": {
+    "state": "pending",
+    "en": "Your preferred job title"
+  },
+  "mobile.cv.missing.items.languages": {
+    "state": "pending",
+    "en": "Languages you speak"
+  },
+  "mobile.cv.missing.items.phone": {
+    "state": "pending",
+    "en": "Your phone number"
+  },
+  "mobile.cv.missing.items.preferredSkill": {
+    "state": "pending",
+    "en": "Preferred skill: {{item}}"
+  },
+  "mobile.cv.missing.items.requiredSkill": {
+    "state": "pending",
+    "en": "Required skill: {{item}}"
+  },
+  "mobile.cv.missing.items.skills": {
+    "state": "pending",
+    "en": "Skills"
+  },
+  "mobile.cv.missing.title": {
+    "state": "pending",
+    "en": "Missing from your profile"
+  },
+  "mobile.cv.preview.assessed": {
+    "state": "pending",
+    "en": "assessed"
+  },
+  "mobile.cv.preview.certifications": {
+    "state": "pending",
+    "en": "Certifications"
+  },
+  "mobile.cv.preview.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "mobile.cv.preview.experience": {
+    "state": "pending",
+    "en": "Experience"
+  },
+  "mobile.cv.preview.languages": {
+    "state": "pending",
+    "en": "Languages"
+  },
+  "mobile.cv.preview.present": {
+    "state": "pending",
+    "en": "present"
+  },
+  "mobile.cv.preview.projects": {
+    "state": "pending",
+    "en": "Projects"
+  },
+  "mobile.cv.preview.skills": {
+    "state": "pending",
+    "en": "Skills"
+  },
+  "mobile.cv.preview.summary": {
+    "state": "pending",
+    "en": "Profile"
+  },
   "mobile.cv.tab.cvsTitle": {
     "state": "pending",
     "en": "Your CVs"
@@ -1535,9 +1639,41 @@
     "state": "pending",
     "en": "version {{version}}"
   },
+  "mobile.cv.view.again": {
+    "state": "pending",
+    "en": "Generate again"
+  },
+  "mobile.cv.view.delete": {
+    "state": "pending",
+    "en": "Delete this CV"
+  },
+  "mobile.cv.view.deleteConfirm": {
+    "state": "pending",
+    "en": "Delete this CV? This cannot be undone."
+  },
+  "mobile.cv.view.deleteFailed": {
+    "state": "pending",
+    "en": "The CV could not be deleted. Please try again."
+  },
+  "mobile.cv.view.notFound": {
+    "state": "pending",
+    "en": "This CV could not be found. It may have been deleted."
+  },
+  "mobile.cv.view.otherLanguage": {
+    "state": "pending",
+    "en": "Generate in {{language}}"
+  },
+  "mobile.cv.view.title": {
+    "state": "pending",
+    "en": "Your CV"
+  },
   "mobile.home.cvs.empty": {
     "state": "pending",
     "en": "No CVs yet. Your CVs will appear here."
+  },
+  "mobile.home.cvs.open": {
+    "state": "pending",
+    "en": "Open your CVs"
   },
   "mobile.home.cvs.title": {
     "state": "pending",

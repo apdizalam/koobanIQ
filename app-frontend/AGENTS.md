@@ -52,6 +52,7 @@ src/app/                   Expo Router routes (every file is a screen; _layout.t
     profile-edit/          profile edit screens: personal, preferences, [section] list, [section]/[id] entry
     skills.tsx, skills-edit/[id].tsx  skill profile (design 05) and add / edit a skill
     cv-job/                new CV: index = add a job ad (paste / PDF), [id] = job details + CV language
+    cv-view/[id].tsx       one CV: missing info, preview, generate again / other language, delete
   design-system.tsx        developer preview of all components (kobaniq://design-system)
 assets/icons/              SVG icons used by <Icon>
 assets/images/             app icon, splash and favicon (referenced from app.json)
@@ -60,8 +61,8 @@ src/auth/                  sign-in state: AuthProvider/useAuth, refresh token in
 src/components/layout/     page building blocks (Screen, TabScreen, TabComingSoon, AuthScreen, ComingNext)
 src/components/onboarding/ onboarding illustrations
 src/components/profile/    ProfileForm (one form for every profile part), ProfileGate, CompletionBar
-src/components/cv/         JobDetails (what the AI read from a job ad)
-src/cv/                    CvProvider/useCvs (CVs + saved job ads) and aiErrorText
+src/components/cv/         JobDetails, CvPreview, MissingInfoList, GenerateMessages
+src/cv/                    CvProvider/useCvs (CVs + saved job ads), useGenerateCv, aiErrorText
 src/profile/               ProfileProvider/useProfile, SkillsProvider/useSkills (shared state) and fields.ts (field rules)
 src/components/index.ts    small re-export of the original ui components
 src/constants/             non-design app constants (api.ts)

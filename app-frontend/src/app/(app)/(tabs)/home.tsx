@@ -12,6 +12,8 @@ import { DashboardCard } from '../../../components/ui/DashboardCard';
 import { LineIcon } from '../../../components/ui/LineIcon';
 import { QuickAction } from '../../../components/ui/QuickAction';
 import { TextLink } from '../../../components/ui/TextLink';
+import { useCvs } from '../../../cv/CvProvider';
+import { jobName } from '../../../services/cvApi';
 import { useProfile } from '../../../profile/ProfileProvider';
 import { useSkills } from '../../../profile/SkillsProvider';
 import { useTheme } from '../../../theme';
@@ -30,6 +32,7 @@ export default function HomeScreen() {
   const { user, reloadUser } = useAuth();
   const { profile } = useProfile();
   const { counts } = useSkills();
+  const { cvs, jobById } = useCvs();
   const assessedPercent = counts.total ? Math.round((counts.assessed / counts.total) * 100) : 0;
   const { colors, typography, spacing, radius } = useTheme();
   const [load, setLoad] = useState<Load>('loading');
@@ -327,8 +330,23 @@ export default function HomeScreen() {
             <DashboardCard
               testID="home-cvs"
               title={t('mobile.home.cvs.title')}
-              body={t('mobile.home.cvs.empty')}
-            />
+              body={cvs.length === 0 ? t('mobile.home.cvs.empty') : undefined}
+              action={{
+                label: t('mobile.home.cvs.open'),
+                onPress: () => router.navigate('/cv'),
+                testID: 'home-cvs-open',
+              }}
+            >
+              {cvs.slice(0, 3).map((cv) => (
+                <TextLink
+                  key={cv.id}
+                  testID={`home-cv-${cv.id}`}
+                  align="flex-start"
+                  label={`${jobName(jobById(cv.jobDescriptionId), t('mobile.cv.job.untitled'))} · ${t(`common.language.${cv.language}`)}`}
+                  onPress={() => router.push({ pathname: '/cv-view/[id]', params: { id: cv.id } })}
+                />
+              ))}
+            </DashboardCard>
             <DashboardCard
               testID="home-schedule"
               title={t('mobile.home.schedule.title')}

@@ -63,9 +63,51 @@ const job = (id: string, title: string | null = 'Data Officer') => ({
   },
 });
 
+/** A CV as the server returns it: every fact from the (synthetic) profile. */
+const fullCv = (id: string, language: 'en' | 'so', jobDescriptionId = 'jd7') => ({
+  id,
+  jobDescriptionId,
+  language,
+  version: 1,
+  status: 'draft',
+  template: 'classic',
+  missingInfo: [{ type: 'requiredSkill', item: 'SQL' }, { type: 'phone' }],
+  createdAt: '2026-11-19T12:00:00.000Z',
+  content: {
+    language,
+    header: {
+      fullName: 'Amina Testcase',
+      headline: 'Data clerk',
+      city: 'Hargeisa',
+      region: 'somaliland',
+      email: 'amina.cv@example.com',
+      phone: null,
+    },
+    summary: 'Data clerk with 3 years of Excel.',
+    skills: [{ name: 'Excel', level: 'mid', assessed: false }],
+    experience: [
+      {
+        id: 'e1',
+        title: 'Data clerk',
+        employer: 'Example Clinic',
+        city: 'Hargeisa',
+        startDate: '2022-03',
+        endDate: null,
+        bullets: ['Entered survey forms.'],
+      },
+    ],
+    education: [],
+    projects: [],
+    certifications: [],
+    languages: [{ id: 'l1', language: 'Somali', level: 'native' }],
+  },
+});
+
 let jobs: ReturnType<typeof job>[];
 let cvs: Record<string, unknown>[];
 let jdReply: Reply | null;
+let generateReply: Reply | null;
+let nextCv: number;
 const calls: { route: string; body: Record<string, unknown> }[] = [];
 
 beforeEach(() => {
@@ -75,6 +117,8 @@ beforeEach(() => {
   jobs = [];
   cvs = [];
   jdReply = null;
+  generateReply = null;
+  nextCv = 1;
   calls.length = 0;
   globalThis.fetch = jest.fn(async (url: string, init: RequestInit = {}) => {
     const method = init.method ?? 'GET';
@@ -94,6 +138,23 @@ beforeEach(() => {
       reply = found
         ? ok({ jobDescription: found })
         : fail(404, 'NOT_FOUND', 'Job description not found');
+    } else if (method === 'POST' && path === '/cvs/generate') {
+      if (generateReply) reply = generateReply;
+      else {
+        const made = fullCv(
+          `new${nextCv++}`,
+          body.language as 'en' | 'so',
+          body.jobDescriptionId as string,
+        );
+        cvs = [made, ...cvs];
+        reply = ok({ cv: made }, 201);
+      }
+    } else if (method === 'GET' && path.startsWith('/cvs/')) {
+      const found = cvs.find((c) => path.endsWith(String(c.id)));
+      reply = found ? ok({ cv: found }) : fail(404, 'NOT_FOUND', 'CV not found');
+    } else if (method === 'DELETE' && path.startsWith('/cvs/')) {
+      cvs = cvs.filter((c) => !path.endsWith(String(c.id)));
+      reply = { status: 204, body: null };
     } else throw new TypeError('Network request failed');
     return { ok: reply.status < 400, status: reply.status, json: async () => reply.body };
   }) as unknown as typeof fetch;
@@ -213,5 +274,99 @@ describe('TIQ-8: job ad screens', () => {
     await press('cv-job-row-jd7');
     expect(screen).toHavePathname('/cv-job/jd7');
     expect(await screen.findByTestId('job-details')).toBeTruthy();
+  });
+});
+
+describe('TIQ-9: CV language, generation and the CV', () => {
+  beforeEach(() => {
+    jobs = [job('jd7', 'Data Officer')];
+  });
+
+  it('Create CV stays off until a CV language is chosen; Somali CV while the app is English', async () => {
+    await openApp('/cv-job/jd7');
+    expect(await screen.findByText('CV language')).toBeTruthy();
+    expect(screen.getByTestId('cv-generate').props.accessibilityState).toMatchObject({
+      disabled: true,
+    });
+    await press('cv-generate');
+    expect(calls.some((c) => c.route === 'POST /cvs/generate')).toBe(false);
+
+    await press('cv-language-so');
+    await press('cv-generate');
+    expect(calls.find((c) => c.route === 'POST /cvs/generate')?.body).toEqual({
+      jobDescriptionId: 'jd7',
+      language: 'so',
+    });
+    expect(screen).toHavePathname('/cv-view/new1');
+    expect(await screen.findByTestId('cv-preview')).toBeTruthy();
+    // CV headings follow the CV language (Somali), the app stays English.
+    expect(screen.getByText('Khibrad shaqo')).toBeTruthy();
+    expect(screen.getByText('Hargeisa · 2022-03 – hadda')).toBeTruthy();
+    expect(screen.getByText('Your CV')).toBeTruthy();
+    expect(screen.getByTestId('cv-contact')).toHaveTextContent(/amina\.cv@example\.com/);
+  });
+
+  it('missing info: listed with a way to add each item', async () => {
+    cvs = [fullCv('cv5', 'en')];
+    await openApp('/cv-view/cv5');
+    expect(await screen.findByTestId('cv-missing')).toBeTruthy();
+    expect(screen.getByText('Required skill: SQL')).toBeTruthy();
+    expect(screen.getByText('Your phone number')).toBeTruthy();
+    await press('cv-missing-requiredSkill-SQL');
+    expect(screen).toHavePathname('/skills-edit/new');
+  });
+
+  it('no CV email yet: the server explains and the app links to Personal info', async () => {
+    generateReply = fail(
+      422,
+      'CV_CONTACT_EMAIL_REQUIRED',
+      'Add the email address to show on your CVs (Profile → Personal info) before creating a CV',
+    );
+    await openApp('/cv-job/jd7');
+    await screen.findByText('CV language');
+    await press('cv-language-en');
+    await press('cv-generate');
+    expect(
+      await screen.findByText(
+        'Add the email address to show on your CVs (Profile → Personal info) before creating a CV',
+      ),
+    ).toBeTruthy();
+    await press('cv-add-email');
+    expect(screen).toHavePathname('/profile-edit/personal');
+  });
+
+  it('AI privacy blocked: the honest server message, no CV', async () => {
+    generateReply = fail(
+      403,
+      'AI_PERSONAL_DATA_BLOCKED',
+      'Creating CVs with AI is not available yet. KOBANIQ uses a free AI service during development, which must not receive personal data',
+    );
+    await openApp('/cv-job/jd7');
+    await screen.findByText('CV language');
+    await press('cv-language-en');
+    await press('cv-generate');
+    expect(await screen.findByText(/Creating CVs with AI is not available yet/)).toBeTruthy();
+    expect(screen.queryByTestId('cv-add-email')).toBeNull();
+    expect(screen).toHavePathname('/cv-job/jd7');
+  });
+
+  it('generate in the other language makes a new version; delete asks first', async () => {
+    cvs = [fullCv('cv5', 'en')];
+    await openApp('/cv-view/cv5');
+    await screen.findByTestId('cv-preview');
+    expect(screen.getByTestId('cv-other-language')).toHaveTextContent('Generate in Soomaali');
+    await press('cv-other-language');
+    expect(calls.find((c) => c.route === 'POST /cvs/generate')?.body).toEqual({
+      jobDescriptionId: 'jd7',
+      language: 'so',
+    });
+    expect(screen).toHavePathname('/cv-view/new1');
+    expect(await screen.findByText('Khibrad shaqo')).toBeTruthy();
+
+    await press('cv-delete');
+    expect(screen.getByText('Delete this CV? This cannot be undone.')).toBeTruthy();
+    expect(calls.some((c) => c.route.startsWith('DELETE'))).toBe(false);
+    await press('cv-delete-yes');
+    expect(calls.some((c) => c.route === 'DELETE /cvs/new1')).toBe(true);
   });
 });
