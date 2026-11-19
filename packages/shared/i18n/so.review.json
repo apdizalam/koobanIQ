@@ -1971,6 +1971,30 @@
     "state": "pending",
     "en": "This account is suspended"
   },
+  "server.errors.AI_BAD_OUTPUT": {
+    "state": "pending",
+    "en": "The AI could not give a usable answer. Please try again"
+  },
+  "server.errors.AI_LIMIT_REACHED": {
+    "state": "pending",
+    "en": "You have used the AI features a lot in the last hour. Please try again later"
+  },
+  "server.errors.AI_NOT_CONFIGURED": {
+    "state": "pending",
+    "en": "The AI service is not set up yet. Please try again later"
+  },
+  "server.errors.AI_QUOTA_REACHED": {
+    "state": "pending",
+    "en": "The free AI limit has been reached for now. Please try again later"
+  },
+  "server.errors.AI_TIMEOUT": {
+    "state": "pending",
+    "en": "The AI took too long to answer. Please try again"
+  },
+  "server.errors.AI_UNAVAILABLE": {
+    "state": "pending",
+    "en": "The AI service is not available right now. Please try again later"
+  },
   "server.errors.AUTH_REQUIRED": {
     "state": "pending",
     "en": "Sign in to continue"
