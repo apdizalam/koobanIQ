@@ -57,4 +57,17 @@ export const env = {
   resendApiKey: process.env.RESEND_API_KEY ?? '',
   /** Sender shown in emails. Resend's test sender only delivers to the Resend account owner. */
   emailFrom: process.env.EMAIL_FROM ?? 'KOBANIQ <onboarding@resend.dev>',
+  /**
+   * AI provider behind src/ai/provider.ts. Only "gemini" exists today (Gemini
+   * API free tier, development); the AI features never call a provider directly.
+   */
+  aiProvider: (process.env.AI_PROVIDER ?? 'gemini').trim().toLowerCase(),
+  /** Gemini API key (aistudio.google.com). Server only: never sent to the apps or logged. */
+  geminiApiKey: (process.env.GEMINI_API_KEY ?? '').trim(),
+  /** Free-tier model; change it here without touching code. */
+  geminiModel: (process.env.GEMINI_MODEL ?? 'gemini-3.1-flash-lite').trim(),
+  /** Longest wait for one AI answer before giving up (milliseconds). */
+  aiTimeoutMs: Number(process.env.AI_TIMEOUT_MS ?? 30_000),
+  /** AI requests one user may make per hour (protects the free quota). */
+  aiUserRequestsPerHour: Number(process.env.AI_USER_REQUESTS_PER_HOUR ?? 30),
 };
