@@ -23,6 +23,7 @@ export const HEALTH_PROFILE: SampleProfile = {
     region: 'somaliland',
     city: 'Hargeisa',
     phone: '+252 63 000 0001',
+    contactEmail: 'ayaan.testcase@example.com',
     summary: 'Community health worker with field experience in vaccination campaigns.',
   },
   experience: [
@@ -81,6 +82,7 @@ export const DEVELOPER_PROFILE: SampleProfile = {
   personal: {
     fullName: 'Liban Fakename',
     headline: 'Junior Web Developer',
+    contactEmail: 'liban.fakename@example.com',
     region: 'somalia',
     city: 'Mogadishu',
   },

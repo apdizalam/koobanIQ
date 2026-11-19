@@ -25,11 +25,12 @@ const isDuplicateKey = (err: unknown) =>
  * again (same or other language) makes a new version.
  */
 export async function generateCv(
-  user: { _id: Types.ObjectId; email: string },
+  user: { _id: Types.ObjectId; testAccount?: boolean | null },
   request: { jobDescriptionId: string; language: AiLanguage },
 ) {
-  // Free tier: real users' profiles never go to the AI (owner decision).
-  assertPersonalDataAllowed(user.email);
+  // Real users' profiles only go to the AI when the Admin Dashboard setting is
+  // ALLOWED, or for test accounts (owner decision; enforced here on every request).
+  await assertPersonalDataAllowed(user);
 
   const jd = isItemId(request.jobDescriptionId)
     ? await JobDescription.findOne({ _id: request.jobDescriptionId, userId: user._id })
@@ -46,6 +47,16 @@ export async function generateCv(
     : toPublicProfile(new Profile({ userId: user._id }));
   const skills = (await Skill.find({ userId: user._id }).sort({ key: 1 })).map(toPublicSkill);
   const job = toPublicJobDescription(jd).extracted;
+
+  // The CV shows the CV contact email from the profile, never the login email.
+  const contactEmail = (profile.personal as Record<string, unknown>).contactEmail;
+  if (typeof contactEmail !== 'string' || !contactEmail) {
+    throw new AppError(
+      422,
+      'CV_CONTACT_EMAIL_REQUIRED',
+      'Add the email address to show on your CVs (Profile → Personal info) before creating a CV',
+    );
+  }
 
   const input = prepareCvInput(profile, skills, job);
   const missingInfo = computeMissingInfo(profile, input, job);
@@ -65,7 +76,7 @@ export async function generateCv(
     maxOutputTokens: 4096,
     temperature: 0.3,
   });
-  const content = assembleCv(profile, skills, answer, { email: user.email }, request.language);
+  const content = assembleCv(profile, skills, answer, { email: contactEmail }, request.language);
 
   const previous = await Cv.findOne({
     userId: user._id,

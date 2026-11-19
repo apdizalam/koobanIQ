@@ -22,6 +22,16 @@ const userSchema = new Schema(
     authProvider: { type: String, enum: AUTH_PROVIDERS, default: 'local' },
     preferredLanguage: { type: String, enum: LANGUAGES, default: 'en' },
     lastActiveAt: { type: Date },
+    /**
+     * Super admin: may change privacy settings and test accounts. Never set
+     * through the API; only with the server command `npm run admin:super`.
+     */
+    superAdmin: { type: Boolean, default: false },
+    /**
+     * Test account with fictional data: may use AI features that send profile
+     * data while the AI personal-data setting is BLOCKED. Set by a super admin only.
+     */
+    testAccount: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

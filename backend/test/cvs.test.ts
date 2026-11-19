@@ -6,13 +6,12 @@ import mongoose from 'mongoose';
 import { createApp } from '../src/app.js';
 import { setAiProviderForTests } from '../src/ai/aiService.js';
 import { createMockProvider } from '../src/ai/mock.js';
-import { isTestAccountEmail } from '../src/ai/personalData.js';
-import { env } from '../src/config/env.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { Cv } from '../src/models/Cv.js';
 import { JobDescription } from '../src/models/JobDescription.js';
 import { Profile } from '../src/models/Profile.js';
 import { RefreshToken } from '../src/models/RefreshToken.js';
+import { Setting } from '../src/models/Setting.js';
 import { Skill } from '../src/models/Skill.js';
 import { UsageRecord } from '../src/models/UsageRecord.js';
 import { User } from '../src/models/User.js';
@@ -43,8 +42,13 @@ async function call(token: string | null, method: string, path: string, body?: u
   return { status: res.status, body: (text ? JSON.parse(text) : {}) as Json };
 }
 
-async function account(email: string, preferredLanguage = 'en') {
+/**
+ * A signed-in account. Test accounts (fictional data) are marked with the
+ * server-side flag, as a super admin would in the Admin Dashboard.
+ */
+async function account(email: string, preferredLanguage = 'en', testAccount = true) {
   await call(null, 'POST', '/auth/register', { email, password: PASSWORD, preferredLanguage });
+  if (testAccount) await User.updateOne({ email }, { testAccount: true });
   return (await call(null, 'POST', '/auth/login', { email, password: PASSWORD })).body.data
     .accessToken as string;
 }
@@ -119,10 +123,11 @@ before(async () => {
   jobId = await saveJob(amina, HEALTH_JOB, JOB_TEXT);
 });
 
-beforeEach(() => {
+beforeEach(async () => {
   mock = createMockProvider();
   setAiProviderForTests(mock.provider);
-  env.aiPersonalData = 'blocked';
+  // Default: no stored setting = BLOCKED.
+  await Setting.deleteMany({});
 });
 afterEach(() => setAiProviderForTests(undefined));
 
@@ -147,7 +152,11 @@ test('End Test: English CV built only from profile facts; missing items listed',
   // Facts copied from the profile by code (diff test).
   const c = cv.content;
   assert.equal(c.header.fullName, 'Ayaan Testcase');
-  assert.equal(c.header.email, 'amina@cv.invalid');
+  assert.equal(
+    c.header.email,
+    'ayaan.testcase@example.com',
+    'the CV contact email, not the login email',
+  );
   assert.equal(c.header.phone, '+252 63 000 0001');
   assert.deepEqual(
     {
@@ -184,6 +193,7 @@ test('privacy: the AI never receives name, email, phone, city, employer, school,
   for (const secret of [
     'Ayaan Testcase',
     'amina@cv.invalid',
+    'ayaan.testcase@example.com',
     '+252 63 000 0001',
     'Example Water and Health Agency',
     'Example Institute of Health Sciences',
@@ -287,8 +297,9 @@ test('invalid AI JSON: retried once, then a clean error', async () => {
   assert.equal(mock.requests.length, 2);
 });
 
-test('free-tier privacy guard: real accounts are blocked before anything is sent', async () => {
-  const real = await account('hodan@real-user-example.com');
+test('privacy guard: real accounts are blocked unless the stored setting is ALLOWED', async () => {
+  // Not a test account (no flag), even though the email looks like a test address.
+  const real = await account('hodan@example.com', 'en', false);
   await fillProfile(real, HEALTH_PROFILE);
   mock.reply({ json: { isJobDescription: true, ...HEALTH_JOB } });
   const job = await call(real, 'POST', '/job-descriptions', { text: JOB_TEXT });
@@ -300,25 +311,60 @@ test('free-tier privacy guard: real accounts are blocked before anything is sent
   assert.equal(res.body.error.code, 'AI_PERSONAL_DATA_BLOCKED');
   assert.equal(mock.requests.length, 1, 'only the job ad (no personal data) went to the AI');
 
-  // With a paid tier the owner switches it on.
-  env.aiPersonalData = 'allowed';
+  // A super admin set ALLOWED (paid tier verified): the backend lets it through at once.
+  await Setting.create({ key: 'ai_personal_data', value: 'allowed' });
   const profile = (await call(real, 'GET', '/profile')).body.data.profile;
+  const body = { jobDescriptionId: job.body.data.jobDescription.id, language: 'en' };
   mock.reply({ json: goodAnswer(profile) });
-  const allowed = await call(real, 'POST', '/cvs/generate', {
-    jobDescriptionId: job.body.data.jobDescription.id,
-    language: 'en',
-  });
-  assert.equal(allowed.status, 201);
+  assert.equal((await call(real, 'POST', '/cvs/generate', body)).status, 201);
 
-  assert.equal(isTestAccountEmail('a@cv.invalid'), true);
-  assert.equal(isTestAccountEmail('a@example.com'), true);
-  assert.equal(isTestAccountEmail('a@mail.example.org'), true);
-  assert.equal(isTestAccountEmail('a@gmail.com'), false);
-  assert.equal(isTestAccountEmail('a@example.com.evil.net'), false);
+  // Back to BLOCKED: refused again on the very next request.
+  await Setting.updateOne({ key: 'ai_personal_data' }, { value: 'blocked' });
+  assert.equal((await call(real, 'POST', '/cvs/generate', body)).status, 403);
+
+  // Marked as a test account by a super admin: works while BLOCKED.
+  await User.updateOne({ email: 'hodan@example.com' }, { testAccount: true });
+  mock.reply({ json: goodAnswer(profile) });
+  assert.equal((await call(real, 'POST', '/cvs/generate', body)).status, 201);
+});
+
+test('CV contact email: required, used automatically, separate from the login email', async () => {
+  const token = await account('nimco@cv.invalid');
+  const { contactEmail: _omit, ...withoutContact } = HEALTH_PROFILE.personal;
+  void _omit;
+  const profile = await fillProfile(token, { ...HEALTH_PROFILE, personal: withoutContact });
+  const job = await saveJob(token, HEALTH_JOB, `${JOB_TEXT} Contact-email case.`);
+  const body = { jobDescriptionId: job, language: 'en' };
+
+  // None yet: the user is asked to add one, before anything goes to the AI.
+  const missing = await call(token, 'POST', '/cvs/generate', body);
+  assert.equal(missing.status, 422);
+  assert.equal(missing.body.error.code, 'CV_CONTACT_EMAIL_REQUIRED');
+  assert.equal(mock.requests.length, 1, 'only the job ad extraction');
+
+  // Saved once in the profile, then used for every CV without asking again.
+  const bad = await call(token, 'PATCH', '/profile/personal', { contactEmail: 'not-an-email' });
+  assert.equal(bad.status, 400);
+  await call(token, 'PATCH', '/profile/personal', { contactEmail: ' Nimco.CV@Example.com ' });
+  mock.reply({ json: goodAnswer(profile) }, { json: goodAnswer(profile) });
+  const first = await call(token, 'POST', '/cvs/generate', body);
+  const second = await call(token, 'POST', '/cvs/generate', body);
+  assert.equal(first.body.data.cv.content.header.email, 'nimco.cv@example.com');
+  assert.equal(second.body.data.cv.content.header.email, 'nimco.cv@example.com');
+
+  // Changing it never changes the login email.
+  const me = await call(token, 'GET', '/me');
+  assert.equal(me.body.data.user.email, 'nimco@cv.invalid');
+  assert.equal(
+    (await call(null, 'POST', '/auth/login', { email: 'nimco@cv.invalid', password: PASSWORD }))
+      .status,
+    200,
+  );
 });
 
 test('an empty profile is refused before any AI request', async () => {
   const empty = await account('empty@cv.invalid');
+  await call(empty, 'PATCH', '/profile/personal', { contactEmail: 'empty.cv@example.com' });
   const job = await saveJob(empty, HEALTH_JOB, `${JOB_TEXT} Empty-profile case.`);
   const res = await call(empty, 'POST', '/cvs/generate', { jobDescriptionId: job, language: 'en' });
   assert.equal(res.status, 422);

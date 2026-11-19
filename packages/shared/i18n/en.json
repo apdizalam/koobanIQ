@@ -67,7 +67,10 @@
       "CV_NOT_FOUND": "CV not found",
       "CV_LIMIT_REACHED": "You have the most CVs allowed. Delete some first",
       "CV_GENERATION_IN_PROGRESS": "This CV is already being created. Try again in a moment",
-      "PROFILE_INCOMPLETE": "Add your experience, education or skills to your profile before creating a CV"
+      "PROFILE_INCOMPLETE": "Add your experience, education or skills to your profile before creating a CV",
+      "SUPER_ADMIN_REQUIRED": "Only a super admin can change this",
+      "SETTING_UNCHANGED": "The setting already has this value",
+      "CV_CONTACT_EMAIL_REQUIRED": "Add the email address to show on your CVs (Profile → Personal info) before creating a CV"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -106,7 +109,8 @@
       "jdTextLength": "The job description must be between 50 and 20,000 characters",
       "pdfInvalid": "This is not a valid PDF file",
       "pdfTooLarge": "The PDF can be at most 5 MB",
-      "cvLanguageRequired": "Choose the CV language: English or Somali"
+      "cvLanguageRequired": "Choose the CV language: English or Somali",
+      "reasonRequired": "Give a reason (10 to 500 characters)"
     },
     "email": {
       "verifyEmail": {
@@ -158,7 +162,8 @@
         "usage": "Usage",
         "notifications": "Notifications",
         "reports": "Reports",
-        "audit": "Audit log"
+        "audit": "Audit log",
+        "privacy": "AI privacy"
       }
     },
     "overview": {
@@ -275,7 +280,17 @@
         "makeAdmin": "{{email}} is now an admin.",
         "makeUser": "{{email}} is now a normal user.",
         "delete": "{{email}} was deleted."
-      }
+      },
+      "superAdmin": "Super admin",
+      "testAccount": "Test account",
+      "testAccountHint": "Test accounts hold fictional data and may use AI features that send profile data while AI privacy is Blocked.",
+      "markTest": "Mark as test account",
+      "unmarkTest": "Remove test account mark",
+      "testReason": "Reason",
+      "testReasonHint": "Required (10 to 500 characters).",
+      "testOn": "{{email}} is now a test account.",
+      "testOff": "{{email}} is no longer a test account.",
+      "superAdminLocked": "This is a super admin account. Only a super admin can change it."
     },
     "audit": {
       "title": "Audit log",
@@ -298,7 +313,9 @@
         "job_source_enable": "Enabled a job source",
         "job_source_disable": "Disabled a job source",
         "job_source_update": "Changed a job source",
-        "region_update": "Changed region cities"
+        "region_update": "Changed region cities",
+        "settings_ai_personal_data": "Changed AI privacy setting",
+        "user_test_account": "Changed test account"
       },
       "deleted": "Account deleted",
       "noChange": "—",
@@ -385,6 +402,37 @@
       "tooMany": "At most 100 cities per region.",
       "tooLong": "A city name can be at most 60 characters.",
       "error": "Could not load the regions. Check that the backend is running."
+    },
+    "privacy": {
+      "title": "AI privacy",
+      "subtitle": "Controls whether real users' profile data may be sent to the AI provider (for example to write CVs).",
+      "statusLabel": "Sending real users' profile data to the AI",
+      "values": {
+        "blocked": "Blocked",
+        "allowed": "Allowed"
+      },
+      "blockedExplain": "Blocked: only test accounts (fictional data) can use AI features that send profile data. Real users see a message that the feature is not available yet.",
+      "allowedExplain": "Allowed: every user's profile data may be sent to the AI provider. Use only with a paid AI tier whose privacy terms were verified.",
+      "isDefault": "Default setting (never changed).",
+      "lastChange": "Changed by {{admin}} on {{date}}",
+      "historyTitle": "Change history",
+      "historyEmpty": "No changes yet.",
+      "columns": {
+        "when": "When",
+        "admin": "Admin",
+        "change": "Change",
+        "reason": "Reason"
+      },
+      "changeTitle": "Change the setting",
+      "newValue": "New setting",
+      "reason": "Reason",
+      "reasonHint": "Required: why the setting is changed (10 to 500 characters).",
+      "confirmAllow": "I confirm KOBANIQ uses a paid AI tier and the privacy requirements have been verified.",
+      "save": "Save change",
+      "saving": "Saving…",
+      "saved": "The setting is now {{value}}.",
+      "onlySuper": "Only a super admin can change this setting.",
+      "error": "Could not load the setting. Check that the backend is running."
     }
   },
   "mobile": {
@@ -680,12 +728,14 @@
         "jobTypes": "Job type",
         "category": "Group (for example Frontend)",
         "selfLevel": "Your level",
-        "yearsExp": "Years of experience"
+        "yearsExp": "Years of experience",
+        "contactEmail": "Email shown on CVs"
       },
       "hints": {
         "month": "Year-month, e.g. 2024-09",
         "endDate": "Leave empty if you still work here",
-        "list": "Separate with commas"
+        "list": "Separate with commas",
+        "contactEmail": "Shown on your CVs. Your login email does not change."
       },
       "levels": {
         "basic": "Basic",

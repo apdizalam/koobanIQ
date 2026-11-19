@@ -67,7 +67,10 @@
       "CV_NOT_FOUND": "CV-ga lama helin",
       "CV_LIMIT_REACHED": "Waxaad haysataa inta ugu badan ee CV-yada la oggol yahay. Marka hore qaar tirtir",
       "CV_GENERATION_IN_PROGRESS": "CV-gan hadda ayaa la samaynayaa. Isku day mar kale dhawaan",
-      "PROFILE_INCOMPLETE": "Ku dar khibraddaada, waxbarashadaada ama xirfadahaaga astaantaada ka hor intaadan samayn CV"
+      "PROFILE_INCOMPLETE": "Ku dar khibraddaada, waxbarashadaada ama xirfadahaaga astaantaada ka hor intaadan samayn CV",
+      "SUPER_ADMIN_REQUIRED": "Super admin keliya ayaa beddeli kara tan",
+      "SETTING_UNCHANGED": "Dejintu horay ayay u lahayd qiimahan",
+      "CV_CONTACT_EMAIL_REQUIRED": "Ku dar iimaylka ka muuqanaya CV-yadaada (Astaanta → Macluumaadka shakhsiga) ka hor intaadan samayn CV"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -106,7 +109,8 @@
       "jdTextLength": "Sharaxaadda shaqadu waa inay u dhaxaysaa 50 ilaa 20,000 xaraf",
       "pdfInvalid": "Kani ma aha fayl PDF ah oo sax ah",
       "pdfTooLarge": "PDF-ku waa inuusan ka badnaan 5 MB",
-      "cvLanguageRequired": "Dooro luqadda CV-ga: Ingiriisi ama Soomaali"
+      "cvLanguageRequired": "Dooro luqadda CV-ga: Ingiriisi ama Soomaali",
+      "reasonRequired": "Sheeg sababta (10 ilaa 500 xaraf)"
     },
     "email": {
       "verifyEmail": {
@@ -158,7 +162,8 @@
         "usage": "Isticmaalka",
         "notifications": "Ogeysiisyada",
         "reports": "Warbixinnada",
-        "audit": "Diiwaanka hubinta"
+        "audit": "Diiwaanka hubinta",
+        "privacy": "Asturnaanta AI"
       }
     },
     "overview": {
@@ -275,7 +280,17 @@
         "makeAdmin": "{{email}} hadda waa maamule.",
         "makeUser": "{{email}} hadda waa isticmaale caadi ah.",
         "delete": "{{email}} waa la tirtiray."
-      }
+      },
+      "superAdmin": "Super admin",
+      "testAccount": "Akoon tijaabo",
+      "testAccountHint": "Akoonnada tijaabadu waxay haystaan xog male ah, waxayna isticmaali karaan qaybaha AI ee dira xogta astaanta inta asturnaanta AI ay xidhan tahay.",
+      "markTest": "Ka dhig akoon tijaabo",
+      "unmarkTest": "Ka saar calaamadda tijaabada",
+      "testReason": "Sababta",
+      "testReasonHint": "Waa qasab (10 ilaa 500 xaraf).",
+      "testOn": "{{email}} hadda waa akoon tijaabo.",
+      "testOff": "{{email}} mar dambe ma aha akoon tijaabo.",
+      "superAdminLocked": "Kani waa akoon super admin. Super admin keliya ayaa beddeli kara."
     },
     "audit": {
       "title": "Diiwaanka hubinta",
@@ -298,7 +313,9 @@
         "job_source_enable": "Ilo shaqo ayaa la shiday",
         "job_source_disable": "Ilo shaqo ayaa la damiyay",
         "job_source_update": "Ilo shaqo ayaa la beddelay",
-        "region_update": "Magaalooyinka gobolka ayaa la beddelay"
+        "region_update": "Magaalooyinka gobolka ayaa la beddelay",
+        "settings_ai_personal_data": "Waxaa la beddelay dejinta asturnaanta AI",
+        "user_test_account": "Waxaa la beddelay akoonka tijaabada"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",
@@ -385,6 +402,37 @@
       "tooMany": "Ugu badnaan 100 magaalo gobol kasta.",
       "tooLong": "Magaca magaalo waa inuusan ka badnaan 60 xaraf.",
       "error": "Gobollada lama soo rari karin. Hubi in backend-ku shaqaynayo."
+    },
+    "privacy": {
+      "title": "Asturnaanta AI",
+      "subtitle": "Waxay go’aamisaa in xogta astaanta isticmaalayaasha dhabta ah loo diri karo bixiyaha AI (tusaale qorista CV-yada).",
+      "statusLabel": "U dirista xogta astaanta isticmaalayaasha dhabta ah AI-ga",
+      "values": {
+        "blocked": "Xidhan",
+        "allowed": "La oggol yahay"
+      },
+      "blockedExplain": "Xidhan: akoonnada tijaabada (xog male ah) keliya ayaa isticmaali kara qaybaha AI ee dira xogta astaanta. Isticmaalayaasha dhabta ah waxay arkaan fariin ah in qaybtu aan weli la heli karin.",
+      "allowedExplain": "La oggol yahay: xogta astaanta isticmaale kasta waxaa loo diri karaa bixiyaha AI. Isticmaal keliya marka la helo heer AI oo lacag ah oo shuruudihiisa asturnaanta la hubiyay.",
+      "isDefault": "Dejinta caadiga ah (weligeed lama beddelin).",
+      "lastChange": "Waxaa beddelay {{admin}} {{date}}",
+      "historyTitle": "Taariikhda isbeddellada",
+      "historyEmpty": "Weli isbeddel ma jiro.",
+      "columns": {
+        "when": "Goorma",
+        "admin": "Maamulaha",
+        "change": "Isbeddelka",
+        "reason": "Sababta"
+      },
+      "changeTitle": "Beddel dejinta",
+      "newValue": "Dejinta cusub",
+      "reason": "Sababta",
+      "reasonHint": "Waa qasab: sababta dejinta loo beddelayo (10 ilaa 500 xaraf).",
+      "confirmAllow": "Waxaan xaqiijinayaa in KOBANIQ ay isticmaasho heer AI oo lacag ah oo shuruudaha asturnaanta la hubiyay.",
+      "save": "Keydi isbeddelka",
+      "saving": "Waa la keydinayaa…",
+      "saved": "Dejintu hadda waa {{value}}.",
+      "onlySuper": "Super admin keliya ayaa beddeli kara dejintan.",
+      "error": "Dejinta lama soo rari karin. Hubi in backend-ku shaqaynayo."
     }
   },
   "mobile": {
@@ -680,12 +728,14 @@
         "jobTypes": "Nooca shaqada",
         "category": "Kooxda (tusaale Frontend)",
         "selfLevel": "Heerkaaga",
-        "yearsExp": "Sanadaha khibradda"
+        "yearsExp": "Sanadaha khibradda",
+        "contactEmail": "Iimaylka ka muuqda CV-yada"
       },
       "hints": {
         "month": "Sanad-bil, tusaale 2024-09",
         "endDate": "Banaan ka tag haddii aad weli halkan ka shaqayso",
-        "list": "Ku kala saar hakad (,)"
+        "list": "Ku kala saar hakad (,)",
+        "contactEmail": "Wuxuu ka muuqdaa CV-yadaada. Iimaylka galitaankaagu isma beddelo."
       },
       "levels": {
         "basic": "Aasaasi",

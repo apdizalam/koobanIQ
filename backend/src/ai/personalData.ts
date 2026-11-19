@@ -1,21 +1,18 @@
-import { env } from '../config/env.js';
 import { AppError } from '../lib/errors.js';
+import { aiPersonalDataValue } from '../services/settingsService.js';
 
 /**
- * Owner decision (2026-11-19): while KOBANIQ uses the Gemini free tier, real
- * users' profiles and CVs are never sent to the AI. AI features that need a
- * user's personal data call this first; with AI_PERSONAL_DATA=blocked only
- * test accounts (fake data) pass.
+ * Owner decision: real users' profile data is never sent to the AI while
+ * KOBANIQ uses the Gemini free tier. AI features that send a user's profile
+ * (CVs) call this first, on the backend, for every request:
+ * - allowed when the Admin Dashboard setting is ALLOWED (super admin only,
+ *   after a paid tier and the privacy requirements are verified), or
+ * - for test accounts (fictional data), marked by a super admin.
+ * Default is BLOCKED; calling the API directly does not get around it.
  */
-export function isTestAccountEmail(email: string, domains = env.aiTestEmailDomains) {
-  const domain = email.toLowerCase().split('@')[1] ?? '';
-  return (
-    domain.endsWith('.invalid') || domains.some((d) => domain === d || domain.endsWith(`.${d}`))
-  );
-}
-
-export function assertPersonalDataAllowed(email: string) {
-  if (env.aiPersonalData === 'allowed' || isTestAccountEmail(email)) return;
+export async function assertPersonalDataAllowed(user: { testAccount?: boolean | null }) {
+  if (user.testAccount === true) return;
+  if ((await aiPersonalDataValue()) === 'allowed') return;
   throw new AppError(
     403,
     'AI_PERSONAL_DATA_BLOCKED',

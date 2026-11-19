@@ -7,6 +7,7 @@ export interface AuditEntry {
   targetId?: string;
   before?: unknown;
   after?: unknown;
+  reason?: string;
 }
 
 /**

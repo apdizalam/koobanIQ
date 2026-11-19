@@ -14,6 +14,8 @@ const auditLogSchema = new Schema(
     targetId: { type: String, index: true },
     before: { type: Schema.Types.Mixed },
     after: { type: Schema.Types.Mixed },
+    /** Why the admin made the change (required for privacy settings and test accounts). */
+    reason: { type: String },
     ip: { type: String },
     userAgent: { type: String },
   },

@@ -18,7 +18,12 @@ import { recordAudit } from './auditService.js';
 
 /** What the admin pages show for a user (public fields + activity). */
 export function toAdminUser(user: UserDocument) {
-  return { ...toPublicUser(user), lastActiveAt: user.lastActiveAt ?? null };
+  return {
+    ...toPublicUser(user),
+    lastActiveAt: user.lastActiveAt ?? null,
+    superAdmin: user.superAdmin === true,
+    testAccount: user.testAccount === true,
+  };
 }
 
 export interface ListUsersQuery {
@@ -71,6 +76,13 @@ function refuseSelf(req: Request, target: UserDocument) {
   }
 }
 
+/** A super admin can only be changed (status, role, delete) by another super admin. */
+function refuseSuperAdminTarget(req: Request, target: UserDocument) {
+  if (target.superAdmin === true && req.user!.superAdmin !== true) {
+    throw new AppError(403, 'SUPER_ADMIN_REQUIRED', 'Only a super admin can change this');
+  }
+}
+
 /** Refuses a change that would leave no active admin. */
 async function refuseLastAdmin(target: UserDocument) {
   if (target.role !== 'admin' || target.status !== 'active') return;
@@ -96,6 +108,7 @@ async function signOutEverywhere(userId: Types.ObjectId) {
 export async function setUserStatus(req: Request, id: string, status: UserStatus) {
   const user = await findUser(id);
   refuseSelf(req, user);
+  refuseSuperAdminTarget(req, user);
   const before = user.status;
   if (before === status) return toAdminUser(user);
   if (status === 'suspended') await refuseLastAdmin(user);
@@ -117,11 +130,14 @@ export async function setUserStatus(req: Request, id: string, status: UserStatus
 export async function setUserRole(req: Request, id: string, role: Role) {
   const user = await findUser(id);
   refuseSelf(req, user);
+  refuseSuperAdminTarget(req, user);
   const before = user.role;
   if (before === role) return toAdminUser(user);
   if (role !== 'admin') await refuseLastAdmin(user);
 
   user.role = role;
+  // Super admin rights end with the admin role.
+  if (role !== 'admin') user.superAdmin = false;
   await user.save();
   await recordAudit(req, {
     action: 'user.role_change',
@@ -133,10 +149,38 @@ export async function setUserRole(req: Request, id: string, role: Role) {
   return toAdminUser(user);
 }
 
+/**
+ * Mark or unmark a test account (super admin only, checked by the route). A
+ * test account holds fictional data and may use AI features that send profile
+ * data while the AI personal-data setting is BLOCKED. Audited with the reason.
+ */
+export async function setTestAccount(
+  req: Request,
+  id: string,
+  testAccount: boolean,
+  reason: string,
+) {
+  const user = await findUser(id);
+  const before = user.testAccount === true;
+  if (before === testAccount) return toAdminUser(user);
+  user.testAccount = testAccount;
+  await user.save();
+  await recordAudit(req, {
+    action: 'user.test_account',
+    targetType: 'user',
+    targetId: String(user._id),
+    before: { testAccount: before },
+    after: { testAccount },
+    reason,
+  });
+  return toAdminUser(user);
+}
+
 /** Delete an account and its sessions. The audit record keeps who it was. */
 export async function deleteUser(req: Request, id: string) {
   const user = await findUser(id);
   refuseSelf(req, user);
+  refuseSuperAdminTarget(req, user);
   await refuseLastAdmin(user);
 
   await RefreshToken.deleteMany({ userId: user._id });

@@ -24,6 +24,7 @@ function parseGenerateBody(body: unknown) {
 
 /** POST /api/v1/cvs/generate { jobDescriptionId, language } */
 export async function postGenerateCv(req: Request, res: Response) {
+  // Checked on every request: the privacy guard reads the account flag and the stored setting.
   const cv = await generateCv(req.user!, parseGenerateBody(req.body));
   res.status(201).json({ data: { cv }, error: null, meta: {} });
 }

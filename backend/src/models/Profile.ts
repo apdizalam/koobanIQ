@@ -76,6 +76,8 @@ const profileSchema = new Schema(
       region: { type: String, enum: REGION_KEYS },
       city: String,
       phone: String,
+      /** Email shown on CVs. Separate from the login email; changing it never changes the account. */
+      contactEmail: String,
       summary: String,
     },
     experience: { type: [experienceSchema], default: [] },

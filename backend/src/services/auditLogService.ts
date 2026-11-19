@@ -12,6 +12,8 @@ export const AUDIT_ACTIONS = [
   'job_source.disable',
   'job_source.update',
   'region.update',
+  'settings.ai_personal_data',
+  'user.test_account',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 
@@ -80,6 +82,7 @@ export async function listAuditLogs({ action, page, limit }: ListAuditQuery) {
       target,
       before: before ?? null,
       after: (log.after as Snapshot) ?? null,
+      reason: log.reason ?? null,
       ip: log.ip ?? null,
     };
   });

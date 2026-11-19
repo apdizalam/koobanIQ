@@ -27,6 +27,10 @@
     "state": "pending",
     "en": "Changed region cities"
   },
+  "admin.audit.actions.settings_ai_personal_data": {
+    "state": "pending",
+    "en": "Changed AI privacy setting"
+  },
   "admin.audit.actions.user_delete": {
     "state": "pending",
     "en": "Deleted a user"
@@ -42,6 +46,10 @@
   "admin.audit.actions.user_suspend": {
     "state": "pending",
     "en": "Suspended a user"
+  },
+  "admin.audit.actions.user_test_account": {
+    "state": "pending",
+    "en": "Changed test account"
   },
   "admin.audit.all": {
     "state": "pending",
@@ -170,6 +178,10 @@
   "admin.nav.items.overview": {
     "state": "pending",
     "en": "Overview"
+  },
+  "admin.nav.items.privacy": {
+    "state": "pending",
+    "en": "AI privacy"
   },
   "admin.nav.items.reports": {
     "state": "pending",
@@ -334,6 +346,106 @@
   "admin.overview.updatedAt": {
     "state": "pending",
     "en": "Updated {{time}}."
+  },
+  "admin.privacy.allowedExplain": {
+    "state": "pending",
+    "en": "Allowed: every user's profile data may be sent to the AI provider. Use only with a paid AI tier whose privacy terms were verified."
+  },
+  "admin.privacy.blockedExplain": {
+    "state": "pending",
+    "en": "Blocked: only test accounts (fictional data) can use AI features that send profile data. Real users see a message that the feature is not available yet."
+  },
+  "admin.privacy.changeTitle": {
+    "state": "pending",
+    "en": "Change the setting"
+  },
+  "admin.privacy.columns.admin": {
+    "state": "pending",
+    "en": "Admin"
+  },
+  "admin.privacy.columns.change": {
+    "state": "pending",
+    "en": "Change"
+  },
+  "admin.privacy.columns.reason": {
+    "state": "pending",
+    "en": "Reason"
+  },
+  "admin.privacy.columns.when": {
+    "state": "pending",
+    "en": "When"
+  },
+  "admin.privacy.confirmAllow": {
+    "state": "pending",
+    "en": "I confirm KOBANIQ uses a paid AI tier and the privacy requirements have been verified."
+  },
+  "admin.privacy.error": {
+    "state": "pending",
+    "en": "Could not load the setting. Check that the backend is running."
+  },
+  "admin.privacy.historyEmpty": {
+    "state": "pending",
+    "en": "No changes yet."
+  },
+  "admin.privacy.historyTitle": {
+    "state": "pending",
+    "en": "Change history"
+  },
+  "admin.privacy.isDefault": {
+    "state": "pending",
+    "en": "Default setting (never changed)."
+  },
+  "admin.privacy.lastChange": {
+    "state": "pending",
+    "en": "Changed by {{admin}} on {{date}}"
+  },
+  "admin.privacy.newValue": {
+    "state": "pending",
+    "en": "New setting"
+  },
+  "admin.privacy.onlySuper": {
+    "state": "pending",
+    "en": "Only a super admin can change this setting."
+  },
+  "admin.privacy.reason": {
+    "state": "pending",
+    "en": "Reason"
+  },
+  "admin.privacy.reasonHint": {
+    "state": "pending",
+    "en": "Required: why the setting is changed (10 to 500 characters)."
+  },
+  "admin.privacy.save": {
+    "state": "pending",
+    "en": "Save change"
+  },
+  "admin.privacy.saved": {
+    "state": "pending",
+    "en": "The setting is now {{value}}."
+  },
+  "admin.privacy.saving": {
+    "state": "pending",
+    "en": "Saving…"
+  },
+  "admin.privacy.statusLabel": {
+    "state": "pending",
+    "en": "Sending real users' profile data to the AI"
+  },
+  "admin.privacy.subtitle": {
+    "state": "pending",
+    "en": "Controls whether real users' profile data may be sent to the AI provider (for example to write CVs)."
+  },
+  "admin.privacy.title": {
+    "state": "pending",
+    "en": "AI privacy"
+  },
+  "admin.privacy.values.allowed": {
+    "state": "pending",
+    "en": "Allowed"
+  },
+  "admin.privacy.values.blocked": {
+    "state": "pending",
+    "en": "Blocked"
   },
   "admin.regions.citiesLabel": {
     "state": "pending",
@@ -711,6 +823,10 @@
     "state": "pending",
     "en": "Could not load users. Check that the backend is running."
   },
+  "admin.users.markTest": {
+    "state": "pending",
+    "en": "Mark as test account"
+  },
   "admin.users.never": {
     "state": "pending",
     "en": "Never"
@@ -779,9 +895,45 @@
     "state": "pending",
     "en": "Everyone with a KOBANIQ account."
   },
+  "admin.users.superAdmin": {
+    "state": "pending",
+    "en": "Super admin"
+  },
+  "admin.users.superAdminLocked": {
+    "state": "pending",
+    "en": "This is a super admin account. Only a super admin can change it."
+  },
+  "admin.users.testAccount": {
+    "state": "pending",
+    "en": "Test account"
+  },
+  "admin.users.testAccountHint": {
+    "state": "pending",
+    "en": "Test accounts hold fictional data and may use AI features that send profile data while AI privacy is Blocked."
+  },
+  "admin.users.testOff": {
+    "state": "pending",
+    "en": "{{email}} is no longer a test account."
+  },
+  "admin.users.testOn": {
+    "state": "pending",
+    "en": "{{email}} is now a test account."
+  },
+  "admin.users.testReason": {
+    "state": "pending",
+    "en": "Reason"
+  },
+  "admin.users.testReasonHint": {
+    "state": "pending",
+    "en": "Required (10 to 500 characters)."
+  },
   "admin.users.title": {
     "state": "pending",
     "en": "Users"
+  },
+  "admin.users.unmarkTest": {
+    "state": "pending",
+    "en": "Remove test account mark"
   },
   "admin.users.yes": {
     "state": "pending",
@@ -1515,6 +1667,10 @@
     "state": "pending",
     "en": "City"
   },
+  "mobile.profile.fields.contactEmail": {
+    "state": "pending",
+    "en": "Email shown on CVs"
+  },
   "mobile.profile.fields.degree": {
     "state": "pending",
     "en": "Degree or certificate"
@@ -1634,6 +1790,10 @@
   "mobile.profile.fields.yearsExp": {
     "state": "pending",
     "en": "Years of experience"
+  },
+  "mobile.profile.hints.contactEmail": {
+    "state": "pending",
+    "en": "Shown on your CVs. Your login email does not change."
   },
   "mobile.profile.hints.endDate": {
     "state": "pending",
@@ -2007,6 +2167,10 @@
     "state": "pending",
     "en": "You cannot change your own account here"
   },
+  "server.errors.CV_CONTACT_EMAIL_REQUIRED": {
+    "state": "pending",
+    "en": "Add the email address to show on your CVs (Profile → Personal info) before creating a CV"
+  },
   "server.errors.CV_GENERATION_IN_PROGRESS": {
     "state": "pending",
     "en": "This CV is already being created. Try again in a moment"
@@ -2107,6 +2271,10 @@
     "state": "pending",
     "en": "Region not found"
   },
+  "server.errors.SETTING_UNCHANGED": {
+    "state": "pending",
+    "en": "The setting already has this value"
+  },
   "server.errors.SKILLS_FULL": {
     "state": "pending",
     "en": "You have the most skills allowed. Remove one first"
@@ -2130,6 +2298,10 @@
   "server.errors.SOURCE_TERMS_NOT_CHECKED": {
     "state": "pending",
     "en": "This source can't be enabled until its terms have been checked"
+  },
+  "server.errors.SUPER_ADMIN_REQUIRED": {
+    "state": "pending",
+    "en": "Only a super admin can change this"
   },
   "server.errors.TOKEN_EXPIRED": {
     "state": "pending",
@@ -2254,6 +2426,10 @@
   "server.validation.priorityInvalid": {
     "state": "pending",
     "en": "Must be a whole number from 0 to 1000"
+  },
+  "server.validation.reasonRequired": {
+    "state": "pending",
+    "en": "Give a reason (10 to 500 characters)"
   },
   "server.validation.refreshTokenRequired": {
     "state": "pending",
