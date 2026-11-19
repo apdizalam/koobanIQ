@@ -287,7 +287,9 @@
       "testReason": "Reason",
       "testReasonHint": "Required (10 to 500 characters).",
       "testOn": "{{email}} is now a test account.",
-      "testOff": "{{email}} is no longer a test account."
+      "testOff": "{{email}} is no longer a test account.",
+      "testDialogOn": "Mark {{email}} as a test account? Use only for accounts that hold fictional data.",
+      "testDialogOff": "Remove the test account mark from {{email}}? AI features that send profile data then follow the AI privacy setting."
     },
     "audit": {
       "title": "Audit log",
@@ -321,7 +323,8 @@
       "values": {
         "on": "On",
         "off": "Off"
-      }
+      },
+      "reason": "Reason: {{reason}}"
     },
     "sources": {
       "title": "Job sources",
@@ -428,7 +431,13 @@
       "save": "Save change",
       "saving": "Saving…",
       "saved": "The setting is now {{value}}.",
-      "error": "Could not load the setting. Check that the backend is running."
+      "error": "Could not load the setting. Check that the backend is running.",
+      "changeTo": "Change to {{value}}",
+      "changeMessage": "The setting goes from {{from}} to {{to}}. Your reason is saved with your account and the time, and shown in the history and the audit log.",
+      "tooShort": "Give a reason of at least 10 characters.",
+      "tooLong": "The reason can be at most 500 characters.",
+      "confirmNeeded": "Tick the confirmation box first.",
+      "cancel": "Cancel"
     }
   },
   "mobile": {

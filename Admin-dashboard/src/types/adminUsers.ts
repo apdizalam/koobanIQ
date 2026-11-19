@@ -3,6 +3,8 @@ import type { PublicUser } from './auth';
 /** A user as the admin pages see it (backend services/adminUserService.ts). */
 export interface AdminUser extends PublicUser {
   lastActiveAt: string | null;
+  /** Test account with fictional data (set by an admin with a reason). */
+  testAccount: boolean;
 }
 
 export interface AdminUserDetail extends AdminUser {

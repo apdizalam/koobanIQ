@@ -12,6 +12,7 @@ const user = (over: Partial<AdminUser> = {}): AdminUser => ({
   preferredLanguage: 'so',
   createdAt: '2026-11-17T00:00:00.000Z',
   lastActiveAt: null,
+  testAccount: false,
   ...over,
 });
 

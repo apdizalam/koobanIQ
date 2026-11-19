@@ -152,6 +152,12 @@ export function UsersPage() {
                     <Link to={`/users/${user.id}`} className="table-link">
                       {user.email}
                     </Link>
+                    {user.testAccount ? (
+                      <>
+                        {' '}
+                        <span className="badge badge-test">{t('admin.users.testAccount')}</span>
+                      </>
+                    ) : null}
                   </td>
                   <td>
                     <span className={`badge badge-${user.role}`}>
