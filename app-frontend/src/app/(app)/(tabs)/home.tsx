@@ -13,6 +13,7 @@ import { LineIcon } from '../../../components/ui/LineIcon';
 import { QuickAction } from '../../../components/ui/QuickAction';
 import { TextLink } from '../../../components/ui/TextLink';
 import { useProfile } from '../../../profile/ProfileProvider';
+import { useSkills } from '../../../profile/SkillsProvider';
 import { useTheme } from '../../../theme';
 import { displayName, greetingFor, initials } from '../../../utils/greeting';
 
@@ -28,6 +29,8 @@ export default function HomeScreen() {
   const { t } = useTranslation();
   const { user, reloadUser } = useAuth();
   const { profile } = useProfile();
+  const { counts } = useSkills();
+  const assessedPercent = counts.total ? Math.round((counts.assessed / counts.total) * 100) : 0;
   const { colors, typography, spacing, radius } = useTheme();
   const [load, setLoad] = useState<Load>('loading');
   const [refreshing, setRefreshing] = useState(false);
@@ -174,24 +177,49 @@ export default function HomeScreen() {
                   {t('mobile.home.skillCard.title')}
                 </Text>
                 <Text style={[typography.labelMedium, onNavy]}>
-                  {t('mobile.home.skillCard.count', { count: 0 })}
+                  {t('mobile.home.skillCard.count', { count: counts.assessed })}
                 </Text>
               </View>
               <View
                 accessibilityRole="progressbar"
-                accessibilityValue={{ min: 0, max: 100, now: 0 }}
+                accessibilityValue={{ min: 0, max: 100, now: assessedPercent }}
                 style={{ height: 6, borderRadius: radius.pill, overflow: 'hidden' }}
               >
-                <View style={{ flex: 1, backgroundColor: colors.onPrimary, opacity: 0.25 }} />
+                <View
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: colors.onPrimary,
+                    opacity: 0.25,
+                  }}
+                />
+                <View
+                  style={{
+                    width: `${assessedPercent}%`,
+                    height: '100%',
+                    backgroundColor: colors.onPrimary,
+                  }}
+                />
               </View>
               <Text style={[typography.body, onNavy, { opacity: 0.9 }]}>
-                {t('mobile.home.skillCard.empty')}
+                {counts.total === 0
+                  ? t('mobile.home.skillCard.empty')
+                  : counts.selfReported > 0
+                    ? t('mobile.home.skillCard.someSelf', { count: counts.selfReported })
+                    : t('mobile.home.skillCard.allAssessed')}
               </Text>
               <TextLink
-                label={`${t('mobile.home.skillCard.action')} ›`}
+                label={`${t(
+                  counts.total === 0
+                    ? 'mobile.home.skillCard.action'
+                    : 'mobile.home.skillCard.open',
+                )} ›`}
                 color={colors.onPrimary}
                 align="flex-start"
-                onPress={() => router.navigate('/profile')}
+                onPress={() => router.push('/skills')}
                 testID="home-skills-action"
               />
             </View>

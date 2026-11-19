@@ -2,6 +2,7 @@ import { Redirect, Stack } from 'expo-router';
 import { useAuth } from '../../auth/authContext';
 import { Splash } from '../../components/layout/Splash';
 import { ProfileProvider } from '../../profile/ProfileProvider';
+import { SkillsProvider } from '../../profile/SkillsProvider';
 
 /**
  * Screens for signed-in users with a confirmed email (architecture doc: Expo
@@ -14,7 +15,9 @@ export default function AppLayout() {
   if (!user.emailVerified) return <Redirect href="/verify-email" />;
   return (
     <ProfileProvider>
-      <Stack screenOptions={{ headerShown: false }} />
+      <SkillsProvider>
+        <Stack screenOptions={{ headerShown: false }} />
+      </SkillsProvider>
     </ProfileProvider>
   );
 }

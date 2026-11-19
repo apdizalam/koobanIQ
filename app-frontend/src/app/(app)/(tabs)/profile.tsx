@@ -13,6 +13,7 @@ import { LanguageSwitcher } from '../../../components/ui/LanguageSwitcher';
 import { LineIcon } from '../../../components/ui/LineIcon';
 import type { Language } from '../../../i18n/language';
 import { useProfile } from '../../../profile/ProfileProvider';
+import { useSkills } from '../../../profile/SkillsProvider';
 import { PROFILE_SECTIONS, type Profile } from '../../../types/profile';
 import { useTheme } from '../../../theme';
 
@@ -29,6 +30,7 @@ export default function ProfileTab() {
   const { t } = useTranslation();
   const { user, saveLanguage, signOut } = useAuth();
   const { reload } = useProfile();
+  const skillsState = useSkills();
   const { colors, typography, spacing, radius } = useTheme();
   const [save, setSave] = useState<SaveState>('idle');
   const [leaving, setLeaving] = useState(false);
@@ -69,6 +71,17 @@ export default function ProfileTab() {
         summary:
           [p.fullName, p.headline].filter(Boolean).join(' · ') || t('mobile.profile.notAdded'),
       },
+      {
+        key: 'skills',
+        href: '/skills',
+        summary:
+          skillsState.status === 'ready' && skillsState.counts.total > 0
+            ? t('mobile.skills.summary', {
+                assessed: skillsState.counts.assessed,
+                total: skillsState.counts.total,
+              })
+            : t('mobile.profile.notAdded'),
+      },
       ...PROFILE_SECTIONS.map((section) => ({
         key: section,
         href: { pathname: '/profile-edit/[section]', params: { section } } as Href,
@@ -91,7 +104,7 @@ export default function ProfileTab() {
       refreshing={refreshing}
       onRefresh={async () => {
         setRefreshing(true);
-        await reload();
+        await Promise.all([reload(), skillsState.reload()]);
         setRefreshing(false);
       }}
     >

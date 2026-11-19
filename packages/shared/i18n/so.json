@@ -564,7 +564,11 @@
         "title": "Astaanta xirfadaha",
         "count": "{{count}} la qiimeeyay",
         "empty": "Weli xirfado ma jiraan. Ku dar xirfadahaaga, kadibna samee imtixaan gaaban si aad loo-shaqeeyayaasha u tusto waxaad dhab ahaan taqaanno.",
-        "action": "Ku dar xirfadahaaga"
+        "action": "Ku dar xirfadahaaga",
+        "someSelf_one": "{{count}} xirfad adigaa qiimeeyay. Imtixaan gaaban oo ikhtiyaari ah ayaa xaqiijin kara.",
+        "someSelf_other": "{{count}} xirfadood adigaa qiimeeyay. Imtixaan gaaban oo ikhtiyaari ah ayaa xaqiijin kara.",
+        "allAssessed": "Dhammaan xirfadahaaga waa la qiimeeyay.",
+        "open": "Arag astaanta xirfadahaaga"
       },
       "quick": {
         "title": "Ficillo degdeg ah",
@@ -608,7 +612,8 @@
         "projects": "Mashaariic",
         "certifications": "Shahaadooyin",
         "languages": "Luqadaha",
-        "preferences": "Doorashooyinka shaqada"
+        "preferences": "Doorashooyinka shaqada",
+        "skills": "Xirfadaha"
       },
       "sectionHints": {
         "experience": "Shaqooyin, tababar shaqo iyo shaqo tabarruc ah.",
@@ -648,7 +653,10 @@
         "cities": "Magaalooyinka",
         "employerTypes": "Noocyada loo-shaqeeyaha",
         "workModes": "Qaabka shaqada",
-        "jobTypes": "Nooca shaqada"
+        "jobTypes": "Nooca shaqada",
+        "category": "Kooxda (tusaale Frontend)",
+        "selfLevel": "Heerkaaga",
+        "yearsExp": "Sanadaha khibradda"
       },
       "hints": {
         "month": "Sanad-bil, tusaale 2024-09",
@@ -699,6 +707,38 @@
         "title": "Horumarkaagu halkan ayuu ka muuqan doonaa",
         "body": "Warbixinnada CV-yadaada, imtixaannadaada iyo raadintaada shaqo waxay soo muuqdaan markaad bilowdo isticmaalka qaybahaas."
       }
+    },
+    "skills": {
+      "title": "Astaanta xirfadaha",
+      "add": "Ku dar xirfad",
+      "addFirst": "Ku dar xirfaddaada ugu horraysa",
+      "loadError": "Xirfadahaaga lama soo rari karin. Hubi xiriirka internet-kaaga oo isku day mar kale.",
+      "stats": {
+        "assessed": "La qiimeeyay",
+        "selfReported": "Adiga qiimaysay",
+        "gaps": "Dhimmanaanta la helay"
+      },
+      "filterLabel": "Muuji xirfadaha",
+      "otherGroup": "Xirfado kale",
+      "emptyTitle": "Weli xirfado ma jiraan",
+      "emptyBody": "Ku dar xirfadaha aad leedahay oo adigu qiimee. Hadhow, imtixaan gaaban oo ikhtiyaari ah ayaa xaqiijin kara.",
+      "suggestTitle": "Xaqiiji {{skill}}?",
+      "suggestBody": "Imtixaan gaaban ayaa xaqiijin kara heerkaaga. Had iyo jeer waa ikhtiyaari. Imtixaannadu waxay ku soo biiri doonaan cusboonaysiin soo socota.",
+      "maybeLater": "Hadhow",
+      "levels": {
+        "beginner": "Bilow",
+        "mid": "Dhexe",
+        "advanced": "Sare",
+        "expert": "Khabiir"
+      },
+      "addTitle": "Ku dar xirfad",
+      "editTitle": "Wax ka beddel xirfadda",
+      "formHint": "Kani waa qiimayntaada. Imtixaan ayaa hadhow xaqiijin kara; qiimayntaadu sidaad u dejisay ayay ahaanaysaa.",
+      "assessedAs": "Heerka la qiimeeyay: {{level}}",
+      "assessedOn": "Imtixaanka la galay {{date}}",
+      "toLearn": "Waxa mudan in la barto marka xigta: {{topics}}",
+      "onlyQuiz": "Imtixaan keliya ayaa beddela heerka la qiimeeyay. Wuxuu cabbiraa aqoonta, ma aha khibradda shaqo.",
+      "summary": "{{assessed}} ka mid ah {{total}} ayaa la qiimeeyay"
     }
   }
 }
