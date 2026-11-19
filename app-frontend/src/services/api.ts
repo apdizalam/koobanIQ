@@ -31,6 +31,12 @@ interface Envelope<T> {
 export const REQUEST_TIMEOUT_MS = 15_000;
 
 /**
+ * AI requests (reading a job ad, writing a CV) wait longer: the server allows the
+ * AI 30 s per try, plus one retry and a short pause when the AI is busy.
+ */
+export const AI_REQUEST_TIMEOUT_MS = 120_000;
+
+/**
  * Calls the KOBANIQ API and returns `data`. Sends the app language
  * (Accept-Language) so server messages come back in it. Throws ApiError;
  * status 0 + NETWORK_ERROR when the server can't be reached or doesn't
@@ -38,14 +44,14 @@ export const REQUEST_TIMEOUT_MS = 15_000;
  */
 export async function apiRequest<T>(
   path: string,
-  options: { method?: string; body?: unknown; accessToken?: string } = {},
+  options: { method?: string; body?: unknown; accessToken?: string; timeoutMs?: number } = {},
 ): Promise<T> {
   const headers: Record<string, string> = { 'Accept-Language': i18n.language };
   if (options.body !== undefined) headers['Content-Type'] = 'application/json';
   if (options.accessToken) headers.Authorization = `Bearer ${options.accessToken}`;
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  const timer = setTimeout(() => controller.abort(), options.timeoutMs ?? REQUEST_TIMEOUT_MS);
 
   let res: Response;
   let json: Envelope<T> | null;

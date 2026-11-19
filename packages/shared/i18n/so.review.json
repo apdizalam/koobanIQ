@@ -1387,9 +1387,293 @@
     "state": "pending",
     "en": "Know Your Skills.\nFind Your Opportunity."
   },
+  "mobile.cv.errors.network": {
+    "state": "pending",
+    "en": "Cannot reach the server, or it took too long. Check your internet connection and try again."
+  },
+  "mobile.cv.generate.addEmail": {
+    "state": "pending",
+    "en": "Add the email for your CVs"
+  },
+  "mobile.cv.generate.create": {
+    "state": "pending",
+    "en": "Create CV"
+  },
+  "mobile.cv.generate.languageHint": {
+    "state": "pending",
+    "en": "Choose the language of this CV. It can differ from the app language."
+  },
+  "mobile.cv.generate.languageTitle": {
+    "state": "pending",
+    "en": "CV language"
+  },
+  "mobile.cv.generate.writing": {
+    "state": "pending",
+    "en": "The AI is writing your CV from your profile. This can take up to a minute."
+  },
+  "mobile.cv.generate.writingShort": {
+    "state": "pending",
+    "en": "Writing…"
+  },
+  "mobile.cv.job.deadline": {
+    "state": "pending",
+    "en": "Apply by {{date}}"
+  },
+  "mobile.cv.job.detailsHint": {
+    "state": "pending",
+    "en": "What the AI found in the job ad."
+  },
+  "mobile.cv.job.detailsTitle": {
+    "state": "pending",
+    "en": "Job details"
+  },
+  "mobile.cv.job.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "mobile.cv.job.experience": {
+    "state": "pending",
+    "en": "Experience"
+  },
+  "mobile.cv.job.mode.paste": {
+    "state": "pending",
+    "en": "Paste text"
+  },
+  "mobile.cv.job.mode.pdf": {
+    "state": "pending",
+    "en": "Upload PDF"
+  },
+  "mobile.cv.job.notFound": {
+    "state": "pending",
+    "en": "This job ad could not be found. It may have been deleted."
+  },
+  "mobile.cv.job.pdfChange": {
+    "state": "pending",
+    "en": "Choose another PDF"
+  },
+  "mobile.cv.job.pdfChoose": {
+    "state": "pending",
+    "en": "Choose a PDF"
+  },
+  "mobile.cv.job.pdfHint": {
+    "state": "pending",
+    "en": "A PDF of the job ad, up to 5 MB."
+  },
+  "mobile.cv.job.pdfMissing": {
+    "state": "pending",
+    "en": "Choose a PDF first."
+  },
+  "mobile.cv.job.pdfTooLarge": {
+    "state": "pending",
+    "en": "This PDF is larger than 5 MB. Choose a smaller file or paste the text."
+  },
+  "mobile.cv.job.preferred": {
+    "state": "pending",
+    "en": "Preferred skills"
+  },
+  "mobile.cv.job.privacy": {
+    "state": "pending",
+    "en": "Only the job ad is sent to the AI, never your profile."
+  },
+  "mobile.cv.job.reading": {
+    "state": "pending",
+    "en": "The AI is reading the job ad. This can take up to a minute."
+  },
+  "mobile.cv.job.readingShort": {
+    "state": "pending",
+    "en": "Reading…"
+  },
+  "mobile.cv.job.required": {
+    "state": "pending",
+    "en": "Required skills"
+  },
+  "mobile.cv.job.responsibilities": {
+    "state": "pending",
+    "en": "Main tasks"
+  },
+  "mobile.cv.job.submit": {
+    "state": "pending",
+    "en": "Read the job ad"
+  },
+  "mobile.cv.job.subtitle": {
+    "state": "pending",
+    "en": "Paste the job advertisement or upload it as a PDF. The AI reads the requirements."
+  },
+  "mobile.cv.job.textHint": {
+    "state": "pending",
+    "en": "{{count}} / {{max}} characters (at least 50)"
+  },
+  "mobile.cv.job.textLabel": {
+    "state": "pending",
+    "en": "Job advertisement"
+  },
+  "mobile.cv.job.textPlaceholder": {
+    "state": "pending",
+    "en": "Paste the whole job ad here"
+  },
+  "mobile.cv.job.title": {
+    "state": "pending",
+    "en": "Add the job ad"
+  },
+  "mobile.cv.job.tooLong": {
+    "state": "pending",
+    "en": "The job ad is too long (at most 20,000 characters)."
+  },
+  "mobile.cv.job.tooShort": {
+    "state": "pending",
+    "en": "Paste the whole job ad (at least 50 characters)."
+  },
+  "mobile.cv.job.untitled": {
+    "state": "pending",
+    "en": "Job ad"
+  },
+  "mobile.cv.missing.hint": {
+    "state": "pending",
+    "en": "The CV leaves these out. Add them to your profile, then tap Generate again."
+  },
+  "mobile.cv.missing.items.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "mobile.cv.missing.items.experience": {
+    "state": "pending",
+    "en": "Work experience"
+  },
+  "mobile.cv.missing.items.fullName": {
+    "state": "pending",
+    "en": "Your full name"
+  },
+  "mobile.cv.missing.items.headline": {
+    "state": "pending",
+    "en": "Your preferred job title"
+  },
+  "mobile.cv.missing.items.languages": {
+    "state": "pending",
+    "en": "Languages you speak"
+  },
+  "mobile.cv.missing.items.phone": {
+    "state": "pending",
+    "en": "Your phone number"
+  },
+  "mobile.cv.missing.items.preferredSkill": {
+    "state": "pending",
+    "en": "Preferred skill: {{item}}"
+  },
+  "mobile.cv.missing.items.requiredSkill": {
+    "state": "pending",
+    "en": "Required skill: {{item}}"
+  },
+  "mobile.cv.missing.items.skills": {
+    "state": "pending",
+    "en": "Skills"
+  },
+  "mobile.cv.missing.title": {
+    "state": "pending",
+    "en": "Missing from your profile"
+  },
+  "mobile.cv.preview.assessed": {
+    "state": "pending",
+    "en": "assessed"
+  },
+  "mobile.cv.preview.certifications": {
+    "state": "pending",
+    "en": "Certifications"
+  },
+  "mobile.cv.preview.education": {
+    "state": "pending",
+    "en": "Education"
+  },
+  "mobile.cv.preview.experience": {
+    "state": "pending",
+    "en": "Experience"
+  },
+  "mobile.cv.preview.languages": {
+    "state": "pending",
+    "en": "Languages"
+  },
+  "mobile.cv.preview.present": {
+    "state": "pending",
+    "en": "present"
+  },
+  "mobile.cv.preview.projects": {
+    "state": "pending",
+    "en": "Projects"
+  },
+  "mobile.cv.preview.skills": {
+    "state": "pending",
+    "en": "Skills"
+  },
+  "mobile.cv.preview.summary": {
+    "state": "pending",
+    "en": "Profile"
+  },
+  "mobile.cv.tab.cvsTitle": {
+    "state": "pending",
+    "en": "Your CVs"
+  },
+  "mobile.cv.tab.emptyBody": {
+    "state": "pending",
+    "en": "Tap New CV, paste a job ad or upload it as a PDF, and KOBANIQ writes a CV for that job from your profile."
+  },
+  "mobile.cv.tab.emptyTitle": {
+    "state": "pending",
+    "en": "No CVs yet"
+  },
+  "mobile.cv.tab.jobsTitle": {
+    "state": "pending",
+    "en": "Saved job ads"
+  },
+  "mobile.cv.tab.loadError": {
+    "state": "pending",
+    "en": "Your CVs could not be loaded. Check your internet connection and try again."
+  },
+  "mobile.cv.tab.newCv": {
+    "state": "pending",
+    "en": "New CV"
+  },
+  "mobile.cv.tab.subtitle": {
+    "state": "pending",
+    "en": "A CV for each job, written from your profile in English or Somali."
+  },
+  "mobile.cv.version": {
+    "state": "pending",
+    "en": "version {{version}}"
+  },
+  "mobile.cv.view.again": {
+    "state": "pending",
+    "en": "Generate again"
+  },
+  "mobile.cv.view.delete": {
+    "state": "pending",
+    "en": "Delete this CV"
+  },
+  "mobile.cv.view.deleteConfirm": {
+    "state": "pending",
+    "en": "Delete this CV? This cannot be undone."
+  },
+  "mobile.cv.view.deleteFailed": {
+    "state": "pending",
+    "en": "The CV could not be deleted. Please try again."
+  },
+  "mobile.cv.view.notFound": {
+    "state": "pending",
+    "en": "This CV could not be found. It may have been deleted."
+  },
+  "mobile.cv.view.otherLanguage": {
+    "state": "pending",
+    "en": "Generate in {{language}}"
+  },
+  "mobile.cv.view.title": {
+    "state": "pending",
+    "en": "Your CV"
+  },
   "mobile.home.cvs.empty": {
     "state": "pending",
     "en": "No CVs yet. Your CVs will appear here."
+  },
+  "mobile.home.cvs.open": {
+    "state": "pending",
+    "en": "Open your CVs"
   },
   "mobile.home.cvs.title": {
     "state": "pending",
@@ -2098,14 +2382,6 @@
   "mobile.skills.toLearn": {
     "state": "pending",
     "en": "Worth learning next: {{topics}}"
-  },
-  "mobile.soon.cv.body": {
-    "state": "pending",
-    "en": "Soon you can paste a job description and create a CV for that job from your profile, in English or Somali."
-  },
-  "mobile.soon.cv.title": {
-    "state": "pending",
-    "en": "Your CVs will live here"
   },
   "mobile.soon.jobs.body": {
     "state": "pending",

@@ -51,6 +51,8 @@ src/app/                   Expo Router routes (every file is a screen; _layout.t
     (tabs)/                bottom tabs: home, cv, jobs, reports, profile (_layout = tab bar)
     profile-edit/          profile edit screens: personal, preferences, [section] list, [section]/[id] entry
     skills.tsx, skills-edit/[id].tsx  skill profile (design 05) and add / edit a skill
+    cv-job/                new CV: index = add a job ad (paste / PDF), [id] = job details + CV language
+    cv-view/[id].tsx       one CV: missing info, preview, generate again / other language, delete
   design-system.tsx        developer preview of all components (kobaniq://design-system)
 assets/icons/              SVG icons used by <Icon>
 assets/images/             app icon, splash and favicon (referenced from app.json)
@@ -59,16 +61,18 @@ src/auth/                  sign-in state: AuthProvider/useAuth, refresh token in
 src/components/layout/     page building blocks (Screen, TabScreen, TabComingSoon, AuthScreen, ComingNext)
 src/components/onboarding/ onboarding illustrations
 src/components/profile/    ProfileForm (one form for every profile part), ProfileGate, CompletionBar
+src/components/cv/         JobDetails, CvPreview, MissingInfoList, GenerateMessages
+src/cv/                    CvProvider/useCvs (CVs + saved job ads), useGenerateCv, aiErrorText
 src/profile/               ProfileProvider/useProfile, SkillsProvider/useSkills (shared state) and fields.ts (field rules)
 src/components/index.ts    small re-export of the original ui components
 src/constants/             non-design app constants (api.ts)
 src/hooks/                 React hooks (useAppFonts, useSchemeOverride)
 src/i18n/                  i18next setup using the shared packages/shared/i18n files
-src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me), profileApi.ts, skillsApi.ts
+src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me), profileApi.ts, skillsApi.ts, cvApi.ts
 src/screens/               screen bodies reused by routes (DesignSystemPreview)
 src/theme/                 ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
                            createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
-src/types/                 domain types shared by several files (match.ts, auth.ts, profile.ts, skills.ts)
+src/types/                 domain types shared by several files (match.ts, auth.ts, profile.ts, skills.ts, cv.ts)
 src/utils/                 pure helpers (contrast.ts, format.ts, greeting.ts, hitSlop.ts, validation.ts with Zod)
 ```
 

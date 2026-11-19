@@ -629,7 +629,8 @@
       },
       "cvs": {
         "title": "CV-yadii ugu dambeeyay",
-        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan."
+        "empty": "Weli CV ma jiro. CV-yadaadu halkan ayay ka muuqan doonaan.",
+        "open": "Fur CV-yadaada"
       },
       "schedule": {
         "title": "Raadinta xigta ee la qorsheeyay",
@@ -777,10 +778,6 @@
       "cancel": "Jooji"
     },
     "soon": {
-      "cv": {
-        "title": "CV-yadaadu halkan ayay joogi doonaan",
-        "body": "Dhawaan waxaad dhejin kartaa sharaxaadda shaqo oo aad astaantaada ka samayn kartaa CV shaqadaas ku habboon, Ingiriisi ama Soomaali."
-      },
       "jobs": {
         "title": "Raadinta shaqadu way soo socotaa",
         "body": "Dhawaan waxaad dooran kartaa gobollo iyo ilo shaqo oo Somaliland iyo Soomaaliya ah, waxaadna heli doontaa shaqooyin kugu habboon, mid kastana sharaxaad leh."
@@ -821,6 +818,96 @@
       "toLearn": "Waxa mudan in la barto marka xigta: {{topics}}",
       "onlyQuiz": "Imtixaan keliya ayaa beddela heerka la qiimeeyay. Wuxuu cabbiraa aqoonta, ma aha khibradda shaqo.",
       "summary": "{{assessed}} ka mid ah {{total}} ayaa la qiimeeyay"
+    },
+    "cv": {
+      "version": "nooca {{version}}",
+      "tab": {
+        "subtitle": "CV shaqo kasta, oo laga qoray astaantaada, Ingiriisi ama Soomaali.",
+        "newCv": "CV cusub",
+        "loadError": "CV-yadaada lama soo rari karin. Hubi internetkaaga oo isku day mar kale.",
+        "cvsTitle": "CV-yadaada",
+        "jobsTitle": "Xayeysiisyada shaqo ee la keydiyay",
+        "emptyTitle": "Weli CV ma jiro",
+        "emptyBody": "Taabo CV cusub, dheji xayeysiis shaqo ama soo geli PDF ahaan, KOBANIQ-na wuxuu kuu qorayaa CV shaqadaas ah oo laga sameeyay astaantaada."
+      },
+      "job": {
+        "untitled": "Xayeysiis shaqo",
+        "title": "Ku dar xayeysiiska shaqada",
+        "subtitle": "Dheji xayeysiiska shaqada ama soo geli PDF ahaan. AI-gu wuxuu akhrinayaa shuruudaha.",
+        "mode": {
+          "paste": "Dheji qoraal",
+          "pdf": "Soo geli PDF"
+        },
+        "textLabel": "Xayeysiiska shaqada",
+        "textPlaceholder": "Halkan ku dheji xayeysiiska oo dhan",
+        "textHint": "{{count}} / {{max}} xaraf (ugu yaraan 50)",
+        "tooShort": "Dheji xayeysiiska oo dhan (ugu yaraan 50 xaraf).",
+        "tooLong": "Xayeysiisku aad buu u dheer yahay (ugu badnaan 20,000 xaraf).",
+        "pdfChoose": "Dooro PDF",
+        "pdfChange": "Dooro PDF kale",
+        "pdfHint": "PDF-ka xayeysiiska shaqada, ilaa 5 MB.",
+        "pdfTooLarge": "PDF-kani wuu ka weyn yahay 5 MB. Dooro fayl ka yar ama dheji qoraalka.",
+        "pdfMissing": "Marka hore dooro PDF.",
+        "submit": "Akhri xayeysiiska",
+        "readingShort": "Waa la akhrinayaa…",
+        "reading": "AI-gu wuxuu akhrinayaa xayeysiiska. Tani waxay qaadan kartaa ilaa daqiiqad.",
+        "privacy": "Xayeysiiska shaqada keliya ayaa loo dirayaa AI-ga, weligiis astaantaada.",
+        "detailsTitle": "Faahfaahinta shaqada",
+        "detailsHint": "Waxa AI-gu ka helay xayeysiiska.",
+        "notFound": "Xayeysiiskan lama helin. Waxaa laga yaabaa in la tirtiray.",
+        "deadline": "Codso ka hor {{date}}",
+        "required": "Xirfadaha loo baahan yahay",
+        "preferred": "Xirfadaha la door bidayo",
+        "experience": "Khibrad",
+        "education": "Waxbarasho",
+        "responsibilities": "Hawlaha ugu muhiimsan"
+      },
+      "errors": {
+        "network": "Server-ka lama gaari karo, ama wuu daahay. Hubi internetkaaga oo isku day mar kale."
+      },
+      "generate": {
+        "languageTitle": "Luqadda CV-ga",
+        "languageHint": "Dooro luqadda CV-gan. Waxay ka duwanaan kartaa luqadda app-ka.",
+        "create": "Samee CV",
+        "writingShort": "Waa la qorayaa…",
+        "writing": "AI-gu wuxuu CV-gaaga ka qorayaa astaantaada. Tani waxay qaadan kartaa ilaa daqiiqad.",
+        "addEmail": "Ku dar iimaylka CV-yadaada"
+      },
+      "preview": {
+        "summary": "Astaan",
+        "experience": "Khibrad shaqo",
+        "education": "Waxbarasho",
+        "skills": "Xirfado",
+        "projects": "Mashaariic",
+        "certifications": "Shahaadooyin",
+        "languages": "Luqado",
+        "present": "hadda",
+        "assessed": "la qiimeeyay"
+      },
+      "missing": {
+        "title": "Waxa ka maqan astaantaada",
+        "hint": "CV-gu kuma jiraan kuwan. Ku dar astaantaada, kadibna taabo Mar kale samee.",
+        "items": {
+          "fullName": "Magacaaga oo buuxa",
+          "headline": "Magaca shaqada aad rabto",
+          "phone": "Lambarka taleefankaaga",
+          "experience": "Khibrad shaqo",
+          "education": "Waxbarasho",
+          "skills": "Xirfado",
+          "languages": "Luqadaha aad ku hadasho",
+          "requiredSkill": "Xirfad loo baahan yahay: {{item}}",
+          "preferredSkill": "Xirfad la door bidayo: {{item}}"
+        }
+      },
+      "view": {
+        "title": "CV-gaaga",
+        "notFound": "CV-gan lama helin. Waxaa laga yaabaa in la tirtiray.",
+        "again": "Mar kale samee",
+        "otherLanguage": "Ku samee {{language}}",
+        "delete": "Tirtir CV-gan",
+        "deleteConfirm": "Ma tirtiraysaa CV-gan? Dib looma soo celin karo.",
+        "deleteFailed": "CV-ga lama tirtiri karin. Fadlan isku day mar kale."
+      }
     }
   }
 }
