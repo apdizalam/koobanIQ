@@ -33,7 +33,10 @@ const adminAccess = (token?: string) =>
 /** Registers a fresh user (optionally promoted to admin) and returns its access token. */
 async function signIn(name: string, admin = false) {
   const email = `${name}-${Date.now()}${DOMAIN}`;
-  assert.equal((await post('/auth/register', { email, password: PASSWORD })).status, 201);
+  assert.equal(
+    (await post('/auth/register', { email, password: PASSWORD, ageConfirmed: true })).status,
+    201,
+  );
   if (admin) await promoteToAdmin(email);
   const res = await post('/auth/login', { email, password: PASSWORD });
   return { email, token: (await res.json()).data.accessToken as string };

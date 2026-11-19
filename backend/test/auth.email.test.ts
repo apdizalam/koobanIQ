@@ -55,7 +55,12 @@ function lastCode(to: string): string {
 const emailsTo = (to: string) => outbox.filter((m) => m.to === to.toLowerCase());
 
 const register = (address: string, preferredLanguage = 'en') =>
-  call('/auth/register', { email: address, password: PASSWORD, preferredLanguage });
+  call('/auth/register', {
+    email: address,
+    password: PASSWORD,
+    ageConfirmed: true,
+    preferredLanguage,
+  });
 
 /**
  * Lets the "one code a minute" limit pass without waiting. Goes through the raw

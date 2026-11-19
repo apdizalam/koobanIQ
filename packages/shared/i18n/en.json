@@ -109,7 +109,8 @@
       "pdfInvalid": "This is not a valid PDF file",
       "pdfTooLarge": "The PDF can be at most 5 MB",
       "cvLanguageRequired": "Choose the CV language: English or Somali",
-      "reasonRequired": "Give a reason (10 to 500 characters)"
+      "reasonRequired": "Give a reason (10 to 500 characters)",
+      "ageConfirmRequired": "Confirm that you are 18 or older"
     },
     "email": {
       "verifyEmail": {

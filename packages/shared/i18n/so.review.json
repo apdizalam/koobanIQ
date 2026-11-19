@@ -2339,6 +2339,10 @@
     "state": "pending",
     "en": "Some fields are invalid"
   },
+  "server.validation.ageConfirmRequired": {
+    "state": "pending",
+    "en": "Confirm that you are 18 or older"
+  },
   "server.validation.auditActionInvalid": {
     "state": "pending",
     "en": "Must be one of the audit actions"

@@ -70,7 +70,7 @@ async function call(
 }
 
 async function account(email: string) {
-  await call(null, 'POST', '/auth/register', { email, password: PASSWORD });
+  await call(null, 'POST', '/auth/register', { email, password: PASSWORD, ageConfirmed: true });
   return (await call(null, 'POST', '/auth/login', { email, password: PASSWORD })).body.data
     .accessToken as string;
 }
@@ -250,6 +250,7 @@ test('AI problems come back in the user’s saved language (free quota reached, 
   await call(null, 'POST', '/auth/register', {
     email: 'hodan@jd.invalid',
     password: PASSWORD,
+    ageConfirmed: true,
     preferredLanguage: 'so',
   });
   const hodan = (

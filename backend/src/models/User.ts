@@ -23,6 +23,11 @@ const userSchema = new Schema(
     preferredLanguage: { type: String, enum: LANGUAGES, default: 'en' },
     lastActiveAt: { type: Date },
     /**
+     * When the user confirmed "I am 18 or older" at sign-up (owner requirement;
+     * the free AI tier's terms also require adult users). Required for new accounts.
+     */
+    ageConfirmedAt: { type: Date },
+    /**
      * Test account with fictional data: may use AI features that send profile
      * data while the AI personal-data setting is BLOCKED. Set only by an admin in the
      * Admin Dashboard (with a reason, audited); never from the email address.

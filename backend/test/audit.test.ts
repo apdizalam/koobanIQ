@@ -37,7 +37,10 @@ const adminAccess = (token?: string) =>
 
 async function signIn(name: string, admin = false) {
   const email = `${name}-${Date.now()}${DOMAIN}`;
-  assert.equal((await post('/auth/register', { email, password: PASSWORD })).status, 201);
+  assert.equal(
+    (await post('/auth/register', { email, password: PASSWORD, ageConfirmed: true })).status,
+    201,
+  );
   if (admin) await promoteToAdmin(email);
   const body = await (await post('/auth/login', { email, password: PASSWORD })).json();
   return { id: body.data.user.id as string, token: body.data.accessToken as string };

@@ -95,7 +95,7 @@ test('a signed-in user gets errors in their saved language, even without the hea
   const email = `somali${Date.now()}${DOMAIN}`;
   await call('/auth/register', {
     method: 'POST',
-    body: { email, password: PASSWORD, preferredLanguage: 'so' },
+    body: { email, password: PASSWORD, ageConfirmed: true, preferredLanguage: 'so' },
   });
   const login = await (
     await call('/auth/login', { method: 'POST', body: { email, password: PASSWORD } })

@@ -47,7 +47,12 @@ async function call(token: string | null, method: string, path: string, body?: u
  * server-side flag, as an admin would in the Admin Dashboard.
  */
 async function account(email: string, preferredLanguage = 'en', testAccount = true) {
-  await call(null, 'POST', '/auth/register', { email, password: PASSWORD, preferredLanguage });
+  await call(null, 'POST', '/auth/register', {
+    email,
+    password: PASSWORD,
+    ageConfirmed: true,
+    preferredLanguage,
+  });
   if (testAccount) await User.updateOne({ email }, { testAccount: true });
   return (await call(null, 'POST', '/auth/login', { email, password: PASSWORD })).body.data
     .accessToken as string;

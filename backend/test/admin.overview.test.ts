@@ -106,7 +106,7 @@ async function signIn(email: string, admin: boolean) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     });
-  assert.equal((await post('/auth/register', { email, password })).status, 201);
+  assert.equal((await post('/auth/register', { email, password, ageConfirmed: true })).status, 201);
   if (admin) await promoteToAdmin(email);
   return (await (await post('/auth/login', { email, password })).json()).data.accessToken as string;
 }

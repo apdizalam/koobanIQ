@@ -13,6 +13,7 @@ export function parseRegisterBody(body: unknown): {
   email: string;
   password: string;
   preferredLanguage?: Language;
+  ageConfirmed: true;
 } {
   const b = (body ?? {}) as Record<string, unknown>;
   const details: Record<string, string> = {};
@@ -31,6 +32,8 @@ export function parseRegisterBody(body: unknown): {
   ) {
     details.preferredLanguage = 'languageInvalid';
   }
+  // "I am 18 or older" must be ticked: exactly true, never a string or a missing field.
+  if (b.ageConfirmed !== true) details.ageConfirmed = 'ageConfirmRequired';
 
   if (Object.keys(details).length > 0) {
     throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', details);
@@ -39,6 +42,7 @@ export function parseRegisterBody(body: unknown): {
     email: b.email as string,
     password: b.password as string,
     preferredLanguage: b.preferredLanguage as Language | undefined,
+    ageConfirmed: true,
   };
 }
 
