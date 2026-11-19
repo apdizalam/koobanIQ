@@ -133,8 +133,13 @@ export function mentions(text: string, term: string) {
 }
 
 /** Everything the user wrote in the part of the profile the AI sees (for claim checks). */
+/**
+ * The profile facts as one text, for the "nothing invented" checks. Entry ids are
+ * left out: they are random database ids, and digits inside them (e.g. "…a10f…")
+ * must never count as numbers the user wrote.
+ */
 export function profileText(input: CvAiInput) {
-  return JSON.stringify(input.profile);
+  return JSON.stringify(input.profile, (key, value: unknown) => (key === 'id' ? undefined : value));
 }
 
 /** Job skills the user does not have (not a skill, and not mentioned anywhere in the profile). */
