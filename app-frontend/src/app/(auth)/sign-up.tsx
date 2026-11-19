@@ -47,8 +47,8 @@ export default function SignUpScreen() {
     setBusy(true);
     try {
       await signUp(result.data.email, result.data.password, true);
-      // User Flow: sign-up → verify the emailed code → Home.
-      router.replace({ pathname: '/verify-email', params: { sent: '1' } });
+      // Straight to Home, or first to the emailed code when the server asks for it.
+      router.replace({ pathname: '/', params: { sent: '1' } });
     } catch (err) {
       const key = requestErrorKey(err);
       // The server refused because the box was not ticked: show it on the box.

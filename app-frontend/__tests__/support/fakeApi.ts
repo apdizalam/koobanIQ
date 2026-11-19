@@ -39,6 +39,8 @@ export const user = (email: string, preferredLanguage = 'en', emailVerified = tr
   role: 'user',
   status: 'active',
   emailVerified,
+  // Like the server with EMAIL_VERIFICATION_REQUIRED on: unconfirmed accounts confirm first.
+  mustVerifyEmail: !emailVerified,
   preferredLanguage,
   createdAt: '2026-11-17T00:00:00.000Z',
 });

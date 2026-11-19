@@ -26,6 +26,8 @@ const user = (email: string, preferredLanguage = 'en', emailVerified = true) => 
   role: 'user',
   status: 'active',
   emailVerified,
+  // Like the server with EMAIL_VERIFICATION_REQUIRED on: unconfirmed accounts confirm first.
+  mustVerifyEmail: !emailVerified,
   preferredLanguage,
   createdAt: '2026-11-17T00:00:00.000Z',
 });
@@ -185,6 +187,28 @@ describe('Sign up', () => {
     await press('sign-up-submit');
     expect(calls[0].body).toMatchObject({ ageConfirmed: true });
     expect(screen).toHavePathname('/verify-email');
+  });
+
+  it('email confirmation switched off on the server: sign-up goes straight to Home', async () => {
+    const direct = { ...user('direct@example.com', 'en', false), mustVerifyEmail: false };
+    routes['POST /auth/register'] = ok({ user: direct }, 201);
+    routes['POST /auth/login'] = ok({
+      ...session('direct@example.com', 'en', false),
+      user: direct,
+    });
+    routes['GET /me'] = ok({ user: direct });
+    await renderApp('/sign-up');
+    await type('sign-up-email', 'direct@example.com');
+    await type('sign-up-password', 'secret123');
+    await press('sign-up-age');
+    await press('sign-up-submit');
+    expect(screen).toHavePathname('/home');
+  });
+
+  it('Back on a screen opened directly (no previous screen) goes to Welcome, no error', async () => {
+    await renderApp('/sign-up');
+    await press('back');
+    expect(screen).toHavePathname('/welcome');
   });
 
   it('shows "already exists" on the email field', async () => {

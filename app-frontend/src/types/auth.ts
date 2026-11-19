@@ -7,6 +7,11 @@ export interface PublicUser {
   role: 'user' | 'admin';
   status: 'active' | 'suspended';
   emailVerified: boolean;
+  /**
+   * Show the confirm-email step (server switch EMAIL_VERIFICATION_REQUIRED on and the
+   * email not confirmed). Missing (older server) = no step.
+   */
+  mustVerifyEmail?: boolean;
   preferredLanguage: Language;
   createdAt: string;
 }

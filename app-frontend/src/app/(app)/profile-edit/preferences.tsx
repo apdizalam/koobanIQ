@@ -1,4 +1,3 @@
-import { router } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
@@ -19,6 +18,7 @@ import {
   type Preferences,
 } from '../../../types/profile';
 import { useTheme } from '../../../theme';
+import { goBackOrHome } from '../../../components/ui/BackButton';
 
 type ChoiceKey = 'regions' | 'employerTypes' | 'workModes' | 'jobTypes';
 
@@ -65,7 +65,7 @@ function PreferencesForm({ initial }: { initial: Preferences }) {
     setFailure(null);
     try {
       await savePreferences({ ...chosen, titles: splitList(titles), cities: splitList(cities) });
-      router.back();
+      goBackOrHome();
     } catch (err) {
       const details = err instanceof ApiError ? err.details : {};
       if (Object.keys(details).length > 0) setErrors(details);

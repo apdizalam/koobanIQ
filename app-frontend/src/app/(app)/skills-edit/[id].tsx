@@ -1,4 +1,4 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 import { AuthScreen } from '../../../components/layout/AuthScreen';
@@ -8,6 +8,7 @@ import { useSkills } from '../../../profile/SkillsProvider';
 import { SKILL_LEVELS } from '../../../types/skills';
 import { useTheme } from '../../../theme';
 import { formatDate } from '../../../utils/format';
+import { goBackOrHome } from '../../../components/ui/BackButton';
 
 /** What the user can set. The assessed level is not here: only a quiz sets it. */
 const SKILL_FIELDS: FieldDef[] = [
@@ -83,14 +84,14 @@ export default function SkillEditScreen() {
             onSubmit={async (body) => {
               if (isNew) await add(body);
               else await update(id, body);
-              router.back();
+              goBackOrHome();
             }}
             onDelete={
               isNew
                 ? undefined
                 : async () => {
                     await remove(id);
-                    router.back();
+                    goBackOrHome();
                   }
             }
           />

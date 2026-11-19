@@ -1,4 +1,4 @@
-import { router, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, View } from 'react-native';
@@ -14,6 +14,7 @@ import { jobName, otherLanguage } from '../../../services/cvApi';
 import type { Cv } from '../../../types/cv';
 import { useTheme } from '../../../theme';
 import { formatDate } from '../../../utils/format';
+import { goBackOrHome } from '../../../components/ui/BackButton';
 
 /**
  * One CV (TIQ-9): what is missing from the profile, the CV itself, then
@@ -49,7 +50,7 @@ export default function CvScreen() {
     setDeleteFailed(false);
     try {
       await removeCv(cv.id);
-      router.back();
+      goBackOrHome();
     } catch {
       setDeleteFailed(true);
       setDeleting(false);
