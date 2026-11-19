@@ -568,7 +568,11 @@
         "title": "Skill profile",
         "count": "{{count}} assessed",
         "empty": "No skills yet. Add your skills, then take a short test to show employers what you really know.",
-        "action": "Add your skills"
+        "action": "Add your skills",
+        "someSelf_one": "{{count}} skill is self-reported. A short optional quiz can confirm it.",
+        "someSelf_other": "{{count}} skills are self-reported. A short optional quiz can confirm them.",
+        "allAssessed": "All your skills are assessed.",
+        "open": "See your skill profile"
       },
       "quick": {
         "title": "Quick actions",
@@ -612,7 +616,8 @@
         "projects": "Projects",
         "certifications": "Certifications",
         "languages": "Languages",
-        "preferences": "Job preferences"
+        "preferences": "Job preferences",
+        "skills": "Skills"
       },
       "sectionHints": {
         "experience": "Jobs, internships and volunteer work.",
@@ -652,7 +657,10 @@
         "cities": "Cities",
         "employerTypes": "Employer types",
         "workModes": "Work mode",
-        "jobTypes": "Job type"
+        "jobTypes": "Job type",
+        "category": "Group (for example Frontend)",
+        "selfLevel": "Your level",
+        "yearsExp": "Years of experience"
       },
       "hints": {
         "month": "Year-month, e.g. 2024-09",
@@ -703,6 +711,38 @@
         "title": "Your progress will show here",
         "body": "Reports on your CVs, tests and job searches appear once you start using those features."
       }
+    },
+    "skills": {
+      "title": "Skill profile",
+      "add": "Add a skill",
+      "addFirst": "Add your first skill",
+      "loadError": "Your skills could not be loaded. Check your internet connection and try again.",
+      "stats": {
+        "assessed": "Assessed",
+        "selfReported": "Self-reported",
+        "gaps": "Gaps found"
+      },
+      "filterLabel": "Show skills",
+      "otherGroup": "Other skills",
+      "emptyTitle": "No skills yet",
+      "emptyBody": "Add the skills you have and rate them yourself. Later, a short optional quiz can confirm them.",
+      "suggestTitle": "Verify {{skill}}?",
+      "suggestBody": "A short quiz can confirm your level. It is always optional. Quizzes come in an upcoming update.",
+      "maybeLater": "Maybe later",
+      "levels": {
+        "beginner": "Beginner",
+        "mid": "Mid",
+        "advanced": "Advanced",
+        "expert": "Expert"
+      },
+      "addTitle": "Add a skill",
+      "editTitle": "Edit skill",
+      "formHint": "This is your own rating. A quiz can confirm it later; your rating stays as you set it.",
+      "assessedAs": "Assessed level: {{level}}",
+      "assessedOn": "Quiz taken {{date}}",
+      "toLearn": "Worth learning next: {{topics}}",
+      "onlyQuiz": "Only a quiz changes the assessed level. It measures knowledge, not work experience.",
+      "summary": "{{assessed}} of {{total}} assessed"
     }
   }
 }

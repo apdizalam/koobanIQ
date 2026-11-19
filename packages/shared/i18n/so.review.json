@@ -1283,6 +1283,10 @@
     "state": "pending",
     "en": "Add your skills"
   },
+  "mobile.home.skillCard.allAssessed": {
+    "state": "pending",
+    "en": "All your skills are assessed."
+  },
   "mobile.home.skillCard.count": {
     "state": "pending",
     "en": "{{count}} assessed"
@@ -1290,6 +1294,18 @@
   "mobile.home.skillCard.empty": {
     "state": "pending",
     "en": "No skills yet. Add your skills, then take a short test to show employers what you really know."
+  },
+  "mobile.home.skillCard.open": {
+    "state": "pending",
+    "en": "See your skill profile"
+  },
+  "mobile.home.skillCard.someSelf_one": {
+    "state": "pending",
+    "en": "{{count}} skill is self-reported. A short optional quiz can confirm it."
+  },
+  "mobile.home.skillCard.someSelf_other": {
+    "state": "pending",
+    "en": "{{count}} skills are self-reported. A short optional quiz can confirm them."
   },
   "mobile.home.skillCard.title": {
     "state": "pending",
@@ -1487,6 +1503,10 @@
     "state": "pending",
     "en": "{{count}} entries"
   },
+  "mobile.profile.fields.category": {
+    "state": "pending",
+    "en": "Group (for example Frontend)"
+  },
   "mobile.profile.fields.cities": {
     "state": "pending",
     "en": "Cities"
@@ -1575,6 +1595,10 @@
     "state": "pending",
     "en": "School or university"
   },
+  "mobile.profile.fields.selfLevel": {
+    "state": "pending",
+    "en": "Your level"
+  },
   "mobile.profile.fields.skills": {
     "state": "pending",
     "en": "Skills used"
@@ -1606,6 +1630,10 @@
   "mobile.profile.fields.workModes": {
     "state": "pending",
     "en": "Work mode"
+  },
+  "mobile.profile.fields.yearsExp": {
+    "state": "pending",
+    "en": "Years of experience"
   },
   "mobile.profile.hints.endDate": {
     "state": "pending",
@@ -1759,6 +1787,10 @@
     "state": "pending",
     "en": "Projects"
   },
+  "mobile.profile.sections.skills": {
+    "state": "pending",
+    "en": "Skills"
+  },
   "mobile.profile.workModes.hybrid": {
     "state": "pending",
     "en": "Hybrid"
@@ -1770,6 +1802,110 @@
   "mobile.profile.workModes.remote": {
     "state": "pending",
     "en": "Remote"
+  },
+  "mobile.skills.add": {
+    "state": "pending",
+    "en": "Add a skill"
+  },
+  "mobile.skills.addFirst": {
+    "state": "pending",
+    "en": "Add your first skill"
+  },
+  "mobile.skills.addTitle": {
+    "state": "pending",
+    "en": "Add a skill"
+  },
+  "mobile.skills.assessedAs": {
+    "state": "pending",
+    "en": "Assessed level: {{level}}"
+  },
+  "mobile.skills.assessedOn": {
+    "state": "pending",
+    "en": "Quiz taken {{date}}"
+  },
+  "mobile.skills.editTitle": {
+    "state": "pending",
+    "en": "Edit skill"
+  },
+  "mobile.skills.emptyBody": {
+    "state": "pending",
+    "en": "Add the skills you have and rate them yourself. Later, a short optional quiz can confirm them."
+  },
+  "mobile.skills.emptyTitle": {
+    "state": "pending",
+    "en": "No skills yet"
+  },
+  "mobile.skills.filterLabel": {
+    "state": "pending",
+    "en": "Show skills"
+  },
+  "mobile.skills.formHint": {
+    "state": "pending",
+    "en": "This is your own rating. A quiz can confirm it later; your rating stays as you set it."
+  },
+  "mobile.skills.levels.advanced": {
+    "state": "pending",
+    "en": "Advanced"
+  },
+  "mobile.skills.levels.beginner": {
+    "state": "pending",
+    "en": "Beginner"
+  },
+  "mobile.skills.levels.expert": {
+    "state": "pending",
+    "en": "Expert"
+  },
+  "mobile.skills.levels.mid": {
+    "state": "pending",
+    "en": "Mid"
+  },
+  "mobile.skills.loadError": {
+    "state": "pending",
+    "en": "Your skills could not be loaded. Check your internet connection and try again."
+  },
+  "mobile.skills.maybeLater": {
+    "state": "pending",
+    "en": "Maybe later"
+  },
+  "mobile.skills.onlyQuiz": {
+    "state": "pending",
+    "en": "Only a quiz changes the assessed level. It measures knowledge, not work experience."
+  },
+  "mobile.skills.otherGroup": {
+    "state": "pending",
+    "en": "Other skills"
+  },
+  "mobile.skills.stats.assessed": {
+    "state": "pending",
+    "en": "Assessed"
+  },
+  "mobile.skills.stats.gaps": {
+    "state": "pending",
+    "en": "Gaps found"
+  },
+  "mobile.skills.stats.selfReported": {
+    "state": "pending",
+    "en": "Self-reported"
+  },
+  "mobile.skills.suggestBody": {
+    "state": "pending",
+    "en": "A short quiz can confirm your level. It is always optional. Quizzes come in an upcoming update."
+  },
+  "mobile.skills.suggestTitle": {
+    "state": "pending",
+    "en": "Verify {{skill}}?"
+  },
+  "mobile.skills.summary": {
+    "state": "pending",
+    "en": "{{assessed}} of {{total}} assessed"
+  },
+  "mobile.skills.title": {
+    "state": "pending",
+    "en": "Skill profile"
+  },
+  "mobile.skills.toLearn": {
+    "state": "pending",
+    "en": "Worth learning next: {{topics}}"
   },
   "mobile.soon.cv.body": {
     "state": "pending",

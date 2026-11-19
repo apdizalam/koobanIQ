@@ -18,7 +18,7 @@ export interface FieldDef {
   required?: boolean;
   /** For `choice`: the values, and where their names live in the translations. */
   choices?: readonly string[];
-  choiceLabels?: 'common.region' | 'mobile.profile.levels';
+  choiceLabels?: 'common.region' | 'mobile.profile.levels' | 'mobile.skills.levels';
   maxLength?: number;
 }
 

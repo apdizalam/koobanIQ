@@ -47,6 +47,8 @@ export function ProfileForm({
   );
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [failure, setFailure] = useState<RequestErrorKey | null>(null);
+  /** A refusal the server explained (e.g. "You already have this skill"), already in the app language. */
+  const [serverMessage, setServerMessage] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [confirming, setConfirming] = useState(false);
 
@@ -59,12 +61,20 @@ export function ProfileForm({
     if (busy) return;
     setBusy(true);
     setFailure(null);
+    setServerMessage(null);
     setFieldErrors({});
     try {
       await action();
     } catch (err) {
       const details = err instanceof ApiError ? err.details : {};
       if (Object.keys(details).length > 0) setFieldErrors(details);
+      else if (
+        err instanceof ApiError &&
+        err.status >= 400 &&
+        err.status < 500 &&
+        err.status !== 401
+      )
+        setServerMessage(err.message);
       else setFailure(requestErrorKey(err));
       setBusy(false);
       setConfirming(false);
@@ -134,6 +144,7 @@ export function ProfileForm({
         ),
       )}
 
+      {serverMessage ? <FormMessage text={serverMessage} /> : null}
       {failure ? <FormMessage text={t(`mobile.auth.errors.${failure}`)} /> : null}
 
       <Button
