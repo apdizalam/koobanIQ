@@ -3,13 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useAuth } from '../auth/authContext';
 import { ConfirmDialog } from '../components/ui/ConfirmDialog';
+import { ReasonDialog } from '../components/ui/ReasonDialog';
 import { useUser } from '../hooks/useUsers';
 import { availableActions, runUserAction } from '../services/adminUsersApi';
 import { ApiError } from '../services/api';
+import { updateTestAccount } from '../services/privacyApi';
 import type { UserAction } from '../types/adminUsers';
 import { formatDate } from '../utils/format';
 
-/** Admin → Users → one user: details plus suspend / reactivate / role / delete. */
+/**
+ * Admin → Users → one user: details plus suspend / reactivate / role / delete,
+ * and the test-account mark (with a reason, audited).
+ */
 export function UserDetailPage() {
   const { t, i18n } = useTranslation();
   const id = useParams().id ?? '';
@@ -19,6 +24,8 @@ export function UserDetailPage() {
   const [pending, setPending] = useState<UserAction | null>(null);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState<{ kind: 'notice' | 'alert'; text: string } | null>(null);
+  const [testOpen, setTestOpen] = useState(false);
+  const [testError, setTestError] = useState<string | null>(null);
 
   // After an action the page reloads; meanwhile it keeps showing the previous details.
   const user = state.status === 'ready' ? state.data.user : (previous?.user ?? null);
@@ -44,6 +51,28 @@ export function UserDetailPage() {
     } finally {
       setBusy(false);
       setPending(null);
+    }
+  }
+
+  async function saveTestAccount(reason: string) {
+    if (!user) return;
+    const testAccount = !user.testAccount;
+    setBusy(true);
+    setTestError(null);
+    try {
+      const updated = await updateTestAccount(request, user.id, testAccount, reason);
+      setTestOpen(false);
+      setMessage({
+        kind: 'notice',
+        text: t(updated.testAccount ? 'admin.users.testOn' : 'admin.users.testOff', {
+          email: updated.email,
+        }),
+      });
+      reload();
+    } catch (err) {
+      setTestError(err instanceof ApiError ? err.message : t('admin.errors.generic'));
+    } finally {
+      setBusy(false);
     }
   }
 
@@ -77,6 +106,12 @@ export function UserDetailPage() {
               <span className={`badge badge-${user.status}`}>
                 {t(`admin.users.statuses.${user.status}`)}
               </span>
+              {user.testAccount ? (
+                <>
+                  {' '}
+                  <span className="badge badge-test">{t('admin.users.testAccount')}</span>
+                </>
+              ) : null}
             </p>
           </header>
 
@@ -103,6 +138,28 @@ export function UserDetailPage() {
               <dt>{t('admin.users.columns.joined')}</dt>
               <dd>{formatDate(user.createdAt, i18n.language, true)}</dd>
             </dl>
+          </section>
+
+          <section className="card">
+            <h2 className="section-title">{t('admin.users.testAccount')}</h2>
+            <p className="muted">{t('admin.users.testAccountHint')}</p>
+            <p>
+              {t('admin.users.testAccount')}:{' '}
+              <strong>{user.testAccount ? t('admin.users.yes') : t('admin.users.no')}</strong>
+            </p>
+            <div className="action-row">
+              <button
+                type="button"
+                className="button-secondary"
+                onClick={() => {
+                  setMessage(null);
+                  setTestError(null);
+                  setTestOpen(true);
+                }}
+              >
+                {user.testAccount ? t('admin.users.unmarkTest') : t('admin.users.markTest')}
+              </button>
+            </div>
           </section>
 
           <section className="card">
@@ -137,6 +194,22 @@ export function UserDetailPage() {
             busy={busy}
             onConfirm={() => void confirm()}
             onCancel={() => setPending(null)}
+          />
+
+          <ReasonDialog
+            open={testOpen}
+            title={user.testAccount ? t('admin.users.unmarkTest') : t('admin.users.markTest')}
+            message={t(
+              user.testAccount ? 'admin.users.testDialogOff' : 'admin.users.testDialogOn',
+              {
+                email: user.email,
+              },
+            )}
+            saveLabel={t('admin.privacy.save')}
+            busy={busy}
+            error={testError}
+            onSave={(reason) => void saveTestAccount(reason)}
+            onCancel={() => setTestOpen(false)}
           />
         </>
       ) : null}

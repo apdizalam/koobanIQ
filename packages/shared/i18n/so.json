@@ -287,7 +287,9 @@
       "testReason": "Sababta",
       "testReasonHint": "Waa qasab (10 ilaa 500 xaraf).",
       "testOn": "{{email}} hadda waa akoon tijaabo.",
-      "testOff": "{{email}} mar dambe ma aha akoon tijaabo."
+      "testOff": "{{email}} mar dambe ma aha akoon tijaabo.",
+      "testDialogOn": "Ma ka dhigaysaa {{email}} akoon tijaabo? U isticmaal keliya akoonnada haysta xog male ah.",
+      "testDialogOff": "Ma ka saaraysaa calaamadda tijaabada {{email}}? Qaybaha AI ee dira xogta astaanta waxay markaas raacayaan dejinta asturnaanta AI."
     },
     "audit": {
       "title": "Diiwaanka hubinta",
@@ -321,7 +323,8 @@
       "values": {
         "on": "Shidan",
         "off": "Demisan"
-      }
+      },
+      "reason": "Sababta: {{reason}}"
     },
     "sources": {
       "title": "Ilaha shaqooyinka",
@@ -428,7 +431,13 @@
       "save": "Keydi isbeddelka",
       "saving": "Waa la keydinayaa…",
       "saved": "Dejintu hadda waa {{value}}.",
-      "error": "Dejinta lama soo rari karin. Hubi in backend-ku shaqaynayo."
+      "error": "Dejinta lama soo rari karin. Hubi in backend-ku shaqaynayo.",
+      "changeTo": "U beddel {{value}}",
+      "changeMessage": "Dejintu waxay ka beddelaysaa {{from}} una beddelaysaa {{to}}. Sababtaada waxaa lagu keydinayaa akoonkaaga iyo waqtiga, waxayna ka muuqanaysaa taariikhda iyo diiwaanka hubinta.",
+      "tooShort": "Sheeg sabab ugu yaraan 10 xaraf ah.",
+      "tooLong": "Sababtu waa inaysan ka badnaan 500 xaraf.",
+      "confirmNeeded": "Marka hore calaamadee sanduuqa xaqiijinta.",
+      "cancel": "Jooji"
     }
   },
   "mobile": {

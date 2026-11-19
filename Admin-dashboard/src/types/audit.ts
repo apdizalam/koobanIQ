@@ -9,6 +9,8 @@ export const AUDIT_ACTIONS = [
   'job_source.disable',
   'job_source.update',
   'region.update',
+  'settings.ai_personal_data',
+  'user.test_account',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 
@@ -25,6 +27,8 @@ export interface AuditEntry {
   before: Snapshot;
   after: Snapshot;
   ip: string | null;
+  /** Why the admin made the change (AI privacy, test accounts). */
+  reason?: string | null;
 }
 
 export interface AuditPage {

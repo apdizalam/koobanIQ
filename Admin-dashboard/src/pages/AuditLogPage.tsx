@@ -55,6 +55,12 @@ export function AuditLogPage() {
         ? t('admin.sources.none')
         : raw.map((item) => value(field, item)).join(', ');
     }
+    if (field === 'testAccount' && typeof raw === 'boolean') {
+      return t(`admin.users.${raw ? 'yes' : 'no'}`);
+    }
+    if (field === 'value' && (raw === 'blocked' || raw === 'allowed')) {
+      return t(`admin.privacy.values.${raw}`);
+    }
     if (field === 'enabled' && typeof raw === 'boolean') {
       return t(`admin.audit.values.${raw ? 'on' : 'off'}`);
     }
@@ -155,7 +161,14 @@ export function AuditLogPage() {
                   </td>
                   <td className="cell-wrap">{entry.target ?? t('admin.audit.noChange')}</td>
                   <td className="col-optional">{entry.actor}</td>
-                  <td className="col-optional cell-wrap">{change(entry)}</td>
+                  <td className="col-optional cell-wrap">
+                    {change(entry)}
+                    {entry.reason ? (
+                      <span className="muted audit-reason">
+                        {t('admin.audit.reason', { reason: entry.reason })}
+                      </span>
+                    ) : null}
+                  </td>
                 </tr>
               ))}
             </tbody>

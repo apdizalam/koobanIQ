@@ -91,6 +91,10 @@
     "state": "pending",
     "en": "—"
   },
+  "admin.audit.reason": {
+    "state": "pending",
+    "en": "Reason: {{reason}}"
+  },
   "admin.audit.subtitle": {
     "state": "pending",
     "en": "Every change an admin made, and every blocked attempt to open the admin area."
@@ -355,9 +359,21 @@
     "state": "pending",
     "en": "Blocked: only test accounts (fictional data) can use AI features that send profile data. Real users see a message that the feature is not available yet."
   },
+  "admin.privacy.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.privacy.changeMessage": {
+    "state": "pending",
+    "en": "The setting goes from {{from}} to {{to}}. Your reason is saved with your account and the time, and shown in the history and the audit log."
+  },
   "admin.privacy.changeTitle": {
     "state": "pending",
     "en": "Change the setting"
+  },
+  "admin.privacy.changeTo": {
+    "state": "pending",
+    "en": "Change to {{value}}"
   },
   "admin.privacy.columns.admin": {
     "state": "pending",
@@ -378,6 +394,10 @@
   "admin.privacy.confirmAllow": {
     "state": "pending",
     "en": "I confirm KOBANIQ uses a paid AI tier and the privacy requirements have been verified."
+  },
+  "admin.privacy.confirmNeeded": {
+    "state": "pending",
+    "en": "Tick the confirmation box first."
   },
   "admin.privacy.error": {
     "state": "pending",
@@ -434,6 +454,14 @@
   "admin.privacy.title": {
     "state": "pending",
     "en": "AI privacy"
+  },
+  "admin.privacy.tooLong": {
+    "state": "pending",
+    "en": "The reason can be at most 500 characters."
+  },
+  "admin.privacy.tooShort": {
+    "state": "pending",
+    "en": "Give a reason of at least 10 characters."
   },
   "admin.privacy.values.allowed": {
     "state": "pending",
@@ -898,6 +926,14 @@
   "admin.users.testAccountHint": {
     "state": "pending",
     "en": "Test accounts hold fictional data and may use AI features that send profile data while AI privacy is Blocked."
+  },
+  "admin.users.testDialogOff": {
+    "state": "pending",
+    "en": "Remove the test account mark from {{email}}? AI features that send profile data then follow the AI privacy setting."
+  },
+  "admin.users.testDialogOn": {
+    "state": "pending",
+    "en": "Mark {{email}} as a test account? Use only for accounts that hold fictional data."
   },
   "admin.users.testOff": {
     "state": "pending",
