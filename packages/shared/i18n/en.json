@@ -777,10 +777,6 @@
       "cancel": "Cancel"
     },
     "soon": {
-      "cv": {
-        "title": "Your CVs will live here",
-        "body": "Soon you can paste a job description and create a CV for that job from your profile, in English or Somali."
-      },
       "jobs": {
         "title": "Job search is coming",
         "body": "Soon you can choose regions and job sources in Somaliland and Somalia and get jobs that match you, each with an explanation."
@@ -821,6 +817,53 @@
       "toLearn": "Worth learning next: {{topics}}",
       "onlyQuiz": "Only a quiz changes the assessed level. It measures knowledge, not work experience.",
       "summary": "{{assessed}} of {{total}} assessed"
+    },
+    "cv": {
+      "version": "version {{version}}",
+      "tab": {
+        "subtitle": "A CV for each job, written from your profile in English or Somali.",
+        "newCv": "New CV",
+        "loadError": "Your CVs could not be loaded. Check your internet connection and try again.",
+        "cvsTitle": "Your CVs",
+        "jobsTitle": "Saved job ads",
+        "emptyTitle": "No CVs yet",
+        "emptyBody": "Tap New CV, paste a job ad or upload it as a PDF, and KOBANIQ writes a CV for that job from your profile."
+      },
+      "job": {
+        "untitled": "Job ad",
+        "title": "Add the job ad",
+        "subtitle": "Paste the job advertisement or upload it as a PDF. The AI reads the requirements.",
+        "mode": {
+          "paste": "Paste text",
+          "pdf": "Upload PDF"
+        },
+        "textLabel": "Job advertisement",
+        "textPlaceholder": "Paste the whole job ad here",
+        "textHint": "{{count}} / {{max}} characters (at least 50)",
+        "tooShort": "Paste the whole job ad (at least 50 characters).",
+        "tooLong": "The job ad is too long (at most 20,000 characters).",
+        "pdfChoose": "Choose a PDF",
+        "pdfChange": "Choose another PDF",
+        "pdfHint": "A PDF of the job ad, up to 5 MB.",
+        "pdfTooLarge": "This PDF is larger than 5 MB. Choose a smaller file or paste the text.",
+        "pdfMissing": "Choose a PDF first.",
+        "submit": "Read the job ad",
+        "readingShort": "Reading…",
+        "reading": "The AI is reading the job ad. This can take up to a minute.",
+        "privacy": "Only the job ad is sent to the AI, never your profile.",
+        "detailsTitle": "Job details",
+        "detailsHint": "What the AI found in the job ad.",
+        "notFound": "This job ad could not be found. It may have been deleted.",
+        "deadline": "Apply by {{date}}",
+        "required": "Required skills",
+        "preferred": "Preferred skills",
+        "experience": "Experience",
+        "education": "Education",
+        "responsibilities": "Main tasks"
+      },
+      "errors": {
+        "network": "Cannot reach the server, or it took too long. Check your internet connection and try again."
+      }
     }
   }
 }
