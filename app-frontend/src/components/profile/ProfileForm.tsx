@@ -25,6 +25,7 @@ const KEYBOARD: Partial<Record<FieldDef['kind'], KeyboardTypeOptions>> = {
   year: 'number-pad',
   phone: 'phone-pad',
   url: 'url',
+  email: 'email-address',
   month: 'numbers-and-punctuation',
 };
 
@@ -125,8 +126,14 @@ export function ProfileForm({
             multiline={field.kind === 'multiline'}
             maxLength={field.maxLength}
             keyboardType={KEYBOARD[field.kind]}
-            autoCapitalize={field.kind === 'url' ? 'none' : 'sentences'}
-            autoCorrect={field.kind !== 'url'}
+            autoCapitalize={field.kind === 'url' || field.kind === 'email' ? 'none' : 'sentences'}
+            autoCorrect={field.kind !== 'url' && field.kind !== 'email'}
+            autoComplete={field.kind === 'email' ? 'email' : undefined}
+            hint={
+              field.hint
+                ? t(`mobile.profile.hints.${field.key}` as 'mobile.profile.hints.contactEmail')
+                : undefined
+            }
             placeholder={
               field.kind === 'month'
                 ? field.key === 'endDate'

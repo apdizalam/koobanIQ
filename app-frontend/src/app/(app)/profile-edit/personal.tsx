@@ -6,7 +6,10 @@ import { ProfileGate } from '../../../components/profile/ProfileGate';
 import { PERSONAL_FIELDS } from '../../../profile/fields';
 import { useProfile } from '../../../profile/ProfileProvider';
 
-/** Profile → Personal info (name, preferred title, profession, region, city, phone, summary). */
+/**
+ * Profile → Personal info (name, preferred title, profession, region, city, phone,
+ * email shown on CVs, summary).
+ */
 export default function PersonalInfoScreen() {
   const { t } = useTranslation();
   const { savePersonal } = useProfile();

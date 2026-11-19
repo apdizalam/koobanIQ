@@ -77,7 +77,19 @@ function profileRoute(method: string, path: string, body: Record<string, unknown
   const [, , section, id] = path.split('/'); // "", "profile", section, id
   if (method === 'GET' && path === '/profile') return profileReply();
   if (method === 'PATCH' && path === '/profile/personal') {
-    store.personal = clean({ ...store.personal, ...body });
+    // Like the server: the CV email must look like an email (it is saved lower-cased).
+    const saved = { ...body };
+    if (typeof saved.contactEmail === 'string') {
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(saved.contactEmail)) {
+        return reply(400, {
+          data: null,
+          error: { code: 'VALIDATION_ERROR', message: 'Some fields are invalid' },
+          meta: { details: { contactEmail: 'Enter a valid email address' } },
+        });
+      }
+      saved.contactEmail = saved.contactEmail.toLowerCase();
+    }
+    store.personal = clean({ ...store.personal, ...saved });
     return profileReply();
   }
   if (method === 'PUT' && path === '/profile/preferences') {
@@ -179,6 +191,36 @@ describe('TIQ-6: profile screens', () => {
     expect(await screen.findByTestId('profile-screen')).toBeTruthy();
     expect(screen.getByText('Amina Test · QA tester')).toBeTruthy();
     expect(screen.getByTestId('profile-completion')).toHaveTextContent('Profile 20% complete');
+  });
+
+  it('CV email: its own field with a hint, checked by the server, separate from the login email', async () => {
+    await openApp('/profile-edit/personal');
+    expect(await screen.findByTestId('personal-form')).toBeTruthy();
+    expect(screen.getByText('Email shown on CVs')).toBeTruthy();
+    expect(screen.getByText('Shown on your CVs. Your login email does not change.')).toBeTruthy();
+    const field = screen.getByTestId('field-contactEmail');
+    expect(field.props.keyboardType).toBe('email-address');
+    expect(field.props.autoCapitalize).toBe('none');
+
+    await type('field-contactEmail', 'not-an-email');
+    await press('personal-form-save');
+    expect(await screen.findByText('Enter a valid email address')).toBeTruthy();
+    expect(store.personal.contactEmail).toBeUndefined();
+
+    await type('field-contactEmail', ' Amina.CV@Example.com ');
+    await press('personal-form-save');
+    expect(calls.filter((c) => c.route === 'PATCH /profile/personal').at(-1)?.body).toMatchObject({
+      contactEmail: 'Amina.CV@Example.com',
+    });
+    expect(store.personal.contactEmail).toBe('amina.cv@example.com');
+    // Only the profile changes: no account (login email) request was made.
+    expect(calls.some((c) => c.route.startsWith('PATCH /me'))).toBe(false);
+
+    // Saved once, shown again next time.
+    await openApp('/profile-edit/personal');
+    expect((await screen.findByTestId('field-contactEmail')).props.value).toBe(
+      'amina.cv@example.com',
+    );
   });
 
   it('experience: add, edit and delete an entry', async () => {

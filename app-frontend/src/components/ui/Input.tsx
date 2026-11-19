@@ -8,6 +8,8 @@ export interface InputProps extends Omit<TextInputProps, 'style'> {
   icon?: IconName;
   /** Shown under the field in the error color; also marks the field invalid. */
   errorMessage?: string;
+  /** Help line under the field (hidden while an error is shown). */
+  hint?: string;
 }
 
 /** Figma "Input": label above · 48px field · radius 8 · padding 14 · icon 20 · Inter 15/22. */
@@ -15,6 +17,7 @@ export function Input({
   label,
   icon,
   errorMessage,
+  hint,
   onFocus,
   onBlur,
   ...textInputProps
@@ -44,7 +47,7 @@ export function Input({
         <TextInput
           {...textInputProps}
           accessibilityLabel={label}
-          accessibilityHint={errorMessage}
+          accessibilityHint={errorMessage ?? hint}
           placeholderTextColor={colors.textMuted}
           onFocus={(e) => {
             setFocused(true);
@@ -65,6 +68,8 @@ export function Input({
         >
           {errorMessage}
         </Text>
+      ) : hint ? (
+        <Text style={[typography.bodySmall, { color: colors.textMuted }]}>{hint}</Text>
       ) : null}
     </View>
   );
