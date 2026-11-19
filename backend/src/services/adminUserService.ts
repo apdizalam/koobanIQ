@@ -1,4 +1,6 @@
 import { deleteUsageRecords } from '../ai/aiService.js';
+import { deleteCvs } from './cvService.js';
+import { deleteJobDescriptions } from './jobDescriptionService.js';
 import { deleteProfile } from './profileService.js';
 import { deleteSkills } from './skillService.js';
 import type { Request } from 'express';
@@ -16,7 +18,11 @@ import { recordAudit } from './auditService.js';
 
 /** What the admin pages show for a user (public fields + activity). */
 export function toAdminUser(user: UserDocument) {
-  return { ...toPublicUser(user), lastActiveAt: user.lastActiveAt ?? null };
+  return {
+    ...toPublicUser(user),
+    lastActiveAt: user.lastActiveAt ?? null,
+    testAccount: user.testAccount === true,
+  };
 }
 
 export interface ListUsersQuery {
@@ -131,6 +137,33 @@ export async function setUserRole(req: Request, id: string, role: Role) {
   return toAdminUser(user);
 }
 
+/**
+ * Mark or unmark a test account (admins only, checked by the route). A
+ * test account holds fictional data and may use AI features that send profile
+ * data while the AI personal-data setting is BLOCKED. Audited with the reason.
+ */
+export async function setTestAccount(
+  req: Request,
+  id: string,
+  testAccount: boolean,
+  reason: string,
+) {
+  const user = await findUser(id);
+  const before = user.testAccount === true;
+  if (before === testAccount) return toAdminUser(user);
+  user.testAccount = testAccount;
+  await user.save();
+  await recordAudit(req, {
+    action: 'user.test_account',
+    targetType: 'user',
+    targetId: String(user._id),
+    before: { testAccount: before },
+    after: { testAccount },
+    reason,
+  });
+  return toAdminUser(user);
+}
+
 /** Delete an account and its sessions. The audit record keeps who it was. */
 export async function deleteUser(req: Request, id: string) {
   const user = await findUser(id);
@@ -141,6 +174,8 @@ export async function deleteUser(req: Request, id: string) {
   await deleteProfile(user._id);
   await deleteSkills(user._id);
   await deleteUsageRecords(user._id);
+  await deleteJobDescriptions(user._id);
+  await deleteCvs(user._id);
   await User.deleteOne({ _id: user._id });
   await recordAudit(req, {
     action: 'user.delete',

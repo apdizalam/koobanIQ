@@ -68,6 +68,8 @@ export const env = {
   geminiModel: (process.env.GEMINI_MODEL ?? 'gemini-3.1-flash-lite').trim(),
   /** Longest wait for one AI answer before giving up (milliseconds). */
   aiTimeoutMs: Number(process.env.AI_TIMEOUT_MS ?? 30_000),
+  /** Pause before trying a temporarily unavailable AI provider once more (milliseconds). */
+  aiRetryDelayMs: Number(process.env.AI_RETRY_DELAY_MS ?? 3000),
   /** AI requests one user may make per hour (protects the free quota). */
   aiUserRequestsPerHour: Number(process.env.AI_USER_REQUESTS_PER_HOUR ?? 30),
 };

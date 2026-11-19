@@ -2,6 +2,11 @@ import { Router } from 'express';
 import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
 import {
+  getAiPersonalData,
+  patchTestAccount,
+  putAiPersonalData,
+} from '../controllers/adminSettingsController.js';
+import {
   getUser,
   getUsers,
   patchUserRole,
@@ -30,6 +35,13 @@ adminRouter.get('/users/:id', getUser);
 adminRouter.patch('/users/:id/status', patchUserStatus);
 adminRouter.patch('/users/:id/role', patchUserRole);
 adminRouter.delete('/users/:id', removeUser);
+// Test accounts (fictional data) may use AI features while personal data is BLOCKED.
+// Admins only (router-level check above); a reason is required and audited.
+adminRouter.patch('/users/:id/test-account', patchTestAccount);
+
+// AI personal-data setting (owner decision): admins view it and change it with a reason; default BLOCKED.
+adminRouter.get('/settings/ai-personal-data', getAiPersonalData);
+adminRouter.put('/settings/ai-personal-data', putAiPersonalData);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);

@@ -22,6 +22,12 @@ const userSchema = new Schema(
     authProvider: { type: String, enum: AUTH_PROVIDERS, default: 'local' },
     preferredLanguage: { type: String, enum: LANGUAGES, default: 'en' },
     lastActiveAt: { type: Date },
+    /**
+     * Test account with fictional data: may use AI features that send profile
+     * data while the AI personal-data setting is BLOCKED. Set only by an admin in the
+     * Admin Dashboard (with a reason, audited); never from the email address.
+     */
+    testAccount: { type: Boolean, default: false },
   },
   { timestamps: true },
 );

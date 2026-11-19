@@ -66,6 +66,7 @@ before(async () => {
 beforeEach(() => {
   env.aiUserRequestsPerHour = originalLimit;
   env.aiTimeoutMs = originalTimeout;
+  env.aiRetryDelayMs = 5;
 });
 
 afterEach(() => setAiProviderForTests(undefined));
@@ -157,6 +158,40 @@ test('provider failures are not retried here (no wasted quota)', async () => {
   );
   assert.equal(mock.requests.length, 1);
   assert.equal(mock.pending(), 1);
+});
+
+test('a temporary outage is tried once more; a second outage is reported', async () => {
+  const mock = createMockProvider();
+  mock.reply({ error: new AiProviderError('unavailable', 'overloaded', 503) }, { json: GOOD });
+  assert.deepEqual(
+    await generateValidated({ provider: mock.provider, prompt, schema: connectivityCheckSchema }),
+    GOOD,
+  );
+  assert.equal(mock.requests.length, 2);
+
+  const down = createMockProvider();
+  down.reply(
+    { error: new AiProviderError('unavailable', 'overloaded', 503) },
+    { error: new AiProviderError('unavailable', 'overloaded', 503) },
+    { json: GOOD },
+  );
+  await assert.rejects(
+    generateValidated({ provider: down.provider, prompt, schema: connectivityCheckSchema }),
+    (err: unknown) => err instanceof AiProviderError && err.kind === 'unavailable',
+  );
+  assert.equal(down.requests.length, 2, 'only one extra try');
+});
+
+test('the schema sent to the provider has no limits (Gemini refuses complex ones); Zod keeps them', async () => {
+  const mock = createMockProvider();
+  mock.reply({ json: { ...GOOD, sentence: 'x'.repeat(301) } }, { json: GOOD });
+  await generateValidated({ provider: mock.provider, prompt, schema: connectivityCheckSchema });
+  const sent = JSON.stringify(mock.requests[0].jsonSchema);
+  for (const key of ['maxLength', 'minLength', 'maximum', 'minimum', 'maxItems']) {
+    assert.equal(sent.includes(key), false, `no ${key}`);
+  }
+  assert.ok(sent.includes(String.raw`"enum":["en","so"]`), 'allowed values stay');
+  assert.equal(mock.requests.length, 2, 'the too-long sentence was still rejected by Zod');
 });
 
 test('an answer that never comes ends at the time limit', async () => {
@@ -372,7 +407,10 @@ test('each failure → its error code and a usage record with the status', async
     ],
     [[{ error: new AiProviderError('quota', 'quota', 429) }], 503, 'AI_QUOTA_REACHED', 'quota'],
     [
-      [{ error: new AiProviderError('unavailable', 'down', 503) }],
+      [
+        { error: new AiProviderError('unavailable', 'down', 503) },
+        { error: new AiProviderError('unavailable', 'still down', 503) },
+      ],
       503,
       'AI_UNAVAILABLE',
       'unavailable',

@@ -12,12 +12,17 @@ const LANGUAGE_NAMES: Record<AiLanguage, string> = { en: 'English', so: 'Somali 
  * Rules every KOBANIQ prompt starts with (product rules: no invented data,
  * the user's real information first, output in the requested language).
  */
-export function baseRules(language: AiLanguage): string {
+export function baseRules(
+  /** Output language, or "source" to keep the values in the source's own language (extraction). */
+  language: AiLanguage | 'source',
+): string {
   return [
     'You are part of KOBANIQ, a career app for job seekers in Somaliland and Somalia.',
     'Use only the information given in this request. Never invent facts, names, dates, employers, qualifications, skills or numbers.',
     'When information is missing, leave the field empty (null or an empty list) instead of guessing.',
-    `Write every human-readable text value in ${LANGUAGE_NAMES[language]}. Keep proper names, company names and technical terms as written.`,
+    language === 'source'
+      ? 'Keep every text value in the language of the source. Do not translate.'
+      : `Write every human-readable text value in ${LANGUAGE_NAMES[language]}. Keep proper names, company names and technical terms as written.`,
     'Answer only with JSON that follows the given schema. No extra keys, no comments, no Markdown.',
   ].join('\n');
 }

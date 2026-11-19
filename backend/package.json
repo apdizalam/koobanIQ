@@ -11,7 +11,9 @@
     "test": "tsx --import ./test/support/setup.ts --test test/**/*.test.ts",
     "db:check": "tsx src/scripts/db-check.ts",
     "admin:promote": "tsx src/scripts/make-admin.ts",
-    "ai:check": "tsx src/scripts/ai-check.ts"
+    "ai:check": "tsx src/scripts/ai-check.ts",
+    "ai:check:jd": "tsx test/live/jdLiveCheck.ts",
+    "ai:check:cv": "tsx test/live/cvLiveCheck.ts"
   },
   "keywords": [],
   "author": "",

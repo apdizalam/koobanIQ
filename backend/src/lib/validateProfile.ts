@@ -12,11 +12,13 @@ type Field =
   | { kind: 'year' }
   | { kind: 'int'; min: number; max: number }
   | { kind: 'url' }
+  | { kind: 'email' }
   | { kind: 'list'; values?: readonly string[]; maxItems: number; itemMax?: number };
 
 export type Rules = Record<string, Field>;
 
 const MONTH_RE = /^(19[5-9]\d|20\d\d|2100)-(0[1-9]|1[0-2])$/;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^\+?[\d\s-]{6,20}$/;
 const YEAR_MIN = 1950;
 const YEAR_MAX = 2100;
@@ -28,6 +30,7 @@ export const PERSONAL_RULES: Rules = {
   region: { kind: 'choice', values: REGION_KEYS },
   city: { kind: 'text', max: 60 },
   phone: { kind: 'text', max: 20, pattern: PHONE_RE },
+  contactEmail: { kind: 'email' },
   summary: { kind: 'text', max: 1000 },
 };
 
@@ -118,6 +121,10 @@ function check(field: Field, raw: unknown): { value: unknown } | { error: string
       return Number.isInteger(raw) && Number(raw) >= field.min && Number(raw) <= field.max
         ? { value: raw }
         : { error: 'numberInvalid' };
+    case 'email':
+      return typeof raw === 'string' && raw.trim().length <= 254 && EMAIL_RE.test(raw.trim())
+        ? { value: raw.trim().toLowerCase() }
+        : { error: 'emailInvalid' };
     case 'url':
       return typeof raw === 'string' && raw.length <= 300 && isUrl(raw.trim())
         ? { value: raw.trim() }

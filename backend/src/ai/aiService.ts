@@ -154,11 +154,38 @@ function checkAnswer<T>(
   return result.success ? { ok: true, data: result.data } : { ok: false, reason: 'schema' };
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * One provider call. A temporary outage (overloaded, 5xx, network) is tried
+ * once more after a short pause; quota, key, timeout and blocked content are
+ * not retried (a retry would not help, or would spend quota).
+ */
+async function callProvider(
+  options: GenerateOptions<unknown>,
+  request: Omit<Parameters<AiProvider['generate']>[0], 'signal'>,
+) {
+  for (let outageRetry = 0; ; outageRetry += 1) {
+    try {
+      return await withTimeLimit(
+        (signal) => options.provider.generate({ ...request, signal }),
+        options.timeoutMs ?? env.aiTimeoutMs,
+      );
+    } catch (err) {
+      if (err instanceof AiProviderError && err.kind === 'unavailable' && outageRetry < 1) {
+        await sleep(env.aiRetryDelayMs);
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
 /**
  * Asks the provider for JSON matching `schema`. A malformed answer (empty,
  * cut off, not JSON, or not matching the schema) is retried once, then fails
- * with InvalidAiOutputError. Provider failures (quota, key, timeout, outage)
- * are thrown as AiProviderError and never retried here.
+ * with InvalidAiOutputError. Provider failures are thrown as AiProviderError;
+ * only a temporary outage is tried once more (see callProvider).
  */
 export async function generateValidated<T>(options: GenerateOptions<T>): Promise<T> {
   const usage = options.usage ?? { inputTokens: 0, outputTokens: 0, attempts: 0 };
@@ -167,19 +194,14 @@ export async function generateValidated<T>(options: GenerateOptions<T>): Promise
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
     usage.attempts = attempt;
-    const response = await withTimeLimit(
-      (signal) =>
-        options.provider.generate({
-          system: options.prompt.system,
-          prompt: attempt === 1 ? options.prompt.prompt : options.prompt.prompt + RETRY_NOTE,
-          jsonSchema,
-          maxOutputTokens: options.maxOutputTokens ?? DEFAULT_MAX_OUTPUT_TOKENS,
-          temperature: options.temperature,
-          documents: options.documents,
-          signal,
-        }),
-      options.timeoutMs ?? env.aiTimeoutMs,
-    );
+    const response = await callProvider(options as GenerateOptions<unknown>, {
+      system: options.prompt.system,
+      prompt: attempt === 1 ? options.prompt.prompt : options.prompt.prompt + RETRY_NOTE,
+      jsonSchema,
+      maxOutputTokens: options.maxOutputTokens ?? DEFAULT_MAX_OUTPUT_TOKENS,
+      temperature: options.temperature,
+      documents: options.documents,
+    });
     usage.inputTokens += response.inputTokens ?? 0;
     usage.outputTokens += response.outputTokens ?? 0;
     const checked = checkAnswer(response.text, response.truncated, options.schema);
