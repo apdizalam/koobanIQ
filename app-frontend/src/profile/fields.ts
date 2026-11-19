@@ -10,7 +10,7 @@ import {
  * (backend lib/validateProfile.ts) and answers with messages in the app language.
  */
 export type FieldKind =
-  'text' | 'multiline' | 'month' | 'year' | 'url' | 'phone' | 'choice' | 'list';
+  'text' | 'multiline' | 'month' | 'year' | 'url' | 'phone' | 'email' | 'choice' | 'list';
 
 export interface FieldDef {
   key: string;
@@ -20,6 +20,8 @@ export interface FieldDef {
   choices?: readonly string[];
   choiceLabels?: 'common.region' | 'mobile.profile.levels' | 'mobile.skills.levels';
   maxLength?: number;
+  /** Show the help line from `mobile.profile.hints.<key>` under the field. */
+  hint?: boolean;
 }
 
 export const PERSONAL_FIELDS: FieldDef[] = [
@@ -29,6 +31,8 @@ export const PERSONAL_FIELDS: FieldDef[] = [
   { key: 'region', kind: 'choice', choices: REGION_KEYS, choiceLabels: 'common.region' },
   { key: 'city', kind: 'text', maxLength: 60 },
   { key: 'phone', kind: 'phone', maxLength: 20 },
+  // Email shown on CVs; separate from the login email (changing it never changes the account).
+  { key: 'contactEmail', kind: 'email', maxLength: 254, hint: true },
   { key: 'summary', kind: 'multiline', maxLength: 1000 },
 ];
 
