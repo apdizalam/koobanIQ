@@ -70,7 +70,10 @@
       "PROFILE_INCOMPLETE": "Ku dar khibraddaada, waxbarashadaada ama xirfadahaaga astaantaada ka hor intaadan samayn CV",
       "SETTING_UNCHANGED": "Dejintu horay ayay u lahayd qiimahan",
       "CV_CONTACT_EMAIL_REQUIRED": "Ku dar iimaylka ka muuqanaya CV-yadaada (Astaanta → Macluumaadka shakhsiga) ka hor intaadan samayn CV",
-      "CV_NOT_APPROVED": "Ansixi CV-ga ka hor intaadan u soo dejin PDF ahaan"
+      "CV_NOT_APPROVED": "Ansixi CV-ga ka hor intaadan u soo dejin PDF ahaan",
+      "ASSESSMENT_NOT_FOUND": "Imtixaanka lama helin",
+      "ASSESSMENT_NOT_IN_PROGRESS": "Imtixaankan horay ayuu u dhammaaday",
+      "QUESTION_NOT_CURRENT": "Su’aashan horay ayaa looga jawaabay"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -111,7 +114,11 @@
       "pdfTooLarge": "PDF-ku waa inuusan ka badnaan 5 MB",
       "cvLanguageRequired": "Dooro luqadda CV-ga: Ingiriisi ama Soomaali",
       "reasonRequired": "Sheeg sababta (10 ilaa 500 xaraf)",
-      "ageConfirmRequired": "Xaqiiji inaad tahay 18 jir ama ka weyn"
+      "ageConfirmRequired": "Xaqiiji inaad tahay 18 jir ama ka weyn",
+      "difficultyInvalid": "Dooro Fudud, Caadi ama Adag",
+      "quizLanguageRequired": "Dooro luqadda imtixaanka: Ingiriisi ama Soomaali",
+      "quizLengthInvalid": "Imtixaanku wuxuu leeyahay 5 ama 10 su’aalood",
+      "quizChoiceInvalid": "Dooro mid ka mid ah jawaabaha"
     },
     "email": {
       "verifyEmail": {

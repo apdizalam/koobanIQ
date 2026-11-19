@@ -2567,6 +2567,14 @@
     "state": "pending",
     "en": "The AI service is not available right now. Please try again later"
   },
+  "server.errors.ASSESSMENT_NOT_FOUND": {
+    "state": "pending",
+    "en": "Quiz not found"
+  },
+  "server.errors.ASSESSMENT_NOT_IN_PROGRESS": {
+    "state": "pending",
+    "en": "This quiz is already finished"
+  },
   "server.errors.AUTH_REQUIRED": {
     "state": "pending",
     "en": "Sign in to continue"
@@ -2675,6 +2683,10 @@
     "state": "pending",
     "en": "This section is full. Remove an entry before adding a new one"
   },
+  "server.errors.QUESTION_NOT_CURRENT": {
+    "state": "pending",
+    "en": "This question was already answered"
+  },
   "server.errors.REFRESH_TOKEN_REUSED": {
     "state": "pending",
     "en": "This session was ended for safety. Please log in again"
@@ -2754,6 +2766,10 @@
   "server.validation.dateOrderInvalid": {
     "state": "pending",
     "en": "The end cannot be before the start"
+  },
+  "server.validation.difficultyInvalid": {
+    "state": "pending",
+    "en": "Choose Easy, Normal or Hard"
   },
   "server.validation.emailInvalid": {
     "state": "pending",
@@ -2838,6 +2854,18 @@
   "server.validation.priorityInvalid": {
     "state": "pending",
     "en": "Must be a whole number from 0 to 1000"
+  },
+  "server.validation.quizChoiceInvalid": {
+    "state": "pending",
+    "en": "Choose one of the answers"
+  },
+  "server.validation.quizLanguageRequired": {
+    "state": "pending",
+    "en": "Choose the quiz language: English or Somali"
+  },
+  "server.validation.quizLengthInvalid": {
+    "state": "pending",
+    "en": "A quiz has 5 or 10 questions"
   },
   "server.validation.reasonRequired": {
     "state": "pending",
