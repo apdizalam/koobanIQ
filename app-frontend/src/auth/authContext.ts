@@ -14,8 +14,11 @@ export interface AuthState {
   /** The signed-in user, or null. */
   user: PublicUser | null;
   signIn: (email: string, password: string) => Promise<void>;
-  /** Creates the account in the current app language, then signs in. */
-  signUp: (email: string, password: string) => Promise<void>;
+  /**
+   * Creates the account in the current app language, then signs in.
+   * `ageConfirmed`: the user ticked "I am 18 or older".
+   */
+  signUp: (email: string, password: string, ageConfirmed: true) => Promise<void>;
   signOut: () => Promise<void>;
   /**
    * A valid access token for API calls. Refreshes it (once, even if several

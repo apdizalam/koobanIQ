@@ -1027,6 +1027,10 @@
     "state": "pending",
     "en": "KOBANIQ"
   },
+  "mobile.auth.errors.ageRequired": {
+    "state": "pending",
+    "en": "KOBANIQ is for adults. Tick the box to confirm you are 18 or older."
+  },
   "mobile.auth.errors.codeInvalid": {
     "state": "pending",
     "en": "Enter the 6-digit code from the email."
@@ -1286,6 +1290,10 @@
   "mobile.auth.restoring": {
     "state": "pending",
     "en": "Checking your sign-in…"
+  },
+  "mobile.auth.signUp.ageConfirm": {
+    "state": "pending",
+    "en": "I am 18 or older"
   },
   "mobile.auth.signUp.email": {
     "state": "pending",

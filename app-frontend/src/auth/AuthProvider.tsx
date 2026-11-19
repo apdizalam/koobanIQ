@@ -142,9 +142,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   );
 
   const signUp = useCallback(
-    async (email: string, password: string) => {
+    async (email: string, password: string, ageConfirmed: true) => {
       // The language picked during onboarding becomes the account's language.
-      await register(email, password, currentLanguage());
+      await register(email, password, currentLanguage(), ageConfirmed);
       await start(await login(email, password));
     },
     [start, currentLanguage],
