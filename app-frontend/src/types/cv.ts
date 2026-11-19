@@ -81,13 +81,24 @@ export interface CvContent {
   languages: { id: string; language: string; level: string }[];
 }
 
+/** PATCH /cvs/:id: only the wording (facts stay as copied from the profile). */
+export interface CvEdit {
+  headline?: string;
+  summary?: string;
+  experience?: { id: string; bullets: string[] }[];
+  projects?: { id: string; bullets: string[] }[];
+}
+
 export interface Cv {
   id: string;
   jobDescriptionId: string;
   language: CvLanguage;
   /** 1, 2, 3… per job ad and language (each generation is a new version). */
   version: number;
+  /** draft → approved (the user approves) → exported (first PDF download). TIQ-10. */
   status: 'draft' | 'approved' | 'exported';
+  approvedAt?: string | null;
+  exportedAt?: string | null;
   template: string;
   missingInfo: MissingInfo[];
   /** Left out in lists. */

@@ -906,7 +906,36 @@
         "otherLanguage": "Ku samee {{language}}",
         "delete": "Tirtir CV-gan",
         "deleteConfirm": "Ma tirtiraysaa CV-gan? Dib looma soo celin karo.",
-        "deleteFailed": "CV-ga lama tirtiri karin. Fadlan isku day mar kale."
+        "deleteFailed": "CV-ga lama tirtiri karin. Fadlan isku day mar kale.",
+        "approve": "Ansixi CV-ga",
+        "approving": "Waa la ansixinayaa…",
+        "approvedNotice": "Waa la ansixiyay. Hadda waxaad u soo dejisan kartaa PDF ahaan.",
+        "approveHint": "Hubi CV-ga, wax ka beddel qoraalka haddii loo baahdo, kadibna ansixi si aad PDF ahaan u soo dejiso.",
+        "editHintApproved": "Wax ka beddelku wuxuu sameynayaa nooc qabyo ah oo cusub; CV-gan la ansixiyay sidiisa ayuu ahaanayaa.",
+        "download": "Soo deji PDF",
+        "downloading": "PDF-ka waa la diyaarinayaa…",
+        "noShare": "Taleefankan ma furi karo liiska wadaagga. PDF-ka waxaa lagu keydiyay app-ka.",
+        "edit": "Wax ka beddel qoraalka"
+      },
+      "status": {
+        "draft": "Qabyo",
+        "approved": "La ansixiyay",
+        "exported": "La soo dejiyay"
+      },
+      "edit": {
+        "title": "Wax ka beddel qoraalka",
+        "subtitle": "Beddel sida CV-gaaga u qoran yahay. Xaqiiqooyinku waxay ka yimaadaan astaantaada.",
+        "headline": "Cinwaanka",
+        "summary": "Soo koobidda astaanta",
+        "bullets": "Qodobada: {{name}}",
+        "bulletsHint": "Mid sadar kasta, ugu badnaan {{max}}.",
+        "tooMany": "Ugu badnaan {{max}} qodob.",
+        "tooLong": "Qodob kastaa wuxuu noqon karaa ugu badnaan 300 xaraf.",
+        "tooLongText": "Qoraalkani aad buu u dheer yahay.",
+        "required": "Goobtan waa qasab.",
+        "factsNote": "Magacyada shaqooyinka, loo shaqeeyayaasha, taariikhaha, iskuulada, xirfadaha iyo luqadaha waxay ka yimaadaan astaantaada. Si aad u beddesho, wax ka beddel astaantaada oo mar kale samee CV-ga.",
+        "newVersionNote": "CV-gan waa la ansixiyay. Keydintu waxay sameynaysaa nooc qabyo ah oo cusub; kan la ansixiyay wuu sii jirayaa.",
+        "save": "Keydi qoraalka"
       }
     }
   }
