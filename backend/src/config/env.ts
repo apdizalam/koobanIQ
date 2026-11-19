@@ -68,6 +68,20 @@ export const env = {
   geminiModel: (process.env.GEMINI_MODEL ?? 'gemini-3.1-flash-lite').trim(),
   /** Longest wait for one AI answer before giving up (milliseconds). */
   aiTimeoutMs: Number(process.env.AI_TIMEOUT_MS ?? 30_000),
+  /** Pause before trying a temporarily unavailable AI provider once more (milliseconds). */
+  aiRetryDelayMs: Number(process.env.AI_RETRY_DELAY_MS ?? 3000),
   /** AI requests one user may make per hour (protects the free quota). */
   aiUserRequestsPerHour: Number(process.env.AI_USER_REQUESTS_PER_HOUR ?? 30),
+  /**
+   * May AI features that send a user's own profile (CVs) run for real users?
+   * "blocked" (default) while on the Gemini free tier, whose terms say not to
+   * send personal information; only test accounts may use them. Set "allowed"
+   * only with a paid tier and the approved privacy setup (owner decision).
+   */
+  aiPersonalData: process.env.AI_PERSONAL_DATA === 'allowed' ? 'allowed' : 'blocked',
+  /** Email domains of test accounts (fake data) allowed while blocked. ".invalid" addresses always are. */
+  aiTestEmailDomains: (process.env.AI_TEST_EMAIL_DOMAINS ?? 'example.com,example.org')
+    .split(',')
+    .map((d) => d.trim().toLowerCase())
+    .filter(Boolean),
 };

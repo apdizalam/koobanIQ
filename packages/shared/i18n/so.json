@@ -62,7 +62,12 @@
       "NOT_A_JOB_DESCRIPTION": "Tani uma eka sharaxaad shaqo. Dheji ama soo geli xayeysiis shaqo",
       "JOB_DESCRIPTION_NOT_FOUND": "Sharaxaadda shaqada lama helin",
       "JD_LIMIT_REACHED": "Waxaad keydisay inta ugu badan ee sharaxaadaha shaqo la oggol yahay. Marka hore mid tirtir",
-      "PAYLOAD_TOO_LARGE": "Codsigu aad buu u weyn yahay"
+      "PAYLOAD_TOO_LARGE": "Codsigu aad buu u weyn yahay",
+      "AI_PERSONAL_DATA_BLOCKED": "Samaynta CV-ga AI-ga weli lama heli karo. KOBANIQ waxay isticmaashaa adeeg AI oo bilaash ah inta lagu jiro horumarinta, kaas oo aan la siin karin xog shakhsi ah",
+      "CV_NOT_FOUND": "CV-ga lama helin",
+      "CV_LIMIT_REACHED": "Waxaad haysataa inta ugu badan ee CV-yada la oggol yahay. Marka hore qaar tirtir",
+      "CV_GENERATION_IN_PROGRESS": "CV-gan hadda ayaa la samaynayaa. Isku day mar kale dhawaan",
+      "PROFILE_INCOMPLETE": "Ku dar khibraddaada, waxbarashadaada ama xirfadahaaga astaantaada ka hor intaadan samayn CV"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -100,7 +105,8 @@
       "jdTextOrPdf": "Dheji qoraalka sharaxaadda shaqada ama soo geli PDF (mid ka mid ah labada)",
       "jdTextLength": "Sharaxaadda shaqadu waa inay u dhaxaysaa 50 ilaa 20,000 xaraf",
       "pdfInvalid": "Kani ma aha fayl PDF ah oo sax ah",
-      "pdfTooLarge": "PDF-ku waa inuusan ka badnaan 5 MB"
+      "pdfTooLarge": "PDF-ku waa inuusan ka badnaan 5 MB",
+      "cvLanguageRequired": "Dooro luqadda CV-ga: Ingiriisi ama Soomaali"
     },
     "email": {
       "verifyEmail": {

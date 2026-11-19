@@ -1,4 +1,5 @@
 import { deleteUsageRecords } from '../ai/aiService.js';
+import { deleteCvs } from './cvService.js';
 import { deleteJobDescriptions } from './jobDescriptionService.js';
 import { deleteProfile } from './profileService.js';
 import { deleteSkills } from './skillService.js';
@@ -143,6 +144,7 @@ export async function deleteUser(req: Request, id: string) {
   await deleteSkills(user._id);
   await deleteUsageRecords(user._id);
   await deleteJobDescriptions(user._id);
+  await deleteCvs(user._id);
   await User.deleteOne({ _id: user._id });
   await recordAudit(req, {
     action: 'user.delete',

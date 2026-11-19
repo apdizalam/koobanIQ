@@ -4,6 +4,7 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { notFound } from './middleware/notFound.js';
 import { adminRouter } from './routes/admin.js';
 import { authRouter } from './routes/auth.js';
+import { cvsRouter } from './routes/cvs.js';
 import { healthRouter } from './routes/health.js';
 import { jobDescriptionsRouter } from './routes/jobDescriptions.js';
 import { jobSourcesRouter, regionsRouter } from './routes/jobSources.js';
@@ -26,6 +27,7 @@ export function createApp() {
   app.use('/api/v1/profile', profileRouter);
   app.use('/api/v1/skills', skillsRouter);
   app.use('/api/v1/job-descriptions', jobDescriptionsRouter);
+  app.use('/api/v1/cvs', cvsRouter);
   app.use('/api/v1/regions', regionsRouter);
   app.use('/api/v1/job-sources', jobSourcesRouter);
   app.use('/api/v1/research', researchRouter);

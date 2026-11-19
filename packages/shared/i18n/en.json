@@ -62,7 +62,12 @@
       "NOT_A_JOB_DESCRIPTION": "This does not look like a job description. Paste or upload a job advertisement",
       "JOB_DESCRIPTION_NOT_FOUND": "Job description not found",
       "JD_LIMIT_REACHED": "You have saved the most job descriptions allowed. Delete one first",
-      "PAYLOAD_TOO_LARGE": "The request is too large"
+      "PAYLOAD_TOO_LARGE": "The request is too large",
+      "AI_PERSONAL_DATA_BLOCKED": "Creating CVs with AI is not available yet. KOBANIQ uses a free AI service during development, which must not receive personal data",
+      "CV_NOT_FOUND": "CV not found",
+      "CV_LIMIT_REACHED": "You have the most CVs allowed. Delete some first",
+      "CV_GENERATION_IN_PROGRESS": "This CV is already being created. Try again in a moment",
+      "PROFILE_INCOMPLETE": "Add your experience, education or skills to your profile before creating a CV"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -100,7 +105,8 @@
       "jdTextOrPdf": "Paste the job description text or upload a PDF (one of the two)",
       "jdTextLength": "The job description must be between 50 and 20,000 characters",
       "pdfInvalid": "This is not a valid PDF file",
-      "pdfTooLarge": "The PDF can be at most 5 MB"
+      "pdfTooLarge": "The PDF can be at most 5 MB",
+      "cvLanguageRequired": "Choose the CV language: English or Somali"
     },
     "email": {
       "verifyEmail": {

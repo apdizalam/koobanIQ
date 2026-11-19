@@ -1983,6 +1983,10 @@
     "state": "pending",
     "en": "The AI service is not set up yet. Please try again later"
   },
+  "server.errors.AI_PERSONAL_DATA_BLOCKED": {
+    "state": "pending",
+    "en": "Creating CVs with AI is not available yet. KOBANIQ uses a free AI service during development, which must not receive personal data"
+  },
   "server.errors.AI_QUOTA_REACHED": {
     "state": "pending",
     "en": "The free AI limit has been reached for now. Please try again later"
@@ -2002,6 +2006,18 @@
   "server.errors.CANNOT_CHANGE_SELF": {
     "state": "pending",
     "en": "You cannot change your own account here"
+  },
+  "server.errors.CV_GENERATION_IN_PROGRESS": {
+    "state": "pending",
+    "en": "This CV is already being created. Try again in a moment"
+  },
+  "server.errors.CV_LIMIT_REACHED": {
+    "state": "pending",
+    "en": "You have the most CVs allowed. Delete some first"
+  },
+  "server.errors.CV_NOT_FOUND": {
+    "state": "pending",
+    "en": "CV not found"
   },
   "server.errors.DB_UNAVAILABLE": {
     "state": "pending",
@@ -2070,6 +2086,10 @@
   "server.errors.PAYLOAD_TOO_LARGE": {
     "state": "pending",
     "en": "The request is too large"
+  },
+  "server.errors.PROFILE_INCOMPLETE": {
+    "state": "pending",
+    "en": "Add your experience, education or skills to your profile before creating a CV"
   },
   "server.errors.PROFILE_ITEM_NOT_FOUND": {
     "state": "pending",
@@ -2142,6 +2162,10 @@
   "server.validation.codeInvalid": {
     "state": "pending",
     "en": "Enter the 6-digit code from the email"
+  },
+  "server.validation.cvLanguageRequired": {
+    "state": "pending",
+    "en": "Choose the CV language: English or Somali"
   },
   "server.validation.dateOrderInvalid": {
     "state": "pending",
