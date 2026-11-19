@@ -2487,6 +2487,10 @@
     "state": "pending",
     "en": "You have the most CVs allowed. Delete some first"
   },
+  "server.errors.CV_NOT_APPROVED": {
+    "state": "pending",
+    "en": "Approve the CV before downloading it as a PDF"
+  },
   "server.errors.CV_NOT_FOUND": {
     "state": "pending",
     "en": "CV not found"

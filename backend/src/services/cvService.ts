@@ -5,12 +5,20 @@ import { cvPrompt } from '../ai/prompts/cv.js';
 import type { AiLanguage } from '../ai/schemas/common.js';
 import { buildCvAnswerSchema } from '../ai/schemas/cv.js';
 import { AppError } from '../lib/errors.js';
+import { parseCvEdit } from '../lib/validateCvEdit.js';
 import { isItemId } from '../lib/validateProfile.js';
 import { Cv, toPublicCv } from '../models/Cv.js';
 import { JobDescription, toPublicJobDescription } from '../models/JobDescription.js';
 import { Profile, toPublicProfile } from '../models/Profile.js';
 import { Skill, toPublicSkill } from '../models/Skill.js';
-import { assembleCv, computeMissingInfo, prepareCvInput, profileIsEmpty } from './cvFacts.js';
+import {
+  assembleCv,
+  computeMissingInfo,
+  prepareCvInput,
+  profileIsEmpty,
+  type AssembledCv,
+} from './cvFacts.js';
+import { buildCvPdf, cvFileName } from './cvPdf.js';
 
 /** Most CVs one user keeps (all versions). */
 export const CVS_MAX = 200;
@@ -122,6 +130,100 @@ export async function getCv(userId: Types.ObjectId, id: unknown) {
 
 export async function deleteCv(userId: Types.ObjectId, id: unknown) {
   await (await ownCv(userId, id)).deleteOne();
+}
+
+/**
+ * PATCH /cvs/:id (TIQ-10): new wording for the headline, summary or bullet
+ * points (facts stay as copied from the profile). A draft changes in place; an
+ * approved or exported CV keeps its approved text and the change becomes a new
+ * draft version.
+ */
+export async function editCv(userId: Types.ObjectId, id: unknown, body: unknown) {
+  const cv = await ownCv(userId, id);
+  const content = cv.content as AssembledCv;
+  const changes = parseCvEdit(body, content);
+  const bulletsFor = <T extends { id: string; bullets: string[] }>(
+    list: T[],
+    edited?: { id: string; bullets: string[] }[],
+  ) =>
+    list.map((entry) => {
+      const change = edited?.find((e) => e.id === entry.id);
+      return change ? { ...entry, bullets: change.bullets } : entry;
+    });
+  const next: AssembledCv = {
+    ...content,
+    header: { ...content.header, headline: changes.headline ?? content.header.headline },
+    summary: changes.summary ?? content.summary,
+    experience: bulletsFor(content.experience, changes.experience),
+    projects: bulletsFor(content.projects, changes.projects),
+  };
+
+  if (cv.status === 'draft') {
+    cv.content = next;
+    cv.markModified('content');
+    await cv.save();
+    return toPublicCv(cv);
+  }
+  if ((await Cv.countDocuments({ userId })) >= CVS_MAX) {
+    throw new AppError(409, 'CV_LIMIT_REACHED', 'You have the most CVs allowed. Delete some first');
+  }
+  const latest = await Cv.findOne({
+    userId,
+    jobDescriptionId: cv.jobDescriptionId,
+    language: cv.language,
+  }).sort({ version: -1 });
+  try {
+    const copy = await Cv.create({
+      userId,
+      jobDescriptionId: cv.jobDescriptionId,
+      language: cv.language,
+      version: (latest?.version ?? cv.version) + 1,
+      template: cv.template,
+      content: next,
+      missingInfo: cv.missingInfo.map((m) => ({ type: m.type, item: m.item ?? undefined })),
+      editedFromId: cv._id,
+    });
+    return toPublicCv(copy);
+  } catch (err) {
+    if (isDuplicateKey(err)) {
+      throw new AppError(
+        409,
+        'CV_GENERATION_IN_PROGRESS',
+        'This CV is already being created. Try again in a moment',
+      );
+    }
+    throw err;
+  }
+}
+
+/** POST /cvs/:id/approve: the user approves the CV; then it can be downloaded as a PDF. */
+export async function approveCv(userId: Types.ObjectId, id: unknown) {
+  const cv = await ownCv(userId, id);
+  if (cv.status === 'draft') {
+    cv.status = 'approved';
+    cv.approvedAt = new Date();
+    await cv.save();
+  }
+  return toPublicCv(cv);
+}
+
+/**
+ * GET /cvs/:id/pdf: the PDF, built now from the saved CV (nothing is stored).
+ * Refused while the CV is a draft; the first download marks it exported.
+ */
+export async function exportCvPdf(userId: Types.ObjectId, id: unknown) {
+  const cv = await ownCv(userId, id);
+  if (cv.status === 'draft') {
+    throw new AppError(409, 'CV_NOT_APPROVED', 'Approve the CV before downloading it as a PDF');
+  }
+  const content = cv.content as AssembledCv;
+  const pdf = await buildCvPdf(content);
+  if (cv.status === 'approved') {
+    cv.status = 'exported';
+    cv.exportedAt = new Date();
+    await cv.save();
+  }
+  return { pdf, fileName: cvFileName(content, cv.version) };
 }
 
 /** Deleting an account deletes its CVs too. */

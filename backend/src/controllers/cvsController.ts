@@ -1,6 +1,14 @@
 import type { Request, Response } from 'express';
 import { AppError } from '../lib/errors.js';
-import { deleteCv, generateCv, getCv, listCvs } from '../services/cvService.js';
+import {
+  approveCv,
+  deleteCv,
+  editCv,
+  exportCvPdf,
+  generateCv,
+  getCv,
+  listCvs,
+} from '../services/cvService.js';
 
 /**
  * Body of POST /cvs/generate. `language` is required every time (the user picks
@@ -37,6 +45,26 @@ export async function getCvs(req: Request, res: Response) {
 /** GET /api/v1/cvs/:id */
 export async function getOneCv(req: Request, res: Response) {
   res.json({ data: { cv: await getCv(req.user!._id, req.params.id) }, error: null, meta: {} });
+}
+
+/** PATCH /api/v1/cvs/:id { headline?, summary?, experience?, projects? } (wording only) */
+export async function patchCv(req: Request, res: Response) {
+  const cv = await editCv(req.user!._id, req.params.id, req.body);
+  res.json({ data: { cv }, error: null, meta: {} });
+}
+
+/** POST /api/v1/cvs/:id/approve */
+export async function postApproveCv(req: Request, res: Response) {
+  res.json({ data: { cv: await approveCv(req.user!._id, req.params.id) }, error: null, meta: {} });
+}
+
+/** GET /api/v1/cvs/:id/pdf → application/pdf (only for approved or exported CVs). */
+export async function getCvPdf(req: Request, res: Response) {
+  const { pdf, fileName } = await exportCvPdf(req.user!._id, req.params.id);
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+  res.setHeader('Cache-Control', 'private, no-store');
+  res.send(pdf);
 }
 
 /** DELETE /api/v1/cvs/:id */

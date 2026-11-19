@@ -69,7 +69,8 @@
       "CV_GENERATION_IN_PROGRESS": "CV-gan hadda ayaa la samaynayaa. Isku day mar kale dhawaan",
       "PROFILE_INCOMPLETE": "Ku dar khibraddaada, waxbarashadaada ama xirfadahaaga astaantaada ka hor intaadan samayn CV",
       "SETTING_UNCHANGED": "Dejintu horay ayay u lahayd qiimahan",
-      "CV_CONTACT_EMAIL_REQUIRED": "Ku dar iimaylka ka muuqanaya CV-yadaada (Astaanta → Macluumaadka shakhsiga) ka hor intaadan samayn CV"
+      "CV_CONTACT_EMAIL_REQUIRED": "Ku dar iimaylka ka muuqanaya CV-yadaada (Astaanta → Macluumaadka shakhsiga) ka hor intaadan samayn CV",
+      "CV_NOT_APPROVED": "Ansixi CV-ga ka hor intaadan u soo dejin PDF ahaan"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
