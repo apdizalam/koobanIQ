@@ -20,7 +20,6 @@ import {
 } from '../controllers/jobSourcesController.js';
 import { requireAuth } from '../middleware/requireAuth.js';
 import { requireRole } from '../middleware/requireRole.js';
-import { requireSuperAdmin } from '../middleware/requireSuperAdmin.js';
 
 /** Everything under /api/v1/admin needs a signed-in admin; other users are turned away and logged. */
 export const adminRouter = Router();
@@ -36,12 +35,13 @@ adminRouter.get('/users/:id', getUser);
 adminRouter.patch('/users/:id/status', patchUserStatus);
 adminRouter.patch('/users/:id/role', patchUserRole);
 adminRouter.delete('/users/:id', removeUser);
-// Test accounts (fictional data) may use AI features while personal data is BLOCKED: super admin only.
-adminRouter.patch('/users/:id/test-account', requireSuperAdmin, patchTestAccount);
+// Test accounts (fictional data) may use AI features while personal data is BLOCKED.
+// Admins only (router-level check above); a reason is required and audited.
+adminRouter.patch('/users/:id/test-account', patchTestAccount);
 
-// AI personal-data setting (owner decision): admins may view; only a super admin may change it.
+// AI personal-data setting (owner decision): admins view it and change it with a reason; default BLOCKED.
 adminRouter.get('/settings/ai-personal-data', getAiPersonalData);
-adminRouter.put('/settings/ai-personal-data', requireSuperAdmin, putAiPersonalData);
+adminRouter.put('/settings/ai-personal-data', putAiPersonalData);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);

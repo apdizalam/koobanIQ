@@ -403,10 +403,6 @@
     "state": "pending",
     "en": "New setting"
   },
-  "admin.privacy.onlySuper": {
-    "state": "pending",
-    "en": "Only a super admin can change this setting."
-  },
   "admin.privacy.reason": {
     "state": "pending",
     "en": "Reason"
@@ -894,14 +890,6 @@
   "admin.users.subtitle": {
     "state": "pending",
     "en": "Everyone with a KOBANIQ account."
-  },
-  "admin.users.superAdmin": {
-    "state": "pending",
-    "en": "Super admin"
-  },
-  "admin.users.superAdminLocked": {
-    "state": "pending",
-    "en": "This is a super admin account. Only a super admin can change it."
   },
   "admin.users.testAccount": {
     "state": "pending",
@@ -2298,10 +2286,6 @@
   "server.errors.SOURCE_TERMS_NOT_CHECKED": {
     "state": "pending",
     "en": "This source can't be enabled until its terms have been checked"
-  },
-  "server.errors.SUPER_ADMIN_REQUIRED": {
-    "state": "pending",
-    "en": "Only a super admin can change this"
   },
   "server.errors.TOKEN_EXPIRED": {
     "state": "pending",

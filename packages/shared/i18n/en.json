@@ -68,7 +68,6 @@
       "CV_LIMIT_REACHED": "You have the most CVs allowed. Delete some first",
       "CV_GENERATION_IN_PROGRESS": "This CV is already being created. Try again in a moment",
       "PROFILE_INCOMPLETE": "Add your experience, education or skills to your profile before creating a CV",
-      "SUPER_ADMIN_REQUIRED": "Only a super admin can change this",
       "SETTING_UNCHANGED": "The setting already has this value",
       "CV_CONTACT_EMAIL_REQUIRED": "Add the email address to show on your CVs (Profile → Personal info) before creating a CV"
     },
@@ -281,7 +280,6 @@
         "makeUser": "{{email}} is now a normal user.",
         "delete": "{{email}} was deleted."
       },
-      "superAdmin": "Super admin",
       "testAccount": "Test account",
       "testAccountHint": "Test accounts hold fictional data and may use AI features that send profile data while AI privacy is Blocked.",
       "markTest": "Mark as test account",
@@ -289,8 +287,7 @@
       "testReason": "Reason",
       "testReasonHint": "Required (10 to 500 characters).",
       "testOn": "{{email}} is now a test account.",
-      "testOff": "{{email}} is no longer a test account.",
-      "superAdminLocked": "This is a super admin account. Only a super admin can change it."
+      "testOff": "{{email}} is no longer a test account."
     },
     "audit": {
       "title": "Audit log",
@@ -431,7 +428,6 @@
       "save": "Save change",
       "saving": "Saving…",
       "saved": "The setting is now {{value}}.",
-      "onlySuper": "Only a super admin can change this setting.",
       "error": "Could not load the setting. Check that the backend is running."
     }
   },

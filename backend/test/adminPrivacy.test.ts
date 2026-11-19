@@ -10,10 +10,11 @@ import { RefreshToken } from '../src/models/RefreshToken.js';
 import { Setting } from '../src/models/Setting.js';
 import { User } from '../src/models/User.js';
 import { aiPersonalDataValue } from '../src/services/settingsService.js';
-import { promoteToAdmin, promoteToSuperAdmin } from '../src/services/userService.js';
+import { promoteToAdmin } from '../src/services/userService.js';
 import { RUN_ID } from './support/testRun.js';
 
 // Own database per run (dropped at the end). Clearly fake accounts only.
+// KOBANIQ has two roles, user and admin: the existing admin role manages these settings.
 const DB_NAME = `kobaniq_test_privacy_${RUN_ID}`;
 const PASSWORD = 'correct-horse-13';
 const PATH = '/admin/settings/ai-personal-data';
@@ -21,7 +22,6 @@ const REASON = 'Moved to the paid AI tier; privacy terms checked by the owner.';
 
 let server: Server;
 let baseUrl: string;
-let superAdmin: string;
 let admin: string;
 let user: string;
 
@@ -57,9 +57,6 @@ before(async () => {
   await new Promise<void>((resolve) => server.once('listening', () => resolve()));
   baseUrl = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
 
-  superAdmin = await account('owner@privacy.invalid');
-  await promoteToAdmin('owner@privacy.invalid');
-  await promoteToSuperAdmin('owner@privacy.invalid');
   admin = await account('staff@privacy.invalid');
   await promoteToAdmin('staff@privacy.invalid');
   user = await account('amina@privacy.invalid');
@@ -79,45 +76,43 @@ test('default is BLOCKED (nothing stored); admins can view it, users cannot', as
   assert.equal((await call(user, 'GET', PATH)).status, 403);
   assert.equal((await call(null, 'GET', PATH)).status, 401);
 
-  const access = await call(superAdmin, 'GET', '/admin/access');
-  assert.equal(access.body.data.superAdmin, true);
-  assert.equal((await call(admin, 'GET', '/admin/access')).body.data.superAdmin, false);
+  // No extra role or flag: the admin answer is the same as before.
+  const access = await call(admin, 'GET', '/admin/access');
+  assert.equal(access.status, 200);
+  assert.equal('superAdmin' in access.body.data, false);
 });
 
-test('normal admins and users cannot change it, even calling the API directly', async () => {
-  const byAdmin = await call(admin, 'PUT', PATH, { value: 'allowed', reason: REASON });
-  assert.equal(byAdmin.status, 403);
-  assert.equal(byAdmin.body.error.code, 'SUPER_ADMIN_REQUIRED');
+test('ordinary users cannot change it, even calling the API directly; refused attempts are audited', async () => {
+  const byUser = await call(user, 'PUT', PATH, { value: 'allowed', reason: REASON });
+  assert.equal(byUser.status, 403);
+  assert.equal(byUser.body.error.code, 'FORBIDDEN');
   assert.ok(
     await AuditLog.findOne({ action: 'admin.access_denied', targetId: `PUT /api/v1${PATH}` }),
     'refused attempt is audited',
   );
-  assert.equal((await call(user, 'PUT', PATH, { value: 'allowed', reason: REASON })).status, 403);
+  assert.equal((await call(null, 'PUT', PATH, { value: 'allowed', reason: REASON })).status, 401);
   assert.equal(await aiPersonalDataValue(), 'blocked');
 });
 
-test('a super admin must give a valid value and a reason', async () => {
-  const noReason = await call(superAdmin, 'PUT', PATH, { value: 'allowed' });
+test('an admin must give a valid value and a reason', async () => {
+  const noReason = await call(admin, 'PUT', PATH, { value: 'allowed' });
   assert.equal(noReason.status, 400);
   assert.equal(noReason.body.meta.details.reason, 'Give a reason (10 to 500 characters)');
-  assert.equal(
-    (await call(superAdmin, 'PUT', PATH, { value: 'allowed', reason: 'too short' })).status,
-    400,
-  );
-  assert.equal(
-    (await call(superAdmin, 'PUT', PATH, { value: 'maybe', reason: REASON })).status,
-    400,
-  );
-  assert.equal(
-    (await call(superAdmin, 'PUT', PATH, { value: 'allowed', reason: REASON, extra: 1 })).status,
-    400,
-  );
+  for (const body of [
+    { value: 'allowed', reason: 'too short' },
+    { value: 'allowed', reason: 'x'.repeat(501) },
+    { value: 'allowed', reason: 42 },
+    { value: 'maybe', reason: REASON },
+    { value: 'allowed', reason: REASON, extra: 1 },
+  ]) {
+    assert.equal((await call(admin, 'PUT', PATH, body)).status, 400, JSON.stringify(body));
+  }
   assert.equal(await aiPersonalDataValue(), 'blocked');
 });
 
-test('a super admin changes it: admin id, time and reason are recorded with the change', async () => {
-  const before = Date.now();
-  const res = await call(superAdmin, 'PUT', PATH, { value: 'allowed', reason: REASON });
+test('an admin changes it: admin id, time, previous value, new value and reason are recorded', async () => {
+  const startedAt = Date.now();
+  const res = await call(admin, 'PUT', PATH, { value: 'allowed', reason: REASON });
   assert.equal(res.status, 200);
   const setting = res.body.data.setting;
   assert.equal(setting.value, 'allowed');
@@ -126,92 +121,84 @@ test('a super admin changes it: admin id, time and reason are recorded with the 
   const change = setting.history[0];
   assert.equal(change.value, 'allowed');
   assert.equal(change.previous, 'blocked');
-  assert.equal(change.admin, 'owner@privacy.invalid');
-  assert.equal(change.adminId, await idOf('owner@privacy.invalid'));
+  assert.equal(change.admin, 'staff@privacy.invalid');
+  assert.equal(change.adminId, await idOf('staff@privacy.invalid'));
   assert.equal(change.reason, REASON);
-  assert.ok(Date.parse(change.at) >= before - 1000);
+  assert.ok(Date.parse(change.at) >= startedAt - 1000);
   assert.equal(await aiPersonalDataValue(), 'allowed', 'the backend uses it at once');
 
   const audit = await AuditLog.findOne({ action: 'settings.ai_personal_data' }).lean();
-  assert.equal(String(audit?.actorId), await idOf('owner@privacy.invalid'));
+  assert.equal(String(audit?.actorId), await idOf('staff@privacy.invalid'));
   assert.equal(audit?.reason, REASON);
   assert.deepEqual(audit?.before, { value: 'blocked' });
   assert.deepEqual(audit?.after, { value: 'allowed' });
   const logs = await call(admin, 'GET', '/admin/audit-logs?action=settings.ai_personal_data');
   assert.equal(logs.body.data.items[0].reason, REASON, 'reason shown in the audit log');
 
-  const same = await call(superAdmin, 'PUT', PATH, { value: 'allowed', reason: REASON });
+  const same = await call(admin, 'PUT', PATH, { value: 'allowed', reason: REASON });
   assert.equal(same.status, 409);
   assert.equal(same.body.error.code, 'SETTING_UNCHANGED');
 
-  const back = await call(superAdmin, 'PUT', PATH, {
+  const back = await call(admin, 'PUT', PATH, {
     value: 'blocked',
     reason: 'Back to blocked until the next privacy review.',
   });
+  assert.equal(back.status, 200);
   assert.deepEqual(
     back.body.data.setting.history.map((h: Json) => `${h.previous}→${h.value}`),
     ['allowed→blocked', 'blocked→allowed'],
     'newest first',
   );
+  assert.equal((await call(admin, 'GET', PATH)).body.data.setting.history.length, 2);
   assert.equal(await aiPersonalDataValue(), 'blocked');
 });
 
-test('test accounts: only a super admin can mark them, with a reason; audited', async () => {
+test('test accounts: an admin marks them with a reason; audited; users cannot', async () => {
   const id = await idOf('amina@privacy.invalid');
   const path = `/admin/users/${id}/test-account`;
   const reason = 'Account used by the team for fictional CV tests.';
 
-  const byAdmin = await call(admin, 'PATCH', path, { testAccount: true, reason });
-  assert.equal(byAdmin.status, 403);
-  assert.equal(byAdmin.body.error.code, 'SUPER_ADMIN_REQUIRED');
-  assert.equal((await call(superAdmin, 'PATCH', path, { testAccount: true })).status, 400);
-  assert.equal((await call(superAdmin, 'PATCH', path, { testAccount: 'yes', reason })).status, 400);
+  const byUser = await call(user, 'PATCH', path, { testAccount: true, reason });
+  assert.equal(byUser.status, 403);
+  assert.equal(byUser.body.error.code, 'FORBIDDEN');
+  assert.equal((await call(admin, 'PATCH', path, { testAccount: true })).status, 400);
+  assert.equal((await call(admin, 'PATCH', path, { testAccount: 'yes', reason })).status, 400);
+  assert.equal(
+    (await call(admin, 'PATCH', path, { testAccount: true, reason, role: 'admin' })).status,
+    400,
+  );
+  assert.equal((await User.findById(id))?.testAccount, false);
 
-  const marked = await call(superAdmin, 'PATCH', path, { testAccount: true, reason });
+  const marked = await call(admin, 'PATCH', path, { testAccount: true, reason });
   assert.equal(marked.status, 200);
   assert.equal(marked.body.data.user.testAccount, true);
   assert.equal((await User.findById(id))?.testAccount, true);
   const audit = await AuditLog.findOne({ action: 'user.test_account', targetId: id }).lean();
+  assert.equal(String(audit?.actorId), await idOf('staff@privacy.invalid'));
   assert.equal(audit?.reason, reason);
+  assert.deepEqual(audit?.before, { testAccount: false });
   assert.deepEqual(audit?.after, { testAccount: true });
 
   const listed = await call(admin, 'GET', '/admin/users?q=amina');
   assert.equal(listed.body.data.items[0].testAccount, true, 'admins can see the mark');
 
-  // A user can never set it (or super admin) on their own account.
-  const self = await call(user, 'PATCH', '/me', { testAccount: false, superAdmin: true });
+  const unmarked = await call(admin, 'PATCH', path, {
+    testAccount: false,
+    reason: 'Tests finished; back to a normal account.',
+  });
+  assert.equal(unmarked.body.data.user.testAccount, false);
+  assert.equal(await AuditLog.countDocuments({ action: 'user.test_account', targetId: id }), 2);
+
+  // A user can never set it on their own account.
+  const self = await call(user, 'PATCH', '/me', { testAccount: true });
   assert.equal(self.status, 400);
-  assert.equal((await User.findById(id))?.superAdmin, false);
+  assert.equal((await User.findById(id))?.testAccount, false);
 });
 
-test('normal admins cannot suspend, demote or delete a super admin', async () => {
-  const ownerId = await idOf('owner@privacy.invalid');
-  for (const [method, path, body] of [
-    ['PATCH', `/admin/users/${ownerId}/status`, { status: 'suspended' }],
-    ['PATCH', `/admin/users/${ownerId}/role`, { role: 'user' }],
-    ['DELETE', `/admin/users/${ownerId}`, undefined],
-  ] as const) {
-    const res = await call(admin, method, path, body);
-    assert.equal(res.status, 403, `${method} ${path}`);
-    assert.equal(res.body.error.code, 'SUPER_ADMIN_REQUIRED');
+test('email domains never make a test account', async () => {
+  await account('tester@example.com');
+  await account('qa@privacy.invalid');
+  for (const email of ['tester@example.com', 'qa@privacy.invalid']) {
+    assert.equal((await User.findOne({ email }))?.testAccount, false, email);
   }
-  const owner = await User.findById(ownerId);
-  assert.equal(owner?.role, 'admin');
-  assert.equal(owner?.superAdmin, true);
-  assert.equal(owner?.status, 'active');
-});
-
-test('super admin rights come only from the server command, and end with the admin role', async () => {
-  await account('second@privacy.invalid');
-  await assert.rejects(promoteToSuperAdmin('second@privacy.invalid'), /No admin account/);
-  await promoteToAdmin('second@privacy.invalid');
-  await promoteToSuperAdmin('second@privacy.invalid');
-  const secondId = await idOf('second@privacy.invalid');
-
-  // Another super admin demotes them: the super admin flag goes too.
-  const res = await call(superAdmin, 'PATCH', `/admin/users/${secondId}/role`, { role: 'user' });
-  assert.equal(res.status, 200);
-  const second = await User.findById(secondId);
-  assert.equal(second?.role, 'user');
-  assert.equal(second?.superAdmin, false);
 });

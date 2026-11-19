@@ -8,15 +8,7 @@ import { getOverview, isPeriod } from '../services/overviewService.js';
  * it after login to decide whether to show the dashboard or "No access".
  */
 export function getAdminAccess(req: Request, res: Response) {
-  res.json({
-    data: {
-      access: true,
-      user: toPublicUser(req.user!),
-      superAdmin: req.user!.superAdmin === true,
-    },
-    error: null,
-    meta: {},
-  });
+  res.json({ data: { access: true, user: toPublicUser(req.user!) }, error: null, meta: {} });
 }
 
 /** GET /api/v1/admin/overview?period=day|week|month|year (default week) */

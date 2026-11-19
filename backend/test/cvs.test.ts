@@ -44,7 +44,7 @@ async function call(token: string | null, method: string, path: string, body?: u
 
 /**
  * A signed-in account. Test accounts (fictional data) are marked with the
- * server-side flag, as a super admin would in the Admin Dashboard.
+ * server-side flag, as an admin would in the Admin Dashboard.
  */
 async function account(email: string, preferredLanguage = 'en', testAccount = true) {
   await call(null, 'POST', '/auth/register', { email, password: PASSWORD, preferredLanguage });
@@ -311,7 +311,7 @@ test('privacy guard: real accounts are blocked unless the stored setting is ALLO
   assert.equal(res.body.error.code, 'AI_PERSONAL_DATA_BLOCKED');
   assert.equal(mock.requests.length, 1, 'only the job ad (no personal data) went to the AI');
 
-  // A super admin set ALLOWED (paid tier verified): the backend lets it through at once.
+  // An admin set ALLOWED (paid tier verified): the backend lets it through at once.
   await Setting.create({ key: 'ai_personal_data', value: 'allowed' });
   const profile = (await call(real, 'GET', '/profile')).body.data.profile;
   const body = { jobDescriptionId: job.body.data.jobDescription.id, language: 'en' };
@@ -322,7 +322,7 @@ test('privacy guard: real accounts are blocked unless the stored setting is ALLO
   await Setting.updateOne({ key: 'ai_personal_data' }, { value: 'blocked' });
   assert.equal((await call(real, 'POST', '/cvs/generate', body)).status, 403);
 
-  // Marked as a test account by a super admin: works while BLOCKED.
+  // Marked as a test account by an admin: works while BLOCKED.
   await User.updateOne({ email: 'hodan@example.com' }, { testAccount: true });
   mock.reply({ json: goodAnswer(profile) });
   assert.equal((await call(real, 'POST', '/cvs/generate', body)).status, 201);

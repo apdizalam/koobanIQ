@@ -68,7 +68,6 @@
       "CV_LIMIT_REACHED": "Waxaad haysataa inta ugu badan ee CV-yada la oggol yahay. Marka hore qaar tirtir",
       "CV_GENERATION_IN_PROGRESS": "CV-gan hadda ayaa la samaynayaa. Isku day mar kale dhawaan",
       "PROFILE_INCOMPLETE": "Ku dar khibraddaada, waxbarashadaada ama xirfadahaaga astaantaada ka hor intaadan samayn CV",
-      "SUPER_ADMIN_REQUIRED": "Super admin keliya ayaa beddeli kara tan",
       "SETTING_UNCHANGED": "Dejintu horay ayay u lahayd qiimahan",
       "CV_CONTACT_EMAIL_REQUIRED": "Ku dar iimaylka ka muuqanaya CV-yadaada (Astaanta → Macluumaadka shakhsiga) ka hor intaadan samayn CV"
     },
@@ -281,7 +280,6 @@
         "makeUser": "{{email}} hadda waa isticmaale caadi ah.",
         "delete": "{{email}} waa la tirtiray."
       },
-      "superAdmin": "Super admin",
       "testAccount": "Akoon tijaabo",
       "testAccountHint": "Akoonnada tijaabadu waxay haystaan xog male ah, waxayna isticmaali karaan qaybaha AI ee dira xogta astaanta inta asturnaanta AI ay xidhan tahay.",
       "markTest": "Ka dhig akoon tijaabo",
@@ -289,8 +287,7 @@
       "testReason": "Sababta",
       "testReasonHint": "Waa qasab (10 ilaa 500 xaraf).",
       "testOn": "{{email}} hadda waa akoon tijaabo.",
-      "testOff": "{{email}} mar dambe ma aha akoon tijaabo.",
-      "superAdminLocked": "Kani waa akoon super admin. Super admin keliya ayaa beddeli kara."
+      "testOff": "{{email}} mar dambe ma aha akoon tijaabo."
     },
     "audit": {
       "title": "Diiwaanka hubinta",
@@ -431,7 +428,6 @@
       "save": "Keydi isbeddelka",
       "saving": "Waa la keydinayaa…",
       "saved": "Dejintu hadda waa {{value}}.",
-      "onlySuper": "Super admin keliya ayaa beddeli kara dejintan.",
       "error": "Dejinta lama soo rari karin. Hubi in backend-ku shaqaynayo."
     }
   },

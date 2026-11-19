@@ -64,7 +64,7 @@ export function parseSettingChange(body: unknown): { value: AiPersonalDataValue;
 }
 
 /**
- * PUT /admin/settings/ai-personal-data (super admin only, checked by the
+ * PUT /admin/settings/ai-personal-data (admins only, checked by the
  * route). The value and its history entry (admin id, time, previous value,
  * reason) are written in one update; the audit log gets a record too.
  */

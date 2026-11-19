@@ -14,7 +14,7 @@ export async function getAiPersonalData(_req: Request, res: Response) {
   res.json({ data: { setting: await getAiPersonalDataSetting() }, error: null, meta: {} });
 }
 
-/** PUT /api/v1/admin/settings/ai-personal-data { value, reason } (super admin only). */
+/** PUT /api/v1/admin/settings/ai-personal-data { value, reason } (admins; reason required). */
 export async function putAiPersonalData(req: Request, res: Response) {
   const { value, reason } = parseSettingChange(req.body);
   res.json({
@@ -24,7 +24,7 @@ export async function putAiPersonalData(req: Request, res: Response) {
   });
 }
 
-/** PATCH /api/v1/admin/users/:id/test-account { testAccount, reason } (super admin only). */
+/** PATCH /api/v1/admin/users/:id/test-account { testAccount, reason } (admins; reason required). */
 export async function patchTestAccount(req: Request, res: Response) {
   const b = (req.body && typeof req.body === 'object' ? req.body : {}) as Record<string, unknown>;
   const details: Record<string, string> = {};
