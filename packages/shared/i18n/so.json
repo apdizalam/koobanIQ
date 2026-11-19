@@ -58,7 +58,11 @@
       "AI_QUOTA_REACHED": "Xadka bilaashka ah ee AI waa la gaaray hadda. Fadlan isku day mar dambe",
       "AI_TIMEOUT": "AI-gu wuu raagay jawaabta. Fadlan isku day mar kale",
       "AI_UNAVAILABLE": "Adeegga AI hadda lama heli karo. Fadlan isku day mar dambe",
-      "AI_BAD_OUTPUT": "AI-gu ma bixin jawaab la isticmaali karo. Fadlan isku day mar kale"
+      "AI_BAD_OUTPUT": "AI-gu ma bixin jawaab la isticmaali karo. Fadlan isku day mar kale",
+      "NOT_A_JOB_DESCRIPTION": "Tani uma eka sharaxaad shaqo. Dheji ama soo geli xayeysiis shaqo",
+      "JOB_DESCRIPTION_NOT_FOUND": "Sharaxaadda shaqada lama helin",
+      "JD_LIMIT_REACHED": "Waxaad keydisay inta ugu badan ee sharaxaadaha shaqo la oggol yahay. Marka hore mid tirtir",
+      "PAYLOAD_TOO_LARGE": "Codsigu aad buu u weyn yahay"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -92,7 +96,11 @@
       "urlInvalid": "Geli cinwaan shabakadeed oo dhammaystiran oo ku bilaabma http:// ama https://",
       "listInvalid": "Waa inuu ahaadaa liis gaaban oo qoraallo sax ah",
       "dateOrderInvalid": "Dhammaadku kama horrayn karo bilowga",
-      "numberInvalid": "Geli tiro dhan oo ku jirta xadka la oggol yahay"
+      "numberInvalid": "Geli tiro dhan oo ku jirta xadka la oggol yahay",
+      "jdTextOrPdf": "Dheji qoraalka sharaxaadda shaqada ama soo geli PDF (mid ka mid ah labada)",
+      "jdTextLength": "Sharaxaadda shaqadu waa inay u dhaxaysaa 50 ilaa 20,000 xaraf",
+      "pdfInvalid": "Kani ma aha fayl PDF ah oo sax ah",
+      "pdfTooLarge": "PDF-ku waa inuusan ka badnaan 5 MB"
     },
     "email": {
       "verifyEmail": {

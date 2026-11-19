@@ -58,7 +58,11 @@
       "AI_QUOTA_REACHED": "The free AI limit has been reached for now. Please try again later",
       "AI_TIMEOUT": "The AI took too long to answer. Please try again",
       "AI_UNAVAILABLE": "The AI service is not available right now. Please try again later",
-      "AI_BAD_OUTPUT": "The AI could not give a usable answer. Please try again"
+      "AI_BAD_OUTPUT": "The AI could not give a usable answer. Please try again",
+      "NOT_A_JOB_DESCRIPTION": "This does not look like a job description. Paste or upload a job advertisement",
+      "JOB_DESCRIPTION_NOT_FOUND": "Job description not found",
+      "JD_LIMIT_REACHED": "You have saved the most job descriptions allowed. Delete one first",
+      "PAYLOAD_TOO_LARGE": "The request is too large"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -92,7 +96,11 @@
       "urlInvalid": "Enter a full web address starting with http:// or https://",
       "listInvalid": "Must be a short list of valid entries",
       "dateOrderInvalid": "The end cannot be before the start",
-      "numberInvalid": "Enter a whole number in the allowed range"
+      "numberInvalid": "Enter a whole number in the allowed range",
+      "jdTextOrPdf": "Paste the job description text or upload a PDF (one of the two)",
+      "jdTextLength": "The job description must be between 50 and 20,000 characters",
+      "pdfInvalid": "This is not a valid PDF file",
+      "pdfTooLarge": "The PDF can be at most 5 MB"
     },
     "email": {
       "verifyEmail": {

@@ -2039,6 +2039,14 @@
     "state": "pending",
     "en": "Access token is invalid"
   },
+  "server.errors.JD_LIMIT_REACHED": {
+    "state": "pending",
+    "en": "You have saved the most job descriptions allowed. Delete one first"
+  },
+  "server.errors.JOB_DESCRIPTION_NOT_FOUND": {
+    "state": "pending",
+    "en": "Job description not found"
+  },
   "server.errors.JOB_SOURCE_NOT_FOUND": {
     "state": "pending",
     "en": "Job source not found"
@@ -2047,6 +2055,10 @@
     "state": "pending",
     "en": "At least one active admin must remain"
   },
+  "server.errors.NOT_A_JOB_DESCRIPTION": {
+    "state": "pending",
+    "en": "This does not look like a job description. Paste or upload a job advertisement"
+  },
   "server.errors.NOT_FOUND": {
     "state": "pending",
     "en": "Route not found"
@@ -2054,6 +2066,10 @@
   "server.errors.NO_SOURCES_SELECTED": {
     "state": "pending",
     "en": "Choose at least one job source"
+  },
+  "server.errors.PAYLOAD_TOO_LARGE": {
+    "state": "pending",
+    "en": "The request is too large"
   },
   "server.errors.PROFILE_ITEM_NOT_FOUND": {
     "state": "pending",
@@ -2155,6 +2171,14 @@
     "state": "pending",
     "en": "Filters must be short lists of words, a city name and employer types"
   },
+  "server.validation.jdTextLength": {
+    "state": "pending",
+    "en": "The job description must be between 50 and 20,000 characters"
+  },
+  "server.validation.jdTextOrPdf": {
+    "state": "pending",
+    "en": "Paste the job description text or upload a PDF (one of the two)"
+  },
   "server.validation.languageInvalid": {
     "state": "pending",
     "en": "Must be \"en\" or \"so\""
@@ -2186,6 +2210,14 @@
   "server.validation.passwordTooShort": {
     "state": "pending",
     "en": "Password must be at least {{min}} characters"
+  },
+  "server.validation.pdfInvalid": {
+    "state": "pending",
+    "en": "This is not a valid PDF file"
+  },
+  "server.validation.pdfTooLarge": {
+    "state": "pending",
+    "en": "The PDF can be at most 5 MB"
   },
   "server.validation.periodInvalid": {
     "state": "pending",

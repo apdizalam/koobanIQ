@@ -44,6 +44,11 @@ export function errorHandler(err: unknown, req: Request, res: Response, _next: N
     sendError(req, res, err.status, err.code, err.message, err.details);
     return;
   }
+  // Body bigger than the route allows (e.g. a PDF over the limit).
+  if ((err as { type?: string } | null)?.type === 'entity.too.large') {
+    sendError(req, res, 413, 'PAYLOAD_TOO_LARGE', 'The request is too large');
+    return;
+  }
   // Malformed JSON body sent by the client.
   if (err instanceof SyntaxError && 'body' in err) {
     sendError(req, res, 400, 'INVALID_JSON', 'Request body is not valid JSON');
