@@ -566,21 +566,113 @@
         "title": "Top match today",
         "seeAll": "See all",
         "empty": "No job matches yet. Start a job search to see jobs that fit you."
+      },
+      "profileCard": {
+        "title": "Your profile",
+        "body": "A complete profile gives better CVs and job matches.",
+        "action": "Complete your profile"
       }
     },
     "profile": {
       "account": "Account",
-      "details": {
-        "title": "Profile details",
-        "body": "Your profession, experience, education and skills will be filled in here in an upcoming update."
-      },
       "languageHint": "The app and messages from KOBANIQ use this language on all your devices.",
       "languageSaved": "Saved to your account.",
       "languageError": {
         "network": "The language changed on this phone, but it could not be saved to your account. Check your internet connection and choose it again.",
         "generic": "The language changed on this phone, but it could not be saved to your account. Please choose it again."
       },
-      "logout": "Log out"
+      "logout": "Log out",
+      "completion": "Profile {{percent}}% complete",
+      "loadError": "Your profile could not be loaded. Check your internet connection and try again.",
+      "notAdded": "Not added yet",
+      "entries_one": "{{count}} entry",
+      "entries_other": "{{count}} entries",
+      "prefsSet": "Set",
+      "personalHint": "Employers see this on your CVs. Only you can see and change it.",
+      "sections": {
+        "personal": "Personal info",
+        "experience": "Experience",
+        "education": "Education",
+        "projects": "Projects",
+        "certifications": "Certifications",
+        "languages": "Languages",
+        "preferences": "Job preferences"
+      },
+      "sectionHints": {
+        "experience": "Jobs, internships and volunteer work.",
+        "education": "Schools, universities and courses.",
+        "projects": "Things you built or worked on.",
+        "certifications": "Certificates and licences.",
+        "languages": "Languages you speak and how well.",
+        "preferences": "What kind of job you are looking for. Job research uses this."
+      },
+      "fields": {
+        "fullName": "Full name",
+        "headline": "Preferred job title",
+        "profession": "Profession",
+        "region": "Region",
+        "city": "City",
+        "phone": "Phone",
+        "summary": "About you",
+        "title": "Job title",
+        "employer": "Employer",
+        "startDate": "Start",
+        "endDate": "End",
+        "description": "What you did",
+        "school": "School or university",
+        "degree": "Degree or certificate",
+        "field": "Field of study",
+        "startYear": "Start year",
+        "endYear": "End year",
+        "name": "Name",
+        "url": "Link",
+        "skills": "Skills used",
+        "issuer": "Issued by",
+        "issuedOn": "Issued",
+        "language": "Language",
+        "level": "Level",
+        "titles": "Job titles you want",
+        "regions": "Regions",
+        "cities": "Cities",
+        "employerTypes": "Employer types",
+        "workModes": "Work mode",
+        "jobTypes": "Job type"
+      },
+      "hints": {
+        "month": "Year-month, e.g. 2024-09",
+        "endDate": "Leave empty if you still work here",
+        "list": "Separate with commas"
+      },
+      "levels": {
+        "basic": "Basic",
+        "conversational": "Conversational",
+        "fluent": "Fluent",
+        "native": "Native"
+      },
+      "workModes": {
+        "onsite": "On-site",
+        "hybrid": "Hybrid",
+        "remote": "Remote"
+      },
+      "jobTypes": {
+        "full_time": "Full-time",
+        "part_time": "Part-time",
+        "contract": "Contract",
+        "internship": "Internship",
+        "volunteer": "Volunteer"
+      },
+      "now": "Now",
+      "add": "Add",
+      "addTitle": "Add: {{section}}",
+      "editTitle": "Edit: {{section}}",
+      "emptySection": "Nothing added yet.",
+      "itemGone": "This entry no longer exists. Go back to see your list.",
+      "save": "Save",
+      "saving": "Saving…",
+      "delete": "Delete",
+      "deleteConfirm": "Delete this entry? This cannot be undone.",
+      "deleteYes": "Yes, delete",
+      "cancel": "Cancel"
     },
     "soon": {
       "cv": {

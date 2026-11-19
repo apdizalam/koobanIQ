@@ -566,21 +566,113 @@
         "title": "Shaqada ugu habboon maanta",
         "seeAll": "Dhammaan arag",
         "empty": "Weli shaqo kuu habboon ma jirto. Bilow raadin shaqo si aad u aragto shaqooyinka kugu habboon."
+      },
+      "profileCard": {
+        "title": "Astaantaada",
+        "body": "Astaan dhammaystiran waxay keentaa CV-yo iyo shaqooyin kuugu habboon oo ka wanaagsan.",
+        "action": "Dhammaystir astaantaada"
       }
     },
     "profile": {
       "account": "Akoonka",
-      "details": {
-        "title": "Faahfaahinta astaanta",
-        "body": "Xirfaddaada, khibraddaada, waxbarashadaada iyo xirfadahaaga halkan ayaa lagu buuxin doonaa cusboonaysiin soo socota."
-      },
       "languageHint": "App-ka iyo fariimaha KOBANIQ waxay luqaddan ku isticmaalaan dhammaan qalabkaaga.",
       "languageSaved": "Waa lagu keydiyay akoonkaaga.",
       "languageError": {
         "network": "Luqaddu way ku beddelantay taleefankan, laakiin lagama keydin karin akoonkaaga. Hubi xiriirka internet-kaaga oo mar kale dooro.",
         "generic": "Luqaddu way ku beddelantay taleefankan, laakiin lagama keydin karin akoonkaaga. Fadlan mar kale dooro."
       },
-      "logout": "Ka bax"
+      "logout": "Ka bax",
+      "completion": "Astaanta {{percent}}% way dhammaystiran tahay",
+      "loadError": "Astaantaada lama soo rari karin. Hubi xiriirka internet-kaaga oo isku day mar kale.",
+      "notAdded": "Weli lama gelin",
+      "entries_one": "{{count}} qoraal",
+      "entries_other": "{{count}} qoraal",
+      "prefsSet": "La dejiyay",
+      "personalHint": "Loo-shaqeeyayaashu waxay tan ku arkaan CV-yadaada. Adiga keliya ayaa arki kara oo beddeli kara.",
+      "sections": {
+        "personal": "Macluumaadka shakhsiga",
+        "experience": "Khibrad",
+        "education": "Waxbarasho",
+        "projects": "Mashaariic",
+        "certifications": "Shahaadooyin",
+        "languages": "Luqadaha",
+        "preferences": "Doorashooyinka shaqada"
+      },
+      "sectionHints": {
+        "experience": "Shaqooyin, tababar shaqo iyo shaqo tabarruc ah.",
+        "education": "Dugsiyo, jaamacado iyo koorsooyin.",
+        "projects": "Waxyaabo aad dhistay ama ka shaqaysay.",
+        "certifications": "Shahaadooyin iyo liisanno.",
+        "languages": "Luqadaha aad ku hadasho iyo heerkaaga.",
+        "preferences": "Nooca shaqada aad raadinayso. Raadinta shaqadu tan ayay isticmaashaa."
+      },
+      "fields": {
+        "fullName": "Magaca oo buuxa",
+        "headline": "Magaca shaqada aad doorbidayso",
+        "profession": "Xirfadda",
+        "region": "Gobolka",
+        "city": "Magaalada",
+        "phone": "Taleefanka",
+        "summary": "Adiga naftaada",
+        "title": "Magaca shaqada",
+        "employer": "Loo-shaqeeyaha",
+        "startDate": "Bilowga",
+        "endDate": "Dhammaadka",
+        "description": "Waxaad qabatay",
+        "school": "Dugsiga ama jaamacadda",
+        "degree": "Shahaadada",
+        "field": "Qaybta waxbarashada",
+        "startYear": "Sanadka bilowga",
+        "endYear": "Sanadka dhammaadka",
+        "name": "Magaca",
+        "url": "Xiriiriye",
+        "skills": "Xirfadaha la isticmaalay",
+        "issuer": "Waxaa bixiyay",
+        "issuedOn": "La bixiyay",
+        "language": "Luqadda",
+        "level": "Heerka",
+        "titles": "Magacyada shaqooyinka aad rabto",
+        "regions": "Gobollada",
+        "cities": "Magaalooyinka",
+        "employerTypes": "Noocyada loo-shaqeeyaha",
+        "workModes": "Qaabka shaqada",
+        "jobTypes": "Nooca shaqada"
+      },
+      "hints": {
+        "month": "Sanad-bil, tusaale 2024-09",
+        "endDate": "Banaan ka tag haddii aad weli halkan ka shaqayso",
+        "list": "Ku kala saar hakad (,)"
+      },
+      "levels": {
+        "basic": "Aasaasi",
+        "conversational": "Wada-hadal",
+        "fluent": "Si fiican",
+        "native": "Luqadda hooyo"
+      },
+      "workModes": {
+        "onsite": "Goobta shaqada",
+        "hybrid": "Isku-dhaf",
+        "remote": "Fog (online)"
+      },
+      "jobTypes": {
+        "full_time": "Waqti buuxa",
+        "part_time": "Waqti dhiman",
+        "contract": "Qandaraas",
+        "internship": "Tababar shaqo",
+        "volunteer": "Tabarruc"
+      },
+      "now": "Hadda",
+      "add": "Ku dar",
+      "addTitle": "Ku dar: {{section}}",
+      "editTitle": "Wax ka beddel: {{section}}",
+      "emptySection": "Weli waxba lama gelin.",
+      "itemGone": "Qoraalkani mar dambe ma jiro. Dib u noqo si aad liiskaaga u aragto.",
+      "save": "Keydi",
+      "saving": "Waa la keydinayaa…",
+      "delete": "Tirtir",
+      "deleteConfirm": "Ma tirtirtaa qoraalkan? Tan dib looma celin karo.",
+      "deleteYes": "Haa, tirtir",
+      "cancel": "Jooji"
     },
     "soon": {
       "cv": {

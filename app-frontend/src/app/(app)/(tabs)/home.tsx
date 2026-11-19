@@ -6,11 +6,13 @@ import { ActivityIndicator, RefreshControl, ScrollView, Text, View } from 'react
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAuth } from '../../../auth/authContext';
 import { requestErrorKey } from '../../../auth/errorKey';
+import { CompletionBar } from '../../../components/profile/CompletionBar';
 import { Button } from '../../../components/ui/Button';
 import { DashboardCard } from '../../../components/ui/DashboardCard';
 import { LineIcon } from '../../../components/ui/LineIcon';
 import { QuickAction } from '../../../components/ui/QuickAction';
 import { TextLink } from '../../../components/ui/TextLink';
+import { useProfile } from '../../../profile/ProfileProvider';
 import { useTheme } from '../../../theme';
 import { displayName, greetingFor, initials } from '../../../utils/greeting';
 
@@ -25,6 +27,7 @@ type Load = 'loading' | 'ready' | 'network' | 'generic';
 export default function HomeScreen() {
   const { t } = useTranslation();
   const { user, reloadUser } = useAuth();
+  const { profile } = useProfile();
   const { colors, typography, spacing, radius } = useTheme();
   const [load, setLoad] = useState<Load>('loading');
   const [refreshing, setRefreshing] = useState(false);
@@ -192,6 +195,22 @@ export default function HomeScreen() {
                 testID="home-skills-action"
               />
             </View>
+
+            {/* Profile completion (TIQ-6), from GET /profile */}
+            {profile ? (
+              <DashboardCard
+                testID="home-profile"
+                title={t('mobile.home.profileCard.title')}
+                body={profile.completion < 100 ? t('mobile.home.profileCard.body') : undefined}
+                action={{
+                  label: t('mobile.home.profileCard.action'),
+                  onPress: () => router.navigate('/profile'),
+                  testID: 'home-profile-action',
+                }}
+              >
+                <CompletionBar percent={profile.completion} />
+              </DashboardCard>
+            ) : null}
 
             {/* Quick actions */}
             <View style={{ gap: spacing.md }}>
