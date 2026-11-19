@@ -49,7 +49,10 @@
       "SOURCE_NOT_AVAILABLE": "Hal ama in ka badan oo ka mid ah ilaha aad dooratay lama heli karo. Cusboonaysii liiska oo isku day mar kale",
       "SOURCE_ADAPTER_MISSING": "Ilahan lama shidi karo sababtoo ah server-ku weli ma laha xiriirkiisa",
       "PROFILE_ITEM_NOT_FOUND": "Qoraalkan astaanta lama helin",
-      "PROFILE_SECTION_FULL": "Qaybtani way buuxday. Ka saar qoraal ka hor intaadan mid cusub ku darin"
+      "PROFILE_SECTION_FULL": "Qaybtani way buuxday. Ka saar qoraal ka hor intaadan mid cusub ku darin",
+      "SKILL_EXISTS": "Xirfaddan horay ayaad u haysataa. Wax ka beddel halkii",
+      "SKILL_NOT_FOUND": "Xirfadda lama helin",
+      "SKILLS_FULL": "Waxaad gaartay inta ugu badan ee xirfadaha la oggol yahay. Marka hore mid ka saar"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -82,7 +85,8 @@
       "yearInvalid": "Geli sanad u dhexeeya 1950 iyo 2100",
       "urlInvalid": "Geli cinwaan shabakadeed oo dhammaystiran oo ku bilaabma http:// ama https://",
       "listInvalid": "Waa inuu ahaadaa liis gaaban oo qoraallo sax ah",
-      "dateOrderInvalid": "Dhammaadku kama horrayn karo bilowga"
+      "dateOrderInvalid": "Dhammaadku kama horrayn karo bilowga",
+      "numberInvalid": "Geli tiro dhan oo ku jirta xadka la oggol yahay"
     },
     "email": {
       "verifyEmail": {

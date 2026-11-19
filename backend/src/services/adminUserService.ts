@@ -1,4 +1,5 @@
 import { deleteProfile } from './profileService.js';
+import { deleteSkills } from './skillService.js';
 import type { Request } from 'express';
 import { Types } from 'mongoose';
 import { AppError } from '../lib/errors.js';
@@ -137,6 +138,7 @@ export async function deleteUser(req: Request, id: string) {
 
   await RefreshToken.deleteMany({ userId: user._id });
   await deleteProfile(user._id);
+  await deleteSkills(user._id);
   await User.deleteOne({ _id: user._id });
   await recordAudit(req, {
     action: 'user.delete',

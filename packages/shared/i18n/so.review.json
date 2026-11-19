@@ -1911,6 +1911,18 @@
     "state": "pending",
     "en": "Region not found"
   },
+  "server.errors.SKILLS_FULL": {
+    "state": "pending",
+    "en": "You have the most skills allowed. Remove one first"
+  },
+  "server.errors.SKILL_EXISTS": {
+    "state": "pending",
+    "en": "You already have this skill. Edit it instead"
+  },
+  "server.errors.SKILL_NOT_FOUND": {
+    "state": "pending",
+    "en": "Skill not found"
+  },
   "server.errors.SOURCE_ADAPTER_MISSING": {
     "state": "pending",
     "en": "This source can't be enabled because the server has no adapter for it yet"
@@ -1998,6 +2010,10 @@
   "server.validation.nothingToUpdate": {
     "state": "pending",
     "en": "Nothing to update"
+  },
+  "server.validation.numberInvalid": {
+    "state": "pending",
+    "en": "Enter a whole number in the allowed range"
   },
   "server.validation.passwordRequired": {
     "state": "pending",
