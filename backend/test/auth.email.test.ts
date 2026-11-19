@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { createApp } from '../src/app.js';
+import { env } from '../src/config/env.js';
 import { testDomain } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { outbox } from '../src/lib/mailer.js';
@@ -74,7 +75,11 @@ async function skipCooldown(address: string) {
   );
 }
 
+// These tests cover the confirm-email flow, so it is switched on here.
+const verificationWas = env.emailVerificationRequired;
+
 before(async () => {
+  env.emailVerificationRequired = true;
   await connectDB({ dbName: 'kobaniq_test', retries: 2 });
   await Promise.all([User.syncIndexes(), RefreshToken.syncIndexes(), EmailCode.syncIndexes()]);
   server = createApp().listen(0);
@@ -87,6 +92,7 @@ beforeEach(() => {
 });
 
 after(async () => {
+  env.emailVerificationRequired = verificationWas;
   const ids = (await User.find({ email: DOMAIN_RE }, { _id: 1 }).lean()).map((u) => u._id);
   await EmailCode.deleteMany({ userId: { $in: ids } });
   await RefreshToken.deleteMany({ userId: { $in: ids } });

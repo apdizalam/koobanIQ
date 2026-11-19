@@ -1,4 +1,5 @@
 import { Schema, model, type HydratedDocument, type InferSchemaType } from 'mongoose';
+import { env } from '../config/env.js';
 
 // Same values as @kobaniq/shared (ROLES, USER_STATUSES, LANGUAGES).
 export const ROLES = ['user', 'admin'] as const;
@@ -50,6 +51,8 @@ export function toPublicUser(user: UserDocument) {
     role: user.role,
     status: user.status,
     emailVerified: user.emailVerified,
+    /** The apps show the confirm-email step only when this is true (see env.emailVerificationRequired). */
+    mustVerifyEmail: env.emailVerificationRequired && !user.emailVerified,
     preferredLanguage: user.preferredLanguage,
     createdAt: user.createdAt,
   };

@@ -1,3 +1,4 @@
+import { env } from '../config/env.js';
 import { AppError } from '../lib/errors.js';
 import { hashPassword, verifyPassword } from '../lib/password.js';
 import { hashToken, issueRefreshToken, signAccessToken } from '../lib/tokens.js';
@@ -29,10 +30,13 @@ export async function registerUser(input: RegisterInput) {
     preferredLanguage: input.preferredLanguage ?? 'en',
     ageConfirmedAt: new Date(),
   });
-  try {
-    await sendCode(user, 'verifyEmail');
-  } catch (err) {
-    console.error('Verification email failed:', err instanceof Error ? err.message : err);
+  // The code is only emailed when confirming the email is required (env.emailVerificationRequired).
+  if (env.emailVerificationRequired) {
+    try {
+      await sendCode(user, 'verifyEmail');
+    } catch (err) {
+      console.error('Verification email failed:', err instanceof Error ? err.message : err);
+    }
   }
   return toPublicUser(user);
 }
