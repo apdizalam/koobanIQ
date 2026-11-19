@@ -58,6 +58,14 @@ export const env = {
   /** Sender shown in emails. Resend's test sender only delivers to the Resend account owner. */
   emailFrom: process.env.EMAIL_FROM ?? 'KOBANIQ <onboarding@resend.dev>',
   /**
+   * Must new accounts confirm their email with a code before using the app?
+   * Off by default (owner decision 2026-11-19: Resend's test sender only reaches
+   * the owner's inbox until a domain is verified). Turn on with
+   * EMAIL_VERIFICATION_REQUIRED=true once emails reach every user.
+   */
+  emailVerificationRequired:
+    (process.env.EMAIL_VERIFICATION_REQUIRED ?? 'false').trim().toLowerCase() === 'true',
+  /**
    * AI provider behind src/ai/provider.ts. Only "gemini" exists today (Gemini
    * API free tier, development); the AI features never call a provider directly.
    */

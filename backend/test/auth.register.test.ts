@@ -4,6 +4,8 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import bcrypt from 'bcryptjs';
 import { createApp } from '../src/app.js';
+import { env } from '../src/config/env.js';
+import { outbox } from '../src/lib/mailer.js';
 import { testDomain } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { User } from '../src/models/User.js';
@@ -95,6 +97,30 @@ test('invalid input returns 400 with a message per field', async () => {
     'password',
     'preferredLanguage',
   ]);
+});
+
+test('email confirmation is off by default: no code is sent and the app is told not to ask', async () => {
+  const address = email('direct');
+  outbox.length = 0;
+  const res = await register({ email: address, password: 'correct-horse-5', ageConfirmed: true });
+  const body = await res.json();
+  assert.equal(res.status, 201);
+  assert.equal(body.data.user.emailVerified, false);
+  assert.equal(body.data.user.mustVerifyEmail, false);
+  assert.equal(outbox.filter((m) => m.to === address.toLowerCase()).length, 0, 'no email');
+
+  // Switched on (EMAIL_VERIFICATION_REQUIRED=true): a code is sent and the app must ask for it.
+  env.emailVerificationRequired = true;
+  try {
+    const second = email('confirm');
+    const on = await (
+      await register({ email: second, password: 'correct-horse-5', ageConfirmed: true })
+    ).json();
+    assert.equal(on.data.user.mustVerifyEmail, true);
+    assert.equal(outbox.filter((m) => m.to === second.toLowerCase()).length, 1);
+  } finally {
+    env.emailVerificationRequired = false;
+  }
 });
 
 test('sign-up needs the "I am 18 or older" confirmation, and stores when it was given', async () => {
