@@ -39,7 +39,7 @@ export default function VerifyEmailScreen() {
 
   if (status === 'restoring') return <Splash />;
   if (status === 'signedOut' || !user) return leaving ? null : <Redirect href="/welcome" />;
-  if (user.emailVerified) return <Redirect href="/home" />;
+  if (!user.mustVerifyEmail) return <Redirect href="/home" />;
 
   async function submit() {
     if (busy) return;

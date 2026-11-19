@@ -1,4 +1,4 @@
-import { Redirect, router, useLocalSearchParams } from 'expo-router';
+import { Redirect, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text } from 'react-native';
 import { AuthScreen } from '../../../../components/layout/AuthScreen';
@@ -8,6 +8,7 @@ import { SECTION_FIELDS } from '../../../../profile/fields';
 import { useProfile } from '../../../../profile/ProfileProvider';
 import { isProfileSection } from '../../../../types/profile';
 import { useTheme } from '../../../../theme';
+import { goBackOrHome } from '../../../../components/ui/BackButton';
 
 /** Profile → add a new entry (`id` = "new") or edit / delete an existing one. */
 export default function SectionItemScreen() {
@@ -45,14 +46,14 @@ export default function SectionItemScreen() {
               onSubmit={async (body) => {
                 if (isNew) await addItem(section, body);
                 else await updateItem(section, id, body);
-                router.back();
+                goBackOrHome();
               }}
               onDelete={
                 isNew
                   ? undefined
                   : async () => {
                       await deleteItem(section, id);
-                      router.back();
+                      goBackOrHome();
                     }
               }
             />

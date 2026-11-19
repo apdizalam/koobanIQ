@@ -1,10 +1,10 @@
-import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { AuthScreen } from '../../../components/layout/AuthScreen';
 import { ProfileForm } from '../../../components/profile/ProfileForm';
 import { ProfileGate } from '../../../components/profile/ProfileGate';
 import { PERSONAL_FIELDS } from '../../../profile/fields';
 import { useProfile } from '../../../profile/ProfileProvider';
+import { goBackOrHome } from '../../../components/ui/BackButton';
 
 /**
  * Profile → Personal info (name, preferred title, profession, region, city, phone,
@@ -27,7 +27,7 @@ export default function PersonalInfoScreen() {
             mode="update"
             onSubmit={async (body) => {
               await savePersonal(body);
-              router.back();
+              goBackOrHome();
             }}
           />
         )}
