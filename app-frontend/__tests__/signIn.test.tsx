@@ -162,11 +162,37 @@ describe('Sign up', () => {
     expect(calls).toHaveLength(0);
   });
 
+  it('needs "I am 18 or older" ticked before anything is sent', async () => {
+    routes['POST /auth/register'] = ok({ user: user('new@example.com', 'en', false) }, 201);
+    routes['POST /auth/login'] = ok(session('new@example.com', 'en', false));
+    await renderApp('/sign-up');
+    expect(screen.getByText('I am 18 or older')).toBeTruthy();
+    expect(screen.getByTestId('sign-up-age').props.accessibilityState).toMatchObject({
+      checked: false,
+    });
+    await type('sign-up-email', 'new@example.com');
+    await type('sign-up-password', 'secret123');
+    await press('sign-up-submit');
+    const warning = 'KOBANIQ is for adults. Tick the box to confirm you are 18 or older.';
+    expect(screen.getByText(warning)).toBeTruthy();
+    expect(calls).toHaveLength(0);
+
+    await press('sign-up-age');
+    expect(screen.getByTestId('sign-up-age').props.accessibilityState).toMatchObject({
+      checked: true,
+    });
+    expect(screen.queryByText(warning)).toBeNull();
+    await press('sign-up-submit');
+    expect(calls[0].body).toMatchObject({ ageConfirmed: true });
+    expect(screen).toHavePathname('/verify-email');
+  });
+
   it('shows "already exists" on the email field', async () => {
     routes['POST /auth/register'] = fail(409, 'EMAIL_TAKEN');
     await renderApp('/sign-up');
     await type('sign-up-email', 'amina@example.com');
     await type('sign-up-password', 'secret123');
+    await press('sign-up-age');
     await press('sign-up-submit');
     expect(
       screen.getByText('An account with this email already exists. Log in instead.'),
@@ -183,6 +209,7 @@ describe('Sign up', () => {
     await renderApp('/sign-up');
     await type('sign-up-email', 'new@example.com');
     await type('sign-up-password', 'secret123');
+    await press('sign-up-age');
     await press('sign-up-submit');
 
     expect(calls.map((c) => c.route)).toEqual(['POST /auth/register', 'POST /auth/login']);
@@ -190,6 +217,7 @@ describe('Sign up', () => {
       email: 'new@example.com',
       password: 'secret123',
       preferredLanguage: 'so',
+      ageConfirmed: true,
     });
     expect(calls[0].headers['Accept-Language']).toBe('so');
     // User Flow: sign-up → verify the emailed code → Home.

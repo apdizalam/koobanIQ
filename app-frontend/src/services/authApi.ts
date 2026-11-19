@@ -2,10 +2,16 @@ import type { Language } from '../i18n/language';
 import type { PublicUser, Session } from '../types/auth';
 import { apiRequest } from './api';
 
-export const register = (email: string, password: string, preferredLanguage: Language) =>
+/** `ageConfirmed` is the ticked "I am 18 or older" box; the server refuses sign-up without it. */
+export const register = (
+  email: string,
+  password: string,
+  preferredLanguage: Language,
+  ageConfirmed: true,
+) =>
   apiRequest<{ user: PublicUser }>('/auth/register', {
     method: 'POST',
-    body: { email, password, preferredLanguage },
+    body: { email, password, preferredLanguage, ageConfirmed },
   });
 
 export const login = (email: string, password: string) =>

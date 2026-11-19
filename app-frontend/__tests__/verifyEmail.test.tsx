@@ -48,6 +48,7 @@ async function signUp(language = 'en') {
   await renderApp('/sign-up');
   await type('sign-up-email', EMAIL);
   await type('sign-up-password', 'secret123');
+  await press('sign-up-age');
   await press('sign-up-submit');
 }
 

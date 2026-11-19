@@ -6,20 +6,27 @@ import { useAuth } from '../../auth/authContext';
 import { requestErrorKey, type RequestErrorKey } from '../../auth/errorKey';
 import { AuthScreen } from '../../components/layout/AuthScreen';
 import { Button } from '../../components/ui/Button';
+import { Checkbox } from '../../components/ui/Checkbox';
 import { FormMessage } from '../../components/ui/FormMessage';
 import { Input } from '../../components/ui/Input';
 import { TextLink } from '../../components/ui/TextLink';
+import { ApiError } from '../../services/api';
 import { DEFAULT_LANGUAGE, isLanguage } from '../../i18n/language';
 import { useTheme } from '../../theme';
 import { check, signUpSchema, type FieldErrors } from '../../utils/validation';
 
-/** Create an account with email + password; the account gets the language chosen in onboarding. */
+/**
+ * Create an account with email + password; the account gets the language chosen
+ * in onboarding. "I am 18 or older" must be ticked (the server checks it too).
+ */
 export default function SignUpScreen() {
   const { t, i18n } = useTranslation();
   const { signUp } = useAuth();
   const { colors, typography, spacing } = useTheme();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [adult, setAdult] = useState(false);
+  const [ageError, setAgeError] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<FieldErrors<{ email: string; password: string }>>(
     {},
   );
@@ -31,18 +38,25 @@ export default function SignUpScreen() {
     if (busy) return;
     setFailure(null);
     const result = check(signUpSchema, { email, password });
-    if (!result.ok) {
-      setFieldErrors(result.errors);
+    setAgeError(!adult);
+    if (!result.ok || !adult) {
+      setFieldErrors(result.ok ? {} : result.errors);
       return;
     }
     setFieldErrors({});
     setBusy(true);
     try {
-      await signUp(result.data.email, result.data.password);
+      await signUp(result.data.email, result.data.password, true);
       // User Flow: sign-up → verify the emailed code → Home.
       router.replace({ pathname: '/verify-email', params: { sent: '1' } });
     } catch (err) {
       const key = requestErrorKey(err);
+      // The server refused because the box was not ticked: show it on the box.
+      if (err instanceof ApiError && err.details.ageConfirmed) {
+        setAgeError(true);
+        setBusy(false);
+        return;
+      }
       // "Email already used" belongs to the email field; other failures go in the box.
       if (key === 'emailTaken') setFieldErrors({ email: 'emailTaken' });
       else setFailure(key);
@@ -104,6 +118,17 @@ export default function SignUpScreen() {
             </Text>
           )}
         </View>
+        <Checkbox
+          testID="sign-up-age"
+          label={t('mobile.auth.signUp.ageConfirm')}
+          checked={adult}
+          onChange={(value) => {
+            setAdult(value);
+            if (value) setAgeError(false);
+          }}
+          disabled={busy}
+          errorMessage={ageError ? t('mobile.auth.errors.ageRequired') : undefined}
+        />
       </View>
 
       {failure ? <FormMessage text={t(`mobile.auth.errors.${failure}`)} /> : null}

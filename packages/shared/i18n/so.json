@@ -564,7 +564,8 @@
         "submit": "Samee akoon",
         "submitting": "Akoonka waa la samaynayaa…",
         "haveAccount": "Horey ma u lahayd akoon?",
-        "logIn": "Soo gal"
+        "logIn": "Soo gal",
+        "ageConfirm": "Waxaan ahay 18 jir ama ka weyn"
       },
       "errors": {
         "emailInvalid": "Geli iimayl sax ah.",
@@ -578,7 +579,8 @@
         "generic": "Khalad ayaa dhacay. Fadlan isku day mar kale.",
         "codeInvalid": "Geli koodhka 6-da god ah ee iimaylka.",
         "invalidCode": "Koodhku waa khalad ama wuu dhacay. Codso mid cusub.",
-        "tooManyAttempts": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub."
+        "tooManyAttempts": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub.",
+        "ageRequired": "KOBANIQ waxaa loogu talagalay dadka waaweyn. Calaamadee sanduuqa si aad u xaqiijiso inaad tahay 18 jir ama ka weyn."
       },
       "later": {
         "google": "Ku-gelitaanka Google wuxuu imanayaa cusboonaysiin dambe."

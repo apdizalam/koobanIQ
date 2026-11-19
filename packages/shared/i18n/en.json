@@ -564,7 +564,8 @@
         "submit": "Create account",
         "submitting": "Creating account…",
         "haveAccount": "Already have an account?",
-        "logIn": "Log in"
+        "logIn": "Log in",
+        "ageConfirm": "I am 18 or older"
       },
       "errors": {
         "emailInvalid": "Enter a valid email address.",
@@ -578,7 +579,8 @@
         "generic": "Something went wrong. Please try again.",
         "codeInvalid": "Enter the 6-digit code from the email.",
         "invalidCode": "The code is wrong or has expired. Ask for a new one.",
-        "tooManyAttempts": "Too many wrong codes. Ask for a new one."
+        "tooManyAttempts": "Too many wrong codes. Ask for a new one.",
+        "ageRequired": "KOBANIQ is for adults. Tick the box to confirm you are 18 or older."
       },
       "later": {
         "google": "Google sign-in arrives in a later update."
