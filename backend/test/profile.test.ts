@@ -60,7 +60,7 @@ async function call(
 }
 
 async function account(email: string) {
-  await call(null, 'POST', '/auth/register', { email, password: PASSWORD });
+  await call(null, 'POST', '/auth/register', { email, password: PASSWORD, ageConfirmed: true });
   const res = await fetch(`${baseUrl}/api/v1/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

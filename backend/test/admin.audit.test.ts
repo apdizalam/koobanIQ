@@ -33,7 +33,10 @@ const call = (path: string, init: { method?: string; body?: unknown; token?: str
   });
 
 async function account(email: string, admin = false) {
-  await call('/auth/register', { method: 'POST', body: { email, password: PASSWORD } });
+  await call('/auth/register', {
+    method: 'POST',
+    body: { email, password: PASSWORD, ageConfirmed: true },
+  });
   if (admin) await promoteToAdmin(email);
   const body = await (
     await call('/auth/login', { method: 'POST', body: { email, password: PASSWORD } })

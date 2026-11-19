@@ -43,6 +43,7 @@ test('register creates a user and never returns the password hash', async () => 
     email: address,
     password: 'correct-horse-1',
     preferredLanguage: 'so',
+    ageConfirmed: true,
   });
   const body = await res.json();
 
@@ -59,7 +60,7 @@ test('register creates a user and never returns the password hash', async () => 
 
 test('password is stored only as a bcrypt hash', async () => {
   const address = email('hash');
-  await register({ email: address, password: 'correct-horse-2' });
+  await register({ email: address, password: 'correct-horse-2', ageConfirmed: true });
   const stored = await User.findOne({ email: address }).select('+passwordHash').lean();
 
   assert.ok(stored?.passwordHash);
@@ -69,8 +70,15 @@ test('password is stored only as a bcrypt hash', async () => {
 
 test('registering the same email twice returns 409 EMAIL_TAKEN', async () => {
   const address = email('dup');
-  assert.equal((await register({ email: address, password: 'correct-horse-3' })).status, 201);
-  const res = await register({ email: address.toUpperCase(), password: 'correct-horse-3' });
+  assert.equal(
+    (await register({ email: address, password: 'correct-horse-3', ageConfirmed: true })).status,
+    201,
+  );
+  const res = await register({
+    email: address.toUpperCase(),
+    password: 'correct-horse-3',
+    ageConfirmed: true,
+  });
   const body = await res.json();
   assert.equal(res.status, 409);
   assert.equal(body.error.code, 'EMAIL_TAKEN');
@@ -82,10 +90,30 @@ test('invalid input returns 400 with a message per field', async () => {
   assert.equal(res.status, 400);
   assert.equal(body.error.code, 'VALIDATION_ERROR');
   assert.deepEqual(Object.keys(body.meta.details).sort(), [
+    'ageConfirmed',
     'email',
     'password',
     'preferredLanguage',
   ]);
+});
+
+test('sign-up needs the "I am 18 or older" confirmation, and stores when it was given', async () => {
+  for (const ageConfirmed of [undefined, false, 'true', 1]) {
+    const address = email('young');
+    const res = await register({ email: address, password: 'correct-horse-4', ageConfirmed });
+    const body = await res.json();
+    assert.equal(res.status, 400, String(ageConfirmed));
+    assert.deepEqual(Object.keys(body.meta.details), ['ageConfirmed']);
+    assert.equal(body.meta.details.ageConfirmed, 'Confirm that you are 18 or older');
+    assert.equal(await User.exists({ email: address }), null, 'no account is created');
+  }
+
+  const address = email('adult');
+  const startedAt = Date.now();
+  const res = await register({ email: address, password: 'correct-horse-4', ageConfirmed: true });
+  assert.equal(res.status, 201);
+  const stored = await User.findOne({ email: address }).lean();
+  assert.ok(stored?.ageConfirmedAt && stored.ageConfirmedAt.getTime() >= startedAt - 1000);
 });
 
 test('a malformed JSON body returns 400 INVALID_JSON', async () => {

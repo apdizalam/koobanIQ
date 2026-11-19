@@ -32,7 +32,10 @@ const patchMe = (token: string, body: unknown) =>
 
 async function signIn(name: string) {
   const email = `${name}-${Date.now()}${DOMAIN}`;
-  assert.equal((await post('/auth/register', { email, password: PASSWORD })).status, 201);
+  assert.equal(
+    (await post('/auth/register', { email, password: PASSWORD, ageConfirmed: true })).status,
+    201,
+  );
   const body = await (await post('/auth/login', { email, password: PASSWORD })).json();
   return { email, token: body.data.accessToken as string };
 }

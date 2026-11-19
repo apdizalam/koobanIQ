@@ -39,7 +39,12 @@ const login = async (email: string) =>
 /** Registers an account and returns its id and a fresh login. */
 async function account(email: string, admin = false) {
   assert.equal(
-    (await call('/auth/register', { method: 'POST', body: { email, password: PASSWORD } })).status,
+    (
+      await call('/auth/register', {
+        method: 'POST',
+        body: { email, password: PASSWORD, ageConfirmed: true },
+      })
+    ).status,
     201,
   );
   if (admin) await promoteToAdmin(email);

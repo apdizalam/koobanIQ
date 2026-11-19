@@ -9,6 +9,8 @@ export interface RegisterInput {
   email: string;
   password: string;
   preferredLanguage?: Language;
+  /** "I am 18 or older", checked by parseRegisterBody. */
+  ageConfirmed: true;
 }
 
 /**
@@ -25,6 +27,7 @@ export async function registerUser(input: RegisterInput) {
     email,
     passwordHash: await hashPassword(input.password),
     preferredLanguage: input.preferredLanguage ?? 'en',
+    ageConfirmedAt: new Date(),
   });
   try {
     await sendCode(user, 'verifyEmail');

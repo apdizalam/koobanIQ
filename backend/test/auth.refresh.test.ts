@@ -30,7 +30,10 @@ const getMe = (token: string) =>
 /** Registers a fresh user and logs in; returns the login data. */
 async function signIn(name: string) {
   const email = `${name}-${Date.now()}${DOMAIN}`;
-  assert.equal((await post('/auth/register', { email, password: PASSWORD })).status, 201);
+  assert.equal(
+    (await post('/auth/register', { email, password: PASSWORD, ageConfirmed: true })).status,
+    201,
+  );
   const res = await post('/auth/login', { email, password: PASSWORD });
   assert.equal(res.status, 200);
   return { email, ...(await res.json()).data };

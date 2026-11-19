@@ -33,7 +33,7 @@ const getMe = (token?: string) =>
 
 async function newUser(name: string) {
   const email = `${name}-${Date.now()}${DOMAIN}`;
-  const res = await post('/auth/register', { email, password: PASSWORD });
+  const res = await post('/auth/register', { email, password: PASSWORD, ageConfirmed: true });
   assert.equal(res.status, 201);
   return email;
 }

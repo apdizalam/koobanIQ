@@ -109,7 +109,8 @@
       "pdfInvalid": "Kani ma aha fayl PDF ah oo sax ah",
       "pdfTooLarge": "PDF-ku waa inuusan ka badnaan 5 MB",
       "cvLanguageRequired": "Dooro luqadda CV-ga: Ingiriisi ama Soomaali",
-      "reasonRequired": "Sheeg sababta (10 ilaa 500 xaraf)"
+      "reasonRequired": "Sheeg sababta (10 ilaa 500 xaraf)",
+      "ageConfirmRequired": "Xaqiiji inaad tahay 18 jir ama ka weyn"
     },
     "email": {
       "verifyEmail": {

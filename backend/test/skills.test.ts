@@ -52,7 +52,7 @@ async function call(token: string | null, method: string, path: string, body?: u
 }
 
 async function account(email: string) {
-  await call(null, 'POST', '/auth/register', { email, password: PASSWORD });
+  await call(null, 'POST', '/auth/register', { email, password: PASSWORD, ageConfirmed: true });
   const login = await call(null, 'POST', '/auth/login', { email, password: PASSWORD });
   return (login.body.data as unknown as { accessToken: string }).accessToken;
 }
