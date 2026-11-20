@@ -1,5 +1,6 @@
 import { Schema, model, type HydratedDocument, type InferSchemaType } from 'mongoose';
 import { EMPLOYER_TYPES } from './JobSource.js';
+import { JOB_TYPES, WORK_MODES } from './Profile.js';
 import { REGION_KEYS } from './Region.js';
 import { LANGUAGES } from './User.js';
 
@@ -33,6 +34,9 @@ const jobSchema = new Schema(
     employerType: { type: String, enum: EMPLOYER_TYPES, required: true },
     region: { type: String, enum: REGION_KEYS, required: true, index: true },
     city: String,
+    /** Only when the source says it. */
+    jobType: { type: String, enum: JOB_TYPES },
+    workMode: { type: String, enum: WORK_MODES },
     deadline: Date,
     language: { type: String, enum: LANGUAGES },
     description: String,
@@ -58,6 +62,8 @@ export function toPublicJob(job: JobDocument) {
     employerType: job.employerType,
     region: job.region,
     city: job.city ?? null,
+    jobType: job.jobType ?? null,
+    workMode: job.workMode ?? null,
     deadline: job.deadline ?? null,
     language: job.language ?? null,
     description: job.description ?? null,
