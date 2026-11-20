@@ -3,6 +3,7 @@ import cors from 'cors';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFound } from './middleware/notFound.js';
 import { adminRouter } from './routes/admin.js';
+import { assessmentsRouter } from './routes/assessments.js';
 import { authRouter } from './routes/auth.js';
 import { cvsRouter } from './routes/cvs.js';
 import { healthRouter } from './routes/health.js';
@@ -26,6 +27,7 @@ export function createApp() {
   app.use('/api/v1/me', meRouter);
   app.use('/api/v1/profile', profileRouter);
   app.use('/api/v1/skills', skillsRouter);
+  app.use('/api/v1/assessments', assessmentsRouter);
   app.use('/api/v1/job-descriptions', jobDescriptionsRouter);
   app.use('/api/v1/cvs', cvsRouter);
   app.use('/api/v1/regions', regionsRouter);

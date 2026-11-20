@@ -2,6 +2,7 @@ import { deleteUsageRecords } from '../ai/aiService.js';
 import { deleteCvs } from './cvService.js';
 import { deleteJobDescriptions } from './jobDescriptionService.js';
 import { deleteProfile } from './profileService.js';
+import { deleteAssessments } from './assessmentService.js';
 import { deleteSkills } from './skillService.js';
 import type { Request } from 'express';
 import { Types } from 'mongoose';
@@ -173,6 +174,7 @@ export async function deleteUser(req: Request, id: string) {
   await RefreshToken.deleteMany({ userId: user._id });
   await deleteProfile(user._id);
   await deleteSkills(user._id);
+  await deleteAssessments(user._id);
   await deleteUsageRecords(user._id);
   await deleteJobDescriptions(user._id);
   await deleteCvs(user._id);

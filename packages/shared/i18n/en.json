@@ -70,7 +70,10 @@
       "PROFILE_INCOMPLETE": "Add your experience, education or skills to your profile before creating a CV",
       "SETTING_UNCHANGED": "The setting already has this value",
       "CV_CONTACT_EMAIL_REQUIRED": "Add the email address to show on your CVs (Profile → Personal info) before creating a CV",
-      "CV_NOT_APPROVED": "Approve the CV before downloading it as a PDF"
+      "CV_NOT_APPROVED": "Approve the CV before downloading it as a PDF",
+      "ASSESSMENT_NOT_FOUND": "Quiz not found",
+      "ASSESSMENT_NOT_IN_PROGRESS": "This quiz is already finished",
+      "QUESTION_NOT_CURRENT": "This question was already answered"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -111,7 +114,11 @@
       "pdfTooLarge": "The PDF can be at most 5 MB",
       "cvLanguageRequired": "Choose the CV language: English or Somali",
       "reasonRequired": "Give a reason (10 to 500 characters)",
-      "ageConfirmRequired": "Confirm that you are 18 or older"
+      "ageConfirmRequired": "Confirm that you are 18 or older",
+      "difficultyInvalid": "Choose Easy, Normal or Hard",
+      "quizLanguageRequired": "Choose the quiz language: English or Somali",
+      "quizLengthInvalid": "A quiz has 5 or 10 questions",
+      "quizChoiceInvalid": "Choose one of the answers"
     },
     "email": {
       "verifyEmail": {

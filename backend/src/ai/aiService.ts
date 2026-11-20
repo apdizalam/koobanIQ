@@ -222,6 +222,8 @@ export interface AiTask<T> {
   maxOutputTokens?: number;
   temperature?: number;
   documents?: AiDocument[];
+  /** Longer limit for big answers (e.g. a quiz bank); default AI_TIMEOUT_MS. */
+  timeoutMs?: number;
 }
 
 /** Over the per-user hourly limit → 429 (protects the shared free quota). */
