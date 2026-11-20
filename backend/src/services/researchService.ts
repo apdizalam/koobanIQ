@@ -30,7 +30,9 @@ const STUCK_AFTER_MS = 10 * 60 * 1000;
 export interface ResearchRequest {
   sourceKeys: string[];
   regions?: RegionKey[];
-  filters: Omit<ResearchQuery, 'regions' | 'limit'>;
+  filters: Omit<ResearchQuery, 'regions' | 'limit' | 'customUrls'>;
+  /** Career-page links (for the "career-pages" source). */
+  customUrls?: string[];
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -88,7 +90,12 @@ export async function startResearch(userId: Types.ObjectId, request: ResearchReq
     throw new AppError(400, 'NO_SOURCES_SELECTED', 'Choose at least one job source');
   }
   const sources = await JobSource.find({ key: { $in: sourceKeys }, enabled: true });
-  const usable = new Set(sources.filter((s) => getAdapter(s.key)).map((s) => s.key));
+  // Only operational sources: switched on, terms checked, adapter here, no open reason.
+  const usable = new Set(
+    sources
+      .filter((s) => getAdapter(s.key) && s.termsCheckedAt && !s.unavailableReason)
+      .map((s) => s.key),
+  );
   const unavailable = sourceKeys.filter((k) => !usable.has(k));
   if (unavailable.length > 0) {
     throw new AppError(
@@ -108,9 +115,15 @@ export async function startResearch(userId: Types.ObjectId, request: ResearchReq
     sourceKeys,
     regions,
     filters: request.filters,
+    customUrls: request.customUrls ?? [],
     startedAt: new Date(),
   });
-  const query: ResearchQuery = { ...request.filters, regions, limit: PER_SOURCE_LIMIT };
+  const query: ResearchQuery = {
+    ...request.filters,
+    regions,
+    limit: PER_SOURCE_LIMIT,
+    customUrls: request.customUrls ?? [],
+  };
   void executeRun(run._id, sourceKeys, query).catch((err: unknown) =>
     console.error('[research] run failed:', err instanceof Error ? err.message : err),
   );

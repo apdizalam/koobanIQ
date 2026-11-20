@@ -38,6 +38,8 @@ const jobSchema = new Schema(
     jobType: { type: String, enum: JOB_TYPES },
     workMode: { type: String, enum: WORK_MODES },
     deadline: Date,
+    /** When the source says it was posted (never our own discovery date). */
+    postedAt: Date,
     language: { type: String, enum: LANGUAGES },
     description: String,
     firstSeenAt: { type: Date, required: true },
@@ -65,6 +67,7 @@ export function toPublicJob(job: JobDocument) {
     jobType: job.jobType ?? null,
     workMode: job.workMode ?? null,
     deadline: job.deadline ?? null,
+    postedAt: job.postedAt ?? null,
     language: job.language ?? null,
     description: job.description ?? null,
     firstSeenAt: job.firstSeenAt,

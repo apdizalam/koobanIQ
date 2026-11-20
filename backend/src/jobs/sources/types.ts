@@ -14,6 +14,8 @@ export interface ResearchQuery {
   employerTypes: EmployerType[];
   /** Most jobs one source should return for this run. */
   limit: number;
+  /** Career-page links the user gave (only for sources that accept links). */
+  customUrls?: string[];
 }
 
 /**
@@ -34,6 +36,8 @@ export interface NormalizedJob {
   jobType?: (typeof JOB_TYPES)[number];
   workMode?: (typeof WORK_MODES)[number];
   deadline?: Date;
+  /** When the source says it was posted; left out when the source does not say. */
+  postedAt?: Date;
   language?: Language;
   description?: string;
 }

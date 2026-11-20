@@ -2987,6 +2987,22 @@
     "state": "pending",
     "en": "Enter the 6-digit code from the email"
   },
+  "server.validation.customUrlUnsafe": {
+    "state": "pending",
+    "en": "Use public http or https links only"
+  },
+  "server.validation.customUrlsInvalid": {
+    "state": "pending",
+    "en": "Give up to 5 web links"
+  },
+  "server.validation.customUrlsRequired": {
+    "state": "pending",
+    "en": "Add at least one career-page link for this source"
+  },
+  "server.validation.customUrlsWithoutSource": {
+    "state": "pending",
+    "en": "Links need the \"Company & NGO career pages\" source"
+  },
   "server.validation.cvLanguageRequired": {
     "state": "pending",
     "en": "Choose the CV language: English or Somali"

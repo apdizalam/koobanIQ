@@ -91,6 +91,7 @@ function details(job: NormalizedJob) {
     jobType: (JOB_TYPES as readonly unknown[]).includes(job.jobType) ? job.jobType : undefined,
     workMode: (WORK_MODES as readonly unknown[]).includes(job.workMode) ? job.workMode : undefined,
     deadline: job.deadline,
+    postedAt: job.postedAt,
     language: job.language,
     description: job.description?.slice(0, DESCRIPTION_MAX),
   };

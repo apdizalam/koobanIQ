@@ -43,6 +43,8 @@ const researchRunSchema = new Schema(
       city: { type: String },
       employerTypes: { type: [{ type: String, enum: EMPLOYER_TYPES }], default: [] },
     },
+    /** Career-page links the user gave for this run. */
+    customUrls: { type: [String], default: [] },
     perSource: { type: [perSourceSchema], default: [] },
     /** Valid jobs found across all sources (each job once). */
     jobsFound: { type: Number, default: 0 },
@@ -70,6 +72,7 @@ export function toPublicRun(run: ResearchRunDocument) {
     sourceKeys: run.sourceKeys,
     regions: run.regions,
     filters: run.filters,
+    customUrls: run.customUrls,
     perSource: run.perSource.map((p) => ({
       key: p.key,
       queried: p.queried,

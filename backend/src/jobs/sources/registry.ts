@@ -1,11 +1,13 @@
+import { careerPagesAdapter } from './careerPages.js';
 import type { SourceAdapter } from './types.js';
 
 /**
  * Adapters that ship with the server, one file each in this folder. A source can
  * only be enabled (and searched) when its adapter is listed here.
- * Empty until the first real source passes its terms check (TIQ-32 slice 3).
+ * Career pages (the user's links; free board APIs and JobPosting pages) for
+ * now; ReliefWeb joins when its app name is approved.
  */
-const BUILT_IN_ADAPTERS: SourceAdapter[] = [];
+const BUILT_IN_ADAPTERS: SourceAdapter[] = [careerPagesAdapter];
 
 const adapters = new Map<string, SourceAdapter>(BUILT_IN_ADAPTERS.map((a) => [a.key, a]));
 

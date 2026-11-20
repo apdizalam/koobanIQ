@@ -121,7 +121,11 @@
       "difficultyInvalid": "Dooro Fudud, Caadi ama Adag",
       "quizLanguageRequired": "Dooro luqadda imtixaanka: Ingiriisi ama Soomaali",
       "quizLengthInvalid": "Imtixaanku wuxuu leeyahay 5 ama 10 su’aalood",
-      "quizChoiceInvalid": "Dooro mid ka mid ah jawaabaha"
+      "quizChoiceInvalid": "Dooro mid ka mid ah jawaabaha",
+      "customUrlsInvalid": "Bixi ilaa 5 xiriiriye",
+      "customUrlUnsafe": "Isticmaal xiriiriyeyaal http ama https ah oo dadweyne keliya",
+      "customUrlsRequired": "Ku dar ugu yaraan hal xiriiriye bogga shaqooyinka ee ilahan",
+      "customUrlsWithoutSource": "Xiriiriyeyaashu waxay u baahan yihiin ilaha \"Bogagga shaqooyinka shirkadaha & NGO-yada\""
     },
     "email": {
       "verifyEmail": {

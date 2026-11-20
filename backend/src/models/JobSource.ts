@@ -1,6 +1,7 @@
 import { Schema, model, type HydratedDocument, type InferSchemaType } from 'mongoose';
 import { LANGUAGES } from './User.js';
 import { REGION_KEYS } from './Region.js';
+import { UNAVAILABLE_REASONS } from '../jobs/sources/catalog.js';
 
 // Values from doc 9 §4 (job source catalog).
 export const SOURCE_TYPES = ['job_board', 'ngo_un', 'employer', 'government', 'partner'] as const;
@@ -46,6 +47,14 @@ const jobSourceSchema = new Schema(
     termsCheckedAt: { type: Date },
     /** Requests allowed per minute by the source. */
     rateLimitPerMinute: { type: Number },
+    /** Shown to users even when it can't be searched (with `unavailableReason`). */
+    listed: { type: Boolean, default: false },
+    /** Why it can't be searched (no free API, needs approval / permission, terms unverified). */
+    unavailableReason: { type: String, enum: UNAVAILABLE_REASONS },
+    /** Name credited on its jobs ("via …"), when its terms ask for it. */
+    attribution: { type: String },
+    /** Searches the career-page links the user gives. */
+    acceptsUrls: { type: Boolean, default: false },
     // Health, shown in admin (updated by research runs, TIQ-16).
     lastSuccessAt: { type: Date },
     errorRate: { type: Number, default: 0 },
@@ -67,6 +76,22 @@ export function toPublicJobSource(source: JobSourceDocument) {
     languages: source.languages,
     logoUrl: source.logoUrl ?? null,
     website: source.website ?? null,
+    attribution: source.attribution ?? null,
+    acceptsUrls: source.acceptsUrls === true,
+    status: 'operational' as const,
+  };
+}
+
+/** A listed source that can't be searched: shown, not selectable, with the reason. */
+export function toUnavailableJobSource(source: JobSourceDocument) {
+  return {
+    key: source.key,
+    name: source.name,
+    type: source.type,
+    regions: source.regions,
+    website: source.website ?? null,
+    status: 'unavailable' as const,
+    reason: source.unavailableReason ?? 'not_enabled',
   };
 }
 

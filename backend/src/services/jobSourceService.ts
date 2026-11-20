@@ -1,10 +1,12 @@
 import type { Request } from 'express';
 import { AppError } from '../lib/errors.js';
+import { DEFAULT_SOURCES } from '../jobs/sources/catalog.js';
 import { hasAdapter } from '../jobs/sources/registry.js';
 import {
   JobSource,
   toAdminJobSource,
   toPublicJobSource,
+  toUnavailableJobSource,
   type EmployerType,
 } from '../models/JobSource.js';
 import { DEFAULT_REGIONS, Region, toPublicRegion, type RegionKey } from '../models/Region.js';
@@ -26,6 +28,22 @@ export async function ensureDefaultRegions() {
   );
 }
 
+/**
+ * Adds the starting source catalog (jobs/sources/catalog.ts) when missing. Never
+ * overwrites a source an admin has changed, and never switches one on.
+ */
+export async function ensureDefaultSources() {
+  await JobSource.bulkWrite(
+    DEFAULT_SOURCES.map((source) => ({
+      updateOne: {
+        filter: { key: source.key },
+        update: { $setOnInsert: { ...source, enabled: false } },
+        upsert: true,
+      },
+    })),
+  );
+}
+
 /** GET /regions: every region in display order, with its city suggestions. */
 export async function listRegions() {
   const regions = await Region.find().sort({ order: 1 });
@@ -37,10 +55,19 @@ export async function listRegions() {
  * least one of `regions`, in display order (priority, then name).
  */
 export async function listEnabledSources(regions?: RegionKey[]) {
-  const filter = regions?.length ? { enabled: true, regions: { $in: regions } } : { enabled: true };
-  const sources = await JobSource.find(filter).sort({ priority: 1, name: 1 });
-  // A source whose adapter is no longer in the server can't be searched, so it isn't offered.
-  return sources.filter((s) => hasAdapter(s.key)).map(toPublicJobSource);
+  const filter = regions?.length ? { regions: { $in: regions } } : {};
+  const all = await JobSource.find({ ...filter, $or: [{ enabled: true }, { listed: true }] }).sort({
+    priority: 1,
+    name: 1,
+  });
+  // Operational = switched on, terms checked, adapter in the server. Anything
+  // else that is listed is shown as unavailable with its reason, never searched.
+  const operational = (s: (typeof all)[number]) =>
+    s.enabled && !!s.termsCheckedAt && hasAdapter(s.key) && !s.unavailableReason;
+  return {
+    sources: all.filter(operational).map(toPublicJobSource),
+    unavailable: all.filter((s) => s.listed && !operational(s)).map(toUnavailableJobSource),
+  };
 }
 
 /** GET /admin/job-sources: every source, enabled or not, with health, terms check and adapter. */
@@ -84,6 +111,9 @@ export async function updateSource(req: Request, key: string, changes: SourceCha
 
   const before = toAdminJobSource(source);
   if (changes.enabled !== undefined) source.enabled = changes.enabled;
+  // Switching on (terms checked, adapter present) is the admin's decision that the
+  // old reason (e.g. waiting for approval) no longer applies.
+  if (changes.enabled === true) source.unavailableReason = undefined;
   if (changes.regions !== undefined) source.regions = changes.regions;
   if (changes.employerTypes !== undefined) source.employerTypes = changes.employerTypes;
   if (changes.priority !== undefined) source.priority = changes.priority;
