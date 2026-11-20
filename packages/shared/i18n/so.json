@@ -1239,6 +1239,45 @@
       "again": "Mar kale tababar",
       "delete": "Tirtir tababarkan",
       "practiseForJob": "Ku tababar wareysi shaqadan"
+    },
+    "reports": {
+      "subtitle": "Hawlahaaga KOBANIQ, laga tiriyay waxaad keydisay.",
+      "periods": {
+        "hour": "Saacaddan",
+        "day": "Maanta",
+        "week": "Toddobaadkan",
+        "month": "Bishan",
+        "year": "Sannadkan"
+      },
+      "previous": {
+        "hour": "Saacaddii hore",
+        "day": "Shalay",
+        "week": "Toddobaadkii hore",
+        "month": "Bishii hore",
+        "year": "Sannadkii hore"
+      },
+      "none": "—",
+      "loadError": "Warbixintaada lama soo saari karin. Hoos u jiid si aad mar kale isugu daydo.",
+      "sections": {
+        "quizzes": "Imtixaannada xirfadaha",
+        "interviews": "Tababarka wareysiga",
+        "cvs": "CV-yada",
+        "jobs": "Shaqooyinka"
+      },
+      "quizzesFinished": "Imtixaanno la dhammeeyay",
+      "quizzesAverage": "Celceliska dhibcaha imtixaanka",
+      "interviewsFinished": "Tababarro la dhammeeyay",
+      "interviewsAnswers": "Su’aalo laga jawaabay",
+      "interviewsAverage": "Celceliska dhibcaha jawaabaha",
+      "cvsCreated": "CV-yo la sameeyay",
+      "cvsApproved": "CV-yo la oggolaaday",
+      "cvsExported": "CV-yo loo soo dejiyay PDF ahaan",
+      "jobsSearches": "Raadinno shaqo oo cusub",
+      "jobsFound": "Shaqooyin ay raadintaadu heshay",
+      "jobsRecommended": "Shaqooyin kugu habboon",
+      "jobsSaved": "Shaqooyin la keydiyay",
+      "jobAdsSaved": "Xayeysiisyo shaqo oo lagu daray",
+      "note": "Tiro kasta waxaa laga tiriyay hawlahaaga la keydiyay — waxba lama qiyaasin. Codsiyada lama tirin: waxaad ka codsanaysaa bogga shaqo-bixiyaha. Maalmuhu waxay ka bilaabmaan saqda dhexe ee waqti-aaggaaga ({{timeZone}})."
     }
   }
 }
