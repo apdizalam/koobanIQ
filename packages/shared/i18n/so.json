@@ -19,6 +19,14 @@
       "education": "Waxbarasho",
       "health": "Caafimaad",
       "other": "Kale"
+    },
+    "sourceReasons": {
+      "needs_approval": "Waxaa la sugayaa oggolaansho ilaha (helitaan API bilaash ah ayaa la codsaday).",
+      "no_free_api": "Ma jiro hab bilaash ah oo la oggol yahay oo lagu akhriyo shaqooyinkiisa dadweynaha; KOBANIQ kama raadiso.",
+      "needs_permission": "Shuruudihiisu ma oggola isticmaalkan iyada oo aan ilaha laga helin oggolaansho qoraal ah.",
+      "terms_unverified": "Shuruudihiisa weli lama hubin karin, sidaa darteed lagama raadiyo.",
+      "not_relevant": "Waa bilaash, laakiin shaqooyinkiisu uma furna musharixiinta Somaliland ama Soomaaliya.",
+      "not_enabled": "Waa diyaar, laakiin weli lama shidin."
     }
   },
   "server": {
@@ -1013,6 +1021,140 @@
         "toSkills": "Arag astaanta xirfadahaaga",
         "another": "Gal imtixaan kale",
         "backToJob": "Ku noqo shaqada"
+      }
+    },
+    "jobs": {
+      "subtitle": "Hel shaqooyin ku habboon xirfadahaaga iyo khibraddaada, iyo sababaha.",
+      "modes": {
+        "search": "Raadi shaqooyin",
+        "research": "Hel shaqooyin cusub",
+        "saved": "La keydiyay"
+      },
+      "save": "Keydi",
+      "saved": "La keydiyay",
+      "unsave": "Ka saar kuwa la keydiyay",
+      "saveFailed": "Lama beddeli karin shaqooyinkaaga la keydiyay. Isku day mar kale.",
+      "savedTitle_one": "{{count}} shaqo oo la keydiyay",
+      "savedTitle_other": "{{count}} shaqo oo la keydiyay",
+      "savedEmptyTitle": "Weli shaqo lama keydin",
+      "savedEmptyBody": "Riix Keydi shaqo si ay halkan ugu jirto.",
+      "search": {
+        "intro": "Waxay ka raadisaa shaqooyinka KOBANIQ horay u heshay. Shaqooyinka furan oo keliya ayaa la muujiyaa.",
+        "q": "Magaca shaqada, xirfad ama shaqo-bixiye (ikhtiyaari)",
+        "regions": "Gobollada",
+        "regionsHint": "Haddii aanad dooran: gobollada aad door bidday. Shaqooyinka fogaanta had iyo jeer waa ku jiraan.",
+        "jobTypes": "Nooca shaqada",
+        "button": "Raadi shaqooyin",
+        "searched_one": "{{count}} shaqo furan ayaa la hubiyay.",
+        "searched_other": "{{count}} shaqo oo furan ayaa la hubiyay.",
+        "noneStoredTitle": "Ma jiraan shaqooyin la keydiyay oo ku habboon shaandhooyinkan",
+        "noneStoredBody": "KOBANIQ waxay muujisaa oo keliya shaqooyin dhab ah oo ay heshay. Isku day shaandhooyin kale, ama bilow raadin cusub oo ilaha shaqada ah."
+      },
+      "research": {
+        "intro": "Waxay hadda ka raadisaa ilaha aad doorato. Waxay ka socotaa gadaal, waxayna qaadan kartaa daqiiqad.",
+        "regions": "Gobollada",
+        "sources": "Ilaha shaqada",
+        "noSources": "Hadda ma jiro il shaqo oo laga raadin karo gobolladan.",
+        "attribution": "Shaqooyin ka yimid {{name}}",
+        "links": "Xiriiriyeyaasha boggaga shaqada",
+        "linksHint": "Ilaa {{max}} bog shaqo oo dadweyne ah (mid saddar kasta). Waxaa la akhriyaa oo keliya boggaga daabaca xogta shaqada oo oggol.",
+        "linksNeeded": "Ku dar ugu yaraan hal xiriiriye bog shaqo.",
+        "linksTooMany": "Ugu badnaan {{max}} xiriiriye.",
+        "unavailableTitle": "Lama heli karo",
+        "title": "Magaca shaqada (ikhtiyaari)",
+        "titleHint": "Tusaale: Sarkaalka xogta",
+        "start": "Bilow raadinta"
+      },
+      "run": {
+        "runningTitle": "Shaqooyin ayaa la raadinayaa",
+        "doneTitle": "Raadintu way dhammaatay",
+        "status": {
+          "running": "Ilaha aad dooratay ayaa la hubinayaa…",
+          "completed": "Ilaha oo dhan waa la hubiyay.",
+          "partial": "Ilaha qaar lama akhriyi karin; kuwa kale waa la hubiyay.",
+          "failed": "Ilaha lama akhriyi karin."
+        },
+        "wait": "Waad ka bixi kartaa shaashaddan; raadintu way socotaa.",
+        "sourceWaiting": "Sugitaan…",
+        "sourceDone": "{{found}} shaqo ayaa la helay ({{new}} aan hore loo arag)",
+        "sourceFailed": "Lama akhriyi karin: {{error}}",
+        "summary": "Wadar ahaan {{found}} shaqo ayaa la helay, {{new}} ka mid ah KOBANIQ hore uma arag.",
+        "failed": "Markan il lama akhriyi karin. Isku day mar dambe."
+      },
+      "results": {
+        "recommended_one": "{{count}} shaqo oo kugu habboon",
+        "recommended_other": "{{count}} shaqo oo kugu habboon",
+        "noneTitle": "Lama helin shaqooyin ku habboon",
+        "noneBody": "Shaqooyinkan midna si fiican uguma habboona xirfadahaaga iyo khibraddaada. Ma muujinno shaqooyin aan ku habboonayn sidii iyagoo ku habboon.",
+        "scoreNote": "Dhibcuhu waxay muujinayaan inta shaqadu la xiriirto astaantaada, ma aha fursadda lagu shaqaaleysiinayo.",
+        "showLower_one": "Muuji {{count}} shaqo oo ka hooseysa",
+        "showLower_other": "Muuji {{count}} shaqo oo ka hooseeya",
+        "lowerTitle": "Shaqooyin aan si fiican ugu habboonayn",
+        "lowerBody": "Shaqooyinkan si yar ayay kuugu habboon yihiin. Mid kastaa wuxuu sheegayaa sababta."
+      },
+      "detail": {
+        "loading": "Shaqo",
+        "notRecommended": "Shaqadani si fiican uguma habboona astaantaada. Hoos ka eeg sababta.",
+        "why": "Sababta dhibcahan",
+        "missingRequired": "Xirfadaha muhiimka ah ee aadan weli muujin",
+        "missingPreferred": "Xirfadaha faa’iidada leh ee aadan weli muujin",
+        "level": "Heerka xirfadeed",
+        "jobLevel": "Shaqadan: {{level}}",
+        "yourLevel": "Adiga: {{level}}",
+        "confidence": {
+          "estimated": "Heerkaagu waa qiyaas: khibradaha qaar ma laha sharaxaadda mas’uuliyaadkaaga.",
+          "unknown": "Heerkaaga lama yaqaan: ku dar khibraddaada astaantaada."
+        },
+        "facts": "Faahfaahin",
+        "deadline": "Codso ka hor {{date}}",
+        "noDeadline": "Ilaha ma bixin waqti kama dambeys ah",
+        "posted": "Ilaha ayaa daabacay {{date}}",
+        "notPosted": "Ilaha ma sheegin taariikhda daabacaadda. KOBANIQ markii ugu horreysay waxay heshay {{date}}.",
+        "source": "Ilaha: {{source}}",
+        "sourceWithSite": "Ilaha: {{source}} ({{site}})",
+        "description": "Sharaxaad",
+        "showAll": "Muuji dhammaan",
+        "apply": "Ka codso bogga ilaha",
+        "applyNote": "Waxaad ka codsanaysaa bogga shaqo-bixiyaha ama ilaha. KOBANIQ marnaba kuma codsato adiga."
+      },
+      "level": {
+        "entry": "Heerka bilowga",
+        "junior": "Hoose",
+        "intermediate": "Dhexe",
+        "senior": "Sare",
+        "expert": "Khabiir",
+        "unknown": "Lama yaqaan"
+      },
+      "sourceNames": {
+        "career-pages": "Boggaga shaqada ee shirkadaha & NGO-yada",
+        "reliefweb": "ReliefWeb",
+        "arbeitnow": "Arbeitnow",
+        "un-careers": "UN Careers",
+        "remotive": "Remotive",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook"
+      },
+      "reasons": {
+        "skillsMatched": "Waxaad leedahay xirfado ay shaqadu u baahan tahay: {{skills}}.",
+        "skillsAssessed": "Waxaa xaqiijiyay natiijooyinka imtixaankaaga: {{skills}}.",
+        "skillsMissing": "Xirfadaha muhiimka ah ee aadan weli muujin: {{skills}}.",
+        "skillsNotStated": "Shaqadu ma taxdo xirfado cad, sidaa darteed dhibcuhu waxay isticmaalaan magaca shaqada.",
+        "levelUnknown": "Heerkaaga xirfadeed weli lama yaqaan.",
+        "levelNotStated": "Shaqadu ma sheegto heerka xirfadeed ee ay u socoto.",
+        "levelEstimated": "Heerkaaga xirfadeed waa qiyaas.",
+        "level_fits": "Heerkaagu ({{userLevel}}) wuu ku habboon yahay shaqadan {{jobLevel}}.",
+        "level_stretch": "Shaqadan {{jobLevel}} waa hal tallaabo ka sarreysa heerkaaga ({{userLevel}}).",
+        "level_above": "Shaqadan {{jobLevel}} aad bay uga sarreysaa heerkaaga ({{userLevel}}).",
+        "level_below": "Shaqadan {{jobLevel}} way ka hooseysaa heerkaaga ({{userLevel}}).",
+        "level_unknown": "Heerka xirfadeed ee shaqada laguma barbardhigi karin kaaga.",
+        "relevantYearsShort": "Waxay u baahan tahay {{required}} sano oo khibrad la xiriirta; waxaad muujisaa qiyaastii {{related}}.",
+        "inRegion": "Waxay ku taal {{region}}, gobol aad dooratay.",
+        "remote": "Shaqo fogaan ah oo u furan gobolkaaga.",
+        "inCity": "Waxay ku taal {{city}}, magaalo aad door bidday.",
+        "titleWanted": "Magaceedu wuxuu la mid yahay magac shaqo oo aad rabto.",
+        "notRecommendedLevel": "Laguma talinayo: shaqadu aad bay uga sarreysaa heerkaaga xirfadeed.",
+        "notRecommendedSkills": "Laguma talinayo: xirfado muhiim ah ayaa maqan.",
+        "notRecommendedFit": "Laguma talinayo: ku habboonaanta guud waa hoose."
       }
     }
   }
