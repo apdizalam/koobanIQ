@@ -7,7 +7,9 @@ import { createApp } from '../src/app.js';
 import { RUN_ID } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { AuditLog } from '../src/models/AuditLog.js';
+import { Assessment } from '../src/models/Assessment.js';
 import { RefreshToken } from '../src/models/RefreshToken.js';
+import { ResearchRun } from '../src/models/ResearchRun.js';
 import { Skill } from '../src/models/Skill.js';
 import { User } from '../src/models/User.js';
 import { recordAssessment } from '../src/services/skillService.js';
@@ -231,15 +233,36 @@ test('messages come in the user’s language (Somali)', async () => {
   assert.equal(again.body.error?.message, 'Xirfaddan horay ayaad u haysataa. Wax ka beddel halkii');
 });
 
-test('deleting an account (admin) deletes its skills too', async () => {
+test('deleting an account (admin) deletes its skills, quizzes and job searches too', async () => {
   const email = 'gone@skills.invalid';
   const token = await account(email);
   await call(token, 'POST', '/skills', { name: 'SQL', selfLevel: 'mid' });
   const id = await userId(email);
   assert.equal(await Skill.countDocuments({ userId: id }), 1);
+  const skillId = (await Skill.findOne({ userId: id }))!._id;
+  await Assessment.create({
+    userId: id,
+    skillId,
+    skillName: 'SQL',
+    language: 'en',
+    length: 5,
+    startDifficulty: 'normal',
+    bank: [],
+    state: { difficulty: 'normal' },
+  });
+  await ResearchRun.create({
+    userId: id,
+    status: 'completed',
+    sourceKeys: ['test-a'],
+    regions: ['somaliland'],
+    filters: { titles: ['SQL analyst'] },
+    startedAt: new Date(),
+  });
 
   await promoteToAdmin('omar@skills.invalid');
   const admin = await account('omar@skills.invalid');
   assert.equal((await call(admin, 'DELETE', `/admin/users/${id}`)).status, 204);
   assert.equal(await Skill.countDocuments({ userId: id }), 0);
+  assert.equal(await Assessment.countDocuments({ userId: id }), 0);
+  assert.equal(await ResearchRun.countDocuments({ userId: id }), 0);
 });

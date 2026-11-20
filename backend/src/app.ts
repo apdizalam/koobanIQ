@@ -11,7 +11,7 @@ import { jobDescriptionsRouter } from './routes/jobDescriptions.js';
 import { jobSourcesRouter, regionsRouter } from './routes/jobSources.js';
 import { meRouter } from './routes/me.js';
 import { profileRouter } from './routes/profile.js';
-import { researchRouter } from './routes/research.js';
+import { jobsRouter, researchRouter } from './routes/research.js';
 import { skillsRouter } from './routes/skills.js';
 
 export function createApp() {
@@ -33,6 +33,7 @@ export function createApp() {
   app.use('/api/v1/regions', regionsRouter);
   app.use('/api/v1/job-sources', jobSourcesRouter);
   app.use('/api/v1/research', researchRouter);
+  app.use('/api/v1/jobs', jobsRouter);
   app.use('/api/v1/admin', adminRouter);
 
   app.use(notFound);

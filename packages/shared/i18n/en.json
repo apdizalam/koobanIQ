@@ -73,7 +73,10 @@
       "CV_NOT_APPROVED": "Approve the CV before downloading it as a PDF",
       "ASSESSMENT_NOT_FOUND": "Quiz not found",
       "ASSESSMENT_NOT_IN_PROGRESS": "This quiz is already finished",
-      "QUESTION_NOT_CURRENT": "This question was already answered"
+      "QUESTION_NOT_CURRENT": "This question was already answered",
+      "RESEARCH_IN_PROGRESS": "A job search is already running. Wait for it to finish",
+      "RUN_NOT_FOUND": "Job search not found",
+      "JOB_NOT_FOUND": "Job not found"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
