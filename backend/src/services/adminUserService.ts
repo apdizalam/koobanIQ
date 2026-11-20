@@ -6,6 +6,7 @@ import { deleteAssessments } from './assessmentService.js';
 import { deleteInterviews } from './interviewService.js';
 import { deleteJobData } from './jobMatchService.js';
 import { deleteRuns } from './researchService.js';
+import { deleteSchedules } from './scheduleService.js';
 import { deleteSkills } from './skillService.js';
 import type { Request } from 'express';
 import { Types } from 'mongoose';
@@ -179,6 +180,7 @@ export async function deleteUser(req: Request, id: string) {
   await deleteSkills(user._id);
   await deleteAssessments(user._id);
   await deleteInterviews(user._id);
+  await deleteSchedules(user._id);
   await deleteRuns(user._id);
   await deleteJobData(user._id);
   await deleteUsageRecords(user._id);

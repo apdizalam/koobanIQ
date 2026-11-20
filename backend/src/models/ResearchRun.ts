@@ -54,6 +54,8 @@ const researchRunSchema = new Schema(
     jobIds: { type: [{ type: Types.ObjectId, ref: 'Job' }], default: [] },
     /** Why the whole run failed (e.g. the server restarted during it). */
     error: { type: String },
+    /** Set when a schedule started this run (TIQ-21); null for a search the user started. */
+    scheduleId: { type: Types.ObjectId, ref: 'ResearchSchedule', default: null },
     startedAt: { type: Date, required: true },
     finishedAt: { type: Date },
   },
@@ -88,6 +90,7 @@ export function toPublicRun(run: ResearchRunDocument) {
     jobsNew: run.jobsNew,
     duplicates: run.duplicates,
     error: run.error ?? null,
+    scheduleId: run.scheduleId ? String(run.scheduleId) : null,
     startedAt: run.startedAt,
     finishedAt: run.finishedAt ?? null,
   };

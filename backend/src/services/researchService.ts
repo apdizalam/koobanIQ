@@ -84,18 +84,30 @@ async function searchWithRetry(key: string, query: ResearchQuery) {
  * at once ("running"); the app follows it with GET /research/runs/:id. One
  * run at a time per user.
  */
-export async function startResearch(userId: Types.ObjectId, request: ResearchRequest) {
-  const sourceKeys = [...new Set(request.sourceKeys.map((k) => k.toLowerCase()))];
-  if (sourceKeys.length === 0) {
-    throw new AppError(400, 'NO_SOURCES_SELECTED', 'Choose at least one job source');
-  }
-  const sources = await JobSource.find({ key: { $in: sourceKeys }, enabled: true });
-  // Only operational sources: switched on, terms checked, adapter here, no open reason.
-  const usable = new Set(
+/**
+ * Of these source keys, the ones that can be searched now: switched on, terms
+ * checked, adapter in the server, no open reason (also used by schedules,
+ * which skip a source an admin switched off).
+ */
+export async function operationalSourceKeys(keys: string[]) {
+  const sources = await JobSource.find({ key: { $in: keys }, enabled: true });
+  return new Set(
     sources
       .filter((s) => getAdapter(s.key) && s.termsCheckedAt && !s.unavailableReason)
       .map((s) => s.key),
   );
+}
+
+export async function startResearch(
+  userId: Types.ObjectId,
+  request: ResearchRequest,
+  options: { scheduleId?: Types.ObjectId } = {},
+) {
+  const sourceKeys = [...new Set(request.sourceKeys.map((k) => k.toLowerCase()))];
+  if (sourceKeys.length === 0) {
+    throw new AppError(400, 'NO_SOURCES_SELECTED', 'Choose at least one job source');
+  }
+  const usable = await operationalSourceKeys(sourceKeys);
   const unavailable = sourceKeys.filter((k) => !usable.has(k));
   if (unavailable.length > 0) {
     throw new AppError(
@@ -116,6 +128,7 @@ export async function startResearch(userId: Types.ObjectId, request: ResearchReq
     regions,
     filters: request.filters,
     customUrls: request.customUrls ?? [],
+    scheduleId: options.scheduleId ?? null,
     startedAt: new Date(),
   });
   const query: ResearchQuery = {

@@ -3,6 +3,7 @@ import { connectDB, disconnectDB } from './lib/db.js';
 import { env } from './config/env.js';
 import { ensureDefaultRegions, ensureDefaultSources } from './services/jobSourceService.js';
 import { recoverStuckRuns } from './services/researchService.js';
+import { startScheduler, stopScheduler } from './services/scheduleService.js';
 
 async function main() {
   await connectDB();
@@ -18,8 +19,12 @@ async function main() {
     console.log(`KOBANIQ API listening on http://localhost:${env.port} (${env.nodeEnv})`);
   });
 
+  // Scheduled searches (TIQ-21): checks every minute for searches whose local time has come.
+  startScheduler();
+
   const shutdown = async (signal: string) => {
     console.log(`${signal} received, shutting down`);
+    stopScheduler();
     server.close();
     await disconnectDB();
     process.exit(0);
