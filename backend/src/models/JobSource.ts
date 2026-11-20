@@ -97,8 +97,13 @@ export function toUnavailableJobSource(source: JobSourceDocument) {
 
 /** What admins see: everything, including health and the terms check. */
 export function toAdminJobSource(source: JobSourceDocument) {
+  // The app's "status" is worked out per request (adapter, terms, reason); admins see the parts.
+  const { status: _status, ...shown } = toPublicJobSource(source);
+  void _status;
   return {
-    ...toPublicJobSource(source),
+    ...shown,
+    listed: source.listed === true,
+    unavailableReason: source.unavailableReason ?? null,
     connection: source.connection,
     enabled: source.enabled,
     priority: source.priority,
