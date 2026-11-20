@@ -73,7 +73,10 @@
       "CV_NOT_APPROVED": "Ansixi CV-ga ka hor intaadan u soo dejin PDF ahaan",
       "ASSESSMENT_NOT_FOUND": "Imtixaanka lama helin",
       "ASSESSMENT_NOT_IN_PROGRESS": "Imtixaankan horay ayuu u dhammaaday",
-      "QUESTION_NOT_CURRENT": "Su’aashan horay ayaa looga jawaabay"
+      "QUESTION_NOT_CURRENT": "Su’aashan horay ayaa looga jawaabay",
+      "RESEARCH_IN_PROGRESS": "Raadin shaqo ayaa hadda socota. Sug inta ay dhammaanayso",
+      "RUN_NOT_FOUND": "Raadinta shaqada lama helin",
+      "JOB_NOT_FOUND": "Shaqada lama helin"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",

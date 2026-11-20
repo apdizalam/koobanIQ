@@ -2863,6 +2863,10 @@
     "state": "pending",
     "en": "Job description not found"
   },
+  "server.errors.JOB_NOT_FOUND": {
+    "state": "pending",
+    "en": "Job not found"
+  },
   "server.errors.JOB_SOURCE_NOT_FOUND": {
     "state": "pending",
     "en": "Job source not found"
@@ -2910,6 +2914,14 @@
   "server.errors.REGION_NOT_FOUND": {
     "state": "pending",
     "en": "Region not found"
+  },
+  "server.errors.RESEARCH_IN_PROGRESS": {
+    "state": "pending",
+    "en": "A job search is already running. Wait for it to finish"
+  },
+  "server.errors.RUN_NOT_FOUND": {
+    "state": "pending",
+    "en": "Job search not found"
   },
   "server.errors.SETTING_UNCHANGED": {
     "state": "pending",
