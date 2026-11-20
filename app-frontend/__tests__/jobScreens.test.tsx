@@ -176,6 +176,7 @@ function api(method: string, path: string, query: URLSearchParams, body: unknown
       },
       recommended: done ? [GOOD] : [],
       lowerMatch: done ? [LOWER] : [],
+      hiddenByFilters: done ? 3 : 0,
     });
   }
   const one = /^\/jobs\/(j\d)(\/save)?$/.exec(path);
@@ -251,6 +252,9 @@ describe('TIQ-18: job search helpers', () => {
     expect(
       storedSearchQuery({ q: ' data & M&E ', regions: ['somalia'], jobTypes: [], lower: true }),
     ).toBe('?q=data%20%26%20M%26E&regions=somalia&lower=1');
+    expect(
+      storedSearchQuery({ city: ' Hargeisa ', employerTypes: ['ngo', 'un_agency'], jobTypes: [] }),
+    ).toBe('?city=Hargeisa&employerTypes=ngo%2Cun_agency');
   });
 
   it('reads career-page links one per line, without repeats', () => {
@@ -266,10 +270,15 @@ describe('TIQ-18: Jobs tab', () => {
     await type('jobs-q', 'data');
     await press('search-region-somalia');
     await press('search-jobtype-full_time');
+    await type('search-city', 'Hargeisa');
+    await press('search-employer-ngo');
+    await press('search-employer-un_agency');
     await press('jobs-search');
 
     const search = calls.find((c) => c.route === 'GET /jobs/search')!;
-    expect(search.query).toBe('?q=data&regions=somalia&jobTypes=full_time');
+    expect(search.query).toBe(
+      '?q=data&regions=somalia&city=Hargeisa&employerTypes=ngo%2Cun_agency&jobTypes=full_time',
+    );
     expect(screen.getByTestId('job-rec-j1')).toBeTruthy();
     expect(screen.getByText('1 job that fits you')).toBeTruthy();
     // Why it matched, in words (an unknown reason key is left out, not shown raw).
@@ -348,12 +357,14 @@ describe('TIQ-18: Jobs tab', () => {
     });
     await type('jobs-links', 'https://boards.greenhouse.io/example');
     await type('jobs-title', 'Data assistant');
+    await type('research-city', 'Hargeisa');
+    await press('research-employer-ngo');
     await press('jobs-start');
 
     expect(calls.find((c) => c.route === 'POST /research/run')!.body).toEqual({
       sourceKeys: ['career-pages'],
       regions: ['somaliland', 'somalia'],
-      filters: { titles: ['Data assistant'] },
+      filters: { titles: ['Data assistant'], city: 'Hargeisa', employerTypes: ['ngo'] },
       customUrls: ['https://boards.greenhouse.io/example'],
     });
     // Progress screen: running first, checked again on a timer until finished.
@@ -369,6 +380,9 @@ describe('TIQ-18: Jobs tab', () => {
       screen.getByText('Some sources could not be read; the others were checked.'),
     ).toBeTruthy();
     expect(screen.getByText('2 jobs found (2 not seen before)')).toBeTruthy();
+    expect(screen.getByTestId('run-hidden').props.children).toBe(
+      '3 jobs found did not match your filters (they are kept for later searches).',
+    );
     expect(screen.getByTestId('job-rec-j1')).toBeTruthy();
     expect(screen.queryByTestId('job-low-j2')).toBeNull();
     await press('jobs-show-lower');

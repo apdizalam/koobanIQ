@@ -2023,6 +2023,22 @@
     "state": "pending",
     "en": "You: {{level}}"
   },
+  "mobile.jobs.filters.city": {
+    "state": "pending",
+    "en": "City (optional)"
+  },
+  "mobile.jobs.filters.cityHint": {
+    "state": "pending",
+    "en": "For example: Hargeisa. Only jobs in this city are shown."
+  },
+  "mobile.jobs.filters.employerTypes": {
+    "state": "pending",
+    "en": "Employer type"
+  },
+  "mobile.jobs.filters.employerTypesHint": {
+    "state": "pending",
+    "en": "None chosen: all employers. Jobs from career-page links are listed as “Other”."
+  },
   "mobile.jobs.level.entry": {
     "state": "pending",
     "en": "Entry level"
@@ -2234,6 +2250,14 @@
   "mobile.jobs.run.failed": {
     "state": "pending",
     "en": "No source could be read this time. Try again later."
+  },
+  "mobile.jobs.run.hiddenByFilters_one": {
+    "state": "pending",
+    "en": "{{count}} job found did not match your filters (it is kept for later searches)."
+  },
+  "mobile.jobs.run.hiddenByFilters_other": {
+    "state": "pending",
+    "en": "{{count}} jobs found did not match your filters (they are kept for later searches)."
   },
   "mobile.jobs.run.runningTitle": {
     "state": "pending",

@@ -22,7 +22,7 @@ import {
 } from '../../../services/jobsApi';
 import { useTheme } from '../../../theme';
 import type { JobSource, StoredJobResults, UnavailableJobSource } from '../../../types/jobs';
-import { JOB_TYPES, REGION_KEYS, type RegionKey } from '../../../types/profile';
+import { EMPLOYER_TYPES, JOB_TYPES, REGION_KEYS, type RegionKey } from '../../../types/profile';
 
 type Mode = 'search' | 'research' | 'saved';
 const MODES: Mode[] = ['search', 'research', 'saved'];
@@ -31,6 +31,15 @@ const MAX_LINKS = 5;
 
 const toggle = <T,>(list: T[], value: T) =>
   list.includes(value) ? list.filter((v) => v !== value) : [...list, value];
+
+/** The filters of a new search (only those the user set). */
+function researchFilters(title: string, city: string, employerTypes: string[]) {
+  const filters: { titles?: string[]; city?: string; employerTypes?: string[] } = {};
+  if (title.trim()) filters.titles = [title.trim()];
+  if (city.trim()) filters.city = city.trim();
+  if (employerTypes.length > 0) filters.employerTypes = employerTypes;
+  return Object.keys(filters).length > 0 ? filters : undefined;
+}
 
 /**
  * Jobs tab (TIQ-18), two independent ways to find jobs:
@@ -57,6 +66,8 @@ export default function JobsTab() {
   const [q, setQ] = useState('');
   const [regions, setRegions] = useState<RegionKey[]>([]);
   const [jobTypes, setJobTypes] = useState<string[]>([]);
+  const [city, setCity] = useState('');
+  const [employerTypes, setEmployerTypes] = useState<string[]>([]);
   const [results, setResults] = useState<StoredJobResults | null>(null);
 
   async function searchStored(lower = false) {
@@ -66,6 +77,8 @@ export default function JobsTab() {
       const data = await searchStoredJobs(await getAccessToken(), {
         q,
         regions,
+        city,
+        employerTypes,
         jobTypes,
         lower,
       });
@@ -88,6 +101,8 @@ export default function JobsTab() {
   const [chosen, setChosen] = useState<string[]>([]);
   const [links, setLinks] = useState('');
   const [title, setTitle] = useState('');
+  const [researchCity, setResearchCity] = useState('');
+  const [researchEmployerTypes, setResearchEmployerTypes] = useState<string[]>([]);
 
   // The sources for the chosen regions, loaded when this part is open.
   useEffect(() => {
@@ -131,7 +146,7 @@ export default function JobsTab() {
       const { run } = await startResearch(await getAccessToken(), {
         sourceKeys: chosen,
         regions: researchRegions,
-        filters: title.trim() ? { titles: [title.trim()] } : undefined,
+        filters: researchFilters(title, researchCity, researchEmployerTypes),
         customUrls: linkSource ? linkList : undefined,
       });
       router.push({ pathname: '/research/[id]', params: { id: run.id } });
@@ -161,6 +176,42 @@ export default function JobsTab() {
         />
       ))}
     </View>
+  );
+  /** City and employer type: the same filters for both ways of searching. */
+  const placeAndEmployer = (
+    cityValue: string,
+    setCityValue: (v: string) => void,
+    types: string[],
+    setTypes: (v: string[]) => void,
+    prefix: string,
+  ) => (
+    <>
+      <Input
+        testID={`${prefix}-city`}
+        label={t('mobile.jobs.filters.city')}
+        hint={t('mobile.jobs.filters.cityHint')}
+        value={cityValue}
+        onChangeText={setCityValue}
+        maxLength={60}
+      />
+      <View style={{ gap: spacing.sm }}>
+        {heading(t('mobile.jobs.filters.employerTypes'))}
+        <View style={row}>
+          {EMPLOYER_TYPES.map((et) => (
+            <Chip
+              key={et}
+              testID={`${prefix}-employer-${et}`}
+              label={t(`common.employerType.${et}`)}
+              selected={types.includes(et)}
+              onPress={() => setTypes(toggle(types, et))}
+            />
+          ))}
+        </View>
+        <Text style={[typography.bodySmall, { color: colors.textMuted }]}>
+          {t('mobile.jobs.filters.employerTypesHint')}
+        </Text>
+      </View>
+    </>
   );
 
   return (
@@ -221,6 +272,7 @@ export default function JobsTab() {
               ))}
             </View>
           </View>
+          {placeAndEmployer(city, setCity, employerTypes, setEmployerTypes, 'search')}
           <Button
             testID="jobs-search"
             label={t('mobile.jobs.search.button')}
@@ -338,6 +390,13 @@ export default function JobsTab() {
             onChangeText={setTitle}
             maxLength={100}
           />
+          {placeAndEmployer(
+            researchCity,
+            setResearchCity,
+            researchEmployerTypes,
+            setResearchEmployerTypes,
+            'research',
+          )}
           <Button
             testID="jobs-start"
             label={t('mobile.jobs.research.start')}
