@@ -84,7 +84,9 @@
       "QUESTION_NOT_CURRENT": "This question was already answered",
       "RESEARCH_IN_PROGRESS": "A job search is already running. Wait for it to finish",
       "RUN_NOT_FOUND": "Job search not found",
-      "JOB_NOT_FOUND": "Job not found"
+      "JOB_NOT_FOUND": "Job not found",
+      "INTERVIEW_NOT_FOUND": "Interview practice not found",
+      "INTERVIEW_NOT_IN_PROGRESS": "This practice is already finished"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -133,7 +135,11 @@
       "customUrlsInvalid": "Give up to 5 web links",
       "customUrlUnsafe": "Use public http or https links only",
       "customUrlsRequired": "Add at least one career-page link for this source",
-      "customUrlsWithoutSource": "Links need the \"Company & NGO career pages\" source"
+      "customUrlsWithoutSource": "Links need the \"Company & NGO career pages\" source",
+      "interviewTypeInvalid": "Choose a practice type",
+      "interviewLengthInvalid": "A practice has 3, 5 or 10 questions",
+      "interviewJobRequired": "Choose a saved job ad or a job for this practice",
+      "interviewOneJob": "Choose either a job ad or a job, not both"
     },
     "email": {
       "verifyEmail": {

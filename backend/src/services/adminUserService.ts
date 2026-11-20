@@ -3,6 +3,7 @@ import { deleteCvs } from './cvService.js';
 import { deleteJobDescriptions } from './jobDescriptionService.js';
 import { deleteProfile } from './profileService.js';
 import { deleteAssessments } from './assessmentService.js';
+import { deleteInterviews } from './interviewService.js';
 import { deleteJobData } from './jobMatchService.js';
 import { deleteRuns } from './researchService.js';
 import { deleteSkills } from './skillService.js';
@@ -177,6 +178,7 @@ export async function deleteUser(req: Request, id: string) {
   await deleteProfile(user._id);
   await deleteSkills(user._id);
   await deleteAssessments(user._id);
+  await deleteInterviews(user._id);
   await deleteRuns(user._id);
   await deleteJobData(user._id);
   await deleteUsageRecords(user._id);
