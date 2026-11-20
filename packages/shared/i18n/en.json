@@ -1168,6 +1168,70 @@
         "employerTypes": "Employer type",
         "employerTypesHint": "None chosen: all employers. Jobs from career-page links are listed as “Other”."
       }
+    },
+    "interview": {
+      "title": "Interview practice",
+      "privacy": "Your answers are sent to a free AI service for feedback. Do not write your name, phone number, address, ID numbers or other personal details — describe your experience in general terms.",
+      "privacyShort": "Don’t include personal details (names, phone numbers, addresses).",
+      "loadError": "This practice could not be loaded. Check your connection and try again.",
+      "types": {
+        "general": "General",
+        "technical": "Technical",
+        "behavioral": "Behavioural",
+        "job_specific": "For a job",
+        "problem_solving": "Problem solving"
+      },
+      "typeHints": {
+        "general": "Common questions most employers ask: motivation, strengths, goals.",
+        "technical": "Questions that test the knowledge the job needs.",
+        "behavioral": "“Tell me about a time when…” questions about how you worked with others and handled problems.",
+        "job_specific": "Questions for one job: a job ad you saved in the CV tab, or a job you opened in Jobs.",
+        "problem_solving": "Short work situations: explain how you would solve them."
+      },
+      "start": {
+        "title": "Interview practice",
+        "subtitle": "Answer questions in writing and get feedback on each answer.",
+        "type": "Practice type",
+        "job": "Job",
+        "role": "Job title",
+        "roleHint": "For example: Data officer, Nurse, Accountant",
+        "noJobAds": "No saved job ads yet. Add one in the CV tab, or open a job in Jobs and tap “Practise an interview”.",
+        "untitled": "Job ad",
+        "language": "Language",
+        "length": "Number of questions",
+        "questions_one": "{{count}} question",
+        "questions_other": "{{count}} questions",
+        "button": "Start practice",
+        "writing": "Writing the questions…",
+        "wait": "Writing the questions can take up to a minute.",
+        "continue": "Continue: {{role}}",
+        "progress": "{{answered}} of {{total}} answered",
+        "history": "Past practice",
+        "pastDetail": "Average {{score}}/10 · {{date}}"
+      },
+      "questionOf": "Question {{number}} of {{total}}",
+      "focus": "A good answer shows: {{focus}}",
+      "yourAnswer": "Your answer",
+      "answerHint": "{{count}}/{{max}} characters",
+      "send": "Get feedback",
+      "checking": "Reading your answer…",
+      "next": "Next question",
+      "seeSummary": "See summary",
+      "stop": "Stop practice",
+      "feedback": {
+        "score": "{{score}}/10",
+        "strengths": "What worked",
+        "improvements": "To improve",
+        "betterAnswer": "A stronger answer could"
+      },
+      "summaryTitle": "Practice finished",
+      "stoppedTitle": "Practice stopped",
+      "average": "Average {{score}}/10",
+      "averageNote": "The scores rate your answers for practice, not you as a person or your chance of being hired.",
+      "noAnswers": "No questions were answered.",
+      "again": "Practise again",
+      "delete": "Delete this practice",
+      "practiseForJob": "Practise an interview for this job"
     }
   }
 }

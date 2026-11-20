@@ -1,4 +1,4 @@
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ActivityIndicator, Linking, Text, View } from 'react-native';
@@ -224,6 +224,17 @@ export default function JobDetailScreen() {
           loading={saving}
           label={item.saved ? t('mobile.jobs.unsave') : t('mobile.jobs.save')}
           onPress={() => void toggleSave()}
+        />
+        <Button
+          variant="ghost"
+          testID="job-practise"
+          label={t('mobile.interview.practiseForJob')}
+          onPress={() =>
+            router.push({
+              pathname: '/interview',
+              params: { jobId: job.id, jobTitle: `${job.title} · ${job.employer}` },
+            })
+          }
         />
       </View>
     </AuthScreen>

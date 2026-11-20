@@ -270,8 +270,7 @@ export default function HomeScreen() {
                 <QuickAction
                   icon="mic"
                   label={t('mobile.home.quick.practiceInterview')}
-                  soonLabel={t('mobile.home.quick.soon')}
-                  onPress={() => undefined}
+                  onPress={() => router.push('/interview')}
                   testID="home-quick-interview"
                 />
               </View>

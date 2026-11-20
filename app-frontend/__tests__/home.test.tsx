@@ -111,8 +111,8 @@ describe('TIQ-7 End Test: Home states', () => {
     // Greeting uses the account email until the profile has a name (TIQ-6).
     expect(screen.getByTestId('home-name')).toHaveTextContent('amina');
     expect(screen.getByText('0 assessed')).toBeTruthy();
-    // Features not built yet are shown as "Soon" and can't be pressed.
-    expect(screen.getByTestId('home-quick-interview')).toBeDisabled();
+    // Interview practice is built (TIQ-19): the quick action works.
+    expect(screen.getByTestId('home-quick-interview')).not.toBeDisabled();
     expect(
       screen.getByText('No job matches yet. Start a job search to see jobs that fit you.'),
     ).toBeTruthy();
