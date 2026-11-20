@@ -6,6 +6,7 @@ import { useAuth } from '../../../auth/authContext';
 import { AuthScreen } from '../../../components/layout/AuthScreen';
 import { GenerateMessages } from '../../../components/cv/GenerateMessages';
 import { JobDetails } from '../../../components/cv/JobDetails';
+import { QuizOffer } from '../../../components/cv/QuizOffer';
 import { Button } from '../../../components/ui/Button';
 import { Chip } from '../../../components/ui/Chip';
 import { FormMessage } from '../../../components/ui/FormMessage';
@@ -16,7 +17,8 @@ import { CV_LANGUAGES, type CvLanguage, type JobDescription } from '../../../typ
 import { useTheme } from '../../../theme';
 
 /**
- * New CV, step 2: what the AI read from the job ad, then the CV language
+ * New CV, step 2: what the AI read from the job ad, an optional quiz on one of
+ * its skills (TIQ-11, never required), then the CV language
  * (English or Somali, chosen every time; never copied from the app language)
  * and Create CV, which stays off until a language is chosen.
  */
@@ -53,6 +55,7 @@ export default function JobScreen() {
       {job ? (
         <>
           <JobDetails job={job} />
+          <QuizOffer job={job} />
 
           <View style={{ gap: spacing.sm }}>
             <Text accessibilityRole="header" style={[typography.h3, { color: colors.text }]}>

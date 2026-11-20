@@ -946,6 +946,13 @@
         "factsNote": "Job titles, employers, dates, schools, skills and languages come from your profile. To change them, edit your profile and generate the CV again.",
         "newVersionNote": "This CV is approved. Saving makes a new draft version; the approved one stays.",
         "save": "Save wording"
+      },
+      "quizOffer": {
+        "title": "Confirm your {{skill}} level first?",
+        "body": "This job asks for {{skill}}. A short quiz can confirm your level. It is optional; you can create the CV either way.",
+        "take": "Take a short quiz",
+        "later": "Maybe later",
+        "saved": "Quiz saved: {{skill}} is now assessed as {{level}}. You can create the CV now."
       }
     },
     "quiz": {
@@ -1001,7 +1008,8 @@
         "practise": "Practise {{topic}}, then take the quiz again.",
         "harder": "Try the quiz again at a harder level.",
         "toSkills": "See your skill profile",
-        "another": "Take another quiz"
+        "another": "Take another quiz",
+        "backToJob": "Back to the job"
       }
     }
   }

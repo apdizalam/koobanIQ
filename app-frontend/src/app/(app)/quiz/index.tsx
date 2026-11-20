@@ -32,7 +32,8 @@ export default function QuizStartScreen() {
   const { colors, typography, spacing } = useTheme();
   const { getAccessToken } = useAuth();
   const { skills, status } = useSkills();
-  const params = useLocalSearchParams<{ skillId?: string }>();
+  // fromJob: opened from a job ad (TIQ-11); the report then leads back to it.
+  const params = useLocalSearchParams<{ skillId?: string; fromJob?: string }>();
   const [skillId, setSkillId] = useState<string | null>(params.skillId ?? null);
   const [difficulty, setDifficulty] = useState<QuizDifficulty>('normal');
   const [language, setLanguage] = useState<'en' | 'so'>(
@@ -71,7 +72,15 @@ export default function QuizStartScreen() {
         length,
       });
       setBusy(false);
-      router.push({ pathname: '/quiz/[id]', params: { id: assessment.id } });
+      if (params.fromJob) {
+        // Replaces this screen, so Back from the quiz returns to the job ad.
+        router.replace({
+          pathname: '/quiz/[id]',
+          params: { id: assessment.id, fromJob: params.fromJob },
+        });
+      } else {
+        router.push({ pathname: '/quiz/[id]', params: { id: assessment.id } });
+      }
     } catch (err) {
       setProblem(aiErrorText(err, t));
       setBusy(false);
