@@ -129,7 +129,11 @@
       "difficultyInvalid": "Choose Easy, Normal or Hard",
       "quizLanguageRequired": "Choose the quiz language: English or Somali",
       "quizLengthInvalid": "A quiz has 5 or 10 questions",
-      "quizChoiceInvalid": "Choose one of the answers"
+      "quizChoiceInvalid": "Choose one of the answers",
+      "customUrlsInvalid": "Give up to 5 web links",
+      "customUrlUnsafe": "Use public http or https links only",
+      "customUrlsRequired": "Add at least one career-page link for this source",
+      "customUrlsWithoutSource": "Links need the \"Company & NGO career pages\" source"
     },
     "email": {
       "verifyEmail": {

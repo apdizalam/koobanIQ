@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import type { Types } from 'mongoose';
 import { Job } from '../models/Job.js';
+import { JOB_TYPES, WORK_MODES } from '../models/Profile.js';
 import type { NormalizedJob } from './sources/types.js';
 
 /** Longest description kept per job (the full ad stays on the source). */
@@ -86,7 +87,11 @@ function details(job: NormalizedJob) {
     employerType: job.employerType,
     region: job.region,
     city: job.city?.trim() || undefined,
+    // Kept only when it is one of our values (a source may send anything).
+    jobType: (JOB_TYPES as readonly unknown[]).includes(job.jobType) ? job.jobType : undefined,
+    workMode: (WORK_MODES as readonly unknown[]).includes(job.workMode) ? job.workMode : undefined,
     deadline: job.deadline,
+    postedAt: job.postedAt,
     language: job.language,
     description: job.description?.slice(0, DESCRIPTION_MAX),
   };

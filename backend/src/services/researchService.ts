@@ -6,6 +6,7 @@ import { getAdapter } from '../jobs/sources/registry.js';
 import type { NormalizedJob, ResearchQuery } from '../jobs/sources/types.js';
 import { saveJobs } from '../jobs/store.js';
 import { Job, toPublicJob } from '../models/Job.js';
+import { matchJobs } from './jobMatchService.js';
 import { JobSource } from '../models/JobSource.js';
 import type { RegionKey } from '../models/Region.js';
 import { ResearchRun, toPublicRun } from '../models/ResearchRun.js';
@@ -29,7 +30,9 @@ const STUCK_AFTER_MS = 10 * 60 * 1000;
 export interface ResearchRequest {
   sourceKeys: string[];
   regions?: RegionKey[];
-  filters: Omit<ResearchQuery, 'regions' | 'limit'>;
+  filters: Omit<ResearchQuery, 'regions' | 'limit' | 'customUrls'>;
+  /** Career-page links (for the "career-pages" source). */
+  customUrls?: string[];
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -87,7 +90,12 @@ export async function startResearch(userId: Types.ObjectId, request: ResearchReq
     throw new AppError(400, 'NO_SOURCES_SELECTED', 'Choose at least one job source');
   }
   const sources = await JobSource.find({ key: { $in: sourceKeys }, enabled: true });
-  const usable = new Set(sources.filter((s) => getAdapter(s.key)).map((s) => s.key));
+  // Only operational sources: switched on, terms checked, adapter here, no open reason.
+  const usable = new Set(
+    sources
+      .filter((s) => getAdapter(s.key) && s.termsCheckedAt && !s.unavailableReason)
+      .map((s) => s.key),
+  );
   const unavailable = sourceKeys.filter((k) => !usable.has(k));
   if (unavailable.length > 0) {
     throw new AppError(
@@ -107,9 +115,15 @@ export async function startResearch(userId: Types.ObjectId, request: ResearchReq
     sourceKeys,
     regions,
     filters: request.filters,
+    customUrls: request.customUrls ?? [],
     startedAt: new Date(),
   });
-  const query: ResearchQuery = { ...request.filters, regions, limit: PER_SOURCE_LIMIT };
+  const query: ResearchQuery = {
+    ...request.filters,
+    regions,
+    limit: PER_SOURCE_LIMIT,
+    customUrls: request.customUrls ?? [],
+  };
   void executeRun(run._id, sourceKeys, query).catch((err: unknown) =>
     console.error('[research] run failed:', err instanceof Error ? err.message : err),
   );
@@ -244,14 +258,24 @@ export async function listRuns(userId: Types.ObjectId, limit = 20) {
   return runs.map(toPublicRun);
 }
 
-/** GET /research/runs/:id: one of the user's runs with its jobs, ranked. */
+/**
+ * GET /research/runs/:id: one of the user's runs with its jobs (ranked by
+ * region) and, once finished, the same jobs scored for the user: the main
+ * results and, apart, the lower matches.
+ */
 export async function getRun(userId: Types.ObjectId, id: unknown) {
   const run = isItemId(id) ? await ResearchRun.findOne({ _id: id, userId }) : null;
   if (!run) throw new AppError(404, 'RUN_NOT_FOUND', 'Job search not found');
   const jobs = await Job.find({ _id: { $in: run.jobIds } });
   const byId = new Map(jobs.map((j) => [String(j._id), j]));
+  const ordered = run.jobIds.map((jid) => byId.get(String(jid))).filter((j) => j !== undefined);
+  const matched =
+    run.status === 'running'
+      ? { recommended: [], lowerMatch: [] }
+      : await matchJobs(userId, ordered, run.regions);
   return {
     run: toPublicRun(run),
+    ...matched,
     jobs: run.jobIds
       .map((jid) => byId.get(String(jid)))
       .filter((j) => j !== undefined)
@@ -262,11 +286,4 @@ export async function getRun(userId: Types.ObjectId, id: unknown) {
 /** Deleting an account deletes its job searches (they hold its search filters). Jobs are shared and stay. */
 export async function deleteRuns(userId: Types.ObjectId) {
   await ResearchRun.deleteMany({ userId });
-}
-
-/** GET /jobs/:id: one stored job (jobs are shared, not personal). */
-export async function getJob(id: unknown) {
-  const job = isItemId(id) ? await Job.findById(id) : null;
-  if (!job) throw new AppError(404, 'JOB_NOT_FOUND', 'Job not found');
-  return toPublicJob(job);
 }

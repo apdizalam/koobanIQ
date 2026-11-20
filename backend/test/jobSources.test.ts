@@ -172,6 +172,10 @@ test('admin list shows every source with health and the terms check; users get 4
   const unchecked = res.data.sources.find((s: { key: string }) => s.key === 'test-unchecked');
   assert.equal(unchecked.enabled, false);
   assert.equal(unchecked.termsCheckedAt, null);
+  // Why a source can't be searched is shown to admins; the app's "status" is not.
+  assert.equal(unchecked.listed, false);
+  assert.equal(unchecked.unavailableReason, null);
+  assert.equal('status' in unchecked, false);
   assert.equal((await call('/admin/job-sources', { token: userToken })).status, 403);
 });
 

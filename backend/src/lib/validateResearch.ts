@@ -1,4 +1,6 @@
 import { AppError } from './errors.js';
+import { checkUrlForm, UnsafeUrlError } from '../jobs/http.js';
+import { CAREER_PAGES_KEY, MAX_CUSTOM_URLS } from '../jobs/sources/careerPages.js';
 import { isEmployerType, type EmployerType } from '../models/JobSource.js';
 import { isRegionKey, type RegionKey } from '../models/Region.js';
 import type { ResearchRequest } from '../services/researchService.js';
@@ -19,7 +21,9 @@ function terms(value: unknown): string[] | null {
 
 /**
  * Body of POST /research/run:
- * `{ sourceKeys: string[], regions?: RegionKey[], filters?: { titles?, skills?, city?, employerTypes? } }`.
+ * `{ sourceKeys: string[], regions?: RegionKey[], filters?: { titles?, skills?, city?, employerTypes? },
+ *    customUrls?: string[] }`. customUrls (public career pages, max 5, http(s),
+ * no private addresses) go with the "career-pages" source, which needs at least one.
  * An empty `sourceKeys` passes here; the service answers NO_SOURCES_SELECTED with a clear message.
  */
 export function parseResearchRequest(body: unknown): ResearchRequest {
@@ -49,6 +53,35 @@ export function parseResearchRequest(body: unknown): ResearchRequest {
     details.filters = 'filtersInvalid';
   }
 
+  // Career-page links: checked here for form (http(s), public host); the address
+  // they really point to is checked again when fetched.
+  let customUrls: string[] = [];
+  const wantsPages =
+    Array.isArray(b.sourceKeys) && (b.sourceKeys as unknown[]).includes(CAREER_PAGES_KEY);
+  if (b.customUrls !== undefined) {
+    if (
+      !Array.isArray(b.customUrls) ||
+      b.customUrls.length > MAX_CUSTOM_URLS ||
+      !b.customUrls.every((u) => typeof u === 'string' && u.trim().length > 0 && u.length <= 500)
+    ) {
+      details.customUrls = 'customUrlsInvalid';
+    } else {
+      try {
+        customUrls = [
+          ...new Set((b.customUrls as string[]).map((u) => checkUrlForm(u.trim()).toString())),
+        ];
+      } catch (err) {
+        if (!(err instanceof UnsafeUrlError)) throw err;
+        details.customUrls = 'customUrlUnsafe';
+      }
+    }
+  }
+  if (!details.customUrls && wantsPages && customUrls.length === 0) {
+    details.customUrls = 'customUrlsRequired';
+  } else if (!details.customUrls && !wantsPages && customUrls.length > 0) {
+    details.customUrls = 'customUrlsWithoutSource';
+  }
+
   if (Object.keys(details).length > 0) {
     throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', details);
   }
@@ -62,5 +95,6 @@ export function parseResearchRequest(body: unknown): ResearchRequest {
       city,
       employerTypes: [...new Set((f.employerTypes ?? []) as EmployerType[])],
     },
+    customUrls,
   };
 }

@@ -21,7 +21,8 @@ export async function getRegions(_req: Request, res: Response) {
 /** GET /api/v1/job-sources?regions=somaliland,somalia: enabled sources for the app. */
 export async function getJobSources(req: Request, res: Response) {
   const regions = parseRegionsQuery(req.query.regions);
-  res.json({ data: { sources: await listEnabledSources(regions) }, error: null, meta: {} });
+  // sources: can be searched; unavailable: listed with the reason, not selectable.
+  res.json({ data: await listEnabledSources(regions), error: null, meta: {} });
 }
 
 /** GET /api/v1/admin/job-sources: every source with health and terms check. */

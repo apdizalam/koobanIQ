@@ -1,5 +1,6 @@
 import type { EmployerType } from '../../models/JobSource.js';
 import type { RegionKey } from '../../models/Region.js';
+import type { JOB_TYPES, WORK_MODES } from '../../models/Profile.js';
 import type { Language } from '../../models/User.js';
 
 /** What a research run asks every selected source for (doc 9 §5–6). */
@@ -13,6 +14,8 @@ export interface ResearchQuery {
   employerTypes: EmployerType[];
   /** Most jobs one source should return for this run. */
   limit: number;
+  /** Career-page links the user gave (only for sources that accept links). */
+  customUrls?: string[];
 }
 
 /**
@@ -29,7 +32,12 @@ export interface NormalizedJob {
   city?: string;
   /** A real link where the user applies (http or https). */
   applyUrl: string;
+  /** Only when the source says it. */
+  jobType?: (typeof JOB_TYPES)[number];
+  workMode?: (typeof WORK_MODES)[number];
   deadline?: Date;
+  /** When the source says it was posted; left out when the source does not say. */
+  postedAt?: Date;
   language?: Language;
   description?: string;
 }
