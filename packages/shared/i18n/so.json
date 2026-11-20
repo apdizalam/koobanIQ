@@ -946,6 +946,13 @@
         "factsNote": "Magacyada shaqooyinka, loo shaqeeyayaasha, taariikhaha, iskuulada, xirfadaha iyo luqadaha waxay ka yimaadaan astaantaada. Si aad u beddesho, wax ka beddel astaantaada oo mar kale samee CV-ga.",
         "newVersionNote": "CV-gan waa la ansixiyay. Keydintu waxay sameynaysaa nooc qabyo ah oo cusub; kan la ansixiyay wuu sii jirayaa.",
         "save": "Keydi qoraalka"
+      },
+      "quizOffer": {
+        "title": "Ma rabtaa inaad marka hore xaqiijiso heerkaaga {{skill}}?",
+        "body": "Shaqadani waxay u baahan tahay {{skill}}. Imtixaan gaaban ayaa xaqiijin kara heerkaaga. Waa ikhtiyaari; CV-ga waad samayn kartaa si kastaba.",
+        "take": "Gal imtixaan gaaban",
+        "later": "Hadhow",
+        "saved": "Imtixaanka waa la keydiyay: {{skill}} hadda waxaa lagu qiimeeyay {{level}}. Hadda waad samayn kartaa CV-ga."
       }
     },
     "quiz": {
@@ -1001,7 +1008,8 @@
         "practise": "Ku celceli {{topic}}, kadib mar kale gal imtixaanka.",
         "harder": "Mar kale isku day imtixaanka heer ka adag.",
         "toSkills": "Arag astaanta xirfadahaaga",
-        "another": "Gal imtixaan kale"
+        "another": "Gal imtixaan kale",
+        "backToJob": "Ku noqo shaqada"
       }
     }
   }

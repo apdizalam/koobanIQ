@@ -1659,6 +1659,26 @@
     "state": "pending",
     "en": "Profile"
   },
+  "mobile.cv.quizOffer.body": {
+    "state": "pending",
+    "en": "This job asks for {{skill}}. A short quiz can confirm your level. It is optional; you can create the CV either way."
+  },
+  "mobile.cv.quizOffer.later": {
+    "state": "pending",
+    "en": "Maybe later"
+  },
+  "mobile.cv.quizOffer.saved": {
+    "state": "pending",
+    "en": "Quiz saved: {{skill}} is now assessed as {{level}}. You can create the CV now."
+  },
+  "mobile.cv.quizOffer.take": {
+    "state": "pending",
+    "en": "Take a short quiz"
+  },
+  "mobile.cv.quizOffer.title": {
+    "state": "pending",
+    "en": "Confirm your {{skill}} level first?"
+  },
   "mobile.cv.status.approved": {
     "state": "pending",
     "en": "Approved"
@@ -2438,6 +2458,10 @@
   "mobile.quiz.report.another": {
     "state": "pending",
     "en": "Take another quiz"
+  },
+  "mobile.quiz.report.backToJob": {
+    "state": "pending",
+    "en": "Back to the job"
   },
   "mobile.quiz.report.correct": {
     "state": "pending",

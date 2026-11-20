@@ -56,6 +56,28 @@ type Stored = {
   createdAt: string;
   finishedAt: string | null;
 };
+/** A job ad that asks for the user's self-rated skill (TIQ-11). */
+const JOB = {
+  id: 'jd7',
+  source: 'text',
+  fileName: null,
+  createdAt: '2026-11-20T07:00:00.000Z',
+  extracted: {
+    language: 'en',
+    title: 'Data Officer',
+    company: 'Example Health Partnership',
+    location: null,
+    jobType: null,
+    requiredSkills: ['SQL', 'microsoft  excel'],
+    preferredSkills: [],
+    education: [],
+    experience: [],
+    responsibilities: [],
+    qualifications: [],
+    deadline: null,
+    keywords: [],
+  },
+};
 let quizzes: Stored[];
 let skillsCalls: number;
 let nextId: number;
@@ -160,7 +182,8 @@ beforeEach(() => {
             name: 'Microsoft Excel',
             category: null,
             selfLevel: 'mid',
-            assessedLevel: null,
+            // Like the server: a finished quiz sets the assessed level.
+            assessedLevel: quizzes.some((q) => q.status === 'finished') ? 'advanced' : null,
             yearsExp: null,
             lastAssessedAt: null,
             gaps: [],
@@ -170,6 +193,26 @@ beforeEach(() => {
         counts: { total: 1, assessed: 0, selfReported: 1 },
       });
     } else if (path.startsWith('/assessments')) reply = quizRoute(method, path, body);
+    else if (method === 'GET' && path === '/cvs') reply = ok({ cvs: [] });
+    else if (method === 'GET' && path === '/job-descriptions')
+      reply = ok({ jobDescriptions: [JOB] });
+    else if (method === 'POST' && path === '/cvs/generate') {
+      reply = ok(
+        {
+          cv: {
+            id: 'cv1',
+            jobDescriptionId: 'jd7',
+            language: body.language,
+            version: 1,
+            status: 'draft',
+            template: 'classic',
+            missingInfo: [],
+            createdAt: '2026-11-20T09:00:00.000Z',
+          },
+        },
+        201,
+      );
+    } else if (path.startsWith('/cvs/')) reply = fail(404, 'CV_NOT_FOUND', 'CV not found');
     else throw new TypeError('Network request failed');
     return { ok: reply.status < 400, status: reply.status, json: async () => reply.body };
   }) as unknown as typeof fetch;
@@ -337,5 +380,76 @@ describe('TIQ-14: quiz screens', () => {
     expect(screen.getByTestId('quiz-skill-s1').props.accessibilityState).toMatchObject({
       selected: true,
     });
+  });
+});
+
+describe('TIQ-11: optional quiz offer in the CV flow', () => {
+  it("End Test: 'Maybe later' skips cleanly and the CV flow still completes", async () => {
+    await openApp('/cv-job/jd7');
+    expect(await screen.findByTestId('cv-quiz-offer')).toHaveTextContent(
+      /Confirm your Microsoft Excel level first\?/,
+    );
+    await press('cv-quiz-offer-later');
+    expect(screen.queryByTestId('cv-quiz-offer')).toBeNull();
+    await press('cv-language-en');
+    await press('cv-generate');
+    expect(calls.find((c) => c.route === 'POST /cvs/generate')?.body).toEqual({
+      jobDescriptionId: 'jd7',
+      language: 'en',
+    });
+    expect(screen).toHavePathname('/cv-view/cv1');
+    expect(calls.some((c) => c.route.startsWith('POST /assessments'))).toBe(false);
+  });
+
+  it('End Test: taking the quiz saves the assessed level and returns to the CV flow', async () => {
+    await openApp('/cv-job/jd7');
+    await screen.findByTestId('cv-quiz-offer');
+    await press('cv-quiz-offer-take');
+    expect(screen).toHavePathname('/quiz');
+    expect((await screen.findByTestId('quiz-skill-s1')).props.accessibilityState).toMatchObject({
+      selected: true,
+    });
+    await press('quiz-start');
+    expect(screen).toHavePathname('/quiz/a1');
+    await screen.findByTestId('quiz-question');
+    for (let n = 1; n <= 4; n += 1) await answer(1);
+    await press('quiz-option-1');
+    await press('quiz-check');
+    await press('quiz-next');
+    expect(screen.getByTestId('quiz-report')).toBeTruthy();
+
+    await press('quiz-back-to-job');
+    expect(screen).toHavePathname('/cv-job/jd7');
+    expect(
+      await screen.findByText(
+        'Quiz saved: Microsoft Excel is now assessed as Advanced. You can create the CV now.',
+      ),
+    ).toBeTruthy();
+    expect(screen.queryByTestId('cv-quiz-offer')).toBeNull();
+    await press('cv-language-so');
+    await press('cv-generate');
+    expect(screen).toHavePathname('/cv-view/cv1');
+  });
+
+  it('no offer when the job has no self-rated skill of the user', async () => {
+    quizzes = [
+      {
+        id: 'old',
+        skillId: 's1',
+        skillName: 'Microsoft Excel',
+        language: 'en',
+        length: 5,
+        startDifficulty: 'normal',
+        status: 'finished',
+        difficulty: 'hard',
+        answered: 5,
+        wrongTopics: [],
+        createdAt: '2026-11-19T08:00:00.000Z',
+        finishedAt: '2026-11-19T08:10:00.000Z',
+      },
+    ];
+    await openApp('/cv-job/jd7');
+    expect(await screen.findByTestId('job-details')).toBeTruthy();
+    expect(screen.queryByTestId('cv-quiz-offer')).toBeNull();
   });
 });

@@ -28,7 +28,7 @@ import { useTheme } from '../../../theme';
 export default function QuizScreen() {
   const { t } = useTranslation();
   const { colors, typography, spacing, radius } = useTheme();
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, fromJob } = useLocalSearchParams<{ id: string; fromJob?: string }>();
   const { getAccessToken } = useAuth();
   const { reload: reloadSkills } = useSkills();
   const [quiz, setQuiz] = useState<Quiz | null>(null);
@@ -315,7 +315,15 @@ export default function QuizScreen() {
         {quiz?.status === 'finished' && quiz.result ? (
           <>
             <QuizReport quiz={quiz} />
+            {fromJob ? (
+              <Button
+                label={t('mobile.quiz.report.backToJob')}
+                onPress={goBackOrHome}
+                testID="quiz-back-to-job"
+              />
+            ) : null}
             <Button
+              variant={fromJob ? 'secondary' : 'primary'}
               label={t('mobile.quiz.report.toSkills')}
               onPress={() => router.replace('/skills')}
               testID="quiz-to-skills"
