@@ -63,7 +63,7 @@ assets/icons/              SVG icons used by <Icon>
 assets/images/             app icon, splash and favicon (referenced from app.json)
 src/components/ui/         one reusable UI component per file (Button, Input, Chip, BackButton, ...)
 src/auth/                  sign-in state: AuthProvider/useAuth, refresh token in expo-secure-store
-src/components/layout/     page building blocks (Screen, TabScreen, TabComingSoon, AuthScreen, ComingNext)
+src/components/layout/     page building blocks (Screen, TabScreen, AuthScreen, ComingNext)
 src/components/onboarding/ onboarding illustrations
 src/components/profile/    ProfileForm (one form for every profile part), ProfileGate, CompletionBar
 src/components/cv/         JobDetails, CvPreview, MissingInfoList, GenerateMessages
@@ -77,11 +77,11 @@ src/components/index.ts    small re-export of the original ui components
 src/constants/             non-design app constants (api.ts)
 src/hooks/                 React hooks (useAppFonts, useSchemeOverride)
 src/i18n/                  i18next setup using the shared packages/shared/i18n files
-src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me), profileApi.ts, skillsApi.ts, cvApi.ts, quizApi.ts, jobsApi.ts, interviewApi.ts
+src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me), profileApi.ts, skillsApi.ts, cvApi.ts, quizApi.ts, jobsApi.ts, interviewApi.ts, reportsApi.ts (+ phone time zone)
 src/screens/               screen bodies reused by routes (DesignSystemPreview)
 src/theme/                 ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
                            createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
-src/types/                 domain types shared by several files (match.ts, auth.ts, profile.ts, skills.ts, cv.ts, quiz.ts, jobs.ts, interview.ts)
+src/types/                 domain types shared by several files (match.ts, auth.ts, profile.ts, skills.ts, cv.ts, quiz.ts, jobs.ts, interview.ts, report.ts)
 src/utils/                 pure helpers (contrast.ts, format.ts, greeting.ts, hitSlop.ts, validation.ts with Zod)
 ```
 

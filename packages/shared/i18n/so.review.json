@@ -3291,6 +3291,130 @@
     "state": "pending",
     "en": "Not quite"
   },
+  "mobile.reports.cvsApproved": {
+    "state": "pending",
+    "en": "CVs approved"
+  },
+  "mobile.reports.cvsCreated": {
+    "state": "pending",
+    "en": "CVs created"
+  },
+  "mobile.reports.cvsExported": {
+    "state": "pending",
+    "en": "CVs downloaded as PDF"
+  },
+  "mobile.reports.interviewsAnswers": {
+    "state": "pending",
+    "en": "Questions answered"
+  },
+  "mobile.reports.interviewsAverage": {
+    "state": "pending",
+    "en": "Average answer score"
+  },
+  "mobile.reports.interviewsFinished": {
+    "state": "pending",
+    "en": "Practice sessions finished"
+  },
+  "mobile.reports.jobAdsSaved": {
+    "state": "pending",
+    "en": "Job ads added"
+  },
+  "mobile.reports.jobsFound": {
+    "state": "pending",
+    "en": "Jobs found by your searches"
+  },
+  "mobile.reports.jobsRecommended": {
+    "state": "pending",
+    "en": "Jobs that fit you"
+  },
+  "mobile.reports.jobsSaved": {
+    "state": "pending",
+    "en": "Jobs saved"
+  },
+  "mobile.reports.jobsSearches": {
+    "state": "pending",
+    "en": "New job searches"
+  },
+  "mobile.reports.loadError": {
+    "state": "pending",
+    "en": "Your report could not be loaded. Pull down to try again."
+  },
+  "mobile.reports.none": {
+    "state": "pending",
+    "en": "—"
+  },
+  "mobile.reports.note": {
+    "state": "pending",
+    "en": "Every number is counted from your saved activity — nothing is estimated. Applications are not counted: you apply on the employer’s own site. Days start at midnight in your time zone ({{timeZone}})."
+  },
+  "mobile.reports.periods.day": {
+    "state": "pending",
+    "en": "Today"
+  },
+  "mobile.reports.periods.hour": {
+    "state": "pending",
+    "en": "This hour"
+  },
+  "mobile.reports.periods.month": {
+    "state": "pending",
+    "en": "This month"
+  },
+  "mobile.reports.periods.week": {
+    "state": "pending",
+    "en": "This week"
+  },
+  "mobile.reports.periods.year": {
+    "state": "pending",
+    "en": "This year"
+  },
+  "mobile.reports.previous.day": {
+    "state": "pending",
+    "en": "Yesterday"
+  },
+  "mobile.reports.previous.hour": {
+    "state": "pending",
+    "en": "Last hour"
+  },
+  "mobile.reports.previous.month": {
+    "state": "pending",
+    "en": "Last month"
+  },
+  "mobile.reports.previous.week": {
+    "state": "pending",
+    "en": "Last week"
+  },
+  "mobile.reports.previous.year": {
+    "state": "pending",
+    "en": "Last year"
+  },
+  "mobile.reports.quizzesAverage": {
+    "state": "pending",
+    "en": "Average quiz score"
+  },
+  "mobile.reports.quizzesFinished": {
+    "state": "pending",
+    "en": "Quizzes finished"
+  },
+  "mobile.reports.sections.cvs": {
+    "state": "pending",
+    "en": "CVs"
+  },
+  "mobile.reports.sections.interviews": {
+    "state": "pending",
+    "en": "Interview practice"
+  },
+  "mobile.reports.sections.jobs": {
+    "state": "pending",
+    "en": "Jobs"
+  },
+  "mobile.reports.sections.quizzes": {
+    "state": "pending",
+    "en": "Skill quizzes"
+  },
+  "mobile.reports.subtitle": {
+    "state": "pending",
+    "en": "Your activity in KOBANIQ, counted from what you saved."
+  },
   "mobile.skills.add": {
     "state": "pending",
     "en": "Add a skill"

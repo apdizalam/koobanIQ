@@ -1238,6 +1238,45 @@
       "again": "Practise again",
       "delete": "Delete this practice",
       "practiseForJob": "Practise an interview for this job"
+    },
+    "reports": {
+      "subtitle": "Your activity in KOBANIQ, counted from what you saved.",
+      "periods": {
+        "hour": "This hour",
+        "day": "Today",
+        "week": "This week",
+        "month": "This month",
+        "year": "This year"
+      },
+      "previous": {
+        "hour": "Last hour",
+        "day": "Yesterday",
+        "week": "Last week",
+        "month": "Last month",
+        "year": "Last year"
+      },
+      "none": "—",
+      "loadError": "Your report could not be loaded. Pull down to try again.",
+      "sections": {
+        "quizzes": "Skill quizzes",
+        "interviews": "Interview practice",
+        "cvs": "CVs",
+        "jobs": "Jobs"
+      },
+      "quizzesFinished": "Quizzes finished",
+      "quizzesAverage": "Average quiz score",
+      "interviewsFinished": "Practice sessions finished",
+      "interviewsAnswers": "Questions answered",
+      "interviewsAverage": "Average answer score",
+      "cvsCreated": "CVs created",
+      "cvsApproved": "CVs approved",
+      "cvsExported": "CVs downloaded as PDF",
+      "jobsSearches": "New job searches",
+      "jobsFound": "Jobs found by your searches",
+      "jobsRecommended": "Jobs that fit you",
+      "jobsSaved": "Jobs saved",
+      "jobAdsSaved": "Job ads added",
+      "note": "Every number is counted from your saved activity — nothing is estimated. Applications are not counted: you apply on the employer’s own site. Days start at midnight in your time zone ({{timeZone}})."
     }
   }
 }
