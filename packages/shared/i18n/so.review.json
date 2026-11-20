@@ -1023,6 +1023,30 @@
     "state": "pending",
     "en": "Somaliland"
   },
+  "common.sourceReasons.needs_approval": {
+    "state": "pending",
+    "en": "Waiting for approval from the source (free API access requested)."
+  },
+  "common.sourceReasons.needs_permission": {
+    "state": "pending",
+    "en": "Its terms do not allow this use without the source’s written permission."
+  },
+  "common.sourceReasons.no_free_api": {
+    "state": "pending",
+    "en": "No free, permitted way to read its public jobs; KOBANIQ does not search it."
+  },
+  "common.sourceReasons.not_enabled": {
+    "state": "pending",
+    "en": "Ready, but not switched on yet."
+  },
+  "common.sourceReasons.not_relevant": {
+    "state": "pending",
+    "en": "Free, but its jobs are not open to candidates in Somaliland or Somalia."
+  },
+  "common.sourceReasons.terms_unverified": {
+    "state": "pending",
+    "en": "Its terms could not be checked yet, so it is not searched."
+  },
   "mobile.auth.appName": {
     "state": "pending",
     "en": "KOBANIQ"
@@ -1914,6 +1938,446 @@
   "mobile.home.topMatch.title": {
     "state": "pending",
     "en": "Top match today"
+  },
+  "mobile.jobs.detail.apply": {
+    "state": "pending",
+    "en": "Apply on the source’s site"
+  },
+  "mobile.jobs.detail.applyNote": {
+    "state": "pending",
+    "en": "You apply on the employer’s or source’s own site. KOBANIQ never applies for you."
+  },
+  "mobile.jobs.detail.confidence.estimated": {
+    "state": "pending",
+    "en": "Your level is an estimate: some experience has no description of your responsibilities."
+  },
+  "mobile.jobs.detail.confidence.unknown": {
+    "state": "pending",
+    "en": "Your level is unknown: add your experience to your profile."
+  },
+  "mobile.jobs.detail.deadline": {
+    "state": "pending",
+    "en": "Apply by {{date}}"
+  },
+  "mobile.jobs.detail.description": {
+    "state": "pending",
+    "en": "Description"
+  },
+  "mobile.jobs.detail.facts": {
+    "state": "pending",
+    "en": "Details"
+  },
+  "mobile.jobs.detail.jobLevel": {
+    "state": "pending",
+    "en": "This job: {{level}}"
+  },
+  "mobile.jobs.detail.level": {
+    "state": "pending",
+    "en": "Career level"
+  },
+  "mobile.jobs.detail.loading": {
+    "state": "pending",
+    "en": "Job"
+  },
+  "mobile.jobs.detail.missingPreferred": {
+    "state": "pending",
+    "en": "Useful skills you don’t show yet"
+  },
+  "mobile.jobs.detail.missingRequired": {
+    "state": "pending",
+    "en": "Essential skills you don’t show yet"
+  },
+  "mobile.jobs.detail.noDeadline": {
+    "state": "pending",
+    "en": "No deadline given by the source"
+  },
+  "mobile.jobs.detail.notPosted": {
+    "state": "pending",
+    "en": "The source gives no publication date. KOBANIQ first found it on {{date}}."
+  },
+  "mobile.jobs.detail.notRecommended": {
+    "state": "pending",
+    "en": "This job does not fit your profile well. See why below."
+  },
+  "mobile.jobs.detail.posted": {
+    "state": "pending",
+    "en": "Published by the source on {{date}}"
+  },
+  "mobile.jobs.detail.showAll": {
+    "state": "pending",
+    "en": "Show all"
+  },
+  "mobile.jobs.detail.source": {
+    "state": "pending",
+    "en": "Source: {{source}}"
+  },
+  "mobile.jobs.detail.sourceWithSite": {
+    "state": "pending",
+    "en": "Source: {{source}} ({{site}})"
+  },
+  "mobile.jobs.detail.why": {
+    "state": "pending",
+    "en": "Why this score"
+  },
+  "mobile.jobs.detail.yourLevel": {
+    "state": "pending",
+    "en": "You: {{level}}"
+  },
+  "mobile.jobs.level.entry": {
+    "state": "pending",
+    "en": "Entry level"
+  },
+  "mobile.jobs.level.expert": {
+    "state": "pending",
+    "en": "Expert"
+  },
+  "mobile.jobs.level.intermediate": {
+    "state": "pending",
+    "en": "Intermediate"
+  },
+  "mobile.jobs.level.junior": {
+    "state": "pending",
+    "en": "Junior"
+  },
+  "mobile.jobs.level.senior": {
+    "state": "pending",
+    "en": "Senior"
+  },
+  "mobile.jobs.level.unknown": {
+    "state": "pending",
+    "en": "Not known"
+  },
+  "mobile.jobs.modes.research": {
+    "state": "pending",
+    "en": "Find new jobs"
+  },
+  "mobile.jobs.modes.saved": {
+    "state": "pending",
+    "en": "Saved"
+  },
+  "mobile.jobs.modes.search": {
+    "state": "pending",
+    "en": "Search jobs"
+  },
+  "mobile.jobs.reasons.inCity": {
+    "state": "pending",
+    "en": "In {{city}}, a city you prefer."
+  },
+  "mobile.jobs.reasons.inRegion": {
+    "state": "pending",
+    "en": "In {{region}}, a region you chose."
+  },
+  "mobile.jobs.reasons.levelEstimated": {
+    "state": "pending",
+    "en": "Your career level is an estimate."
+  },
+  "mobile.jobs.reasons.levelNotStated": {
+    "state": "pending",
+    "en": "The job doesn’t say which career level it is for."
+  },
+  "mobile.jobs.reasons.levelUnknown": {
+    "state": "pending",
+    "en": "Your career level is not known yet."
+  },
+  "mobile.jobs.reasons.level_above": {
+    "state": "pending",
+    "en": "This {{jobLevel}} job is well above your level ({{userLevel}})."
+  },
+  "mobile.jobs.reasons.level_below": {
+    "state": "pending",
+    "en": "This {{jobLevel}} job is below your level ({{userLevel}})."
+  },
+  "mobile.jobs.reasons.level_fits": {
+    "state": "pending",
+    "en": "Your level ({{userLevel}}) fits this {{jobLevel}} job."
+  },
+  "mobile.jobs.reasons.level_stretch": {
+    "state": "pending",
+    "en": "This {{jobLevel}} job is one step above your level ({{userLevel}})."
+  },
+  "mobile.jobs.reasons.level_unknown": {
+    "state": "pending",
+    "en": "The job’s career level could not be compared with yours."
+  },
+  "mobile.jobs.reasons.notRecommendedFit": {
+    "state": "pending",
+    "en": "Not recommended: the overall fit is low."
+  },
+  "mobile.jobs.reasons.notRecommendedLevel": {
+    "state": "pending",
+    "en": "Not recommended: the job is well above your career level."
+  },
+  "mobile.jobs.reasons.notRecommendedSkills": {
+    "state": "pending",
+    "en": "Not recommended: essential skills are missing."
+  },
+  "mobile.jobs.reasons.relevantYearsShort": {
+    "state": "pending",
+    "en": "It asks for {{required}} years of related experience; you show about {{related}}."
+  },
+  "mobile.jobs.reasons.remote": {
+    "state": "pending",
+    "en": "Remote job open to your region."
+  },
+  "mobile.jobs.reasons.skillsAssessed": {
+    "state": "pending",
+    "en": "Confirmed by your quiz results: {{skills}}."
+  },
+  "mobile.jobs.reasons.skillsMatched": {
+    "state": "pending",
+    "en": "You have skills it asks for: {{skills}}."
+  },
+  "mobile.jobs.reasons.skillsMissing": {
+    "state": "pending",
+    "en": "Essential skills you don’t show yet: {{skills}}."
+  },
+  "mobile.jobs.reasons.skillsNotStated": {
+    "state": "pending",
+    "en": "The job lists no clear skills, so the score uses the job title."
+  },
+  "mobile.jobs.reasons.titleWanted": {
+    "state": "pending",
+    "en": "Its title matches a job title you want."
+  },
+  "mobile.jobs.research.attribution": {
+    "state": "pending",
+    "en": "Jobs from {{name}}"
+  },
+  "mobile.jobs.research.intro": {
+    "state": "pending",
+    "en": "Searches the sources you choose now. It runs in the background and can take a minute."
+  },
+  "mobile.jobs.research.links": {
+    "state": "pending",
+    "en": "Career-page links"
+  },
+  "mobile.jobs.research.linksHint": {
+    "state": "pending",
+    "en": "Up to {{max}} public career pages (one per line). Only pages that publish job data and allow it are read."
+  },
+  "mobile.jobs.research.linksNeeded": {
+    "state": "pending",
+    "en": "Add at least one career-page link."
+  },
+  "mobile.jobs.research.linksTooMany": {
+    "state": "pending",
+    "en": "At most {{max}} links."
+  },
+  "mobile.jobs.research.noSources": {
+    "state": "pending",
+    "en": "No job source can be searched for these regions right now."
+  },
+  "mobile.jobs.research.regions": {
+    "state": "pending",
+    "en": "Regions"
+  },
+  "mobile.jobs.research.sources": {
+    "state": "pending",
+    "en": "Job sources"
+  },
+  "mobile.jobs.research.start": {
+    "state": "pending",
+    "en": "Start search"
+  },
+  "mobile.jobs.research.title": {
+    "state": "pending",
+    "en": "Job title (optional)"
+  },
+  "mobile.jobs.research.titleHint": {
+    "state": "pending",
+    "en": "For example: Data officer"
+  },
+  "mobile.jobs.research.unavailableTitle": {
+    "state": "pending",
+    "en": "Not available"
+  },
+  "mobile.jobs.results.lowerBody": {
+    "state": "pending",
+    "en": "These jobs fit you less well. Each one says why."
+  },
+  "mobile.jobs.results.lowerTitle": {
+    "state": "pending",
+    "en": "Lower matches"
+  },
+  "mobile.jobs.results.noneBody": {
+    "state": "pending",
+    "en": "None of these jobs fits your skills and experience well enough. We don’t show jobs that don’t fit as if they did."
+  },
+  "mobile.jobs.results.noneTitle": {
+    "state": "pending",
+    "en": "No suitable jobs found"
+  },
+  "mobile.jobs.results.recommended_one": {
+    "state": "pending",
+    "en": "{{count}} job that fits you"
+  },
+  "mobile.jobs.results.recommended_other": {
+    "state": "pending",
+    "en": "{{count}} jobs that fit you"
+  },
+  "mobile.jobs.results.scoreNote": {
+    "state": "pending",
+    "en": "The score shows how relevant the job is to your profile, not your chance of being hired."
+  },
+  "mobile.jobs.results.showLower_one": {
+    "state": "pending",
+    "en": "Show {{count}} lower match"
+  },
+  "mobile.jobs.results.showLower_other": {
+    "state": "pending",
+    "en": "Show {{count}} lower matches"
+  },
+  "mobile.jobs.run.doneTitle": {
+    "state": "pending",
+    "en": "Search finished"
+  },
+  "mobile.jobs.run.failed": {
+    "state": "pending",
+    "en": "No source could be read this time. Try again later."
+  },
+  "mobile.jobs.run.runningTitle": {
+    "state": "pending",
+    "en": "Searching for jobs"
+  },
+  "mobile.jobs.run.sourceDone": {
+    "state": "pending",
+    "en": "{{found}} jobs found ({{new}} not seen before)"
+  },
+  "mobile.jobs.run.sourceFailed": {
+    "state": "pending",
+    "en": "Could not be read: {{error}}"
+  },
+  "mobile.jobs.run.sourceWaiting": {
+    "state": "pending",
+    "en": "Waiting…"
+  },
+  "mobile.jobs.run.status.completed": {
+    "state": "pending",
+    "en": "All sources were checked."
+  },
+  "mobile.jobs.run.status.failed": {
+    "state": "pending",
+    "en": "The sources could not be read."
+  },
+  "mobile.jobs.run.status.partial": {
+    "state": "pending",
+    "en": "Some sources could not be read; the others were checked."
+  },
+  "mobile.jobs.run.status.running": {
+    "state": "pending",
+    "en": "Checking the sources you chose…"
+  },
+  "mobile.jobs.run.summary": {
+    "state": "pending",
+    "en": "{{found}} jobs found in total, {{new}} of them not seen before by KOBANIQ."
+  },
+  "mobile.jobs.run.wait": {
+    "state": "pending",
+    "en": "You can leave this screen; the search keeps going."
+  },
+  "mobile.jobs.save": {
+    "state": "pending",
+    "en": "Save"
+  },
+  "mobile.jobs.saveFailed": {
+    "state": "pending",
+    "en": "Could not change your saved jobs. Try again."
+  },
+  "mobile.jobs.saved": {
+    "state": "pending",
+    "en": "Saved"
+  },
+  "mobile.jobs.savedEmptyBody": {
+    "state": "pending",
+    "en": "Tap Save on a job to keep it here."
+  },
+  "mobile.jobs.savedEmptyTitle": {
+    "state": "pending",
+    "en": "No saved jobs yet"
+  },
+  "mobile.jobs.savedTitle_one": {
+    "state": "pending",
+    "en": "{{count}} saved job"
+  },
+  "mobile.jobs.savedTitle_other": {
+    "state": "pending",
+    "en": "{{count}} saved jobs"
+  },
+  "mobile.jobs.search.button": {
+    "state": "pending",
+    "en": "Search jobs"
+  },
+  "mobile.jobs.search.intro": {
+    "state": "pending",
+    "en": "Searches the jobs KOBANIQ has already found. Only open jobs are shown."
+  },
+  "mobile.jobs.search.jobTypes": {
+    "state": "pending",
+    "en": "Job type"
+  },
+  "mobile.jobs.search.noneStoredBody": {
+    "state": "pending",
+    "en": "KOBANIQ only shows real jobs it has found. Try other filters, or start a new search of the job sources."
+  },
+  "mobile.jobs.search.noneStoredTitle": {
+    "state": "pending",
+    "en": "No stored jobs match these filters"
+  },
+  "mobile.jobs.search.q": {
+    "state": "pending",
+    "en": "Job title, skill or employer (optional)"
+  },
+  "mobile.jobs.search.regions": {
+    "state": "pending",
+    "en": "Regions"
+  },
+  "mobile.jobs.search.regionsHint": {
+    "state": "pending",
+    "en": "None chosen: your preferred regions. Remote jobs are always included."
+  },
+  "mobile.jobs.search.searched_one": {
+    "state": "pending",
+    "en": "{{count}} open job checked."
+  },
+  "mobile.jobs.search.searched_other": {
+    "state": "pending",
+    "en": "{{count}} open jobs checked."
+  },
+  "mobile.jobs.sourceNames.arbeitnow": {
+    "state": "pending",
+    "en": "Arbeitnow"
+  },
+  "mobile.jobs.sourceNames.career-pages": {
+    "state": "pending",
+    "en": "Company & NGO career pages"
+  },
+  "mobile.jobs.sourceNames.facebook": {
+    "state": "pending",
+    "en": "Facebook"
+  },
+  "mobile.jobs.sourceNames.linkedin": {
+    "state": "pending",
+    "en": "LinkedIn"
+  },
+  "mobile.jobs.sourceNames.reliefweb": {
+    "state": "pending",
+    "en": "ReliefWeb"
+  },
+  "mobile.jobs.sourceNames.remotive": {
+    "state": "pending",
+    "en": "Remotive"
+  },
+  "mobile.jobs.sourceNames.un-careers": {
+    "state": "pending",
+    "en": "UN Careers"
+  },
+  "mobile.jobs.subtitle": {
+    "state": "pending",
+    "en": "Find jobs that fit your skills and experience, with the reasons."
+  },
+  "mobile.jobs.unsave": {
+    "state": "pending",
+    "en": "Remove from saved"
   },
   "mobile.preview.buttons.ghost": {
     "state": "pending",

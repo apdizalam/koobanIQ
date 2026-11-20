@@ -19,6 +19,14 @@
       "education": "Education",
       "health": "Health",
       "other": "Other"
+    },
+    "sourceReasons": {
+      "needs_approval": "Waiting for approval from the source (free API access requested).",
+      "no_free_api": "No free, permitted way to read its public jobs; KOBANIQ does not search it.",
+      "needs_permission": "Its terms do not allow this use without the source’s written permission.",
+      "terms_unverified": "Its terms could not be checked yet, so it is not searched.",
+      "not_relevant": "Free, but its jobs are not open to candidates in Somaliland or Somalia.",
+      "not_enabled": "Ready, but not switched on yet."
     }
   },
   "server": {
@@ -1013,6 +1021,140 @@
         "toSkills": "See your skill profile",
         "another": "Take another quiz",
         "backToJob": "Back to the job"
+      }
+    },
+    "jobs": {
+      "subtitle": "Find jobs that fit your skills and experience, with the reasons.",
+      "modes": {
+        "search": "Search jobs",
+        "research": "Find new jobs",
+        "saved": "Saved"
+      },
+      "save": "Save",
+      "saved": "Saved",
+      "unsave": "Remove from saved",
+      "saveFailed": "Could not change your saved jobs. Try again.",
+      "savedTitle_one": "{{count}} saved job",
+      "savedTitle_other": "{{count}} saved jobs",
+      "savedEmptyTitle": "No saved jobs yet",
+      "savedEmptyBody": "Tap Save on a job to keep it here.",
+      "search": {
+        "intro": "Searches the jobs KOBANIQ has already found. Only open jobs are shown.",
+        "q": "Job title, skill or employer (optional)",
+        "regions": "Regions",
+        "regionsHint": "None chosen: your preferred regions. Remote jobs are always included.",
+        "jobTypes": "Job type",
+        "button": "Search jobs",
+        "searched_one": "{{count}} open job checked.",
+        "searched_other": "{{count}} open jobs checked.",
+        "noneStoredTitle": "No stored jobs match these filters",
+        "noneStoredBody": "KOBANIQ only shows real jobs it has found. Try other filters, or start a new search of the job sources."
+      },
+      "research": {
+        "intro": "Searches the sources you choose now. It runs in the background and can take a minute.",
+        "regions": "Regions",
+        "sources": "Job sources",
+        "noSources": "No job source can be searched for these regions right now.",
+        "attribution": "Jobs from {{name}}",
+        "links": "Career-page links",
+        "linksHint": "Up to {{max}} public career pages (one per line). Only pages that publish job data and allow it are read.",
+        "linksNeeded": "Add at least one career-page link.",
+        "linksTooMany": "At most {{max}} links.",
+        "unavailableTitle": "Not available",
+        "title": "Job title (optional)",
+        "titleHint": "For example: Data officer",
+        "start": "Start search"
+      },
+      "run": {
+        "runningTitle": "Searching for jobs",
+        "doneTitle": "Search finished",
+        "status": {
+          "running": "Checking the sources you chose…",
+          "completed": "All sources were checked.",
+          "partial": "Some sources could not be read; the others were checked.",
+          "failed": "The sources could not be read."
+        },
+        "wait": "You can leave this screen; the search keeps going.",
+        "sourceWaiting": "Waiting…",
+        "sourceDone": "{{found}} jobs found ({{new}} not seen before)",
+        "sourceFailed": "Could not be read: {{error}}",
+        "summary": "{{found}} jobs found in total, {{new}} of them not seen before by KOBANIQ.",
+        "failed": "No source could be read this time. Try again later."
+      },
+      "results": {
+        "recommended_one": "{{count}} job that fits you",
+        "recommended_other": "{{count}} jobs that fit you",
+        "noneTitle": "No suitable jobs found",
+        "noneBody": "None of these jobs fits your skills and experience well enough. We don’t show jobs that don’t fit as if they did.",
+        "scoreNote": "The score shows how relevant the job is to your profile, not your chance of being hired.",
+        "showLower_one": "Show {{count}} lower match",
+        "showLower_other": "Show {{count}} lower matches",
+        "lowerTitle": "Lower matches",
+        "lowerBody": "These jobs fit you less well. Each one says why."
+      },
+      "detail": {
+        "loading": "Job",
+        "notRecommended": "This job does not fit your profile well. See why below.",
+        "why": "Why this score",
+        "missingRequired": "Essential skills you don’t show yet",
+        "missingPreferred": "Useful skills you don’t show yet",
+        "level": "Career level",
+        "jobLevel": "This job: {{level}}",
+        "yourLevel": "You: {{level}}",
+        "confidence": {
+          "estimated": "Your level is an estimate: some experience has no description of your responsibilities.",
+          "unknown": "Your level is unknown: add your experience to your profile."
+        },
+        "facts": "Details",
+        "deadline": "Apply by {{date}}",
+        "noDeadline": "No deadline given by the source",
+        "posted": "Published by the source on {{date}}",
+        "notPosted": "The source gives no publication date. KOBANIQ first found it on {{date}}.",
+        "source": "Source: {{source}}",
+        "sourceWithSite": "Source: {{source}} ({{site}})",
+        "description": "Description",
+        "showAll": "Show all",
+        "apply": "Apply on the source’s site",
+        "applyNote": "You apply on the employer’s or source’s own site. KOBANIQ never applies for you."
+      },
+      "level": {
+        "entry": "Entry level",
+        "junior": "Junior",
+        "intermediate": "Intermediate",
+        "senior": "Senior",
+        "expert": "Expert",
+        "unknown": "Not known"
+      },
+      "sourceNames": {
+        "career-pages": "Company & NGO career pages",
+        "reliefweb": "ReliefWeb",
+        "arbeitnow": "Arbeitnow",
+        "un-careers": "UN Careers",
+        "remotive": "Remotive",
+        "linkedin": "LinkedIn",
+        "facebook": "Facebook"
+      },
+      "reasons": {
+        "skillsMatched": "You have skills it asks for: {{skills}}.",
+        "skillsAssessed": "Confirmed by your quiz results: {{skills}}.",
+        "skillsMissing": "Essential skills you don’t show yet: {{skills}}.",
+        "skillsNotStated": "The job lists no clear skills, so the score uses the job title.",
+        "levelUnknown": "Your career level is not known yet.",
+        "levelNotStated": "The job doesn’t say which career level it is for.",
+        "levelEstimated": "Your career level is an estimate.",
+        "level_fits": "Your level ({{userLevel}}) fits this {{jobLevel}} job.",
+        "level_stretch": "This {{jobLevel}} job is one step above your level ({{userLevel}}).",
+        "level_above": "This {{jobLevel}} job is well above your level ({{userLevel}}).",
+        "level_below": "This {{jobLevel}} job is below your level ({{userLevel}}).",
+        "level_unknown": "The job’s career level could not be compared with yours.",
+        "relevantYearsShort": "It asks for {{required}} years of related experience; you show about {{related}}.",
+        "inRegion": "In {{region}}, a region you chose.",
+        "remote": "Remote job open to your region.",
+        "inCity": "In {{city}}, a city you prefer.",
+        "titleWanted": "Its title matches a job title you want.",
+        "notRecommendedLevel": "Not recommended: the job is well above your career level.",
+        "notRecommendedSkills": "Not recommended: essential skills are missing.",
+        "notRecommendedFit": "Not recommended: the overall fit is low."
       }
     }
   }

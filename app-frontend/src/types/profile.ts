@@ -1,6 +1,7 @@
 /** The user's profile as GET /api/v1/profile returns it (backend models/Profile.ts). */
 
 export const REGION_KEYS = ['somaliland', 'somalia', 'remote'] as const;
+export type RegionKey = (typeof REGION_KEYS)[number];
 export const EMPLOYER_TYPES = [
   'company',
   'ngo',
