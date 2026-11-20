@@ -126,6 +126,11 @@ export default function ResearchRunScreen() {
           <Text testID="run-summary" style={[typography.body, { color: colors.textMuted }]}>
             {t('mobile.jobs.run.summary', { found: run.jobsFound, new: run.jobsNew })}
           </Text>
+          {data?.hiddenByFilters ? (
+            <Text testID="run-hidden" style={[typography.bodySmall, { color: colors.textMuted }]}>
+              {t('mobile.jobs.run.hiddenByFilters', { count: data.hiddenByFilters })}
+            </Text>
+          ) : null}
           {run.status === 'failed' ? (
             <FormMessage text={t('mobile.jobs.run.failed')} />
           ) : (

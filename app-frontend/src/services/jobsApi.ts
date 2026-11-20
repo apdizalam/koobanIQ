@@ -14,6 +14,8 @@ const job = (id: string) => `/jobs/${encodeURIComponent(id)}`;
 export interface StoredSearch {
   q?: string;
   regions?: RegionKey[];
+  city?: string;
+  employerTypes?: string[];
   jobTypes?: string[];
   /** Also return the lower matches (only when the user asks). */
   lower?: boolean;
@@ -27,6 +29,8 @@ export function storedSearchQuery(search: StoredSearch) {
   };
   add('q', search.q?.trim() ?? '');
   add('regions', (search.regions ?? []).join(','));
+  add('city', search.city?.trim() ?? '');
+  add('employerTypes', (search.employerTypes ?? []).join(','));
   add('jobTypes', (search.jobTypes ?? []).join(','));
   if (search.lower) parts.push('lower=1');
   return parts.length > 0 ? `?${parts.join('&')}` : '';
@@ -46,7 +50,7 @@ export const fetchJobSources = (accessToken: string, regions: RegionKey[]) =>
 export interface ResearchInput {
   sourceKeys: string[];
   regions: RegionKey[];
-  filters?: { titles?: string[] };
+  filters?: { titles?: string[]; city?: string; employerTypes?: string[] };
   customUrls?: string[];
 }
 

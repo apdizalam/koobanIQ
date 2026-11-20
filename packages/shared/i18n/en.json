@@ -1083,7 +1083,9 @@
         "sourceDone": "{{found}} jobs found ({{new}} not seen before)",
         "sourceFailed": "Could not be read: {{error}}",
         "summary": "{{found}} jobs found in total, {{new}} of them not seen before by KOBANIQ.",
-        "failed": "No source could be read this time. Try again later."
+        "failed": "No source could be read this time. Try again later.",
+        "hiddenByFilters_one": "{{count}} job found did not match your filters (it is kept for later searches).",
+        "hiddenByFilters_other": "{{count}} jobs found did not match your filters (they are kept for later searches)."
       },
       "results": {
         "recommended_one": "{{count}} job that fits you",
@@ -1159,6 +1161,12 @@
         "notRecommendedLevel": "Not recommended: the job is well above your career level.",
         "notRecommendedSkills": "Not recommended: essential skills are missing.",
         "notRecommendedFit": "Not recommended: the overall fit is low."
+      },
+      "filters": {
+        "city": "City (optional)",
+        "cityHint": "For example: Hargeisa. Only jobs in this city are shown.",
+        "employerTypes": "Employer type",
+        "employerTypesHint": "None chosen: all employers. Jobs from career-page links are listed as “Other”."
       }
     }
   }

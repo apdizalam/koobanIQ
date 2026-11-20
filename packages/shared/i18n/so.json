@@ -1083,7 +1083,9 @@
         "sourceDone": "{{found}} shaqo ayaa la helay ({{new}} aan hore loo arag)",
         "sourceFailed": "Lama akhriyi karin: {{error}}",
         "summary": "Wadar ahaan {{found}} shaqo ayaa la helay, {{new}} ka mid ah KOBANIQ hore uma arag.",
-        "failed": "Markan il lama akhriyi karin. Isku day mar dambe."
+        "failed": "Markan il lama akhriyi karin. Isku day mar dambe.",
+        "hiddenByFilters_one": "{{count}} shaqo oo la helay kuma habboonayn shaandhooyinkaaga (waa la keydiyay raadinta dambe).",
+        "hiddenByFilters_other": "{{count}} shaqo oo la helay kuma habboonayn shaandhooyinkaaga (waa la keydiyay raadinta dambe)."
       },
       "results": {
         "recommended_one": "{{count}} shaqo oo kugu habboon",
@@ -1159,6 +1161,12 @@
         "notRecommendedLevel": "Laguma talinayo: shaqadu aad bay uga sarreysaa heerkaaga xirfadeed.",
         "notRecommendedSkills": "Laguma talinayo: xirfado muhiim ah ayaa maqan.",
         "notRecommendedFit": "Laguma talinayo: ku habboonaanta guud waa hoose."
+      },
+      "filters": {
+        "city": "Magaalada (ikhtiyaari)",
+        "cityHint": "Tusaale: Hargeysa. Shaqooyinka magaaladan oo keliya ayaa la muujiyaa.",
+        "employerTypes": "Nooca shaqo-bixiyaha",
+        "employerTypesHint": "Haddii aanad dooran: dhammaan shaqo-bixiyeyaasha. Shaqooyinka ka yimid xiriiriyeyaasha boggaga shaqada waxaa loo qoray “Kale”."
       }
     }
   }

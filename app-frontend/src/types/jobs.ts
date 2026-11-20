@@ -133,4 +133,6 @@ export interface RunResults {
   run: ResearchRun;
   recommended: MatchedJob[];
   lowerMatch: MatchedJob[];
+  /** Jobs the run found that its filters left out (still stored; older servers leave it out). */
+  hiddenByFilters?: number;
 }
