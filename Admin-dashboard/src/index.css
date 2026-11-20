@@ -907,3 +907,8 @@ h2.section-title.section-title-first {
   margin-top: 4px;
   font-size: 12px;
 }
+
+/* Why a job source cannot be searched (Job sources page). */
+.source-reason {
+  color: var(--warning-text);
+}

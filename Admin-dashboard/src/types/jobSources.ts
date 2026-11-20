@@ -38,7 +38,22 @@ export interface AdminJobSource {
   updatedAt: string;
   /** False when the server has no adapter for this source (it can't be enabled). */
   hasAdapter: boolean;
+  /** Shown in the app even when it can't be searched (with the reason). */
+  listed?: boolean;
+  /** Why it can't be searched (null when nothing stops it). */
+  unavailableReason?: SourceReason | null;
 }
+
+/** Why a listed source can't be searched (backend jobs/sources/catalog.ts). */
+export const SOURCE_REASONS = [
+  'needs_approval',
+  'no_free_api',
+  'needs_permission',
+  'terms_unverified',
+  'not_relevant',
+  'not_enabled',
+] as const;
+export type SourceReason = (typeof SOURCE_REASONS)[number];
 
 /** What an admin may change on a source (PATCH /admin/job-sources/:key). */
 export interface SourceChanges {

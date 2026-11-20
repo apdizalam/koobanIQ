@@ -196,6 +196,14 @@ export function JobSourcesPage() {
                     <span className="cell-note muted">
                       {t(`admin.sources.types.${source.type}`)} · {source.key}
                     </span>
+                    {source.unavailableReason ? (
+                      <span
+                        className="cell-note source-reason"
+                        data-testid={`reason-${source.key}`}
+                      >
+                        {t(`common.sourceReasons.${source.unavailableReason}`)}
+                      </span>
+                    ) : null}
                   </td>
                   <td>
                     <span className={`badge ${source.enabled ? 'badge-active' : 'badge-user'}`}>
