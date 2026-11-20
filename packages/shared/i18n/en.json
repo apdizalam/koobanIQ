@@ -139,7 +139,8 @@
       "interviewTypeInvalid": "Choose a practice type",
       "interviewLengthInvalid": "A practice has 3, 5 or 10 questions",
       "interviewJobRequired": "Choose a saved job ad or a job for this practice",
-      "interviewOneJob": "Choose either a job ad or a job, not both"
+      "interviewOneJob": "Choose either a job ad or a job, not both",
+      "timeZoneInvalid": "Unknown time zone"
     },
     "email": {
       "verifyEmail": {

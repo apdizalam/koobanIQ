@@ -12,6 +12,7 @@ import { jobDescriptionsRouter } from './routes/jobDescriptions.js';
 import { jobSourcesRouter, regionsRouter } from './routes/jobSources.js';
 import { meRouter } from './routes/me.js';
 import { profileRouter } from './routes/profile.js';
+import { reportsRouter } from './routes/reports.js';
 import { jobsRouter, researchRouter } from './routes/research.js';
 import { skillsRouter } from './routes/skills.js';
 
@@ -30,6 +31,7 @@ export function createApp() {
   app.use('/api/v1/skills', skillsRouter);
   app.use('/api/v1/assessments', assessmentsRouter);
   app.use('/api/v1/interviews', interviewsRouter);
+  app.use('/api/v1/reports', reportsRouter);
   app.use('/api/v1/job-descriptions', jobDescriptionsRouter);
   app.use('/api/v1/cvs', cvsRouter);
   app.use('/api/v1/regions', regionsRouter);

@@ -139,7 +139,8 @@
       "interviewTypeInvalid": "Dooro nooca tababarka",
       "interviewLengthInvalid": "Tababarku wuxuu leeyahay 3, 5 ama 10 su’aalood",
       "interviewJobRequired": "Dooro xayeysiis shaqo oo la keydiyay ama shaqo tababarkan",
-      "interviewOneJob": "Dooro xayeysiis shaqo ama shaqo, labadaba ha dooran"
+      "interviewOneJob": "Dooro xayeysiis shaqo ama shaqo, labadaba ha dooran",
+      "timeZoneInvalid": "Waqti-aag aan la aqoon"
     },
     "email": {
       "verifyEmail": {
