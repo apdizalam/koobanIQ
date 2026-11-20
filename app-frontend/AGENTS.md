@@ -55,6 +55,7 @@ src/app/                   Expo Router routes (every file is a screen; _layout.t
     cv-view/[id].tsx       one CV: status, approve / download PDF, missing info, preview, generate again, delete
     cv-edit/[id].tsx       edit a CV's wording (headline, summary, bullets); approved CV -> new draft version
     quiz/                  skill quizzes: index = start (skill, difficulty, language, length, unfinished, history), [id] = question / feedback / report
+    interview/             interview practice (text): index = start (type, job, language, length, continue, history), [id] = question / answer / feedback / summary + transcript
     research/[id].tsx      one new job search: progress per source (polled), then matched jobs
     job/[id].tsx           one job: match + reasons, missing skills, level, dates, source, apply, save
   design-system.tsx        developer preview of all components (kobaniq://design-system)
@@ -67,6 +68,7 @@ src/components/onboarding/ onboarding illustrations
 src/components/profile/    ProfileForm (one form for every profile part), ProfileGate, CompletionBar
 src/components/cv/         JobDetails, CvPreview, MissingInfoList, GenerateMessages
 src/components/quiz/       QuizOption (answer A–D), QuizReport
+src/components/interview/  FeedbackCard (score, strengths, improvements, stronger answer)
 src/components/jobs/       JobResults (fitting jobs first, lower matches only on request)
 src/jobs/                  matchText (reasons → text), useSavedJobs, pollSettings
 src/cv/                    CvProvider/useCvs (CVs + saved job ads), useGenerateCv, aiErrorText, sharePdf
@@ -75,11 +77,11 @@ src/components/index.ts    small re-export of the original ui components
 src/constants/             non-design app constants (api.ts)
 src/hooks/                 React hooks (useAppFonts, useSchemeOverride)
 src/i18n/                  i18next setup using the shared packages/shared/i18n files
-src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me), profileApi.ts, skillsApi.ts, cvApi.ts, quizApi.ts, jobsApi.ts
+src/services/              API calls: api.ts (fetch + ApiError), authApi.ts, meApi.ts (GET/PATCH /me), profileApi.ts, skillsApi.ts, cvApi.ts, quizApi.ts, jobsApi.ts, interviewApi.ts
 src/screens/               screen bodies reused by routes (DesignSystemPreview)
 src/theme/                 ALL design tokens: colors.ts, typography.ts, spacing.ts (+ radius, sizes),
                            createTheme.ts and ThemeProvider.tsx. The only place tokens are defined.
-src/types/                 domain types shared by several files (match.ts, auth.ts, profile.ts, skills.ts, cv.ts, quiz.ts, jobs.ts)
+src/types/                 domain types shared by several files (match.ts, auth.ts, profile.ts, skills.ts, cv.ts, quiz.ts, jobs.ts, interview.ts)
 src/utils/                 pure helpers (contrast.ts, format.ts, greeting.ts, hitSlop.ts, validation.ts with Zod)
 ```
 

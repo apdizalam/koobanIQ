@@ -1174,6 +1174,70 @@
         "employerTypes": "Nooca shaqo-bixiyaha",
         "employerTypesHint": "Haddii aanad dooran: dhammaan shaqo-bixiyeyaasha. Shaqooyinka ka yimid xiriiriyeyaasha boggaga shaqada waxaa loo qoray “Kale”."
       }
+    },
+    "interview": {
+      "title": "Tababarka wareysiga",
+      "privacy": "Jawaabahaaga waxaa loo dirayaa adeeg AI ah oo bilaash ah si laguu siiyo talooyin. Ha qorin magacaaga, lambarka taleefanka, cinwaanka, lambarrada aqoonsiga ama faahfaahin kale oo shakhsi ah — khibraddaada si guud u sharax.",
+      "privacyShort": "Ha ku darin faahfaahin shakhsi ah (magacyo, lambarro taleefan, cinwaanno).",
+      "loadError": "Tababarkan lama soo saari karin. Hubi xiriirkaaga oo isku day mar kale.",
+      "types": {
+        "general": "Guud",
+        "technical": "Farsamo",
+        "behavioral": "Dabeecad",
+        "job_specific": "Shaqo gaar ah",
+        "problem_solving": "Xallinta dhibaatooyinka"
+      },
+      "typeHints": {
+        "general": "Su’aalaha caadiga ah ee shaqo-bixiyeyaasha badankoodu weydiiyaan: dhiirigelinta, awoodaha, hadafyada.",
+        "technical": "Su’aalo tijaabinaya aqoonta shaqadu u baahan tahay.",
+        "behavioral": "Su’aalaha “Ii sheeg mar…” ee ku saabsan sidaad dadka kale ula shaqeysay iyo sidaad dhibaatooyin u xallisay.",
+        "job_specific": "Su’aalo hal shaqo ah: xayeysiis shaqo oo aad ku keydisay qaybta CV-ga, ama shaqo aad ka furtay Shaqooyinka.",
+        "problem_solving": "Xaalado shaqo oo gaagaaban: sharax sidaad u xallin lahayd."
+      },
+      "start": {
+        "title": "Tababarka wareysiga",
+        "subtitle": "Su’aalaha qoraal ku jawaab oo hel talooyin jawaab kasta.",
+        "type": "Nooca tababarka",
+        "job": "Shaqada",
+        "role": "Magaca shaqada",
+        "roleHint": "Tusaale: Sarkaalka xogta, Kalkaaliso, Xisaabiye",
+        "noJobAds": "Weli xayeysiis shaqo lama keydin. Mid ku dar qaybta CV-ga, ama shaqo ka fur Shaqooyinka oo riix “Ku tababar wareysi”.",
+        "untitled": "Xayeysiis shaqo",
+        "language": "Luqadda",
+        "length": "Tirada su’aalaha",
+        "questions_one": "{{count}} su’aal",
+        "questions_other": "{{count}} su’aalood",
+        "button": "Bilow tababarka",
+        "writing": "Su’aalaha ayaa la qorayaa…",
+        "wait": "Qorista su’aaluhu waxay qaadan kartaa ilaa daqiiqad.",
+        "continue": "Sii wad: {{role}}",
+        "progress": "{{answered}} ka mid ah {{total}} ayaa laga jawaabay",
+        "history": "Tababarradii hore",
+        "pastDetail": "Celcelis {{score}}/10 · {{date}}"
+      },
+      "questionOf": "Su’aasha {{number}} ee {{total}}",
+      "focus": "Jawaab fiican waxay muujisaa: {{focus}}",
+      "yourAnswer": "Jawaabtaada",
+      "answerHint": "{{count}}/{{max}} xaraf",
+      "send": "Hel talooyin",
+      "checking": "Jawaabtaada ayaa la akhrinayaa…",
+      "next": "Su’aasha xigta",
+      "seeSummary": "Eeg soo koobidda",
+      "stop": "Jooji tababarka",
+      "feedback": {
+        "score": "{{score}}/10",
+        "strengths": "Waxa shaqeeyay",
+        "improvements": "Waxa la hagaajin karo",
+        "betterAnswer": "Jawaab ka xoog badan waxay noqon kartaa"
+      },
+      "summaryTitle": "Tababarku wuu dhammaaday",
+      "stoppedTitle": "Tababarka waa la joojiyay",
+      "average": "Celcelis {{score}}/10",
+      "averageNote": "Dhibcuhu waxay qiimeeyaan jawaabahaaga tababarka, ma aha adiga qof ahaan ama fursadda lagu shaqaaleysiinayo.",
+      "noAnswers": "Su’aal lagama jawaabin.",
+      "again": "Mar kale tababar",
+      "delete": "Tirtir tababarkan",
+      "practiseForJob": "Ku tababar wareysi shaqadan"
     }
   }
 }

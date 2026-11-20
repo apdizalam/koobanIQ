@@ -1939,6 +1939,222 @@
     "state": "pending",
     "en": "Top match today"
   },
+  "mobile.interview.again": {
+    "state": "pending",
+    "en": "Practise again"
+  },
+  "mobile.interview.answerHint": {
+    "state": "pending",
+    "en": "{{count}}/{{max}} characters"
+  },
+  "mobile.interview.average": {
+    "state": "pending",
+    "en": "Average {{score}}/10"
+  },
+  "mobile.interview.averageNote": {
+    "state": "pending",
+    "en": "The scores rate your answers for practice, not you as a person or your chance of being hired."
+  },
+  "mobile.interview.checking": {
+    "state": "pending",
+    "en": "Reading your answer…"
+  },
+  "mobile.interview.delete": {
+    "state": "pending",
+    "en": "Delete this practice"
+  },
+  "mobile.interview.feedback.betterAnswer": {
+    "state": "pending",
+    "en": "A stronger answer could"
+  },
+  "mobile.interview.feedback.improvements": {
+    "state": "pending",
+    "en": "To improve"
+  },
+  "mobile.interview.feedback.score": {
+    "state": "pending",
+    "en": "{{score}}/10"
+  },
+  "mobile.interview.feedback.strengths": {
+    "state": "pending",
+    "en": "What worked"
+  },
+  "mobile.interview.focus": {
+    "state": "pending",
+    "en": "A good answer shows: {{focus}}"
+  },
+  "mobile.interview.loadError": {
+    "state": "pending",
+    "en": "This practice could not be loaded. Check your connection and try again."
+  },
+  "mobile.interview.next": {
+    "state": "pending",
+    "en": "Next question"
+  },
+  "mobile.interview.noAnswers": {
+    "state": "pending",
+    "en": "No questions were answered."
+  },
+  "mobile.interview.practiseForJob": {
+    "state": "pending",
+    "en": "Practise an interview for this job"
+  },
+  "mobile.interview.privacy": {
+    "state": "pending",
+    "en": "Your answers are sent to a free AI service for feedback. Do not write your name, phone number, address, ID numbers or other personal details — describe your experience in general terms."
+  },
+  "mobile.interview.privacyShort": {
+    "state": "pending",
+    "en": "Don’t include personal details (names, phone numbers, addresses)."
+  },
+  "mobile.interview.questionOf": {
+    "state": "pending",
+    "en": "Question {{number}} of {{total}}"
+  },
+  "mobile.interview.seeSummary": {
+    "state": "pending",
+    "en": "See summary"
+  },
+  "mobile.interview.send": {
+    "state": "pending",
+    "en": "Get feedback"
+  },
+  "mobile.interview.start.button": {
+    "state": "pending",
+    "en": "Start practice"
+  },
+  "mobile.interview.start.continue": {
+    "state": "pending",
+    "en": "Continue: {{role}}"
+  },
+  "mobile.interview.start.history": {
+    "state": "pending",
+    "en": "Past practice"
+  },
+  "mobile.interview.start.job": {
+    "state": "pending",
+    "en": "Job"
+  },
+  "mobile.interview.start.language": {
+    "state": "pending",
+    "en": "Language"
+  },
+  "mobile.interview.start.length": {
+    "state": "pending",
+    "en": "Number of questions"
+  },
+  "mobile.interview.start.noJobAds": {
+    "state": "pending",
+    "en": "No saved job ads yet. Add one in the CV tab, or open a job in Jobs and tap “Practise an interview”."
+  },
+  "mobile.interview.start.pastDetail": {
+    "state": "pending",
+    "en": "Average {{score}}/10 · {{date}}"
+  },
+  "mobile.interview.start.progress": {
+    "state": "pending",
+    "en": "{{answered}} of {{total}} answered"
+  },
+  "mobile.interview.start.questions_one": {
+    "state": "pending",
+    "en": "{{count}} question"
+  },
+  "mobile.interview.start.questions_other": {
+    "state": "pending",
+    "en": "{{count}} questions"
+  },
+  "mobile.interview.start.role": {
+    "state": "pending",
+    "en": "Job title"
+  },
+  "mobile.interview.start.roleHint": {
+    "state": "pending",
+    "en": "For example: Data officer, Nurse, Accountant"
+  },
+  "mobile.interview.start.subtitle": {
+    "state": "pending",
+    "en": "Answer questions in writing and get feedback on each answer."
+  },
+  "mobile.interview.start.title": {
+    "state": "pending",
+    "en": "Interview practice"
+  },
+  "mobile.interview.start.type": {
+    "state": "pending",
+    "en": "Practice type"
+  },
+  "mobile.interview.start.untitled": {
+    "state": "pending",
+    "en": "Job ad"
+  },
+  "mobile.interview.start.wait": {
+    "state": "pending",
+    "en": "Writing the questions can take up to a minute."
+  },
+  "mobile.interview.start.writing": {
+    "state": "pending",
+    "en": "Writing the questions…"
+  },
+  "mobile.interview.stop": {
+    "state": "pending",
+    "en": "Stop practice"
+  },
+  "mobile.interview.stoppedTitle": {
+    "state": "pending",
+    "en": "Practice stopped"
+  },
+  "mobile.interview.summaryTitle": {
+    "state": "pending",
+    "en": "Practice finished"
+  },
+  "mobile.interview.title": {
+    "state": "pending",
+    "en": "Interview practice"
+  },
+  "mobile.interview.typeHints.behavioral": {
+    "state": "pending",
+    "en": "“Tell me about a time when…” questions about how you worked with others and handled problems."
+  },
+  "mobile.interview.typeHints.general": {
+    "state": "pending",
+    "en": "Common questions most employers ask: motivation, strengths, goals."
+  },
+  "mobile.interview.typeHints.job_specific": {
+    "state": "pending",
+    "en": "Questions for one job: a job ad you saved in the CV tab, or a job you opened in Jobs."
+  },
+  "mobile.interview.typeHints.problem_solving": {
+    "state": "pending",
+    "en": "Short work situations: explain how you would solve them."
+  },
+  "mobile.interview.typeHints.technical": {
+    "state": "pending",
+    "en": "Questions that test the knowledge the job needs."
+  },
+  "mobile.interview.types.behavioral": {
+    "state": "pending",
+    "en": "Behavioural"
+  },
+  "mobile.interview.types.general": {
+    "state": "pending",
+    "en": "General"
+  },
+  "mobile.interview.types.job_specific": {
+    "state": "pending",
+    "en": "For a job"
+  },
+  "mobile.interview.types.problem_solving": {
+    "state": "pending",
+    "en": "Problem solving"
+  },
+  "mobile.interview.types.technical": {
+    "state": "pending",
+    "en": "Technical"
+  },
+  "mobile.interview.yourAnswer": {
+    "state": "pending",
+    "en": "Your answer"
+  },
   "mobile.jobs.detail.apply": {
     "state": "pending",
     "en": "Apply on the source’s site"
