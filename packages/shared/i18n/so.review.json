@@ -3323,6 +3323,14 @@
     "state": "pending",
     "en": "Something went wrong"
   },
+  "server.errors.INTERVIEW_NOT_FOUND": {
+    "state": "pending",
+    "en": "Interview practice not found"
+  },
+  "server.errors.INTERVIEW_NOT_IN_PROGRESS": {
+    "state": "pending",
+    "en": "This practice is already finished"
+  },
   "server.errors.INVALID_CODE": {
     "state": "pending",
     "en": "The code is wrong or has expired. Ask for a new one"
@@ -3526,6 +3534,22 @@
   "server.validation.filtersInvalid": {
     "state": "pending",
     "en": "Filters must be short lists of words, a city name and employer types"
+  },
+  "server.validation.interviewJobRequired": {
+    "state": "pending",
+    "en": "Choose a saved job ad or a job for this practice"
+  },
+  "server.validation.interviewLengthInvalid": {
+    "state": "pending",
+    "en": "A practice has 3, 5 or 10 questions"
+  },
+  "server.validation.interviewOneJob": {
+    "state": "pending",
+    "en": "Choose either a job ad or a job, not both"
+  },
+  "server.validation.interviewTypeInvalid": {
+    "state": "pending",
+    "en": "Choose a practice type"
   },
   "server.validation.jdTextLength": {
     "state": "pending",

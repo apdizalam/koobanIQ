@@ -84,7 +84,9 @@
       "QUESTION_NOT_CURRENT": "Su’aashan horay ayaa looga jawaabay",
       "RESEARCH_IN_PROGRESS": "Raadin shaqo ayaa hadda socota. Sug inta ay dhammaanayso",
       "RUN_NOT_FOUND": "Raadinta shaqada lama helin",
-      "JOB_NOT_FOUND": "Shaqada lama helin"
+      "JOB_NOT_FOUND": "Shaqada lama helin",
+      "INTERVIEW_NOT_FOUND": "Tababarka wareysiga lama helin",
+      "INTERVIEW_NOT_IN_PROGRESS": "Tababarkan horay ayuu u dhammaaday"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -133,7 +135,11 @@
       "customUrlsInvalid": "Bixi ilaa 5 xiriiriye",
       "customUrlUnsafe": "Isticmaal xiriiriyeyaal http ama https ah oo dadweyne keliya",
       "customUrlsRequired": "Ku dar ugu yaraan hal xiriiriye bogga shaqooyinka ee ilahan",
-      "customUrlsWithoutSource": "Xiriiriyeyaashu waxay u baahan yihiin ilaha \"Bogagga shaqooyinka shirkadaha & NGO-yada\""
+      "customUrlsWithoutSource": "Xiriiriyeyaashu waxay u baahan yihiin ilaha \"Bogagga shaqooyinka shirkadaha & NGO-yada\"",
+      "interviewTypeInvalid": "Dooro nooca tababarka",
+      "interviewLengthInvalid": "Tababarku wuxuu leeyahay 3, 5 ama 10 su’aalood",
+      "interviewJobRequired": "Dooro xayeysiis shaqo oo la keydiyay ama shaqo tababarkan",
+      "interviewOneJob": "Dooro xayeysiis shaqo ama shaqo, labadaba ha dooran"
     },
     "email": {
       "verifyEmail": {

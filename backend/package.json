@@ -15,6 +15,7 @@
     "ai:check:jd": "tsx test/live/jdLiveCheck.ts",
     "ai:check:cv": "tsx test/live/cvLiveCheck.ts",
     "ai:check:quiz": "tsx test/live/quizLiveCheck.ts",
+    "ai:check:interview": "tsx test/live/interviewLiveCheck.ts",
     "jobs:check": "tsx test/live/jobsLiveCheck.ts"
   },
   "keywords": [],
