@@ -810,7 +810,7 @@
       "emptyTitle": "No skills yet",
       "emptyBody": "Add the skills you have and rate them yourself. Later, a short optional quiz can confirm them.",
       "suggestTitle": "Verify {{skill}}?",
-      "suggestBody": "A short quiz can confirm your level. It is always optional. Quizzes come in an upcoming update.",
+      "suggestBody": "A short quiz can confirm your level. It is always optional.",
       "maybeLater": "Maybe later",
       "levels": {
         "beginner": "Beginner",
@@ -825,7 +825,9 @@
       "assessedOn": "Quiz taken {{date}}",
       "toLearn": "Worth learning next: {{topics}}",
       "onlyQuiz": "Only a quiz changes the assessed level. It measures knowledge, not work experience.",
-      "summary": "{{assessed}} of {{total}} assessed"
+      "summary": "{{assessed}} of {{total}} assessed",
+      "takeQuiz": "Take the quiz",
+      "quizThis": "Take a quiz on this skill"
     },
     "cv": {
       "version": "version {{version}}",
@@ -944,6 +946,62 @@
         "factsNote": "Job titles, employers, dates, schools, skills and languages come from your profile. To change them, edit your profile and generate the CV again.",
         "newVersionNote": "This CV is approved. Saving makes a new draft version; the approved one stays.",
         "save": "Save wording"
+      }
+    },
+    "quiz": {
+      "start": {
+        "title": "Skill quiz",
+        "subtitle": "A short, optional quiz to confirm one of your skills.",
+        "skill": "Skill",
+        "noSkills": "Add a skill first, then you can take a quiz on it.",
+        "difficulty": "Start at",
+        "adaptiveHint": "The questions adapt: three right answers in a row make them harder; after a wrong answer you get another question on the same topic.",
+        "language": "Quiz language",
+        "length": "Length",
+        "questions_one": "{{count}} question",
+        "questions_other": "{{count}} questions",
+        "start": "Start quiz",
+        "writingShort": "Preparing…",
+        "writing": "The AI is writing your questions. This can take up to a minute.",
+        "privacy": "Only the skill name is sent to the AI, never your profile.",
+        "history": "Past quizzes",
+        "unfinished": "Unfinished {{skill}} quiz: {{answered}} of {{total}} answered.",
+        "continue": "Continue",
+        "cancel": "Cancel quiz"
+      },
+      "difficulty": {
+        "easy": "Easy",
+        "normal": "Normal",
+        "hard": "Hard"
+      },
+      "disclaimer": "Quiz results measure knowledge, not proof of real-world experience.",
+      "adapted": "Difficulty adapted",
+      "rightAnswer": "right answer",
+      "correct": "Correct",
+      "wrong": "Not quite",
+      "check": "Check answer",
+      "next": "Next question",
+      "seeResults": "See results",
+      "notFound": "This quiz could not be found.",
+      "cancelled": "This quiz was cancelled. Your skill did not change.",
+      "leave": {
+        "text": "Leave the quiz? Your answers are kept and you can continue later, or cancel it.",
+        "later": "Continue later",
+        "cancel": "Cancel quiz",
+        "stay": "Stay"
+      },
+      "report": {
+        "correct": "{{correct}} of {{total}} correct",
+        "levelNote": "Saved on your {{skill}} skill. Your own rating stays as you set it.",
+        "strengths": "Strengths",
+        "noStrengths": "No topic fully right this time.",
+        "gaps": "Gaps",
+        "noGaps": "No gaps found in this quiz.",
+        "next": "What to do next",
+        "practise": "Practise {{topic}}, then take the quiz again.",
+        "harder": "Try the quiz again at a harder level.",
+        "toSkills": "See your skill profile",
+        "another": "Take another quiz"
       }
     }
   }

@@ -2379,6 +2379,190 @@
     "state": "pending",
     "en": "Remote"
   },
+  "mobile.quiz.adapted": {
+    "state": "pending",
+    "en": "Difficulty adapted"
+  },
+  "mobile.quiz.cancelled": {
+    "state": "pending",
+    "en": "This quiz was cancelled. Your skill did not change."
+  },
+  "mobile.quiz.check": {
+    "state": "pending",
+    "en": "Check answer"
+  },
+  "mobile.quiz.correct": {
+    "state": "pending",
+    "en": "Correct"
+  },
+  "mobile.quiz.difficulty.easy": {
+    "state": "pending",
+    "en": "Easy"
+  },
+  "mobile.quiz.difficulty.hard": {
+    "state": "pending",
+    "en": "Hard"
+  },
+  "mobile.quiz.difficulty.normal": {
+    "state": "pending",
+    "en": "Normal"
+  },
+  "mobile.quiz.disclaimer": {
+    "state": "pending",
+    "en": "Quiz results measure knowledge, not proof of real-world experience."
+  },
+  "mobile.quiz.leave.cancel": {
+    "state": "pending",
+    "en": "Cancel quiz"
+  },
+  "mobile.quiz.leave.later": {
+    "state": "pending",
+    "en": "Continue later"
+  },
+  "mobile.quiz.leave.stay": {
+    "state": "pending",
+    "en": "Stay"
+  },
+  "mobile.quiz.leave.text": {
+    "state": "pending",
+    "en": "Leave the quiz? Your answers are kept and you can continue later, or cancel it."
+  },
+  "mobile.quiz.next": {
+    "state": "pending",
+    "en": "Next question"
+  },
+  "mobile.quiz.notFound": {
+    "state": "pending",
+    "en": "This quiz could not be found."
+  },
+  "mobile.quiz.report.another": {
+    "state": "pending",
+    "en": "Take another quiz"
+  },
+  "mobile.quiz.report.correct": {
+    "state": "pending",
+    "en": "{{correct}} of {{total}} correct"
+  },
+  "mobile.quiz.report.gaps": {
+    "state": "pending",
+    "en": "Gaps"
+  },
+  "mobile.quiz.report.harder": {
+    "state": "pending",
+    "en": "Try the quiz again at a harder level."
+  },
+  "mobile.quiz.report.levelNote": {
+    "state": "pending",
+    "en": "Saved on your {{skill}} skill. Your own rating stays as you set it."
+  },
+  "mobile.quiz.report.next": {
+    "state": "pending",
+    "en": "What to do next"
+  },
+  "mobile.quiz.report.noGaps": {
+    "state": "pending",
+    "en": "No gaps found in this quiz."
+  },
+  "mobile.quiz.report.noStrengths": {
+    "state": "pending",
+    "en": "No topic fully right this time."
+  },
+  "mobile.quiz.report.practise": {
+    "state": "pending",
+    "en": "Practise {{topic}}, then take the quiz again."
+  },
+  "mobile.quiz.report.strengths": {
+    "state": "pending",
+    "en": "Strengths"
+  },
+  "mobile.quiz.report.toSkills": {
+    "state": "pending",
+    "en": "See your skill profile"
+  },
+  "mobile.quiz.rightAnswer": {
+    "state": "pending",
+    "en": "right answer"
+  },
+  "mobile.quiz.seeResults": {
+    "state": "pending",
+    "en": "See results"
+  },
+  "mobile.quiz.start.adaptiveHint": {
+    "state": "pending",
+    "en": "The questions adapt: three right answers in a row make them harder; after a wrong answer you get another question on the same topic."
+  },
+  "mobile.quiz.start.cancel": {
+    "state": "pending",
+    "en": "Cancel quiz"
+  },
+  "mobile.quiz.start.continue": {
+    "state": "pending",
+    "en": "Continue"
+  },
+  "mobile.quiz.start.difficulty": {
+    "state": "pending",
+    "en": "Start at"
+  },
+  "mobile.quiz.start.history": {
+    "state": "pending",
+    "en": "Past quizzes"
+  },
+  "mobile.quiz.start.language": {
+    "state": "pending",
+    "en": "Quiz language"
+  },
+  "mobile.quiz.start.length": {
+    "state": "pending",
+    "en": "Length"
+  },
+  "mobile.quiz.start.noSkills": {
+    "state": "pending",
+    "en": "Add a skill first, then you can take a quiz on it."
+  },
+  "mobile.quiz.start.privacy": {
+    "state": "pending",
+    "en": "Only the skill name is sent to the AI, never your profile."
+  },
+  "mobile.quiz.start.questions_one": {
+    "state": "pending",
+    "en": "{{count}} question"
+  },
+  "mobile.quiz.start.questions_other": {
+    "state": "pending",
+    "en": "{{count}} questions"
+  },
+  "mobile.quiz.start.skill": {
+    "state": "pending",
+    "en": "Skill"
+  },
+  "mobile.quiz.start.start": {
+    "state": "pending",
+    "en": "Start quiz"
+  },
+  "mobile.quiz.start.subtitle": {
+    "state": "pending",
+    "en": "A short, optional quiz to confirm one of your skills."
+  },
+  "mobile.quiz.start.title": {
+    "state": "pending",
+    "en": "Skill quiz"
+  },
+  "mobile.quiz.start.unfinished": {
+    "state": "pending",
+    "en": "Unfinished {{skill}} quiz: {{answered}} of {{total}} answered."
+  },
+  "mobile.quiz.start.writing": {
+    "state": "pending",
+    "en": "The AI is writing your questions. This can take up to a minute."
+  },
+  "mobile.quiz.start.writingShort": {
+    "state": "pending",
+    "en": "Preparing…"
+  },
+  "mobile.quiz.wrong": {
+    "state": "pending",
+    "en": "Not quite"
+  },
   "mobile.skills.add": {
     "state": "pending",
     "en": "Add a skill"
@@ -2451,6 +2635,10 @@
     "state": "pending",
     "en": "Other skills"
   },
+  "mobile.skills.quizThis": {
+    "state": "pending",
+    "en": "Take a quiz on this skill"
+  },
   "mobile.skills.stats.assessed": {
     "state": "pending",
     "en": "Assessed"
@@ -2465,7 +2653,7 @@
   },
   "mobile.skills.suggestBody": {
     "state": "pending",
-    "en": "A short quiz can confirm your level. It is always optional. Quizzes come in an upcoming update."
+    "en": "A short quiz can confirm your level. It is always optional."
   },
   "mobile.skills.suggestTitle": {
     "state": "pending",
@@ -2474,6 +2662,10 @@
   "mobile.skills.summary": {
     "state": "pending",
     "en": "{{assessed}} of {{total}} assessed"
+  },
+  "mobile.skills.takeQuiz": {
+    "state": "pending",
+    "en": "Take the quiz"
   },
   "mobile.skills.title": {
     "state": "pending",

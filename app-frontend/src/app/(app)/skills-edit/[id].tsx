@@ -1,8 +1,9 @@
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 import { AuthScreen } from '../../../components/layout/AuthScreen';
 import { ProfileForm } from '../../../components/profile/ProfileForm';
+import { Button } from '../../../components/ui/Button';
 import type { FieldDef } from '../../../profile/fields';
 import { useSkills } from '../../../profile/SkillsProvider';
 import { SKILL_LEVELS } from '../../../types/skills';
@@ -75,6 +76,14 @@ export default function SkillEditScreen() {
                 {t('mobile.skills.onlyQuiz')}
               </Text>
             </View>
+          ) : null}
+          {skill ? (
+            <Button
+              variant="secondary"
+              label={t('mobile.skills.quizThis')}
+              onPress={() => router.push({ pathname: '/quiz', params: { skillId: skill.id } })}
+              testID="skill-quiz"
+            />
           ) : null}
           <ProfileForm
             testID="skill-form"
