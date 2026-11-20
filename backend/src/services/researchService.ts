@@ -263,19 +263,51 @@ export async function listRuns(userId: Types.ObjectId, limit = 20) {
  * region) and, once finished, the same jobs scored for the user: the main
  * results and, apart, the lower matches.
  */
+const plain = (text: string) => text.normalize('NFKD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const wordsOf = (text: string) =>
+  plain(text)
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter(Boolean);
+
+/**
+ * Does a found job meet the user's filters for this run? Sources may not filter
+ * themselves (career pages give all their openings), so the run's results do:
+ * job title (every word of one of the titles in the job's title), city (same
+ * city), employer type (one of those chosen). No filter = every job.
+ */
+export function meetsRunFilters(
+  job: { title: string; city?: string | null; employerType: string },
+  filters: { titles?: string[]; city?: string | null; employerTypes?: string[] },
+) {
+  const titles = (filters.titles ?? []).map(wordsOf);
+  if (titles.length > 0) {
+    const words = new Set(wordsOf(job.title));
+    if (!titles.some((need) => need.length > 0 && need.every((w) => words.has(w)))) return false;
+  }
+  if (filters.city && plain(job.city ?? '') !== plain(filters.city)) return false;
+  if (filters.employerTypes?.length && !filters.employerTypes.includes(job.employerType)) {
+    return false;
+  }
+  return true;
+}
+
 export async function getRun(userId: Types.ObjectId, id: unknown) {
   const run = isItemId(id) ? await ResearchRun.findOne({ _id: id, userId }) : null;
   if (!run) throw new AppError(404, 'RUN_NOT_FOUND', 'Job search not found');
   const jobs = await Job.find({ _id: { $in: run.jobIds } });
   const byId = new Map(jobs.map((j) => [String(j._id), j]));
   const ordered = run.jobIds.map((jid) => byId.get(String(jid))).filter((j) => j !== undefined);
+  // Results follow the run's filters; the others stay stored (and searchable) but aren't shown here.
+  const shown = ordered.filter((j) => meetsRunFilters(j, run.filters ?? {}));
   const matched =
     run.status === 'running'
       ? { recommended: [], lowerMatch: [] }
-      : await matchJobs(userId, ordered, run.regions);
+      : await matchJobs(userId, shown, run.regions);
   return {
     run: toPublicRun(run),
     ...matched,
+    /** Jobs found by the run that the filters left out. */
+    hiddenByFilters: ordered.length - shown.length,
     jobs: run.jobIds
       .map((jid) => byId.get(String(jid)))
       .filter((j) => j !== undefined)

@@ -17,7 +17,7 @@ import { ResearchRun } from '../src/models/ResearchRun.js';
 import { SavedJob } from '../src/models/SavedJob.js';
 import { Skill } from '../src/models/Skill.js';
 import { User } from '../src/models/User.js';
-import { researchSettings } from '../src/services/researchService.js';
+import { meetsRunFilters, researchSettings } from '../src/services/researchService.js';
 import { promoteToAdmin } from '../src/services/userService.js';
 import { RUN_ID } from './support/testRun.js';
 
@@ -271,6 +271,65 @@ test('End Test (method B): a public research run is scored the same way', async 
   assert.deepEqual(titles(run!.recommended), ['Data Officer']);
   assert.deepEqual(titles(run!.lowerMatch), ['Head of Finance']);
   assert.equal(run!.lowerMatch[0].match.levelFit, 'above');
+});
+
+test('method B filters: title words, city and employer type pick what the run shows', () => {
+  const j = { title: 'Senior Data Officer (M&E)', city: 'Hargeisa', employerType: 'ngo' };
+  assert.equal(meetsRunFilters(j, {}), true);
+  assert.equal(meetsRunFilters(j, { titles: ['data officer'] }), true);
+  assert.equal(meetsRunFilters(j, { titles: ['finance officer', 'Data'] }), true);
+  assert.equal(meetsRunFilters(j, { titles: ['finance officer'] }), false);
+  assert.equal(meetsRunFilters(j, { city: 'hargeisa' }), true);
+  assert.equal(meetsRunFilters(j, { city: 'Burao' }), false);
+  assert.equal(meetsRunFilters({ ...j, city: null }, { city: 'Hargeisa' }), false);
+  assert.equal(meetsRunFilters(j, { employerTypes: ['ngo', 'un_agency'] }), true);
+  assert.equal(meetsRunFilters(j, { employerTypes: ['government'] }), false);
+});
+
+test('method B: the run shows only jobs meeting its filters and says how many it left out', async () => {
+  registerAdapter({
+    key: 'fake-board-2',
+    search: async () => [
+      job(21, { sourceKey: 'fake-board-2', title: 'Data Officer', city: 'Hargeisa' }),
+      job(22, { sourceKey: 'fake-board-2', title: 'Data Officer', city: 'Burao' }),
+      job(23, { sourceKey: 'fake-board-2', title: 'Driver', city: 'Hargeisa' }),
+      job(24, {
+        sourceKey: 'fake-board-2',
+        title: 'Data Officer',
+        city: 'Hargeisa',
+        employerType: 'government',
+      }),
+    ],
+  });
+  await JobSource.create({
+    key: 'fake-board-2',
+    name: 'Fake board 2',
+    type: 'job_board',
+    connection: 'api',
+    regions: ['somaliland'],
+    employerTypes: ['ngo', 'government'],
+    enabled: true,
+    termsCheckedAt: new Date(),
+  });
+  const started = await call(amina, 'POST', '/research/run', {
+    sourceKeys: ['fake-board-2'],
+    regions: ['somaliland'],
+    filters: { titles: ['data officer'], city: 'Hargeisa', employerTypes: ['ngo'] },
+  });
+  assert.equal(started.status, 202);
+  let run: Json;
+  for (let i = 0; i < 200; i += 1) {
+    run = (await call(amina, 'GET', `/research/runs/${started.body.data.run.id}`)).body.data;
+    if (run.run.status !== 'running') break;
+    await new Promise((r) => setTimeout(r, 20));
+  }
+  assert.equal(run!.run.jobsFound, 4); // all stored
+  const shown = [...run!.recommended, ...run!.lowerMatch].map(
+    (r: Json) => r.job.externalId ?? r.job.id,
+  );
+  assert.equal(shown.length, 1);
+  assert.equal(run!.hiddenByFilters, 3);
+  unregisterAdapter('fake-board-2');
 });
 
 test('saved jobs: save, list with match, job detail says saved, unsave; private per user', async () => {
