@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { AuthState } from '../auth/authContext';
 import { resources } from '../i18n';
-import type { AdminJobSource } from '../types/jobSources';
+import { SOURCE_REASONS, type AdminJobSource } from '../types/jobSources';
 import {
   enableBlocker,
   errorPercent,
@@ -124,6 +124,7 @@ describe('texts', () => {
       }
       expect(Object.keys(tr.common.region)).toEqual(['somaliland', 'somalia', 'remote']);
       expect(Object.keys(tr.common.employerType)).toHaveLength(7);
+      for (const reason of SOURCE_REASONS) expect(tr.common.sourceReasons[reason]).toBeTruthy();
     }
   });
 });

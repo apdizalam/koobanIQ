@@ -19,6 +19,14 @@
       "education": "Education",
       "health": "Health",
       "other": "Other"
+    },
+    "sourceReasons": {
+      "needs_approval": "Waiting for approval from the source (free API access requested).",
+      "no_free_api": "No free, permitted way to read its public jobs; KOBANIQ does not search it.",
+      "needs_permission": "Its terms do not allow this use without the source’s written permission.",
+      "terms_unverified": "Its terms could not be checked yet, so it is not searched.",
+      "not_relevant": "Free, but its jobs are not open to candidates in Somaliland or Somalia.",
+      "not_enabled": "Ready, but not switched on yet."
     }
   },
   "server": {

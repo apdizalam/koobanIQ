@@ -1023,6 +1023,30 @@
     "state": "pending",
     "en": "Somaliland"
   },
+  "common.sourceReasons.needs_approval": {
+    "state": "pending",
+    "en": "Waiting for approval from the source (free API access requested)."
+  },
+  "common.sourceReasons.needs_permission": {
+    "state": "pending",
+    "en": "Its terms do not allow this use without the source’s written permission."
+  },
+  "common.sourceReasons.no_free_api": {
+    "state": "pending",
+    "en": "No free, permitted way to read its public jobs; KOBANIQ does not search it."
+  },
+  "common.sourceReasons.not_enabled": {
+    "state": "pending",
+    "en": "Ready, but not switched on yet."
+  },
+  "common.sourceReasons.not_relevant": {
+    "state": "pending",
+    "en": "Free, but its jobs are not open to candidates in Somaliland or Somalia."
+  },
+  "common.sourceReasons.terms_unverified": {
+    "state": "pending",
+    "en": "Its terms could not be checked yet, so it is not searched."
+  },
   "mobile.auth.appName": {
     "state": "pending",
     "en": "KOBANIQ"

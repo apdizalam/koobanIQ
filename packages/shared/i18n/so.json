@@ -19,6 +19,14 @@
       "education": "Waxbarasho",
       "health": "Caafimaad",
       "other": "Kale"
+    },
+    "sourceReasons": {
+      "needs_approval": "Waxaa la sugayaa oggolaansho ilaha (helitaan API bilaash ah ayaa la codsaday).",
+      "no_free_api": "Ma jiro hab bilaash ah oo la oggol yahay oo lagu akhriyo shaqooyinkiisa dadweynaha; KOBANIQ kama raadiso.",
+      "needs_permission": "Shuruudihiisu ma oggola isticmaalkan iyada oo aan ilaha laga helin oggolaansho qoraal ah.",
+      "terms_unverified": "Shuruudihiisa weli lama hubin karin, sidaa darteed lagama raadiyo.",
+      "not_relevant": "Waa bilaash, laakiin shaqooyinkiisu uma furna musharixiinta Somaliland ama Soomaaliya.",
+      "not_enabled": "Waa diyaar, laakiin weli lama shidin."
     }
   },
   "server": {
