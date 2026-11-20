@@ -3875,6 +3875,10 @@
     "state": "pending",
     "en": "This text is too long"
   },
+  "server.validation.timeZoneInvalid": {
+    "state": "pending",
+    "en": "Unknown time zone"
+  },
   "server.validation.urlInvalid": {
     "state": "pending",
     "en": "Enter a full web address starting with http:// or https://"
