@@ -1039,7 +1039,8 @@
       "modes": {
         "search": "Raadi shaqooyin",
         "research": "Hel shaqooyin cusub",
-        "saved": "La keydiyay"
+        "saved": "La keydiyay",
+        "schedules": "Jadwallada"
       },
       "save": "Keydi",
       "saved": "La keydiyay",
@@ -1174,6 +1175,51 @@
         "cityHint": "Tusaale: Hargeysa. Shaqooyinka magaaladan oo keliya ayaa la muujiyaa.",
         "employerTypes": "Nooca shaqo-bixiyaha",
         "employerTypesHint": "Haddii aanad dooran: dhammaan shaqo-bixiyeyaasha. Shaqooyinka ka yimid xiriiriyeyaasha boggaga shaqada waxaa loo qoray “Kale”."
+      },
+      "schedule": {
+        "repeat": "Raadintan si toos ah u soo celi",
+        "frequencies": {
+          "hourly": "Saacad kasta",
+          "every6h": "6-dii saacadoodba",
+          "daily": "Maalin kasta",
+          "weekly": "Toddobaad kasta"
+        },
+        "weekdays": {
+          "0": "Isn",
+          "1": "Tal",
+          "2": "Arb",
+          "3": "Kha",
+          "4": "Jim",
+          "5": "Sab",
+          "6": "Axd"
+        },
+        "timeLabel": "Waqtiga (waqtigaaga maxalliga ah)",
+        "minuteLabel": "Daqiiqadaha saacadda ka dib (tusaale 00:15)",
+        "timeHint": "Waqti 24-saacadood ah, tusaale 08:00",
+        "timeInvalid": "Geli waqti sida 08:00",
+        "note": "Raadintu waxay si iskeed ah u socotaa waqtigan, waqti-aagga taleefankaaga. Natiijooyinku waxay ka muuqdaan Jadwallada.",
+        "save": "Keydi jadwalka",
+        "saved": "Jadwalka waa la keydiyay. Wuxuu si iskiis ah u socdaa waqtiga hoos ku qoran.",
+        "emptyTitle": "Ma jiraan raadinno la qorsheeyay",
+        "emptyBody": "Qaybta “Hel shaqooyin cusub”, calaamadee “Raadintan si toos ah u soo celi” si aad u raadiso saacad, maalin ama toddobaad kasta.",
+        "when": {
+          "hourly": "Saacad kasta daqiiqadda :{{minute}}",
+          "every6h": "6-dii saacadoodba laga bilaabo {{time}}",
+          "daily": "Maalin kasta {{time}}",
+          "weekly": "{{day}} kasta {{time}}"
+        },
+        "next": "Raadinta xigta: {{when}}",
+        "off": "Waa dansan yahay: ma socon doono.",
+        "last_one": "Raadintii ugu dambeysay: {{when}} · {{count}} raadin ilaa hadda",
+        "last_other": "Raadintii ugu dambeysay: {{when}} · {{count}} raadin ilaa hadda",
+        "skips": {
+          "no_sources": "Markii ugu dambeysay ma socon: ilaheeda shaqadu hadda waa dansan yihiin.",
+          "busy": "Markii ugu dambeysay ma socon: raadin kale oo adiga kuu socotay ayaa jirtay.",
+          "error": "Markii ugu dambeysay lama bilaabi karin. Mar dambe ayuu isku dayi doonaa."
+        },
+        "enabled": "Shidan",
+        "lastResults": "Natiijooyinkii ugu dambeeyay",
+        "delete": "Tirtir"
       }
     },
     "interview": {

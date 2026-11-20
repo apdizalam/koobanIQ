@@ -19,6 +19,11 @@ jest.mock('expo-secure-store', () => ({
     mockSecureStore.delete(key);
   }),
 }));
+// The phone is in Somalia's time zone (schedules are saved with it).
+jest.mock('expo-localization', () => ({
+  ...jest.requireActual('expo-localization'),
+  getCalendars: () => [{ timeZone: 'Africa/Mogadishu' }],
+}));
 
 const EMAIL = 'amina@example.com';
 type Reply = { status: number; body?: unknown };
@@ -77,6 +82,7 @@ const LOWER = { job: job('j2', 'Senior M&E Manager'), match: match(30, false) };
 
 let saved: Set<string>;
 let runChecks: number;
+let schedules: Record<string, unknown>[];
 const calls: { route: string; query: string; body: unknown }[] = [];
 let searchReply: (query: URLSearchParams) => Reply;
 
@@ -142,6 +148,38 @@ function api(method: string, path: string, query: URLSearchParams, body: unknown
   if (method === 'POST' && path === '/research/run') {
     return ok({ run: { id: 'r1', status: 'running' } }, 202);
   }
+  // Scheduled searches (TIQ-21), like the server: next run planned, off = no next run.
+  if (path === '/research/schedules') {
+    if (method === 'GET') return ok({ schedules });
+    const b = body as Record<string, unknown>;
+    const s = {
+      id: `s${schedules.length + 1}`,
+      ...b,
+      weekday: b.weekday ?? null,
+      filters: b.filters ?? {},
+      customUrls: b.customUrls ?? [],
+      enabled: true,
+      nextRunAt: '2026-11-21T06:00:00.000Z',
+      lastRunAt: '2026-11-20T06:00:00.000Z',
+      lastRunId: 'r1',
+      lastSkip: 'no_sources',
+      runCount: 1,
+      createdAt: '2026-11-20T09:00:00.000Z',
+    };
+    schedules.push(s);
+    return ok({ schedule: s }, 201);
+  }
+  const sched = /^\/research\/schedules\/(s\d+)$/.exec(path);
+  if (sched) {
+    const s = schedules.find((x) => x.id === sched[1])!;
+    if (method === 'DELETE') {
+      schedules = schedules.filter((x) => x !== s);
+      return { status: 204 };
+    }
+    const enabled = (body as { enabled: boolean }).enabled;
+    Object.assign(s, { enabled, nextRunAt: enabled ? '2026-11-21T06:00:00.000Z' : null });
+    return ok({ schedule: s });
+  }
   if (path === '/research/runs/r1') {
     runChecks += 1;
     const done = runChecks >= 2;
@@ -198,6 +236,7 @@ beforeEach(() => {
   mockSecureStore.set('kobaniq.refreshToken', 'saved-1');
   saved = new Set();
   runChecks = 0;
+  schedules = [];
   calls.length = 0;
   pollSettings.intervalMs = 10;
   searchReply = (query) =>
@@ -428,5 +467,81 @@ describe('TIQ-18: Jobs tab', () => {
       await i18n.changeLanguage('so');
     });
     expect(screen.getByText('Hel shaqooyin cusub')).toBeTruthy();
+  });
+});
+
+describe('TIQ-21: scheduled searches', () => {
+  it('saves a weekly schedule in the phone’s time zone instead of searching now', async () => {
+    await openApp('/jobs');
+    await press('jobs-mode-research');
+    await press('source-career-pages');
+    await type('jobs-links', 'https://boards.greenhouse.io/example');
+    await press('jobs-repeat');
+    expect(screen.getByText('Save schedule')).toBeTruthy();
+    await press('jobs-frequency-weekly');
+    await press('jobs-weekday-2');
+    // A time that is not a time blocks saving.
+    await type('jobs-repeat-time', '25:00');
+    expect(screen.getByTestId('jobs-start').props.accessibilityState).toMatchObject({
+      disabled: true,
+    });
+    await type('jobs-repeat-time', '9:30');
+    await press('jobs-start');
+
+    const post = calls.find((c) => c.route === 'POST /research/schedules')!;
+    expect(post.body).toEqual({
+      sourceKeys: ['career-pages'],
+      regions: ['somaliland', 'somalia'],
+      customUrls: ['https://boards.greenhouse.io/example'],
+      frequency: 'weekly',
+      time: '09:30',
+      weekday: 2,
+      timeZone: 'Africa/Mogadishu',
+    });
+    // No search was started now; the schedule list is shown.
+    expect(calls.some((c) => c.route === 'POST /research/run')).toBe(false);
+    expect(screen.getByTestId('jobs-schedule-saved')).toBeTruthy();
+    expect(screen.getByText('Every Wed at 09:30 (Africa/Mogadishu)')).toBeTruthy();
+    expect(screen.getByTestId('schedule-s1-next').props.children).toMatch(/^Next search: /);
+    expect(screen.getByTestId('schedule-s1-skip').props.children).toBe(
+      'Last time it did not run: its job sources are switched off right now.',
+    );
+  });
+
+  it('switching a schedule off shows it will not run; delete removes it', async () => {
+    schedules = [
+      {
+        id: 's1',
+        frequency: 'daily',
+        time: '08:00',
+        weekday: null,
+        timeZone: 'Africa/Mogadishu',
+        sourceKeys: ['career-pages'],
+        regions: ['somaliland'],
+        filters: {},
+        customUrls: [],
+        enabled: true,
+        nextRunAt: '2026-11-21T05:00:00.000Z',
+        lastRunAt: null,
+        lastRunId: null,
+        lastSkip: null,
+        runCount: 0,
+        createdAt: '2026-11-20T09:00:00.000Z',
+      },
+    ];
+    await openApp('/jobs');
+    await press('jobs-mode-schedules');
+    expect(screen.getByText('Every day at 08:00 (Africa/Mogadishu)')).toBeTruthy();
+    await press('schedule-s1-enabled');
+    expect(calls.find((c) => c.route === 'PATCH /research/schedules/s1')!.body).toEqual({
+      enabled: false,
+    });
+    expect(screen.getByTestId('schedule-s1-next').props.children).toBe(
+      'Switched off: it will not run.',
+    );
+    await press('schedule-s1-delete');
+    expect(calls.some((c) => c.route === 'DELETE /research/schedules/s1')).toBe(true);
+    expect(screen.queryByTestId('schedule-s1')).toBeNull();
+    expect(screen.getByText('No scheduled searches')).toBeTruthy();
   });
 });

@@ -1039,7 +1039,8 @@
       "modes": {
         "search": "Search jobs",
         "research": "Find new jobs",
-        "saved": "Saved"
+        "saved": "Saved",
+        "schedules": "Schedules"
       },
       "save": "Save",
       "saved": "Saved",
@@ -1174,6 +1175,51 @@
         "cityHint": "For example: Hargeisa. Only jobs in this city are shown.",
         "employerTypes": "Employer type",
         "employerTypesHint": "None chosen: all employers. Jobs from career-page links are listed as “Other”."
+      },
+      "schedule": {
+        "repeat": "Repeat this search automatically",
+        "frequencies": {
+          "hourly": "Every hour",
+          "every6h": "Every 6 hours",
+          "daily": "Every day",
+          "weekly": "Every week"
+        },
+        "weekdays": {
+          "0": "Mon",
+          "1": "Tue",
+          "2": "Wed",
+          "3": "Thu",
+          "4": "Fri",
+          "5": "Sat",
+          "6": "Sun"
+        },
+        "timeLabel": "At (your local time)",
+        "minuteLabel": "Minutes past the hour (e.g. 00:15)",
+        "timeHint": "24-hour time, e.g. 08:00",
+        "timeInvalid": "Enter a time like 08:00",
+        "note": "The search runs by itself at this time, in your phone’s time zone. Results appear under Schedules.",
+        "save": "Save schedule",
+        "saved": "Schedule saved. It runs by itself at the time shown below.",
+        "emptyTitle": "No scheduled searches",
+        "emptyBody": "In “Find new jobs”, tick “Repeat this search automatically” to search every hour, day or week.",
+        "when": {
+          "hourly": "Every hour at :{{minute}}",
+          "every6h": "Every 6 hours from {{time}}",
+          "daily": "Every day at {{time}}",
+          "weekly": "Every {{day}} at {{time}}"
+        },
+        "next": "Next search: {{when}}",
+        "off": "Switched off: it will not run.",
+        "last_one": "Last search: {{when}} · {{count}} search so far",
+        "last_other": "Last search: {{when}} · {{count}} searches so far",
+        "skips": {
+          "no_sources": "Last time it did not run: its job sources are switched off right now.",
+          "busy": "Last time it did not run: another of your searches was still running.",
+          "error": "Last time it could not start. It will try again next time."
+        },
+        "enabled": "On",
+        "lastResults": "Last results",
+        "delete": "Delete"
       }
     },
     "interview": {

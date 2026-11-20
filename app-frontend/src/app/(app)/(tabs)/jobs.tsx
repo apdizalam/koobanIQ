@@ -15,17 +15,27 @@ import { aiErrorText } from '../../../cv/aiErrorText';
 import { useSavedJobs } from '../../../jobs/useSavedJobs';
 import { useProfile } from '../../../profile/ProfileProvider';
 import {
+  DEFAULT_REPEAT,
+  RepeatOptions,
+  repeatReady,
+  type RepeatValue,
+} from '../../../components/jobs/RepeatOptions';
+import { ScheduleList } from '../../../components/jobs/ScheduleList';
+import {
+  createSchedule,
   fetchJobSources,
+  normaliseTime,
   parseLinks,
   searchStoredJobs,
   startResearch,
 } from '../../../services/jobsApi';
+import { deviceTimeZone } from '../../../services/reportsApi';
 import { useTheme } from '../../../theme';
 import type { JobSource, StoredJobResults, UnavailableJobSource } from '../../../types/jobs';
 import { EMPLOYER_TYPES, JOB_TYPES, REGION_KEYS, type RegionKey } from '../../../types/profile';
 
-type Mode = 'search' | 'research' | 'saved';
-const MODES: Mode[] = ['search', 'research', 'saved'];
+type Mode = 'search' | 'research' | 'saved' | 'schedules';
+const MODES: Mode[] = ['search', 'research', 'saved', 'schedules'];
 /** Most career-page links one search takes (backend MAX_CUSTOM_URLS). */
 const MAX_LINKS = 5;
 
@@ -136,19 +146,42 @@ export default function JobsTab() {
       : linkList.length > MAX_LINKS
         ? t('mobile.jobs.research.linksTooMany', { max: MAX_LINKS })
         : undefined;
-  const canStart = chosen.length > 0 && researchRegions.length > 0 && !linksProblem && !busy;
+  const [repeat, setRepeat] = useState<RepeatValue>(DEFAULT_REPEAT);
+  const [scheduleSaved, setScheduleSaved] = useState(false);
+  const canStart =
+    chosen.length > 0 &&
+    researchRegions.length > 0 &&
+    !linksProblem &&
+    repeatReady(repeat) &&
+    !busy;
 
   async function startNew() {
     if (!canStart) return;
     setBusy(true);
     setProblem(null);
+    setScheduleSaved(false);
+    const search = {
+      sourceKeys: chosen,
+      regions: researchRegions,
+      filters: researchFilters(title, researchCity, researchEmployerTypes),
+      customUrls: linkSource ? linkList : undefined,
+    };
     try {
-      const { run } = await startResearch(await getAccessToken(), {
-        sourceKeys: chosen,
-        regions: researchRegions,
-        filters: researchFilters(title, researchCity, researchEmployerTypes),
-        customUrls: linkSource ? linkList : undefined,
-      });
+      if (repeat.repeat) {
+        // Saved to run by itself at the chosen local time; the list shows when.
+        await createSchedule(await getAccessToken(), {
+          ...search,
+          frequency: repeat.frequency,
+          time: normaliseTime(repeat.time)!,
+          ...(repeat.frequency === 'weekly' ? { weekday: repeat.weekday } : {}),
+          timeZone: deviceTimeZone(),
+        });
+        setRepeat(DEFAULT_REPEAT);
+        setScheduleSaved(true);
+        setMode('schedules');
+        return;
+      }
+      const { run } = await startResearch(await getAccessToken(), search);
       router.push({ pathname: '/research/[id]', params: { id: run.id } });
     } catch (err) {
       setProblem(aiErrorText(err, t));
@@ -397,9 +430,10 @@ export default function JobsTab() {
             setResearchEmployerTypes,
             'research',
           )}
+          <RepeatOptions value={repeat} onChange={setRepeat} />
           <Button
             testID="jobs-start"
-            label={t('mobile.jobs.research.start')}
+            label={t(repeat.repeat ? 'mobile.jobs.schedule.save' : 'mobile.jobs.research.start')}
             loading={busy}
             disabled={!canStart}
             onPress={() => void startNew()}
@@ -425,6 +459,17 @@ export default function JobsTab() {
               heading={t('mobile.jobs.savedTitle', { count: saved.length })}
             />
           )}
+        </View>
+      ) : null}
+
+      {mode === 'schedules' ? (
+        <View style={{ gap: spacing.md }}>
+          {scheduleSaved ? (
+            <View testID="jobs-schedule-saved">
+              <FormMessage tone="info" text={t('mobile.jobs.schedule.saved')} />
+            </View>
+          ) : null}
+          <ScheduleList />
         </View>
       ) : null}
     </TabScreen>

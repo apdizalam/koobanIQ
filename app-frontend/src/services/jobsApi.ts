@@ -2,7 +2,9 @@ import type {
   JobSource,
   MatchedJob,
   ResearchRun,
+  ResearchSchedule,
   RunResults,
+  ScheduleFrequency,
   StoredJobResults,
   UnavailableJobSource,
 } from '../types/jobs';
@@ -85,3 +87,47 @@ export const parseLinks = (text: string) =>
         .filter(Boolean),
     ),
   ] as string[];
+
+// ------------------------------------------------------------------ scheduled searches (TIQ-21)
+
+export interface ScheduleInput extends ResearchInput {
+  frequency: ScheduleFrequency;
+  time: string;
+  weekday?: number;
+  timeZone: string;
+}
+
+/** Saves a search that runs by itself (hourly, every 6 h, daily, weekly) at a local time. */
+export const createSchedule = (accessToken: string, input: ScheduleInput) =>
+  apiRequest<{ schedule: ResearchSchedule }>('/research/schedules', {
+    method: 'POST',
+    accessToken,
+    body: input,
+  });
+
+export const fetchSchedules = (accessToken: string) =>
+  apiRequest<{ schedules: ResearchSchedule[] }>('/research/schedules', { accessToken });
+
+/** Switch a schedule on or off (off = no more runs). */
+export const setScheduleEnabled = (accessToken: string, id: string, enabled: boolean) =>
+  apiRequest<{ schedule: ResearchSchedule }>(`/research/schedules/${encodeURIComponent(id)}`, {
+    method: 'PATCH',
+    accessToken,
+    body: { enabled },
+  });
+
+export const deleteSchedule = (accessToken: string, id: string) =>
+  apiRequest<void>(`/research/schedules/${encodeURIComponent(id)}`, {
+    method: 'DELETE',
+    accessToken,
+  });
+
+/** "08:00", "8:5" → "08:05"-style 24-hour time, or null when it is not a time. */
+export function normaliseTime(text: string): string | null {
+  const m = /^\s*(\d{1,2})[:.](\d{2})\s*$/.exec(text);
+  if (!m) return null;
+  const h = Number(m[1]);
+  const min = Number(m[2]);
+  if (h > 23 || min > 59) return null;
+  return `${String(h).padStart(2, '0')}:${String(min).padStart(2, '0')}`;
+}

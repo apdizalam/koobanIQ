@@ -2287,6 +2287,10 @@
     "state": "pending",
     "en": "Saved"
   },
+  "mobile.jobs.modes.schedules": {
+    "state": "pending",
+    "en": "Schedules"
+  },
   "mobile.jobs.modes.search": {
     "state": "pending",
     "en": "Search jobs"
@@ -2542,6 +2546,146 @@
   "mobile.jobs.savedTitle_other": {
     "state": "pending",
     "en": "{{count}} saved jobs"
+  },
+  "mobile.jobs.schedule.delete": {
+    "state": "pending",
+    "en": "Delete"
+  },
+  "mobile.jobs.schedule.emptyBody": {
+    "state": "pending",
+    "en": "In “Find new jobs”, tick “Repeat this search automatically” to search every hour, day or week."
+  },
+  "mobile.jobs.schedule.emptyTitle": {
+    "state": "pending",
+    "en": "No scheduled searches"
+  },
+  "mobile.jobs.schedule.enabled": {
+    "state": "pending",
+    "en": "On"
+  },
+  "mobile.jobs.schedule.frequencies.daily": {
+    "state": "pending",
+    "en": "Every day"
+  },
+  "mobile.jobs.schedule.frequencies.every6h": {
+    "state": "pending",
+    "en": "Every 6 hours"
+  },
+  "mobile.jobs.schedule.frequencies.hourly": {
+    "state": "pending",
+    "en": "Every hour"
+  },
+  "mobile.jobs.schedule.frequencies.weekly": {
+    "state": "pending",
+    "en": "Every week"
+  },
+  "mobile.jobs.schedule.lastResults": {
+    "state": "pending",
+    "en": "Last results"
+  },
+  "mobile.jobs.schedule.last_one": {
+    "state": "pending",
+    "en": "Last search: {{when}} · {{count}} search so far"
+  },
+  "mobile.jobs.schedule.last_other": {
+    "state": "pending",
+    "en": "Last search: {{when}} · {{count}} searches so far"
+  },
+  "mobile.jobs.schedule.minuteLabel": {
+    "state": "pending",
+    "en": "Minutes past the hour (e.g. 00:15)"
+  },
+  "mobile.jobs.schedule.next": {
+    "state": "pending",
+    "en": "Next search: {{when}}"
+  },
+  "mobile.jobs.schedule.note": {
+    "state": "pending",
+    "en": "The search runs by itself at this time, in your phone’s time zone. Results appear under Schedules."
+  },
+  "mobile.jobs.schedule.off": {
+    "state": "pending",
+    "en": "Switched off: it will not run."
+  },
+  "mobile.jobs.schedule.repeat": {
+    "state": "pending",
+    "en": "Repeat this search automatically"
+  },
+  "mobile.jobs.schedule.save": {
+    "state": "pending",
+    "en": "Save schedule"
+  },
+  "mobile.jobs.schedule.saved": {
+    "state": "pending",
+    "en": "Schedule saved. It runs by itself at the time shown below."
+  },
+  "mobile.jobs.schedule.skips.busy": {
+    "state": "pending",
+    "en": "Last time it did not run: another of your searches was still running."
+  },
+  "mobile.jobs.schedule.skips.error": {
+    "state": "pending",
+    "en": "Last time it could not start. It will try again next time."
+  },
+  "mobile.jobs.schedule.skips.no_sources": {
+    "state": "pending",
+    "en": "Last time it did not run: its job sources are switched off right now."
+  },
+  "mobile.jobs.schedule.timeHint": {
+    "state": "pending",
+    "en": "24-hour time, e.g. 08:00"
+  },
+  "mobile.jobs.schedule.timeInvalid": {
+    "state": "pending",
+    "en": "Enter a time like 08:00"
+  },
+  "mobile.jobs.schedule.timeLabel": {
+    "state": "pending",
+    "en": "At (your local time)"
+  },
+  "mobile.jobs.schedule.weekdays.0": {
+    "state": "pending",
+    "en": "Mon"
+  },
+  "mobile.jobs.schedule.weekdays.1": {
+    "state": "pending",
+    "en": "Tue"
+  },
+  "mobile.jobs.schedule.weekdays.2": {
+    "state": "pending",
+    "en": "Wed"
+  },
+  "mobile.jobs.schedule.weekdays.3": {
+    "state": "pending",
+    "en": "Thu"
+  },
+  "mobile.jobs.schedule.weekdays.4": {
+    "state": "pending",
+    "en": "Fri"
+  },
+  "mobile.jobs.schedule.weekdays.5": {
+    "state": "pending",
+    "en": "Sat"
+  },
+  "mobile.jobs.schedule.weekdays.6": {
+    "state": "pending",
+    "en": "Sun"
+  },
+  "mobile.jobs.schedule.when.daily": {
+    "state": "pending",
+    "en": "Every day at {{time}}"
+  },
+  "mobile.jobs.schedule.when.every6h": {
+    "state": "pending",
+    "en": "Every 6 hours from {{time}}"
+  },
+  "mobile.jobs.schedule.when.hourly": {
+    "state": "pending",
+    "en": "Every hour at :{{minute}}"
+  },
+  "mobile.jobs.schedule.when.weekly": {
+    "state": "pending",
+    "en": "Every {{day}} at {{time}}"
   },
   "mobile.jobs.search.button": {
     "state": "pending",
