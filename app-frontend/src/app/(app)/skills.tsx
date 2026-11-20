@@ -246,6 +246,13 @@ export default function SkillProfileScreen() {
                     <Text style={[typography.body, { color: colors.textMuted }]}>
                       {t('mobile.skills.suggestBody')}
                     </Text>
+                    <Button
+                      label={t('mobile.skills.takeQuiz')}
+                      onPress={() =>
+                        router.push({ pathname: '/quiz', params: { skillId: suggestion.id } })
+                      }
+                      testID="skills-take-quiz"
+                    />
                     <TextLink
                       label={t('mobile.skills.maybeLater')}
                       align="flex-start"

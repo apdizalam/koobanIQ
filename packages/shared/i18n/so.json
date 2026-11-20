@@ -810,7 +810,7 @@
       "emptyTitle": "Weli xirfado ma jiraan",
       "emptyBody": "Ku dar xirfadaha aad leedahay oo adigu qiimee. Hadhow, imtixaan gaaban oo ikhtiyaari ah ayaa xaqiijin kara.",
       "suggestTitle": "Xaqiiji {{skill}}?",
-      "suggestBody": "Imtixaan gaaban ayaa xaqiijin kara heerkaaga. Had iyo jeer waa ikhtiyaari. Imtixaannadu waxay ku soo biiri doonaan cusboonaysiin soo socota.",
+      "suggestBody": "Imtixaan gaaban ayaa xaqiijin kara heerkaaga. Had iyo jeer waa ikhtiyaari.",
       "maybeLater": "Hadhow",
       "levels": {
         "beginner": "Bilow",
@@ -825,7 +825,9 @@
       "assessedOn": "Imtixaanka la galay {{date}}",
       "toLearn": "Waxa mudan in la barto marka xigta: {{topics}}",
       "onlyQuiz": "Imtixaan keliya ayaa beddela heerka la qiimeeyay. Wuxuu cabbiraa aqoonta, ma aha khibradda shaqo.",
-      "summary": "{{assessed}} ka mid ah {{total}} ayaa la qiimeeyay"
+      "summary": "{{assessed}} ka mid ah {{total}} ayaa la qiimeeyay",
+      "takeQuiz": "Gal imtixaanka",
+      "quizThis": "Ka gal imtixaan xirfaddan"
     },
     "cv": {
       "version": "nooca {{version}}",
@@ -944,6 +946,62 @@
         "factsNote": "Magacyada shaqooyinka, loo shaqeeyayaasha, taariikhaha, iskuulada, xirfadaha iyo luqadaha waxay ka yimaadaan astaantaada. Si aad u beddesho, wax ka beddel astaantaada oo mar kale samee CV-ga.",
         "newVersionNote": "CV-gan waa la ansixiyay. Keydintu waxay sameynaysaa nooc qabyo ah oo cusub; kan la ansixiyay wuu sii jirayaa.",
         "save": "Keydi qoraalka"
+      }
+    },
+    "quiz": {
+      "start": {
+        "title": "Imtixaan xirfadeed",
+        "subtitle": "Imtixaan gaaban oo ikhtiyaari ah si loo xaqiijiyo mid ka mid ah xirfadahaaga.",
+        "skill": "Xirfad",
+        "noSkills": "Marka hore ku dar xirfad, kadib waxaad ka geli kartaa imtixaan.",
+        "difficulty": "Ka bilow",
+        "adaptiveHint": "Su’aaluhu way is beddelaan: saddex jawaabood oo sax ah oo isku xiga ayaa adkeeya; jawaab khaldan kadib waxaad helaysaa su’aal kale oo isla mawduuca ah.",
+        "language": "Luqadda imtixaanka",
+        "length": "Dhererka",
+        "questions_one": "{{count}} su’aal",
+        "questions_other": "{{count}} su’aalood",
+        "start": "Bilow imtixaanka",
+        "writingShort": "Waa la diyaarinayaa…",
+        "writing": "AI-gu wuxuu qorayaa su’aalahaaga. Tani waxay qaadan kartaa ilaa daqiiqad.",
+        "privacy": "Magaca xirfadda keliya ayaa loo dirayaa AI-ga, weligiis astaantaada.",
+        "history": "Imtixaanadii hore",
+        "unfinished": "Imtixaanka {{skill}} oo aan dhammaan: {{answered}} ka mid ah {{total}} ayaa laga jawaabay.",
+        "continue": "Sii wad",
+        "cancel": "Jooji imtixaanka"
+      },
+      "difficulty": {
+        "easy": "Fudud",
+        "normal": "Caadi",
+        "hard": "Adag"
+      },
+      "disclaimer": "Natiijooyinka imtixaanku waxay cabbiraan aqoon, ma aha caddayn khibrad shaqo oo dhab ah.",
+      "adapted": "Heerka waa la beddelay",
+      "rightAnswer": "jawaabta saxda ah",
+      "correct": "Sax",
+      "wrong": "Maaha",
+      "check": "Hubi jawaabta",
+      "next": "Su’aasha xigta",
+      "seeResults": "Arag natiijooyinka",
+      "notFound": "Imtixaankan lama helin.",
+      "cancelled": "Imtixaankan waa la joojiyay. Xirfaddaadu isma beddelin.",
+      "leave": {
+        "text": "Ma ka baxaysaa imtixaanka? Jawaabahaagu waa la hayaa oo hadhow waad sii wadan kartaa, ama waad joojin kartaa.",
+        "later": "Hadhow sii wad",
+        "cancel": "Jooji imtixaanka",
+        "stay": "Joog"
+      },
+      "report": {
+        "correct": "{{correct}} ka mid ah {{total}} ayaa sax ah",
+        "levelNote": "Waxaa lagu keydiyay xirfaddaada {{skill}}. Qiimayntaada sidii aad u dejisay ayay ahaanaysaa.",
+        "strengths": "Awoodaha",
+        "noStrengths": "Markan ma jiro mawduuc si buuxda sax u ahaa.",
+        "gaps": "Waxa ka maqan",
+        "noGaps": "Imtixaankan wax ka maqan lagama helin.",
+        "next": "Waxa xiga",
+        "practise": "Ku celceli {{topic}}, kadib mar kale gal imtixaanka.",
+        "harder": "Mar kale isku day imtixaanka heer ka adag.",
+        "toSkills": "Arag astaanta xirfadahaaga",
+        "another": "Gal imtixaan kale"
       }
     }
   }

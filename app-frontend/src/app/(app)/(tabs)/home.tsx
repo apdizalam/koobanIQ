@@ -264,8 +264,7 @@ export default function HomeScreen() {
                 <QuickAction
                   icon="target"
                   label={t('mobile.home.quick.assessSkill')}
-                  soonLabel={t('mobile.home.quick.soon')}
-                  onPress={() => undefined}
+                  onPress={() => router.push('/quiz')}
                   testID="home-quick-assess"
                 />
                 <QuickAction
