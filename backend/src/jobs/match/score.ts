@@ -1,11 +1,15 @@
 import {
   jobCareerLevel,
   jobSkills,
+  levelForYears,
   levelRank,
   plainText,
+  relevantYears,
+  requiredYears,
   sameSkill,
   userCareerLevel,
   type CareerLevel,
+  type LevelConfidence,
   type JobSignalsInput,
   type UserSignals,
 } from './signals.js';
@@ -31,9 +35,14 @@ export interface JobMatchResult {
   matchedSkills: string[];
   missingRequired: string[];
   missingPreferred: string[];
-  userLevel: CareerLevel;
+  /** Null when there is no evidence to judge by. */
+  userLevel: CareerLevel | null;
+  levelConfidence: LevelConfidence;
   jobLevel: CareerLevel | null;
   levelFit: LevelFit;
+  /** Years of experience related to this job, and what the ad asks for (null = not stated). */
+  relevantYears: number;
+  requiredYears: number | null;
   reasons: MatchReason[];
 }
 
@@ -45,7 +54,9 @@ const EVIDENCE = { assessed: 1, self: 0.7 } as const;
  * with every reason kept so the app can explain it:
  * - skills (50): essential skills count double; the user's assessed skills count
  *   fully, self-rated ones 70 %;
- * - career level (25): fits / a step above (stretch) / far above (0);
+ * - career level (25): fits / a step above (stretch) / far above (0); the
+ *   user's level comes from evidence and says how sure it is; the job's "X years"
+ *   is checked against the user's related experience;
  * - location (15): the selected regions and the user's cities;
  * - preferences (10): wanted titles, employer types, job types.
  * A job far above the user's level, or missing more than one essential skill,
@@ -57,8 +68,10 @@ export function matchJob(
   context: { regions: string[]; now?: Date },
 ): JobMatchResult {
   const reasons: MatchReason[] = [];
-  const { level: userLevel, years } = userCareerLevel(user, context.now);
+  const career = userCareerLevel(user, context.now);
+  const userLevel = career.level;
   const jobLevel = jobCareerLevel(job);
+  const required = requiredYears(`${job.title}\n${job.description ?? ''}`);
 
   // ---------------------------------------------------------------- skills
   const userNames = [...user.skills.map((s) => s.name), ...user.projectSkills];
@@ -105,9 +118,18 @@ export function matchJob(
   }
 
   // ---------------------------------------------------------------- career level
+  const related = relevantYears(
+    user,
+    job,
+    asked.map((s) => s.name),
+    context.now,
+  );
   let levelFit: LevelFit = 'unknown';
   let levelScore = 15;
-  if (jobLevel) {
+  if (!userLevel) {
+    // No evidence about the user: the level is neither held for nor against them.
+    reasons.push({ key: 'levelUnknown' });
+  } else if (jobLevel) {
     const gap = levelRank(jobLevel) - levelRank(userLevel);
     if (gap <= 0 && gap >= -1) {
       levelFit = 'fits';
@@ -122,12 +144,30 @@ export function matchJob(
       levelFit = 'above';
       levelScore = 0;
     }
+    // The ad's "X years": counted against the user's related experience only.
+    if (required !== null) {
+      const short = levelRank(levelForYears(required)) - levelRank(levelForYears(related));
+      if (short >= 2 && levelFit !== 'above') {
+        levelFit = 'above';
+        levelScore = 0;
+      } else if (short === 1 && (levelFit === 'fits' || levelFit === 'below')) {
+        levelFit = 'stretch';
+        levelScore = 10;
+      }
+    }
+    if (career.confidence === 'estimated' && levelFit === 'fits') levelScore = 20;
     reasons.push({
       key: `level_${levelFit}`,
-      values: { jobLevel, userLevel, years },
+      values: { jobLevel, userLevel, years: career.years },
     });
+    if (required !== null && related < required) {
+      reasons.push({ key: 'relevantYearsShort', values: { required, related } });
+    }
   } else {
     reasons.push({ key: 'levelNotStated' });
+  }
+  if (userLevel && career.confidence === 'estimated') {
+    reasons.push({ key: 'levelEstimated' });
   }
 
   // ---------------------------------------------------------------- location
@@ -186,8 +226,11 @@ export function matchJob(
     missingRequired,
     missingPreferred,
     userLevel,
+    levelConfidence: career.confidence,
     jobLevel,
     levelFit,
+    relevantYears: related,
+    requiredYears: required,
     reasons,
   };
 }

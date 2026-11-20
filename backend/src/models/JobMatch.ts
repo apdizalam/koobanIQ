@@ -24,7 +24,15 @@ const jobMatchSchema = new Schema(
     matchedSkills: { type: [String], required: true },
     missingRequired: { type: [String], required: true },
     missingPreferred: { type: [String], required: true },
-    userLevel: { type: String, enum: CAREER_LEVELS, required: true },
+    /** Null when the profile gives no evidence (never invented). */
+    userLevel: { type: String, enum: CAREER_LEVELS, default: null },
+    levelConfidence: {
+      type: String,
+      enum: ['confident', 'estimated', 'unknown'],
+      required: true,
+    },
+    relevantYears: { type: Number, required: true },
+    requiredYears: { type: Number, default: null },
     jobLevel: { type: String, enum: CAREER_LEVELS, default: null },
     levelFit: {
       type: String,

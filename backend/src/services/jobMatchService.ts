@@ -37,6 +37,7 @@ export async function userSignals(userId: Types.ObjectId): Promise<UserSignals> 
       title: e.title,
       startDate: e.startDate,
       endDate: e.endDate ?? null,
+      description: e.description ?? null,
     })),
     projectSkills: (profile?.projects ?? []).flatMap((p) => p.skills ?? []),
     certifications: (profile?.certifications ?? []).map((c) => c.name),
@@ -60,8 +61,11 @@ const publicMatch = (m: JobMatchResult) => ({
   missingRequired: m.missingRequired,
   missingPreferred: m.missingPreferred,
   userLevel: m.userLevel,
+  levelConfidence: m.levelConfidence,
   jobLevel: m.jobLevel,
   levelFit: m.levelFit,
+  relevantYears: m.relevantYears,
+  requiredYears: m.requiredYears,
   reasons: m.reasons,
 });
 export type PublicMatch = ReturnType<typeof publicMatch>;

@@ -10,8 +10,13 @@ type SkillLevel = 'beginner' | 'mid' | 'advanced' | 'expert';
 /** What the matcher knows about the user: only the user's own profile data. */
 export interface UserSignals {
   skills: { name: string; selfLevel: SkillLevel; assessedLevel: SkillLevel | null }[];
-  /** "YYYY-MM"; endDate empty = current job. */
-  experience: { title: string; startDate: string; endDate?: string | null }[];
+  /** "YYYY-MM"; endDate empty = current job; description = the responsibilities the user wrote. */
+  experience: {
+    title: string;
+    startDate: string;
+    endDate?: string | null;
+    description?: string | null;
+  }[];
   /** Other evidence of a skill (named in a project or certificate). */
   projectSkills: string[];
   certifications: string[];
@@ -108,19 +113,121 @@ export function levelForYears(years: number): CareerLevel {
   return 'expert';
 }
 
+export type LevelConfidence = 'confident' | 'estimated' | 'unknown';
+
+/** Leading people or work, as the user described it ("managed a team of 5", "led the project"). */
+const LEADERSHIP =
+  /\b(led|lead|managed|manage|supervised|supervise|headed|oversaw|oversee)\b[^.\n]{0,60}\b(team|staff|people|officers|employees|project|projects|programme|program|unit|department|budget)\b/;
+
+const months = (e: UserSignals['experience'][number], now: Date) => {
+  const start = monthIndex(e.startDate);
+  const today = now.getUTCFullYear() * 12 + now.getUTCMonth();
+  const end = e.endDate ? monthIndex(e.endDate) : today;
+  return start === null || end === null || end < start ? 0 : end - start + 1;
+};
+
 /**
- * The user's career level from evidence: work experience first. Quiz evidence
- * can only lift an entry-level profile to junior (two skills assessed advanced
- * or expert); a self-rated level never changes it.
+ * The user's career level, from evidence only, with how sure it is (owner
+ * requirement: never invent certainty):
+ * - base: years of work experience from the profile's own dates;
+ * - a senior title held for 2+ years, or written responsibilities leading
+ *   people or work, can raise it by one step (never more);
+ * - quiz evidence (2 skills assessed advanced / expert) can lift entry to junior;
+ * - never age, degree or the user's own skill ratings.
+ * Confidence: "confident" = experience with dates and written responsibilities;
+ * "estimated" = thinner evidence (no responsibilities written, or no experience
+ * at all); "unknown" = nothing to judge by (then the level is null and never
+ * held for or against the user).
  */
 export function userCareerLevel(user: UserSignals, now = new Date()) {
+  const evidence: string[] = [];
+  const hasAnything =
+    user.experience.length > 0 ||
+    user.skills.length > 0 ||
+    user.projectSkills.length > 0 ||
+    user.certifications.length > 0;
   const years = experienceYears(user.experience, now);
-  let level = levelForYears(years);
+  if (!hasAnything) {
+    return { years, level: null, confidence: 'unknown' as LevelConfidence, evidence };
+  }
+
+  const base = levelForYears(years);
+  evidence.push('experienceYears');
+  let level = base;
+
+  const heldTitle = user.experience
+    .filter((e) => months(e, now) >= 24)
+    .map((e) => TITLE_LEVELS.find(([re]) => re.test(plainText(e.title)))?.[1])
+    .filter((l): l is CareerLevel => !!l)
+    .sort((a, b) => levelRank(b) - levelRank(a))[0];
+  const leads = user.experience.some(
+    (e) => e.description && LEADERSHIP.test(plainText(e.description)),
+  );
+  if (heldTitle && levelRank(heldTitle) > levelRank(base)) {
+    level = CAREER_LEVELS[levelRank(base) + 1];
+    evidence.push('seniorTitleHeld');
+  } else if (leads && years >= 2 && levelRank(base) <= levelRank('junior')) {
+    level = CAREER_LEVELS[levelRank(base) + 1];
+    evidence.push('leadershipResponsibilities');
+  }
+
   const strongAssessed = user.skills.filter(
     (s) => s.assessedLevel === 'advanced' || s.assessedLevel === 'expert',
   ).length;
-  if (level === 'entry' && strongAssessed >= 2) level = 'junior';
-  return { years, level };
+  if (level === 'entry' && strongAssessed >= 2) {
+    level = 'junior';
+    evidence.push('assessedSkills');
+  }
+
+  const described =
+    user.experience.length > 0 && user.experience.every((e) => !!e.description?.trim());
+  const confidence: LevelConfidence = described ? 'confident' : 'estimated';
+  return { years, level: level as CareerLevel | null, confidence, evidence };
+}
+
+/** Meaningful words of a text, for "is this experience related to that job?". */
+const RELATED_STOP = new Set([
+  'and',
+  'the',
+  'for',
+  'with',
+  'senior',
+  'junior',
+  'assistant',
+  'associate',
+  'officer',
+  'manager',
+  'lead',
+  'head',
+  'intern',
+  'national',
+  'international',
+  'staff',
+  'team',
+]);
+const relatedWords = (text: string) =>
+  plainText(text)
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((w) => w.length > 2 && !RELATED_STOP.has(w));
+
+/**
+ * Years of experience related to this job: jobs whose title shares a real word
+ * with the job's title, or whose written responsibilities name a skill the job
+ * asks for. A job's "X years of experience" is checked against these years.
+ */
+export function relevantYears(
+  user: UserSignals,
+  job: Pick<JobSignalsInput, 'title'>,
+  jobSkillNames: string[],
+  now = new Date(),
+) {
+  const titleWords = new Set(relatedWords(job.title));
+  const related = user.experience.filter((e) => {
+    if (relatedWords(e.title).some((w) => titleWords.has(w))) return true;
+    const text = plainText(`${e.title}\n${e.description ?? ''}`);
+    return jobSkillNames.some((name) => skillVariants(name).some((v) => termPattern(v).test(text)));
+  });
+  return experienceYears(related, now);
 }
 
 // ------------------------------------------------------------------ the job

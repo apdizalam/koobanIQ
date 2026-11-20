@@ -6,6 +6,7 @@ import {
   jobCareerLevel,
   jobSkills,
   requiredYears,
+  relevantYears,
   userCareerLevel,
   type JobSignalsInput,
   type UserSignals,
@@ -19,8 +20,15 @@ const user = (over: Partial<UserSignals> = {}): UserSignals => ({
     { name: 'Microsoft Excel', selfLevel: 'mid', assessedLevel: 'advanced' },
     { name: 'Report writing', selfLevel: 'mid', assessedLevel: null },
   ],
-  // Two years in total (2024-11 → now).
-  experience: [{ title: 'Data clerk', startDate: '2024-11', endDate: null }],
+  // Two years in total (2024-11 → now), with the responsibilities written.
+  experience: [
+    {
+      title: 'Data clerk',
+      startDate: '2024-11',
+      endDate: null,
+      description: 'Entered survey data in Excel and wrote monthly reports.',
+    },
+  ],
   projectSkills: [],
   certifications: [],
   headline: 'Data clerk',
@@ -70,9 +78,66 @@ test('experience years: overlapping jobs count once; a current job runs to today
   assert.equal(experienceYears([], NOW), 0);
 });
 
-test('career level comes from experience; quiz evidence lifts entry to junior only', () => {
-  assert.equal(userCareerLevel(user(), NOW).level, 'junior');
-  assert.equal(userCareerLevel(user({ experience: [] }), NOW).level, 'entry');
+test('career level comes from evidence, with how sure it is', () => {
+  const sure = userCareerLevel(user(), NOW);
+  assert.equal(sure.level, 'junior');
+  assert.equal(sure.confidence, 'confident', 'dates and written responsibilities');
+
+  const noDescription = userCareerLevel(
+    user({ experience: [{ title: 'Data clerk', startDate: '2024-11', endDate: null }] }),
+    NOW,
+  );
+  assert.equal(noDescription.level, 'junior');
+  assert.equal(noDescription.confidence, 'estimated', 'no responsibilities written');
+
+  const noExperience = userCareerLevel(user({ experience: [] }), NOW);
+  assert.equal(noExperience.level, 'entry');
+  assert.equal(noExperience.confidence, 'estimated');
+
+  const empty = userCareerLevel(
+    user({ experience: [], skills: [], projectSkills: [], certifications: [] }),
+    NOW,
+  );
+  assert.equal(empty.level, null, 'nothing to judge by: never invented');
+  assert.equal(empty.confidence, 'unknown');
+});
+
+test('a senior title held 2+ years, or leading people, raises the level by one step only', () => {
+  // 4 years (intermediate) as a manager → senior, not expert.
+  const manager = userCareerLevel(
+    user({
+      experience: [
+        {
+          title: 'Programme Manager',
+          startDate: '2022-11',
+          endDate: null,
+          description: 'Ran the programme.',
+        },
+      ],
+    }),
+    NOW,
+  );
+  assert.equal(manager.level, 'senior');
+  assert.ok(manager.evidence.includes('seniorTitleHeld'));
+  // 2 years (junior) leading a team → intermediate.
+  const leader = userCareerLevel(
+    user({
+      experience: [
+        {
+          title: 'Field coordinator',
+          startDate: '2024-11',
+          endDate: null,
+          description: 'Supervised a team of 6 enumerators.',
+        },
+      ],
+    }),
+    NOW,
+  );
+  assert.equal(leader.level, 'intermediate');
+  assert.ok(leader.evidence.includes('leadershipResponsibilities'));
+});
+
+test('quiz evidence lifts entry to junior only; self-ratings never change the level', () => {
   const twoStrong = user({
     experience: [],
     skills: [
@@ -143,6 +208,47 @@ test('End Test: a fitting job is recommended, with every explanation field', () 
   ]) {
     assert.ok(keys.includes(k), k);
   }
+});
+
+test("a job's required years count only related experience", () => {
+  const mixed = user({
+    experience: [
+      {
+        title: 'Shop assistant',
+        startDate: '2018-01',
+        endDate: '2022-12',
+        description: 'Served customers.',
+      },
+      {
+        title: 'Data clerk',
+        startDate: '2025-11',
+        endDate: null,
+        description: 'Entered data in Excel.',
+      },
+    ],
+  });
+  const ad = job({ description: 'Requirements: 3 years of experience in data entry. Excel.' });
+  // 6 years in total, but about 1 related to data work.
+  assert.equal(relevantYears(mixed, ad, ['excel', 'data entry'], NOW), 1.1);
+  const m = matchJob(mixed, ad, ctx);
+  assert.equal(m.relevantYears, 1.1);
+  assert.equal(m.requiredYears, 3);
+  assert.equal(m.levelFit, 'stretch', 'total years alone would have said it fits');
+  assert.ok(m.reasons.some((r) => r.key === 'relevantYearsShort'));
+});
+
+test('an unknown level is said, never held for or against the user', () => {
+  const m = matchJob(
+    user({ experience: [], skills: [], projectSkills: [], certifications: [] }),
+    job(),
+    ctx,
+  );
+  assert.equal(m.userLevel, null);
+  assert.equal(m.levelConfidence, 'unknown');
+  assert.equal(m.levelFit, 'unknown');
+  assert.ok(m.reasons.some((r) => r.key === 'levelUnknown'));
+  const estimated = matchJob(user({ experience: [] }), job(), ctx);
+  assert.ok(estimated.reasons.some((r) => r.key === 'levelEstimated'));
 });
 
 test('End Test: a junior is never sent a senior job as recommended, however good the skills', () => {
