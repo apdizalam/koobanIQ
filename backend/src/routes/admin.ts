@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
+import { getAdminUsage } from '../controllers/adminUsageController.js';
 import {
   getAiPersonalData,
   patchTestAccount,
@@ -42,6 +43,9 @@ adminRouter.patch('/users/:id/test-account', patchTestAccount);
 // AI personal-data setting (owner decision): admins view it and change it with a reason; default BLOCKED.
 adminRouter.get('/settings/ai-personal-data', getAiPersonalData);
 adminRouter.put('/settings/ai-personal-data', putAiPersonalData);
+
+// AI usage (TIQ-23, read-only): monitoring and cost control, never a limit.
+adminRouter.get('/usage', getAdminUsage);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);

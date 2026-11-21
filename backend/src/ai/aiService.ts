@@ -3,6 +3,7 @@ import type { z } from 'zod';
 import { env } from '../config/env.js';
 import { AppError } from '../lib/errors.js';
 import { UsageRecord, type AiFeature, type UsageStatus } from '../models/UsageRecord.js';
+import { isFeatureAllowed } from '../services/entitlements.js';
 import { createGeminiProvider } from './gemini.js';
 import type { BuiltPrompt } from './prompts/shared.js';
 import { AiProviderError, type AiDocument, type AiErrorKind, type AiProvider } from './provider.js';
@@ -226,17 +227,20 @@ export interface AiTask<T> {
   timeoutMs?: number;
 }
 
-/** Over the per-user hourly limit → 429 (protects the shared free quota). */
-async function checkUserLimit(userId: Types.ObjectId) {
+/**
+ * Hourly safety cap per user (owner decision 2026-11-21): protects the free AI
+ * quota that all users share from one runaway client. It is not a plan or usage
+ * limit; requests it stopped are recorded as `capped` (and not counted again),
+ * so admins can see who meets it.
+ */
+async function overHourlyCap(userId: Types.ObjectId) {
   const since = new Date(Date.now() - 60 * 60 * 1000);
-  const used = await UsageRecord.countDocuments({ userId, createdAt: { $gte: since } });
-  if (used >= env.aiUserRequestsPerHour) {
-    throw new AppError(
-      429,
-      'AI_LIMIT_REACHED',
-      'You have used the AI features a lot in the last hour. Please try again later',
-    );
-  }
+  const used = await UsageRecord.countDocuments({
+    userId,
+    status: { $ne: 'capped' },
+    createdAt: { $gte: since },
+  });
+  return used >= env.aiUserRequestsPerHour;
 }
 
 async function record(
@@ -256,14 +260,14 @@ async function record(
     status,
     inputTokens: usage.inputTokens,
     outputTokens: usage.outputTokens,
-    attempts: Math.max(usage.attempts, 1),
+    attempts: status === 'capped' ? 0 : Math.max(usage.attempts, 1),
     durationMs: Date.now() - started,
     errorCode,
   }).catch(() => console.warn('[ai] usage record could not be saved'));
 }
 
 /**
- * Runs one AI task for a feature: checks the setup and the user's hourly limit,
+ * Runs one AI task for a feature: checks the setup and the hourly safety cap,
  * gets a validated answer (one retry for invalid output), records usage (no
  * content), and turns every failure into a translated API error. Never falls
  * back to another (paid) provider.
@@ -280,10 +284,21 @@ export async function runAi<T>(task: AiTask<T>): Promise<T> {
       'The AI service is not set up yet. Please try again later',
     );
   }
-  await checkUserLimit(task.userId);
+  // Free app: always allowed today; future paid plans plug in here (TIQ-23).
+  if (!(await isFeatureAllowed(task.userId, task.feature))) {
+    throw new AppError(403, 'FORBIDDEN', 'You do not have access to this page');
+  }
 
   const started = Date.now();
   const usage = { inputTokens: 0, outputTokens: 0, attempts: 0 };
+  if (await overHourlyCap(task.userId)) {
+    await record(task, provider, 'capped', usage, started, 'AI_LIMIT_REACHED');
+    throw new AppError(
+      429,
+      'AI_LIMIT_REACHED',
+      'You have used the AI features a lot in the last hour. Please try again later',
+    );
+  }
   try {
     const data = await generateValidated({ ...task, provider, usage });
     await record(task, provider, 'ok', usage, started);

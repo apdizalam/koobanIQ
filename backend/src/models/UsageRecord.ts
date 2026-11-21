@@ -19,12 +19,14 @@ export const USAGE_STATUSES = [
   'auth', // provider rejected the API key
   'unavailable',
   'blocked', // provider declined the content
+  'capped', // not sent: the user reached the hourly safety cap (protects the shared free quota)
 ] as const;
 export type UsageStatus = (typeof USAGE_STATUSES)[number];
 
 /**
- * `usageRecords` collection (architecture doc §7; monitoring only, never a
- * limit on what a user may do with KOBANIQ). One record per AI request.
+ * `usageRecords` collection (architecture doc §7, TIQ-23; monitoring and cost
+ * control only: KOBANIQ is free, with no plans or usage limits). One record per
+ * AI request, also when the hourly safety cap stopped it (status `capped`).
  * Holds no prompt or answer content and no personal data besides the user id.
  */
 const usageRecordSchema = new Schema(
@@ -36,7 +38,7 @@ const usageRecordSchema = new Schema(
     status: { type: String, enum: USAGE_STATUSES, required: true },
     inputTokens: { type: Number, default: 0 },
     outputTokens: { type: Number, default: 0 },
-    /** 1, or 2 when the first answer was invalid and was retried. */
+    /** 1, or 2 when the first answer was invalid and was retried; 0 when capped (not sent). */
     attempts: { type: Number, default: 1 },
     durationMs: Number,
     /** Our error code (e.g. AI_QUOTA_REACHED), never the provider's message. */
