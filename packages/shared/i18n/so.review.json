@@ -731,6 +731,130 @@
     "state": "pending",
     "en": "Partner"
   },
+  "admin.usage.capHint": {
+    "state": "pending",
+    "en": "Safety cap: {{count}} AI requests per user per hour (protects the shared free AI quota)."
+  },
+  "admin.usage.cards.capped": {
+    "state": "pending",
+    "en": "Stopped by the hourly cap"
+  },
+  "admin.usage.cards.failed": {
+    "state": "pending",
+    "en": "Failed"
+  },
+  "admin.usage.cards.requests": {
+    "state": "pending",
+    "en": "AI requests"
+  },
+  "admin.usage.cards.tokens": {
+    "state": "pending",
+    "en": "Tokens"
+  },
+  "admin.usage.cards.users": {
+    "state": "pending",
+    "en": "Users"
+  },
+  "admin.usage.columns.capped": {
+    "state": "pending",
+    "en": "Capped"
+  },
+  "admin.usage.columns.failed": {
+    "state": "pending",
+    "en": "Failed"
+  },
+  "admin.usage.columns.feature": {
+    "state": "pending",
+    "en": "Feature"
+  },
+  "admin.usage.columns.last": {
+    "state": "pending",
+    "en": "Last request"
+  },
+  "admin.usage.columns.ok": {
+    "state": "pending",
+    "en": "OK"
+  },
+  "admin.usage.columns.requests": {
+    "state": "pending",
+    "en": "Requests"
+  },
+  "admin.usage.columns.tokens": {
+    "state": "pending",
+    "en": "Tokens"
+  },
+  "admin.usage.columns.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.usage.deletedUser": {
+    "state": "pending",
+    "en": "Deleted account"
+  },
+  "admin.usage.empty": {
+    "state": "pending",
+    "en": "No AI requests in this period."
+  },
+  "admin.usage.error": {
+    "state": "pending",
+    "en": "Could not load the usage numbers. Check that the backend is running."
+  },
+  "admin.usage.failedHint": {
+    "state": "pending",
+    "en": "Sent, but no usable answer (provider error, timeout, invalid answer)."
+  },
+  "admin.usage.features.connectivity_check": {
+    "state": "pending",
+    "en": "AI connection check"
+  },
+  "admin.usage.features.cv_generation": {
+    "state": "pending",
+    "en": "CV writing"
+  },
+  "admin.usage.features.interview": {
+    "state": "pending",
+    "en": "Interview practice"
+  },
+  "admin.usage.features.jd_extraction": {
+    "state": "pending",
+    "en": "Reading job ads"
+  },
+  "admin.usage.features.job_match": {
+    "state": "pending",
+    "en": "Job matching"
+  },
+  "admin.usage.features.skill_quiz": {
+    "state": "pending",
+    "en": "Skill quizzes"
+  },
+  "admin.usage.featuresTitle": {
+    "state": "pending",
+    "en": "By feature"
+  },
+  "admin.usage.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.usage.subtitle": {
+    "state": "pending",
+    "en": "How much the AI features are used. Monitoring and cost control only: KOBANIQ is free and never limits anyone by plan or payment."
+  },
+  "admin.usage.title": {
+    "state": "pending",
+    "en": "AI usage"
+  },
+  "admin.usage.tokensSplit": {
+    "state": "pending",
+    "en": "{{input}} in · {{output}} out"
+  },
+  "admin.usage.usersNote": {
+    "state": "pending",
+    "en": "Up to 50 users, most requests first."
+  },
+  "admin.usage.usersTitle": {
+    "state": "pending",
+    "en": "Most active users"
+  },
   "admin.users.actions.delete": {
     "state": "pending",
     "en": "Delete account"

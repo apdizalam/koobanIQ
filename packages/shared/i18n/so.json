@@ -375,6 +375,45 @@
       },
       "reason": "Sababta: {{reason}}"
     },
+    "usage": {
+      "title": "Isticmaalka AI",
+      "subtitle": "Inta jeer ee qaybaha AI la isticmaalo. Kaliya la socod iyo xakamaynta kharashka: KOBANIQ waa bilaash, cidna kuma xaddido qorshe ama lacag.",
+      "cards": {
+        "requests": "Codsiyada AI",
+        "users": "Isticmaalayaasha",
+        "tokens": "Tokens",
+        "failed": "Fashilmay",
+        "capped": "Xadka saacadda ayaa joojiyay"
+      },
+      "tokensSplit": "{{input}} gelin · {{output}} bixin",
+      "failedHint": "Waa la diray, laakiin jawaab la isticmaali karo lama helin (cillad bixiyaha, waqti dhaaf, jawaab khaldan).",
+      "capHint": "Xadka badbaadada: {{count}} codsi AI qof kasta saacaddiiba (wuxuu ilaaliyaa qoondada AI ee bilaashka ah ee la wadaago).",
+      "featuresTitle": "Qayb kasta",
+      "usersTitle": "Isticmaalayaasha ugu firfircoon",
+      "usersNote": "Ilaa 50 qof, kuwa codsiyada ugu badan leh marka hore.",
+      "columns": {
+        "feature": "Qaybta",
+        "user": "Isticmaale",
+        "requests": "Codsiyo",
+        "ok": "Guulaystay",
+        "failed": "Fashilmay",
+        "capped": "La joojiyay",
+        "tokens": "Tokens",
+        "last": "Codsigii ugu dambeeyay"
+      },
+      "features": {
+        "jd_extraction": "Akhrinta xayeysiisyada shaqada",
+        "cv_generation": "Qorista CV",
+        "skill_quiz": "Imtixaannada xirfadda",
+        "job_match": "Isbarbardhigga shaqooyinka",
+        "interview": "Ku tababarka wareysiga",
+        "connectivity_check": "Hubinta xiriirka AI"
+      },
+      "empty": "Muddadan wax codsi AI ah lama samayn.",
+      "error": "Tirooyinka isticmaalka lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "deletedUser": "Akoon la tirtiray"
+    },
     "sources": {
       "title": "Ilaha shaqooyinka",
       "subtitle": "Halka baaritaanka shaqadu ka raadiyo shaqooyinka. Il waxaa la shidi karaa oo keliya marka shuruudaheeda la hubiyo oo server-ku leeyahay xiriirkeeda.",

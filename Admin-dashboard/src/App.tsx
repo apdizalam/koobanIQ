@@ -5,6 +5,7 @@ import { AdminLayout } from './components/layout/AdminLayout';
 import { LoginPage } from './pages/LoginPage';
 import { AiPrivacyPage } from './pages/AiPrivacyPage';
 import { AuditLogPage } from './pages/AuditLogPage';
+import { UsagePage } from './pages/UsagePage';
 import { JobSourcesPage } from './pages/JobSourcesPage';
 import { OverviewPage } from './pages/OverviewPage';
 import { UserDetailPage } from './pages/UserDetailPage';
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="users" element={<UsersPage />} />
             <Route path="users/:id" element={<UserDetailPage />} />
             <Route path="job-sources" element={<JobSourcesPage />} />
+            <Route path="usage" element={<UsagePage />} />
             <Route path="ai-privacy" element={<AiPrivacyPage />} />
             <Route path="audit-log" element={<AuditLogPage />} />
           </Route>
