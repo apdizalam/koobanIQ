@@ -365,7 +365,10 @@
         "job_source_update": "Changed a job source",
         "region_update": "Changed region cities",
         "settings_ai_personal_data": "Changed AI privacy setting",
-        "user_test_account": "Changed test account"
+        "user_test_account": "Changed test account",
+        "research_run_retry": "Retried a job search",
+        "research_schedule_pause": "Paused a scheduled search",
+        "research_schedule_resume": "Resumed a scheduled search"
       },
       "deleted": "Account deleted",
       "noChange": "—",
@@ -479,6 +482,124 @@
       "cancel": "Cancel",
       "empty": "No job sources yet. The team adds a source as an adapter in the server plus a database record.",
       "error": "Could not load the job sources. Check that the backend is running."
+    },
+    "runs": {
+      "title": "Research runs",
+      "subtitle": "Every job search, by users and by their schedules: what was searched, what came back and what went wrong.",
+      "tabs": {
+        "runs": "Searches",
+        "schedules": "Scheduled searches"
+      },
+      "statusFilter": "Result",
+      "all": "All",
+      "statuses": {
+        "running": "Running",
+        "completed": "Completed",
+        "partial": "Partly failed",
+        "failed": "Failed"
+      },
+      "triggers": {
+        "manual": "By the user",
+        "scheduled": "Scheduled",
+        "retry": "Admin retry"
+      },
+      "columns": {
+        "started": "Started",
+        "user": "User",
+        "trigger": "How",
+        "sources": "Sources",
+        "result": "Result",
+        "jobs": "Jobs found",
+        "problems": "Problems",
+        "actions": "Actions"
+      },
+      "jobsCount": "{{found}} ({{new}} new)",
+      "failedSources": "Failed: {{sources}}",
+      "noProblems": "None",
+      "details": "Details",
+      "retry": "Retry",
+      "confirmRetry": "Run this search again for {{email}}, with the same sources, regions, filters and links? It becomes a new run; this one stays as it is.",
+      "confirmYes": "Yes, retry",
+      "cancel": "Cancel",
+      "retried": "The search runs again as a new run.",
+      "openNewRun": "Open the new run",
+      "deletedUser": "Deleted account",
+      "empty": "No job searches yet.",
+      "error": "Could not load the job searches. Check that the backend is running.",
+      "retryLoad": "Try again",
+      "back": "← Research runs",
+      "detail": {
+        "title": "Job search",
+        "finished": "Finished",
+        "notFinished": "Still running",
+        "regions": "Regions",
+        "titles": "Job titles",
+        "skills": "Skills",
+        "city": "City",
+        "employerTypes": "Employer types",
+        "links": "Career-page links",
+        "none": "—",
+        "retryOf": "Retry of",
+        "error": "Error",
+        "perSource": "Per source",
+        "retries": "Retries of this search",
+        "noRetries": "Not retried.",
+        "notFound": "This job search does not exist."
+      },
+      "sourceColumns": {
+        "source": "Source",
+        "searched": "Searched",
+        "found": "Found",
+        "new": "New",
+        "duplicates": "Duplicates",
+        "invalid": "Not valid",
+        "attempts": "Tries",
+        "error": "Error"
+      },
+      "yes": "Yes",
+      "no": "No",
+      "schedules": {
+        "subtitle": "Saved searches that run by themselves. Pausing stops the runs until someone resumes it (the user can too, in the app).",
+        "columns": {
+          "user": "User",
+          "when": "When",
+          "next": "Next run",
+          "last": "Last run",
+          "runs": "Runs",
+          "state": "State",
+          "actions": "Actions"
+        },
+        "frequency": {
+          "hourly": "Every hour at :{{minute}}",
+          "every6h": "Every 6 hours from {{time}}",
+          "daily": "Daily at {{time}}",
+          "weekly": "{{weekday}} at {{time}}"
+        },
+        "weekdays": {
+          "0": "Monday",
+          "1": "Tuesday",
+          "2": "Wednesday",
+          "3": "Thursday",
+          "4": "Friday",
+          "5": "Saturday",
+          "6": "Sunday"
+        },
+        "skips": {
+          "no_sources": "Last time skipped: no source available",
+          "busy": "Last time skipped: another search was running",
+          "error": "Last time skipped: an error"
+        },
+        "never": "Never",
+        "active": "Active",
+        "paused": "Paused",
+        "pause": "Pause",
+        "resume": "Resume",
+        "confirmPause": "Pause the scheduled search of {{email}}? It will not run until it is resumed.",
+        "confirmResume": "Resume the scheduled search of {{email}}? The next run is planned from now.",
+        "donePause": "Scheduled search paused.",
+        "doneResume": "Scheduled search resumed.",
+        "empty": "No scheduled searches yet."
+      }
     },
     "regions": {
       "title": "Regions and cities",

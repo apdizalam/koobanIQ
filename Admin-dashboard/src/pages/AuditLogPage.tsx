@@ -10,6 +10,7 @@ import {
   type EmployerType,
   type RegionKey,
 } from '../types/jobSources';
+import { isRunStatus } from '../types/research';
 import { formatDate } from '../utils/format';
 
 const isRegionKey = (v: string): v is RegionKey => (REGION_KEYS as readonly string[]).includes(v);
@@ -68,6 +69,7 @@ export function AuditLogPage() {
     if (field === 'status' && (text === 'active' || text === 'suspended')) {
       return t(`admin.users.statuses.${text}`);
     }
+    if (field === 'status' && isRunStatus(text)) return t(`admin.runs.statuses.${text}`);
     if (field === 'role' && (text === 'user' || text === 'admin')) {
       return t(`admin.users.roles.${text}`);
     }
