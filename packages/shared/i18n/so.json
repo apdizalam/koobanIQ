@@ -88,7 +88,8 @@
       "INTERVIEW_NOT_FOUND": "Tababarka wareysiga lama helin",
       "INTERVIEW_NOT_IN_PROGRESS": "Tababarkan horay ayuu u dhammaaday",
       "SCHEDULE_NOT_FOUND": "Raadinta la qorsheeyay lama helin",
-      "SCHEDULE_LIMIT": "Waxaad heysan kartaa ilaa 5 raadin oo la qorsheeyay. Marka hore mid tirtir"
+      "SCHEDULE_LIMIT": "Waxaad heysan kartaa ilaa 5 raadin oo la qorsheeyay. Marka hore mid tirtir",
+      "NOTIFICATION_NOT_FOUND": "Ogeysiiska lama helin"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -145,7 +146,8 @@
       "timeZoneInvalid": "Waqti-aag aan la aqoon",
       "frequencyInvalid": "Dooro inta jeer: saacad kasta, 6-dii saacadoodba, maalin kasta ama toddobaad kasta",
       "timeInvalid": "Geli waqti sida 09:00",
-      "weekdayInvalid": "Dooro maalin toddobaadka ka mid ah"
+      "weekdayInvalid": "Dooro maalin toddobaadka ka mid ah",
+      "pushTokenInvalid": "Kani maaha calaamad ogeysiis oo sax ah"
     },
     "email": {
       "verifyEmail": {
@@ -155,6 +157,17 @@
       "resetPassword": {
         "subject": "Dib u deji erayga sirta ah ee KOBANIQ",
         "body": "Salaan,\n\nKoodhkaaga dib u dejinta erayga sirta ah ee KOBANIQ waa: {{code}}\n\nKu geli app-ka si aad u doorato eray sir ah oo cusub. Koodhku wuxuu shaqaynayaa {{minutes}} daqiiqo.\n\nHaddii aadan codsan dib u dejinta erayga sirta ah, iska indho tir iimaylkan; erayga sirta ahi isma beddelayo.\n\nKOBANIQ"
+      }
+    },
+    "notifications": {
+      "strongMatch": {
+        "title": "Shaqo si fiican kuugu habboon ({{score}}%)",
+        "body": "{{title}} · {{employer}}"
+      },
+      "email": {
+        "subject": "KOBANIQ: shaqooyin cusub oo kugu habboon",
+        "intro": "Raadintaada shaqo waxay heshay shaqooyin cusub oo si fiican ugu habboon astaantaada:",
+        "footer": "Fur KOBANIQ si aad u aragto sababta ay kuugu habboon yihiin oo aad uga codsato bogga shaqo-bixiyaha. Emaylladan waad ka joojin kartaa app-ka (Astaanta → Ogeysiisyada)."
       }
     }
   },

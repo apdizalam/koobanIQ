@@ -7,6 +7,7 @@ import type { NormalizedJob, ResearchQuery } from '../jobs/sources/types.js';
 import { saveJobs } from '../jobs/store.js';
 import { Job, toPublicJob } from '../models/Job.js';
 import { matchJobs } from './jobMatchService.js';
+import { notifyStrongMatches } from './notificationService.js';
 import { JobSource } from '../models/JobSource.js';
 import type { RegionKey } from '../models/Region.js';
 import { ResearchRun, toPublicRun } from '../models/ResearchRun.js';
@@ -189,6 +190,12 @@ export async function executeRun(
       unique.map((id) => byId.get(String(id))).filter((j) => j !== undefined),
       query.regions,
     ).map((j) => j._id);
+
+    // New strong matches: one in-app item, push and email each (TIQ-22), before the run
+    // shows as finished, so the list is up to date with the results. Never fails the search.
+    await notifyStrongMatches(runId, ranked).catch((err: unknown) =>
+      console.warn('[notify] failed:', err instanceof Error ? err.message : err),
+    );
 
     const failed = results.filter((r) => r.error).length;
     await ResearchRun.updateOne(

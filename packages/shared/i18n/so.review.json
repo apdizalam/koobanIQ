@@ -3855,6 +3855,10 @@
     "state": "pending",
     "en": "At least one active admin must remain"
   },
+  "server.errors.NOTIFICATION_NOT_FOUND": {
+    "state": "pending",
+    "en": "Notification not found"
+  },
   "server.errors.NOT_A_JOB_DESCRIPTION": {
     "state": "pending",
     "en": "This does not look like a job description. Paste or upload a job advertisement"
@@ -3954,6 +3958,26 @@
   "server.errors.VALIDATION_ERROR": {
     "state": "pending",
     "en": "Some fields are invalid"
+  },
+  "server.notifications.email.footer": {
+    "state": "pending",
+    "en": "Open KOBANIQ to see why they fit and to apply on the employer’s site. You can turn these emails off in the app (Profile → Notifications)."
+  },
+  "server.notifications.email.intro": {
+    "state": "pending",
+    "en": "Your job search found new jobs that fit your profile well:"
+  },
+  "server.notifications.email.subject": {
+    "state": "pending",
+    "en": "KOBANIQ: new jobs that fit you"
+  },
+  "server.notifications.strongMatch.body": {
+    "state": "pending",
+    "en": "{{title}} · {{employer}}"
+  },
+  "server.notifications.strongMatch.title": {
+    "state": "pending",
+    "en": "A strong job match for you ({{score}}%)"
   },
   "server.validation.ageConfirmRequired": {
     "state": "pending",
@@ -4106,6 +4130,10 @@
   "server.validation.priorityInvalid": {
     "state": "pending",
     "en": "Must be a whole number from 0 to 1000"
+  },
+  "server.validation.pushTokenInvalid": {
+    "state": "pending",
+    "en": "This is not a valid push token"
   },
   "server.validation.quizChoiceInvalid": {
     "state": "pending",

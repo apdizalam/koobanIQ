@@ -88,7 +88,8 @@
       "INTERVIEW_NOT_FOUND": "Interview practice not found",
       "INTERVIEW_NOT_IN_PROGRESS": "This practice is already finished",
       "SCHEDULE_NOT_FOUND": "Scheduled search not found",
-      "SCHEDULE_LIMIT": "You can keep up to 5 scheduled searches. Delete one first"
+      "SCHEDULE_LIMIT": "You can keep up to 5 scheduled searches. Delete one first",
+      "NOTIFICATION_NOT_FOUND": "Notification not found"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -145,7 +146,8 @@
       "timeZoneInvalid": "Unknown time zone",
       "frequencyInvalid": "Choose how often: every hour, every 6 hours, daily or weekly",
       "timeInvalid": "Enter a time like 09:00",
-      "weekdayInvalid": "Choose a day of the week"
+      "weekdayInvalid": "Choose a day of the week",
+      "pushTokenInvalid": "This is not a valid push token"
     },
     "email": {
       "verifyEmail": {
@@ -155,6 +157,17 @@
       "resetPassword": {
         "subject": "Reset your KOBANIQ password",
         "body": "Hello,\n\nYour KOBANIQ password reset code is: {{code}}\n\nEnter it in the app to choose a new password. The code works for {{minutes}} minutes.\n\nIf you did not ask to reset your password, you can ignore this email; your password stays the same.\n\nKOBANIQ"
+      }
+    },
+    "notifications": {
+      "strongMatch": {
+        "title": "A strong job match for you ({{score}}%)",
+        "body": "{{title}} · {{employer}}"
+      },
+      "email": {
+        "subject": "KOBANIQ: new jobs that fit you",
+        "intro": "Your job search found new jobs that fit your profile well:",
+        "footer": "Open KOBANIQ to see why they fit and to apply on the employer’s site. You can turn these emails off in the app (Profile → Notifications)."
       }
     }
   },
