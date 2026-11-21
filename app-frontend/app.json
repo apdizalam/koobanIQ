@@ -28,6 +28,12 @@
       "expo-secure-store",
       "expo-sharing"
     ],
-    "scheme": "kobaniq"
+    "scheme": "kobaniq",
+    "extra": {
+      "eas": {
+        "projectId": "436d6922-0f04-473f-84bf-87e956ba98bc"
+      }
+    },
+    "owner": "abdisalam-mohamed"
   }
 }
