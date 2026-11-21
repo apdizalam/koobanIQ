@@ -86,7 +86,9 @@
       "RUN_NOT_FOUND": "Job search not found",
       "JOB_NOT_FOUND": "Job not found",
       "INTERVIEW_NOT_FOUND": "Interview practice not found",
-      "INTERVIEW_NOT_IN_PROGRESS": "This practice is already finished"
+      "INTERVIEW_NOT_IN_PROGRESS": "This practice is already finished",
+      "SCHEDULE_NOT_FOUND": "Scheduled search not found",
+      "SCHEDULE_LIMIT": "You can keep up to 5 scheduled searches. Delete one first"
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -106,7 +108,7 @@
       "regionInvalid": "Must be somaliland, somalia or remote",
       "employerTypeInvalid": "Must be one of the employer types",
       "priorityInvalid": "Must be a whole number from 0 to 1000",
-      "enabledInvalid": "Must be true or false",
+      "enabledInvalid": "Choose on or off",
       "citiesInvalid": "Must be a list of up to 100 city names (each up to 60 characters)",
       "sourceKeysInvalid": "Must be a list of source keys",
       "filtersInvalid": "Filters must be short lists of words, a city name and employer types",
@@ -140,7 +142,10 @@
       "interviewLengthInvalid": "A practice has 3, 5 or 10 questions",
       "interviewJobRequired": "Choose a saved job ad or a job for this practice",
       "interviewOneJob": "Choose either a job ad or a job, not both",
-      "timeZoneInvalid": "Unknown time zone"
+      "timeZoneInvalid": "Unknown time zone",
+      "frequencyInvalid": "Choose how often: every hour, every 6 hours, daily or weekly",
+      "timeInvalid": "Enter a time like 09:00",
+      "weekdayInvalid": "Choose a day of the week"
     },
     "email": {
       "verifyEmail": {

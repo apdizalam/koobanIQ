@@ -86,7 +86,9 @@
       "RUN_NOT_FOUND": "Raadinta shaqada lama helin",
       "JOB_NOT_FOUND": "Shaqada lama helin",
       "INTERVIEW_NOT_FOUND": "Tababarka wareysiga lama helin",
-      "INTERVIEW_NOT_IN_PROGRESS": "Tababarkan horay ayuu u dhammaaday"
+      "INTERVIEW_NOT_IN_PROGRESS": "Tababarkan horay ayuu u dhammaaday",
+      "SCHEDULE_NOT_FOUND": "Raadinta la qorsheeyay lama helin",
+      "SCHEDULE_LIMIT": "Waxaad heysan kartaa ilaa 5 raadin oo la qorsheeyay. Marka hore mid tirtir"
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -106,7 +108,7 @@
       "regionInvalid": "Waa inuu ahaadaa somaliland, somalia ama remote",
       "employerTypeInvalid": "Waa inuu ahaadaa mid ka mid ah noocyada loo-shaqeeyaha",
       "priorityInvalid": "Waa inuu ahaadaa tiro dhan oo u dhaxaysa 0 ilaa 1000",
-      "enabledInvalid": "Waa inuu ahaadaa true ama false",
+      "enabledInvalid": "Dooro shid ama dami",
       "citiesInvalid": "Waa inuu ahaadaa liis ilaa 100 magaalo ah (mid kasta ilaa 60 xaraf)",
       "sourceKeysInvalid": "Waa inuu ahaadaa liis furayaasha ilaha",
       "filtersInvalid": "Shaandhooyinku waa inay ahaadaan liisas erayo gaagaaban, magac magaalo iyo noocyada loo-shaqeeyaha",
@@ -140,7 +142,10 @@
       "interviewLengthInvalid": "Tababarku wuxuu leeyahay 3, 5 ama 10 su’aalood",
       "interviewJobRequired": "Dooro xayeysiis shaqo oo la keydiyay ama shaqo tababarkan",
       "interviewOneJob": "Dooro xayeysiis shaqo ama shaqo, labadaba ha dooran",
-      "timeZoneInvalid": "Waqti-aag aan la aqoon"
+      "timeZoneInvalid": "Waqti-aag aan la aqoon",
+      "frequencyInvalid": "Dooro inta jeer: saacad kasta, 6-dii saacadoodba, maalin kasta ama toddobaad kasta",
+      "timeInvalid": "Geli waqti sida 09:00",
+      "weekdayInvalid": "Dooro maalin toddobaadka ka mid ah"
     },
     "email": {
       "verifyEmail": {

@@ -108,3 +108,61 @@ export function periodRange(period: ReportPeriod, timeZone: string, now: Date) {
     previous: { start: at(-1), end: at(0) },
   };
 }
+
+// ------------------------------------------------------------------ schedules (TIQ-21)
+
+export const SCHEDULE_FREQUENCIES = ['hourly', 'every6h', 'daily', 'weekly'] as const;
+export type ScheduleFrequency = (typeof SCHEDULE_FREQUENCIES)[number];
+
+export interface ScheduleTiming {
+  frequency: ScheduleFrequency;
+  /** Local "HH:MM". hourly uses only the minutes; every6h runs at this time and every 6 h after. */
+  time: string;
+  /** weekly only: 0 = Monday … 6 = Sunday. */
+  weekday?: number | null;
+  timeZone: string;
+}
+
+/** "09:30" → [9, 30], or null when it is not a valid 24-hour time. */
+export function parseTime(time: unknown): [number, number] | null {
+  if (typeof time !== 'string') return null;
+  const m = /^([01]\d|2[0-3]):([0-5]\d)$/.exec(time);
+  return m ? [Number(m[1]), Number(m[2])] : null;
+}
+
+/**
+ * The first run time strictly after `after`, at the schedule's local time in
+ * its own time zone (a "daily 09:00" in Europe/Istanbul is 06:00 UTC).
+ */
+export function nextRunAfter(timing: ScheduleTiming, after: Date): Date {
+  const [hh, mm] = parseTime(timing.time) ?? [0, 0];
+  const tz = timing.timeZone;
+  const w = wallTime(after, tz);
+  const candidates: Date[] = [];
+  switch (timing.frequency) {
+    case 'hourly':
+      for (let h = 0; h <= 2; h += 1) {
+        candidates.push(zonedToUtc(tz, w.year, w.month, w.day, w.hour + h, mm));
+      }
+      break;
+    case 'every6h':
+      for (let d = 0; d <= 1; d += 1) {
+        for (let k = 0; k < 4; k += 1) {
+          candidates.push(zonedToUtc(tz, w.year, w.month, w.day + d, (hh % 6) + 6 * k, mm));
+        }
+      }
+      break;
+    case 'daily':
+      for (let d = 0; d <= 2; d += 1)
+        candidates.push(zonedToUtc(tz, w.year, w.month, w.day + d, hh, mm));
+      break;
+    case 'weekly': {
+      const ahead = ((timing.weekday ?? 0) - weekdayMon0(w) + 7) % 7;
+      for (const extra of [0, 7, 14]) {
+        candidates.push(zonedToUtc(tz, w.year, w.month, w.day + ahead + extra, hh, mm));
+      }
+      break;
+    }
+  }
+  return candidates.filter((c) => c.getTime() > after.getTime()).sort((a, b) => +a - +b)[0];
+}
