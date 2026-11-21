@@ -2,6 +2,7 @@ import { Redirect, Stack } from 'expo-router';
 import { useAuth } from '../../auth/authContext';
 import { Splash } from '../../components/layout/Splash';
 import { CvProvider } from '../../cv/CvProvider';
+import { PushSetup } from '../../notifications/PushSetup';
 import { ProfileProvider } from '../../profile/ProfileProvider';
 import { SkillsProvider } from '../../profile/SkillsProvider';
 
@@ -18,6 +19,7 @@ export default function AppLayout() {
     <ProfileProvider>
       <SkillsProvider>
         <CvProvider>
+          <PushSetup />
           <Stack screenOptions={{ headerShown: false }} />
         </CvProvider>
       </SkillsProvider>

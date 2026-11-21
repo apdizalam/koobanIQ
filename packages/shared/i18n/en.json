@@ -1342,6 +1342,23 @@
       "jobsSaved": "Jobs saved",
       "jobAdsSaved": "Job ads added",
       "note": "Every number is counted from your saved activity — nothing is estimated. Applications are not counted: you apply on the employer’s own site. Days start at midnight in your time zone ({{timeZone}})."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "subtitle": "New jobs that fit you well, found by your job searches.",
+      "rowDetail": "New strong job matches · push and email",
+      "bell_zero": "Notifications",
+      "bell_one": "Notifications, {{count}} new",
+      "bell_other": "Notifications, {{count}} new",
+      "settings": "Notify me",
+      "push": "Push notifications on this phone",
+      "pushUnavailable": "Push is not set up in this version of the app yet. New matches still appear in this list.",
+      "email": "Email",
+      "emailUnavailable": "Email notifications are not switched on for KOBANIQ yet. Your choice is kept for when they are.",
+      "emptyTitle": "No notifications yet",
+      "emptyBody": "When a job search finds a new job that fits you well, it appears here.",
+      "readAll": "Mark all as read",
+      "strongMatch": "Strong match · {{score}}%"
     }
   }
 }
