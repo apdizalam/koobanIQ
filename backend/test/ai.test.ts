@@ -1,7 +1,9 @@
 import { test, before, after, beforeEach, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync, readdirSync } from 'node:fs';
 import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
+import { join } from 'node:path';
 import express from 'express';
 import mongoose from 'mongoose';
 import { ApiError, FinishReason } from '@google/genai';
@@ -24,7 +26,8 @@ import { env } from '../src/config/env.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { AppError } from '../src/lib/errors.js';
 import { errorHandler } from '../src/middleware/errorHandler.js';
-import { UsageRecord } from '../src/models/UsageRecord.js';
+import { AI_FEATURES, UsageRecord } from '../src/models/UsageRecord.js';
+import { isFeatureAllowed } from '../src/services/entitlements.js';
 
 // All tests use the mock provider (or a fake Gemini client): no network, no quota.
 // Own database per run for the usage records (dropped at the end).
@@ -447,9 +450,37 @@ test('per-user hourly limit → 429 AI_LIMIT_REACHED without calling the provide
   const userId = user();
   for (let i = 0; i < 3; i += 1) await runAi(task(userId));
   await expectAppError(runAi(task(userId)), 429, 'AI_LIMIT_REACHED');
-  assert.equal(mock.requests.length, 3, 'the 4th request never reached the provider');
+  await expectAppError(runAi(task(userId)), 429, 'AI_LIMIT_REACHED');
+  assert.equal(mock.requests.length, 3, 'capped requests never reached the provider');
+  // TIQ-23: stopped requests are recorded for the admins (no tokens, not sent).
+  const capped = await UsageRecord.find({ userId, status: 'capped' }).lean();
+  assert.equal(capped.length, 2, 'capped requests do not count towards the cap again');
+  assert.equal(capped[0].errorCode, 'AI_LIMIT_REACHED');
+  assert.equal(capped[0].attempts, 0);
+  assert.equal(capped[0].inputTokens + capped[0].outputTokens, 0);
   // Another user is not affected.
   assert.deepEqual(await runAi(task()), GOOD);
+});
+
+test('TIQ-23: every AI call goes through runAi (and so writes a usage record)', () => {
+  // Only the AI layer may talk to a provider; features call runAi. The developer
+  // scripts (npm run ai:check, no user, not part of the app) are the exception.
+  const srcDir = join(__dirname, '..', 'src');
+  const offenders = readdirSync(srcDir, { recursive: true, withFileTypes: true })
+    .filter((f) => f.isFile() && f.name.endsWith('.ts'))
+    .map((f) => join(f.parentPath, f.name))
+    .filter((file) => !/[\\/]src[\\/](ai|scripts)[\\/]/.test(file))
+    .filter((file) => {
+      const code = readFileSync(file, 'utf8');
+      return /@google\/genai|ai\/gemini\.js|ai\/provider\.js|providerFromSettings|generateValidated/.test(
+        code,
+      );
+    });
+  assert.deepEqual(offenders, []);
+});
+
+test('TIQ-23: the free app allows every AI feature (entitlements)', async () => {
+  for (const feature of AI_FEATURES) assert.equal(await isFeatureAllowed(user(), feature), true);
 });
 
 test('deleting an account removes its usage records', async () => {
