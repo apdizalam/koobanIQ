@@ -4,7 +4,7 @@ import Svg, { Circle, Path, Rect } from 'react-native-svg';
 /** The five bottom tabs. */
 export type TabName = 'home' | 'cv' | 'jobs' | 'reports' | 'profile';
 
-export type LineIconName = TabName | 'search' | 'target' | 'mic' | 'chevron-right';
+export type LineIconName = TabName | 'search' | 'target' | 'mic' | 'chevron-right' | 'bell';
 
 interface LineIconProps {
   name: LineIconName;
@@ -70,6 +70,9 @@ export function LineIcon({ name, color, size = 24 }: LineIconProps) {
         </>
       ) : null}
       {name === 'chevron-right' ? <Path {...p} d="m9 6 6 6-6 6" /> : null}
+      {name === 'bell' ? (
+        <Path {...p} d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16ZM10 20.5a2 2 0 0 0 4 0" />
+      ) : null}
     </Svg>
   );
 }

@@ -1329,6 +1329,23 @@
       "jobsSaved": "Shaqooyin la keydiyay",
       "jobAdsSaved": "Xayeysiisyo shaqo oo lagu daray",
       "note": "Tiro kasta waxaa laga tiriyay hawlahaaga la keydiyay — waxba lama qiyaasin. Codsiyada lama tirin: waxaad ka codsanaysaa bogga shaqo-bixiyaha. Maalmuhu waxay ka bilaabmaan saqda dhexe ee waqti-aaggaaga ({{timeZone}})."
+    },
+    "notifications": {
+      "title": "Ogeysiisyada",
+      "subtitle": "Shaqooyin cusub oo si fiican kuugu habboon, oo ay raadintaadu heshay.",
+      "rowDetail": "Shaqooyin cusub oo si fiican kuugu habboon · ogeysiis iyo emayl",
+      "bell_zero": "Ogeysiisyada",
+      "bell_one": "Ogeysiisyada, {{count}} cusub",
+      "bell_other": "Ogeysiisyada, {{count}} cusub",
+      "settings": "I ogeysii",
+      "push": "Ogeysiisyada taleefankan",
+      "pushUnavailable": "Ogeysiisyada taleefanka weli laguma diyaarin noocan app-ka. Shaqooyinka cusub weli liiskan ayay ka muuqdaan.",
+      "email": "Emayl",
+      "emailUnavailable": "Ogeysiisyada emaylka weli looma shidin KOBANIQ. Doorashadaada waa la keydiyay marka la shido.",
+      "emptyTitle": "Weli ogeysiis ma jiro",
+      "emptyBody": "Marka raadin shaqo ay hesho shaqo cusub oo si fiican kuugu habboon, halkan ayay ka muuqan doontaa.",
+      "readAll": "Dhammaan u calaamadee kuwo la akhriyay",
+      "strongMatch": "Si fiican u habboon · {{score}}%"
     }
   }
 }

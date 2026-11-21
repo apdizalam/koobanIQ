@@ -1,8 +1,8 @@
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, RefreshControl, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, RefreshControl, ScrollView, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useAuth } from '../../../auth/authContext';
 import { requestErrorKey } from '../../../auth/errorKey';
@@ -14,6 +14,7 @@ import { QuickAction } from '../../../components/ui/QuickAction';
 import { TextLink } from '../../../components/ui/TextLink';
 import { useCvs } from '../../../cv/CvProvider';
 import { jobName } from '../../../services/cvApi';
+import { fetchNotifications } from '../../../services/notificationsApi';
 import { useProfile } from '../../../profile/ProfileProvider';
 import { useSkills } from '../../../profile/SkillsProvider';
 import { useTheme } from '../../../theme';
@@ -29,7 +30,7 @@ type Load = 'loading' | 'ready' | 'network' | 'generic';
  */
 export default function HomeScreen() {
   const { t } = useTranslation();
-  const { user, reloadUser } = useAuth();
+  const { user, reloadUser, getAccessToken } = useAuth();
   const { profile } = useProfile();
   const { counts } = useSkills();
   const { cvs, jobById } = useCvs();
@@ -37,6 +38,22 @@ export default function HomeScreen() {
   const { colors, typography, spacing, radius } = useTheme();
   const [load, setLoad] = useState<Load>('loading');
   const [refreshing, setRefreshing] = useState(false);
+  /** Unread notifications (TIQ-22), loaded each time Home shows. */
+  const [unread, setUnread] = useState(0);
+  useFocusEffect(
+    useCallback(() => {
+      let active = true;
+      getAccessToken()
+        .then(fetchNotifications)
+        .then(
+          (data) => active && setUnread(data.unread),
+          () => undefined,
+        );
+      return () => {
+        active = false;
+      };
+    }, [getAccessToken]),
+  );
   /** Bumped by "Try again" to load once more. */
   const [attempt, setAttempt] = useState(0);
 
@@ -125,6 +142,37 @@ export default function HomeScreen() {
               {name}
             </Text>
           </View>
+          <Pressable
+            testID="home-notifications"
+            accessibilityRole="button"
+            accessibilityLabel={t('mobile.notifications.bell', { count: unread })}
+            onPress={() => router.push('/notifications')}
+            hitSlop={8}
+            style={{ padding: spacing.xs }}
+          >
+            <LineIcon name="bell" color={colors.text} size={24} />
+            {unread > 0 ? (
+              <View
+                testID="home-notifications-badge"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  right: 0,
+                  minWidth: 18,
+                  height: 18,
+                  borderRadius: 9,
+                  paddingHorizontal: 4,
+                  backgroundColor: colors.error,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Text style={[typography.labelSmall, { color: colors.onPrimary }]}>
+                  {unread > 9 ? '9+' : String(unread)}
+                </Text>
+              </View>
+            ) : null}
+          </Pressable>
         </View>
 
         {load === 'loading' ? (

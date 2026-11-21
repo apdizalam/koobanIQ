@@ -2763,6 +2763,66 @@
     "state": "pending",
     "en": "Remove from saved"
   },
+  "mobile.notifications.bell_one": {
+    "state": "pending",
+    "en": "Notifications, {{count}} new"
+  },
+  "mobile.notifications.bell_other": {
+    "state": "pending",
+    "en": "Notifications, {{count}} new"
+  },
+  "mobile.notifications.bell_zero": {
+    "state": "pending",
+    "en": "Notifications"
+  },
+  "mobile.notifications.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "mobile.notifications.emailUnavailable": {
+    "state": "pending",
+    "en": "Email notifications are not switched on for KOBANIQ yet. Your choice is kept for when they are."
+  },
+  "mobile.notifications.emptyBody": {
+    "state": "pending",
+    "en": "When a job search finds a new job that fits you well, it appears here."
+  },
+  "mobile.notifications.emptyTitle": {
+    "state": "pending",
+    "en": "No notifications yet"
+  },
+  "mobile.notifications.push": {
+    "state": "pending",
+    "en": "Push notifications on this phone"
+  },
+  "mobile.notifications.pushUnavailable": {
+    "state": "pending",
+    "en": "Push is not set up in this version of the app yet. New matches still appear in this list."
+  },
+  "mobile.notifications.readAll": {
+    "state": "pending",
+    "en": "Mark all as read"
+  },
+  "mobile.notifications.rowDetail": {
+    "state": "pending",
+    "en": "New strong job matches · push and email"
+  },
+  "mobile.notifications.settings": {
+    "state": "pending",
+    "en": "Notify me"
+  },
+  "mobile.notifications.strongMatch": {
+    "state": "pending",
+    "en": "Strong match · {{score}}%"
+  },
+  "mobile.notifications.subtitle": {
+    "state": "pending",
+    "en": "New jobs that fit you well, found by your job searches."
+  },
+  "mobile.notifications.title": {
+    "state": "pending",
+    "en": "Notifications"
+  },
   "mobile.preview.buttons.ghost": {
     "state": "pending",
     "en": "Skip for now"

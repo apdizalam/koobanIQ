@@ -11,6 +11,9 @@ import { Button } from '../../../components/ui/Button';
 import { DashboardCard } from '../../../components/ui/DashboardCard';
 import { LanguageSwitcher } from '../../../components/ui/LanguageSwitcher';
 import { LineIcon } from '../../../components/ui/LineIcon';
+import { ListRow } from '../../../components/ui/ListRow';
+import { registeredPushToken, rememberPushToken } from '../../../notifications/push';
+import { removePushToken } from '../../../services/notificationsApi';
 import type { Language } from '../../../i18n/language';
 import { useProfile } from '../../../profile/ProfileProvider';
 import { useSkills } from '../../../profile/SkillsProvider';
@@ -28,7 +31,7 @@ type Row = { key: string; href: Href; summary: string };
  */
 export default function ProfileTab() {
   const { t } = useTranslation();
-  const { user, saveLanguage, signOut } = useAuth();
+  const { user, saveLanguage, signOut, getAccessToken } = useAuth();
   const { reload } = useProfile();
   const skillsState = useSkills();
   const { colors, typography, spacing, radius } = useTheme();
@@ -48,6 +51,14 @@ export default function ProfileTab() {
 
   async function logOut() {
     setLeaving(true);
+    // This phone stops getting this account's push notifications (TIQ-22).
+    const pushToken = registeredPushToken();
+    if (pushToken) {
+      await getAccessToken()
+        .then((token) => removePushToken(token, pushToken))
+        .catch(() => undefined);
+      rememberPushToken(null);
+    }
     await signOut();
     router.replace('/welcome');
   }
@@ -148,6 +159,13 @@ export default function ProfileTab() {
           </View>
         )}
       </ProfileGate>
+
+      <ListRow
+        testID="profile-notifications"
+        title={t('mobile.notifications.title')}
+        detail={t('mobile.notifications.rowDetail')}
+        onPress={() => router.push('/notifications')}
+      />
 
       <DashboardCard title={t('common.language.label')} body={t('mobile.profile.languageHint')}>
         <LanguageSwitcher onChange={(language) => void changeLanguage(language)} />
