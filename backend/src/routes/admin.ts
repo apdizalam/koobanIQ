@@ -1,6 +1,13 @@
 import { Router } from 'express';
 import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
+import {
+  getAdminRun,
+  getAdminRuns,
+  getAdminSchedules,
+  patchAdminSchedule,
+  postRetryRun,
+} from '../controllers/adminResearchController.js';
 import { getAdminUsage } from '../controllers/adminUsageController.js';
 import {
   getAiPersonalData,
@@ -46,6 +53,13 @@ adminRouter.put('/settings/ai-personal-data', putAiPersonalData);
 
 // AI usage (TIQ-23, read-only): monitoring and cost control, never a limit.
 adminRouter.get('/usage', getAdminUsage);
+
+// Research runs and schedules (TIQ-33): history, errors, retry, pause. Changes are audited.
+adminRouter.get('/research-runs', getAdminRuns);
+adminRouter.get('/research-runs/:id', getAdminRun);
+adminRouter.post('/research-runs/:id/retry', postRetryRun);
+adminRouter.get('/research-schedules', getAdminSchedules);
+adminRouter.patch('/research-schedules/:id', patchAdminSchedule);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);

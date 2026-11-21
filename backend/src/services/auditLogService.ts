@@ -14,6 +14,9 @@ export const AUDIT_ACTIONS = [
   'region.update',
   'settings.ai_personal_data',
   'user.test_account',
+  'research_run.retry',
+  'research_schedule.pause',
+  'research_schedule.resume',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 

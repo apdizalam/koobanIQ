@@ -4091,6 +4091,10 @@
     "state": "pending",
     "en": "Job search not found"
   },
+  "server.errors.RUN_NOT_RETRYABLE": {
+    "state": "pending",
+    "en": "Only a failed job search can be retried"
+  },
   "server.errors.SCHEDULE_LIMIT": {
     "state": "pending",
     "en": "You can keep up to 5 scheduled searches. Delete one first"
@@ -4350,6 +4354,10 @@
   "server.validation.roleInvalid": {
     "state": "pending",
     "en": "Must be \"user\" or \"admin\""
+  },
+  "server.validation.runStatusInvalid": {
+    "state": "pending",
+    "en": "Must be \"running\", \"completed\", \"partial\" or \"failed\""
   },
   "server.validation.sourceKeysInvalid": {
     "state": "pending",
