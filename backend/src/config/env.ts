@@ -80,4 +80,11 @@ export const env = {
   aiRetryDelayMs: Number(process.env.AI_RETRY_DELAY_MS ?? 3000),
   /** AI requests one user may make per hour (protects the free quota). */
   aiUserRequestsPerHour: Number(process.env.AI_USER_REQUESTS_PER_HOUR ?? 30),
+  /**
+   * Email notifications (TIQ-22, new strong matches). Off by default (owner
+   * decision 2026-11-21): Resend's test sender only reaches the owner's inbox
+   * until a domain is verified. Turn on with NOTIFICATION_EMAILS_ENABLED=true.
+   */
+  notificationEmailsEnabled:
+    (process.env.NOTIFICATION_EMAILS_ENABLED ?? 'false').trim().toLowerCase() === 'true',
 };

@@ -34,6 +34,9 @@ const userSchema = new Schema(
      * Admin Dashboard (with a reason, audited); never from the email address.
      */
     testAccount: { type: Boolean, default: false },
+    /** Notification choices (TIQ-22): push to the phone and email; in-app items always. */
+    notifyPush: { type: Boolean, default: true },
+    notifyEmail: { type: Boolean, default: true },
   },
   { timestamps: true },
 );
