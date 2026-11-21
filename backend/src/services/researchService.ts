@@ -102,7 +102,7 @@ export async function operationalSourceKeys(keys: string[]) {
 export async function startResearch(
   userId: Types.ObjectId,
   request: ResearchRequest,
-  options: { scheduleId?: Types.ObjectId } = {},
+  options: { scheduleId?: Types.ObjectId; retryOf?: Types.ObjectId } = {},
 ) {
   const sourceKeys = [...new Set(request.sourceKeys.map((k) => k.toLowerCase()))];
   if (sourceKeys.length === 0) {
@@ -130,6 +130,7 @@ export async function startResearch(
     filters: request.filters,
     customUrls: request.customUrls ?? [],
     scheduleId: options.scheduleId ?? null,
+    retryOf: options.retryOf ?? null,
     startedAt: new Date(),
   });
   const query: ResearchQuery = {

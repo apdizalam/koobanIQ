@@ -56,6 +56,8 @@ const researchRunSchema = new Schema(
     error: { type: String },
     /** Set when a schedule started this run (TIQ-21); null for a search the user started. */
     scheduleId: { type: Types.ObjectId, ref: 'ResearchSchedule', default: null },
+    /** Set when an admin retried a failed run (TIQ-33): the run this one repeats. */
+    retryOf: { type: Types.ObjectId, ref: 'ResearchRun', default: null },
     startedAt: { type: Date, required: true },
     finishedAt: { type: Date },
   },
@@ -91,6 +93,7 @@ export function toPublicRun(run: ResearchRunDocument) {
     duplicates: run.duplicates,
     error: run.error ?? null,
     scheduleId: run.scheduleId ? String(run.scheduleId) : null,
+    retryOf: run.retryOf ? String(run.retryOf) : null,
     startedAt: run.startedAt,
     finishedAt: run.finishedAt ?? null,
   };
