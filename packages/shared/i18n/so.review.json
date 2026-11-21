@@ -27,6 +27,18 @@
     "state": "pending",
     "en": "Changed region cities"
   },
+  "admin.audit.actions.research_run_retry": {
+    "state": "pending",
+    "en": "Retried a job search"
+  },
+  "admin.audit.actions.research_schedule_pause": {
+    "state": "pending",
+    "en": "Paused a scheduled search"
+  },
+  "admin.audit.actions.research_schedule_resume": {
+    "state": "pending",
+    "en": "Resumed a scheduled search"
+  },
   "admin.audit.actions.settings_ai_personal_data": {
     "state": "pending",
     "en": "Changed AI privacy setting"
@@ -514,6 +526,382 @@
   "admin.regions.unchanged": {
     "state": "pending",
     "en": "No changes to save."
+  },
+  "admin.runs.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.runs.back": {
+    "state": "pending",
+    "en": "← Research runs"
+  },
+  "admin.runs.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.runs.columns.actions": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.runs.columns.jobs": {
+    "state": "pending",
+    "en": "Jobs found"
+  },
+  "admin.runs.columns.problems": {
+    "state": "pending",
+    "en": "Problems"
+  },
+  "admin.runs.columns.result": {
+    "state": "pending",
+    "en": "Result"
+  },
+  "admin.runs.columns.sources": {
+    "state": "pending",
+    "en": "Sources"
+  },
+  "admin.runs.columns.started": {
+    "state": "pending",
+    "en": "Started"
+  },
+  "admin.runs.columns.trigger": {
+    "state": "pending",
+    "en": "How"
+  },
+  "admin.runs.columns.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.runs.confirmRetry": {
+    "state": "pending",
+    "en": "Run this search again for {{email}}, with the same sources, regions, filters and links? It becomes a new run; this one stays as it is."
+  },
+  "admin.runs.confirmYes": {
+    "state": "pending",
+    "en": "Yes, retry"
+  },
+  "admin.runs.deletedUser": {
+    "state": "pending",
+    "en": "Deleted account"
+  },
+  "admin.runs.detail.city": {
+    "state": "pending",
+    "en": "City"
+  },
+  "admin.runs.detail.employerTypes": {
+    "state": "pending",
+    "en": "Employer types"
+  },
+  "admin.runs.detail.error": {
+    "state": "pending",
+    "en": "Error"
+  },
+  "admin.runs.detail.finished": {
+    "state": "pending",
+    "en": "Finished"
+  },
+  "admin.runs.detail.links": {
+    "state": "pending",
+    "en": "Career-page links"
+  },
+  "admin.runs.detail.noRetries": {
+    "state": "pending",
+    "en": "Not retried."
+  },
+  "admin.runs.detail.none": {
+    "state": "pending",
+    "en": "—"
+  },
+  "admin.runs.detail.notFinished": {
+    "state": "pending",
+    "en": "Still running"
+  },
+  "admin.runs.detail.notFound": {
+    "state": "pending",
+    "en": "This job search does not exist."
+  },
+  "admin.runs.detail.perSource": {
+    "state": "pending",
+    "en": "Per source"
+  },
+  "admin.runs.detail.regions": {
+    "state": "pending",
+    "en": "Regions"
+  },
+  "admin.runs.detail.retries": {
+    "state": "pending",
+    "en": "Retries of this search"
+  },
+  "admin.runs.detail.retryOf": {
+    "state": "pending",
+    "en": "Retry of"
+  },
+  "admin.runs.detail.skills": {
+    "state": "pending",
+    "en": "Skills"
+  },
+  "admin.runs.detail.title": {
+    "state": "pending",
+    "en": "Job search"
+  },
+  "admin.runs.detail.titles": {
+    "state": "pending",
+    "en": "Job titles"
+  },
+  "admin.runs.details": {
+    "state": "pending",
+    "en": "Details"
+  },
+  "admin.runs.empty": {
+    "state": "pending",
+    "en": "No job searches yet."
+  },
+  "admin.runs.error": {
+    "state": "pending",
+    "en": "Could not load the job searches. Check that the backend is running."
+  },
+  "admin.runs.failedSources": {
+    "state": "pending",
+    "en": "Failed: {{sources}}"
+  },
+  "admin.runs.jobsCount": {
+    "state": "pending",
+    "en": "{{found}} ({{new}} new)"
+  },
+  "admin.runs.no": {
+    "state": "pending",
+    "en": "No"
+  },
+  "admin.runs.noProblems": {
+    "state": "pending",
+    "en": "None"
+  },
+  "admin.runs.openNewRun": {
+    "state": "pending",
+    "en": "Open the new run"
+  },
+  "admin.runs.retried": {
+    "state": "pending",
+    "en": "The search runs again as a new run."
+  },
+  "admin.runs.retry": {
+    "state": "pending",
+    "en": "Retry"
+  },
+  "admin.runs.retryLoad": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.runs.schedules.active": {
+    "state": "pending",
+    "en": "Active"
+  },
+  "admin.runs.schedules.columns.actions": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.runs.schedules.columns.last": {
+    "state": "pending",
+    "en": "Last run"
+  },
+  "admin.runs.schedules.columns.next": {
+    "state": "pending",
+    "en": "Next run"
+  },
+  "admin.runs.schedules.columns.runs": {
+    "state": "pending",
+    "en": "Runs"
+  },
+  "admin.runs.schedules.columns.state": {
+    "state": "pending",
+    "en": "State"
+  },
+  "admin.runs.schedules.columns.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.runs.schedules.columns.when": {
+    "state": "pending",
+    "en": "When"
+  },
+  "admin.runs.schedules.confirmPause": {
+    "state": "pending",
+    "en": "Pause the scheduled search of {{email}}? It will not run until it is resumed."
+  },
+  "admin.runs.schedules.confirmResume": {
+    "state": "pending",
+    "en": "Resume the scheduled search of {{email}}? The next run is planned from now."
+  },
+  "admin.runs.schedules.donePause": {
+    "state": "pending",
+    "en": "Scheduled search paused."
+  },
+  "admin.runs.schedules.doneResume": {
+    "state": "pending",
+    "en": "Scheduled search resumed."
+  },
+  "admin.runs.schedules.empty": {
+    "state": "pending",
+    "en": "No scheduled searches yet."
+  },
+  "admin.runs.schedules.frequency.daily": {
+    "state": "pending",
+    "en": "Daily at {{time}}"
+  },
+  "admin.runs.schedules.frequency.every6h": {
+    "state": "pending",
+    "en": "Every 6 hours from {{time}}"
+  },
+  "admin.runs.schedules.frequency.hourly": {
+    "state": "pending",
+    "en": "Every hour at :{{minute}}"
+  },
+  "admin.runs.schedules.frequency.weekly": {
+    "state": "pending",
+    "en": "{{weekday}} at {{time}}"
+  },
+  "admin.runs.schedules.never": {
+    "state": "pending",
+    "en": "Never"
+  },
+  "admin.runs.schedules.pause": {
+    "state": "pending",
+    "en": "Pause"
+  },
+  "admin.runs.schedules.paused": {
+    "state": "pending",
+    "en": "Paused"
+  },
+  "admin.runs.schedules.resume": {
+    "state": "pending",
+    "en": "Resume"
+  },
+  "admin.runs.schedules.skips.busy": {
+    "state": "pending",
+    "en": "Last time skipped: another search was running"
+  },
+  "admin.runs.schedules.skips.error": {
+    "state": "pending",
+    "en": "Last time skipped: an error"
+  },
+  "admin.runs.schedules.skips.no_sources": {
+    "state": "pending",
+    "en": "Last time skipped: no source available"
+  },
+  "admin.runs.schedules.subtitle": {
+    "state": "pending",
+    "en": "Saved searches that run by themselves. Pausing stops the runs until someone resumes it (the user can too, in the app)."
+  },
+  "admin.runs.schedules.weekdays.0": {
+    "state": "pending",
+    "en": "Monday"
+  },
+  "admin.runs.schedules.weekdays.1": {
+    "state": "pending",
+    "en": "Tuesday"
+  },
+  "admin.runs.schedules.weekdays.2": {
+    "state": "pending",
+    "en": "Wednesday"
+  },
+  "admin.runs.schedules.weekdays.3": {
+    "state": "pending",
+    "en": "Thursday"
+  },
+  "admin.runs.schedules.weekdays.4": {
+    "state": "pending",
+    "en": "Friday"
+  },
+  "admin.runs.schedules.weekdays.5": {
+    "state": "pending",
+    "en": "Saturday"
+  },
+  "admin.runs.schedules.weekdays.6": {
+    "state": "pending",
+    "en": "Sunday"
+  },
+  "admin.runs.sourceColumns.attempts": {
+    "state": "pending",
+    "en": "Tries"
+  },
+  "admin.runs.sourceColumns.duplicates": {
+    "state": "pending",
+    "en": "Duplicates"
+  },
+  "admin.runs.sourceColumns.error": {
+    "state": "pending",
+    "en": "Error"
+  },
+  "admin.runs.sourceColumns.found": {
+    "state": "pending",
+    "en": "Found"
+  },
+  "admin.runs.sourceColumns.invalid": {
+    "state": "pending",
+    "en": "Not valid"
+  },
+  "admin.runs.sourceColumns.new": {
+    "state": "pending",
+    "en": "New"
+  },
+  "admin.runs.sourceColumns.searched": {
+    "state": "pending",
+    "en": "Searched"
+  },
+  "admin.runs.sourceColumns.source": {
+    "state": "pending",
+    "en": "Source"
+  },
+  "admin.runs.statusFilter": {
+    "state": "pending",
+    "en": "Result"
+  },
+  "admin.runs.statuses.completed": {
+    "state": "pending",
+    "en": "Completed"
+  },
+  "admin.runs.statuses.failed": {
+    "state": "pending",
+    "en": "Failed"
+  },
+  "admin.runs.statuses.partial": {
+    "state": "pending",
+    "en": "Partly failed"
+  },
+  "admin.runs.statuses.running": {
+    "state": "pending",
+    "en": "Running"
+  },
+  "admin.runs.subtitle": {
+    "state": "pending",
+    "en": "Every job search, by users and by their schedules: what was searched, what came back and what went wrong."
+  },
+  "admin.runs.tabs.runs": {
+    "state": "pending",
+    "en": "Searches"
+  },
+  "admin.runs.tabs.schedules": {
+    "state": "pending",
+    "en": "Scheduled searches"
+  },
+  "admin.runs.title": {
+    "state": "pending",
+    "en": "Research runs"
+  },
+  "admin.runs.triggers.manual": {
+    "state": "pending",
+    "en": "By the user"
+  },
+  "admin.runs.triggers.retry": {
+    "state": "pending",
+    "en": "Admin retry"
+  },
+  "admin.runs.triggers.scheduled": {
+    "state": "pending",
+    "en": "Scheduled"
+  },
+  "admin.runs.yes": {
+    "state": "pending",
+    "en": "Yes"
   },
   "admin.shell.closeMenu": {
     "state": "pending",

@@ -363,7 +363,10 @@
         "job_source_update": "Ilo shaqo ayaa la beddelay",
         "region_update": "Magaalooyinka gobolka ayaa la beddelay",
         "settings_ai_personal_data": "Waxaa la beddelay dejinta asturnaanta AI",
-        "user_test_account": "Waxaa la beddelay akoonka tijaabada"
+        "user_test_account": "Waxaa la beddelay akoonka tijaabada",
+        "research_run_retry": "Raadin shaqo ayaa mar kale la bilaabay",
+        "research_schedule_pause": "Raadin jadwalaysan ayaa la hakiyay",
+        "research_schedule_resume": "Raadin jadwalaysan dib ayaa loo bilaabay"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",
@@ -477,6 +480,124 @@
       "cancel": "Jooji",
       "empty": "Weli ma jiraan ilo shaqo. Kooxda ayaa il ku darta: xiriir server-ka ku jira iyo diiwaan xog-ururin.",
       "error": "Ilaha shaqooyinka lama soo rari karin. Hubi in backend-ku shaqaynayo."
+    },
+    "runs": {
+      "title": "Raadinta shaqooyinka",
+      "subtitle": "Raadin kasta oo shaqo, ha sameeyeen isticmaalayaashu ama jadwalladoodu: waxa la raadiyay, waxa soo baxay iyo waxa khaldamay.",
+      "tabs": {
+        "runs": "Raadinno",
+        "schedules": "Raadinno jadwalaysan"
+      },
+      "statusFilter": "Natiijo",
+      "all": "Dhammaan",
+      "statuses": {
+        "running": "Socda",
+        "completed": "Dhammaaday",
+        "partial": "Qayb ka mid ah ayaa fashilantay",
+        "failed": "Fashilantay"
+      },
+      "triggers": {
+        "manual": "Isticmaalaha",
+        "scheduled": "Jadwal",
+        "retry": "Maamule ayaa mar kale bilaabay"
+      },
+      "columns": {
+        "started": "Bilaabatay",
+        "user": "Isticmaale",
+        "trigger": "Sida ay u bilaabatay",
+        "sources": "Ilaha",
+        "result": "Natiijo",
+        "jobs": "Shaqooyin la helay",
+        "problems": "Dhibaatooyin",
+        "actions": "Ficillo"
+      },
+      "jobsCount": "{{found}} ({{new}} cusub)",
+      "failedSources": "Fashilmay: {{sources}}",
+      "noProblems": "Midna",
+      "details": "Faahfaahin",
+      "retry": "Mar kale isku day",
+      "confirmRetry": "Raadintan mar kale ma u samaynaysaa {{email}}, isla ilaha, gobollada, shaandheynta iyo xiriirada? Waxay noqonaysaa raadin cusub; tan hadda jirta sideeda ayay ahaanaysaa.",
+      "confirmYes": "Haa, mar kale isku day",
+      "cancel": "Jooji",
+      "retried": "Raadintu mar kale ayay socotaa, raadin cusub ahaan.",
+      "openNewRun": "Fur raadinta cusub",
+      "deletedUser": "Akoon la tirtiray",
+      "empty": "Weli raadin shaqo lama samayn.",
+      "error": "Raadinnada shaqada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retryLoad": "Isku day mar kale",
+      "back": "← Raadinta shaqooyinka",
+      "detail": {
+        "title": "Raadin shaqo",
+        "finished": "Dhammaatay",
+        "notFinished": "Weli way socotaa",
+        "regions": "Gobollada",
+        "titles": "Magacyada shaqada",
+        "skills": "Xirfadaha",
+        "city": "Magaalada",
+        "employerTypes": "Noocyada loo shaqeeyaha",
+        "links": "Xiriirada bogagga shaqaalaysiinta",
+        "none": "—",
+        "retryOf": "Isku day kale oo ah",
+        "error": "Cillad",
+        "perSource": "Il kasta",
+        "retries": "Isku dayada kale ee raadintan",
+        "noRetries": "Mar kale lama isku dayin.",
+        "notFound": "Raadintan shaqo ma jirto."
+      },
+      "sourceColumns": {
+        "source": "Isha",
+        "searched": "La raadiyay",
+        "found": "La helay",
+        "new": "Cusub",
+        "duplicates": "Nuqullo",
+        "invalid": "Aan ansax ahayn",
+        "attempts": "Isku dayo",
+        "error": "Cillad"
+      },
+      "yes": "Haa",
+      "no": "Maya",
+      "schedules": {
+        "subtitle": "Raadinno la keydiyay oo iskood u socda. Hakintu waxay joojinaysaa raadinnada ilaa qof dib u bilaabo (isticmaaluhuna app-ka ayuu ka samayn karaa).",
+        "columns": {
+          "user": "Isticmaale",
+          "when": "Goorma",
+          "next": "Raadinta xigta",
+          "last": "Raadintii ugu dambaysay",
+          "runs": "Raadinno",
+          "state": "Xaalad",
+          "actions": "Ficillo"
+        },
+        "frequency": {
+          "hourly": "Saacad kasta daqiiqadda :{{minute}}",
+          "every6h": "6-dii saacadoodba mar, laga bilaabo {{time}}",
+          "daily": "Maalin kasta {{time}}",
+          "weekly": "{{weekday}} {{time}}"
+        },
+        "weekdays": {
+          "0": "Isniin",
+          "1": "Talaado",
+          "2": "Arbaco",
+          "3": "Khamiis",
+          "4": "Jimco",
+          "5": "Sabti",
+          "6": "Axad"
+        },
+        "skips": {
+          "no_sources": "Markii u dambaysay waa laga boodday: il diyaar ah ma jirin",
+          "busy": "Markii u dambaysay waa laga boodday: raadin kale ayaa socotay",
+          "error": "Markii u dambaysay waa laga boodday: cillad"
+        },
+        "never": "Weligeed",
+        "active": "Firfircoon",
+        "paused": "La hakiyay",
+        "pause": "Hakin",
+        "resume": "Dib u bilaab",
+        "confirmPause": "Ma hakinaysaa raadinta jadwalaysan ee {{email}}? Ma socon doonto ilaa dib loo bilaabo.",
+        "confirmResume": "Dib ma u bilaabaysaa raadinta jadwalaysan ee {{email}}? Raadinta xigta hadda laga bilaabo ayaa la qorsheynayaa.",
+        "donePause": "Raadinta jadwalaysan waa la hakiyay.",
+        "doneResume": "Raadinta jadwalaysan dib ayaa loo bilaabay.",
+        "empty": "Weli raadin jadwalaysan ma jirto."
+      }
     },
     "regions": {
       "title": "Gobollada iyo magaalooyinka",
