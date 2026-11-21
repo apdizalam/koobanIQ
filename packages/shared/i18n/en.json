@@ -375,6 +375,45 @@
       },
       "reason": "Reason: {{reason}}"
     },
+    "usage": {
+      "title": "AI usage",
+      "subtitle": "How much the AI features are used. Monitoring and cost control only: KOBANIQ is free and never limits anyone by plan or payment.",
+      "cards": {
+        "requests": "AI requests",
+        "users": "Users",
+        "tokens": "Tokens",
+        "failed": "Failed",
+        "capped": "Stopped by the hourly cap"
+      },
+      "tokensSplit": "{{input}} in · {{output}} out",
+      "failedHint": "Sent, but no usable answer (provider error, timeout, invalid answer).",
+      "capHint": "Safety cap: {{count}} AI requests per user per hour (protects the shared free AI quota).",
+      "featuresTitle": "By feature",
+      "usersTitle": "Most active users",
+      "usersNote": "Up to 50 users, most requests first.",
+      "columns": {
+        "feature": "Feature",
+        "user": "User",
+        "requests": "Requests",
+        "ok": "OK",
+        "failed": "Failed",
+        "capped": "Capped",
+        "tokens": "Tokens",
+        "last": "Last request"
+      },
+      "features": {
+        "jd_extraction": "Reading job ads",
+        "cv_generation": "CV writing",
+        "skill_quiz": "Skill quizzes",
+        "job_match": "Job matching",
+        "interview": "Interview practice",
+        "connectivity_check": "AI connection check"
+      },
+      "empty": "No AI requests in this period.",
+      "error": "Could not load the usage numbers. Check that the backend is running.",
+      "retry": "Try again",
+      "deletedUser": "Deleted account"
+    },
     "sources": {
       "title": "Job sources",
       "subtitle": "Where job research looks for jobs. A source can only be switched on after its terms were checked and the server has an adapter for it.",

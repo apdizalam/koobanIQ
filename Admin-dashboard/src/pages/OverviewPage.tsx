@@ -5,7 +5,7 @@ import { SoonCard, StatCard } from '../components/ui/StatCard';
 import { useOverview } from '../hooks/useOverview';
 import { PERIODS, isPeriod, type Period } from '../types/overview';
 
-const SOON_KEYS = ['assessments', 'cvs', 'runs', 'failedJobs', 'aiUsage'] as const;
+const SOON_KEYS = ['assessments', 'cvs', 'runs', 'failedJobs'] as const;
 
 /** Admin Overview: live user numbers + cards for features that are not built yet. */
 export function OverviewPage() {
