@@ -136,3 +136,31 @@ export interface RunResults {
   /** Jobs the run found that its filters left out (still stored; older servers leave it out). */
   hiddenByFilters?: number;
 }
+
+// ------------------------------------------------------------------ scheduled searches (TIQ-21)
+
+export const SCHEDULE_FREQUENCIES = ['hourly', 'every6h', 'daily', 'weekly'] as const;
+export type ScheduleFrequency = (typeof SCHEDULE_FREQUENCIES)[number];
+
+/** A saved job search that runs by itself at a local time (backend models/ResearchSchedule.ts). */
+export interface ResearchSchedule {
+  id: string;
+  frequency: ScheduleFrequency;
+  /** Local "HH:MM" (hourly: only the minutes count). */
+  time: string;
+  /** weekly: 0 = Monday … 6 = Sunday. */
+  weekday: number | null;
+  timeZone: string;
+  sourceKeys: string[];
+  regions: RegionKey[];
+  filters: { titles?: string[]; city?: string; employerTypes?: string[] };
+  customUrls: string[];
+  enabled: boolean;
+  nextRunAt: string | null;
+  lastRunAt: string | null;
+  lastRunId: string | null;
+  /** Why the last due time did not start a search. */
+  lastSkip: 'no_sources' | 'busy' | 'error' | null;
+  runCount: number;
+  createdAt: string;
+}

@@ -69,7 +69,7 @@ src/components/profile/    ProfileForm (one form for every profile part), Profil
 src/components/cv/         JobDetails, CvPreview, MissingInfoList, GenerateMessages
 src/components/quiz/       QuizOption (answer A–D), QuizReport
 src/components/interview/  FeedbackCard (score, strengths, improvements, stronger answer)
-src/components/jobs/       JobResults (fitting jobs first, lower matches only on request)
+src/components/jobs/       JobResults (fitting jobs first, lower matches only on request), RepeatOptions + ScheduleList (scheduled searches)
 src/jobs/                  matchText (reasons → text), useSavedJobs, pollSettings
 src/cv/                    CvProvider/useCvs (CVs + saved job ads), useGenerateCv, aiErrorText, sharePdf
 src/profile/               ProfileProvider/useProfile, SkillsProvider/useSkills (shared state) and fields.ts (field rules)

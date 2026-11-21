@@ -11,3 +11,15 @@ export function formatDate(iso: string, language: string): string {
     return new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).format(date);
   }
 }
+
+/** A date and time in the app language, e.g. "21 Nov 2026, 09:00" (English month names as fallback). */
+export function formatDateTime(iso: string, language: string): string {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return '';
+  const options = { dateStyle: 'medium', timeStyle: 'short', hourCycle: 'h23' } as const;
+  try {
+    return new Intl.DateTimeFormat(language, options).format(date);
+  } catch {
+    return new Intl.DateTimeFormat('en', options).format(date);
+  }
+}
