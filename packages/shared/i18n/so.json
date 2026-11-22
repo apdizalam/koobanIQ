@@ -1827,5 +1827,205 @@
       "strongMatch": "Si fiican u habboon · {{score}}%",
       "announcement": "Ogeysiis"
     }
+  },
+  "landing": {
+    "meta": {
+      "title": "KOBANIQ — Ogow xirfadahaaga. Hel fursaddaada.",
+      "description": "Caawimo shaqo oo AI ah oo bilaash ah oo loogu talagalay Somaliland iyo Soomaaliya: xaqiiji xirfadahaaga, hel shaqooyin dhab ah oo kugu habboon, oo samee CV kuu gaar ah oo Ingiriis ama Soomaali ah.",
+      "privacyTitle": "Siyaasadda asturnaanta — KOBANIQ",
+      "termsTitle": "Shuruudaha isticmaalka — KOBANIQ"
+    },
+    "nav": {
+      "skip": "U gudub nuxurka",
+      "how": "Sida uu u shaqeeyo",
+      "features": "Waxa uu qabto",
+      "faq": "Su'aalo",
+      "join": "Ku biir liiska sugitaanka",
+      "language": "Luqad",
+      "menu": "Menu",
+      "home": "Bogga hore ee KOBANIQ"
+    },
+    "hero": {
+      "eyebrow": "Bilaash qof walba oo ku nool Somaliland iyo Soomaaliya",
+      "title": "Ogow xirfadahaaga.\nHel fursaddaada.",
+      "body": "KOBANIQ waa app shaqo oo AI ah: xaqiiji waxaad taqaan, hel shaqooyin dhab ah oo kugu habboon, oo samee CV shaqo kasta loogu talagalay, Ingiriis ama Soomaali.",
+      "join": "Ku biir liiska sugitaanka",
+      "how": "Eeg sida uu u shaqeeyo",
+      "soon": "Dhawaan wuxuu ku iman doonaa App Store iyo Google Play",
+      "appStore": "App Store",
+      "googlePlay": "Google Play",
+      "soonBadge": "Dhawaan",
+      "cardSkill": "Excel · imtixaan lagu xaqiijiyay",
+      "cardMatch": "Sarkaal Xog · Ku habboonaan xooggan 82%",
+      "cardCv": "CV diyaar · Ingiriis iyo Soomaali"
+    },
+    "how": {
+      "title": "Sida uu u shaqeeyo",
+      "subtitle": "Afar tallaabo oo khibraddaada ka gaarsiinaysa codsi shaqo.",
+      "steps": {
+        "profile": {
+          "title": "Samee profile-kaaga",
+          "body": "Hal mar ku dar waxbarashadaada, khibradda shaqo iyo xirfadahaaga. KOBANIQ wuxuu isticmaalaa kaliya waxaad qorto."
+        },
+        "verify": {
+          "title": "Xaqiiji xirfadahaaga",
+          "body": "Qaado imtixaan gaaban oo xirfad ah. Natiijadu waxay muujinaysaa waxaad runtii taqaan, iyo mawduucyada xiga ee aad baran lahayd."
+        },
+        "jobs": {
+          "title": "Hel shaqooyin kugu habboon",
+          "body": "Raadi shaqooyin dhab ah oo Somaliland, Soomaaliya iyo meel fog ah. Shaqo kastaa waxay muujinaysaa sababta ay kuugu habboon tahay, ama waxa maqan."
+        },
+        "apply": {
+          "title": "Codso adigoo wata CV kuu gaar ah",
+          "body": "Geli xayeysiis shaqo oo hel CV loogu talagalay, Ingiriis ama Soomaali. Waad hubinaysaa ka hor intaadan isticmaalin."
+        }
+      }
+    },
+    "features": {
+      "title": "Saddex caawiye oo AI ah oo hal app ku jira",
+      "subtitle": "Waxay ka shaqeeyaan profile-kaaga iyo xayeysiisyo shaqo oo dhab ah. Waxba lama abuuro.",
+      "cv": {
+        "title": "Qoraha CV-ga",
+        "body": "Wuxuu akhriyaa xayeysiiska shaqada wuxuuna qoraa CV muujinaya khibraddaada ku habboon, luqadda aad doorato. Wuxuu kuu sheegaa macluumaadka maqan halkii uu abuuri lahaa."
+      },
+      "skills": {
+        "title": "Hubinta xirfadda",
+        "body": "Imtixaanno gaaban oo is-beddela oo xirfadahaaga ah. Heerka natiijadaadu wuu ka duwan yahay waxaad naftaada ka sheegtay, si adiga iyo loo-shaqeeyayaashuba u arkaan farqiga."
+      },
+      "jobs": {
+        "title": "Raadinta iyo isbarbardhigga shaqooyinka",
+        "body": "Wuxuu raadiyaa ilaha shaqo ee oggol, shaqo kasta hal mar ayuu keydiyaa, wuxuuna qiimeeyaa inta ay ugu habboon tahay profile-kaaga. Dhibcuhu waxay ku saabsan yihiin ku habboonaanta, ma aha fursaddaada shaqo helidda."
+      },
+      "more": "Sidoo kale app-ka waxaa ku jira: ku tababarka wareysiga oo jawaab celin leh, shaqooyin la keydiyay, ogeysiisyo shaqooyin cusub oo aad ugu habboon, iyo warbixinno horumarkaaga ah."
+    },
+    "free": {
+      "title": "Bilaash qof walba",
+      "body": "KOBANIQ waa bilaash. Ma jiraan qorshayaal la doorto iyo wax la bixiyo. Samee akoon oo isticmaal qayb kasta."
+    },
+    "faq": {
+      "title": "Su'aalo",
+      "items": {
+        "free": {
+          "q": "KOBANIQ runtii ma bilaash baa?",
+          "a": "Haa. Qayb kasta waa bilaash qof walba, mana jiraan rukummo ama lacag bixin."
+        },
+        "where": {
+          "q": "Shaqooyinkee ayuu helaa?",
+          "a": "Shaqooyin Somaliland iyo Soomaaliya ah, iyo shaqooyin meel fog laga qabto oo u furan dadka halkaas jooga, kana yimaada ilaha shaqo ee shuruudahoodu oggol yihiin iyo bogagga shaqaalaysiinta shirkadaha ama hay'adaha aad ku darto."
+        },
+        "language": {
+          "q": "Ma ku isticmaali karaa Soomaali?",
+          "a": "Haa. App-ka oo dhan wuxuu ku qoran yahay Ingiriis iyo Soomaali, CV kastana luqaddiisa si gooni ah ayaad u dooranaysaa."
+        },
+        "experience": {
+          "q": "Ma u baahanahay khibrad shaqo?",
+          "a": "Maya. Ardayda iyo kuwa qalinjabiyay waxay ku dari karaan waxbarasho, mashruucyo iyo iskaa wax u qabso, xaqiijin karaan xirfadahooda, oo heli karaan shaqooyin heer bilow ah."
+        },
+        "ai": {
+          "q": "AI-gu ma been abuuraa?",
+          "a": "Wuxuu ka qoraa kaliya waxa ku jira profile-kaaga iyo xayeysiiska shaqada. Marka wax maqan yihiin, wuu ku weydiinayaa halkii uu abuuri lahaa. Had iyo jeer waad dib u eegaysaa CV-gaaga ka hor intaadan isticmaalin."
+        },
+        "data": {
+          "q": "Maxaa ku dhaca xogtayda?",
+          "a": "Profile-kaaga waxaa loo isticmaalaa in laguu qabto adeegga: isbarbardhigga, imtixaannada iyo CV-yada. Akhri siyaasadda asturnaanta si aad u ogaato waxa la keydiyo, sababta, iyo sida loo tirtiro."
+        },
+        "when": {
+          "q": "Goorma ayaan soo dejin karaa app-ka?",
+          "a": "Dhawaan. Ku biir liiska sugitaanka, waxaanan kuu soo diri doonnaa hal iimayl marka uu diyaar noqdo."
+        }
+      }
+    },
+    "waitlist": {
+      "title": "Ku biir liiska sugitaanka",
+      "body": "Noqo qofka ugu horreeya ee ogaada marka KOBANIQ uu yimaado bakhaarrada app-ka. Hal iimayl marka uu soo baxo, wax kale ma jiraan.",
+      "email": "Iimayl",
+      "emailPlaceholder": "adiga@tusaale.com",
+      "name": "Magac (ikhtiyaari)",
+      "consent": "Waan oggolahay siyaasadda asturnaanta.",
+      "consentLink": "Akhri siyaasadda asturnaanta",
+      "submit": "Ku biir liiska sugitaanka",
+      "sending": "Waa la dirayaa…",
+      "done": "Mahadsanid! Waxaad ku jirtaa liiska sugitaanka. Waan kuu soo qori doonnaa marka app-ku soo baxo.",
+      "emailInvalid": "Fadlan geli cinwaan iimayl oo sax ah.",
+      "consentMissing": "Fadlan oggolow siyaasadda asturnaanta.",
+      "failed": "Wax ayaa khaldamay. Fadlan dhawr daqiiqo kadib mar kale isku day."
+    },
+    "footer": {
+      "tagline": "Caawimo shaqo oo AI ah oo loogu talagalay Somaliland iyo Soomaaliya.",
+      "privacy": "Siyaasadda asturnaanta",
+      "terms": "Shuruudaha isticmaalka",
+      "rights": "© {{year}} KOBANIQ"
+    },
+    "legal": {
+      "back": "← Ku noqo bogga hore",
+      "updated": "Markii ugu dambaysay la cusboonaysiiyay: {{date}}",
+      "draft": "Qabyo: qoraalkan waa la eegi doonaa ka hor inta app-ku aanu soo bixin.",
+      "privacy": {
+        "title": "Siyaasadda asturnaanta",
+        "sections": {
+          "who": {
+            "h": "Annaga yaannu nahay",
+            "p": "KOBANIQ waa app shaqo oo loogu talagalay dadka ku nool Somaliland iyo Soomaaliya. Siyaasaddan waxay sharxaysaa macluumaadka aan keydinno, sababta, iyo doorashooyinkaaga."
+          },
+          "what": {
+            "h": "Waxa aan uruurinno",
+            "p": "Akoonkaaga (iimayl, luqad, furaha sirta ah oo kaliya hab ammaan ah loo keydiyo), profile-ka aad qorto (waxbarasho, khibrad, xirfado, doorashooyin), natiijooyinka imtixaannadaada, xayeysiisyada shaqo ee aad ku darto, CV-yada aad samayso, iyo diiwaanno fudud oo codsiyada AI (qaybta, goorta iyo cabbirka; weligood nuxurka). Websaydhkan: kaliya iimaylka, magaca ikhtiyaariga ah iyo luqadda aad ku bixiso foomka liiska sugitaanka."
+          },
+          "why": {
+            "h": "Sababta aan u isticmaalno",
+            "p": "Kaliya in laguu qabto adeegga: shaqooyinka in lagula barbardhigo profile-kaaga, qiimaynta imtixaannada, qorista CV-yada, dirista ogeysiisyada aad oggolaato, iyo ilaalinta in adeeggu ammaan yahay oo shaqaynayo. Macluumaadkaaga ma iibinno."
+          },
+          "ai": {
+            "h": "Ka shaqaynta AI",
+            "p": "Qaybaha qaarkood waxay qoraal u diraan adeeg AI ah si ay wax u qoraan ama u hubiyaan (tusaale xayeysiis shaqo, ama mawduuc imtixaan). Waxaan dirnaa kaliya waxa qaybtu u baahan tahay. Caadi ahaan, habayn maamule ayaa ka hor istaagta in faahfaahinta shakhsiga ah ee profile-ka loo diro AI."
+          },
+          "share": {
+            "h": "Cidda arki karta",
+            "p": "Adiga, iyo tiro yar oo maamulayaasha KOBANIQ ah oo daryeela adeegga. Ficil kasta oo maamule waa la diiwaangeliyaa. Macluumaadka waxaan la wadaagnaa bixiyeyaasha adeegga (martigelin, kaydka xogta, iimayl, ogeysiisyada taleefanka, AI) kaliya si KOBANIQ u shaqeeyo."
+          },
+          "keep": {
+            "h": "Inta aan haynno",
+            "p": "Inta akoonkaagu jiro. Marka akoon la tirtiro, profile-kiisa, CV-yadiisa, imtixaannadiisa, shaqooyinka la keydiyay, ogeysiisyada iyo diiwaannada isticmaalka sidoo kale waa la tirtiraa. Iimaylada liiska sugitaanka waa la tirtiraa marka aan looga baahnayn iimaylka bilowga, ama marka aad codsato."
+          },
+          "rights": {
+            "h": "Doorashooyinkaaga",
+            "p": "Wakhti kasta waad beddeli kartaa profile-kaaga, demin kartaa ogeysiisyada, waxaadna na weydiin kartaa inaan ku tusno, saxno ama tirtirno macluumaadkaaga."
+          },
+          "contact": {
+            "h": "Xiriir",
+            "p": "Su'aalaha ku saabsan siyaasaddan: isticmaal macluumaadka xiriirka ee app-ka ku jiri doona marka uu soo baxo."
+          }
+        }
+      },
+      "terms": {
+        "title": "Shuruudaha isticmaalka",
+        "sections": {
+          "use": {
+            "h": "Isticmaalka KOBANIQ",
+            "p": "KOBANIQ waa bilaash. Waa inaad gaartay da'da shaqada ee dalkaaga oo aad bixisaa macluumaad run ah oo adiga kugu saabsan. Furahaaga sirta ah sir ka dhig."
+          },
+          "content": {
+            "h": "Nuxurkaaga",
+            "p": "Waxaad qorto adigaa iska leh. Waxaad u oggolaanaysaa KOBANIQ inuu u isticmaalo si uu kuu qabto adeegga, tusaale ahaan inuu CV ka qoro profile-kaaga."
+          },
+          "ai": {
+            "h": "Natiijooyinka AI",
+            "p": "CV-yada, natiijooyinka imtixaannada iyo dhibcaha ku habboonaanta waa caawimo, ma aha dammaanad. Hubi CV kasta ka hor intaadan dirin. Dhibcaha ku habboonaantu waxay muujinayaan inta shaqo ugu habboon tahay profile-kaaga, ma aha fursaddaada shaqo helidda."
+          },
+          "jobs": {
+            "h": "Shaqooyin ka yimid websaydhyo kale",
+            "p": "Shaqooyinku waxay ka yimaadaan websaydhyo kale iyo loo-shaqeeyayaal. KOBANIQ ma shaqaaleeyo, ma qorto, mana hubiyo loo-shaqeeyayaasha. Ka codso bogga loo-shaqeeyaha laftiisa oo ka taxaddar codsi kasta oo lacag ah."
+          },
+          "fair": {
+            "h": "Isticmaal xaq ah",
+            "p": "Ha si xun u isticmaalin adeegga, ha isku dayin inaad jebiso, hana uruurin macluumaadka dad kale. Si qaybaha AI ee bilaashka ahi ugu shaqeeyaan qof walba, isticmaalka aad u badan waxaa laga yaabaa in wakhti la gaabiyo."
+          },
+          "changes": {
+            "h": "Isbeddello",
+            "p": "Waxaa laga yaabaa inaan cusboonaysiinno app-ka iyo shuruudahan. Isbeddellada muhiimka ah waxaa lagu muujin doonaa app-ka."
+          }
+        }
+      }
+    }
   }
 }

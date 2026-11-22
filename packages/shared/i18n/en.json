@@ -1827,5 +1827,205 @@
       "strongMatch": "Strong match · {{score}}%",
       "announcement": "Announcement"
     }
+  },
+  "landing": {
+    "meta": {
+      "title": "KOBANIQ — Know your skills. Find your opportunity.",
+      "description": "Free AI career help for Somaliland and Somalia: verify your skills, find real jobs that fit, and build a tailored CV in English or Somali.",
+      "privacyTitle": "Privacy policy — KOBANIQ",
+      "termsTitle": "Terms of use — KOBANIQ"
+    },
+    "nav": {
+      "skip": "Skip to content",
+      "how": "How it works",
+      "features": "What it does",
+      "faq": "Questions",
+      "join": "Join the waitlist",
+      "language": "Language",
+      "menu": "Menu",
+      "home": "KOBANIQ home"
+    },
+    "hero": {
+      "eyebrow": "Free for everyone in Somaliland and Somalia",
+      "title": "Know your skills.\nFind your opportunity.",
+      "body": "KOBANIQ is an AI career app: verify what you know, discover real jobs that fit you, and build a CV made for each job, in English or Somali.",
+      "join": "Join the waitlist",
+      "how": "See how it works",
+      "soon": "Coming soon to the App Store and Google Play",
+      "appStore": "App Store",
+      "googlePlay": "Google Play",
+      "soonBadge": "Coming soon",
+      "cardSkill": "Excel · verified by quiz",
+      "cardMatch": "Data Officer · Strong match 82%",
+      "cardCv": "CV ready · English and Somali"
+    },
+    "how": {
+      "title": "How it works",
+      "subtitle": "Four steps from your experience to a job application.",
+      "steps": {
+        "profile": {
+          "title": "Build your profile",
+          "body": "Add your education, work experience and skills once. KOBANIQ uses only what you write."
+        },
+        "verify": {
+          "title": "Verify your skills",
+          "body": "Take a short quiz for a skill. The result shows what you really know, and the topics to learn next."
+        },
+        "jobs": {
+          "title": "Find jobs that fit",
+          "body": "Search real jobs in Somaliland, Somalia and remote. Each job shows why it fits you, or what is missing."
+        },
+        "apply": {
+          "title": "Apply with a tailored CV",
+          "body": "Paste a job ad and get a CV written for it, in English or Somali. You check it before you use it."
+        }
+      }
+    },
+    "features": {
+      "title": "Three AI helpers in one app",
+      "subtitle": "They work from your own profile and real job ads. Nothing is invented.",
+      "cv": {
+        "title": "CV writer",
+        "body": "Reads the job ad and writes a CV that shows your matching experience, in the language you choose. It tells you what information is missing instead of making it up."
+      },
+      "skills": {
+        "title": "Skill check",
+        "body": "Short adaptive quizzes for your skills. Your result level is separate from what you said about yourself, so employers and you see the difference."
+      },
+      "jobs": {
+        "title": "Job research and matching",
+        "body": "Searches job sources that allow it, keeps each job once, and scores how relevant it is to your profile. The score is about fit, not your chance of being hired."
+      },
+      "more": "Also in the app: interview practice with feedback, saved jobs, alerts for new strong matches, and reports on your progress."
+    },
+    "free": {
+      "title": "Free for everyone",
+      "body": "KOBANIQ is free to use. There are no plans to choose and nothing to pay. Create an account and use every feature."
+    },
+    "faq": {
+      "title": "Questions",
+      "items": {
+        "free": {
+          "q": "Is KOBANIQ really free?",
+          "a": "Yes. Every feature is free for everyone, with no subscriptions or payments."
+        },
+        "where": {
+          "q": "Which jobs does it find?",
+          "a": "Jobs in Somaliland and Somalia, and remote jobs open to people there, from job sources whose terms allow it and from company or NGO career pages you add."
+        },
+        "language": {
+          "q": "Can I use it in Somali?",
+          "a": "Yes. The whole app is in English and Somali, and you choose the language of each CV separately."
+        },
+        "experience": {
+          "q": "Do I need work experience?",
+          "a": "No. Students and graduates can add education, projects and volunteering, verify their skills, and find entry-level jobs."
+        },
+        "ai": {
+          "q": "Does the AI make things up?",
+          "a": "It writes only from what is in your profile and the job ad. When something is missing, it asks you instead of inventing it. You always review your CV before you use it."
+        },
+        "data": {
+          "q": "What happens to my data?",
+          "a": "Your profile is used to give you the service: matching, quizzes and CVs. Read the privacy policy for what is stored, why, and how to have it deleted."
+        },
+        "when": {
+          "q": "When can I download the app?",
+          "a": "Soon. Join the waitlist and we will send you one email when it is available."
+        }
+      }
+    },
+    "waitlist": {
+      "title": "Join the waitlist",
+      "body": "Be the first to know when KOBANIQ is in the app stores. One email when it is out, nothing else.",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "name": "Name (optional)",
+      "consent": "I agree to the privacy policy.",
+      "consentLink": "Read the privacy policy",
+      "submit": "Join the waitlist",
+      "sending": "Sending…",
+      "done": "Thank you! You are on the waitlist. We will write when the app is out.",
+      "emailInvalid": "Please enter a valid email address.",
+      "consentMissing": "Please agree to the privacy policy.",
+      "failed": "Something went wrong. Please try again in a moment."
+    },
+    "footer": {
+      "tagline": "AI career help for Somaliland and Somalia.",
+      "privacy": "Privacy policy",
+      "terms": "Terms of use",
+      "rights": "© {{year}} KOBANIQ"
+    },
+    "legal": {
+      "back": "← Back to the home page",
+      "updated": "Last updated: {{date}}",
+      "draft": "Draft: this text will be reviewed before the app launches.",
+      "privacy": {
+        "title": "Privacy policy",
+        "sections": {
+          "who": {
+            "h": "Who we are",
+            "p": "KOBANIQ is a career app for people in Somaliland and Somalia. This policy explains what information we keep, why, and your choices."
+          },
+          "what": {
+            "h": "What we collect",
+            "p": "Your account (email, language, password stored only as a secure hash), the profile you write (education, experience, skills, preferences), your quiz results, the job ads you add, the CVs you create, and simple usage records of AI requests (which feature, when, and size; never the content). From this website: only the email, optional name and language you give in the waitlist form."
+          },
+          "why": {
+            "h": "Why we use it",
+            "p": "Only to give you the service: matching jobs to your profile, scoring quizzes, writing CVs, sending the notifications you allow, and keeping the service safe and working. We do not sell your information."
+          },
+          "ai": {
+            "h": "AI processing",
+            "p": "Some features send text to an AI service to write or check content (for example a job ad, or a quiz topic). We send only what the feature needs. By default, an admin setting blocks personal profile details from being sent to AI."
+          },
+          "share": {
+            "h": "Who can see it",
+            "p": "You, and a small number of KOBANIQ administrators who look after the service. Every administrator action is recorded. We share information with service providers (hosting, database, email, push notifications, AI) only to run KOBANIQ."
+          },
+          "keep": {
+            "h": "How long we keep it",
+            "p": "While your account exists. When an account is deleted, its profile, CVs, quizzes, saved jobs, notifications and usage records are deleted too. Waitlist emails are deleted when they are no longer needed for the launch email, or when you ask."
+          },
+          "rights": {
+            "h": "Your choices",
+            "p": "You can change your profile at any time, turn notifications off, and ask us to show, correct or delete your information."
+          },
+          "contact": {
+            "h": "Contact",
+            "p": "Questions about this policy: use the contact details shown in the app once it launches."
+          }
+        }
+      },
+      "terms": {
+        "title": "Terms of use",
+        "sections": {
+          "use": {
+            "h": "Using KOBANIQ",
+            "p": "KOBANIQ is free. You need to be old enough to work in your country and to give true information about yourself. Keep your password private."
+          },
+          "content": {
+            "h": "Your content",
+            "p": "What you write stays yours. You allow KOBANIQ to use it to give you the service, for example to write a CV from your profile."
+          },
+          "ai": {
+            "h": "AI results",
+            "p": "CVs, quiz results and match scores are help, not guarantees. Check every CV before you send it. A match score shows how relevant a job is to your profile, not your chance of being hired."
+          },
+          "jobs": {
+            "h": "Jobs from other sites",
+            "p": "Jobs come from other websites and employers. KOBANIQ does not employ, recruit or check employers. Apply on the employer's own page and be careful with any request for money."
+          },
+          "fair": {
+            "h": "Fair use",
+            "p": "Do not misuse the service, try to break it, or collect other people's information. To keep the free AI features working for everyone, very heavy use may be slowed down for a while."
+          },
+          "changes": {
+            "h": "Changes",
+            "p": "We may update the app and these terms. Important changes will be shown in the app."
+          }
+        }
+      }
+    }
   }
 }

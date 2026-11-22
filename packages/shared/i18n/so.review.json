@@ -2511,6 +2511,446 @@
     "state": "pending",
     "en": "Its terms could not be checked yet, so it is not searched."
   },
+  "landing.faq.items.ai.a": {
+    "state": "pending",
+    "en": "It writes only from what is in your profile and the job ad. When something is missing, it asks you instead of inventing it. You always review your CV before you use it."
+  },
+  "landing.faq.items.ai.q": {
+    "state": "pending",
+    "en": "Does the AI make things up?"
+  },
+  "landing.faq.items.data.a": {
+    "state": "pending",
+    "en": "Your profile is used to give you the service: matching, quizzes and CVs. Read the privacy policy for what is stored, why, and how to have it deleted."
+  },
+  "landing.faq.items.data.q": {
+    "state": "pending",
+    "en": "What happens to my data?"
+  },
+  "landing.faq.items.experience.a": {
+    "state": "pending",
+    "en": "No. Students and graduates can add education, projects and volunteering, verify their skills, and find entry-level jobs."
+  },
+  "landing.faq.items.experience.q": {
+    "state": "pending",
+    "en": "Do I need work experience?"
+  },
+  "landing.faq.items.free.a": {
+    "state": "pending",
+    "en": "Yes. Every feature is free for everyone, with no subscriptions or payments."
+  },
+  "landing.faq.items.free.q": {
+    "state": "pending",
+    "en": "Is KOBANIQ really free?"
+  },
+  "landing.faq.items.language.a": {
+    "state": "pending",
+    "en": "Yes. The whole app is in English and Somali, and you choose the language of each CV separately."
+  },
+  "landing.faq.items.language.q": {
+    "state": "pending",
+    "en": "Can I use it in Somali?"
+  },
+  "landing.faq.items.when.a": {
+    "state": "pending",
+    "en": "Soon. Join the waitlist and we will send you one email when it is available."
+  },
+  "landing.faq.items.when.q": {
+    "state": "pending",
+    "en": "When can I download the app?"
+  },
+  "landing.faq.items.where.a": {
+    "state": "pending",
+    "en": "Jobs in Somaliland and Somalia, and remote jobs open to people there, from job sources whose terms allow it and from company or NGO career pages you add."
+  },
+  "landing.faq.items.where.q": {
+    "state": "pending",
+    "en": "Which jobs does it find?"
+  },
+  "landing.faq.title": {
+    "state": "pending",
+    "en": "Questions"
+  },
+  "landing.features.cv.body": {
+    "state": "pending",
+    "en": "Reads the job ad and writes a CV that shows your matching experience, in the language you choose. It tells you what information is missing instead of making it up."
+  },
+  "landing.features.cv.title": {
+    "state": "pending",
+    "en": "CV writer"
+  },
+  "landing.features.jobs.body": {
+    "state": "pending",
+    "en": "Searches job sources that allow it, keeps each job once, and scores how relevant it is to your profile. The score is about fit, not your chance of being hired."
+  },
+  "landing.features.jobs.title": {
+    "state": "pending",
+    "en": "Job research and matching"
+  },
+  "landing.features.more": {
+    "state": "pending",
+    "en": "Also in the app: interview practice with feedback, saved jobs, alerts for new strong matches, and reports on your progress."
+  },
+  "landing.features.skills.body": {
+    "state": "pending",
+    "en": "Short adaptive quizzes for your skills. Your result level is separate from what you said about yourself, so employers and you see the difference."
+  },
+  "landing.features.skills.title": {
+    "state": "pending",
+    "en": "Skill check"
+  },
+  "landing.features.subtitle": {
+    "state": "pending",
+    "en": "They work from your own profile and real job ads. Nothing is invented."
+  },
+  "landing.features.title": {
+    "state": "pending",
+    "en": "Three AI helpers in one app"
+  },
+  "landing.footer.privacy": {
+    "state": "pending",
+    "en": "Privacy policy"
+  },
+  "landing.footer.rights": {
+    "state": "pending",
+    "en": "© {{year}} KOBANIQ"
+  },
+  "landing.footer.tagline": {
+    "state": "pending",
+    "en": "AI career help for Somaliland and Somalia."
+  },
+  "landing.footer.terms": {
+    "state": "pending",
+    "en": "Terms of use"
+  },
+  "landing.free.body": {
+    "state": "pending",
+    "en": "KOBANIQ is free to use. There are no plans to choose and nothing to pay. Create an account and use every feature."
+  },
+  "landing.free.title": {
+    "state": "pending",
+    "en": "Free for everyone"
+  },
+  "landing.hero.appStore": {
+    "state": "pending",
+    "en": "App Store"
+  },
+  "landing.hero.body": {
+    "state": "pending",
+    "en": "KOBANIQ is an AI career app: verify what you know, discover real jobs that fit you, and build a CV made for each job, in English or Somali."
+  },
+  "landing.hero.cardCv": {
+    "state": "pending",
+    "en": "CV ready · English and Somali"
+  },
+  "landing.hero.cardMatch": {
+    "state": "pending",
+    "en": "Data Officer · Strong match 82%"
+  },
+  "landing.hero.cardSkill": {
+    "state": "pending",
+    "en": "Excel · verified by quiz"
+  },
+  "landing.hero.eyebrow": {
+    "state": "pending",
+    "en": "Free for everyone in Somaliland and Somalia"
+  },
+  "landing.hero.googlePlay": {
+    "state": "pending",
+    "en": "Google Play"
+  },
+  "landing.hero.how": {
+    "state": "pending",
+    "en": "See how it works"
+  },
+  "landing.hero.join": {
+    "state": "pending",
+    "en": "Join the waitlist"
+  },
+  "landing.hero.soon": {
+    "state": "pending",
+    "en": "Coming soon to the App Store and Google Play"
+  },
+  "landing.hero.soonBadge": {
+    "state": "pending",
+    "en": "Coming soon"
+  },
+  "landing.hero.title": {
+    "state": "pending",
+    "en": "Know your skills.\nFind your opportunity."
+  },
+  "landing.how.steps.apply.body": {
+    "state": "pending",
+    "en": "Paste a job ad and get a CV written for it, in English or Somali. You check it before you use it."
+  },
+  "landing.how.steps.apply.title": {
+    "state": "pending",
+    "en": "Apply with a tailored CV"
+  },
+  "landing.how.steps.jobs.body": {
+    "state": "pending",
+    "en": "Search real jobs in Somaliland, Somalia and remote. Each job shows why it fits you, or what is missing."
+  },
+  "landing.how.steps.jobs.title": {
+    "state": "pending",
+    "en": "Find jobs that fit"
+  },
+  "landing.how.steps.profile.body": {
+    "state": "pending",
+    "en": "Add your education, work experience and skills once. KOBANIQ uses only what you write."
+  },
+  "landing.how.steps.profile.title": {
+    "state": "pending",
+    "en": "Build your profile"
+  },
+  "landing.how.steps.verify.body": {
+    "state": "pending",
+    "en": "Take a short quiz for a skill. The result shows what you really know, and the topics to learn next."
+  },
+  "landing.how.steps.verify.title": {
+    "state": "pending",
+    "en": "Verify your skills"
+  },
+  "landing.how.subtitle": {
+    "state": "pending",
+    "en": "Four steps from your experience to a job application."
+  },
+  "landing.how.title": {
+    "state": "pending",
+    "en": "How it works"
+  },
+  "landing.legal.back": {
+    "state": "pending",
+    "en": "← Back to the home page"
+  },
+  "landing.legal.draft": {
+    "state": "pending",
+    "en": "Draft: this text will be reviewed before the app launches."
+  },
+  "landing.legal.privacy.sections.ai.h": {
+    "state": "pending",
+    "en": "AI processing"
+  },
+  "landing.legal.privacy.sections.ai.p": {
+    "state": "pending",
+    "en": "Some features send text to an AI service to write or check content (for example a job ad, or a quiz topic). We send only what the feature needs. By default, an admin setting blocks personal profile details from being sent to AI."
+  },
+  "landing.legal.privacy.sections.contact.h": {
+    "state": "pending",
+    "en": "Contact"
+  },
+  "landing.legal.privacy.sections.contact.p": {
+    "state": "pending",
+    "en": "Questions about this policy: use the contact details shown in the app once it launches."
+  },
+  "landing.legal.privacy.sections.keep.h": {
+    "state": "pending",
+    "en": "How long we keep it"
+  },
+  "landing.legal.privacy.sections.keep.p": {
+    "state": "pending",
+    "en": "While your account exists. When an account is deleted, its profile, CVs, quizzes, saved jobs, notifications and usage records are deleted too. Waitlist emails are deleted when they are no longer needed for the launch email, or when you ask."
+  },
+  "landing.legal.privacy.sections.rights.h": {
+    "state": "pending",
+    "en": "Your choices"
+  },
+  "landing.legal.privacy.sections.rights.p": {
+    "state": "pending",
+    "en": "You can change your profile at any time, turn notifications off, and ask us to show, correct or delete your information."
+  },
+  "landing.legal.privacy.sections.share.h": {
+    "state": "pending",
+    "en": "Who can see it"
+  },
+  "landing.legal.privacy.sections.share.p": {
+    "state": "pending",
+    "en": "You, and a small number of KOBANIQ administrators who look after the service. Every administrator action is recorded. We share information with service providers (hosting, database, email, push notifications, AI) only to run KOBANIQ."
+  },
+  "landing.legal.privacy.sections.what.h": {
+    "state": "pending",
+    "en": "What we collect"
+  },
+  "landing.legal.privacy.sections.what.p": {
+    "state": "pending",
+    "en": "Your account (email, language, password stored only as a secure hash), the profile you write (education, experience, skills, preferences), your quiz results, the job ads you add, the CVs you create, and simple usage records of AI requests (which feature, when, and size; never the content). From this website: only the email, optional name and language you give in the waitlist form."
+  },
+  "landing.legal.privacy.sections.who.h": {
+    "state": "pending",
+    "en": "Who we are"
+  },
+  "landing.legal.privacy.sections.who.p": {
+    "state": "pending",
+    "en": "KOBANIQ is a career app for people in Somaliland and Somalia. This policy explains what information we keep, why, and your choices."
+  },
+  "landing.legal.privacy.sections.why.h": {
+    "state": "pending",
+    "en": "Why we use it"
+  },
+  "landing.legal.privacy.sections.why.p": {
+    "state": "pending",
+    "en": "Only to give you the service: matching jobs to your profile, scoring quizzes, writing CVs, sending the notifications you allow, and keeping the service safe and working. We do not sell your information."
+  },
+  "landing.legal.privacy.title": {
+    "state": "pending",
+    "en": "Privacy policy"
+  },
+  "landing.legal.terms.sections.ai.h": {
+    "state": "pending",
+    "en": "AI results"
+  },
+  "landing.legal.terms.sections.ai.p": {
+    "state": "pending",
+    "en": "CVs, quiz results and match scores are help, not guarantees. Check every CV before you send it. A match score shows how relevant a job is to your profile, not your chance of being hired."
+  },
+  "landing.legal.terms.sections.changes.h": {
+    "state": "pending",
+    "en": "Changes"
+  },
+  "landing.legal.terms.sections.changes.p": {
+    "state": "pending",
+    "en": "We may update the app and these terms. Important changes will be shown in the app."
+  },
+  "landing.legal.terms.sections.content.h": {
+    "state": "pending",
+    "en": "Your content"
+  },
+  "landing.legal.terms.sections.content.p": {
+    "state": "pending",
+    "en": "What you write stays yours. You allow KOBANIQ to use it to give you the service, for example to write a CV from your profile."
+  },
+  "landing.legal.terms.sections.fair.h": {
+    "state": "pending",
+    "en": "Fair use"
+  },
+  "landing.legal.terms.sections.fair.p": {
+    "state": "pending",
+    "en": "Do not misuse the service, try to break it, or collect other people's information. To keep the free AI features working for everyone, very heavy use may be slowed down for a while."
+  },
+  "landing.legal.terms.sections.jobs.h": {
+    "state": "pending",
+    "en": "Jobs from other sites"
+  },
+  "landing.legal.terms.sections.jobs.p": {
+    "state": "pending",
+    "en": "Jobs come from other websites and employers. KOBANIQ does not employ, recruit or check employers. Apply on the employer's own page and be careful with any request for money."
+  },
+  "landing.legal.terms.sections.use.h": {
+    "state": "pending",
+    "en": "Using KOBANIQ"
+  },
+  "landing.legal.terms.sections.use.p": {
+    "state": "pending",
+    "en": "KOBANIQ is free. You need to be old enough to work in your country and to give true information about yourself. Keep your password private."
+  },
+  "landing.legal.terms.title": {
+    "state": "pending",
+    "en": "Terms of use"
+  },
+  "landing.legal.updated": {
+    "state": "pending",
+    "en": "Last updated: {{date}}"
+  },
+  "landing.meta.description": {
+    "state": "pending",
+    "en": "Free AI career help for Somaliland and Somalia: verify your skills, find real jobs that fit, and build a tailored CV in English or Somali."
+  },
+  "landing.meta.privacyTitle": {
+    "state": "pending",
+    "en": "Privacy policy — KOBANIQ"
+  },
+  "landing.meta.termsTitle": {
+    "state": "pending",
+    "en": "Terms of use — KOBANIQ"
+  },
+  "landing.meta.title": {
+    "state": "pending",
+    "en": "KOBANIQ — Know your skills. Find your opportunity."
+  },
+  "landing.nav.faq": {
+    "state": "pending",
+    "en": "Questions"
+  },
+  "landing.nav.features": {
+    "state": "pending",
+    "en": "What it does"
+  },
+  "landing.nav.home": {
+    "state": "pending",
+    "en": "KOBANIQ home"
+  },
+  "landing.nav.how": {
+    "state": "pending",
+    "en": "How it works"
+  },
+  "landing.nav.join": {
+    "state": "pending",
+    "en": "Join the waitlist"
+  },
+  "landing.nav.language": {
+    "state": "pending",
+    "en": "Language"
+  },
+  "landing.nav.menu": {
+    "state": "pending",
+    "en": "Menu"
+  },
+  "landing.nav.skip": {
+    "state": "pending",
+    "en": "Skip to content"
+  },
+  "landing.waitlist.body": {
+    "state": "pending",
+    "en": "Be the first to know when KOBANIQ is in the app stores. One email when it is out, nothing else."
+  },
+  "landing.waitlist.consent": {
+    "state": "pending",
+    "en": "I agree to the privacy policy."
+  },
+  "landing.waitlist.consentLink": {
+    "state": "pending",
+    "en": "Read the privacy policy"
+  },
+  "landing.waitlist.consentMissing": {
+    "state": "pending",
+    "en": "Please agree to the privacy policy."
+  },
+  "landing.waitlist.done": {
+    "state": "pending",
+    "en": "Thank you! You are on the waitlist. We will write when the app is out."
+  },
+  "landing.waitlist.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "landing.waitlist.emailInvalid": {
+    "state": "pending",
+    "en": "Please enter a valid email address."
+  },
+  "landing.waitlist.emailPlaceholder": {
+    "state": "pending",
+    "en": "you@example.com"
+  },
+  "landing.waitlist.failed": {
+    "state": "pending",
+    "en": "Something went wrong. Please try again in a moment."
+  },
+  "landing.waitlist.name": {
+    "state": "pending",
+    "en": "Name (optional)"
+  },
+  "landing.waitlist.sending": {
+    "state": "pending",
+    "en": "Sending…"
+  },
+  "landing.waitlist.submit": {
+    "state": "pending",
+    "en": "Join the waitlist"
+  },
+  "landing.waitlist.title": {
+    "state": "pending",
+    "en": "Join the waitlist"
+  },
   "mobile.auth.appName": {
     "state": "pending",
     "en": "KOBANIQ"
