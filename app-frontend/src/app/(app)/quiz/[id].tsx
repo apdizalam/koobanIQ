@@ -145,7 +145,7 @@ export default function QuizScreen() {
           <View style={{ flex: 1, gap: spacing.xs }}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
               <Text
-                numberOfLines={1}
+                numberOfLines={2}
                 style={[typography.labelMedium, { color: colors.text, flex: 1 }]}
               >
                 {quiz?.skillName ?? ''}

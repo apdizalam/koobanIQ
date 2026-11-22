@@ -147,7 +147,7 @@ export default function ProfileTab() {
                     {t(`mobile.profile.sections.${row.key}` as 'mobile.profile.sections.personal')}
                   </Text>
                   <Text
-                    numberOfLines={1}
+                    numberOfLines={2}
                     style={[typography.bodySmall, { color: colors.textMuted }]}
                   >
                     {row.summary}

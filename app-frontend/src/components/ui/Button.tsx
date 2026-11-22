@@ -14,7 +14,7 @@ export interface ButtonProps {
   testID?: string;
 }
 
-/** Figma "Button": 48px high · radius 12 · horizontal padding 20 · Inter SemiBold 15/20. */
+/** Figma "Button": at least 48px high (two lines for long labels) · radius 12 · horizontal padding 20 · Inter SemiBold 15/20. */
 export function Button({
   label,
   onPress,
@@ -40,7 +40,9 @@ export function Button({
       style={({ pressed }) => [
         styles.base,
         {
-          height: sizes.buttonHeight,
+          // At least 48px; a long label (often in Somali) wraps instead of being cut off.
+          minHeight: sizes.buttonHeight,
+          paddingVertical: 8,
           borderRadius: radius.button,
           backgroundColor: isPrimary
             ? colors.primary
@@ -58,7 +60,10 @@ export function Button({
       {loading ? (
         <ActivityIndicator color={textColor} />
       ) : (
-        <Text style={[typography.button, { color: textColor }]} numberOfLines={1}>
+        <Text
+          style={[typography.button, { color: textColor, textAlign: 'center' }]}
+          numberOfLines={2}
+        >
           {label}
         </Text>
       )}

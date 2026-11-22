@@ -136,7 +136,7 @@ export default function HomeScreen() {
             <Text
               testID="home-name"
               accessibilityRole="header"
-              numberOfLines={1}
+              numberOfLines={2}
               style={[typography.h1, { color: colors.text }]}
             >
               {name}
