@@ -175,6 +175,18 @@
     "state": "pending",
     "en": "Removed a question flag"
   },
+  "admin.audit.actions.job_remove": {
+    "state": "pending",
+    "en": "Removed a job"
+  },
+  "admin.audit.actions.job_remove_expired": {
+    "state": "pending",
+    "en": "Removed expired jobs"
+  },
+  "admin.audit.actions.job_restore": {
+    "state": "pending",
+    "en": "Restored a job"
+  },
   "admin.audit.actions.job_source_disable": {
     "state": "pending",
     "en": "Disabled a job source"
@@ -418,6 +430,326 @@
   "admin.errors.suspended": {
     "state": "pending",
     "en": "This account is suspended."
+  },
+  "admin.jobs.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.jobs.back": {
+    "state": "pending",
+    "en": "← Jobs & matching"
+  },
+  "admin.jobs.bySource": {
+    "state": "pending",
+    "en": "Active jobs per source"
+  },
+  "admin.jobs.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.jobs.cards.active": {
+    "state": "pending",
+    "en": "Active jobs"
+  },
+  "admin.jobs.cards.expired": {
+    "state": "pending",
+    "en": "Deadline passed"
+  },
+  "admin.jobs.cards.removed": {
+    "state": "pending",
+    "en": "Removed"
+  },
+  "admin.jobs.categories.gap": {
+    "state": "pending",
+    "en": "Skill gap"
+  },
+  "admin.jobs.categories.good": {
+    "state": "pending",
+    "en": "Good"
+  },
+  "admin.jobs.categories.potential": {
+    "state": "pending",
+    "en": "Potential"
+  },
+  "admin.jobs.categories.strong": {
+    "state": "pending",
+    "en": "Strong"
+  },
+  "admin.jobs.columns.actions": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.jobs.columns.deadline": {
+    "state": "pending",
+    "en": "Deadline"
+  },
+  "admin.jobs.columns.job": {
+    "state": "pending",
+    "en": "Job"
+  },
+  "admin.jobs.columns.matches": {
+    "state": "pending",
+    "en": "Matches"
+  },
+  "admin.jobs.columns.place": {
+    "state": "pending",
+    "en": "Place"
+  },
+  "admin.jobs.columns.seen": {
+    "state": "pending",
+    "en": "First seen"
+  },
+  "admin.jobs.columns.source": {
+    "state": "pending",
+    "en": "Source"
+  },
+  "admin.jobs.columns.state": {
+    "state": "pending",
+    "en": "State"
+  },
+  "admin.jobs.confirmExpired": {
+    "state": "pending",
+    "en": "Remove all {{count}} jobs whose deadline has passed? Users will no longer see them; each can be restored."
+  },
+  "admin.jobs.confirmYes": {
+    "state": "pending",
+    "en": "Yes, remove"
+  },
+  "admin.jobs.deletedUser": {
+    "state": "pending",
+    "en": "Deleted account"
+  },
+  "admin.jobs.detail.apply": {
+    "state": "pending",
+    "en": "Apply link"
+  },
+  "admin.jobs.detail.confirmRemove": {
+    "state": "pending",
+    "en": "Remove \"{{title}}\"? Users will no longer see it in searches, results, saved jobs or alerts. It can be restored."
+  },
+  "admin.jobs.detail.confirmRestore": {
+    "state": "pending",
+    "en": "Restore \"{{title}}\"? Users will see it again."
+  },
+  "admin.jobs.detail.deadline": {
+    "state": "pending",
+    "en": "Deadline"
+  },
+  "admin.jobs.detail.doneRemove": {
+    "state": "pending",
+    "en": "Job removed."
+  },
+  "admin.jobs.detail.doneRestore": {
+    "state": "pending",
+    "en": "Job restored."
+  },
+  "admin.jobs.detail.employer": {
+    "state": "pending",
+    "en": "Employer"
+  },
+  "admin.jobs.detail.levelValue": {
+    "state": "pending",
+    "en": "{{fit}} ({{user}} → {{job}})"
+  },
+  "admin.jobs.detail.matchColumns.levelFit": {
+    "state": "pending",
+    "en": "Level"
+  },
+  "admin.jobs.detail.matchColumns.matched": {
+    "state": "pending",
+    "en": "Skills found"
+  },
+  "admin.jobs.detail.matchColumns.missing": {
+    "state": "pending",
+    "en": "Essential skills missing"
+  },
+  "admin.jobs.detail.matchColumns.score": {
+    "state": "pending",
+    "en": "Score"
+  },
+  "admin.jobs.detail.matchColumns.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.jobs.detail.matchColumns.when": {
+    "state": "pending",
+    "en": "Scored"
+  },
+  "admin.jobs.detail.matches": {
+    "state": "pending",
+    "en": "How it matched users"
+  },
+  "admin.jobs.detail.matchesNote": {
+    "state": "pending",
+    "en": "Best matches first (up to 50). The score shows relevance to the profile, not the chance of being hired."
+  },
+  "admin.jobs.detail.noMatches": {
+    "state": "pending",
+    "en": "Not matched for anyone yet."
+  },
+  "admin.jobs.detail.none": {
+    "state": "pending",
+    "en": "—"
+  },
+  "admin.jobs.detail.notFound": {
+    "state": "pending",
+    "en": "This job does not exist."
+  },
+  "admin.jobs.detail.place": {
+    "state": "pending",
+    "en": "Place"
+  },
+  "admin.jobs.detail.posted": {
+    "state": "pending",
+    "en": "Posted"
+  },
+  "admin.jobs.detail.reasonLabel": {
+    "state": "pending",
+    "en": "Why remove it?"
+  },
+  "admin.jobs.detail.remove": {
+    "state": "pending",
+    "en": "Remove job"
+  },
+  "admin.jobs.detail.removed": {
+    "state": "pending",
+    "en": "Removed {{date}} by {{by}} ({{reason}})"
+  },
+  "admin.jobs.detail.restore": {
+    "state": "pending",
+    "en": "Restore job"
+  },
+  "admin.jobs.detail.saved": {
+    "state": "pending",
+    "en": "Saved by"
+  },
+  "admin.jobs.detail.savedValue_one": {
+    "state": "pending",
+    "en": "{{count}} user"
+  },
+  "admin.jobs.detail.savedValue_other": {
+    "state": "pending",
+    "en": "{{count}} users"
+  },
+  "admin.jobs.detail.scoreValue": {
+    "state": "pending",
+    "en": "{{score}}% · {{category}}"
+  },
+  "admin.jobs.detail.seen": {
+    "state": "pending",
+    "en": "First / last seen"
+  },
+  "admin.jobs.detail.sources": {
+    "state": "pending",
+    "en": "Found on"
+  },
+  "admin.jobs.details": {
+    "state": "pending",
+    "en": "Details"
+  },
+  "admin.jobs.doneExpired_one": {
+    "state": "pending",
+    "en": "{{count}} expired job removed."
+  },
+  "admin.jobs.doneExpired_other": {
+    "state": "pending",
+    "en": "{{count}} expired jobs removed."
+  },
+  "admin.jobs.empty": {
+    "state": "pending",
+    "en": "No jobs match."
+  },
+  "admin.jobs.error": {
+    "state": "pending",
+    "en": "Could not load the jobs. Check that the backend is running."
+  },
+  "admin.jobs.levelFits.above": {
+    "state": "pending",
+    "en": "Above"
+  },
+  "admin.jobs.levelFits.below": {
+    "state": "pending",
+    "en": "Below"
+  },
+  "admin.jobs.levelFits.fits": {
+    "state": "pending",
+    "en": "Fits"
+  },
+  "admin.jobs.levelFits.stretch": {
+    "state": "pending",
+    "en": "Stretch"
+  },
+  "admin.jobs.levelFits.unknown": {
+    "state": "pending",
+    "en": "Unknown"
+  },
+  "admin.jobs.matchesValue": {
+    "state": "pending",
+    "en": "{{count}} ({{strong}} strong) · {{saved}} saved"
+  },
+  "admin.jobs.noDeadline": {
+    "state": "pending",
+    "en": "No deadline"
+  },
+  "admin.jobs.reasons.duplicate": {
+    "state": "pending",
+    "en": "Duplicate"
+  },
+  "admin.jobs.reasons.expired": {
+    "state": "pending",
+    "en": "Expired"
+  },
+  "admin.jobs.reasons.invalid": {
+    "state": "pending",
+    "en": "Invalid"
+  },
+  "admin.jobs.reasons.other": {
+    "state": "pending",
+    "en": "Other"
+  },
+  "admin.jobs.removeExpired": {
+    "state": "pending",
+    "en": "Remove all expired jobs"
+  },
+  "admin.jobs.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.jobs.search": {
+    "state": "pending",
+    "en": "Title or employer"
+  },
+  "admin.jobs.searchButton": {
+    "state": "pending",
+    "en": "Search"
+  },
+  "admin.jobs.sourceFilter": {
+    "state": "pending",
+    "en": "Source"
+  },
+  "admin.jobs.stateFilter": {
+    "state": "pending",
+    "en": "State"
+  },
+  "admin.jobs.states.active": {
+    "state": "pending",
+    "en": "Active"
+  },
+  "admin.jobs.states.expired": {
+    "state": "pending",
+    "en": "Deadline passed"
+  },
+  "admin.jobs.states.removed": {
+    "state": "pending",
+    "en": "Removed"
+  },
+  "admin.jobs.subtitle": {
+    "state": "pending",
+    "en": "Every job KOBANIQ stored from its sources, and how it matched users. Remove a job that is invalid or expired: users stop seeing it, and it can be restored."
+  },
+  "admin.jobs.title": {
+    "state": "pending",
+    "en": "Jobs & matching"
   },
   "admin.login.email": {
     "state": "pending",

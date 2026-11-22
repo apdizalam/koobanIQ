@@ -452,6 +452,104 @@
       "error": "CV-yada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
       "retry": "Isku day mar kale"
     },
+    "jobs": {
+      "title": "Shaqooyinka iyo isbarbardhigga",
+      "subtitle": "Shaqo kasta oo KOBANIQ ka keydiyay ilihiisa, iyo sida ay ugu habboonayd isticmaalayaasha. Ka saar shaqo aan sax ahayn ama dhacday: isticmaalayaashu mar dambe ma arkaan, dibna waa loo soo celin karaa.",
+      "cards": {
+        "active": "Shaqooyin firfircoon",
+        "expired": "Waqtigii wuu dhaafay",
+        "removed": "La saaray"
+      },
+      "bySource": "Shaqooyinka firfircoon il kasta",
+      "stateFilter": "Xaalad",
+      "sourceFilter": "Isha",
+      "search": "Cinwaan ama loo shaqeeye",
+      "searchButton": "Raadi",
+      "all": "Dhammaan",
+      "states": {
+        "active": "Firfircoon",
+        "expired": "Waqtigii wuu dhaafay",
+        "removed": "La saaray"
+      },
+      "reasons": {
+        "expired": "Dhacday",
+        "invalid": "Aan sax ahayn",
+        "duplicate": "Nuqul",
+        "other": "Kale"
+      },
+      "columns": {
+        "job": "Shaqo",
+        "source": "Isha",
+        "place": "Goob",
+        "deadline": "Waqtiga u dambeeya",
+        "seen": "Markii ugu horraysay",
+        "state": "Xaalad",
+        "matches": "Isbarbardhig",
+        "actions": "Ficillo"
+      },
+      "matchesValue": "{{count}} ({{strong}} xooggan) · {{saved}} la keydiyay",
+      "noDeadline": "Waqti u dambeeya ma jiro",
+      "details": "Faahfaahin",
+      "removeExpired": "Ka saar dhammaan shaqooyinka dhacay",
+      "confirmExpired": "Ma ka saaraysaa dhammaan {{count}} shaqo ee waqtigoodii dhaafay? Isticmaalayaashu mar dambe ma arki doonaan; mid kastaa dib ayaa loo soo celin karaa.",
+      "confirmYes": "Haa, ka saar",
+      "cancel": "Jooji",
+      "doneExpired_one": "{{count}} shaqo oo dhacday ayaa la saaray.",
+      "doneExpired_other": "{{count}} shaqo oo dhacay ayaa la saaray.",
+      "empty": "Shaqo u dhigma ma jirto.",
+      "error": "Shaqooyinka lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "back": "← Shaqooyinka iyo isbarbardhigga",
+      "detail": {
+        "employer": "Loo shaqeeye",
+        "place": "Goob",
+        "sources": "Laga helay",
+        "apply": "Xiriirka codsiga",
+        "deadline": "Waqtiga u dambeeya",
+        "posted": "La dhigay",
+        "seen": "Markii ugu horraysay / ugu dambaysay",
+        "saved": "Waxaa keydiyay",
+        "savedValue_one": "{{count}} isticmaale",
+        "savedValue_other": "{{count}} isticmaale",
+        "removed": "La saaray {{date}}, waxaa saaray {{by}} ({{reason}})",
+        "reasonLabel": "Maxaa loo saarayaa?",
+        "remove": "Ka saar shaqada",
+        "restore": "Dib u soo celi shaqada",
+        "confirmRemove": "Ma ka saaraysaa \"{{title}}\"? Isticmaalayaashu mar dambe kuma arki doonaan raadinta, natiijooyinka, shaqooyinka la keydiyay ama ogeysiisyada. Dib ayaa loo soo celin karaa.",
+        "confirmRestore": "Dib ma u soo celinaysaa \"{{title}}\"? Isticmaalayaashu mar kale ayay arki doonaan.",
+        "doneRemove": "Shaqada waa la saaray.",
+        "doneRestore": "Shaqada dib ayaa loo soo celiyay.",
+        "matches": "Sida ay ugu habboonayd isticmaalayaasha",
+        "matchesNote": "Kuwa ugu habboon marka hore (ilaa 50). Dhibcuhu waxay muujinayaan ku habboonaanta profile-ka, ma aha fursadda shaqo helidda.",
+        "noMatches": "Weli qofna laguma barbardhigin.",
+        "matchColumns": {
+          "user": "Isticmaale",
+          "score": "Dhibco",
+          "levelFit": "Heer",
+          "matched": "Xirfadaha la helay",
+          "missing": "Xirfadaha muhiimka ah ee maqan",
+          "when": "La qiimeeyay"
+        },
+        "levelValue": "{{fit}} ({{user}} → {{job}})",
+        "none": "—",
+        "notFound": "Shaqadan ma jirto.",
+        "scoreValue": "{{score}}% · {{category}}"
+      },
+      "categories": {
+        "strong": "Xooggan",
+        "good": "Wanaagsan",
+        "potential": "Suurtagal",
+        "gap": "Xirfad maqan"
+      },
+      "levelFits": {
+        "fits": "Ku habboon",
+        "stretch": "Wax yar ka sarreeya",
+        "above": "Ka sarreeya",
+        "below": "Ka hooseeya",
+        "unknown": "Lama yaqaan"
+      },
+      "deletedUser": "Akoon la tirtiray"
+    },
     "audit": {
       "title": "Diiwaanka hubinta",
       "subtitle": "Isbeddel kasta oo maamule sameeyay, iyo isku day kasta oo la diiday in la galo qaybta maamulka.",
@@ -481,7 +579,10 @@
         "research_schedule_resume": "Raadin jadwalaysan dib ayaa loo bilaabay",
         "announcement_send": "Ogeysiis ayaa la diray",
         "assessment_flag_question": "Su'aal imtixaan ayaa la calaamadeeyay",
-        "assessment_unflag_question": "Calaamad su'aal ayaa laga saaray"
+        "assessment_unflag_question": "Calaamad su'aal ayaa laga saaray",
+        "job_remove": "Shaqo ayaa la saaray",
+        "job_restore": "Shaqo dib ayaa loo soo celiyay",
+        "job_remove_expired": "Shaqooyin dhacay ayaa la saaray"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",

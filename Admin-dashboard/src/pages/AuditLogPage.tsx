@@ -10,9 +10,12 @@ import {
   type EmployerType,
   type RegionKey,
 } from '../types/jobSources';
+import { REMOVE_REASONS, type RemoveReason } from '../services/jobsApi';
 import { isRunStatus } from '../types/research';
 import { formatDate } from '../utils/format';
 
+const isRemoveReason = (v: string): v is RemoveReason =>
+  (REMOVE_REASONS as readonly string[]).includes(v);
 const isRegionKey = (v: string): v is RegionKey => (REGION_KEYS as readonly string[]).includes(v);
 const isEmployerType = (v: string): v is EmployerType =>
   (EMPLOYER_TYPES as readonly string[]).includes(v);
@@ -61,6 +64,12 @@ export function AuditLogPage() {
     }
     if (field === 'value' && (raw === 'blocked' || raw === 'allowed')) {
       return t(`admin.privacy.values.${raw}`);
+    }
+    if (field === 'removed' && typeof raw === 'boolean') {
+      return t(raw ? 'admin.jobs.states.removed' : 'admin.jobs.states.active');
+    }
+    if (field === 'reason' && typeof raw === 'string' && isRemoveReason(raw)) {
+      return t(`admin.jobs.reasons.${raw}`);
     }
     if (field === 'enabled' && typeof raw === 'boolean') {
       return t(`admin.audit.values.${raw ? 'on' : 'off'}`);
