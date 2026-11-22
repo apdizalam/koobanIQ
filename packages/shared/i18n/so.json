@@ -90,7 +90,9 @@
       "INTERVIEW_NOT_IN_PROGRESS": "Tababarkan horay ayuu u dhammaaday",
       "SCHEDULE_NOT_FOUND": "Raadinta la qorsheeyay lama helin",
       "SCHEDULE_LIMIT": "Waxaad heysan kartaa ilaa 5 raadin oo la qorsheeyay. Marka hore mid tirtir",
-      "NOTIFICATION_NOT_FOUND": "Ogeysiiska lama helin"
+      "NOTIFICATION_NOT_FOUND": "Ogeysiiska lama helin",
+      "WAITLIST_EXISTS": "Iimaylkan horey ayuu liiska sugitaanka ugu jiray. Waan kuu soo qori doonaa marka app-ku soo baxo.",
+      "TOO_MANY_REQUESTS": "Isku day badan. Fadlan wax yar sug oo mar kale isku day."
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -149,7 +151,8 @@
       "frequencyInvalid": "Dooro inta jeer: saacad kasta, 6-dii saacadoodba, maalin kasta ama toddobaad kasta",
       "timeInvalid": "Geli waqti sida 09:00",
       "weekdayInvalid": "Dooro maalin toddobaadka ka mid ah",
-      "pushTokenInvalid": "Kani maaha calaamad ogeysiis oo sax ah"
+      "pushTokenInvalid": "Kani maaha calaamad ogeysiis oo sax ah",
+      "consentRequired": "Fadlan oggolow siyaasadda asturnaanta"
     },
     "email": {
       "verifyEmail": {
