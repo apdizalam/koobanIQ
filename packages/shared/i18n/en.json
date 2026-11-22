@@ -417,6 +417,41 @@
         "hard": "Hard"
       }
     },
+    "cvs": {
+      "title": "CVs",
+      "subtitle": "The status of every CV users generated. Read-only: the CV text itself is the user's and is never shown here.",
+      "cards": {
+        "draft": "Drafts",
+        "approved": "Approved",
+        "exported": "Downloaded as PDF"
+      },
+      "statusFilter": "Status",
+      "all": "All",
+      "statuses": {
+        "draft": "Draft",
+        "approved": "Approved",
+        "exported": "Downloaded"
+      },
+      "columns": {
+        "created": "Created",
+        "user": "User",
+        "job": "Job ad",
+        "language": "CV language",
+        "version": "Version",
+        "status": "Status",
+        "missing": "Missing info",
+        "dates": "Approved / downloaded"
+      },
+      "unknownJob": "Job ad without a title",
+      "version": "v{{version}}",
+      "missing_one": "{{count}} item",
+      "missing_other": "{{count}} items",
+      "none": "—",
+      "deletedUser": "Deleted account",
+      "empty": "No CVs yet.",
+      "error": "Could not load the CVs. Check that the backend is running.",
+      "retry": "Try again"
+    },
     "audit": {
       "title": "Audit log",
       "subtitle": "Every change an admin made, and every blocked attempt to open the admin area.",

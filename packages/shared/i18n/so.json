@@ -417,6 +417,41 @@
         "hard": "Adag"
       }
     },
+    "cvs": {
+      "title": "CV-yada",
+      "subtitle": "Xaaladda CV kasta oo isticmaalayaashu sameeyeen. Akhris kaliya: qoraalka CV-ga waa ka isticmaalaha, halkan weligiis laguma muujiyo.",
+      "cards": {
+        "draft": "Qabyo",
+        "approved": "La ansixiyay",
+        "exported": "PDF ahaan loo soo dejiyay"
+      },
+      "statusFilter": "Xaalad",
+      "all": "Dhammaan",
+      "statuses": {
+        "draft": "Qabyo",
+        "approved": "La ansixiyay",
+        "exported": "La soo dejiyay"
+      },
+      "columns": {
+        "created": "La sameeyay",
+        "user": "Isticmaale",
+        "job": "Xayeysiiska shaqada",
+        "language": "Luqadda CV-ga",
+        "version": "Nooca",
+        "status": "Xaalad",
+        "missing": "Macluumaad maqan",
+        "dates": "La ansixiyay / la soo dejiyay"
+      },
+      "unknownJob": "Xayeysiis shaqo oo aan cinwaan lahayn",
+      "version": "v{{version}}",
+      "missing_one": "{{count}} shay",
+      "missing_other": "{{count}} shay",
+      "none": "—",
+      "deletedUser": "Akoon la tirtiray",
+      "empty": "Weli CV lama samayn.",
+      "error": "CV-yada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale"
+    },
     "audit": {
       "title": "Diiwaanka hubinta",
       "subtitle": "Isbeddel kasta oo maamule sameeyay, iyo isku day kasta oo la diiday in la galo qaybta maamulka.",
