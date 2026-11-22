@@ -15,6 +15,8 @@ export const AUDIT_ACTIONS = [
   'research_schedule.pause',
   'research_schedule.resume',
   'announcement.send',
+  'assessment.flag_question',
+  'assessment.unflag_question',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 

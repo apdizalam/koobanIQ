@@ -5,6 +5,8 @@ import { AdminLayout } from './components/layout/AdminLayout';
 import { LoginPage } from './pages/LoginPage';
 import { AiPrivacyPage } from './pages/AiPrivacyPage';
 import { AuditLogPage } from './pages/AuditLogPage';
+import { AssessmentDetailPage } from './pages/AssessmentDetailPage';
+import { AssessmentsPage } from './pages/AssessmentsPage';
 import { NotificationsPage } from './pages/NotificationsPage';
 import { ResearchRunDetailPage } from './pages/ResearchRunDetailPage';
 import { ResearchRunsPage } from './pages/ResearchRunsPage';
@@ -30,6 +32,8 @@ export default function App() {
             <Route index element={<OverviewPage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="users/:id" element={<UserDetailPage />} />
+            <Route path="skills" element={<AssessmentsPage />} />
+            <Route path="skills/:id" element={<AssessmentDetailPage />} />
             <Route path="job-sources" element={<JobSourcesPage />} />
             <Route path="research-runs" element={<ResearchRunsPage />} />
             <Route path="research-runs/:id" element={<ResearchRunDetailPage />} />

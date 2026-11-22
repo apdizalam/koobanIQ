@@ -342,6 +342,81 @@
       "testDialogOn": "Ma ka dhigaysaa {{email}} akoon tijaabo? U isticmaal keliya akoonnada haysta xog male ah.",
       "testDialogOff": "Ma ka saaraysaa calaamadda tijaabada {{email}}? Qaybaha AI ee dira xogta astaanta waxay markaas raacayaan dejinta asturnaanta AI."
     },
+    "quizzes": {
+      "title": "Xirfadaha iyo imtixaannada",
+      "subtitle": "Imtixaan xirfadeed kasta iyo natiijadiisa. Calaamadee su'aal u muuqata khalad ama aan caddayn si su'aalaha AI loo hagaajiyo; calaamaduhu weligood ma beddelaan natiijada isticmaalaha.",
+      "cards": {
+        "finished": "Imtixaanno dhammaaday",
+        "inProgress": "Socda",
+        "cancelled": "La joojiyay",
+        "flagged": "Su'aalo la calaamadeeyay"
+      },
+      "statusFilter": "Xaalad",
+      "skillFilter": "Xirfad",
+      "skillPlaceholder": "tusaale: Excel",
+      "search": "Raadi",
+      "all": "Dhammaan",
+      "statuses": {
+        "in_progress": "Socda",
+        "finished": "Dhammaaday",
+        "cancelled": "La joojiyay"
+      },
+      "levels": {
+        "beginner": "Bilow",
+        "mid": "Dhexe",
+        "advanced": "Horumarsan",
+        "expert": "Khabiir"
+      },
+      "columns": {
+        "started": "Bilaabmay",
+        "user": "Isticmaale",
+        "skill": "Xirfad",
+        "language": "Luqad",
+        "status": "Xaalad",
+        "result": "Natiijo",
+        "flags": "Calaamado",
+        "actions": "Ficillo"
+      },
+      "resultValue": "{{score}}% · {{level}}",
+      "answeredOf": "{{answered}} ka mid ah {{length}} ayaa la jawaabay",
+      "details": "Faahfaahin",
+      "deletedUser": "Akoon la tirtiray",
+      "empty": "Imtixaan u dhigma ma jiro.",
+      "error": "Imtixaannada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "back": "← Xirfadaha iyo imtixaannada",
+      "detail": {
+        "title": "Imtixaan: {{skill}}",
+        "score": "Dhibco",
+        "scoreValue": "{{correct}} ka mid ah {{total}} waa sax ({{score}}%)",
+        "level": "Heerka la muujiyay",
+        "strengths": "Mawduucyada xooggan",
+        "gaps": "Daldaloolo",
+        "none": "—",
+        "questions": "Su'aalaha la jawaabay",
+        "noQuestions": "Weli su'aal lama jawaabin.",
+        "question": "Su'aal {{number}} · {{topic}} · {{difficulty}}",
+        "correct": "Sax",
+        "wrong": "Khalad",
+        "rightAnswer": "Jawaabta saxda ah",
+        "userChoice": "Isticmaaluhu wuxuu doortay",
+        "explanation": "Sharaxaad",
+        "flagged": "Waxaa calaamadeeyay {{by}}: {{reason}}",
+        "flag": "Calaamadee su'aasha",
+        "unflag": "Ka saar calaamadda",
+        "flagReason": "Maxaa ka khaldan su'aashan?",
+        "flagHint": "Ilaa 300 xaraf. Natiijada isticmaalaha isma beddesho.",
+        "flagSave": "Keydi calaamadda",
+        "flagCancel": "Jooji",
+        "reasonMissing": "Qor waxa khaldan (ilaa 300 xaraf).",
+        "notFound": "Imtixaankan ma jiro."
+      },
+      "difficulties": {
+        "easy": "Fudud",
+        "normal": "Caadi",
+        "hard": "Adag"
+      }
+    },
     "audit": {
       "title": "Diiwaanka hubinta",
       "subtitle": "Isbeddel kasta oo maamule sameeyay, iyo isku day kasta oo la diiday in la galo qaybta maamulka.",
@@ -369,7 +444,9 @@
         "research_run_retry": "Raadin shaqo ayaa mar kale la bilaabay",
         "research_schedule_pause": "Raadin jadwalaysan ayaa la hakiyay",
         "research_schedule_resume": "Raadin jadwalaysan dib ayaa loo bilaabay",
-        "announcement_send": "Ogeysiis ayaa la diray"
+        "announcement_send": "Ogeysiis ayaa la diray",
+        "assessment_flag_question": "Su'aal imtixaan ayaa la calaamadeeyay",
+        "assessment_unflag_question": "Calaamad su'aal ayaa laga saaray"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",
@@ -459,7 +536,8 @@
         "en": "Ingiriis",
         "so": "Soomaali"
       },
-      "pushYes": "{{count}} taleefan",
+      "pushYes_one": "{{count}} taleefan",
+      "pushYes_other": "{{count}} taleefan",
       "pushNo": "Ogeysiis taleefan lama dirin",
       "empty": "Weli ogeysiis lama dirin.",
       "error": "Ogeysiisyada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",

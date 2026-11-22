@@ -938,3 +938,45 @@ h2.section-title.section-title-first {
     grid-template-columns: 1fr;
   }
 }
+
+/* Skills & assessments (TIQ-33): skill search and quiz questions */
+.search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.quiz-questions {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-question p {
+  margin: 0 0 8px;
+}
+
+.quiz-question-text {
+  font-weight: 600;
+}
+
+.quiz-options {
+  margin: 0 0 8px;
+  padding-left: 24px;
+}
+
+.quiz-options li {
+  margin-bottom: 4px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.quiz-option-right {
+  background: var(--success-soft);
+  color: var(--success-text);
+}
+
+.quiz-option-wrong {
+  background: var(--error-soft);
+  color: var(--error-text);
+}
