@@ -62,10 +62,10 @@ export async function notifyStrongMatches(runId: Types.ObjectId, jobIds: Types.O
     const messages: PushMessage[] = alerts.flatMap((n) =>
       tokens.map((t) => ({
         to: t.token,
-        title: text(lang, 'strongMatch.title', { score: n.values!.score }),
+        title: text(lang, 'strongMatch.title', { score: n.values?.score ?? 0 }),
         body: text(lang, 'strongMatch.body', {
-          title: n.values!.title,
-          employer: n.values!.employer,
+          title: n.values?.title ?? '',
+          employer: n.values?.employer ?? '',
         }),
         data: { type: 'strong_match', jobId: String(n.jobId), notificationId: String(n._id) },
       })),
@@ -86,7 +86,10 @@ export async function notifyStrongMatches(runId: Types.ObjectId, jobIds: Types.O
 
   if (user.notifyEmail && env.notificationEmailsEnabled) {
     const lines = alerts.map((n) =>
-      text(lang, 'strongMatch.body', { title: n.values!.title, employer: n.values!.employer }),
+      text(lang, 'strongMatch.body', {
+        title: n.values?.title ?? '',
+        employer: n.values?.employer ?? '',
+      }),
     );
     try {
       await sendEmail({
@@ -170,6 +173,22 @@ export async function registerPushToken(userId: Types.ObjectId, token: unknown, 
 /** DELETE /notifications/push-token { token }: on sign-out, this phone stops getting pushes. */
 export async function removePushToken(userId: Types.ObjectId, token: unknown) {
   if (typeof token === 'string') await PushToken.deleteOne({ userId, token });
+}
+
+/**
+ * At start-up (TIQ-33): the old plain unique index on (userId, type, jobId)
+ * would refuse a second announcement for a user (no job = the same "job"), so
+ * it is dropped; the named indexes from the model replace it. Safe to run every
+ * time.
+ */
+export async function migrateNotificationIndexes() {
+  try {
+    await Notification.collection.dropIndex('userId_1_type_1_jobId_1');
+    console.log('[notify] replaced the old notifications index');
+  } catch {
+    // Already gone (or the collection does not exist yet).
+  }
+  await Notification.createIndexes();
 }
 
 /** Deleting an account deletes its notifications and push tokens. */
