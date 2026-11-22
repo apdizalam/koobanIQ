@@ -1,14 +1,11 @@
 import type { ReactNode } from 'react';
+import { CvScreen, JobsScreen, ProfileScreen, QuizScreen } from '../components/AppScreens';
 import { Waitlist } from '../components/Waitlist';
 import type { Lang } from '../routes';
 import type { Texts } from '../texts';
 
 /** Small line icons (24px, current colour), drawn inline so nothing extra loads. */
 const ICONS: Record<string, ReactNode> = {
-  profile: <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0" />,
-  verify: <path d="m5 12 4 4 10-10M4 4h16v16H4z" />,
-  jobs: <path d="M4 8h16v11H4zM9 8V5h6v3M4 13h16" />,
-  apply: <path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5" />,
   cv: <path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h3" />,
   skills: <path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z" />,
   match: <path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 16-4-4" />,
@@ -42,6 +39,12 @@ const lines = (text: string) =>
   ));
 
 const STEP_KEYS = ['profile', 'verify', 'jobs', 'apply'] as const;
+const STEP_SCREENS = {
+  profile: ProfileScreen,
+  verify: QuizScreen,
+  jobs: JobsScreen,
+  apply: CvScreen,
+};
 const FEATURE_KEYS = [
   ['cv', 'cv'],
   ['skills', 'skills'],
@@ -100,17 +103,23 @@ export function Home({ t, lang }: { t: Texts; lang: Lang }) {
         <div className="container">
           <h2 id="how-title">{t.how.title}</h2>
           <p className="section-subtitle">{t.how.subtitle}</p>
+          {/* Each step beside a picture of the app screen it happens on (alternating sides). */}
           <ol className="steps">
-            {STEP_KEYS.map((key, i) => (
-              <li key={key} className="card step">
-                <span className="step-number" aria-hidden="true">
-                  {i + 1}
-                </span>
-                <Icon name={key} />
-                <h3>{t.how.steps[key].title}</h3>
-                <p>{t.how.steps[key].body}</p>
-              </li>
-            ))}
+            {STEP_KEYS.map((key, i) => {
+              const Screen = STEP_SCREENS[key];
+              return (
+                <li key={key} className="step">
+                  <div className="step-text">
+                    <span className="step-number" aria-hidden="true">
+                      {i + 1}
+                    </span>
+                    <h3>{t.how.steps[key].title}</h3>
+                    <p>{t.how.steps[key].body}</p>
+                  </div>
+                  <Screen s={t.how.screens} />
+                </li>
+              );
+            })}
           </ol>
         </div>
       </section>

@@ -392,27 +392,360 @@ summary:focus-visible {
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 56px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Step text beside its app screen; every second row the other way round. */
 .step {
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
 }
 
-.step h3 {
-  margin-top: 14px;
+.step:nth-child(even) .step-text {
+  order: 2;
+}
+
+.step-text {
+  max-width: 30em;
+  justify-self: center;
+}
+
+.step-text p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
 }
 
 .step-number {
-  position: absolute;
-  top: 18px;
-  right: 20px;
-  color: var(--border);
-  font: 800 2rem var(--font-heading);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--on-primary);
+  font: 800 1.1rem var(--font-heading);
+}
+
+/* App screen pictures (components/AppScreens.tsx), in the app's own style. */
+.mock-phone {
+  justify-self: center;
+  width: min(300px, 100%);
+  padding: 10px;
+  border-radius: 34px;
+  background: #142a45;
+  box-shadow: 0 18px 44px rgba(30, 58, 95, 0.25);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.mock-status {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 16px 8px;
+  color: #e3eaf3;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mock-example {
+  font-weight: 400;
+}
+
+.mock-screen {
+  display: grid;
+  gap: 10px;
+  min-height: 430px;
+  align-content: start;
+  padding: 16px 14px;
+  border-radius: 24px;
+  background: var(--background);
+  color: var(--text);
+}
+
+.mock-screen p {
+  margin: 0;
+}
+
+.mock-title {
+  font: 800 20px var(--font-heading);
+}
+
+.mock-title-small {
+  font-size: 17px;
+}
+
+.mock-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.mock-stats span,
+.mock-card,
+.mock-option,
+.mock-search {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.mock-stats span {
+  display: grid;
+  padding: 8px;
+  color: var(--text-muted);
+  font-size: 10.5px;
+}
+
+.mock-stats b {
+  color: var(--primary);
+  font: 800 18px var(--font-heading);
+}
+
+.mock-stats .mock-muted {
+  color: var(--text-muted);
+}
+
+.mock-stats .mock-error {
+  color: var(--error-text);
+}
+
+.mock-card {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+}
+
+.mock-card-title {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.mock-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.mock-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 9px;
+  border: 1px dashed #8a97a8;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mock-chip-on {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.mock-chip-plain {
+  border-style: solid;
+  border-color: var(--border);
+  background: var(--surface);
+}
+
+.mock-hint {
+  padding: 10px;
+  border-radius: 12px;
+  background: #fef4e2;
+  color: #8a4708;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.mock-info {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #e6f6fd;
+  color: #075985;
+  font-size: 10.5px;
+}
+
+.mock-progress {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.mock-bar {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--border);
+}
+
+.mock-bar span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: var(--primary);
+}
+
+.mock-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mock-tag {
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.mock-tag-warn {
+  background: #fef4e2;
+  color: #8a4708;
+}
+
+.mock-small {
+  color: var(--text-muted);
+  font-size: 10.5px;
+}
+
+.mock-question {
+  font: 700 14px var(--font-heading);
+}
+
+.mock-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+}
+
+.mock-option code {
+  font:
+    600 10.5px ui-monospace,
+    'Cascadia Mono',
+    Consolas,
+    monospace;
+  overflow-wrap: anywhere;
+}
+
+.mock-option-on {
+  border: 2px solid var(--primary);
+  background: var(--primary-soft);
+}
+
+.mock-letter {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.mock-option-on .mock-letter {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.mock-button {
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font-weight: 700;
+  text-align: center;
+}
+
+.mock-button-outline {
+  border: 1.5px solid var(--primary);
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.mock-search {
+  padding: 9px 12px;
+  color: var(--text-muted);
+}
+
+.mock-badge {
+  justify-self: start;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.mock-badge-strong {
+  background: var(--success-soft);
+  color: var(--success-text);
+}
+
+.mock-badge-good {
+  background: #e6f6fd;
+  color: #075985;
+}
+
+.mock-why {
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: var(--background);
+  color: var(--text-muted);
+  font-size: 10.5px;
+}
+
+.mock-segment {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.mock-segment span {
+  padding: 3px 8px;
+}
+
+.mock-segment .mock-segment-on {
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.mock-cv {
+  gap: 4px;
+}
+
+.mock-cv-name {
+  font: 800 15px var(--font-heading);
+}
+
+.mock-cv .mock-cv-heading {
+  margin-top: 6px;
+  color: var(--primary);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.mock-cv-text {
+  font-size: 11px;
 }
 
 .features {
@@ -605,8 +938,17 @@ summary:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .steps {
-    grid-template-columns: repeat(2, 1fr);
+  .step {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .step:nth-child(even) .step-text {
+    order: 0;
+  }
+
+  .step-text {
+    justify-self: start;
   }
 
   .features {
@@ -641,10 +983,6 @@ summary:focus-visible {
 
   .section {
     padding: 56px 0;
-  }
-
-  .steps {
-    grid-template-columns: 1fr;
   }
 
   .waitlist-card,
