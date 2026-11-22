@@ -17,6 +17,7 @@ export const AUDIT_ACTIONS = [
   'research_run.retry',
   'research_schedule.pause',
   'research_schedule.resume',
+  'announcement.send',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 

@@ -21,6 +21,9 @@ const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 export const isExpoPushToken = (token: unknown): token is string =>
   typeof token === 'string' && /^Expo(nent)?PushToken\[[^\]]{10,200}\]$/.test(token);
 
+/** Most messages per request to the Expo Push Service. */
+export const PUSH_BATCH = 100;
+
 export const pushSettings = {
   /** Tests may replace the sender; by default: outbox in tests, Expo otherwise. */
   send: null as null | ((messages: PushMessage[]) => Promise<{ invalidTokens: string[] }>),
@@ -37,21 +40,24 @@ export async function sendPush(messages: PushMessage[]): Promise<{ invalidTokens
     pushOutbox.push(...messages);
     return { invalidTokens: [] };
   }
-  const res = await fetch(EXPO_PUSH_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(messages.map((m) => ({ ...m, sound: 'default' }))),
-  });
-  if (!res.ok) throw new Error(`Expo push service answered ${res.status}`);
-  const json = (await res.json()) as {
-    data?: { status: string; details?: { error?: string } }[];
-  };
-  const invalidTokens = (json.data ?? [])
-    .map((ticket, i) =>
-      ticket.status === 'error' && ticket.details?.error === 'DeviceNotRegistered'
-        ? messages[i].to
-        : null,
-    )
-    .filter((t): t is string => t !== null);
+  const invalidTokens: string[] = [];
+  // The Expo Push Service takes at most 100 messages per request.
+  for (let i = 0; i < messages.length; i += PUSH_BATCH) {
+    const batch = messages.slice(i, i + PUSH_BATCH);
+    const res = await fetch(EXPO_PUSH_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(batch.map((m) => ({ ...m, sound: 'default' }))),
+    });
+    if (!res.ok) throw new Error(`Expo push service answered ${res.status}`);
+    const json = (await res.json()) as {
+      data?: { status: string; details?: { error?: string } }[];
+    };
+    (json.data ?? []).forEach((ticket, n) => {
+      if (ticket.status === 'error' && ticket.details?.error === 'DeviceNotRegistered') {
+        invalidTokens.push(batch[n].to);
+      }
+    });
+  }
   return { invalidTokens };
 }

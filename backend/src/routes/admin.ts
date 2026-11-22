@@ -1,5 +1,10 @@
 import { Router } from 'express';
 import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
+import {
+  getAnnouncements,
+  getAudience,
+  postAnnouncement,
+} from '../controllers/adminAnnouncementsController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
 import {
   getAdminRun,
@@ -60,6 +65,11 @@ adminRouter.get('/research-runs/:id', getAdminRun);
 adminRouter.post('/research-runs/:id/retry', postRetryRun);
 adminRouter.get('/research-schedules', getAdminSchedules);
 adminRouter.patch('/research-schedules/:id', patchAdminSchedule);
+
+// Announcements (TIQ-33): written in English and Somali, sent to users in their language. Audited.
+adminRouter.get('/announcements', getAnnouncements);
+adminRouter.get('/announcements/audience', getAudience);
+adminRouter.post('/announcements', postAnnouncement);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);
