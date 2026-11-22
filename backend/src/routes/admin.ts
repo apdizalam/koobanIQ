@@ -1,6 +1,12 @@
 import { Router } from 'express';
 import { getAdminAccess, getAdminOverview } from '../controllers/adminController.js';
 import {
+  deleteFlagQuestion,
+  getAdminAssessment,
+  getAdminAssessments,
+  postFlagQuestion,
+} from '../controllers/adminAssessmentsController.js';
+import {
   getAnnouncements,
   getAudience,
   postAnnouncement,
@@ -70,6 +76,12 @@ adminRouter.patch('/research-schedules/:id', patchAdminSchedule);
 adminRouter.get('/announcements', getAnnouncements);
 adminRouter.get('/announcements/audience', getAudience);
 adminRouter.post('/announcements', postAnnouncement);
+
+// Skills & assessments (TIQ-33): quiz results; flag bad AI questions (results unchanged). Audited.
+adminRouter.get('/assessments', getAdminAssessments);
+adminRouter.get('/assessments/:id', getAdminAssessment);
+adminRouter.post('/assessments/:id/questions/:questionId/flag', postFlagQuestion);
+adminRouter.delete('/assessments/:id/questions/:questionId/flag', deleteFlagQuestion);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);
