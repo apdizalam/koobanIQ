@@ -47,7 +47,14 @@ export async function listAssessments(query: {
       .lean(),
     Assessment.countDocuments(filter),
     Assessment.aggregate<{ _id: string; n: number; flags: number }>([
-      { $group: { _id: '$status', n: { $sum: 1 }, flags: { $sum: { $size: '$flags' } } } },
+      // Quizzes from before TIQ-33 have no `flags` field: count them as none.
+      {
+        $group: {
+          _id: '$status',
+          n: { $sum: 1 },
+          flags: { $sum: { $size: { $ifNull: ['$flags', []] } } },
+        },
+      },
     ]),
   ]);
   const emails = await emailsOf(docs.map((d) => d.userId));

@@ -105,6 +105,18 @@ before(async () => {
     { ...common, skillName: 'Python', status: 'in_progress', asked: asked.slice(0, 1) },
   ]);
   finishedId = String(finished._id);
+  // A quiz saved before TIQ-33: no `flags` field at all (raw insert).
+  await Assessment.collection.insertOne({
+    ...common,
+    userId: new mongoose.Types.ObjectId(amina.id),
+    skillId: common.skillId,
+    skillName: 'Report writing',
+    status: 'cancelled',
+    asked: [],
+    result: null,
+    createdAt: new Date(Date.now() - 60_000),
+    updatedAt: new Date(Date.now() - 60_000),
+  });
 });
 
 after(async () => {
@@ -116,13 +128,15 @@ after(async () => {
 test('the list shows every quiz with its result; filters by status and skill', async () => {
   const all = await call(admin, 'GET', '/admin/assessments');
   assert.equal(all.status, 200);
-  assert.equal(all.body.data.total, 2);
+  assert.equal(all.body.data.total, 3, 'also quizzes saved before flags existed');
   assert.deepEqual(all.body.data.summary, {
     finished: 1,
     inProgress: 1,
-    cancelled: 0,
+    cancelled: 1,
     flaggedQuestions: 0,
   });
+  const old = all.body.data.items.find((i: Json) => i.skillName === 'Report writing');
+  assert.equal(old.flags, 0);
   const excel = all.body.data.items.find((i: Json) => i.skillName === 'Microsoft Excel');
   assert.equal(excel.email, 'amina@admin-quiz.invalid');
   assert.equal(excel.scorePercent, 67);
