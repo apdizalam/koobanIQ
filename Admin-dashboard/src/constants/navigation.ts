@@ -13,7 +13,7 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { key: 'overview', path: '/', available: true },
   { key: 'users', path: '/users', available: true },
-  { key: 'skills', path: '/skills', available: false },
+  { key: 'skills', path: '/skills', available: true },
   { key: 'cvs', path: '/cvs', available: false },
   { key: 'jobs', path: '/jobs', available: false },
   { key: 'sources', path: '/job-sources', available: true },

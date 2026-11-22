@@ -342,6 +342,81 @@
       "testDialogOn": "Mark {{email}} as a test account? Use only for accounts that hold fictional data.",
       "testDialogOff": "Remove the test account mark from {{email}}? AI features that send profile data then follow the AI privacy setting."
     },
+    "quizzes": {
+      "title": "Skills & assessments",
+      "subtitle": "Every skill quiz with its result. Flag a question that looks wrong or unclear so the AI questions can be improved; flags never change a user's result.",
+      "cards": {
+        "finished": "Finished quizzes",
+        "inProgress": "In progress",
+        "cancelled": "Cancelled",
+        "flagged": "Flagged questions"
+      },
+      "statusFilter": "Status",
+      "skillFilter": "Skill",
+      "skillPlaceholder": "e.g. Excel",
+      "search": "Search",
+      "all": "All",
+      "statuses": {
+        "in_progress": "In progress",
+        "finished": "Finished",
+        "cancelled": "Cancelled"
+      },
+      "levels": {
+        "beginner": "Beginner",
+        "mid": "Mid",
+        "advanced": "Advanced",
+        "expert": "Expert"
+      },
+      "columns": {
+        "started": "Started",
+        "user": "User",
+        "skill": "Skill",
+        "language": "Language",
+        "status": "Status",
+        "result": "Result",
+        "flags": "Flags",
+        "actions": "Actions"
+      },
+      "resultValue": "{{score}}% · {{level}}",
+      "answeredOf": "{{answered}} of {{length}} answered",
+      "details": "Details",
+      "deletedUser": "Deleted account",
+      "empty": "No quizzes match.",
+      "error": "Could not load the quizzes. Check that the backend is running.",
+      "retry": "Try again",
+      "back": "← Skills & assessments",
+      "detail": {
+        "title": "Quiz: {{skill}}",
+        "score": "Score",
+        "scoreValue": "{{correct}} of {{total}} correct ({{score}}%)",
+        "level": "Level shown",
+        "strengths": "Strong topics",
+        "gaps": "Gaps",
+        "none": "—",
+        "questions": "Answered questions",
+        "noQuestions": "No question answered yet.",
+        "question": "Question {{number}} · {{topic}} · {{difficulty}}",
+        "correct": "Correct",
+        "wrong": "Wrong",
+        "rightAnswer": "Right answer",
+        "userChoice": "User chose",
+        "explanation": "Explanation",
+        "flagged": "Flagged by {{by}}: {{reason}}",
+        "flag": "Flag question",
+        "unflag": "Remove flag",
+        "flagReason": "What is wrong with this question?",
+        "flagHint": "Up to 300 characters. The user's result does not change.",
+        "flagSave": "Save flag",
+        "flagCancel": "Cancel",
+        "reasonMissing": "Write what is wrong (up to 300 characters).",
+        "notFound": "This quiz does not exist."
+      },
+      "difficulties": {
+        "easy": "Easy",
+        "normal": "Normal",
+        "hard": "Hard"
+      }
+    },
     "audit": {
       "title": "Audit log",
       "subtitle": "Every change an admin made, and every blocked attempt to open the admin area.",
@@ -369,7 +444,9 @@
         "research_run_retry": "Retried a job search",
         "research_schedule_pause": "Paused a scheduled search",
         "research_schedule_resume": "Resumed a scheduled search",
-        "announcement_send": "Sent an announcement"
+        "announcement_send": "Sent an announcement",
+        "assessment_flag_question": "Flagged a quiz question",
+        "assessment_unflag_question": "Removed a question flag"
       },
       "deleted": "Account deleted",
       "noChange": "—",
@@ -459,7 +536,8 @@
         "en": "English",
         "so": "Somali"
       },
-      "pushYes": "{{count}} phones",
+      "pushYes_one": "{{count}} phone",
+      "pushYes_other": "{{count}} phones",
       "pushNo": "No push",
       "empty": "No announcements sent yet.",
       "error": "Could not load the announcements. Check that the backend is running.",

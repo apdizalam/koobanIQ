@@ -107,7 +107,11 @@
     "state": "pending",
     "en": "No push"
   },
-  "admin.announce.pushYes": {
+  "admin.announce.pushYes_one": {
+    "state": "pending",
+    "en": "{{count}} phone"
+  },
+  "admin.announce.pushYes_other": {
     "state": "pending",
     "en": "{{count}} phones"
   },
@@ -162,6 +166,14 @@
   "admin.audit.actions.announcement_send": {
     "state": "pending",
     "en": "Sent an announcement"
+  },
+  "admin.audit.actions.assessment_flag_question": {
+    "state": "pending",
+    "en": "Flagged a quiz question"
+  },
+  "admin.audit.actions.assessment_unflag_question": {
+    "state": "pending",
+    "en": "Removed a question flag"
   },
   "admin.audit.actions.job_source_disable": {
     "state": "pending",
@@ -634,6 +646,250 @@
   "admin.privacy.values.blocked": {
     "state": "pending",
     "en": "Blocked"
+  },
+  "admin.quizzes.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.quizzes.answeredOf": {
+    "state": "pending",
+    "en": "{{answered}} of {{length}} answered"
+  },
+  "admin.quizzes.back": {
+    "state": "pending",
+    "en": "← Skills & assessments"
+  },
+  "admin.quizzes.cards.cancelled": {
+    "state": "pending",
+    "en": "Cancelled"
+  },
+  "admin.quizzes.cards.finished": {
+    "state": "pending",
+    "en": "Finished quizzes"
+  },
+  "admin.quizzes.cards.flagged": {
+    "state": "pending",
+    "en": "Flagged questions"
+  },
+  "admin.quizzes.cards.inProgress": {
+    "state": "pending",
+    "en": "In progress"
+  },
+  "admin.quizzes.columns.actions": {
+    "state": "pending",
+    "en": "Actions"
+  },
+  "admin.quizzes.columns.flags": {
+    "state": "pending",
+    "en": "Flags"
+  },
+  "admin.quizzes.columns.language": {
+    "state": "pending",
+    "en": "Language"
+  },
+  "admin.quizzes.columns.result": {
+    "state": "pending",
+    "en": "Result"
+  },
+  "admin.quizzes.columns.skill": {
+    "state": "pending",
+    "en": "Skill"
+  },
+  "admin.quizzes.columns.started": {
+    "state": "pending",
+    "en": "Started"
+  },
+  "admin.quizzes.columns.status": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.quizzes.columns.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.quizzes.deletedUser": {
+    "state": "pending",
+    "en": "Deleted account"
+  },
+  "admin.quizzes.detail.correct": {
+    "state": "pending",
+    "en": "Correct"
+  },
+  "admin.quizzes.detail.explanation": {
+    "state": "pending",
+    "en": "Explanation"
+  },
+  "admin.quizzes.detail.flag": {
+    "state": "pending",
+    "en": "Flag question"
+  },
+  "admin.quizzes.detail.flagCancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.quizzes.detail.flagHint": {
+    "state": "pending",
+    "en": "Up to 300 characters. The user's result does not change."
+  },
+  "admin.quizzes.detail.flagReason": {
+    "state": "pending",
+    "en": "What is wrong with this question?"
+  },
+  "admin.quizzes.detail.flagSave": {
+    "state": "pending",
+    "en": "Save flag"
+  },
+  "admin.quizzes.detail.flagged": {
+    "state": "pending",
+    "en": "Flagged by {{by}}: {{reason}}"
+  },
+  "admin.quizzes.detail.gaps": {
+    "state": "pending",
+    "en": "Gaps"
+  },
+  "admin.quizzes.detail.level": {
+    "state": "pending",
+    "en": "Level shown"
+  },
+  "admin.quizzes.detail.noQuestions": {
+    "state": "pending",
+    "en": "No question answered yet."
+  },
+  "admin.quizzes.detail.none": {
+    "state": "pending",
+    "en": "—"
+  },
+  "admin.quizzes.detail.notFound": {
+    "state": "pending",
+    "en": "This quiz does not exist."
+  },
+  "admin.quizzes.detail.question": {
+    "state": "pending",
+    "en": "Question {{number}} · {{topic}} · {{difficulty}}"
+  },
+  "admin.quizzes.detail.questions": {
+    "state": "pending",
+    "en": "Answered questions"
+  },
+  "admin.quizzes.detail.reasonMissing": {
+    "state": "pending",
+    "en": "Write what is wrong (up to 300 characters)."
+  },
+  "admin.quizzes.detail.rightAnswer": {
+    "state": "pending",
+    "en": "Right answer"
+  },
+  "admin.quizzes.detail.score": {
+    "state": "pending",
+    "en": "Score"
+  },
+  "admin.quizzes.detail.scoreValue": {
+    "state": "pending",
+    "en": "{{correct}} of {{total}} correct ({{score}}%)"
+  },
+  "admin.quizzes.detail.strengths": {
+    "state": "pending",
+    "en": "Strong topics"
+  },
+  "admin.quizzes.detail.title": {
+    "state": "pending",
+    "en": "Quiz: {{skill}}"
+  },
+  "admin.quizzes.detail.unflag": {
+    "state": "pending",
+    "en": "Remove flag"
+  },
+  "admin.quizzes.detail.userChoice": {
+    "state": "pending",
+    "en": "User chose"
+  },
+  "admin.quizzes.detail.wrong": {
+    "state": "pending",
+    "en": "Wrong"
+  },
+  "admin.quizzes.details": {
+    "state": "pending",
+    "en": "Details"
+  },
+  "admin.quizzes.difficulties.easy": {
+    "state": "pending",
+    "en": "Easy"
+  },
+  "admin.quizzes.difficulties.hard": {
+    "state": "pending",
+    "en": "Hard"
+  },
+  "admin.quizzes.difficulties.normal": {
+    "state": "pending",
+    "en": "Normal"
+  },
+  "admin.quizzes.empty": {
+    "state": "pending",
+    "en": "No quizzes match."
+  },
+  "admin.quizzes.error": {
+    "state": "pending",
+    "en": "Could not load the quizzes. Check that the backend is running."
+  },
+  "admin.quizzes.levels.advanced": {
+    "state": "pending",
+    "en": "Advanced"
+  },
+  "admin.quizzes.levels.beginner": {
+    "state": "pending",
+    "en": "Beginner"
+  },
+  "admin.quizzes.levels.expert": {
+    "state": "pending",
+    "en": "Expert"
+  },
+  "admin.quizzes.levels.mid": {
+    "state": "pending",
+    "en": "Mid"
+  },
+  "admin.quizzes.resultValue": {
+    "state": "pending",
+    "en": "{{score}}% · {{level}}"
+  },
+  "admin.quizzes.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.quizzes.search": {
+    "state": "pending",
+    "en": "Search"
+  },
+  "admin.quizzes.skillFilter": {
+    "state": "pending",
+    "en": "Skill"
+  },
+  "admin.quizzes.skillPlaceholder": {
+    "state": "pending",
+    "en": "e.g. Excel"
+  },
+  "admin.quizzes.statusFilter": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.quizzes.statuses.cancelled": {
+    "state": "pending",
+    "en": "Cancelled"
+  },
+  "admin.quizzes.statuses.finished": {
+    "state": "pending",
+    "en": "Finished"
+  },
+  "admin.quizzes.statuses.in_progress": {
+    "state": "pending",
+    "en": "In progress"
+  },
+  "admin.quizzes.subtitle": {
+    "state": "pending",
+    "en": "Every skill quiz with its result. Flag a question that looks wrong or unclear so the AI questions can be improved; flags never change a user's result."
+  },
+  "admin.quizzes.title": {
+    "state": "pending",
+    "en": "Skills & assessments"
   },
   "admin.regions.citiesLabel": {
     "state": "pending",
