@@ -1,7 +1,7 @@
 import { AppError } from './errors.js';
 import { LANGUAGES, type Language } from '../models/User.js';
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export const PASSWORD_MIN = 8;
 export const PASSWORD_MAX = 128;
 

@@ -16,6 +16,7 @@ import { profileRouter } from './routes/profile.js';
 import { reportsRouter } from './routes/reports.js';
 import { jobsRouter, researchRouter } from './routes/research.js';
 import { skillsRouter } from './routes/skills.js';
+import { waitlistRouter } from './routes/waitlist.js';
 
 export function createApp() {
   const app = express();
@@ -40,6 +41,7 @@ export function createApp() {
   app.use('/api/v1/job-sources', jobSourcesRouter);
   app.use('/api/v1/research', researchRouter);
   app.use('/api/v1/jobs', jobsRouter);
+  app.use('/api/v1/waitlist', waitlistRouter);
   app.use('/api/v1/admin', adminRouter);
 
   app.use(notFound);

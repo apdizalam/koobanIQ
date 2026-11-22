@@ -7,11 +7,20 @@ import { JobDescription } from '../models/JobDescription.js';
 import { ResearchRun } from '../models/ResearchRun.js';
 import { UsageRecord } from '../models/UsageRecord.js';
 import { User } from '../models/User.js';
+import { Waitlist } from '../models/Waitlist.js';
 import { recordAudit } from './auditService.js';
 import type { QuizResult } from './quizEngine.js';
 
 /** What can be exported (one CSV each). */
-export const EXPORT_KINDS = ['users', 'usage', 'runs', 'jobs', 'cvs', 'quizzes'] as const;
+export const EXPORT_KINDS = [
+  'users',
+  'usage',
+  'runs',
+  'jobs',
+  'cvs',
+  'quizzes',
+  'waitlist',
+] as const;
 export type ExportKind = (typeof EXPORT_KINDS)[number];
 export const isExportKind = (v: unknown): v is ExportKind =>
   (EXPORT_KINDS as readonly unknown[]).includes(v);
@@ -263,6 +272,18 @@ async function quizzesTable(from: Date | null): Promise<Table> {
   };
 }
 
+/** Landing page waitlist (TIQ-34). */
+async function waitlistTable(from: Date | null): Promise<Table> {
+  const people = await Waitlist.find(from ? { createdAt: { $gte: from } } : {})
+    .sort({ createdAt: -1 })
+    .limit(MAX_EXPORT_ROWS + 1)
+    .lean();
+  return {
+    header: ['joined', 'email', 'name', 'language', 'consent_at'],
+    rows: people.map((p) => [p.createdAt, p.email, p.name, p.language, p.consentAt]),
+  };
+}
+
 const TABLES: Record<ExportKind, (from: Date | null) => Promise<Table>> = {
   users: usersTable,
   usage: usageTable,
@@ -270,6 +291,7 @@ const TABLES: Record<ExportKind, (from: Date | null) => Promise<Table>> = {
   jobs: jobsTable,
   cvs: cvsTable,
   quizzes: quizzesTable,
+  waitlist: waitlistTable,
 };
 
 /**

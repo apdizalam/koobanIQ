@@ -90,7 +90,9 @@
       "INTERVIEW_NOT_IN_PROGRESS": "This practice is already finished",
       "SCHEDULE_NOT_FOUND": "Scheduled search not found",
       "SCHEDULE_LIMIT": "You can keep up to 5 scheduled searches. Delete one first",
-      "NOTIFICATION_NOT_FOUND": "Notification not found"
+      "NOTIFICATION_NOT_FOUND": "Notification not found",
+      "WAITLIST_EXISTS": "This email is already on the waitlist. We will write to you when the app is out.",
+      "TOO_MANY_REQUESTS": "Too many tries. Please wait a while and try again."
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -149,7 +151,8 @@
       "frequencyInvalid": "Choose how often: every hour, every 6 hours, daily or weekly",
       "timeInvalid": "Enter a time like 09:00",
       "weekdayInvalid": "Choose a day of the week",
-      "pushTokenInvalid": "This is not a valid push token"
+      "pushTokenInvalid": "This is not a valid push token",
+      "consentRequired": "Please agree to the privacy policy"
     },
     "email": {
       "verifyEmail": {

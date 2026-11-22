@@ -5923,6 +5923,10 @@
     "state": "pending",
     "en": "Too many wrong codes. Ask for a new one"
   },
+  "server.errors.TOO_MANY_REQUESTS": {
+    "state": "pending",
+    "en": "Too many tries. Please wait a while and try again."
+  },
   "server.errors.USER_NOT_FOUND": {
     "state": "pending",
     "en": "No account with this email"
@@ -5930,6 +5934,10 @@
   "server.errors.VALIDATION_ERROR": {
     "state": "pending",
     "en": "Some fields are invalid"
+  },
+  "server.errors.WAITLIST_EXISTS": {
+    "state": "pending",
+    "en": "This email is already on the waitlist. We will write to you when the app is out."
   },
   "server.notifications.email.footer": {
     "state": "pending",
@@ -5970,6 +5978,10 @@
   "server.validation.codeInvalid": {
     "state": "pending",
     "en": "Enter the 6-digit code from the email"
+  },
+  "server.validation.consentRequired": {
+    "state": "pending",
+    "en": "Please agree to the privacy policy"
   },
   "server.validation.customUrlUnsafe": {
     "state": "pending",
