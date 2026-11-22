@@ -15,7 +15,7 @@ export const NAV_ITEMS: NavItem[] = [
   { key: 'users', path: '/users', available: true },
   { key: 'skills', path: '/skills', available: true },
   { key: 'cvs', path: '/cvs', available: true },
-  { key: 'jobs', path: '/jobs', available: false },
+  { key: 'jobs', path: '/jobs', available: true },
   { key: 'sources', path: '/job-sources', available: true },
   { key: 'runs', path: '/research-runs', available: true },
   { key: 'interviews', path: '/interviews', available: false },

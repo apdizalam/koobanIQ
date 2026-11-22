@@ -17,6 +17,9 @@ export const AUDIT_ACTIONS = [
   'announcement.send',
   'assessment.flag_question',
   'assessment.unflag_question',
+  'job.remove',
+  'job.restore',
+  'job.remove_expired',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 

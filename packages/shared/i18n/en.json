@@ -452,6 +452,104 @@
       "error": "Could not load the CVs. Check that the backend is running.",
       "retry": "Try again"
     },
+    "jobs": {
+      "title": "Jobs & matching",
+      "subtitle": "Every job KOBANIQ stored from its sources, and how it matched users. Remove a job that is invalid or expired: users stop seeing it, and it can be restored.",
+      "cards": {
+        "active": "Active jobs",
+        "expired": "Deadline passed",
+        "removed": "Removed"
+      },
+      "bySource": "Active jobs per source",
+      "stateFilter": "State",
+      "sourceFilter": "Source",
+      "search": "Title or employer",
+      "searchButton": "Search",
+      "all": "All",
+      "states": {
+        "active": "Active",
+        "expired": "Deadline passed",
+        "removed": "Removed"
+      },
+      "reasons": {
+        "expired": "Expired",
+        "invalid": "Invalid",
+        "duplicate": "Duplicate",
+        "other": "Other"
+      },
+      "columns": {
+        "job": "Job",
+        "source": "Source",
+        "place": "Place",
+        "deadline": "Deadline",
+        "seen": "First seen",
+        "state": "State",
+        "matches": "Matches",
+        "actions": "Actions"
+      },
+      "matchesValue": "{{count}} ({{strong}} strong) · {{saved}} saved",
+      "noDeadline": "No deadline",
+      "details": "Details",
+      "removeExpired": "Remove all expired jobs",
+      "confirmExpired": "Remove all {{count}} jobs whose deadline has passed? Users will no longer see them; each can be restored.",
+      "confirmYes": "Yes, remove",
+      "cancel": "Cancel",
+      "doneExpired_one": "{{count}} expired job removed.",
+      "doneExpired_other": "{{count}} expired jobs removed.",
+      "empty": "No jobs match.",
+      "error": "Could not load the jobs. Check that the backend is running.",
+      "retry": "Try again",
+      "back": "← Jobs & matching",
+      "detail": {
+        "employer": "Employer",
+        "place": "Place",
+        "sources": "Found on",
+        "apply": "Apply link",
+        "deadline": "Deadline",
+        "posted": "Posted",
+        "seen": "First / last seen",
+        "saved": "Saved by",
+        "savedValue_one": "{{count}} user",
+        "savedValue_other": "{{count}} users",
+        "removed": "Removed {{date}} by {{by}} ({{reason}})",
+        "reasonLabel": "Why remove it?",
+        "remove": "Remove job",
+        "restore": "Restore job",
+        "confirmRemove": "Remove \"{{title}}\"? Users will no longer see it in searches, results, saved jobs or alerts. It can be restored.",
+        "confirmRestore": "Restore \"{{title}}\"? Users will see it again.",
+        "doneRemove": "Job removed.",
+        "doneRestore": "Job restored.",
+        "matches": "How it matched users",
+        "matchesNote": "Best matches first (up to 50). The score shows relevance to the profile, not the chance of being hired.",
+        "noMatches": "Not matched for anyone yet.",
+        "matchColumns": {
+          "user": "User",
+          "score": "Score",
+          "levelFit": "Level",
+          "matched": "Skills found",
+          "missing": "Essential skills missing",
+          "when": "Scored"
+        },
+        "levelValue": "{{fit}} ({{user}} → {{job}})",
+        "none": "—",
+        "notFound": "This job does not exist.",
+        "scoreValue": "{{score}}% · {{category}}"
+      },
+      "categories": {
+        "strong": "Strong",
+        "good": "Good",
+        "potential": "Potential",
+        "gap": "Skill gap"
+      },
+      "levelFits": {
+        "fits": "Fits",
+        "stretch": "Stretch",
+        "above": "Above",
+        "below": "Below",
+        "unknown": "Unknown"
+      },
+      "deletedUser": "Deleted account"
+    },
     "audit": {
       "title": "Audit log",
       "subtitle": "Every change an admin made, and every blocked attempt to open the admin area.",
@@ -481,7 +579,10 @@
         "research_schedule_resume": "Resumed a scheduled search",
         "announcement_send": "Sent an announcement",
         "assessment_flag_question": "Flagged a quiz question",
-        "assessment_unflag_question": "Removed a question flag"
+        "assessment_unflag_question": "Removed a question flag",
+        "job_remove": "Removed a job",
+        "job_restore": "Restored a job",
+        "job_remove_expired": "Removed expired jobs"
       },
       "deleted": "Account deleted",
       "noChange": "—",
