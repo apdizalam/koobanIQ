@@ -1,13 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router';
 import { PeriodSwitch } from '../components/ui/PeriodSwitch';
-import { SoonCard, StatCard } from '../components/ui/StatCard';
+import { StatCard } from '../components/ui/StatCard';
 import { useOverview } from '../hooks/useOverview';
 import { PERIODS, isPeriod, type Period } from '../types/overview';
 
-const SOON_KEYS = ['assessments', 'cvs', 'runs', 'failedJobs'] as const;
-
-/** Admin Overview: live user numbers + cards for features that are not built yet. */
+/** Admin Overview: live user numbers and the activity in the period (TIQ-35). */
 export function OverviewPage() {
   const { t, i18n } = useTranslation();
   // The period lives in the address (?period=month), so a reload or a shared link keeps it.
@@ -97,16 +95,38 @@ export function OverviewPage() {
         </>
       )}
 
-      <h2 className="section-title">{t('admin.overview.soonTitle')}</h2>
-      <section className="stat-grid" aria-label={t('admin.overview.soonTitle')}>
-        {SOON_KEYS.map((key) => (
-          <SoonCard
-            key={key}
-            label={t(`admin.overview.soon.${key}.label`)}
-            note={t(`admin.overview.soon.${key}.note`)}
-          />
-        ))}
-      </section>
+      {state.status !== 'error' ? (
+        <>
+          <h2 className="section-title">{t('admin.overview.activityTitle')}</h2>
+          <section className="stat-grid" aria-label={t('admin.overview.activityTitle')}>
+            <StatCard
+              label={t('admin.overview.activity.quizzesFinished')}
+              value={value(data?.activity.quizzesFinished)}
+              hint={hint}
+            />
+            <StatCard
+              label={t('admin.overview.activity.cvsCreated')}
+              value={value(data?.activity.cvsCreated)}
+              hint={hint}
+            />
+            <StatCard
+              label={t('admin.overview.activity.runs')}
+              value={value(data?.activity.runs)}
+              hint={hint}
+            />
+            <StatCard
+              label={t('admin.overview.activity.runsFailed')}
+              value={value(data?.activity.runsFailed)}
+              hint={hint}
+            />
+            <StatCard
+              label={t('admin.overview.activity.waitlist')}
+              value={value(data?.waitlist)}
+              hint={t('admin.overview.waitlistHint')}
+            />
+          </section>
+        </>
+      ) : null}
     </>
   );
 }

@@ -15,6 +15,7 @@
   --warning-soft: #fef4e2;
   --warning-text: #b45309;
   --error: #dc2626;
+  --on-error: #ffffff;
 
   --radius-input: 8px;
   --radius-button: 12px;
@@ -48,6 +49,7 @@
     --warning-soft: #3a2e12;
     --warning-text: #fcd34d;
     --error: #f87171;
+    --on-error: #141c26;
   }
 }
 
@@ -398,11 +400,6 @@ h2.section-title {
   border-radius: var(--radius-card);
 }
 
-.stat-card-soon {
-  background: transparent;
-  border-style: dashed;
-}
-
 .stat-label {
   margin: 0;
   font-size: 13px;
@@ -630,7 +627,7 @@ h2.section-title {
   border: 0;
   border-radius: var(--radius-button);
   background: var(--error);
-  color: #ffffff;
+  color: var(--on-error);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -998,4 +995,38 @@ h2.section-title.section-title-first {
 .report-card button {
   align-self: flex-start;
   margin-top: auto;
+}
+
+/*
+ * Touch screens (phones, tablets): every control at least 44px high (TIQ-35).
+ * With a mouse the compact desktop sizes stay.
+ */
+@media (pointer: coarse) {
+  .button-primary,
+  .button-secondary,
+  .button-danger,
+  .button-small,
+  .segment,
+  .segmented-small .segment,
+  .select-field select,
+  .input {
+    height: auto;
+    min-height: 44px;
+  }
+
+  .nav-link {
+    min-height: 44px;
+  }
+
+  .table-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .check input,
+  input[type='checkbox'] {
+    width: 22px;
+    height: 22px;
+  }
 }

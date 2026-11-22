@@ -11,4 +11,8 @@ export interface Overview {
   generatedAt: string;
   users: { total: number; admins: number; suspended: number; new: number; active: number };
   languages: { en: number; so: number };
+  /** In the period (TIQ-35). */
+  activity: { quizzesFinished: number; cvsCreated: number; runs: number; runsFailed: number };
+  /** Landing page waitlist, all time. */
+  waitlist: number;
 }

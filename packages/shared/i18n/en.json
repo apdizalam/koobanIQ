@@ -248,29 +248,15 @@
       "empty": "No users yet. Numbers appear here as soon as people sign up.",
       "error": "Could not load the numbers. Check that the backend is running.",
       "retry": "Try again",
-      "soonTitle": "Coming with later tasks",
-      "soon": {
-        "assessments": {
-          "label": "Assessments",
-          "note": "Counted once assessments exist (TIQ-13)."
-        },
-        "cvs": {
-          "label": "CVs",
-          "note": "Counted once CV generation exists (TIQ-9)."
-        },
-        "runs": {
-          "label": "Research runs",
-          "note": "Counted once job research runs exist (TIQ-16)."
-        },
-        "failedJobs": {
-          "label": "Failed jobs",
-          "note": "Counted once background jobs exist (TIQ-16)."
-        },
-        "aiUsage": {
-          "label": "AI usage",
-          "note": "Counted once usage tracking exists (TIQ-23)."
-        }
-      }
+      "activityTitle": "Activity",
+      "activity": {
+        "quizzesFinished": "Skill quizzes finished",
+        "cvsCreated": "CVs created",
+        "runs": "Job searches",
+        "runsFailed": "Failed job searches",
+        "waitlist": "Waitlist sign-ups"
+      },
+      "waitlistHint": "from the landing page, all time"
     },
     "users": {
       "title": "Users",
