@@ -12,6 +12,7 @@ import {
   postAnnouncement,
 } from '../controllers/adminAnnouncementsController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
+import { getAdminCvs } from '../controllers/adminCvsController.js';
 import {
   getAdminRun,
   getAdminRuns,
@@ -82,6 +83,9 @@ adminRouter.get('/assessments', getAdminAssessments);
 adminRouter.get('/assessments/:id', getAdminAssessment);
 adminRouter.post('/assessments/:id/questions/:questionId/flag', postFlagQuestion);
 adminRouter.delete('/assessments/:id/questions/:questionId/flag', deleteFlagQuestion);
+
+// CVs (TIQ-33, read-only): status of every generated CV, never its content.
+adminRouter.get('/cvs', getAdminCvs);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);
