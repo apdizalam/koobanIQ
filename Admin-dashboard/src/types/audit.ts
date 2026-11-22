@@ -20,6 +20,7 @@ export const AUDIT_ACTIONS = [
   'job.remove',
   'job.restore',
   'job.remove_expired',
+  'report.export',
 ] as const;
 export type AuditAction = (typeof AUDIT_ACTIONS)[number];
 

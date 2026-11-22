@@ -987,3 +987,15 @@ h2.section-title.section-title-first {
   background: var(--error-soft);
   color: var(--error-text);
 }
+
+/* Reports (TIQ-33): one card per CSV export */
+.report-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-card button {
+  align-self: flex-start;
+  margin-top: auto;
+}

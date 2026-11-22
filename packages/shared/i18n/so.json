@@ -550,6 +550,49 @@
       },
       "deletedUser": "Akoon la tirtiray"
     },
+    "reports": {
+      "title": "Warbixinno",
+      "subtitle": "Soo deji xogta sida faylal CSV ah (ku fur Excel ama Google Sheets). Faylashu waxay yeelan karaan iimaylo: si ammaan ah u hay. Soo dejin kasta waxaa lagu qoraa diiwaanka hubinta.",
+      "periodLabel": "La sameeyay",
+      "periods": {
+        "day": "24-kii saac ee la soo dhaafay",
+        "week": "7-dii maalmood ee la soo dhaafay",
+        "month": "30-kii maalmood ee la soo dhaafay",
+        "year": "365-tii maalmood ee la soo dhaafay",
+        "all": "Waqti kasta"
+      },
+      "kinds": {
+        "users": {
+          "label": "Isticmaalayaasha",
+          "note": "Iimayl, door, xaalad, luqad, goorta uu ku biiray, firfircoonidii u dambaysay."
+        },
+        "usage": {
+          "label": "Isticmaalka AI",
+          "note": "Codsi kasta oo AI: isticmaale, qayb, natiijo, tokens."
+        },
+        "runs": {
+          "label": "Raadinta shaqooyinka",
+          "note": "Raadin kasta: isticmaale, sida ay u bilaabatay, ilaha, natiijooyinka, cilladaha."
+        },
+        "jobs": {
+          "label": "Shaqooyinka",
+          "note": "Shaqooyinka la keydiyay: cinwaan, loo shaqeeye, goob, ilaha, waqtiga u dambeeya, xaalad."
+        },
+        "cvs": {
+          "label": "CV-yada",
+          "note": "Xaaladda kaliya: isticmaale, xayeysiiska shaqada, luqad, nooc, taariikhaha. Weligeed qoraalka CV-ga."
+        },
+        "quizzes": {
+          "label": "Imtixaannada xirfadda",
+          "note": "Imtixaan kasta: isticmaale, xirfad, xaalad, dhibco, heer, calaamado."
+        }
+      },
+      "download": "Soo deji CSV",
+      "downloading": "Waa la diyaarinayaa…",
+      "done_one": "{{file}}: {{count}} saf ayaa la soo dejiyay.",
+      "done_other": "{{file}}: {{count}} saf ayaa la soo dejiyay.",
+      "truncated": "Faylka waxaa ku jira kaliya 10,000-ka saf ee ugu cusub. Dooro muddo ka gaaban si aad u hesho inta kale."
+    },
     "audit": {
       "title": "Diiwaanka hubinta",
       "subtitle": "Isbeddel kasta oo maamule sameeyay, iyo isku day kasta oo la diiday in la galo qaybta maamulka.",
@@ -582,7 +625,8 @@
         "assessment_unflag_question": "Calaamad su'aal ayaa laga saaray",
         "job_remove": "Shaqo ayaa la saaray",
         "job_restore": "Shaqo dib ayaa loo soo celiyay",
-        "job_remove_expired": "Shaqooyin dhacay ayaa la saaray"
+        "job_remove_expired": "Shaqooyin dhacay ayaa la saaray",
+        "report_export": "Warbixin ayaa la soo dejiyay"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",

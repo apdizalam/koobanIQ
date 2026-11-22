@@ -203,6 +203,10 @@
     "state": "pending",
     "en": "Changed region cities"
   },
+  "admin.audit.actions.report_export": {
+    "state": "pending",
+    "en": "Downloaded a report"
+  },
   "admin.audit.actions.research_run_retry": {
     "state": "pending",
     "en": "Retried a job search"
@@ -1374,6 +1378,106 @@
   "admin.regions.unchanged": {
     "state": "pending",
     "en": "No changes to save."
+  },
+  "admin.reports.done_one": {
+    "state": "pending",
+    "en": "{{file}}: {{count}} row downloaded."
+  },
+  "admin.reports.done_other": {
+    "state": "pending",
+    "en": "{{file}}: {{count}} rows downloaded."
+  },
+  "admin.reports.download": {
+    "state": "pending",
+    "en": "Download CSV"
+  },
+  "admin.reports.downloading": {
+    "state": "pending",
+    "en": "Preparing…"
+  },
+  "admin.reports.kinds.cvs.label": {
+    "state": "pending",
+    "en": "CVs"
+  },
+  "admin.reports.kinds.cvs.note": {
+    "state": "pending",
+    "en": "Status only: user, job ad, language, version, dates. Never the CV text."
+  },
+  "admin.reports.kinds.jobs.label": {
+    "state": "pending",
+    "en": "Jobs"
+  },
+  "admin.reports.kinds.jobs.note": {
+    "state": "pending",
+    "en": "Stored jobs: title, employer, place, sources, deadline, state."
+  },
+  "admin.reports.kinds.quizzes.label": {
+    "state": "pending",
+    "en": "Skill quizzes"
+  },
+  "admin.reports.kinds.quizzes.note": {
+    "state": "pending",
+    "en": "Each quiz: user, skill, status, score, level, flags."
+  },
+  "admin.reports.kinds.runs.label": {
+    "state": "pending",
+    "en": "Research runs"
+  },
+  "admin.reports.kinds.runs.note": {
+    "state": "pending",
+    "en": "Each job search: user, how it started, sources, results, errors."
+  },
+  "admin.reports.kinds.usage.label": {
+    "state": "pending",
+    "en": "AI usage"
+  },
+  "admin.reports.kinds.usage.note": {
+    "state": "pending",
+    "en": "Each AI request: user, feature, result, tokens."
+  },
+  "admin.reports.kinds.users.label": {
+    "state": "pending",
+    "en": "Users"
+  },
+  "admin.reports.kinds.users.note": {
+    "state": "pending",
+    "en": "Email, role, status, language, joined, last active."
+  },
+  "admin.reports.periodLabel": {
+    "state": "pending",
+    "en": "Created in"
+  },
+  "admin.reports.periods.all": {
+    "state": "pending",
+    "en": "All time"
+  },
+  "admin.reports.periods.day": {
+    "state": "pending",
+    "en": "Last 24 hours"
+  },
+  "admin.reports.periods.month": {
+    "state": "pending",
+    "en": "Last 30 days"
+  },
+  "admin.reports.periods.week": {
+    "state": "pending",
+    "en": "Last 7 days"
+  },
+  "admin.reports.periods.year": {
+    "state": "pending",
+    "en": "Last 365 days"
+  },
+  "admin.reports.subtitle": {
+    "state": "pending",
+    "en": "Download data as CSV files (open them in Excel or Google Sheets). Files can contain emails: keep them safe. Every download is written to the audit log."
+  },
+  "admin.reports.title": {
+    "state": "pending",
+    "en": "Reports"
+  },
+  "admin.reports.truncated": {
+    "state": "pending",
+    "en": "Only the newest 10,000 rows are in the file. Choose a shorter period for the rest."
   },
   "admin.runs.all": {
     "state": "pending",

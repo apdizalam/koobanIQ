@@ -11,6 +11,7 @@ import { CvsPage } from './pages/CvsPage';
 import { JobDetailPage } from './pages/JobDetailPage';
 import { JobsPage } from './pages/JobsPage';
 import { NotificationsPage } from './pages/NotificationsPage';
+import { ReportsPage } from './pages/ReportsPage';
 import { ResearchRunDetailPage } from './pages/ResearchRunDetailPage';
 import { ResearchRunsPage } from './pages/ResearchRunsPage';
 import { UsagePage } from './pages/UsagePage';
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="research-runs/:id" element={<ResearchRunDetailPage />} />
             <Route path="usage" element={<UsagePage />} />
             <Route path="notifications" element={<NotificationsPage />} />
+            <Route path="reports" element={<ReportsPage />} />
             <Route path="ai-privacy" element={<AiPrivacyPage />} />
             <Route path="audit-log" element={<AuditLogPage />} />
           </Route>
