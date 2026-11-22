@@ -1,0 +1,12 @@
+import { StrictMode } from 'react';
+import { renderToString } from 'react-dom/server';
+import App from './App';
+
+/** Renders one page to HTML at build time (scripts/prerender.mjs). */
+export function render(path: string): string {
+  return renderToString(
+    <StrictMode>
+      <App path={path} />
+    </StrictMode>,
+  );
+}

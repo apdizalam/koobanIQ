@@ -8,9 +8,8 @@ export const LEGAL_UPDATED = '2026-11-22';
 export function Legal({ t, lang, kind }: { t: Texts; lang: Lang; kind: 'privacy' | 'terms' }) {
   const doc = t.legal[kind];
   const sections = Object.entries(doc.sections) as [string, { h: string; p: string }][];
-  const updated = new Intl.DateTimeFormat(lang === 'so' ? 'so' : 'en', {
-    dateStyle: 'long',
-  }).format(new Date(`${LEGAL_UPDATED}T12:00:00Z`));
+  // ISO date: written the same at build time and in every browser.
+  const updated = LEGAL_UPDATED;
   return (
     <section className="section legal" aria-labelledby="legal-title">
       <div className="container narrow">

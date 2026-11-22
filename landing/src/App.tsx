@@ -9,10 +9,11 @@ import { TEXTS } from './texts';
 /**
  * KOBANIQ landing site (TIQ-34). The page and language come from the address
  * (/, /privacy, /terms, and the same under /so/); links between pages are
- * ordinary links, each page being its own HTML file.
+ * ordinary links, each page being its own HTML file. `path` is passed in so
+ * the build can render every page to HTML ahead of time (scripts/prerender.mjs).
  */
-export default function App() {
-  const { lang, page } = parsePath(window.location.pathname);
+export default function App({ path }: { path: string }) {
+  const { lang, page } = parsePath(path);
   const t = TEXTS[lang];
 
   useEffect(() => {

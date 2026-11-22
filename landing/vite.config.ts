@@ -41,14 +41,17 @@ const fill = (html: string, values: Record<string, string>) =>
  */
 function pages(siteUrl: string): Plugin {
   let outDir = 'dist';
+  let isSsr = false;
   return {
     name: 'kobaniq-landing-pages',
     apply: 'build',
     configResolved(config) {
       outDir = resolve(config.root, config.build.outDir);
+      isSsr = Boolean(config.build.ssr);
     },
     // After Vite has written dist/index.html: fill it once per page and language.
     closeBundle() {
+      if (isSsr) return; // the server bundle (pre-rendering) has no HTML
       const template = readFileSync(join(outDir, 'index.html'), 'utf8');
       for (const lang of LANGS) {
         for (const page of PAGES) {
