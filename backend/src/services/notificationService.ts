@@ -5,7 +5,7 @@ import { translate } from '../lib/i18n.js';
 import { sendEmail } from '../lib/mailer.js';
 import { isExpoPushToken, sendPush, type PushMessage } from '../lib/push.js';
 import { isItemId } from '../lib/validateProfile.js';
-import { Job } from '../models/Job.js';
+import { Job, notRemoved } from '../models/Job.js';
 import { Notification, PushToken, toPublicNotification } from '../models/Notification.js';
 import { ResearchRun } from '../models/ResearchRun.js';
 import { User, type UserDocument } from '../models/User.js';
@@ -32,7 +32,7 @@ export async function notifyStrongMatches(runId: Types.ObjectId, jobIds: Types.O
   const user = await User.findById(run.userId);
   if (!user || user.status !== 'active') return 0;
 
-  const jobs = await Job.find({ _id: { $in: jobIds } });
+  const jobs = await Job.find({ _id: { $in: jobIds }, ...notRemoved });
   const { recommended } = await matchJobs(user._id, jobs, run.regions);
   const strong = recommended.filter((r) => r.match.category === 'strong');
 

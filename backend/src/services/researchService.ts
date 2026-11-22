@@ -5,7 +5,7 @@ import { keepValidJobs } from '../jobs/sources/normalize.js';
 import { getAdapter } from '../jobs/sources/registry.js';
 import type { NormalizedJob, ResearchQuery } from '../jobs/sources/types.js';
 import { saveJobs } from '../jobs/store.js';
-import { Job, toPublicJob } from '../models/Job.js';
+import { Job, notRemoved, toPublicJob } from '../models/Job.js';
 import { matchJobs } from './jobMatchService.js';
 import { notifyStrongMatches } from './notificationService.js';
 import { JobSource } from '../models/JobSource.js';
@@ -315,7 +315,7 @@ export function meetsRunFilters(
 export async function getRun(userId: Types.ObjectId, id: unknown) {
   const run = isItemId(id) ? await ResearchRun.findOne({ _id: id, userId }) : null;
   if (!run) throw new AppError(404, 'RUN_NOT_FOUND', 'Job search not found');
-  const jobs = await Job.find({ _id: { $in: run.jobIds } });
+  const jobs = await Job.find({ _id: { $in: run.jobIds }, ...notRemoved });
   const byId = new Map(jobs.map((j) => [String(j._id), j]));
   const ordered = run.jobIds.map((jid) => byId.get(String(jid))).filter((j) => j !== undefined);
   // Results follow the run's filters; the others stay stored (and searchable) but aren't shown here.
