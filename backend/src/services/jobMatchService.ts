@@ -3,7 +3,7 @@ import { matchJob, type JobMatchResult } from '../jobs/match/score.js';
 import type { UserSignals } from '../jobs/match/signals.js';
 import { AppError } from '../lib/errors.js';
 import { isItemId } from '../lib/validateProfile.js';
-import { Job, toPublicJob, type JobDocument } from '../models/Job.js';
+import { Job, notRemoved, toPublicJob, type JobDocument } from '../models/Job.js';
 import { JobMatch } from '../models/JobMatch.js';
 import { Profile } from '../models/Profile.js';
 import type { RegionKey } from '../models/Region.js';
@@ -159,6 +159,7 @@ export async function searchStoredJobs(userId: Types.ObjectId, search: StoredJob
   const filter: Record<string, unknown> = {
     region: { $in: [...new Set([...regions, 'remote'])] },
     ...stillOpen(),
+    ...notRemoved,
   };
   if (search.city) filter.city = new RegExp(`^${escapeRe(search.city.trim())}$`, 'i');
   if (search.employerTypes?.length) filter.employerType = { $in: search.employerTypes };
@@ -180,8 +181,9 @@ export async function searchStoredJobs(userId: Types.ObjectId, search: StoredJob
 
 // ------------------------------------------------------------------ saved jobs (TIQ-18)
 
+/** A job users may see: it exists and an admin has not removed it. */
 async function existingJob(id: unknown) {
-  const job = isItemId(id) ? await Job.findById(id) : null;
+  const job = isItemId(id) ? await Job.findOne({ _id: id, ...notRemoved }) : null;
   if (!job) throw new AppError(404, 'JOB_NOT_FOUND', 'Job not found');
   return job;
 }
@@ -202,7 +204,7 @@ export async function unsaveJob(userId: Types.ObjectId, jobId: unknown) {
 /** GET /jobs/saved: newest first, each with its current match for this user. */
 export async function listSavedJobs(userId: Types.ObjectId) {
   const saved = await SavedJob.find({ userId }).sort({ createdAt: -1 }).limit(200);
-  const jobs = await Job.find({ _id: { $in: saved.map((s) => s.jobId) } });
+  const jobs = await Job.find({ _id: { $in: saved.map((s) => s.jobId) }, ...notRemoved });
   const byId = new Map(jobs.map((j) => [String(j._id), j]));
   const ordered = saved.map((s) => byId.get(String(s.jobId))).filter((j) => j !== undefined);
   const { recommended, lowerMatch } = await matchJobs(userId, ordered, []);

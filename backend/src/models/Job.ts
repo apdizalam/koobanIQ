@@ -5,6 +5,13 @@ import { REGION_KEYS } from './Region.js';
 import { LANGUAGES } from './User.js';
 
 /** Where a job was found: the source, its own id for the job, and its apply link. */
+/** Why an admin removed a job (TIQ-33). */
+export const JOB_REMOVE_REASONS = ['expired', 'invalid', 'duplicate', 'other'] as const;
+export type JobRemoveReason = (typeof JOB_REMOVE_REASONS)[number];
+
+/** Shown to users: not removed by an admin (old jobs have no field at all). */
+export const notRemoved = { removedAt: null };
+
 const jobSourceRefSchema = new Schema(
   {
     sourceKey: { type: String, required: true },
@@ -44,6 +51,13 @@ const jobSchema = new Schema(
     description: String,
     firstSeenAt: { type: Date, required: true },
     lastSeenAt: { type: Date, required: true },
+    /**
+     * Set when an admin removed the job (TIQ-33): users no longer see it (search,
+     * run results, saved jobs, alerts). Finding it again does not bring it back.
+     */
+    removedAt: { type: Date, default: null },
+    removedReason: { type: String, enum: [...JOB_REMOVE_REASONS, null], default: null },
+    removedBy: { type: Schema.Types.ObjectId, ref: 'User', default: null },
   },
   { timestamps: true },
 );
