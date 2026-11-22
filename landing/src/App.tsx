@@ -1,102 +1,41 @@
-import { useState } from 'react';
-import heroImg from './assets/hero.png';
-import reactLogo from './assets/react.svg';
-import viteLogo from './assets/vite.svg';
-import './App.css';
+import { useEffect } from 'react';
+import { Footer } from './components/Footer';
+import { Header } from './components/Header';
+import { Home } from './pages/Home';
+import { Legal } from './pages/Legal';
+import { parsePath } from './routes';
+import { TEXTS } from './texts';
 
-function App() {
-  const [count, setCount] = useState(0);
+/**
+ * KOBANIQ landing site (TIQ-34). The page and language come from the address
+ * (/, /privacy, /terms, and the same under /so/); links between pages are
+ * ordinary links, each page being its own HTML file.
+ */
+export default function App() {
+  const { lang, page } = parsePath(window.location.pathname);
+  const t = TEXTS[lang];
+
+  useEffect(() => {
+    // The built HTML already has these; keep them right in the dev server too.
+    document.documentElement.lang = lang;
+    document.title =
+      page === 'privacy'
+        ? t.meta.privacyTitle
+        : page === 'terms'
+          ? t.meta.termsTitle
+          : t.meta.title;
+  }, [lang, page, t]);
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button type="button" className="counter" onClick={() => setCount((count) => count + 1)}>
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg className="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg className="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg className="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg className="button-icon" role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <a className="skip-link" href="#main">
+        {t.nav.skip}
+      </a>
+      <Header t={t} lang={lang} page={page} />
+      <main id="main">
+        {page === 'home' ? <Home t={t} lang={lang} /> : <Legal t={t} lang={lang} kind={page} />}
+      </main>
+      <Footer t={t} lang={lang} />
     </>
   );
 }
-
-export default App;
