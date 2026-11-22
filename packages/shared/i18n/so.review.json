@@ -1,4 +1,152 @@
 {
+  "admin.announce.audience": {
+    "state": "pending",
+    "en": "Send to"
+  },
+  "admin.announce.audienceShort.all": {
+    "state": "pending",
+    "en": "All users"
+  },
+  "admin.announce.audienceShort.en": {
+    "state": "pending",
+    "en": "English"
+  },
+  "admin.announce.audienceShort.so": {
+    "state": "pending",
+    "en": "Somali"
+  },
+  "admin.announce.audiences.all": {
+    "state": "pending",
+    "en": "All users ({{count}})"
+  },
+  "admin.announce.audiences.en": {
+    "state": "pending",
+    "en": "Users with the app in English ({{count}})"
+  },
+  "admin.announce.audiences.so": {
+    "state": "pending",
+    "en": "Users with the app in Somali ({{count}})"
+  },
+  "admin.announce.bodyEn": {
+    "state": "pending",
+    "en": "Message (English)"
+  },
+  "admin.announce.bodySo": {
+    "state": "pending",
+    "en": "Message (Somali)"
+  },
+  "admin.announce.cancel": {
+    "state": "pending",
+    "en": "Cancel"
+  },
+  "admin.announce.columns.audience": {
+    "state": "pending",
+    "en": "Sent to"
+  },
+  "admin.announce.columns.by": {
+    "state": "pending",
+    "en": "By"
+  },
+  "admin.announce.columns.push": {
+    "state": "pending",
+    "en": "Push"
+  },
+  "admin.announce.columns.read": {
+    "state": "pending",
+    "en": "Read"
+  },
+  "admin.announce.columns.recipients": {
+    "state": "pending",
+    "en": "Received"
+  },
+  "admin.announce.columns.title": {
+    "state": "pending",
+    "en": "Title"
+  },
+  "admin.announce.columns.when": {
+    "state": "pending",
+    "en": "When"
+  },
+  "admin.announce.confirm": {
+    "state": "pending",
+    "en": "Send \"{{title}}\" to {{count}} users? It cannot be taken back."
+  },
+  "admin.announce.confirmYes": {
+    "state": "pending",
+    "en": "Yes, send"
+  },
+  "admin.announce.count": {
+    "state": "pending",
+    "en": "{{count}}/{{max}}"
+  },
+  "admin.announce.empty": {
+    "state": "pending",
+    "en": "No announcements sent yet."
+  },
+  "admin.announce.error": {
+    "state": "pending",
+    "en": "Could not load the announcements. Check that the backend is running."
+  },
+  "admin.announce.historyTitle": {
+    "state": "pending",
+    "en": "Sent announcements"
+  },
+  "admin.announce.missing": {
+    "state": "pending",
+    "en": "Write the title and the message in both languages."
+  },
+  "admin.announce.newTitle": {
+    "state": "pending",
+    "en": "New announcement"
+  },
+  "admin.announce.push": {
+    "state": "pending",
+    "en": "Also send a push to their phones (only users who allow push)"
+  },
+  "admin.announce.pushNo": {
+    "state": "pending",
+    "en": "No push"
+  },
+  "admin.announce.pushYes": {
+    "state": "pending",
+    "en": "{{count}} phones"
+  },
+  "admin.announce.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.announce.send": {
+    "state": "pending",
+    "en": "Send"
+  },
+  "admin.announce.sending": {
+    "state": "pending",
+    "en": "Sending…"
+  },
+  "admin.announce.sent": {
+    "state": "pending",
+    "en": "Sent to {{count}} users."
+  },
+  "admin.announce.subtitle": {
+    "state": "pending",
+    "en": "Send an announcement to users. Each user sees it in their own app language, so write it in English and Somali."
+  },
+  "admin.announce.title": {
+    "state": "pending",
+    "en": "Notifications"
+  },
+  "admin.announce.titleEn": {
+    "state": "pending",
+    "en": "Title (English)"
+  },
+  "admin.announce.titleSo": {
+    "state": "pending",
+    "en": "Title (Somali)"
+  },
+  "admin.announce.tooLong": {
+    "state": "pending",
+    "en": "A text is too long."
+  },
   "admin.appName": {
     "state": "pending",
     "en": "KOBANIQ Admin"
@@ -10,6 +158,10 @@
   "admin.audit.actions.admin_access_denied": {
     "state": "pending",
     "en": "Admin access denied"
+  },
+  "admin.audit.actions.announcement_send": {
+    "state": "pending",
+    "en": "Sent an announcement"
   },
   "admin.audit.actions.job_source_disable": {
     "state": "pending",
