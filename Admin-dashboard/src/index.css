@@ -947,6 +947,13 @@ h2.section-title.section-title-first {
   gap: 8px;
 }
 
+/* The toolbar's "grow to 240px" would stretch this input vertically inside its label column. */
+.search-form .input {
+  flex: none;
+  width: 220px;
+  max-width: 100%;
+}
+
 .quiz-questions {
   display: grid;
   gap: 12px;
