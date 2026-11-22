@@ -80,7 +80,22 @@ const JOB = {
   saved: false,
 };
 
-let items: ReturnType<typeof item>[];
+const announcement = (id: string, read = false) => ({
+  id,
+  type: 'announcement',
+  jobId: null,
+  message: {
+    title: { en: 'New job sources', so: 'Ilo shaqo oo cusub' },
+    body: {
+      en: 'KOBANIQ now searches more career pages.',
+      so: 'KOBANIQ hadda wuxuu raadiyaa bogag badan.',
+    },
+  },
+  read,
+  createdAt: '2026-11-22T07:00:00.000Z',
+});
+
+let items: (ReturnType<typeof item> | ReturnType<typeof announcement>)[];
 let settings: { push: boolean; email: boolean; emailAvailable: boolean };
 const calls: { route: string; body: unknown }[] = [];
 
@@ -108,9 +123,10 @@ beforeEach(() => {
     else if (path === '/notifications/settings') {
       settings = { ...settings, ...body };
       reply = ok({ settings });
-    } else if (path === '/notifications/n1/read') {
-      items[0].read = true;
-      reply = ok({ notification: items[0] });
+    } else if (/^\/notifications\/[^/]+\/read$/.test(path)) {
+      const n = items.find((x) => path === `/notifications/${x.id}/read`)!;
+      n.read = true;
+      reply = ok({ notification: n });
     } else if (path === '/notifications/push-token') reply = { status: 204 };
     else if (path === '/jobs/j1') reply = ok(JOB);
     else if (path === '/jobs/saved') reply = ok({ jobs: [] });
@@ -179,6 +195,39 @@ describe('TIQ-22: notifications', () => {
       for (let i = 0; i < 30; i += 1) await Promise.resolve();
     });
     expect(screen).toHavePathname('/job/j1');
+  });
+
+  it('TIQ-33: an announcement shows in the app language; tapping it marks it read', async () => {
+    items = [announcement('a1'), ...items];
+    await open('/notifications', 'notification-a1');
+    expect(screen.getByText('Announcement')).toBeTruthy();
+    expect(screen.getByText('New job sources')).toBeTruthy();
+    expect(screen.getByText('KOBANIQ now searches more career pages.')).toBeTruthy();
+    await press('notification-a1');
+    expect(calls.some((c) => c.route === 'POST /notifications/a1/read')).toBe(true);
+    expect(screen).toHavePathname('/notifications');
+
+    await act(async () => {
+      await i18n.changeLanguage('so');
+    });
+    expect(screen.getByText('Ogeysiis')).toBeTruthy();
+    expect(screen.getByText('Ilo shaqo oo cusub')).toBeTruthy();
+    expect(screen.getByText('KOBANIQ hadda wuxuu raadiyaa bogag badan.')).toBeTruthy();
+  });
+
+  it('TIQ-33: tapping an announcement push opens the notifications list', async () => {
+    await open('/home', 'home-notifications');
+    const listener = (Notifications.addNotificationResponseReceivedListener as jest.Mock).mock
+      .calls[0][0];
+    await act(async () => {
+      listener({
+        notification: {
+          request: { content: { data: { type: 'announcement', notificationId: 'a1' } } },
+        },
+      });
+      for (let i = 0; i < 30; i += 1) await Promise.resolve();
+    });
+    expect(screen).toHavePathname('/notifications');
   });
 
   it('with a project id and permission, this phone is registered for push', async () => {

@@ -1520,7 +1520,8 @@
       "emptyTitle": "Weli ogeysiis ma jiro",
       "emptyBody": "Marka raadin shaqo ay hesho shaqo cusub oo si fiican kuugu habboon, halkan ayay ka muuqan doontaa.",
       "readAll": "Dhammaan u calaamadee kuwo la akhriyay",
-      "strongMatch": "Si fiican u habboon · {{score}}%"
+      "strongMatch": "Si fiican u habboon · {{score}}%",
+      "announcement": "Ogeysiis"
     }
   }
 }

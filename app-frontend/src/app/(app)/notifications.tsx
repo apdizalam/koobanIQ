@@ -24,8 +24,9 @@ import type { AppNotification, NotificationSettings } from '../../types/notifica
 import { formatDateTime } from '../../utils/format';
 
 /**
- * Notifications (TIQ-22): new strong job matches, newest first (tap opens the
- * job), and the choices: push to this phone, email. In-app items always come.
+ * Notifications, newest first: new strong job matches (TIQ-22, tap opens the
+ * job) and announcements from KOBANIQ (TIQ-33, shown in the app's language);
+ * and the choices: push to this phone, email. In-app items always come.
  */
 export default function NotificationsScreen() {
   const { t, i18n } = useTranslation();
@@ -84,7 +85,8 @@ export default function NotificationsScreen() {
         .then((token) => markNotificationRead(token, n.id))
         .catch(() => undefined);
     }
-    router.push({ pathname: '/job/[id]', params: { id: n.jobId } });
+    // An announcement is read here; a strong match opens its job.
+    if (n.type === 'strong_match') router.push({ pathname: '/job/[id]', params: { id: n.jobId } });
   }
 
   async function readAll() {
@@ -156,32 +158,49 @@ export default function NotificationsScreen() {
           onPress={() => void readAll()}
         />
       ) : null}
-      {(items ?? []).map((n) => (
-        <Pressable
-          key={n.id}
-          testID={`notification-${n.id}`}
-          accessibilityRole="button"
-          accessibilityLabel={`${t('mobile.notifications.strongMatch', { score: n.values.score })}: ${n.values.title}, ${n.values.employer}`}
-          onPress={() => void open(n)}
-          style={({ pressed }) => ({
-            backgroundColor: n.read ? colors.surface : colors.primarySoft,
-            borderColor: colors.border,
-            borderWidth: 1,
-            borderRadius: radius.card,
-            padding: spacing.card,
-            gap: spacing.xxs,
-            opacity: pressed ? 0.85 : 1,
-          })}
-        >
-          <Text style={[typography.labelMedium, { color: colors.primary }]}>
-            {t('mobile.notifications.strongMatch', { score: n.values.score })}
-          </Text>
-          <Text style={[typography.bodyStrong, { color: colors.text }]}>{n.values.title}</Text>
-          <Text style={[typography.bodySmall, { color: colors.textMuted }]}>
-            {`${n.values.employer} · ${formatDateTime(n.createdAt, i18n.language)}`}
-          </Text>
-        </Pressable>
-      ))}
+      {(items ?? []).map((n) => {
+        const lang = i18n.language === 'so' ? 'so' : 'en';
+        const label =
+          n.type === 'announcement'
+            ? t('mobile.notifications.announcement')
+            : t('mobile.notifications.strongMatch', { score: n.values.score });
+        const heading = n.type === 'announcement' ? n.message.title[lang] : n.values.title;
+        const detail =
+          n.type === 'announcement'
+            ? n.message.body[lang]
+            : `${n.values.employer} · ${formatDateTime(n.createdAt, i18n.language)}`;
+        return (
+          <Pressable
+            key={n.id}
+            testID={`notification-${n.id}`}
+            accessibilityRole="button"
+            accessibilityLabel={
+              n.type === 'announcement'
+                ? `${label}: ${heading}. ${detail}`
+                : `${label}: ${n.values.title}, ${n.values.employer}`
+            }
+            onPress={() => void open(n)}
+            style={({ pressed }) => ({
+              backgroundColor: n.read ? colors.surface : colors.primarySoft,
+              borderColor: colors.border,
+              borderWidth: 1,
+              borderRadius: radius.card,
+              padding: spacing.card,
+              gap: spacing.xxs,
+              opacity: pressed ? 0.85 : 1,
+            })}
+          >
+            <Text style={[typography.labelMedium, { color: colors.primary }]}>{label}</Text>
+            <Text style={[typography.bodyStrong, { color: colors.text }]}>{heading}</Text>
+            <Text style={[typography.bodySmall, { color: colors.textMuted }]}>{detail}</Text>
+            {n.type === 'announcement' ? (
+              <Text style={[typography.bodySmall, { color: colors.textMuted }]}>
+                {formatDateTime(n.createdAt, i18n.language)}
+              </Text>
+            ) : null}
+          </Pressable>
+        );
+      })}
     </AuthScreen>
   );
 }

@@ -4,16 +4,26 @@ import { useEffect } from 'react';
 import { Platform } from 'react-native';
 import { useAuth } from '../auth/authContext';
 import { fetchNotificationSettings, registerPushToken } from '../services/notificationsApi';
-import { getPushToken, jobIdOf, rememberPushToken, showPushWhileOpen } from './push';
+import {
+  getPushToken,
+  isAnnouncementPush,
+  jobIdOf,
+  rememberPushToken,
+  showPushWhileOpen,
+} from './push';
 
-const openJob = (jobId: string | null) => {
+/** Where a tapped push leads: its job, or the list for an announcement. */
+const openFromPush = (response: Notifications.NotificationResponse | null) => {
+  const jobId = jobIdOf(response);
   if (jobId) router.push({ pathname: '/job/[id]', params: { id: jobId } });
+  else if (isAnnouncementPush(response)) router.push('/notifications');
 };
 
 /**
  * Signed-in part of push (TIQ-22), mounted once in the (app) layout:
- * registers this phone when the user allows push, and opens the job when a
- * push is tapped (also when the tap started the app). Renders nothing.
+ * registers this phone when the user allows push, and opens the job (or, for an
+ * announcement, the notifications list) when a push is tapped, also when the
+ * tap started the app. Renders nothing.
  */
 export function PushSetup() {
   const { getAccessToken } = useAuth();
@@ -43,13 +53,11 @@ export function PushSetup() {
     // A tap that opened the app from closed.
     void Notifications.getLastNotificationResponseAsync()
       .then((response) => {
-        openJob(jobIdOf(response));
+        openFromPush(response);
         return Notifications.clearLastNotificationResponseAsync();
       })
       .catch(() => undefined);
-    const sub = Notifications.addNotificationResponseReceivedListener((response) =>
-      openJob(jobIdOf(response)),
-    );
+    const sub = Notifications.addNotificationResponseReceivedListener(openFromPush);
     return () => sub.remove();
   }, []);
 
