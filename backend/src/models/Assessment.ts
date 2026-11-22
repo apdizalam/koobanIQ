@@ -31,6 +31,20 @@ const askedSchema = new Schema(
 );
 
 /**
+ * An admin's note that a question looks wrong or unclear (TIQ-33). For
+ * reviewing the AI's question quality only: the user's result is not changed.
+ */
+const flagSchema = new Schema(
+  {
+    questionId: { type: String, required: true },
+    reason: { type: String, required: true },
+    flaggedBy: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    flaggedAt: { type: Date, required: true },
+  },
+  { _id: false },
+);
+
+/**
  * `assessments` collection (TIQ-13): one skill quiz. The AI writes a question
  * bank once; the order of questions adapts to the answers (services/quizEngine).
  * When finished, the skill's assessedLevel and gaps are set from the result.
@@ -54,12 +68,15 @@ const assessmentSchema = new Schema(
       focusTopic: { type: String, default: null },
     },
     result: { type: Schema.Types.Mixed, default: null },
+    /** Questions an admin flagged as bad (TIQ-33); at most one flag per question. */
+    flags: { type: [flagSchema], default: [] },
     finishedAt: Date,
   },
   { timestamps: true },
 );
 
 assessmentSchema.index({ userId: 1, createdAt: -1 });
+assessmentSchema.index({ createdAt: -1 });
 
 export type AssessmentDocument = HydratedDocument<InferSchemaType<typeof assessmentSchema>>;
 export const Assessment = model('Assessment', assessmentSchema);
