@@ -13,6 +13,7 @@ import {
 } from '../controllers/adminAnnouncementsController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
 import { getAdminCvs } from '../controllers/adminCvsController.js';
+import { getReportCsv } from '../controllers/adminReportsController.js';
 import {
   getAdminJob,
   getAdminJobs,
@@ -100,6 +101,9 @@ adminRouter.post('/jobs/remove-expired', postRemoveExpired);
 adminRouter.get('/jobs/:id', getAdminJob);
 adminRouter.post('/jobs/:id/remove', postRemoveJob);
 adminRouter.post('/jobs/:id/restore', postRestoreJob);
+
+// Reports (TIQ-33): CSV exports of users, AI usage, runs, jobs, CVs (status only), quizzes. Audited.
+adminRouter.get('/reports/:kind', getReportCsv);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);
