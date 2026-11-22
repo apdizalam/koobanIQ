@@ -20,7 +20,7 @@ export const NAV_ITEMS: NavItem[] = [
   { key: 'runs', path: '/research-runs', available: true },
   { key: 'interviews', path: '/interviews', available: false },
   { key: 'usage', path: '/usage', available: true },
-  { key: 'notifications', path: '/notifications', available: false },
+  { key: 'notifications', path: '/notifications', available: true },
   { key: 'reports', path: '/reports', available: false },
   { key: 'privacy', path: '/ai-privacy', available: true },
   { key: 'audit', path: '/audit-log', available: true },

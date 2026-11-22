@@ -912,3 +912,29 @@ h2.section-title.section-title-first {
 .source-reason {
   color: var(--warning-text);
 }
+
+/* Notifications page (TIQ-33): announcement form, English and Somali side by side */
+.announce-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 16px;
+}
+
+.announce-input {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.announce-push {
+  margin: 16px 0;
+}
+
+.text-danger {
+  color: var(--error-text);
+}
+
+@media (max-width: 600px) {
+  .announce-grid {
+    grid-template-columns: 1fr;
+  }
+}

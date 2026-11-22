@@ -368,7 +368,8 @@
         "user_test_account": "Changed test account",
         "research_run_retry": "Retried a job search",
         "research_schedule_pause": "Paused a scheduled search",
-        "research_schedule_resume": "Resumed a scheduled search"
+        "research_schedule_resume": "Resumed a scheduled search",
+        "announcement_send": "Sent an announcement"
       },
       "deleted": "Account deleted",
       "noChange": "—",
@@ -418,6 +419,51 @@
       "error": "Could not load the usage numbers. Check that the backend is running.",
       "retry": "Try again",
       "deletedUser": "Deleted account"
+    },
+    "announce": {
+      "title": "Notifications",
+      "subtitle": "Send an announcement to users. Each user sees it in their own app language, so write it in English and Somali.",
+      "newTitle": "New announcement",
+      "titleEn": "Title (English)",
+      "titleSo": "Title (Somali)",
+      "bodyEn": "Message (English)",
+      "bodySo": "Message (Somali)",
+      "count": "{{count}}/{{max}}",
+      "audience": "Send to",
+      "audiences": {
+        "all": "All users ({{count}})",
+        "en": "Users with the app in English ({{count}})",
+        "so": "Users with the app in Somali ({{count}})"
+      },
+      "push": "Also send a push to their phones (only users who allow push)",
+      "send": "Send",
+      "sending": "Sending…",
+      "confirm": "Send \"{{title}}\" to {{count}} users? It cannot be taken back.",
+      "confirmYes": "Yes, send",
+      "cancel": "Cancel",
+      "sent": "Sent to {{count}} users.",
+      "missing": "Write the title and the message in both languages.",
+      "tooLong": "A text is too long.",
+      "historyTitle": "Sent announcements",
+      "columns": {
+        "when": "When",
+        "title": "Title",
+        "audience": "Sent to",
+        "recipients": "Received",
+        "read": "Read",
+        "push": "Push",
+        "by": "By"
+      },
+      "audienceShort": {
+        "all": "All users",
+        "en": "English",
+        "so": "Somali"
+      },
+      "pushYes": "{{count}} phones",
+      "pushNo": "No push",
+      "empty": "No announcements sent yet.",
+      "error": "Could not load the announcements. Check that the backend is running.",
+      "retry": "Try again"
     },
     "sources": {
       "title": "Job sources",

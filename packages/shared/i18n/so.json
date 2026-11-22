@@ -368,7 +368,8 @@
         "user_test_account": "Waxaa la beddelay akoonka tijaabada",
         "research_run_retry": "Raadin shaqo ayaa mar kale la bilaabay",
         "research_schedule_pause": "Raadin jadwalaysan ayaa la hakiyay",
-        "research_schedule_resume": "Raadin jadwalaysan dib ayaa loo bilaabay"
+        "research_schedule_resume": "Raadin jadwalaysan dib ayaa loo bilaabay",
+        "announcement_send": "Ogeysiis ayaa la diray"
       },
       "deleted": "Akoonka waa la tirtiray",
       "noChange": "—",
@@ -418,6 +419,51 @@
       "error": "Tirooyinka isticmaalka lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
       "retry": "Isku day mar kale",
       "deletedUser": "Akoon la tirtiray"
+    },
+    "announce": {
+      "title": "Ogeysiisyo",
+      "subtitle": "U dir ogeysiis isticmaalayaasha. Qof kastaa wuxuu ku arkaa luqadda app-kiisa, sidaa darteed ku qor Ingiriis iyo Soomaali.",
+      "newTitle": "Ogeysiis cusub",
+      "titleEn": "Cinwaanka (Ingiriis)",
+      "titleSo": "Cinwaanka (Soomaali)",
+      "bodyEn": "Fariinta (Ingiriis)",
+      "bodySo": "Fariinta (Soomaali)",
+      "count": "{{count}}/{{max}}",
+      "audience": "U dir",
+      "audiences": {
+        "all": "Dhammaan isticmaalayaasha ({{count}})",
+        "en": "Isticmaalayaasha app-kooda Ingiriis yahay ({{count}})",
+        "so": "Isticmaalayaasha app-kooda Soomaali yahay ({{count}})"
+      },
+      "push": "Sidoo kale u dir ogeysiis taleefannadooda (kaliya kuwa oggolaaday)",
+      "send": "Dir",
+      "sending": "Waa la dirayaa…",
+      "confirm": "Ma u diraysaa \"{{title}}\" {{count}} isticmaale? Dib looma soo celin karo.",
+      "confirmYes": "Haa, dir",
+      "cancel": "Jooji",
+      "sent": "Waxaa loo diray {{count}} isticmaale.",
+      "missing": "Ku qor cinwaanka iyo fariinta labada luqadoodba.",
+      "tooLong": "Qoraal ayaa aad u dheer.",
+      "historyTitle": "Ogeysiisyada la diray",
+      "columns": {
+        "when": "Goorma",
+        "title": "Cinwaan",
+        "audience": "Loo diray",
+        "recipients": "Helay",
+        "read": "Akhriyay",
+        "push": "Ogeysiis taleefan",
+        "by": "Qofka diray"
+      },
+      "audienceShort": {
+        "all": "Dhammaan",
+        "en": "Ingiriis",
+        "so": "Soomaali"
+      },
+      "pushYes": "{{count}} taleefan",
+      "pushNo": "Ogeysiis taleefan lama dirin",
+      "empty": "Weli ogeysiis lama dirin.",
+      "error": "Ogeysiisyada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale"
     },
     "sources": {
       "title": "Ilaha shaqooyinka",
