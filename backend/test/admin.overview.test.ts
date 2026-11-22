@@ -6,7 +6,11 @@ import mongoose from 'mongoose';
 import { createApp } from '../src/app.js';
 import { RUN_ID } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
+import { Assessment } from '../src/models/Assessment.js';
+import { Cv } from '../src/models/Cv.js';
+import { ResearchRun } from '../src/models/ResearchRun.js';
 import { User } from '../src/models/User.js';
+import { Waitlist } from '../src/models/Waitlist.js';
 import { getOverview } from '../src/services/overviewService.js';
 import { promoteToAdmin } from '../src/services/userService.js';
 
@@ -148,4 +152,32 @@ test('the period defaults to week and must be day, week, month or year', async (
 test('a non-admin cannot read the overview (403)', async () => {
   const token = await signIn('seeker@overview.invalid', false);
   assert.equal((await overview(token)).status, 403);
+});
+
+test('TIQ-35: activity in the period (quizzes, CVs, searches, failed searches) and the waitlist', async () => {
+  const userId = new mongoose.Types.ObjectId();
+  await Assessment.collection.insertMany([
+    { userId, status: 'finished', finishedAt: ago(HOUR), createdAt: ago(2 * HOUR) },
+    { userId, status: 'finished', finishedAt: ago(10 * DAY), createdAt: ago(10 * DAY) },
+    { userId, status: 'in_progress', createdAt: ago(HOUR) },
+  ]);
+  await Cv.collection.insertMany([
+    { userId, version: 1, createdAt: ago(3 * HOUR) },
+    { userId, version: 2, createdAt: ago(40 * DAY) },
+  ]);
+  await ResearchRun.collection.insertMany([
+    { userId, status: 'completed', createdAt: ago(HOUR) },
+    { userId, status: 'failed', createdAt: ago(2 * HOUR) },
+    { userId, status: 'failed', createdAt: ago(9 * DAY) },
+  ]);
+  await Waitlist.collection.insertMany([
+    { email: 'a@wait.invalid', language: 'en', consentAt: now, createdAt: now },
+    { email: 'b@wait.invalid', language: 'so', consentAt: now, createdAt: now },
+  ]);
+
+  const day = await getOverview('day', new Date());
+  assert.deepEqual(day.activity, { quizzesFinished: 1, cvsCreated: 1, runs: 2, runsFailed: 1 });
+  assert.equal(day.waitlist, 2);
+  const month = await getOverview('month', new Date());
+  assert.deepEqual(month.activity, { quizzesFinished: 2, cvsCreated: 1, runs: 3, runsFailed: 2 });
 });
