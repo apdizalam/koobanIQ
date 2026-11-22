@@ -287,6 +287,114 @@
     "state": "pending",
     "en": "On"
   },
+  "admin.cvs.all": {
+    "state": "pending",
+    "en": "All"
+  },
+  "admin.cvs.cards.approved": {
+    "state": "pending",
+    "en": "Approved"
+  },
+  "admin.cvs.cards.draft": {
+    "state": "pending",
+    "en": "Drafts"
+  },
+  "admin.cvs.cards.exported": {
+    "state": "pending",
+    "en": "Downloaded as PDF"
+  },
+  "admin.cvs.columns.created": {
+    "state": "pending",
+    "en": "Created"
+  },
+  "admin.cvs.columns.dates": {
+    "state": "pending",
+    "en": "Approved / downloaded"
+  },
+  "admin.cvs.columns.job": {
+    "state": "pending",
+    "en": "Job ad"
+  },
+  "admin.cvs.columns.language": {
+    "state": "pending",
+    "en": "CV language"
+  },
+  "admin.cvs.columns.missing": {
+    "state": "pending",
+    "en": "Missing info"
+  },
+  "admin.cvs.columns.status": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.cvs.columns.user": {
+    "state": "pending",
+    "en": "User"
+  },
+  "admin.cvs.columns.version": {
+    "state": "pending",
+    "en": "Version"
+  },
+  "admin.cvs.deletedUser": {
+    "state": "pending",
+    "en": "Deleted account"
+  },
+  "admin.cvs.empty": {
+    "state": "pending",
+    "en": "No CVs yet."
+  },
+  "admin.cvs.error": {
+    "state": "pending",
+    "en": "Could not load the CVs. Check that the backend is running."
+  },
+  "admin.cvs.missing_one": {
+    "state": "pending",
+    "en": "{{count}} item"
+  },
+  "admin.cvs.missing_other": {
+    "state": "pending",
+    "en": "{{count}} items"
+  },
+  "admin.cvs.none": {
+    "state": "pending",
+    "en": "—"
+  },
+  "admin.cvs.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.cvs.statusFilter": {
+    "state": "pending",
+    "en": "Status"
+  },
+  "admin.cvs.statuses.approved": {
+    "state": "pending",
+    "en": "Approved"
+  },
+  "admin.cvs.statuses.draft": {
+    "state": "pending",
+    "en": "Draft"
+  },
+  "admin.cvs.statuses.exported": {
+    "state": "pending",
+    "en": "Downloaded"
+  },
+  "admin.cvs.subtitle": {
+    "state": "pending",
+    "en": "The status of every CV users generated. Read-only: the CV text itself is the user's and is never shown here."
+  },
+  "admin.cvs.title": {
+    "state": "pending",
+    "en": "CVs"
+  },
+  "admin.cvs.unknownJob": {
+    "state": "pending",
+    "en": "Job ad without a title"
+  },
+  "admin.cvs.version": {
+    "state": "pending",
+    "en": "v{{version}}"
+  },
   "admin.errors.generic": {
     "state": "pending",
     "en": "Something went wrong. Please try again."
