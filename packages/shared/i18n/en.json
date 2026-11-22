@@ -550,6 +550,49 @@
       },
       "deletedUser": "Deleted account"
     },
+    "reports": {
+      "title": "Reports",
+      "subtitle": "Download data as CSV files (open them in Excel or Google Sheets). Files can contain emails: keep them safe. Every download is written to the audit log.",
+      "periodLabel": "Created in",
+      "periods": {
+        "day": "Last 24 hours",
+        "week": "Last 7 days",
+        "month": "Last 30 days",
+        "year": "Last 365 days",
+        "all": "All time"
+      },
+      "kinds": {
+        "users": {
+          "label": "Users",
+          "note": "Email, role, status, language, joined, last active."
+        },
+        "usage": {
+          "label": "AI usage",
+          "note": "Each AI request: user, feature, result, tokens."
+        },
+        "runs": {
+          "label": "Research runs",
+          "note": "Each job search: user, how it started, sources, results, errors."
+        },
+        "jobs": {
+          "label": "Jobs",
+          "note": "Stored jobs: title, employer, place, sources, deadline, state."
+        },
+        "cvs": {
+          "label": "CVs",
+          "note": "Status only: user, job ad, language, version, dates. Never the CV text."
+        },
+        "quizzes": {
+          "label": "Skill quizzes",
+          "note": "Each quiz: user, skill, status, score, level, flags."
+        }
+      },
+      "download": "Download CSV",
+      "downloading": "Preparing…",
+      "done_one": "{{file}}: {{count}} row downloaded.",
+      "done_other": "{{file}}: {{count}} rows downloaded.",
+      "truncated": "Only the newest 10,000 rows are in the file. Choose a shorter period for the rest."
+    },
     "audit": {
       "title": "Audit log",
       "subtitle": "Every change an admin made, and every blocked attempt to open the admin area.",
@@ -582,7 +625,8 @@
         "assessment_unflag_question": "Removed a question flag",
         "job_remove": "Removed a job",
         "job_restore": "Restored a job",
-        "job_remove_expired": "Removed expired jobs"
+        "job_remove_expired": "Removed expired jobs",
+        "report_export": "Downloaded a report"
       },
       "deleted": "Account deleted",
       "noChange": "—",
