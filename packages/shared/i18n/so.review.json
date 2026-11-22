@@ -1443,6 +1443,14 @@
     "state": "pending",
     "en": "Email, role, status, language, joined, last active."
   },
+  "admin.reports.kinds.waitlist.label": {
+    "state": "pending",
+    "en": "Waitlist"
+  },
+  "admin.reports.kinds.waitlist.note": {
+    "state": "pending",
+    "en": "People who asked on the landing page to hear when the app is out: email, name, language, joined."
+  },
   "admin.reports.periodLabel": {
     "state": "pending",
     "en": "Created in"

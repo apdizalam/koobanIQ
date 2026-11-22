@@ -3,7 +3,15 @@ import type { AuthState } from '../auth/authContext';
 type Request = AuthState['request'];
 
 /** Backend services/adminExportService.ts (TIQ-33). */
-export const EXPORT_KINDS = ['users', 'usage', 'runs', 'jobs', 'cvs', 'quizzes'] as const;
+export const EXPORT_KINDS = [
+  'users',
+  'usage',
+  'runs',
+  'jobs',
+  'cvs',
+  'quizzes',
+  'waitlist',
+] as const;
 export type ExportKind = (typeof EXPORT_KINDS)[number];
 export const EXPORT_PERIODS = ['day', 'week', 'month', 'year', 'all'] as const;
 export type ExportPeriod = (typeof EXPORT_PERIODS)[number];

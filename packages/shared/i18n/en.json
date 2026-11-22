@@ -588,6 +588,10 @@
         "quizzes": {
           "label": "Skill quizzes",
           "note": "Each quiz: user, skill, status, score, level, flags."
+        },
+        "waitlist": {
+          "label": "Waitlist",
+          "note": "People who asked on the landing page to hear when the app is out: email, name, language, joined."
         }
       },
       "download": "Download CSV",

@@ -588,6 +588,10 @@
         "quizzes": {
           "label": "Imtixaannada xirfadda",
           "note": "Imtixaan kasta: isticmaale, xirfad, xaalad, dhibco, heer, calaamado."
+        },
+        "waitlist": {
+          "label": "Liiska sugitaanka",
+          "note": "Dadka bogga hore ka codsaday in loo sheego marka app-ku soo baxo: iimayl, magac, luqad, goorta ay ku biireen."
         }
       },
       "download": "Soo deji CSV",
