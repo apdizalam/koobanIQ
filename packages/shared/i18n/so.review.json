@@ -3275,6 +3275,10 @@
     "state": "pending",
     "en": "Remove from saved"
   },
+  "mobile.notifications.announcement": {
+    "state": "pending",
+    "en": "Announcement"
+  },
   "mobile.notifications.bell_one": {
     "state": "pending",
     "en": "Notifications, {{count}} new"

@@ -61,6 +61,12 @@ export async function getPushToken(): Promise<string | null> {
   }
 }
 
+/** A tapped push about an announcement (TIQ-33): the app opens the notifications list. */
+export function isAnnouncementPush(response: Notifications.NotificationResponse | null): boolean {
+  const data = response?.notification.request.content.data as { type?: unknown } | undefined;
+  return data?.type === 'announcement';
+}
+
 /** The job a tapped notification is about (data.jobId), if any. */
 export function jobIdOf(response: Notifications.NotificationResponse | null): string | null {
   const data = response?.notification.request.content.data as { jobId?: unknown } | undefined;

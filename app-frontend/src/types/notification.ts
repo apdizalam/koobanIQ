@@ -1,5 +1,5 @@
-/** In-app notifications (TIQ-22), as GET /notifications returns them. */
-export interface AppNotification {
+/** A new strong job match (TIQ-22): tapping it opens the job. */
+export interface StrongMatchNotification {
   id: string;
   type: 'strong_match';
   jobId: string;
@@ -8,6 +8,19 @@ export interface AppNotification {
   read: boolean;
   createdAt: string;
 }
+
+/** An admin announcement (TIQ-33), written in both languages; the app shows its own. */
+export interface AnnouncementNotification {
+  id: string;
+  type: 'announcement';
+  jobId: null;
+  message: { title: { en: string; so: string }; body: { en: string; so: string } };
+  read: boolean;
+  createdAt: string;
+}
+
+/** In-app notifications, as GET /notifications returns them. */
+export type AppNotification = StrongMatchNotification | AnnouncementNotification;
 
 export interface NotificationSettings {
   push: boolean;

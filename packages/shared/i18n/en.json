@@ -1520,7 +1520,8 @@
       "emptyTitle": "No notifications yet",
       "emptyBody": "When a job search finds a new job that fits you well, it appears here.",
       "readAll": "Mark all as read",
-      "strongMatch": "Strong match · {{score}}%"
+      "strongMatch": "Strong match · {{score}}%",
+      "announcement": "Announcement"
     }
   }
 }
