@@ -1886,6 +1886,64 @@
           "title": "Codso adigoo wata CV kuu gaar ah",
           "body": "Geli xayeysiis shaqo oo hel CV loogu talagalay, Ingiriis ama Soomaali. Waad hubinaysaa ka hor intaadan isticmaalin."
         }
+      },
+      "screens": {
+        "example": "Shaashad tusaale ah",
+        "profile": {
+          "title": "Profile-ka xirfadaha",
+          "assessed": "La qiimeeyay",
+          "self": "Is-sheegid",
+          "gaps": "Daldaloolo",
+          "group": "Xog iyo warbixin",
+          "chip1": "Excel · Horumarsan",
+          "chip2": "La socodka iyo qiimaynta · Dhexe",
+          "chip3": "Qorista warbixinta",
+          "chip4": "SQL",
+          "hint": "Xaqiiji SQL? 4 ka mid ah shaqooyinkaaga la keydiyay ayaa weydiinaya."
+        },
+        "verify": {
+          "skill": "Excel",
+          "progress": "4 / 10",
+          "hard": "Adag",
+          "adapted": "Heerka adkaanta waa la habeeyay",
+          "question": "Qaaciddadee ayaa isu geynaysa qiimayaasha B2:B10 kaliya halka tiirka A ku qoran yahay \"Hargeisa\"?",
+          "a": "=SUM(B2:B10)",
+          "b": "=SUMIF(A2:A10, \"Hargeisa\", B2:B10)",
+          "c": "=COUNT(A2:A10)",
+          "d": "=AVERAGE(B2:B10)",
+          "note": "Natiijooyinka imtixaanku waxay cabbiraan aqoonta, ma aha caddayn khibradeed.",
+          "next": "Su'aasha xigta"
+        },
+        "jobs": {
+          "title": "Shaqooyin",
+          "search": "Raadi cinwaan, loo shaqeeye, xirfad",
+          "all": "Dhammaan 12",
+          "strong": "Xooggan 3",
+          "good": "Wanaagsan 5",
+          "job1": "Sarkaalka Xogta",
+          "org1": "Hay'adda Gargaarka Tusaalaha",
+          "place1": "Hargeisa · Waqti buuxa",
+          "match1": "Ku habboonaan xooggan · 82%",
+          "why1": "Waxay la jaanqaadaysaa 5 ka mid ah 6 xirfadood oo muhiim ah. Maqan: SQL.",
+          "job2": "Kaaliyaha La Socodka iyo Qiimaynta",
+          "org2": "Hay'adda Caafimaadka Tusaalaha",
+          "place2": "Muqdisho · Waqti buuxa",
+          "match2": "Ku habboonaan wanaagsan · 71%"
+        },
+        "apply": {
+          "title": "CV-gaaga",
+          "language": "English",
+          "other": "Soomaali",
+          "name": "Amina Hassan",
+          "headline": "Sarkaalka Xogta",
+          "summaryTitle": "Soo koobid",
+          "summary": "Laba sano oo uruurinta iyo warbixinta xogta barnaamijyada hay'adaha Somaliland, oo leh xirfad Excel oo la xaqiijiyay.",
+          "skillsTitle": "Xirfadaha",
+          "skills": "Excel · La socodka iyo qiimaynta · Qorista warbixinta",
+          "missing": "1 shay oo la hubiyo: lambarka taleefankaaga",
+          "approve": "Ansixi CV-ga",
+          "pdf": "Soo deji PDF"
+        }
       }
     },
     "features": {

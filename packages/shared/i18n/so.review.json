@@ -2687,6 +2687,198 @@
     "state": "pending",
     "en": "Know your skills.\nFind your opportunity."
   },
+  "landing.how.screens.apply.approve": {
+    "state": "pending",
+    "en": "Approve CV"
+  },
+  "landing.how.screens.apply.headline": {
+    "state": "pending",
+    "en": "Data Officer"
+  },
+  "landing.how.screens.apply.language": {
+    "state": "pending",
+    "en": "English"
+  },
+  "landing.how.screens.apply.missing": {
+    "state": "pending",
+    "en": "1 thing to check: your phone number"
+  },
+  "landing.how.screens.apply.name": {
+    "state": "pending",
+    "en": "Amina Hassan"
+  },
+  "landing.how.screens.apply.other": {
+    "state": "pending",
+    "en": "Soomaali"
+  },
+  "landing.how.screens.apply.pdf": {
+    "state": "pending",
+    "en": "Download PDF"
+  },
+  "landing.how.screens.apply.skills": {
+    "state": "pending",
+    "en": "Excel · Monitoring and evaluation · Report writing"
+  },
+  "landing.how.screens.apply.skillsTitle": {
+    "state": "pending",
+    "en": "Skills"
+  },
+  "landing.how.screens.apply.summary": {
+    "state": "pending",
+    "en": "Two years collecting and reporting programme data for NGOs in Somaliland, with verified Excel skills."
+  },
+  "landing.how.screens.apply.summaryTitle": {
+    "state": "pending",
+    "en": "Summary"
+  },
+  "landing.how.screens.apply.title": {
+    "state": "pending",
+    "en": "Your CV"
+  },
+  "landing.how.screens.example": {
+    "state": "pending",
+    "en": "Example screen"
+  },
+  "landing.how.screens.jobs.all": {
+    "state": "pending",
+    "en": "All 12"
+  },
+  "landing.how.screens.jobs.good": {
+    "state": "pending",
+    "en": "Good 5"
+  },
+  "landing.how.screens.jobs.job1": {
+    "state": "pending",
+    "en": "Data Officer"
+  },
+  "landing.how.screens.jobs.job2": {
+    "state": "pending",
+    "en": "M&E Assistant"
+  },
+  "landing.how.screens.jobs.match1": {
+    "state": "pending",
+    "en": "Strong match · 82%"
+  },
+  "landing.how.screens.jobs.match2": {
+    "state": "pending",
+    "en": "Good match · 71%"
+  },
+  "landing.how.screens.jobs.org1": {
+    "state": "pending",
+    "en": "Example Relief Org"
+  },
+  "landing.how.screens.jobs.org2": {
+    "state": "pending",
+    "en": "Example Health NGO"
+  },
+  "landing.how.screens.jobs.place1": {
+    "state": "pending",
+    "en": "Hargeisa · Full-time"
+  },
+  "landing.how.screens.jobs.place2": {
+    "state": "pending",
+    "en": "Mogadishu · Full-time"
+  },
+  "landing.how.screens.jobs.search": {
+    "state": "pending",
+    "en": "Search title, employer, skill"
+  },
+  "landing.how.screens.jobs.strong": {
+    "state": "pending",
+    "en": "Strong 3"
+  },
+  "landing.how.screens.jobs.title": {
+    "state": "pending",
+    "en": "Jobs"
+  },
+  "landing.how.screens.jobs.why1": {
+    "state": "pending",
+    "en": "Matches 5 of 6 essential skills. Missing: SQL."
+  },
+  "landing.how.screens.profile.assessed": {
+    "state": "pending",
+    "en": "Assessed"
+  },
+  "landing.how.screens.profile.chip1": {
+    "state": "pending",
+    "en": "Excel · Advanced"
+  },
+  "landing.how.screens.profile.chip2": {
+    "state": "pending",
+    "en": "Monitoring and evaluation · Mid"
+  },
+  "landing.how.screens.profile.chip3": {
+    "state": "pending",
+    "en": "Report writing"
+  },
+  "landing.how.screens.profile.chip4": {
+    "state": "pending",
+    "en": "SQL"
+  },
+  "landing.how.screens.profile.gaps": {
+    "state": "pending",
+    "en": "Gaps found"
+  },
+  "landing.how.screens.profile.group": {
+    "state": "pending",
+    "en": "Data and reporting"
+  },
+  "landing.how.screens.profile.hint": {
+    "state": "pending",
+    "en": "Verify SQL? 4 of your saved jobs ask for it."
+  },
+  "landing.how.screens.profile.self": {
+    "state": "pending",
+    "en": "Self-reported"
+  },
+  "landing.how.screens.profile.title": {
+    "state": "pending",
+    "en": "Skill profile"
+  },
+  "landing.how.screens.verify.a": {
+    "state": "pending",
+    "en": "=SUM(B2:B10)"
+  },
+  "landing.how.screens.verify.adapted": {
+    "state": "pending",
+    "en": "Difficulty adapted"
+  },
+  "landing.how.screens.verify.b": {
+    "state": "pending",
+    "en": "=SUMIF(A2:A10, \"Hargeisa\", B2:B10)"
+  },
+  "landing.how.screens.verify.c": {
+    "state": "pending",
+    "en": "=COUNT(A2:A10)"
+  },
+  "landing.how.screens.verify.d": {
+    "state": "pending",
+    "en": "=AVERAGE(B2:B10)"
+  },
+  "landing.how.screens.verify.hard": {
+    "state": "pending",
+    "en": "Hard"
+  },
+  "landing.how.screens.verify.next": {
+    "state": "pending",
+    "en": "Next question"
+  },
+  "landing.how.screens.verify.note": {
+    "state": "pending",
+    "en": "Quiz results measure knowledge, not proof of experience."
+  },
+  "landing.how.screens.verify.progress": {
+    "state": "pending",
+    "en": "4 / 10"
+  },
+  "landing.how.screens.verify.question": {
+    "state": "pending",
+    "en": "Which formula adds the values in B2:B10 only where column A says \"Hargeisa\"?"
+  },
+  "landing.how.screens.verify.skill": {
+    "state": "pending",
+    "en": "Excel"
+  },
   "landing.how.steps.apply.body": {
     "state": "pending",
     "en": "Paste a job ad and get a CV written for it, in English or Somali. You check it before you use it."

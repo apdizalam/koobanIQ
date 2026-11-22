@@ -1886,6 +1886,64 @@
           "title": "Apply with a tailored CV",
           "body": "Paste a job ad and get a CV written for it, in English or Somali. You check it before you use it."
         }
+      },
+      "screens": {
+        "example": "Example screen",
+        "profile": {
+          "title": "Skill profile",
+          "assessed": "Assessed",
+          "self": "Self-reported",
+          "gaps": "Gaps found",
+          "group": "Data and reporting",
+          "chip1": "Excel · Advanced",
+          "chip2": "Monitoring and evaluation · Mid",
+          "chip3": "Report writing",
+          "chip4": "SQL",
+          "hint": "Verify SQL? 4 of your saved jobs ask for it."
+        },
+        "verify": {
+          "skill": "Excel",
+          "progress": "4 / 10",
+          "hard": "Hard",
+          "adapted": "Difficulty adapted",
+          "question": "Which formula adds the values in B2:B10 only where column A says \"Hargeisa\"?",
+          "a": "=SUM(B2:B10)",
+          "b": "=SUMIF(A2:A10, \"Hargeisa\", B2:B10)",
+          "c": "=COUNT(A2:A10)",
+          "d": "=AVERAGE(B2:B10)",
+          "note": "Quiz results measure knowledge, not proof of experience.",
+          "next": "Next question"
+        },
+        "jobs": {
+          "title": "Jobs",
+          "search": "Search title, employer, skill",
+          "all": "All 12",
+          "strong": "Strong 3",
+          "good": "Good 5",
+          "job1": "Data Officer",
+          "org1": "Example Relief Org",
+          "place1": "Hargeisa · Full-time",
+          "match1": "Strong match · 82%",
+          "why1": "Matches 5 of 6 essential skills. Missing: SQL.",
+          "job2": "M&E Assistant",
+          "org2": "Example Health NGO",
+          "place2": "Mogadishu · Full-time",
+          "match2": "Good match · 71%"
+        },
+        "apply": {
+          "title": "Your CV",
+          "language": "English",
+          "other": "Soomaali",
+          "name": "Amina Hassan",
+          "headline": "Data Officer",
+          "summaryTitle": "Summary",
+          "summary": "Two years collecting and reporting programme data for NGOs in Somaliland, with verified Excel skills.",
+          "skillsTitle": "Skills",
+          "skills": "Excel · Monitoring and evaluation · Report writing",
+          "missing": "1 thing to check: your phone number",
+          "approve": "Approve CV",
+          "pdf": "Download PDF"
+        }
       }
     },
     "features": {
