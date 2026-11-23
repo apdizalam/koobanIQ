@@ -12,6 +12,7 @@
     "db:check": "tsx src/scripts/db-check.ts",
     "admin:promote": "tsx src/scripts/make-admin.ts",
     "ai:check": "tsx src/scripts/ai-check.ts",
+    "health": "tsx src/scripts/health.ts",
     "ai:check:jd": "tsx test/live/jdLiveCheck.ts",
     "ai:check:cv": "tsx test/live/cvLiveCheck.ts",
     "ai:check:quiz": "tsx test/live/quizLiveCheck.ts",
