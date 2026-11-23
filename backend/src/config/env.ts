@@ -45,6 +45,12 @@ function readAccessSecret(): string {
 export const env = {
   nodeEnv,
   port: Number(process.env.PORT ?? 5000),
+  /**
+   * Proxies in front of the server (Render and most hosts add one). With 1 the
+   * server reads the visitor's real address from the proxy, so per-address limits
+   * and audit records see real visitors, not the proxy. 0 when run directly.
+   */
+  trustProxy: Number(process.env.TRUST_PROXY ?? 0),
   // MONGODB_URI is the documented name; MONGO_URI is accepted for existing local .env files.
   mongoUri: process.env.MONGODB_URI ?? process.env.MONGO_URI ?? '',
   mongoDbName: process.env.MONGODB_DB_NAME ?? defaultDbName[nodeEnv],

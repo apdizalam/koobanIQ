@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { env } from './config/env.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { notFound } from './middleware/notFound.js';
 import { adminRouter } from './routes/admin.js';
@@ -20,6 +21,8 @@ import { waitlistRouter } from './routes/waitlist.js';
 
 export function createApp() {
   const app = express();
+  // Behind the host's proxy (TRUST_PROXY=1 on Render), req.ip is the real visitor.
+  if (env.trustProxy > 0) app.set('trust proxy', env.trustProxy);
 
   app.use(cors());
   // Job descriptions may carry a PDF (max 5 MB, base64); every other route keeps the 100 KB default.
