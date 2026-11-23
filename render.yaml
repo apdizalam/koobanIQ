@@ -13,7 +13,9 @@ services:
     # Deploy only after GitHub CI has passed on main.
     autoDeployTrigger: checksPass
     # Install only the server's packages (not the mobile app), then compile it.
-    buildCommand: npm ci --include=dev --workspace backend && npm run build --workspace backend
+    # --ignore-scripts: skips the repo's git-hook setup (husky), which is not
+    # installed here; the server's packages need no install scripts.
+    buildCommand: npm ci --include=dev --ignore-scripts --workspace backend && npm run build --workspace backend
     startCommand: npm run start --workspace backend
     healthCheckPath: /api/v1/health
     buildFilter:
