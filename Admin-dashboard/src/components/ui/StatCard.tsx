@@ -23,18 +23,3 @@ export function StatCard({ label, value, hint }: StatCardProps) {
     </article>
   );
 }
-
-interface SoonCardProps {
-  label: string;
-  note: string;
-}
-
-/** A KPI that cannot be counted yet because its feature is not built. */
-export function SoonCard({ label, note }: SoonCardProps) {
-  return (
-    <article className="stat-card stat-card-soon">
-      <p className="stat-label">{label}</p>
-      <p className="stat-hint">{note}</p>
-    </article>
-  );
-}

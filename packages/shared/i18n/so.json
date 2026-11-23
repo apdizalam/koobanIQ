@@ -248,29 +248,15 @@
       "empty": "Weli isticmaalayaal ma jiraan. Tirooyinku halkan ayay ka muuqan doonaan marka dadku is diiwaangeliyaan.",
       "error": "Tirooyinka lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
       "retry": "Isku day mar kale",
-      "soonTitle": "Waxay la imaan doonaan hawlaha dambe",
-      "soon": {
-        "assessments": {
-          "label": "Qiimaynta",
-          "note": "Waa la tirin doonaa marka qiimayntu jirto (TIQ-13)."
-        },
-        "cvs": {
-          "label": "CV-yada",
-          "note": "Waa la tirin doonaa marka samaynta CV-ga la dhiso (TIQ-9)."
-        },
-        "runs": {
-          "label": "Baadhitaannada",
-          "note": "Waa la tirin doonaa marka baadhitaannada shaqooyinku jiraan (TIQ-16)."
-        },
-        "failedJobs": {
-          "label": "Hawlaha fashilmay",
-          "note": "Waa la tirin doonaa marka hawlaha gadaasha jiraan (TIQ-16)."
-        },
-        "aiUsage": {
-          "label": "Isticmaalka AI-ga",
-          "note": "Waa la tirin doonaa marka la socodka isticmaalku jiro (TIQ-23)."
-        }
-      }
+      "activityTitle": "Hawlaha",
+      "activity": {
+        "quizzesFinished": "Imtixaannada xirfadda ee dhammaaday",
+        "cvsCreated": "CV-yada la sameeyay",
+        "runs": "Raadinta shaqooyinka",
+        "runsFailed": "Raadinnada shaqo ee fashilmay",
+        "waitlist": "Is-diiwaangelinta liiska sugitaanka"
+      },
+      "waitlistHint": "bogga hore, waqti kasta"
     },
     "users": {
       "title": "Isticmaalayaasha",

@@ -839,6 +839,30 @@
     "state": "pending",
     "en": "Soon"
   },
+  "admin.overview.activity.cvsCreated": {
+    "state": "pending",
+    "en": "CVs created"
+  },
+  "admin.overview.activity.quizzesFinished": {
+    "state": "pending",
+    "en": "Skill quizzes finished"
+  },
+  "admin.overview.activity.runs": {
+    "state": "pending",
+    "en": "Job searches"
+  },
+  "admin.overview.activity.runsFailed": {
+    "state": "pending",
+    "en": "Failed job searches"
+  },
+  "admin.overview.activity.waitlist": {
+    "state": "pending",
+    "en": "Waitlist sign-ups"
+  },
+  "admin.overview.activityTitle": {
+    "state": "pending",
+    "en": "Activity"
+  },
   "admin.overview.cards.activeUsers": {
     "state": "pending",
     "en": "Active users"
@@ -915,50 +939,6 @@
     "state": "pending",
     "en": "Try again"
   },
-  "admin.overview.soon.aiUsage.label": {
-    "state": "pending",
-    "en": "AI usage"
-  },
-  "admin.overview.soon.aiUsage.note": {
-    "state": "pending",
-    "en": "Counted once usage tracking exists (TIQ-23)."
-  },
-  "admin.overview.soon.assessments.label": {
-    "state": "pending",
-    "en": "Assessments"
-  },
-  "admin.overview.soon.assessments.note": {
-    "state": "pending",
-    "en": "Counted once assessments exist (TIQ-13)."
-  },
-  "admin.overview.soon.cvs.label": {
-    "state": "pending",
-    "en": "CVs"
-  },
-  "admin.overview.soon.cvs.note": {
-    "state": "pending",
-    "en": "Counted once CV generation exists (TIQ-9)."
-  },
-  "admin.overview.soon.failedJobs.label": {
-    "state": "pending",
-    "en": "Failed jobs"
-  },
-  "admin.overview.soon.failedJobs.note": {
-    "state": "pending",
-    "en": "Counted once background jobs exist (TIQ-16)."
-  },
-  "admin.overview.soon.runs.label": {
-    "state": "pending",
-    "en": "Research runs"
-  },
-  "admin.overview.soon.runs.note": {
-    "state": "pending",
-    "en": "Counted once job research runs exist (TIQ-16)."
-  },
-  "admin.overview.soonTitle": {
-    "state": "pending",
-    "en": "Coming with later tasks"
-  },
   "admin.overview.subtitle": {
     "state": "pending",
     "en": "Live numbers from the database."
@@ -970,6 +950,10 @@
   "admin.overview.updatedAt": {
     "state": "pending",
     "en": "Updated {{time}}."
+  },
+  "admin.overview.waitlistHint": {
+    "state": "pending",
+    "en": "from the landing page, all time"
   },
   "admin.privacy.allowedExplain": {
     "state": "pending",
