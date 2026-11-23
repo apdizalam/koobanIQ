@@ -92,7 +92,9 @@
       "SCHEDULE_LIMIT": "You can keep up to 5 scheduled searches. Delete one first",
       "NOTIFICATION_NOT_FOUND": "Notification not found",
       "WAITLIST_EXISTS": "This email is already on the waitlist. We will write to you when the app is out.",
-      "TOO_MANY_REQUESTS": "Too many tries. Please wait a while and try again."
+      "TOO_MANY_REQUESTS": "Too many tries. Please wait a while and try again.",
+      "GOOGLE_SIGN_IN_FAILED": "Google sign-in failed. Please try again.",
+      "AGE_CONFIRM_REQUIRED": "Confirm that you are 18 or older to create an account."
     },
     "validation": {
       "emailInvalid": "Enter a valid email address",
@@ -174,6 +176,10 @@
         "intro": "Your job search found new jobs that fit your profile well:",
         "footer": "Open KOBANIQ to see why they fit and to apply on the employer’s site. You can turn these emails off in the app (Profile → Notifications)."
       }
+    },
+    "google": {
+      "expiredTitle": "This sign-in has expired",
+      "expiredBody": "Go back to the KOBANIQ app and press Continue with Google again."
     }
   },
   "admin": {
@@ -1090,9 +1096,6 @@
         "tooManyAttempts": "Too many wrong codes. Ask for a new one.",
         "ageRequired": "KOBANIQ is for adults. Tick the box to confirm you are 18 or older."
       },
-      "later": {
-        "google": "Google sign-in arrives in a later update."
-      },
       "restoring": "Checking your sign-in…",
       "verify": {
         "title": "Check your email",
@@ -1118,6 +1121,15 @@
         "newPassword": "New password",
         "submit": "Save new password",
         "submitting": "Saving…"
+      },
+      "google": {
+        "working": "Opening Google…",
+        "cancelled": "Google sign-in was cancelled.",
+        "failed": "Google sign-in failed. Please try again.",
+        "notConfigured": "Google sign-in is not set up yet.",
+        "ageTitle": "One more step",
+        "ageBody": "This Google account is new to KOBANIQ. Confirm your age to create your account.",
+        "ageContinue": "Create account"
       }
     },
     "tabs": {

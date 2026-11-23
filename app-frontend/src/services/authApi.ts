@@ -42,3 +42,14 @@ export const forgotPassword = (email: string) =>
 /** Sets a new password with the emailed code; every existing session is ended. */
 export const resetPassword = (email: string, code: string, password: string) =>
   apiRequest<void>('/auth/reset', { method: 'POST', body: { email, code, password } });
+
+/**
+ * Finishes "Continue with Google" (TIQ-39) with the one-time code from the return
+ * link. A Google account new to KOBANIQ needs `ageConfirmed` (the server answers
+ * AGE_CONFIRM_REQUIRED and keeps the code so the app can ask and send it again).
+ */
+export const googleComplete = (code: string, preferredLanguage: Language, ageConfirmed?: true) =>
+  apiRequest<Session>('/auth/google/complete', {
+    method: 'POST',
+    body: { code, preferredLanguage, ...(ageConfirmed ? { ageConfirmed } : {}) },
+  });

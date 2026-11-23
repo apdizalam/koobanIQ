@@ -147,11 +147,7 @@ describe('Log in', () => {
     expect(i18n.language).toBe('so');
   });
 
-  it('Google says it comes later (Forgot password is tested in passwordReset.test.tsx)', async () => {
-    await renderApp('/login');
-    await press('login-google');
-    expect(screen.getByText('Google sign-in arrives in a later update.')).toBeTruthy();
-  });
+  // Google sign-in: googleSignIn.test.tsx. Forgot password: passwordReset.test.tsx.
 });
 
 describe('Sign up', () => {
