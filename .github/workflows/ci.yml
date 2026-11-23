@@ -50,6 +50,10 @@ jobs:
       - name: TypeScript typecheck (workspaces with a typecheck script)
         run: npm run typecheck
 
+      - name: Somali translations signed off (TIQ-36 release check)
+        # Fails while any Somali text is still pending the product owner's review.
+        run: npm run i18n:release -w @kobaniq/shared
+
       - name: Production builds (shared, backend, admin, landing)
         run: npm run build
 
