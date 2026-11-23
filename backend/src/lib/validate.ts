@@ -132,3 +132,36 @@ export function parseRefreshBody(body: unknown): { refreshToken: string } {
   }
   return { refreshToken: b.refreshToken };
 }
+
+/**
+ * Checks the "Continue with Google" finish body (TIQ-39): the one-time code from
+ * the return link, plus "I am 18 or older" and the language for a new account.
+ */
+export function parseGoogleCompleteBody(body: unknown): {
+  code: string;
+  ageConfirmed?: boolean;
+  preferredLanguage?: Language;
+} {
+  const b = (body ?? {}) as Record<string, unknown>;
+  const details: Record<string, string> = {};
+  if (typeof b.code !== 'string' || b.code.length < 20 || b.code.length > 200) {
+    details.code = 'codeInvalid';
+  }
+  if (b.ageConfirmed !== undefined && typeof b.ageConfirmed !== 'boolean') {
+    details.ageConfirmed = 'ageConfirmRequired';
+  }
+  if (
+    b.preferredLanguage !== undefined &&
+    !(LANGUAGES as readonly unknown[]).includes(b.preferredLanguage)
+  ) {
+    details.preferredLanguage = 'languageInvalid';
+  }
+  if (Object.keys(details).length > 0) {
+    throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', details);
+  }
+  return {
+    code: b.code as string,
+    ageConfirmed: b.ageConfirmed as boolean | undefined,
+    preferredLanguage: b.preferredLanguage as Language | undefined,
+  };
+}

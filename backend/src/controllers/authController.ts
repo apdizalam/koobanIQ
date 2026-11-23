@@ -1,6 +1,9 @@
 import type { Request, Response } from 'express';
+import { requestLanguage, translate } from '../lib/i18n.js';
+import { AppError } from '../lib/errors.js';
 import {
   parseEmailBody,
+  parseGoogleCompleteBody,
   parseLoginBody,
   parseRefreshBody,
   parseRegisterBody,
@@ -17,6 +20,12 @@ import {
   resetPassword,
   verifyEmail,
 } from '../services/authService.js';
+import {
+  completeGoogleSignIn,
+  finishGoogleCallback,
+  isAllowedReturnUrl,
+  startGoogleSignIn,
+} from '../services/googleAuthService.js';
 
 /** POST /api/v1/auth/register */
 export async function register(req: Request, res: Response) {
@@ -83,4 +92,41 @@ export async function forgot(req: Request, res: Response) {
 export async function reset(req: Request, res: Response) {
   await resetPassword(parseResetPasswordBody(req.body));
   res.status(204).end();
+}
+
+/** GET /api/v1/auth/google/start?returnUrl=<app link>: sends the browser to Google (TIQ-39). */
+export async function googleStart(req: Request, res: Response) {
+  const { returnUrl } = req.query;
+  if (!isAllowedReturnUrl(returnUrl)) {
+    throw new AppError(400, 'VALIDATION_ERROR', 'Some fields are invalid', {
+      returnUrl: 'urlInvalid',
+    });
+  }
+  res.redirect(302, await startGoogleSignIn(returnUrl));
+}
+
+/** GET /api/v1/auth/google/callback: Google sends the browser here; we send it on to the app. */
+export async function googleCallback(req: Request, res: Response) {
+  const appLink = await finishGoogleCallback(req.query);
+  if (appLink) {
+    res.redirect(302, appLink);
+    return;
+  }
+  // Unknown or expired attempt: there is no app link to go back to.
+  const language = requestLanguage(req);
+  const title = translate(language, 'server.google.expiredTitle') ?? 'Sign-in expired';
+  const body = translate(language, 'server.google.expiredBody') ?? 'Go back to the app.';
+  res
+    .status(400)
+    .type('html')
+    .send(
+      `<!doctype html><html lang="${language}"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KOBANIQ</title><body style="font-family:system-ui,sans-serif;padding:32px;max-width:480px;margin:auto"><h1 style="font-size:22px">${title}</h1><p>${body}</p></body></html>`,
+    );
+}
+
+/** POST /api/v1/auth/google/complete `{ code, ageConfirmed?, preferredLanguage? }` → session. */
+export async function googleComplete(req: Request, res: Response) {
+  const input = parseGoogleCompleteBody(req.body);
+  const result = await completeGoogleSignIn({ ...input, device: req.get('user-agent') });
+  res.status(200).json({ data: result, error: null, meta: {} });
 }

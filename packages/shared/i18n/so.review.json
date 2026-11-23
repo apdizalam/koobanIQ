@@ -3207,6 +3207,34 @@
     "state": "approved",
     "en": "Forgot your password?"
   },
+  "mobile.auth.google.ageBody": {
+    "state": "approved",
+    "en": "This Google account is new to KOBANIQ. Confirm your age to create your account."
+  },
+  "mobile.auth.google.ageContinue": {
+    "state": "approved",
+    "en": "Create account"
+  },
+  "mobile.auth.google.ageTitle": {
+    "state": "approved",
+    "en": "One more step"
+  },
+  "mobile.auth.google.cancelled": {
+    "state": "approved",
+    "en": "Google sign-in was cancelled."
+  },
+  "mobile.auth.google.failed": {
+    "state": "approved",
+    "en": "Google sign-in failed. Please try again."
+  },
+  "mobile.auth.google.notConfigured": {
+    "state": "approved",
+    "en": "Google sign-in is not set up yet."
+  },
+  "mobile.auth.google.working": {
+    "state": "approved",
+    "en": "Opening Google…"
+  },
   "mobile.auth.language.continue": {
     "state": "approved",
     "en": "Continue"
@@ -3218,10 +3246,6 @@
   "mobile.auth.language.title": {
     "state": "approved",
     "en": "Choose your language"
-  },
-  "mobile.auth.later.google": {
-    "state": "approved",
-    "en": "Google sign-in arrives in a later update."
   },
   "mobile.auth.login.createAccount": {
     "state": "approved",
@@ -5879,6 +5903,10 @@
     "state": "approved",
     "en": "This account is suspended"
   },
+  "server.errors.AGE_CONFIRM_REQUIRED": {
+    "state": "approved",
+    "en": "Confirm that you are 18 or older to create an account."
+  },
   "server.errors.AI_BAD_OUTPUT": {
     "state": "approved",
     "en": "The AI could not give a usable answer. Please try again"
@@ -5954,6 +5982,10 @@
   "server.errors.FORBIDDEN": {
     "state": "approved",
     "en": "You do not have access to this page"
+  },
+  "server.errors.GOOGLE_SIGN_IN_FAILED": {
+    "state": "approved",
+    "en": "Google sign-in failed. Please try again."
   },
   "server.errors.INTERNAL_ERROR": {
     "state": "approved",
@@ -6122,6 +6154,14 @@
   "server.errors.WAITLIST_EXISTS": {
     "state": "approved",
     "en": "This email is already on the waitlist. We will write to you when the app is out."
+  },
+  "server.google.expiredBody": {
+    "state": "approved",
+    "en": "Go back to the KOBANIQ app and press Continue with Google again."
+  },
+  "server.google.expiredTitle": {
+    "state": "approved",
+    "en": "This sign-in has expired"
   },
   "server.notifications.email.footer": {
     "state": "approved",

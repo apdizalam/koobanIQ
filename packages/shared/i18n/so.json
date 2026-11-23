@@ -92,7 +92,9 @@
       "SCHEDULE_LIMIT": "Waxaad heysan kartaa ilaa 5 raadin oo la qorsheeyay. Marka hore mid tirtir",
       "NOTIFICATION_NOT_FOUND": "Ogeysiiska lama helin",
       "WAITLIST_EXISTS": "Iimaylkan horey ayuu liiska sugitaanka ugu jiray. Waan kuu soo qori doonaa marka app-ku soo baxo.",
-      "TOO_MANY_REQUESTS": "Isku day badan. Fadlan wax yar sug oo mar kale isku day."
+      "TOO_MANY_REQUESTS": "Isku day badan. Fadlan wax yar sug oo mar kale isku day.",
+      "GOOGLE_SIGN_IN_FAILED": "Gelitaanka Google wuu fashilmay. Fadlan isku day mar kale.",
+      "AGE_CONFIRM_REQUIRED": "Xaqiiji inaad tahay 18 jir ama ka weyn si aad akoon u sameysato."
     },
     "validation": {
       "emailInvalid": "Geli iimayl sax ah",
@@ -174,6 +176,10 @@
         "intro": "Raadintaada shaqo waxay heshay shaqooyin cusub oo si fiican ugu habboon astaantaada:",
         "footer": "Fur KOBANIQ si aad u aragto sababta ay kuugu habboon yihiin oo aad uga codsato bogga shaqo-bixiyaha. Emaylladan waad ka joojin kartaa app-ka (Astaanta → Ogeysiisyada)."
       }
+    },
+    "google": {
+      "expiredTitle": "Gelitaankan waqtigiisii wuu dhacay",
+      "expiredBody": "Ku noqo app-ka KOBANIQ oo mar kale riix \"Ku sii wad Google\"."
     }
   },
   "admin": {
@@ -1090,9 +1096,6 @@
         "tooManyAttempts": "Koodh khaldan ayaa marar badan la geliyay. Codso mid cusub.",
         "ageRequired": "KOBANIQ waxaa loogu talagalay dadka waaweyn. Calaamadee sanduuqa si aad u xaqiijiso inaad tahay 18 jir ama ka weyn."
       },
-      "later": {
-        "google": "Ku-gelitaanka Google wuxuu imanayaa cusboonaysiin dambe."
-      },
       "restoring": "Waxaa la hubinayaa gelitaankaaga…",
       "verify": {
         "title": "Hubi iimaylkaaga",
@@ -1118,6 +1121,15 @@
         "newPassword": "Eray sir ah oo cusub",
         "submit": "Kaydi erayga sirta ah ee cusub",
         "submitting": "Waa la kaydinayaa…"
+      },
+      "google": {
+        "working": "Google waa la furayaa…",
+        "cancelled": "Gelitaanka Google waa la joojiyay.",
+        "failed": "Gelitaanka Google wuu fashilmay. Fadlan isku day mar kale.",
+        "notConfigured": "Gelitaanka Google weli lama diyaarin.",
+        "ageTitle": "Hal tallaabo oo kale",
+        "ageBody": "Akoonkan Google waa ku cusub yahay KOBANIQ. Xaqiiji da'daada si aad akoonkaaga u sameysato.",
+        "ageContinue": "Samee akoon"
       }
     },
     "tabs": {
