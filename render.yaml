@@ -1,0 +1,62 @@
+# KOBANIQ on Render (TIQ-25): the API for staging, on the free plan.
+# Render reads this file when you create a "Blueprint" from this repository.
+# Secrets (sync: false) are typed into Render's dashboard once; never commit them.
+# Free plan: the server sleeps after ~15 minutes without visitors and wakes on
+# the next request (about a minute); scheduled job searches pause while asleep.
+services:
+  - type: web
+    name: kobaniq-api-staging
+    runtime: node
+    plan: free
+    region: frankfurt
+    branch: main
+    # Deploy only after GitHub CI has passed on main.
+    autoDeployTrigger: checksPass
+    # Install only the server's packages (not the mobile app), then compile it.
+    buildCommand: npm ci --include=dev --workspace backend && npm run build --workspace backend
+    startCommand: npm run start --workspace backend
+    healthCheckPath: /api/v1/health
+    buildFilter:
+      paths:
+        - backend/**
+        - packages/shared/**
+        - package.json
+        - package-lock.json
+        - render.yaml
+    envVars:
+      - key: NODE_VERSION
+        value: '24'
+      - key: NODE_ENV
+        value: staging
+      - key: HUSKY
+        value: '0'
+      # Render puts a proxy in front of the server (real visitor addresses).
+      - key: TRUST_PROXY
+        value: '1'
+      - key: MONGODB_DB_NAME
+        value: kobaniq_staging
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: EMAIL_VERIFICATION_REQUIRED
+        value: 'false'
+      - key: NOTIFICATION_EMAILS_ENABLED
+        value: 'false'
+      - key: AI_PROVIDER
+        value: gemini
+      - key: GEMINI_MODEL
+        value: gemini-3.1-flash-lite
+      # Typed into the dashboard when the Blueprint is created:
+      - key: MONGODB_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        sync: false
