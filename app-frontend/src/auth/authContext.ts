@@ -19,6 +19,12 @@ export interface AuthState {
    * `ageConfirmed`: the user ticked "I am 18 or older".
    */
   signUp: (email: string, password: string, ageConfirmed: true) => Promise<void>;
+  /**
+   * Signs in with the one-time code from "Continue with Google" (TIQ-39). A new
+   * Google account is created in the current app language; it needs
+   * `ageConfirmed` ("I am 18 or older"), otherwise this throws AGE_CONFIRM_REQUIRED.
+   */
+  signInWithGoogle: (code: string, ageConfirmed?: true) => Promise<void>;
   signOut: () => Promise<void>;
   /**
    * A valid access token for API calls. Refreshes it (once, even if several

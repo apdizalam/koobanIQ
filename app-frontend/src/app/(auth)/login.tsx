@@ -1,9 +1,10 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { useAuth } from '../../auth/authContext';
 import { requestErrorKey, type RequestErrorKey } from '../../auth/errorKey';
+import { GoogleSignInButton } from '../../components/auth/GoogleSignInButton';
 import { AuthScreen } from '../../components/layout/AuthScreen';
 import { Button } from '../../components/ui/Button';
 import { FormMessage } from '../../components/ui/FormMessage';
@@ -14,7 +15,7 @@ import { check, loginSchema, type FieldErrors } from '../../utils/validation';
 
 type Notice =
   | { kind: 'error'; key: RequestErrorKey }
-  | { kind: 'info'; key: 'mobile.auth.later.google' | 'mobile.auth.login.passwordChanged' };
+  | { kind: 'info'; key: 'mobile.auth.login.passwordChanged' };
 
 /** Figma "03 · Log in": email, password, forgot password, Google, create an account. */
 export default function LoginScreen() {
@@ -122,24 +123,7 @@ export default function LoginScreen() {
         testID="login-submit"
       />
 
-      <View style={styles.orRow}>
-        <View style={[styles.line, { backgroundColor: colors.border }]} />
-        <Text style={[typography.bodySmall, { color: colors.textMuted }]}>
-          {t('mobile.auth.login.or')}
-        </Text>
-        <View style={[styles.line, { backgroundColor: colors.border }]} />
-      </View>
-      <Button
-        variant="secondary"
-        label={t('mobile.auth.login.google')}
-        onPress={() => setNotice({ kind: 'info', key: 'mobile.auth.later.google' })}
-        testID="login-google"
-      />
+      <GoogleSignInButton testID="login-google" disabled={busy} />
     </AuthScreen>
   );
 }
-
-const styles = StyleSheet.create({
-  orRow: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  line: { flex: 1, height: 1 },
-});

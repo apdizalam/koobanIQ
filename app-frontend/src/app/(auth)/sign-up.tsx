@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Text, View } from 'react-native';
 import { useAuth } from '../../auth/authContext';
 import { requestErrorKey, type RequestErrorKey } from '../../auth/errorKey';
+import { GoogleSignInButton } from '../../components/auth/GoogleSignInButton';
 import { AuthScreen } from '../../components/layout/AuthScreen';
 import { Button } from '../../components/ui/Button';
 import { Checkbox } from '../../components/ui/Checkbox';
@@ -139,6 +140,8 @@ export default function SignUpScreen() {
         loading={busy}
         testID="sign-up-submit"
       />
+
+      <GoogleSignInButton testID="sign-up-google" disabled={busy} />
     </AuthScreen>
   );
 }

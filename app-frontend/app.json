@@ -26,7 +26,8 @@
       "expo-localization",
       "expo-router",
       "expo-secure-store",
-      "expo-sharing"
+      "expo-sharing",
+      "expo-web-browser"
     ],
     "scheme": "kobaniq",
     "extra": {

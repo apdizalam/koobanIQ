@@ -3,6 +3,7 @@ import i18n from '../i18n';
 import { DEFAULT_LANGUAGE, isLanguage, type Language } from '../i18n/language';
 import { ApiError } from '../services/api';
 import {
+  googleComplete,
   login,
   logout,
   refresh,
@@ -150,6 +151,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     [start, currentLanguage],
   );
 
+  const signInWithGoogle = useCallback(
+    async (code: string, ageConfirmed?: true) =>
+      start(await googleComplete(code, currentLanguage(), ageConfirmed)),
+    [start, currentLanguage],
+  );
+
   const signOut = useCallback(async () => {
     const stored = await tokenStore.get();
     await clearLocal();
@@ -199,6 +206,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       signIn,
       signUp,
+      signInWithGoogle,
       signOut,
       getAccessToken,
       verifyEmail,
@@ -211,6 +219,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       user,
       signIn,
       signUp,
+      signInWithGoogle,
       signOut,
       getAccessToken,
       verifyEmail,
