@@ -59,8 +59,10 @@ describe.each<ColorScheme>(['light', 'dark'])('base components — %s theme', (s
       </>,
     );
     for (const id of ['primary', 'secondary', 'ghost']) {
-      expect(styleOf(screen.getByTestId(id)).height).toBe(sizes.buttonHeight);
+      // At least 48px (a long label may wrap to two lines instead of being cut off).
+      expect(styleOf(screen.getByTestId(id)).minHeight).toBe(sizes.buttonHeight);
     }
+    expect(screen.getByText('Continue').props.numberOfLines).toBe(2);
     expect(styleOf(screen.getByTestId('primary')).backgroundColor).toBe(c.primary);
     expect(flat(screen.getByText('Continue').props.style).color).toBe(c.onPrimary);
     expect(styleOf(screen.getByTestId('secondary')).borderColor).toBe(c.primary);
