@@ -20,10 +20,52 @@
   --error-soft: #fdecec;
   --error-text: #b91c1c;
   --info: #0ea5e9;
+  --info-soft: #e6f6fd;
+  --info-text: #0369a1;
+  --warning-soft: #fef4e2;
+  --warning-text: #b45309;
+  --input-border: #7c8a9c;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  /* The hero band and phone frames stay navy in both themes. */
+  --hero-bg: #1e3a5f;
+  --hero-text: #ffffff;
+  --hero-muted: #e3eaf3;
+  --phone-frame: #142a45;
+  color-scheme: light dark;
   --radius: 16px;
   --radius-small: 10px;
   --font-heading: 'Manrope', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Dark theme: the app's dark tokens (app-frontend/src/theme/colors.ts). */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #8fb5dd;
+    --on-primary: #141c26;
+    --secondary: #6fa3d2;
+    --steel-700: #9cc0e3;
+    --primary-soft: #22344a;
+    --background: #141c26;
+    --surface: #1c2633;
+    --text: #e6edf5;
+    --text-muted: #9aa8b8;
+    --border: #2c3a4b;
+    --success: #4ade80;
+    --success-soft: #16351f;
+    --success-text: #86efac;
+    --error-soft: #3b1a1a;
+    --error-text: #fca5a5;
+    --info: #38bdf8;
+    --info-soft: #0f2f3d;
+    --info-text: #7dd3fc;
+    --warning-soft: #3a2e12;
+    --warning-text: #fcd34d;
+    --input-border: #6b7c90;
+    --header-bg: rgba(20, 28, 38, 0.95);
+    --hero-bg: #10233b;
+    --phone-frame: #0b1626;
+  }
 }
 
 *,
@@ -100,6 +142,9 @@ summary:focus-visible {
 
 .skip-link {
   position: absolute;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   left: 16px;
   top: -60px;
   z-index: 10;
@@ -149,13 +194,13 @@ summary:focus-visible {
 }
 
 .button-light {
-  background: var(--surface);
-  color: var(--primary);
+  background: #ffffff;
+  color: #1e3a5f;
 }
 
 .button-outline {
   border-color: rgba(255, 255, 255, 0.7);
-  color: var(--on-primary);
+  color: var(--hero-text);
 }
 
 .button-outline:hover {
@@ -167,7 +212,7 @@ summary:focus-visible {
   position: sticky;
   top: 0;
   z-index: 5;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(6px);
 }
@@ -182,6 +227,7 @@ summary:focus-visible {
 .brand {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 10px;
   color: var(--primary);
   font: 800 1.2rem var(--font-heading);
@@ -221,7 +267,10 @@ summary:focus-visible {
 }
 
 .lang-switch a {
-  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
   border-radius: 999px;
   color: var(--text);
   font-size: 0.9rem;
@@ -236,8 +285,8 @@ summary:focus-visible {
 
 /* Hero */
 .hero {
-  background: var(--primary);
-  color: var(--on-primary);
+  background: var(--hero-bg);
+  color: var(--hero-text);
   padding: 72px 0 80px;
 }
 
@@ -264,7 +313,7 @@ summary:focus-visible {
 .hero-body {
   max-width: 34em;
   font-size: 1.1rem;
-  color: #e3eaf3;
+  color: var(--hero-muted);
 }
 
 .hero-actions {
@@ -277,7 +326,7 @@ summary:focus-visible {
 .hero-soon {
   margin-bottom: 10px;
   font-size: 0.95rem;
-  color: #e3eaf3;
+  color: var(--hero-muted);
 }
 
 .stores {
@@ -304,7 +353,7 @@ summary:focus-visible {
 
 .store-soon {
   font-size: 0.8rem;
-  color: #e3eaf3;
+  color: var(--hero-muted);
 }
 
 .hero-visual {
@@ -318,7 +367,7 @@ summary:focus-visible {
   gap: 14px;
   width: min(320px, 100%);
   padding: 28px 18px;
-  border: 8px solid #142a45;
+  border: 8px solid var(--phone-frame);
   border-radius: 36px;
   background: var(--background);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
@@ -439,7 +488,7 @@ summary:focus-visible {
   width: min(300px, 100%);
   padding: 10px;
   border-radius: 34px;
-  background: #142a45;
+  background: var(--phone-frame);
   box-shadow: 0 18px 44px rgba(30, 58, 95, 0.25);
   font-size: 12px;
   line-height: 1.4;
@@ -449,7 +498,7 @@ summary:focus-visible {
   display: flex;
   justify-content: space-between;
   padding: 4px 16px 8px;
-  color: #e3eaf3;
+  color: var(--hero-muted);
   font-size: 11px;
   font-weight: 600;
 }
@@ -538,7 +587,7 @@ summary:focus-visible {
   align-items: center;
   gap: 4px;
   padding: 4px 9px;
-  border: 1px dashed #8a97a8;
+  border: 1px dashed var(--text-muted);
   border-radius: 8px;
   font-size: 11px;
   font-weight: 600;
@@ -559,8 +608,8 @@ summary:focus-visible {
 .mock-hint {
   padding: 10px;
   border-radius: 12px;
-  background: #fef4e2;
-  color: #8a4708;
+  background: var(--warning-soft);
+  color: var(--warning-text);
   font-size: 11px;
   font-weight: 600;
 }
@@ -568,8 +617,8 @@ summary:focus-visible {
 .mock-info {
   padding: 8px 10px;
   border-radius: 10px;
-  background: #e6f6fd;
-  color: #075985;
+  background: var(--info-soft);
+  color: var(--info-text);
   font-size: 10.5px;
 }
 
@@ -607,8 +656,8 @@ summary:focus-visible {
 }
 
 .mock-tag-warn {
-  background: #fef4e2;
-  color: #8a4708;
+  background: var(--warning-soft);
+  color: var(--warning-text);
 }
 
 .mock-small {
@@ -695,8 +744,8 @@ summary:focus-visible {
 }
 
 .mock-badge-good {
-  background: #e6f6fd;
-  color: #075985;
+  background: var(--info-soft);
+  color: var(--info-text);
 }
 
 .mock-why {
@@ -834,7 +883,7 @@ summary:focus-visible {
 .field input {
   height: 48px;
   padding: 0 14px;
-  border: 1px solid #b9c3cf;
+  border: 1px solid var(--input-border);
   border-radius: 12px;
   background: var(--surface);
   color: var(--text);
@@ -845,12 +894,14 @@ summary:focus-visible {
   display: flex;
   align-items: flex-start;
   gap: 10px;
+  min-height: 44px;
   font-size: 0.95rem;
 }
 
 .check input {
-  width: 20px;
-  height: 20px;
+  flex: none;
+  width: 22px;
+  height: 22px;
   margin-top: 3px;
   accent-color: var(--primary);
 }
@@ -889,8 +940,8 @@ summary:focus-visible {
 .legal-draft {
   padding: 10px 14px;
   border-radius: var(--radius-small);
-  background: #fef4e2;
-  color: #8a4708;
+  background: var(--warning-soft);
+  color: var(--warning-text);
 }
 
 .legal-section h2 {
@@ -922,7 +973,7 @@ summary:focus-visible {
 
 .footer-links {
   display: flex;
-  gap: 20px;
+  gap: 8px 20px;
   margin-left: auto;
 }
 
@@ -999,4 +1050,12 @@ summary:focus-visible {
   html {
     scroll-behavior: auto;
   }
+}
+
+/* Touch targets of at least 44px for small text links (TIQ-35). */
+.footer-links a,
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }

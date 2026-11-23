@@ -14,7 +14,9 @@ export function Legal({ t, lang, kind }: { t: Texts; lang: Lang; kind: 'privacy'
     <section className="section legal" aria-labelledby="legal-title">
       <div className="container narrow">
         <p>
-          <a href={pathOf(lang, 'home')}>{t.legal.back}</a>
+          <a className="legal-back" href={pathOf(lang, 'home')}>
+            {t.legal.back}
+          </a>
         </p>
         <h1 id="legal-title">{doc.title}</h1>
         <p className="muted">{fmt(t.legal.updated, { date: updated })}</p>
