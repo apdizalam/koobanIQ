@@ -87,4 +87,13 @@ export const env = {
    */
   notificationEmailsEnabled:
     (process.env.NOTIFICATION_EMAILS_ENABLED ?? 'false').trim().toLowerCase() === 'true',
+  /**
+   * Google sign-in (TIQ-39): one free "Web application" OAuth client from Google
+   * Cloud Console. The secret stays on the server. GOOGLE_REDIRECT_URI must be this
+   * server's public https address + /api/v1/auth/google/callback, exactly as
+   * entered in the console. Empty: the Google button answers "not set up".
+   */
+  googleClientId: (process.env.GOOGLE_CLIENT_ID ?? '').trim(),
+  googleClientSecret: (process.env.GOOGLE_CLIENT_SECRET ?? '').trim(),
+  googleRedirectUri: (process.env.GOOGLE_REDIRECT_URI ?? '').trim(),
 };

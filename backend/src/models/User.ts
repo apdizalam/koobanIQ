@@ -21,6 +21,11 @@ const userSchema = new Schema(
     status: { type: String, enum: USER_STATUSES, default: 'active', index: true },
     emailVerified: { type: Boolean, default: false },
     authProvider: { type: String, enum: AUTH_PROVIDERS, default: 'local' },
+    /**
+     * Google account id ("sub") once the user has signed in with Google (TIQ-39).
+     * Accounts made with Google have authProvider 'google' and no password.
+     */
+    googleId: { type: String, unique: true, sparse: true },
     preferredLanguage: { type: String, enum: LANGUAGES, default: 'en' },
     lastActiveAt: { type: Date },
     /**

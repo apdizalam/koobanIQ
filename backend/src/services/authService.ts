@@ -123,7 +123,7 @@ export async function loginUser(input: LoginInput) {
 }
 
 /** Gives a signed-in user a new access token + refresh token pair. */
-async function startSession(user: UserDocument, device?: string) {
+export async function startSession(user: UserDocument, device?: string) {
   user.lastActiveAt = new Date();
   await user.save();
 
