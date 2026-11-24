@@ -110,6 +110,11 @@ export function OverviewPage() {
               hint={hint}
             />
             <StatCard
+              label={t('admin.overview.activity.interviewsFinished')}
+              value={value(data?.activity.interviewsFinished)}
+              hint={hint}
+            />
+            <StatCard
               label={t('admin.overview.activity.runs')}
               value={value(data?.activity.runs)}
               hint={hint}

@@ -258,6 +258,7 @@
       "activity": {
         "quizzesFinished": "Imtixaannada xirfadda ee dhammaaday",
         "cvsCreated": "CV-yada la sameeyay",
+        "interviewsFinished": "Tababarrada wareysiga ee dhammaaday",
         "runs": "Raadinta shaqooyinka",
         "runsFailed": "Raadinnada shaqo ee fashilmay",
         "waitlist": "Is-diiwaangelinta liiska sugitaanka"
@@ -446,6 +447,63 @@
       "empty": "Weli CV lama samayn.",
       "error": "CV-yada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
       "retry": "Isku day mar kale"
+    },
+    "interviews": {
+      "title": "Wareysiyada",
+      "subtitle": "Dhammaan tababarrada wareysiga ee isticmaalayaashu bilaabeen. Akhris kaliya: jawaabaha isticmaalaha iyo talooyinka AI-ga ee ku saabsan halkan laguma muujiyo, kaliya nooca, shaqada, dhererka iyo dhibcaha.",
+      "cards": {
+        "finished": "Dhammaaday",
+        "inProgress": "Socda",
+        "cancelled": "La joojiyay",
+        "averageScore": "Celceliska dhibcaha (kuwa dhammaaday)"
+      },
+      "scoreValue": "{{score}}/10",
+      "statusFilter": "Xaalad",
+      "typeFilter": "Nooc",
+      "languageFilter": "Luqad",
+      "periodFilter": "La bilaabay",
+      "all": "Dhammaan",
+      "statuses": {
+        "in_progress": "Socda",
+        "finished": "Dhammaaday",
+        "cancelled": "La joojiyay"
+      },
+      "types": {
+        "general": "Guud",
+        "technical": "Farsamo",
+        "behavioral": "Dabeecad",
+        "job_specific": "Shaqo gaar ah",
+        "problem_solving": "Xallinta dhibaatooyinka"
+      },
+      "columns": {
+        "started": "Bilaabmay",
+        "user": "Isticmaale",
+        "type": "Nooc",
+        "job": "Shaqo",
+        "language": "Luqad",
+        "status": "Xaalad",
+        "score": "Dhibco",
+        "actions": "Ficillo"
+      },
+      "answeredOf": "{{answered}} ka mid ah {{length}} ayaa la jawaabay",
+      "deletedUser": "Akoon la tirtiray",
+      "details": "Faahfaahin",
+      "empty": "Weli tababar wareysi lama bilaabin.",
+      "error": "Wareysiyada lama soo dejin karin. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "back": "← Wareysiyada",
+      "detail": {
+        "title": "Tababarka wareysiga: {{role}}",
+        "score": "Celceliska dhibcaha",
+        "answered": "Su'aalaha laga jawaabay",
+        "finishedAt": "Dhammaaday",
+        "none": "—",
+        "questions": "Su'aalaha",
+        "question": "Su'aal {{number}} · {{focus}}",
+        "notAnswered": "Lagama jawaabin",
+        "privacy": "Jawaabaha isticmaalaha iyo talooyinka AI-ga ee ku saabsan waa qarsoodi, halkan laguma muujiyo.",
+        "notFound": "Tababarkan wareysiga ma jiro."
+      }
     },
     "jobs": {
       "title": "Shaqooyinka iyo isbarbardhigga",

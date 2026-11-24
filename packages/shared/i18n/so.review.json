@@ -435,6 +435,186 @@
     "state": "approved",
     "en": "This account is suspended."
   },
+  "admin.interviews.all": {
+    "state": "approved",
+    "en": "All"
+  },
+  "admin.interviews.answeredOf": {
+    "state": "approved",
+    "en": "{{answered}} of {{length}} answered"
+  },
+  "admin.interviews.back": {
+    "state": "approved",
+    "en": "← Interviews"
+  },
+  "admin.interviews.cards.averageScore": {
+    "state": "approved",
+    "en": "Average score (finished)"
+  },
+  "admin.interviews.cards.cancelled": {
+    "state": "approved",
+    "en": "Stopped"
+  },
+  "admin.interviews.cards.finished": {
+    "state": "approved",
+    "en": "Finished"
+  },
+  "admin.interviews.cards.inProgress": {
+    "state": "approved",
+    "en": "In progress"
+  },
+  "admin.interviews.columns.actions": {
+    "state": "approved",
+    "en": "Actions"
+  },
+  "admin.interviews.columns.job": {
+    "state": "approved",
+    "en": "Job"
+  },
+  "admin.interviews.columns.language": {
+    "state": "approved",
+    "en": "Language"
+  },
+  "admin.interviews.columns.score": {
+    "state": "approved",
+    "en": "Score"
+  },
+  "admin.interviews.columns.started": {
+    "state": "approved",
+    "en": "Started"
+  },
+  "admin.interviews.columns.status": {
+    "state": "approved",
+    "en": "Status"
+  },
+  "admin.interviews.columns.type": {
+    "state": "approved",
+    "en": "Type"
+  },
+  "admin.interviews.columns.user": {
+    "state": "approved",
+    "en": "User"
+  },
+  "admin.interviews.deletedUser": {
+    "state": "approved",
+    "en": "Deleted account"
+  },
+  "admin.interviews.detail.answered": {
+    "state": "approved",
+    "en": "Questions answered"
+  },
+  "admin.interviews.detail.finishedAt": {
+    "state": "approved",
+    "en": "Finished"
+  },
+  "admin.interviews.detail.none": {
+    "state": "approved",
+    "en": "—"
+  },
+  "admin.interviews.detail.notAnswered": {
+    "state": "approved",
+    "en": "Not answered"
+  },
+  "admin.interviews.detail.notFound": {
+    "state": "approved",
+    "en": "This interview practice does not exist."
+  },
+  "admin.interviews.detail.privacy": {
+    "state": "approved",
+    "en": "The user's answers and the AI feedback on them are private and not shown here."
+  },
+  "admin.interviews.detail.question": {
+    "state": "approved",
+    "en": "Question {{number}} · {{focus}}"
+  },
+  "admin.interviews.detail.questions": {
+    "state": "approved",
+    "en": "Questions"
+  },
+  "admin.interviews.detail.score": {
+    "state": "approved",
+    "en": "Average score"
+  },
+  "admin.interviews.detail.title": {
+    "state": "approved",
+    "en": "Interview practice: {{role}}"
+  },
+  "admin.interviews.details": {
+    "state": "approved",
+    "en": "Details"
+  },
+  "admin.interviews.empty": {
+    "state": "approved",
+    "en": "No interview practices yet."
+  },
+  "admin.interviews.error": {
+    "state": "approved",
+    "en": "Could not load the interviews. Check that the backend is running."
+  },
+  "admin.interviews.languageFilter": {
+    "state": "approved",
+    "en": "Language"
+  },
+  "admin.interviews.periodFilter": {
+    "state": "approved",
+    "en": "Started"
+  },
+  "admin.interviews.retry": {
+    "state": "approved",
+    "en": "Try again"
+  },
+  "admin.interviews.scoreValue": {
+    "state": "approved",
+    "en": "{{score}}/10"
+  },
+  "admin.interviews.statusFilter": {
+    "state": "approved",
+    "en": "Status"
+  },
+  "admin.interviews.statuses.cancelled": {
+    "state": "approved",
+    "en": "Stopped"
+  },
+  "admin.interviews.statuses.finished": {
+    "state": "approved",
+    "en": "Finished"
+  },
+  "admin.interviews.statuses.in_progress": {
+    "state": "approved",
+    "en": "In progress"
+  },
+  "admin.interviews.subtitle": {
+    "state": "approved",
+    "en": "Every interview practice users started. Read-only: the user's answers and the AI feedback on them are never shown here, only the type, job, length and scores."
+  },
+  "admin.interviews.title": {
+    "state": "approved",
+    "en": "Interviews"
+  },
+  "admin.interviews.typeFilter": {
+    "state": "approved",
+    "en": "Type"
+  },
+  "admin.interviews.types.behavioral": {
+    "state": "approved",
+    "en": "Behavioural"
+  },
+  "admin.interviews.types.general": {
+    "state": "approved",
+    "en": "General"
+  },
+  "admin.interviews.types.job_specific": {
+    "state": "approved",
+    "en": "For a job"
+  },
+  "admin.interviews.types.problem_solving": {
+    "state": "approved",
+    "en": "Problem solving"
+  },
+  "admin.interviews.types.technical": {
+    "state": "approved",
+    "en": "Technical"
+  },
   "admin.jobs.all": {
     "state": "approved",
     "en": "All"
@@ -842,6 +1022,10 @@
   "admin.overview.activity.cvsCreated": {
     "state": "approved",
     "en": "CVs created"
+  },
+  "admin.overview.activity.interviewsFinished": {
+    "state": "approved",
+    "en": "Interview practices finished"
   },
   "admin.overview.activity.quizzesFinished": {
     "state": "approved",
