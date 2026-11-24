@@ -1,5 +1,6 @@
 import { Assessment } from '../models/Assessment.js';
 import { Cv } from '../models/Cv.js';
+import { Interview } from '../models/Interview.js';
 import { ResearchRun } from '../models/ResearchRun.js';
 import { User } from '../models/User.js';
 import { Waitlist } from '../models/Waitlist.js';
@@ -15,7 +16,8 @@ export const isPeriod = (value: unknown): value is Period =>
 
 /**
  * Admin Overview numbers, counted straight from the database: users, and the
- * activity in the period (finished skill quizzes, CVs created, job searches and
+ * activity in the period (finished skill quizzes, CVs created, finished interview
+ * practices, job searches and
  * the ones that failed), plus the landing page waitlist (TIQ-35).
  */
 export async function getOverview(period: Period = 'week', now = new Date()) {
@@ -32,13 +34,15 @@ export async function getOverview(period: Period = 'week', now = new Date()) {
   ]);
 
   const inPeriod = { $gte: since };
-  const [quizzesFinished, cvsCreated, runs, runsFailed, waitlist] = await Promise.all([
-    Assessment.countDocuments({ status: 'finished', finishedAt: inPeriod }),
-    Cv.countDocuments({ createdAt: inPeriod }),
-    ResearchRun.countDocuments({ createdAt: inPeriod }),
-    ResearchRun.countDocuments({ createdAt: inPeriod, status: 'failed' }),
-    Waitlist.countDocuments(),
-  ]);
+  const [quizzesFinished, cvsCreated, interviewsFinished, runs, runsFailed, waitlist] =
+    await Promise.all([
+      Assessment.countDocuments({ status: 'finished', finishedAt: inPeriod }),
+      Cv.countDocuments({ createdAt: inPeriod }),
+      Interview.countDocuments({ status: 'finished', finishedAt: inPeriod }),
+      ResearchRun.countDocuments({ createdAt: inPeriod }),
+      ResearchRun.countDocuments({ createdAt: inPeriod, status: 'failed' }),
+      Waitlist.countDocuments(),
+    ]);
 
   return {
     period,
@@ -46,7 +50,7 @@ export async function getOverview(period: Period = 'week', now = new Date()) {
     generatedAt: now.toISOString(),
     users: { total, admins, suspended, new: created, active },
     languages: { en, so },
-    activity: { quizzesFinished, cvsCreated, runs, runsFailed },
+    activity: { quizzesFinished, cvsCreated, interviewsFinished, runs, runsFailed },
     waitlist,
   };
 }
