@@ -11,6 +11,9 @@ import { isItemId } from '../lib/validateProfile.js';
 import type { JobDescriptionInput } from '../lib/validateJobDescription.js';
 import { JobDescription, toPublicJobDescription } from '../models/JobDescription.js';
 
+/** Reading a job ad (or its PDF): up to 45 s per AI call (the request's total budget still applies). */
+export const JD_AI_TIMEOUT_MS = 45_000;
+
 /** Most job descriptions one user keeps. */
 export const JOB_DESCRIPTIONS_MAX = 100;
 
@@ -66,6 +69,7 @@ export async function createJobDescription(userId: Types.ObjectId, input: JobDes
     schema: jobDescriptionExtractionSchema,
     maxOutputTokens: 4096,
     temperature: 0,
+    timeoutMs: JD_AI_TIMEOUT_MS,
     documents:
       input.kind === 'pdf' ? [{ mimeType: 'application/pdf', data: input.data }] : undefined,
   });

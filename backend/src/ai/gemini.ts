@@ -1,5 +1,17 @@
-import { ApiError, FinishReason, GoogleGenAI, type GenerateContentParameters } from '@google/genai';
-import { AiProviderError, type AiProvider, type AiRequest, type AiResponse } from './provider.js';
+import {
+  ApiError,
+  FinishReason,
+  GoogleGenAI,
+  ThinkingLevel,
+  type GenerateContentParameters,
+} from '@google/genai';
+import {
+  AiProviderError,
+  type AiProvider,
+  type AiRequest,
+  type AiResponse,
+  type AiThinkingLevel,
+} from './provider.js';
 
 /** The part of the SDK client we use (lets tests pass a fake). */
 export interface GeminiClient {
@@ -14,6 +26,28 @@ export interface GeminiClient {
 }
 
 const KEY_PROBLEM = /API[_ ]KEY|api key|API key not valid|PERMISSION_DENIED|UNAUTHENTICATED/i;
+
+const THINKING: Record<AiThinkingLevel, ThinkingLevel> = {
+  minimal: ThinkingLevel.MINIMAL,
+  low: ThinkingLevel.LOW,
+  medium: ThinkingLevel.MEDIUM,
+  high: ThinkingLevel.HIGH,
+};
+
+/**
+ * The safe parts of a Gemini error body: the status word ("UNAVAILABLE") and
+ * the suggested wait (RetryInfo "retryDelay": "7s"). Nothing else is kept.
+ */
+export function geminiErrorDetails(message: string) {
+  const providerStatus = message.match(/"status"\s*:\s*"([A-Z_]+)"/)?.[1];
+  const delay = message.match(/"retryDelay"\s*:\s*"(\d+(?:\.\d+)?)s"/)?.[1];
+  return {
+    providerStatus,
+    retryAfterMs: delay === undefined ? undefined : Math.round(Number(delay) * 1000),
+    /** A daily quota (resets at midnight Pacific), not a per-minute limit. */
+    daily: /PerDay|per day/i.test(message),
+  };
+}
 
 /**
  * Turns anything the SDK throws into an AiProviderError with a safe message
@@ -32,23 +66,33 @@ export function classifyGeminiError(err: unknown): AiProviderError {
         ? (err as { status: number }).status
         : undefined;
   const message = err instanceof Error ? err.message : String(err);
+  const { daily, ...details } = geminiErrorDetails(message);
   if (status === 401 || status === 403 || (status === 400 && KEY_PROBLEM.test(message))) {
-    return new AiProviderError('auth', `Gemini rejected the API key (HTTP ${status})`, status);
+    return new AiProviderError(
+      'auth',
+      `Gemini rejected the API key (HTTP ${status})`,
+      status,
+      details,
+    );
   }
   if (status === 429) {
-    return new AiProviderError('quota', 'Gemini free-tier quota or rate limit reached', 429);
+    return daily
+      ? new AiProviderError('quota', 'Gemini free-tier daily quota reached', 429, details)
+      : new AiProviderError('rate_limited', 'Gemini rate limit reached (HTTP 429)', 429, details);
   }
   if (status === 408 || status === 504) {
-    return new AiProviderError('timeout', `Gemini timed out (HTTP ${status})`, status);
+    return new AiProviderError('timeout', `Gemini timed out (HTTP ${status})`, status, details);
   }
   if (status !== undefined && status >= 500) {
-    return new AiProviderError('unavailable', `Gemini is unavailable (HTTP ${status})`, status);
+    const why = details.providerStatus === 'UNAVAILABLE' ? 'overloaded or down' : 'unavailable';
+    return new AiProviderError('unavailable', `Gemini is ${why} (HTTP ${status})`, status, details);
   }
   if (status !== undefined && status >= 400) {
     return new AiProviderError(
       'bad_request',
       `Gemini rejected the request (HTTP ${status})`,
       status,
+      details,
     );
   }
   // No status: network failure (DNS, offline, connection reset).
@@ -99,6 +143,9 @@ export function createGeminiProvider(options: {
             responseJsonSchema: request.jsonSchema,
             maxOutputTokens: request.maxOutputTokens,
             temperature: request.temperature,
+            ...(request.thinkingLevel
+              ? { thinkingConfig: { thinkingLevel: THINKING[request.thinkingLevel] } }
+              : {}),
             abortSignal: request.signal,
           },
         });

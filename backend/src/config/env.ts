@@ -80,10 +80,28 @@ export const env = {
   geminiApiKey: (process.env.GEMINI_API_KEY ?? '').trim(),
   /** Free-tier model; change it here without touching code. */
   geminiModel: (process.env.GEMINI_MODEL ?? 'gemini-3.1-flash-lite').trim(),
-  /** Longest wait for one AI answer before giving up (milliseconds). */
+  /**
+   * Second Gemini model (same key, same provider) tried when the main one is
+   * overloaded, rate limited or does not answer in time. Empty = no second model.
+   * Investigation 2026-11-24: 3.1 Flash-Lite answered 503 "high demand" for 25+
+   * minutes while 3.5 Flash-Lite answered at once.
+   */
+  geminiFallbackModel: (process.env.GEMINI_FALLBACK_MODEL ?? '').trim(),
+  /**
+   * How much Gemini "thinks" before answering: minimal | low | medium | high, or
+   * empty for the model's default. Gemini 3.x thinks by default, which is slower;
+   * our tasks are structured fill-in work, so "low" is the default.
+   */
+  geminiThinkingLevel: (process.env.GEMINI_THINKING_LEVEL ?? 'low').trim().toLowerCase(),
+  /** Longest wait for one AI answer before giving up (milliseconds); features may allow more. */
   aiTimeoutMs: Number(process.env.AI_TIMEOUT_MS ?? 30_000),
-  /** Pause before trying a temporarily unavailable AI provider once more (milliseconds). */
-  aiRetryDelayMs: Number(process.env.AI_RETRY_DELAY_MS ?? 3000),
+  /**
+   * The most time one AI request may take in total, with every retry and the
+   * second model (milliseconds). Stays under the app's 120 s wait.
+   */
+  aiTotalBudgetMs: Number(process.env.AI_TOTAL_BUDGET_MS ?? 90_000),
+  /** First pause before trying a busy AI provider again; the next pause is longer (milliseconds). */
+  aiRetryDelayMs: Number(process.env.AI_RETRY_DELAY_MS ?? 2000),
   /** AI requests one user may make per hour (protects the free quota). */
   aiUserRequestsPerHour: Number(process.env.AI_USER_REQUESTS_PER_HOUR ?? 30),
   /**

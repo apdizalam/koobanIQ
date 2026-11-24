@@ -8,11 +8,13 @@
 export type AiErrorKind =
   /** The provider refused the API key (wrong, revoked or missing permissions). */
   | 'auth'
-  /** Free-tier quota or rate limit reached (HTTP 429). */
+  /** Daily free-tier quota used up (HTTP 429, resets at midnight Pacific): not retried. */
   | 'quota'
+  /** Too many requests per minute (HTTP 429): retried after a pause. */
+  | 'rate_limited'
   /** No answer in time. */
   | 'timeout'
-  /** Provider down, overloaded or unreachable. */
+  /** Provider down, overloaded ("high demand", HTTP 503) or unreachable. */
   | 'unavailable'
   /** The provider declined to answer this content (safety). */
   | 'blocked'
@@ -26,6 +28,13 @@ export class AiProviderError extends Error {
     message: string,
     /** HTTP status from the provider, when there was one. */
     public readonly status?: number,
+    /** Safe details for monitoring: the provider's status word and its suggested wait. */
+    public readonly details: {
+      /** e.g. "UNAVAILABLE", "RESOURCE_EXHAUSTED", "DEADLINE_EXCEEDED" (never a message). */
+      providerStatus?: string;
+      /** The provider's "retry after" hint, in milliseconds. */
+      retryAfterMs?: number;
+    } = {},
   ) {
     super(message);
     this.name = 'AiProviderError';
@@ -39,6 +48,9 @@ export interface AiDocument {
   data: string;
 }
 
+export const AI_THINKING_LEVELS = ['minimal', 'low', 'medium', 'high'] as const;
+export type AiThinkingLevel = (typeof AI_THINKING_LEVELS)[number];
+
 export interface AiRequest {
   /** Rules for the model (src/ai/prompts). */
   system: string;
@@ -48,6 +60,11 @@ export interface AiRequest {
   jsonSchema: Record<string, unknown>;
   maxOutputTokens: number;
   temperature?: number;
+  /**
+   * How much the model "thinks" before answering (Gemini 3.x thinks by default,
+   * which makes answers slower). Undefined = the model's default.
+   */
+  thinkingLevel?: AiThinkingLevel;
   documents?: AiDocument[];
   /** Aborted when the time limit runs out. */
   signal: AbortSignal;
