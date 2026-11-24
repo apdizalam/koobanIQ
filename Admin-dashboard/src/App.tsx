@@ -1,4 +1,5 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
+import { ADMIN_BASE } from './constants/routes';
 import { AuthProvider } from './auth/AuthProvider';
 import { RequireAdmin } from './auth/RequireAdmin';
 import { AdminLayout } from './components/layout/AdminLayout';
@@ -25,7 +26,8 @@ import { UsersPage } from './pages/UsersPage';
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      {/* All admin addresses start with /admin (the landing page is the site's home). */}
+      <BrowserRouter basename={ADMIN_BASE}>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
@@ -35,7 +37,8 @@ export default function App() {
               </RequireAdmin>
             }
           >
-            <Route index element={<OverviewPage />} />
+            <Route index element={<Navigate to="overview" replace />} />
+            <Route path="overview" element={<OverviewPage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="users/:id" element={<UserDetailPage />} />
             <Route path="skills" element={<AssessmentsPage />} />
