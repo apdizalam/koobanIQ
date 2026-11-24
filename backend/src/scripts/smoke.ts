@@ -7,6 +7,9 @@
  *     $env:MONGODB_DB_NAME = "kobaniq_staging"      # the database that API uses
  *     npm.cmd run smoke -w backend
  *
+ *   Optional: $env:SMOKE_CAREER_URL = "<a public career page>" lets job research
+ *   use the "career-pages" source (it only searches links it is given).
+ *
  * Steps: sign up + log in → profile + skill → skill quiz to the end → job
  * description → CV → approve → PDF → job research (needs a job source switched
  * on in the admin) → log out. About 3 AI calls (quiz, job description, CV).
@@ -197,11 +200,20 @@ async function main() {
     await step('Job research', async () => {
       const { data } = await call('GET', '/job-sources');
       const keys: string[] = data.sources.map((s: { key: string }) => s.key);
-      if (keys.length === 0) {
-        return { blocked: 'no job source is switched on (admin → Job sources)' };
+      // "career-pages" searches links you give it: used only with SMOKE_CAREER_URL.
+      const careerUrl = (process.env.SMOKE_CAREER_URL ?? '').trim();
+      const sourceKeys = keys.filter((k) => k !== 'career-pages').slice(0, 3);
+      if (careerUrl && keys.includes('career-pages')) sourceKeys.push('career-pages');
+      if (sourceKeys.length === 0) {
+        return {
+          blocked: keys.includes('career-pages')
+            ? 'only "career-pages" is on: set SMOKE_CAREER_URL to a public career page'
+            : 'no job source is switched on (admin → Job sources)',
+        };
       }
       const { data: started } = await call('POST', '/research/run', {
-        sourceKeys: keys.filter((k) => k !== 'career-pages').slice(0, 3),
+        sourceKeys,
+        ...(sourceKeys.includes('career-pages') ? { customUrls: [careerUrl] } : {}),
         filters: { titles: ['developer'] },
       });
       let run = started.run;
