@@ -13,6 +13,7 @@ import {
 } from '../controllers/adminAnnouncementsController.js';
 import { getAuditLogs } from '../controllers/adminAuditController.js';
 import { getAdminCvs } from '../controllers/adminCvsController.js';
+import { getAdminInterview, getAdminInterviews } from '../controllers/adminInterviewsController.js';
 import { getReportCsv } from '../controllers/adminReportsController.js';
 import {
   getAdminJob,
@@ -94,6 +95,10 @@ adminRouter.delete('/assessments/:id/questions/:questionId/flag', deleteFlagQues
 
 // CVs (TIQ-33, read-only): status of every generated CV, never its content.
 adminRouter.get('/cvs', getAdminCvs);
+
+// Interviews (read-only): practice sessions with type, job, length and scores, never the answers.
+adminRouter.get('/interviews', getAdminInterviews);
+adminRouter.get('/interviews/:id', getAdminInterview);
 
 // Jobs & matching (TIQ-33): stored jobs by source, match explanations, remove / restore. Audited.
 adminRouter.get('/jobs', getAdminJobs);

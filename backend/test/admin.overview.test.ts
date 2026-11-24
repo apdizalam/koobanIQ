@@ -8,6 +8,7 @@ import { RUN_ID } from './support/testRun.js';
 import { connectDB, disconnectDB } from '../src/lib/db.js';
 import { Assessment } from '../src/models/Assessment.js';
 import { Cv } from '../src/models/Cv.js';
+import { Interview } from '../src/models/Interview.js';
 import { ResearchRun } from '../src/models/ResearchRun.js';
 import { User } from '../src/models/User.js';
 import { Waitlist } from '../src/models/Waitlist.js';
@@ -154,7 +155,7 @@ test('a non-admin cannot read the overview (403)', async () => {
   assert.equal((await overview(token)).status, 403);
 });
 
-test('TIQ-35: activity in the period (quizzes, CVs, searches, failed searches) and the waitlist', async () => {
+test('TIQ-35: activity in the period (quizzes, CVs, interviews, searches, failed searches) and the waitlist', async () => {
   const userId = new mongoose.Types.ObjectId();
   await Assessment.collection.insertMany([
     { userId, status: 'finished', finishedAt: ago(HOUR), createdAt: ago(2 * HOUR) },
@@ -164,6 +165,11 @@ test('TIQ-35: activity in the period (quizzes, CVs, searches, failed searches) a
   await Cv.collection.insertMany([
     { userId, version: 1, createdAt: ago(3 * HOUR) },
     { userId, version: 2, createdAt: ago(40 * DAY) },
+  ]);
+  await Interview.collection.insertMany([
+    { userId, status: 'finished', finishedAt: ago(2 * HOUR), createdAt: ago(3 * HOUR) },
+    { userId, status: 'finished', finishedAt: ago(20 * DAY), createdAt: ago(20 * DAY) },
+    { userId, status: 'cancelled', createdAt: ago(HOUR) },
   ]);
   await ResearchRun.collection.insertMany([
     { userId, status: 'completed', createdAt: ago(HOUR) },
@@ -176,8 +182,20 @@ test('TIQ-35: activity in the period (quizzes, CVs, searches, failed searches) a
   ]);
 
   const day = await getOverview('day', new Date());
-  assert.deepEqual(day.activity, { quizzesFinished: 1, cvsCreated: 1, runs: 2, runsFailed: 1 });
+  assert.deepEqual(day.activity, {
+    quizzesFinished: 1,
+    cvsCreated: 1,
+    interviewsFinished: 1,
+    runs: 2,
+    runsFailed: 1,
+  });
   assert.equal(day.waitlist, 2);
   const month = await getOverview('month', new Date());
-  assert.deepEqual(month.activity, { quizzesFinished: 2, cvsCreated: 1, runs: 3, runsFailed: 2 });
+  assert.deepEqual(month.activity, {
+    quizzesFinished: 2,
+    cvsCreated: 1,
+    interviewsFinished: 2,
+    runs: 3,
+    runsFailed: 2,
+  });
 });
