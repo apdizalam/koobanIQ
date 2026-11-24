@@ -31,7 +31,7 @@ export function LoginPage() {
   const { t } = useTranslation();
   const { user, signIn } = useAuth();
   const navigate = useNavigate();
-  const from = (useLocation().state as { from?: string } | null)?.from ?? '/';
+  const from = (useLocation().state as { from?: string } | null)?.from ?? '/overview';
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // Store the key, not the sentence, so the message follows a language switch.

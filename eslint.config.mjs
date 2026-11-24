@@ -26,6 +26,7 @@ export default defineConfig([
   globalIgnores([
     '**/node_modules/',
     '**/dist/',
+    'web-dist/',
     '**/build/',
     '**/.expo/',
     '**/web-build/',
