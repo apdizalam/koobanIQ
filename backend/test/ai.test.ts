@@ -11,11 +11,14 @@ import { z } from 'zod';
 import { RUN_ID } from './support/testRun.js';
 import {
   deleteUsageRecords,
+  fallbackFromSettings,
   generateValidated,
   InvalidAiOutputError,
   providerFromSettings,
   runAi,
   setAiProviderForTests,
+  thinkingFromSettings,
+  type AiUsage,
 } from '../src/ai/aiService.js';
 import { classifyGeminiError, createGeminiProvider, type GeminiClient } from '../src/ai/gemini.js';
 import { createMockProvider } from '../src/ai/mock.js';
@@ -163,26 +166,184 @@ test('provider failures are not retried here (no wasted quota)', async () => {
   assert.equal(mock.pending(), 1);
 });
 
-test('a temporary outage is tried once more; a second outage is reported', async () => {
+const busy = () =>
+  new AiProviderError('unavailable', 'overloaded', 503, { providerStatus: 'UNAVAILABLE' });
+
+test('a busy provider is tried twice more with growing pauses; a third outage is reported', async () => {
   const mock = createMockProvider();
-  mock.reply({ error: new AiProviderError('unavailable', 'overloaded', 503) }, { json: GOOD });
+  mock.reply({ error: busy() }, { error: busy() }, { json: GOOD });
   assert.deepEqual(
     await generateValidated({ provider: mock.provider, prompt, schema: connectivityCheckSchema }),
     GOOD,
   );
-  assert.equal(mock.requests.length, 2);
+  assert.equal(mock.requests.length, 3);
 
   const down = createMockProvider();
-  down.reply(
-    { error: new AiProviderError('unavailable', 'overloaded', 503) },
-    { error: new AiProviderError('unavailable', 'overloaded', 503) },
-    { json: GOOD },
-  );
+  down.reply({ error: busy() }, { error: busy() }, { error: busy() }, { json: GOOD });
+  const usage: AiUsage = { inputTokens: 0, outputTokens: 0, attempts: 0 };
   await assert.rejects(
-    generateValidated({ provider: down.provider, prompt, schema: connectivityCheckSchema }),
+    generateValidated({ provider: down.provider, prompt, schema: connectivityCheckSchema, usage }),
     (err: unknown) => err instanceof AiProviderError && err.kind === 'unavailable',
   );
-  assert.equal(down.requests.length, 2, 'only one extra try');
+  assert.equal(down.requests.length, 3, 'two extra tries, never more');
+  assert.equal(down.pending(), 1);
+  assert.equal(usage.providerStatus, 'UNAVAILABLE');
+  assert.equal(usage.calls, 3);
+});
+
+test('a per-minute rate limit (429) is retried like an outage', async () => {
+  const limited = createMockProvider();
+  limited.reply({ error: new AiProviderError('rate_limited', 'rpm', 429) }, { json: GOOD });
+  assert.deepEqual(
+    await generateValidated({
+      provider: limited.provider,
+      prompt,
+      schema: connectivityCheckSchema,
+    }),
+    GOOD,
+  );
+  assert.equal(limited.requests.length, 2);
+});
+
+test('the retry-after wait suggested by the provider is respected when longer', async () => {
+  const mock = createMockProvider();
+  mock.reply(
+    { error: new AiProviderError('rate_limited', 'rpm', 429, { retryAfterMs: 120 }) },
+    { json: GOOD },
+  );
+  const started = Date.now();
+  await generateValidated({ provider: mock.provider, prompt, schema: connectivityCheckSchema });
+  assert.ok(Date.now() - started >= 110, 'waited the suggested time');
+});
+
+test('busy main model: the second model answers at once (and the record says so)', async () => {
+  const main = createMockProvider('gemini-3.1-flash-lite');
+  const second = createMockProvider('gemini-3.5-flash-lite');
+  main.reply({ error: busy() });
+  second.reply({ json: GOOD });
+  setAiProviderForTests(main.provider, second.provider);
+  const userId = user();
+  assert.deepEqual(await runAi(task(userId)), GOOD);
+  assert.equal(main.requests.length, 1);
+  assert.equal(second.requests.length, 1);
+  const r = await UsageRecord.findOne({ userId }).lean();
+  assert.equal(r?.status, 'ok');
+  assert.equal(r?.model, 'gemini-3.5-flash-lite');
+  assert.equal(r?.fallbackUsed, true);
+  assert.equal(r?.calls, 2);
+  assert.equal(r?.providerStatus, 'UNAVAILABLE');
+});
+
+test('after switching, the rest of the request stays on the second model', async () => {
+  const main = createMockProvider('main');
+  const second = createMockProvider('second');
+  main.reply({ error: busy() });
+  second.reply({ text: 'not json' }, { json: GOOD });
+  assert.deepEqual(
+    await generateValidated({
+      provider: main.provider,
+      fallback: second.provider,
+      prompt,
+      schema: connectivityCheckSchema,
+    }),
+    GOOD,
+  );
+  assert.equal(main.requests.length, 1, 'the busy model is not asked again');
+  assert.equal(second.requests.length, 2, 'the invalid answer is retried on the second model');
+});
+
+test('main model too slow: the second model; both busy: backoff on the second only', async () => {
+  const slow = createMockProvider('main');
+  const quick = createMockProvider('second');
+  slow.reply({ hang: true });
+  quick.reply({ json: GOOD });
+  assert.deepEqual(
+    await generateValidated({
+      provider: slow.provider,
+      fallback: quick.provider,
+      prompt,
+      schema: connectivityCheckSchema,
+      timeoutMs: 50,
+    }),
+    GOOD,
+  );
+
+  const main = createMockProvider('main');
+  const second = createMockProvider('second');
+  main.reply({ error: busy() });
+  second.reply({ error: busy() }, { error: busy() }, { error: busy() });
+  await assert.rejects(
+    generateValidated({
+      provider: main.provider,
+      fallback: second.provider,
+      prompt,
+      schema: connectivityCheckSchema,
+    }),
+    (err: unknown) => err instanceof AiProviderError && err.kind === 'unavailable',
+  );
+  assert.equal(main.requests.length + second.requests.length, 4, 'at most 4 calls in all');
+});
+
+test('the daily quota, a bad key or blocked content never go to the second model', async () => {
+  for (const error of [
+    new AiProviderError('quota', 'daily', 429),
+    new AiProviderError('auth', 'key', 403),
+    new AiProviderError('blocked', 'safety'),
+  ]) {
+    const main = createMockProvider('main');
+    const second = createMockProvider('second');
+    main.reply({ error });
+    await assert.rejects(
+      generateValidated({
+        provider: main.provider,
+        fallback: second.provider,
+        prompt,
+        schema: connectivityCheckSchema,
+      }),
+      (err: unknown) => err === error,
+    );
+    assert.equal(second.requests.length, 0, error.kind);
+  }
+});
+
+test('the whole request ends within its total budget, whatever the retries', async () => {
+  const main = createMockProvider('main');
+  const second = createMockProvider('second');
+  main.reply({ hang: true });
+  second.reply({ hang: true }, { hang: true }, { hang: true });
+  const started = Date.now();
+  await assert.rejects(
+    generateValidated({
+      provider: main.provider,
+      fallback: second.provider,
+      prompt,
+      schema: connectivityCheckSchema,
+      timeoutMs: 400,
+      totalBudgetMs: 2500,
+    }),
+    (err: unknown) => err instanceof AiProviderError && err.kind === 'timeout',
+  );
+  assert.ok(Date.now() - started < 2500, 'stopped inside the budget');
+  assert.equal(main.requests.length + second.requests.length, 2, 'timeouts are not retried');
+});
+
+test('a long busy pause is skipped when it would pass the deadline', async () => {
+  const mock = createMockProvider();
+  mock.reply({
+    error: new AiProviderError('rate_limited', 'rpm', 429, { retryAfterMs: 60_000 }),
+  });
+  const started = Date.now();
+  await assert.rejects(
+    generateValidated({
+      provider: mock.provider,
+      prompt,
+      schema: connectivityCheckSchema,
+      totalBudgetMs: 5000,
+    }),
+    (err: unknown) => err instanceof AiProviderError && err.kind === 'rate_limited',
+  );
+  assert.ok(Date.now() - started < 1000, 'did not sleep 60 s');
+  assert.equal(mock.requests.length, 1);
 });
 
 test('the schema sent to the provider has no limits (Gemini refuses complex ones); Zod keeps them', async () => {
@@ -248,7 +409,15 @@ test('Gemini errors become provider-neutral kinds, never carrying the key', () =
     [new ApiError({ status: 400, message: `API key not valid. key=${SECRET}` }), 'auth'],
     [new ApiError({ status: 403, message: 'PERMISSION_DENIED' }), 'auth'],
     [new ApiError({ status: 401, message: 'UNAUTHENTICATED' }), 'auth'],
-    [new ApiError({ status: 429, message: 'RESOURCE_EXHAUSTED' }), 'quota'],
+    [new ApiError({ status: 429, message: 'RESOURCE_EXHAUSTED' }), 'rate_limited'],
+    [
+      new ApiError({
+        status: 429,
+        message:
+          '{"error":{"status":"RESOURCE_EXHAUSTED","details":[{"quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier"}]}}',
+      }),
+      'quota',
+    ],
     [new ApiError({ status: 503, message: 'UNAVAILABLE' }), 'unavailable'],
     [new ApiError({ status: 500, message: 'INTERNAL' }), 'unavailable'],
     [new ApiError({ status: 504, message: 'DEADLINE_EXCEEDED' }), 'timeout'],
@@ -261,6 +430,29 @@ test('Gemini errors become provider-neutral kinds, never carrying the key', () =
     assert.equal(result.kind, kind, String((input as Error).message));
     assert.equal(result.message.includes(SECRET), false, 'no key in the message');
   }
+});
+
+test('Gemini error body: a safe status word and the retry-after hint, nothing else', () => {
+  const overloaded = classifyGeminiError(
+    new ApiError({
+      status: 503,
+      message:
+        '{"error":{"code":503,"message":"This model is currently experiencing high demand.","status":"UNAVAILABLE"}}',
+    }),
+  );
+  assert.equal(overloaded.kind, 'unavailable');
+  assert.equal(overloaded.details.providerStatus, 'UNAVAILABLE');
+  assert.match(overloaded.message, /overloaded/);
+  assert.equal(overloaded.message.includes('high demand'), false, 'our own wording only');
+
+  const limited = classifyGeminiError(
+    new ApiError({
+      status: 429,
+      message: '{"error":{"status":"RESOURCE_EXHAUSTED","details":[{"retryDelay":"7.5s"}]}}',
+    }),
+  );
+  assert.equal(limited.kind, 'rate_limited');
+  assert.equal(limited.details.retryAfterMs, 7500);
 });
 
 function fakeClient(
@@ -345,15 +537,58 @@ test('Gemini answers: cut off at the limit → truncated; safety stop → blocke
     (err: unknown) => (err as AiProviderError).kind === 'blocked',
   );
 
-  const quota = createGeminiProvider({
+  const limited = createGeminiProvider({
     apiKey: 'x',
     model: 'm',
     client: fakeClient(new ApiError({ status: 429, message: 'RESOURCE_EXHAUSTED' })).client,
   });
   await assert.rejects(
-    quota.generate(request),
+    limited.generate(request),
+    (err: unknown) => (err as AiProviderError).kind === 'rate_limited',
+  );
+
+  const daily = createGeminiProvider({
+    apiKey: 'x',
+    model: 'm',
+    client: fakeClient(new ApiError({ status: 429, message: 'Quota exceeded: requests per day' }))
+      .client,
+  });
+  await assert.rejects(
+    daily.generate(request),
     (err: unknown) => (err as AiProviderError).kind === 'quota',
   );
+});
+
+test('Gemini request: the thinking level is sent only when set', async () => {
+  const signal = new AbortController().signal;
+  const base = { system: 's', prompt: 'p', jsonSchema: {}, maxOutputTokens: 10, signal };
+  const answer = { text: '{}', candidates: [{ finishReason: FinishReason.STOP }] };
+  const withLevel = fakeClient(answer);
+  await createGeminiProvider({ apiKey: 'x', model: 'm', client: withLevel.client }).generate({
+    ...base,
+    thinkingLevel: 'low',
+  });
+  const config = (withLevel.calls[0] as { config: Record<string, unknown> }).config;
+  assert.deepEqual(config.thinkingConfig, { thinkingLevel: 'LOW' });
+
+  const without = fakeClient(answer);
+  await createGeminiProvider({ apiKey: 'x', model: 'm', client: without.client }).generate(base);
+  const plain = (without.calls[0] as { config: Record<string, unknown> }).config;
+  assert.equal(plain.thinkingConfig, undefined);
+});
+
+test('settings: a second model only when it differs from the main one; thinking level checked', () => {
+  const key = { provider: 'gemini', apiKey: 'k' };
+  assert.equal(fallbackFromSettings({ ...key, model: '' }), null);
+  assert.equal(fallbackFromSettings({ ...key, model: env.geminiModel }), null);
+  assert.equal(
+    fallbackFromSettings({ ...key, model: 'gemini-3.5-flash-lite' })?.model,
+    'gemini-3.5-flash-lite',
+  );
+  assert.equal(thinkingFromSettings('low'), 'low');
+  assert.equal(thinkingFromSettings('minimal'), 'minimal');
+  assert.equal(thinkingFromSettings(''), undefined);
+  assert.equal(thinkingFromSettings('turbo'), undefined);
 });
 
 // ------------------------------------------------------------ runAi: errors, usage, limits
@@ -389,6 +624,9 @@ test('success: usage recorded with tokens and attempts, and no prompt or answer 
   assert.equal(r.attempts, 2);
   assert.equal(r.inputTokens, 200, 'tokens of both attempts (the bad one reported none)');
   assert.equal(r.outputTokens, 40);
+  assert.equal(r.calls, 2);
+  assert.equal(r.fallbackUsed, false);
+  assert.equal(mock.requests[0].thinkingLevel, 'low', 'GEMINI_THINKING_LEVEL (default low)');
   const stored = JSON.stringify(r);
   assert.equal(stored.includes('mangoes'), false, 'no prompt text stored');
   assert.equal(stored.includes('A stall sells fruit'), false, 'no answer text stored');
@@ -411,7 +649,18 @@ test('each failure → its error code and a usage record with the status', async
     [[{ error: new AiProviderError('quota', 'quota', 429) }], 503, 'AI_QUOTA_REACHED', 'quota'],
     [
       [
+        { error: new AiProviderError('rate_limited', 'rpm', 429) },
+        { error: new AiProviderError('rate_limited', 'rpm', 429) },
+        { error: new AiProviderError('rate_limited', 'rpm', 429) },
+      ],
+      503,
+      'AI_QUOTA_REACHED',
+      'quota',
+    ],
+    [
+      [
         { error: new AiProviderError('unavailable', 'down', 503) },
+        { error: new AiProviderError('unavailable', 'still down', 503) },
         { error: new AiProviderError('unavailable', 'still down', 503) },
       ],
       503,

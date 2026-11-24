@@ -20,6 +20,9 @@ import {
 } from './cvFacts.js';
 import { buildCvPdf, cvFileName } from './cvPdf.js';
 
+/** A CV is a long answer: up to 60 s per AI call (the request's total budget still applies). */
+export const CV_AI_TIMEOUT_MS = 60_000;
+
 /** Most CVs one user keeps (all versions). */
 export const CVS_MAX = 200;
 
@@ -83,6 +86,7 @@ export async function generateCv(
     schema: buildCvAnswerSchema(input),
     maxOutputTokens: 4096,
     temperature: 0.3,
+    timeoutMs: CV_AI_TIMEOUT_MS,
   });
   const content = assembleCv(profile, skills, answer, { email: contactEmail }, request.language);
 

@@ -220,6 +220,21 @@ async function main() {
     });
   } finally {
     if (userId) {
+      // The AI calls this run made (no content): which model answered, how many
+      // calls, the provider's status word. Printed before the cleanup deletes them.
+      const usage = await mongoose.connection
+        .db!.collection('usagerecords')
+        .find({ userId })
+        .sort({ createdAt: 1 })
+        .toArray();
+      for (const u of usage) {
+        console.log(
+          `AI ${u.feature}: ${u.status} | model ${u.model}${u.fallbackUsed ? ' (second model)' : ''}` +
+            ` | ${((u.durationMs ?? 0) / 1000).toFixed(1)}s | calls ${u.calls ?? '?'}` +
+            ` | tokens ${u.inputTokens}/${u.outputTokens}` +
+            (u.providerStatus ? ` | last provider status ${u.providerStatus}` : ''),
+        );
+      }
       const removed = await deleteEverything(userId);
       console.log(`Cleanup: deleted ${removed} records of the smoke account.\n`);
     }

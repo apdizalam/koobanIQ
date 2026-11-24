@@ -6,13 +6,28 @@ import { UsageRecord, type AiFeature, type UsageStatus } from '../models/UsageRe
 import { isFeatureAllowed } from '../services/entitlements.js';
 import { createGeminiProvider } from './gemini.js';
 import type { BuiltPrompt } from './prompts/shared.js';
-import { AiProviderError, type AiDocument, type AiErrorKind, type AiProvider } from './provider.js';
+import {
+  AI_THINKING_LEVELS,
+  AiProviderError,
+  type AiDocument,
+  type AiErrorKind,
+  type AiProvider,
+  type AiThinkingLevel,
+} from './provider.js';
 import { toJsonSchema } from './schemas/common.js';
 
 /** Default answer size limit (tokens); features may ask for more or less. */
 export const DEFAULT_MAX_OUTPUT_TOKENS = 4096;
 /** The first answer plus one retry when the answer is not valid. Never more. */
 export const MAX_ATTEMPTS = 2;
+/**
+ * Pauses before trying a busy provider again, as multiples of AI_RETRY_DELAY_MS
+ * (2 s → about 2 s, then about 5 s; ±25 % jitter). Google's advice for 503/429:
+ * "retry with exponential backoff". Never more than these two.
+ */
+export const OUTAGE_BACKOFF = [1, 2.5] as const;
+/** A call is not started with less time than this left in the request's budget. */
+const MIN_CALL_MS = 2000;
 
 // ---------------------------------------------------------------- provider
 
@@ -34,17 +49,48 @@ export function providerFromSettings(
   return createGeminiProvider({ apiKey: settings.apiKey, model: settings.model });
 }
 
-let cached: AiProvider | null | undefined;
-let testProvider: AiProvider | null | undefined;
-
-/** Tests only: use this provider (null = "not configured"; undefined = back to the settings). */
-export function setAiProviderForTests(provider: AiProvider | null | undefined) {
-  testProvider = provider;
+/**
+ * The second model (GEMINI_FALLBACK_MODEL), same provider and key, or null when
+ * none is set (or it is the same as the main model).
+ */
+export function fallbackFromSettings(
+  settings: AiSettings = {
+    provider: env.aiProvider,
+    apiKey: env.geminiApiKey,
+    model: env.geminiFallbackModel,
+  },
+): AiProvider | null {
+  if (!settings.model || settings.model === env.geminiModel) return null;
+  return providerFromSettings(settings);
 }
 
-function currentProvider(): AiProvider | null {
-  if (testProvider !== undefined) return testProvider;
-  if (cached === undefined) cached = providerFromSettings();
+/** GEMINI_THINKING_LEVEL as a known level, or undefined (the model's default). */
+export function thinkingFromSettings(value = env.geminiThinkingLevel): AiThinkingLevel | undefined {
+  return (AI_THINKING_LEVELS as readonly string[]).includes(value)
+    ? (value as AiThinkingLevel)
+    : undefined;
+}
+
+let cached: { main: AiProvider | null; fallback: AiProvider | null } | undefined;
+let testProviders: { main: AiProvider | null; fallback: AiProvider | null } | undefined;
+
+/**
+ * Tests only: use this provider, and optionally a second model (null = "not
+ * configured"; undefined = back to the settings).
+ */
+export function setAiProviderForTests(
+  provider: AiProvider | null | undefined,
+  fallback: AiProvider | null = null,
+) {
+  testProviders = provider === undefined ? undefined : { main: provider, fallback };
+}
+
+function currentProviders() {
+  if (testProviders !== undefined) return testProviders;
+  if (cached === undefined) {
+    const main = providerFromSettings();
+    cached = { main, fallback: main ? fallbackFromSettings() : null };
+  }
   return cached;
 }
 
@@ -61,6 +107,7 @@ export class InvalidAiOutputError extends Error {
 const USAGE_STATUS: Record<AiErrorKind, UsageStatus> = {
   auth: 'auth',
   quota: 'quota',
+  rate_limited: 'quota',
   timeout: 'timeout',
   unavailable: 'unavailable',
   blocked: 'blocked',
@@ -77,6 +124,7 @@ function toAppError(err: AiProviderError): AppError {
         'The AI service is not set up yet. Please try again later',
       );
     case 'quota':
+    case 'rate_limited':
       return new AppError(
         503,
         'AI_QUOTA_REACHED',
@@ -101,16 +149,37 @@ function toAppError(err: AiProviderError): AppError {
 
 // ---------------------------------------------------------------- one validated answer
 
+/** What one request used (tokens are counted even when it fails). No content. */
+export interface AiUsage {
+  inputTokens: number;
+  outputTokens: number;
+  /** Answers asked for: 1, or 2 when the first was invalid. */
+  attempts: number;
+  /** Provider calls, outage retries and the second model included. */
+  calls?: number;
+  /** The model of the last call. */
+  model?: string;
+  fallbackUsed?: boolean;
+  /** The provider's last error status word (e.g. UNAVAILABLE). */
+  providerStatus?: string;
+}
+
 export interface GenerateOptions<T> {
   provider: AiProvider;
+  /** Second model, tried when the main one is busy or does not answer in time. */
+  fallback?: AiProvider | null;
   prompt: BuiltPrompt;
   schema: z.ZodType<T>;
   maxOutputTokens?: number;
   temperature?: number;
+  thinkingLevel?: AiThinkingLevel;
   documents?: AiDocument[];
+  /** Longest wait for one call (default AI_TIMEOUT_MS). */
   timeoutMs?: number;
+  /** Longest wait for the whole request, every retry included (default AI_TOTAL_BUDGET_MS). */
+  totalBudgetMs?: number;
   /** Filled in as the attempts run (tokens are counted even when it fails). */
-  usage?: { inputTokens: number; outputTokens: number; attempts: number };
+  usage?: AiUsage;
 }
 
 const RETRY_NOTE =
@@ -157,24 +226,58 @@ function checkAnswer<T>(
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+/** A pause of about `ms` (±25 %), so many users do not retry at the same moment. */
+const jitter = (ms: number) => Math.round(ms * (0.75 + Math.random() * 0.5));
+
+/** The provider was busy (overloaded, rate limited, network): worth another try later. */
+const isBusy = (err: AiProviderError) => err.kind === 'unavailable' || err.kind === 'rate_limited';
+
 /**
- * One provider call. A temporary outage (overloaded, 5xx, network) is tried
- * once more after a short pause; quota, key, timeout and blocked content are
- * not retried (a retry would not help, or would spend quota).
+ * Gets one answer from the provider within the request's deadline:
+ * - busy (503 overloaded, 429 per-minute limit, network) or no answer in time
+ *   → the second model at once, when there is one (and the rest of this request
+ *   stays on it);
+ * - still busy → up to two more tries after about 2 s and 5 s (or the provider's
+ *   own "retry after", if longer), never past the deadline;
+ * - daily quota, key, blocked content or a malformed request → not retried
+ *   (a retry would not help, or would spend quota).
  */
 async function callProvider(
   options: GenerateOptions<unknown>,
+  state: { current: AiProvider; deadline: number; usage: AiUsage },
   request: Omit<Parameters<AiProvider['generate']>[0], 'signal'>,
 ) {
-  for (let outageRetry = 0; ; outageRetry += 1) {
+  const perCall = options.timeoutMs ?? env.aiTimeoutMs;
+  for (let backoff = 0; ;) {
+    const remaining = state.deadline - Date.now();
+    if (remaining < MIN_CALL_MS) {
+      throw new AiProviderError('timeout', 'The AI request ran out of time');
+    }
+    state.usage.calls = (state.usage.calls ?? 0) + 1;
+    state.usage.model = state.current.model;
     try {
       return await withTimeLimit(
-        (signal) => options.provider.generate({ ...request, signal }),
-        options.timeoutMs ?? env.aiTimeoutMs,
+        (signal) => state.current.generate({ ...request, signal }),
+        Math.min(perCall, remaining),
       );
     } catch (err) {
-      if (err instanceof AiProviderError && err.kind === 'unavailable' && outageRetry < 1) {
-        await sleep(env.aiRetryDelayMs);
+      if (!(err instanceof AiProviderError)) throw err;
+      state.usage.providerStatus =
+        err.details.providerStatus ?? (err.status !== undefined ? `HTTP_${err.status}` : err.kind);
+      const fallback = options.fallback;
+      if ((isBusy(err) || err.kind === 'timeout') && fallback && state.current !== fallback) {
+        state.current = fallback;
+        state.usage.fallbackUsed = true;
+        continue;
+      }
+      if (isBusy(err) && backoff < OUTAGE_BACKOFF.length) {
+        const pause = Math.max(
+          err.details.retryAfterMs ?? 0,
+          jitter(env.aiRetryDelayMs * OUTAGE_BACKOFF[backoff]),
+        );
+        if (Date.now() + pause + MIN_CALL_MS > state.deadline) throw err;
+        backoff += 1;
+        await sleep(pause);
         continue;
       }
       throw err;
@@ -185,22 +288,29 @@ async function callProvider(
 /**
  * Asks the provider for JSON matching `schema`. A malformed answer (empty,
  * cut off, not JSON, or not matching the schema) is retried once, then fails
- * with InvalidAiOutputError. Provider failures are thrown as AiProviderError;
- * only a temporary outage is tried once more (see callProvider).
+ * with InvalidAiOutputError. Provider failures are thrown as AiProviderError
+ * after the outage handling in callProvider. The whole request never takes
+ * longer than its budget.
  */
 export async function generateValidated<T>(options: GenerateOptions<T>): Promise<T> {
   const usage = options.usage ?? { inputTokens: 0, outputTokens: 0, attempts: 0 };
   const jsonSchema = toJsonSchema(options.schema);
+  const state = {
+    current: options.provider,
+    deadline: Date.now() + (options.totalBudgetMs ?? env.aiTotalBudgetMs),
+    usage,
+  };
   let reason: InvalidAiOutputError['reason'] = 'empty';
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
     usage.attempts = attempt;
-    const response = await callProvider(options as GenerateOptions<unknown>, {
+    const response = await callProvider(options as GenerateOptions<unknown>, state, {
       system: options.prompt.system,
       prompt: attempt === 1 ? options.prompt.prompt : options.prompt.prompt + RETRY_NOTE,
       jsonSchema,
       maxOutputTokens: options.maxOutputTokens ?? DEFAULT_MAX_OUTPUT_TOKENS,
       temperature: options.temperature,
+      thinkingLevel: options.thinkingLevel,
       documents: options.documents,
     });
     usage.inputTokens += response.inputTokens ?? 0;
@@ -247,7 +357,7 @@ async function record(
   task: AiTask<unknown>,
   provider: AiProvider,
   status: UsageStatus,
-  usage: { inputTokens: number; outputTokens: number; attempts: number },
+  usage: AiUsage,
   started: number,
   errorCode?: string,
 ) {
@@ -256,11 +366,14 @@ async function record(
     userId: task.userId,
     feature: task.feature,
     provider: provider.name,
-    model: provider.model,
+    model: usage.model ?? provider.model,
     status,
     inputTokens: usage.inputTokens,
     outputTokens: usage.outputTokens,
     attempts: status === 'capped' ? 0 : Math.max(usage.attempts, 1),
+    calls: usage.calls ?? 0,
+    fallbackUsed: usage.fallbackUsed ?? false,
+    providerStatus: usage.providerStatus,
     durationMs: Date.now() - started,
     errorCode,
   }).catch(() => console.warn('[ai] usage record could not be saved'));
@@ -268,12 +381,13 @@ async function record(
 
 /**
  * Runs one AI task for a feature: checks the setup and the hourly safety cap,
- * gets a validated answer (one retry for invalid output), records usage (no
- * content), and turns every failure into a translated API error. Never falls
- * back to another (paid) provider.
+ * gets a validated answer (outage handling and one retry for invalid output),
+ * records usage (no content), and turns every failure into a translated API
+ * error. Only Gemini models on the configured key are used (main, then the
+ * optional second model); never another (paid) provider.
  */
 export async function runAi<T>(task: AiTask<T>): Promise<T> {
-  const provider = currentProvider();
+  const { main: provider, fallback } = currentProviders();
   if (!provider) {
     console.warn(
       '[ai] AI is not configured: set AI_PROVIDER=gemini and GEMINI_API_KEY in backend/.env',
@@ -290,7 +404,7 @@ export async function runAi<T>(task: AiTask<T>): Promise<T> {
   }
 
   const started = Date.now();
-  const usage = { inputTokens: 0, outputTokens: 0, attempts: 0 };
+  const usage: AiUsage = { inputTokens: 0, outputTokens: 0, attempts: 0 };
   if (await overHourlyCap(task.userId)) {
     await record(task, provider, 'capped', usage, started, 'AI_LIMIT_REACHED');
     throw new AppError(
@@ -300,7 +414,16 @@ export async function runAi<T>(task: AiTask<T>): Promise<T> {
     );
   }
   try {
-    const data = await generateValidated({ ...task, provider, usage });
+    const data = await generateValidated({
+      ...task,
+      provider,
+      fallback,
+      thinkingLevel: thinkingFromSettings(),
+      usage,
+    });
+    if (usage.fallbackUsed) {
+      console.warn(`[ai] ${task.feature}: answered by the second model ${usage.model}`);
+    }
     await record(task, provider, 'ok', usage, started);
     return data;
   } catch (err) {
@@ -320,7 +443,11 @@ export async function runAi<T>(task: AiTask<T>): Promise<T> {
       // Safe for logs: our own message (status only), no key and no user content.
       if (err.kind === 'auth')
         console.error(`[ai] ${err.message}: check GEMINI_API_KEY in backend/.env`);
-      else console.warn(`[ai] ${task.feature}: ${err.message}`);
+      else
+        console.warn(
+          `[ai] ${task.feature}: ${err.message} after ${usage.calls ?? 0} call(s)` +
+            ` (last model ${usage.model}, ${usage.providerStatus ?? err.kind})`,
+        );
       await record(task, provider, USAGE_STATUS[err.kind], usage, started, appError.code);
       throw appError;
     }

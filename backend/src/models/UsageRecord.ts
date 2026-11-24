@@ -43,6 +43,12 @@ const usageRecordSchema = new Schema(
     durationMs: Number,
     /** Our error code (e.g. AI_QUOTA_REACHED), never the provider's message. */
     errorCode: String,
+    /** Provider calls made for this request (outage retries and the second model included). */
+    calls: Number,
+    /** True when the second model (GEMINI_FALLBACK_MODEL) was tried. `model` is the last one tried. */
+    fallbackUsed: Boolean,
+    /** The provider's last error status word (e.g. UNAVAILABLE, DEADLINE_EXCEEDED); never a message. */
+    providerStatus: String,
   },
   { timestamps: { createdAt: true, updatedAt: false } },
 );
