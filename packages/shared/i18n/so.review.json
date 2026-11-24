@@ -436,183 +436,183 @@
     "en": "This account is suspended."
   },
   "admin.interviews.all": {
-    "state": "pending",
+    "state": "approved",
     "en": "All"
   },
   "admin.interviews.answeredOf": {
-    "state": "pending",
+    "state": "approved",
     "en": "{{answered}} of {{length}} answered"
   },
   "admin.interviews.back": {
-    "state": "pending",
+    "state": "approved",
     "en": "← Interviews"
   },
   "admin.interviews.cards.averageScore": {
-    "state": "pending",
+    "state": "approved",
     "en": "Average score (finished)"
   },
   "admin.interviews.cards.cancelled": {
-    "state": "pending",
+    "state": "approved",
     "en": "Stopped"
   },
   "admin.interviews.cards.finished": {
-    "state": "pending",
+    "state": "approved",
     "en": "Finished"
   },
   "admin.interviews.cards.inProgress": {
-    "state": "pending",
+    "state": "approved",
     "en": "In progress"
   },
   "admin.interviews.columns.actions": {
-    "state": "pending",
+    "state": "approved",
     "en": "Actions"
   },
   "admin.interviews.columns.job": {
-    "state": "pending",
+    "state": "approved",
     "en": "Job"
   },
   "admin.interviews.columns.language": {
-    "state": "pending",
+    "state": "approved",
     "en": "Language"
   },
   "admin.interviews.columns.score": {
-    "state": "pending",
+    "state": "approved",
     "en": "Score"
   },
   "admin.interviews.columns.started": {
-    "state": "pending",
+    "state": "approved",
     "en": "Started"
   },
   "admin.interviews.columns.status": {
-    "state": "pending",
+    "state": "approved",
     "en": "Status"
   },
   "admin.interviews.columns.type": {
-    "state": "pending",
+    "state": "approved",
     "en": "Type"
   },
   "admin.interviews.columns.user": {
-    "state": "pending",
+    "state": "approved",
     "en": "User"
   },
   "admin.interviews.deletedUser": {
-    "state": "pending",
+    "state": "approved",
     "en": "Deleted account"
   },
   "admin.interviews.detail.answered": {
-    "state": "pending",
+    "state": "approved",
     "en": "Questions answered"
   },
   "admin.interviews.detail.finishedAt": {
-    "state": "pending",
+    "state": "approved",
     "en": "Finished"
   },
   "admin.interviews.detail.none": {
-    "state": "pending",
+    "state": "approved",
     "en": "—"
   },
   "admin.interviews.detail.notAnswered": {
-    "state": "pending",
+    "state": "approved",
     "en": "Not answered"
   },
   "admin.interviews.detail.notFound": {
-    "state": "pending",
+    "state": "approved",
     "en": "This interview practice does not exist."
   },
   "admin.interviews.detail.privacy": {
-    "state": "pending",
+    "state": "approved",
     "en": "The user's answers and the AI feedback on them are private and not shown here."
   },
   "admin.interviews.detail.question": {
-    "state": "pending",
+    "state": "approved",
     "en": "Question {{number}} · {{focus}}"
   },
   "admin.interviews.detail.questions": {
-    "state": "pending",
+    "state": "approved",
     "en": "Questions"
   },
   "admin.interviews.detail.score": {
-    "state": "pending",
+    "state": "approved",
     "en": "Average score"
   },
   "admin.interviews.detail.title": {
-    "state": "pending",
+    "state": "approved",
     "en": "Interview practice: {{role}}"
   },
   "admin.interviews.details": {
-    "state": "pending",
+    "state": "approved",
     "en": "Details"
   },
   "admin.interviews.empty": {
-    "state": "pending",
+    "state": "approved",
     "en": "No interview practices yet."
   },
   "admin.interviews.error": {
-    "state": "pending",
+    "state": "approved",
     "en": "Could not load the interviews. Check that the backend is running."
   },
   "admin.interviews.languageFilter": {
-    "state": "pending",
+    "state": "approved",
     "en": "Language"
   },
   "admin.interviews.periodFilter": {
-    "state": "pending",
+    "state": "approved",
     "en": "Started"
   },
   "admin.interviews.retry": {
-    "state": "pending",
+    "state": "approved",
     "en": "Try again"
   },
   "admin.interviews.scoreValue": {
-    "state": "pending",
+    "state": "approved",
     "en": "{{score}}/10"
   },
   "admin.interviews.statusFilter": {
-    "state": "pending",
+    "state": "approved",
     "en": "Status"
   },
   "admin.interviews.statuses.cancelled": {
-    "state": "pending",
+    "state": "approved",
     "en": "Stopped"
   },
   "admin.interviews.statuses.finished": {
-    "state": "pending",
+    "state": "approved",
     "en": "Finished"
   },
   "admin.interviews.statuses.in_progress": {
-    "state": "pending",
+    "state": "approved",
     "en": "In progress"
   },
   "admin.interviews.subtitle": {
-    "state": "pending",
+    "state": "approved",
     "en": "Every interview practice users started. Read-only: the user's answers and the AI feedback on them are never shown here, only the type, job, length and scores."
   },
   "admin.interviews.title": {
-    "state": "pending",
+    "state": "approved",
     "en": "Interviews"
   },
   "admin.interviews.typeFilter": {
-    "state": "pending",
+    "state": "approved",
     "en": "Type"
   },
   "admin.interviews.types.behavioral": {
-    "state": "pending",
+    "state": "approved",
     "en": "Behavioural"
   },
   "admin.interviews.types.general": {
-    "state": "pending",
+    "state": "approved",
     "en": "General"
   },
   "admin.interviews.types.job_specific": {
-    "state": "pending",
+    "state": "approved",
     "en": "For a job"
   },
   "admin.interviews.types.problem_solving": {
-    "state": "pending",
+    "state": "approved",
     "en": "Problem solving"
   },
   "admin.interviews.types.technical": {
-    "state": "pending",
+    "state": "approved",
     "en": "Technical"
   },
   "admin.jobs.all": {
@@ -1024,7 +1024,7 @@
     "en": "CVs created"
   },
   "admin.overview.activity.interviewsFinished": {
-    "state": "pending",
+    "state": "approved",
     "en": "Interview practices finished"
   },
   "admin.overview.activity.quizzesFinished": {
