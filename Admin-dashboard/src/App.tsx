@@ -8,6 +8,8 @@ import { AuditLogPage } from './pages/AuditLogPage';
 import { AssessmentDetailPage } from './pages/AssessmentDetailPage';
 import { AssessmentsPage } from './pages/AssessmentsPage';
 import { CvsPage } from './pages/CvsPage';
+import { InterviewDetailPage } from './pages/InterviewDetailPage';
+import { InterviewsPage } from './pages/InterviewsPage';
 import { JobDetailPage } from './pages/JobDetailPage';
 import { JobsPage } from './pages/JobsPage';
 import { NotificationsPage } from './pages/NotificationsPage';
@@ -44,6 +46,8 @@ export default function App() {
             <Route path="job-sources" element={<JobSourcesPage />} />
             <Route path="research-runs" element={<ResearchRunsPage />} />
             <Route path="research-runs/:id" element={<ResearchRunDetailPage />} />
+            <Route path="interviews" element={<InterviewsPage />} />
+            <Route path="interviews/:id" element={<InterviewDetailPage />} />
             <Route path="usage" element={<UsagePage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="reports" element={<ReportsPage />} />

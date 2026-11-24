@@ -258,6 +258,7 @@
       "activity": {
         "quizzesFinished": "Skill quizzes finished",
         "cvsCreated": "CVs created",
+        "interviewsFinished": "Interview practices finished",
         "runs": "Job searches",
         "runsFailed": "Failed job searches",
         "waitlist": "Waitlist sign-ups"
@@ -446,6 +447,63 @@
       "empty": "No CVs yet.",
       "error": "Could not load the CVs. Check that the backend is running.",
       "retry": "Try again"
+    },
+    "interviews": {
+      "title": "Interviews",
+      "subtitle": "Every interview practice users started. Read-only: the user's answers and the AI feedback on them are never shown here, only the type, job, length and scores.",
+      "cards": {
+        "finished": "Finished",
+        "inProgress": "In progress",
+        "cancelled": "Stopped",
+        "averageScore": "Average score (finished)"
+      },
+      "scoreValue": "{{score}}/10",
+      "statusFilter": "Status",
+      "typeFilter": "Type",
+      "languageFilter": "Language",
+      "periodFilter": "Started",
+      "all": "All",
+      "statuses": {
+        "in_progress": "In progress",
+        "finished": "Finished",
+        "cancelled": "Stopped"
+      },
+      "types": {
+        "general": "General",
+        "technical": "Technical",
+        "behavioral": "Behavioural",
+        "job_specific": "For a job",
+        "problem_solving": "Problem solving"
+      },
+      "columns": {
+        "started": "Started",
+        "user": "User",
+        "type": "Type",
+        "job": "Job",
+        "language": "Language",
+        "status": "Status",
+        "score": "Score",
+        "actions": "Actions"
+      },
+      "answeredOf": "{{answered}} of {{length}} answered",
+      "deletedUser": "Deleted account",
+      "details": "Details",
+      "empty": "No interview practices yet.",
+      "error": "Could not load the interviews. Check that the backend is running.",
+      "retry": "Try again",
+      "back": "← Interviews",
+      "detail": {
+        "title": "Interview practice: {{role}}",
+        "score": "Average score",
+        "answered": "Questions answered",
+        "finishedAt": "Finished",
+        "none": "—",
+        "questions": "Questions",
+        "question": "Question {{number}} · {{focus}}",
+        "notAnswered": "Not answered",
+        "privacy": "The user's answers and the AI feedback on them are private and not shown here.",
+        "notFound": "This interview practice does not exist."
+      }
     },
     "jobs": {
       "title": "Jobs & matching",
