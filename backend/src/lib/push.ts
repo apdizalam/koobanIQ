@@ -1,4 +1,6 @@
 import { env } from '../config/env.js';
+import { PushTicket } from '../models/PushTicket.js';
+import { notePushError } from '../services/pushReceiptService.js';
 
 /**
  * Push messages through the Expo Push Service (TIQ-22): free, no account key
@@ -40,24 +42,50 @@ export async function sendPush(messages: PushMessage[]): Promise<{ invalidTokens
     pushOutbox.push(...messages);
     return { invalidTokens: [] };
   }
+  return sendToExpo(messages);
+}
+
+/** An Expo push ticket (the answer to one message). */
+interface PushTicketAnswer {
+  status: 'ok' | 'error';
+  id?: string;
+  message?: string;
+  details?: { error?: string };
+}
+
+/**
+ * The real sending, also used by tests with a fake `fetch`. Accepted messages
+ * get a ticket whose receipt is checked about 15 minutes later
+ * (pushReceiptService): some problems, such as wrong Firebase credentials,
+ * only show up there.
+ */
+export async function sendToExpo(
+  messages: PushMessage[],
+  fetchImpl: typeof fetch = fetch,
+): Promise<{ invalidTokens: string[] }> {
   const invalidTokens: string[] = [];
+  const accepted: { ticketId: string; token: string }[] = [];
   // The Expo Push Service takes at most 100 messages per request.
   for (let i = 0; i < messages.length; i += PUSH_BATCH) {
     const batch = messages.slice(i, i + PUSH_BATCH);
-    const res = await fetch(EXPO_PUSH_URL, {
+    const res = await fetchImpl(EXPO_PUSH_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify(batch.map((m) => ({ ...m, sound: 'default' }))),
     });
     if (!res.ok) throw new Error(`Expo push service answered ${res.status}`);
-    const json = (await res.json()) as {
-      data?: { status: string; details?: { error?: string } }[];
-    };
+    const json = (await res.json()) as { data?: PushTicketAnswer[] };
     (json.data ?? []).forEach((ticket, n) => {
-      if (ticket.status === 'error' && ticket.details?.error === 'DeviceNotRegistered') {
-        invalidTokens.push(batch[n].to);
-      }
+      const token = batch[n].to;
+      if (ticket.status === 'ok' && ticket.id) accepted.push({ ticketId: ticket.id, token });
+      else if (ticket.details?.error === 'DeviceNotRegistered') invalidTokens.push(token);
+      else if (ticket.status === 'error') void notePushError(ticket.details?.error ?? 'unknown');
     });
+  }
+  if (accepted.length > 0) {
+    await PushTicket.insertMany(accepted, { ordered: false }).catch((err: unknown) =>
+      console.warn('[push] tickets not saved:', err instanceof Error ? err.message : err),
+    );
   }
   return { invalidTokens };
 }
