@@ -4,6 +4,7 @@ import { env } from './config/env.js';
 import { ensureDefaultRegions, ensureDefaultSources } from './services/jobSourceService.js';
 import { migrateNotificationIndexes } from './services/notificationService.js';
 import { recoverStuckRuns } from './services/researchService.js';
+import { sendAlert } from './services/alertService.js';
 import { startScheduler, stopScheduler } from './services/scheduleService.js';
 
 async function main() {
@@ -32,6 +33,26 @@ async function main() {
     await disconnectDB();
     process.exit(0);
   };
+  // A crash is emailed to the team (ALERT_EMAIL) before the server stops.
+  process.on('uncaughtException', (err) => {
+    console.error('Uncaught exception:', err);
+    void sendAlert({
+      kind: 'crash',
+      key: err.name,
+      title: 'The server crashed (uncaught exception) and is restarting',
+      lines: [`Error: ${err.name}: ${err.message}`],
+    }).finally(() => process.exit(1));
+  });
+  process.on('unhandledRejection', (reason) => {
+    console.error('Unhandled promise rejection:', reason);
+    const name = reason instanceof Error ? reason.name : typeof reason;
+    void sendAlert({
+      kind: 'crash',
+      key: `rejection:${name}`,
+      title: 'Unhandled error in the server (promise rejection)',
+      lines: [`Error: ${name}: ${reason instanceof Error ? reason.message : String(reason)}`],
+    });
+  });
   process.on('SIGINT', () => void shutdown('SIGINT'));
   process.on('SIGTERM', () => void shutdown('SIGTERM'));
 }

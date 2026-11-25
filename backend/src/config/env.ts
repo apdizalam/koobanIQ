@@ -64,6 +64,13 @@ export const env = {
   /** Sender shown in emails. Resend's test sender only delivers to the Resend account owner. */
   emailFrom: process.env.EMAIL_FROM ?? 'KOBANIQ <onboarding@resend.dev>',
   /**
+   * Error alerts (TIQ-25) go to this address: server errors, crashes, AI outages.
+   * Empty = alerts off. With Resend's test sender it must be the Resend account's email.
+   */
+  alertEmail: (process.env.ALERT_EMAIL ?? '').trim(),
+  /** At most one alert email per kind of problem in this time (milliseconds). */
+  alertCooldownMs: Number(process.env.ALERT_COOLDOWN_MS ?? 15 * 60_000),
+  /**
    * Must new accounts confirm their email with a code before using the app?
    * Off by default (owner decision 2026-11-19: Resend's test sender only reaches
    * the owner's inbox until a domain is verified). Turn on with

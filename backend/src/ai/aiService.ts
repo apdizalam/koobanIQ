@@ -3,6 +3,7 @@ import type { z } from 'zod';
 import { env } from '../config/env.js';
 import { AppError } from '../lib/errors.js';
 import { UsageRecord, type AiFeature, type UsageStatus } from '../models/UsageRecord.js';
+import { noteAiFailure } from '../services/alertService.js';
 import { isFeatureAllowed } from '../services/entitlements.js';
 import { createGeminiProvider } from './gemini.js';
 import type { BuiltPrompt } from './prompts/shared.js';
@@ -449,6 +450,15 @@ export async function runAi<T>(task: AiTask<T>): Promise<T> {
             ` (last model ${usage.model}, ${usage.providerStatus ?? err.kind})`,
         );
       await record(task, provider, USAGE_STATUS[err.kind], usage, started, appError.code);
+      // Many failures in a short time = an outage: the team gets one email.
+      if (
+        err.kind === 'unavailable' ||
+        err.kind === 'timeout' ||
+        err.kind === 'quota' ||
+        err.kind === 'rate_limited'
+      ) {
+        void noteAiFailure(task.feature, appError.code);
+      }
       throw appError;
     }
     throw err;
