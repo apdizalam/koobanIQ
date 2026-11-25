@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import { AppError } from '../lib/errors.js';
+import { sendAlert } from '../services/alertService.js';
 import { requestLanguage, translate } from '../lib/i18n.js';
 import { PASSWORD_MAX, PASSWORD_MIN } from '../lib/validate.js';
 
@@ -55,5 +56,16 @@ export function errorHandler(err: unknown, req: Request, res: Response, _next: N
     return;
   }
   console.error(err);
+  // The team hears about it (throttled; method, path and error only, never the body).
+  const name = err instanceof Error ? err.name : typeof err;
+  void sendAlert({
+    kind: 'server_error',
+    key: name,
+    title: `Server error (500) on ${req.method} ${req.baseUrl}${req.path}`,
+    lines: [
+      `Error: ${name}: ${err instanceof Error ? err.message : String(err)}`,
+      `Where: ${(err instanceof Error ? (err.stack ?? '') : '').split('\n').slice(1, 3).join(' | ')}`,
+    ],
+  });
   sendError(req, res, 500, 'INTERNAL_ERROR', 'Something went wrong');
 }

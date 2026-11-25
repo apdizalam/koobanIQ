@@ -18,6 +18,7 @@
     "smoke": "tsx src/scripts/smoke.ts",
     "ai:check": "tsx src/scripts/ai-check.ts",
     "health": "tsx src/scripts/health.ts",
+    "alert:test": "tsx src/scripts/alert-test.ts",
     "ai:check:jd": "tsx test/live/jdLiveCheck.ts",
     "ai:check:cv": "tsx test/live/cvLiveCheck.ts",
     "ai:check:quiz": "tsx test/live/quizLiveCheck.ts",
