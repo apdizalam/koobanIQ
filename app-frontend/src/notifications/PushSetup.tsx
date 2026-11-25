@@ -9,11 +9,24 @@ import {
   isAnnouncementPush,
   jobIdOf,
   rememberPushToken,
+  responseKey,
   showPushWhileOpen,
 } from './push';
 
-/** Where a tapped push leads: its job, or the list for an announcement. */
-const openFromPush = (response: Notifications.NotificationResponse | null) => {
+/** Taps already handled in this app session (by notification id). */
+const handledTaps = new Set<string>();
+
+/**
+ * Where a tapped push leads: its job, or the list for an announcement. Nothing
+ * for a push with missing or unusable data. A tap is never handled twice.
+ */
+export const openFromPush = (response: Notifications.NotificationResponse | null) => {
+  if (!response) return;
+  const key = responseKey(response);
+  if (key) {
+    if (handledTaps.has(key)) return;
+    handledTaps.add(key);
+  }
   const jobId = jobIdOf(response);
   if (jobId) router.push({ pathname: '/job/[id]', params: { id: jobId } });
   else if (isAnnouncementPush(response)) router.push('/notifications');
