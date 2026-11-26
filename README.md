@@ -48,28 +48,29 @@ The whole app works in **English and Somali**.
 
 ## Screenshots
 
-> Real screens from the KOBANIQ mobile app, run locally with a demo account and fictional sample data (390 × 844 phone viewport).
+<p align="center">
+  <img src="docs/screenshots/kobaniq-app-showcase.webp" alt="KOBANIQ app showcase: eight mobile screens covering skill quizzes, job match explanations, tailored CVs, home, skill profile, job research, quiz report and interview practice" width="100%" />
+</p>
 
-<table>
-  <tr>
-    <td align="center" width="25%">
-      <img src="docs/screenshots/mobile-onboarding.jpg" alt="Onboarding screen explaining skill verification" width="220" /><br />
-      <sub><b>Onboarding:</b> explains self-reported vs. quiz-verified skills before sign-up.</sub>
-    </td>
-    <td align="center" width="25%">
-      <img src="docs/screenshots/mobile-home.jpg" alt="Home screen with skill profile summary, profile completion and quick actions" width="220" /><br />
-      <sub><b>Home:</b> skill profile summary, profile completion and quick actions (Tailor CV, Research jobs, Assess skill, Practice interview).</sub>
-    </td>
-    <td align="center" width="25%">
-      <img src="docs/screenshots/mobile-skill-profile.jpg" alt="Skill profile grouped by category with an optional quiz prompt" width="220" /><br />
-      <sub><b>Skill profile:</b> skills grouped by category, assessed vs. self-reported, with an optional quiz to verify a skill.</sub>
-    </td>
-    <td align="center" width="25%">
-      <img src="docs/screenshots/mobile-profile.jpg" alt="Profile screen with sections for personal info, skills, experience, education and more" width="220" /><br />
-      <sub><b>Profile:</b> personal info, skills, experience, education, projects, certifications, languages and job preferences.</sub>
-    </td>
-  </tr>
-</table>
+> Eight screens of the KOBANIQ mobile app, shown with fictional sample data (names such as "Hodan Ali" and "Sahan Digital" are examples).
+
+**Top row: the three core features**
+
+| #   | Screen                                 | What it shows                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| --- | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | **Adaptive skill quiz**                | A _Hard_ React Native question on performance (_"A FlatList with 500 rows scrolls slowly on Android…"_). Difficulty adapts to the answers. After answering, the user sees whether it was correct and why (_memoise rows and add `getItemLayout`_). A note reminds that quiz results measure knowledge, not proof of real-world experience.                                                                                              |
+| 2   | **Job detail with an explained match** | _Frontend Developer (React)_ in Hargeisa with a **Strong match · 87%**. **Why this score** lists the matching skills, the skills confirmed by quizzes, the career level (Junior ↔ Junior) and the preferred city. **Useful skills you don't show yet** suggests GraphQL and Jest. It also shows job details (full-time, on-site, apply-by date). The score shows how relevant the job is to the profile, not the chance of being hired. |
+| 3   | **Tailored CV**                        | A CV written for one job, in English, with a version number. The user can **Approve CV** (then download it as a PDF) or **Edit wording**. **Missing from your profile** lists skills the CV left out because they are not in the profile (e.g. _Preferred skill: GraphQL_), so the CV never invents experience.                                                                                                                         |
+
+**Bottom row: inside the app**
+
+| #   | Screen                 | What it shows                                                                                                                                                                                                                 |
+| --- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 4   | **Home**               | Greeting, a skill-profile card (assessed vs. self-reported skills), profile completion (80%) and quick actions: Tailor CV, Research jobs, Assess skill and Practice interview. Bottom tabs: Home, CV, Jobs, Reports, Profile. |
+| 5   | **Skill profile**      | Skills grouped by area (Frontend, Backend) and split into **assessed** (✓) and **self-reported**, with counters for assessed skills, self-reported skills and gaps found, plus an optional _Verify GraphQL?_ quiz prompt.     |
+| 6   | **Job research**       | A finished search: jobs found per source, how many are new, and the jobs that fit the user, each with a match label (Strong 87%, Good 74%), a short reason and a **Save** button.                                             |
+| 7   | **Quiz report**        | Result of a React Native quiz: **80%** (8 of 10 correct), assessed level _Advanced_, strengths (performance, navigation, state management), gaps (native modules) and what to do next.                                        |
+| 8   | **Interview practice** | _Question 2 of 5_ for a Frontend Developer (React) job: a behavioural question, an AI score (**7/10**), what worked, what to improve and an example of a stronger answer.                                                     |
 
 ## Features
 
