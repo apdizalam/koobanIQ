@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "626988053662",
+    "project_id": "kobaniq-718a7",
+    "storage_bucket": "kobaniq-718a7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626988053662:android:31ceacde6a5dff004cb78f",
+        "android_client_info": {
+          "package_name": "com.kobaniq.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2b219eYtPwfxDbnGp7cd__7lI3Ru5Fsw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

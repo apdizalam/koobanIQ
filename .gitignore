@@ -17,3 +17,9 @@ web-dist/
 npm-debug.log*
 .DS_Store
 Thumbs.db
+
+# Firebase / Google service-account private keys: never in the repository.
+# (google-services.json is NOT secret and is committed in app-frontend/.)
+*firebase-adminsdk*.json
+*service-account*.json
+*serviceAccount*.json

@@ -63,14 +63,26 @@ export async function getPushToken(): Promise<string | null> {
 
 /** A tapped push about an announcement (TIQ-33): the app opens the notifications list. */
 export function isAnnouncementPush(response: Notifications.NotificationResponse | null): boolean {
-  const data = response?.notification.request.content.data as { type?: unknown } | undefined;
+  const data = response?.notification?.request?.content?.data as { type?: unknown } | undefined;
   return data?.type === 'announcement';
 }
 
-/** The job a tapped notification is about (data.jobId), if any. */
+/** A job id we can safely put in a screen address (letters, digits, - and _). */
+const SAFE_ID = /^[A-Za-z0-9_-]{1,64}$/;
+
+/** The job a tapped notification is about (data.jobId), if any and well-formed. */
 export function jobIdOf(response: Notifications.NotificationResponse | null): string | null {
-  const data = response?.notification.request.content.data as { jobId?: unknown } | undefined;
-  return typeof data?.jobId === 'string' ? data.jobId : null;
+  const data = response?.notification?.request?.content?.data as { jobId?: unknown } | undefined;
+  return typeof data?.jobId === 'string' && SAFE_ID.test(data.jobId) ? data.jobId : null;
+}
+
+/**
+ * The tapped notification's own id, so one tap is handled once even if it
+ * arrives both as "the tap that opened the app" and through the listener.
+ */
+export function responseKey(response: Notifications.NotificationResponse | null): string | null {
+  const id = (response?.notification?.request as { identifier?: unknown } | undefined)?.identifier;
+  return typeof id === 'string' && id ? id : null;
 }
 
 /** The token this phone registered for the signed-in user (removed again on sign-out). */
