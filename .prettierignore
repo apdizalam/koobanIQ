@@ -17,3 +17,6 @@ package-lock.json
 .env
 .env.*
 !.env.example
+
+# Firebase app config, kept exactly as downloaded from Firebase.
+app-frontend/google-services.json
