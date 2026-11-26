@@ -15,7 +15,7 @@ import { sendEmail, type EmailMessage } from '../lib/mailer.js';
  * - Never breaks the request or the server: a failed alert is only logged.
  */
 
-export type AlertKind = 'server_error' | 'crash' | 'ai_outage' | 'test';
+export type AlertKind = 'server_error' | 'crash' | 'ai_outage' | 'push' | 'test';
 export type AlertResult = 'sent' | 'off' | 'throttled' | 'failed';
 
 interface Throttle {

@@ -5,6 +5,7 @@ import { ensureDefaultRegions, ensureDefaultSources } from './services/jobSource
 import { migrateNotificationIndexes } from './services/notificationService.js';
 import { recoverStuckRuns } from './services/researchService.js';
 import { sendAlert } from './services/alertService.js';
+import { startPushReceiptChecks, stopPushReceiptChecks } from './services/pushReceiptService.js';
 import { startScheduler, stopScheduler } from './services/scheduleService.js';
 
 async function main() {
@@ -25,10 +26,13 @@ async function main() {
 
   // Scheduled searches (TIQ-21): checks every minute for searches whose local time has come.
   startScheduler();
+  // Push receipts (FCM / APNs problems show up there), every 5 minutes.
+  startPushReceiptChecks();
 
   const shutdown = async (signal: string) => {
     console.log(`${signal} received, shutting down`);
     stopScheduler();
+    stopPushReceiptChecks();
     server.close();
     await disconnectDB();
     process.exit(0);
