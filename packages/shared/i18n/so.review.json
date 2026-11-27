@@ -2040,7 +2040,7 @@
     "en": "Close menu"
   },
   "admin.shell.darkMode": {
-    "state": "pending",
+    "state": "approved",
     "en": "Dark mode"
   },
   "admin.shell.logout": {
