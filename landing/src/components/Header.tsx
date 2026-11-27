@@ -1,10 +1,11 @@
 import { LANGS, pathOf, type Lang, type Page } from '../routes';
 import type { Texts } from '../texts';
 import { Logo } from './Logo';
+import { ThemeToggle } from './ThemeToggle';
 
 const LANG_NAMES: Record<Lang, string> = { en: 'English', so: 'Soomaali' };
 
-/** Top bar: logo, section links (home page), language switcher, waitlist button. */
+/** Top bar: logo, section links (home page), light/dark switch, language switcher, waitlist button. */
 export function Header({ t, lang, page }: { t: Texts; lang: Lang; page: Page }) {
   const home = pathOf(lang, 'home');
   // On the legal pages the section links lead back to the home page.
@@ -22,6 +23,7 @@ export function Header({ t, lang, page }: { t: Texts; lang: Lang; page: Page }) 
           <a href={section('faq')}>{t.nav.faq}</a>
         </nav>
         <div className="header-actions">
+          <ThemeToggle label={t.nav.darkMode} />
           <div className="lang-switch" role="group" aria-label={t.nav.language}>
             {LANGS.map((l) => (
               <a
