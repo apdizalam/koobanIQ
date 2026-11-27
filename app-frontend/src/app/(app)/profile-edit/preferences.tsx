@@ -81,7 +81,8 @@ function PreferencesForm({ initial }: { initial: Preferences }) {
         label={t('mobile.profile.fields.titles')}
         value={titles}
         onChangeText={setTitles}
-        placeholder={t('mobile.profile.hints.list')}
+        placeholder={t('mobile.inputs.preferences.titles')}
+        hint={t('mobile.profile.hints.list')}
         errorMessage={errors.titles || undefined}
         editable={!busy}
       />
@@ -111,7 +112,8 @@ function PreferencesForm({ initial }: { initial: Preferences }) {
         label={t('mobile.profile.fields.cities')}
         value={cities}
         onChangeText={setCities}
-        placeholder={t('mobile.profile.hints.list')}
+        placeholder={t('mobile.inputs.preferences.cities')}
+        hint={t('mobile.profile.hints.list')}
         errorMessage={errors.cities || undefined}
         editable={!busy}
       />

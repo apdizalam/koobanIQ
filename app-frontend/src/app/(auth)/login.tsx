@@ -89,6 +89,7 @@ export default function LoginScreen() {
         <Input
           testID="login-password"
           label={t('mobile.auth.login.password')}
+          placeholder={t('mobile.inputs.auth.password')}
           icon="lock"
           value={password}
           onChangeText={setPassword}

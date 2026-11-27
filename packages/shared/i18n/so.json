@@ -1917,6 +1917,73 @@
       "readAll": "Dhammaan u calaamadee kuwo la akhriyay",
       "strongMatch": "Si fiican u habboon · {{score}}%",
       "announcement": "Ogeysiis"
+    },
+    "inputs": {
+      "auth": {
+        "password": "Erayga sirta ah ee aad leedahay",
+        "newPassword": "Ugu yaraan 8 xaraf"
+      },
+      "jobs": {
+        "search": "Tusaale: Xisaabiye, Excel ama magaca shirkad",
+        "city": "Magaca magaalada",
+        "researchTitle": "Magaca shaqada la raadinayo"
+      },
+      "interview": {
+        "role": "Shaqada aad isu diyaarinayso",
+        "answer": "U jawaab sidii aad wareysiga ugu jawaabi lahayd. Tusaale dhab ah ka bixi shaqadaada ama waxbarashadaada."
+      },
+      "cv": {
+        "headline": "Tusaale: Xisaabiye leh 3 sano oo khibrad ah",
+        "summary": "Si kooban uga warran khibraddaada, xirfadahaaga iyo waxa aad ku fiican tahay…",
+        "bullets": "Sadar kasta hal natiijo, tusaale: Diyaariyay warbixinnada maaliyadda ee bil kasta"
+      },
+      "preferences": {
+        "titles": "Tusaale: Xisaabiye, Sarkaalka xogta",
+        "cities": "Tusaale: Hargeysa, Burco"
+      },
+      "personal": {
+        "fullName": "Ku qor magacaaga oo buuxa",
+        "headline": "Tusaale: Xisaabiye",
+        "profession": "Tusaale: Xisaabaadka iyo maaliyadda",
+        "city": "Tusaale: Hargeysa",
+        "phone": "Tusaale: +252 63 1234567",
+        "summary": "Si kooban uga warran khibraddaada, xirfadahaaga iyo waxa aad ku fiican tahay…",
+        "summaryHelp": "Dhowr jumladood oo erayadaada ah. CV-yadaadu halkan ayay ka bilaabmaan."
+      },
+      "experience": {
+        "title": "Tusaale: Xisaabiye",
+        "employer": "Magaca shirkadda ama hay'adda",
+        "city": "Tusaale: Hargeysa",
+        "description": "Sharax shaqadaada, masuuliyadahaaga iyo natiijooyinka…",
+        "descriptionHelp": "Qor oo keliya waxaad dhab ahaan qabatay. CV-yadaada ayaa laga dhisaa."
+      },
+      "education": {
+        "school": "Tusaale: Jaamacadda Hargeysa",
+        "degree": "Tusaale: Shahaadada koowaad, Dibloom",
+        "field": "Tusaale: Xisaabaad, Kalkaalinimo",
+        "startYear": "Tusaale: 2019",
+        "endYear": "Tusaale: 2023",
+        "endYearHelp": "Ka tag madhan haddii aad weli wax baranayso."
+      },
+      "projects": {
+        "name": "Tusaale: Website-ka maktabadda dugsiga",
+        "description": "Waxa mashruucu qabto iyo waxa aad adigu ka qabatay…",
+        "skills": "Tusaale: Excel, Falanqaynta xogta"
+      },
+      "certifications": {
+        "name": "Tusaale: Shahaadada gargaarka degdegga",
+        "issuer": "Hay'adda bixisay shahaadada"
+      },
+      "languages": {
+        "language": "Tusaale: Soomaali, Ingiriisi, Carabi"
+      },
+      "skill": {
+        "name": "Tusaale: Excel, Adeegga macaamiisha, Kalkaalinimo",
+        "nameHelp": "Hal xirfad oo aad dhab ahaan leedahay. Xirfad kasta si gaar ah ugu dar.",
+        "category": "Tusaale: Barnaamijyada xafiiska",
+        "yearsExp": "Tusaale: 2",
+        "yearsExpHelp": "Imisa sano ayaad isticmaalaysay xirfaddan."
+      }
     }
   },
   "landing": {

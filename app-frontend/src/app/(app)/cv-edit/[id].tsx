@@ -114,6 +114,7 @@ export default function CvEditScreen() {
           <Input
             testID="cv-edit-headline"
             label={t('mobile.cv.edit.headline')}
+            placeholder={t('mobile.inputs.cv.headline')}
             value={texts.headline}
             onChangeText={(headline) => setTexts({ ...texts, headline })}
             maxLength={CV_EDIT_LIMITS.headline + 20}
@@ -123,6 +124,7 @@ export default function CvEditScreen() {
           <Input
             testID="cv-edit-summary"
             label={t('mobile.cv.edit.summary')}
+            placeholder={t('mobile.inputs.cv.summary')}
             value={texts.summary}
             onChangeText={(summary) => setTexts({ ...texts, summary })}
             multiline
@@ -139,6 +141,7 @@ export default function CvEditScreen() {
               onChangeText={(value) => setBullets(e.id, value)}
               multiline
               editable={!busy}
+              placeholder={t('mobile.inputs.cv.bullets')}
               hint={t('mobile.cv.edit.bulletsHint', { max: CV_EDIT_LIMITS.experienceBullets })}
               errorMessage={errors[e.id]}
             />
@@ -152,6 +155,7 @@ export default function CvEditScreen() {
               onChangeText={(value) => setBullets(p.id, value)}
               multiline
               editable={!busy}
+              placeholder={t('mobile.inputs.cv.bullets')}
               hint={t('mobile.cv.edit.bulletsHint', { max: CV_EDIT_LIMITS.projectBullets })}
               errorMessage={errors[p.id]}
             />

@@ -1917,6 +1917,73 @@
       "readAll": "Mark all as read",
       "strongMatch": "Strong match · {{score}}%",
       "announcement": "Announcement"
+    },
+    "inputs": {
+      "auth": {
+        "password": "Your password",
+        "newPassword": "At least 8 characters"
+      },
+      "jobs": {
+        "search": "e.g. Accountant, Excel or a company name",
+        "city": "City name",
+        "researchTitle": "The job title to look for"
+      },
+      "interview": {
+        "role": "The job you are preparing for",
+        "answer": "Answer as you would in the interview. Give a real example from your work or studies."
+      },
+      "cv": {
+        "headline": "e.g. Accountant with 3 years of experience",
+        "summary": "Briefly describe your experience, skills and strengths…",
+        "bullets": "One result per line, e.g. Prepared the monthly finance reports"
+      },
+      "preferences": {
+        "titles": "e.g. Accountant, Data officer",
+        "cities": "e.g. Hargeisa, Burao"
+      },
+      "personal": {
+        "fullName": "Enter your full name",
+        "headline": "e.g. Accountant",
+        "profession": "e.g. Accounting and finance",
+        "city": "e.g. Hargeisa",
+        "phone": "e.g. +252 63 1234567",
+        "summary": "Briefly describe your experience, skills and strengths…",
+        "summaryHelp": "A few sentences in your own words. Your CVs start from this."
+      },
+      "experience": {
+        "title": "e.g. Accountant",
+        "employer": "Company or organisation name",
+        "city": "e.g. Hargeisa",
+        "description": "Describe your role, responsibilities and results…",
+        "descriptionHelp": "Write only what you really did. Your CVs are built from it."
+      },
+      "education": {
+        "school": "e.g. University of Hargeisa",
+        "degree": "e.g. Bachelor's degree, Diploma",
+        "field": "e.g. Accounting, Nursing",
+        "startYear": "e.g. 2019",
+        "endYear": "e.g. 2023",
+        "endYearHelp": "Leave empty if you are still studying."
+      },
+      "projects": {
+        "name": "e.g. School library website",
+        "description": "What the project does and what you did in it…",
+        "skills": "e.g. Excel, Data analysis"
+      },
+      "certifications": {
+        "name": "e.g. First aid certificate",
+        "issuer": "The organisation that gave the certificate"
+      },
+      "languages": {
+        "language": "e.g. Somali, English, Arabic"
+      },
+      "skill": {
+        "name": "e.g. Excel, Customer service, Nursing",
+        "nameHelp": "One skill you really have. Add each skill separately.",
+        "category": "e.g. Office software",
+        "yearsExp": "e.g. 2",
+        "yearsExpHelp": "How many years you have used this skill."
+      }
     }
   },
   "landing": {

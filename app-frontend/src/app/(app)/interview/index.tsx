@@ -164,6 +164,7 @@ export default function InterviewStartScreen() {
         <Input
           testID="interview-role"
           label={t('mobile.interview.start.role')}
+          placeholder={t('mobile.inputs.interview.role')}
           hint={t('mobile.interview.start.roleHint')}
           value={role}
           onChangeText={setRole}
