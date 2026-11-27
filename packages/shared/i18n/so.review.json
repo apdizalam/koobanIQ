@@ -1011,6 +1011,10 @@
     "state": "approved",
     "en": "Users"
   },
+  "admin.nav.items.waitlist": {
+    "state": "pending",
+    "en": "Waitlist"
+  },
   "admin.nav.label": {
     "state": "approved",
     "en": "Admin sections"
@@ -2606,6 +2610,94 @@
   "admin.users.you": {
     "state": "approved",
     "en": "This is your own account. Another admin must change it."
+  },
+  "admin.waitlist.agreed": {
+    "state": "pending",
+    "en": "Agreed {{date}}"
+  },
+  "admin.waitlist.columns.consent": {
+    "state": "pending",
+    "en": "Privacy policy"
+  },
+  "admin.waitlist.columns.email": {
+    "state": "pending",
+    "en": "Email"
+  },
+  "admin.waitlist.columns.joined": {
+    "state": "pending",
+    "en": "Joined"
+  },
+  "admin.waitlist.columns.language": {
+    "state": "pending",
+    "en": "Page language"
+  },
+  "admin.waitlist.columns.name": {
+    "state": "pending",
+    "en": "Name"
+  },
+  "admin.waitlist.empty": {
+    "state": "pending",
+    "en": "No one has joined the waitlist yet."
+  },
+  "admin.waitlist.error": {
+    "state": "pending",
+    "en": "Could not load the waitlist. Check that the backend is running."
+  },
+  "admin.waitlist.exportHint": {
+    "state": "pending",
+    "en": "Need a spreadsheet?"
+  },
+  "admin.waitlist.exportLink": {
+    "state": "pending",
+    "en": "Download the waitlist as CSV on Reports"
+  },
+  "admin.waitlist.next": {
+    "state": "pending",
+    "en": "Next"
+  },
+  "admin.waitlist.noMatch": {
+    "state": "pending",
+    "en": "No one on the waitlist matches this search."
+  },
+  "admin.waitlist.noName": {
+    "state": "pending",
+    "en": "Not given"
+  },
+  "admin.waitlist.previous": {
+    "state": "pending",
+    "en": "Previous"
+  },
+  "admin.waitlist.range": {
+    "state": "pending",
+    "en": "{{from}}–{{to}} of {{total}}"
+  },
+  "admin.waitlist.retry": {
+    "state": "pending",
+    "en": "Try again"
+  },
+  "admin.waitlist.search": {
+    "state": "pending",
+    "en": "Search by email or name"
+  },
+  "admin.waitlist.searchLabel": {
+    "state": "pending",
+    "en": "Search the waitlist"
+  },
+  "admin.waitlist.subtitle": {
+    "state": "pending",
+    "en": "People who joined the waitlist on the landing page, newest first."
+  },
+  "admin.waitlist.title": {
+    "state": "pending",
+    "en": "Waitlist"
+  },
+  "admin.waitlist.total": {
+    "state": "pending",
+    "en": "On the waitlist"
+  },
+  "admin.waitlist.totalHint": {
+    "state": "pending",
+    "en": "everyone who joined, all time"
   },
   "common.employerType.company": {
     "state": "approved",

@@ -13,6 +13,7 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { key: 'overview', path: '/overview', available: true },
   { key: 'users', path: '/users', available: true },
+  { key: 'waitlist', path: '/waitlist', available: true },
   { key: 'skills', path: '/skills', available: true },
   { key: 'cvs', path: '/cvs', available: true },
   { key: 'jobs', path: '/jobs', available: true },
