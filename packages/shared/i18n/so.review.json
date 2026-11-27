@@ -1011,6 +1011,10 @@
     "state": "approved",
     "en": "Users"
   },
+  "admin.nav.items.waitlist": {
+    "state": "approved",
+    "en": "Waitlist"
+  },
   "admin.nav.label": {
     "state": "approved",
     "en": "Admin sections"
@@ -2606,6 +2610,94 @@
   "admin.users.you": {
     "state": "approved",
     "en": "This is your own account. Another admin must change it."
+  },
+  "admin.waitlist.agreed": {
+    "state": "approved",
+    "en": "Agreed {{date}}"
+  },
+  "admin.waitlist.columns.consent": {
+    "state": "approved",
+    "en": "Privacy policy"
+  },
+  "admin.waitlist.columns.email": {
+    "state": "approved",
+    "en": "Email"
+  },
+  "admin.waitlist.columns.joined": {
+    "state": "approved",
+    "en": "Joined"
+  },
+  "admin.waitlist.columns.language": {
+    "state": "approved",
+    "en": "Page language"
+  },
+  "admin.waitlist.columns.name": {
+    "state": "approved",
+    "en": "Name"
+  },
+  "admin.waitlist.empty": {
+    "state": "approved",
+    "en": "No one has joined the waitlist yet."
+  },
+  "admin.waitlist.error": {
+    "state": "approved",
+    "en": "Could not load the waitlist. Check that the backend is running."
+  },
+  "admin.waitlist.exportHint": {
+    "state": "approved",
+    "en": "Need a spreadsheet?"
+  },
+  "admin.waitlist.exportLink": {
+    "state": "approved",
+    "en": "Download the waitlist as CSV on Reports"
+  },
+  "admin.waitlist.next": {
+    "state": "approved",
+    "en": "Next"
+  },
+  "admin.waitlist.noMatch": {
+    "state": "approved",
+    "en": "No one on the waitlist matches this search."
+  },
+  "admin.waitlist.noName": {
+    "state": "approved",
+    "en": "Not given"
+  },
+  "admin.waitlist.previous": {
+    "state": "approved",
+    "en": "Previous"
+  },
+  "admin.waitlist.range": {
+    "state": "approved",
+    "en": "{{from}}–{{to}} of {{total}}"
+  },
+  "admin.waitlist.retry": {
+    "state": "approved",
+    "en": "Try again"
+  },
+  "admin.waitlist.search": {
+    "state": "approved",
+    "en": "Search by email or name"
+  },
+  "admin.waitlist.searchLabel": {
+    "state": "approved",
+    "en": "Search the waitlist"
+  },
+  "admin.waitlist.subtitle": {
+    "state": "approved",
+    "en": "People who joined the waitlist on the landing page, newest first."
+  },
+  "admin.waitlist.title": {
+    "state": "approved",
+    "en": "Waitlist"
+  },
+  "admin.waitlist.total": {
+    "state": "approved",
+    "en": "On the waitlist"
+  },
+  "admin.waitlist.totalHint": {
+    "state": "approved",
+    "en": "everyone who joined, all time"
   },
   "common.employerType.company": {
     "state": "approved",

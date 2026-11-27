@@ -212,6 +212,7 @@
       "items": {
         "overview": "Overview",
         "users": "Users",
+        "waitlist": "Waitlist",
         "skills": "Skills & assessments",
         "cvs": "CVs",
         "jobs": "Jobs & matching",
@@ -337,6 +338,32 @@
       "testOff": "{{email}} is no longer a test account.",
       "testDialogOn": "Mark {{email}} as a test account? Use only for accounts that hold fictional data.",
       "testDialogOff": "Remove the test account mark from {{email}}? AI features that send profile data then follow the AI privacy setting."
+    },
+    "waitlist": {
+      "title": "Waitlist",
+      "subtitle": "People who joined the waitlist on the landing page, newest first.",
+      "total": "On the waitlist",
+      "totalHint": "everyone who joined, all time",
+      "search": "Search by email or name",
+      "searchLabel": "Search the waitlist",
+      "columns": {
+        "email": "Email",
+        "name": "Name",
+        "language": "Page language",
+        "consent": "Privacy policy",
+        "joined": "Joined"
+      },
+      "noName": "Not given",
+      "agreed": "Agreed {{date}}",
+      "empty": "No one has joined the waitlist yet.",
+      "noMatch": "No one on the waitlist matches this search.",
+      "error": "Could not load the waitlist. Check that the backend is running.",
+      "retry": "Try again",
+      "range": "{{from}}–{{to}} of {{total}}",
+      "previous": "Previous",
+      "next": "Next",
+      "exportHint": "Need a spreadsheet?",
+      "exportLink": "Download the waitlist as CSV on Reports"
     },
     "quizzes": {
       "title": "Skills & assessments",

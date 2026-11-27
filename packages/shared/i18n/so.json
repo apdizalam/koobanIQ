@@ -212,6 +212,7 @@
       "items": {
         "overview": "Guudmar",
         "users": "Isticmaalayaasha",
+        "waitlist": "Liiska sugitaanka",
         "skills": "Xirfadaha & qiimaynta",
         "cvs": "CV-yada",
         "jobs": "Shaqooyinka & isku-beegidda",
@@ -337,6 +338,32 @@
       "testOff": "{{email}} mar dambe ma aha akoon tijaabo.",
       "testDialogOn": "Ma ka dhigaysaa {{email}} akoon tijaabo? U isticmaal keliya akoonnada haysta xog male ah.",
       "testDialogOff": "Ma ka saaraysaa calaamadda tijaabada {{email}}? Qaybaha AI ee dira xogta astaanta waxay markaas raacayaan dejinta asturnaanta AI."
+    },
+    "waitlist": {
+      "title": "Liiska sugitaanka",
+      "subtitle": "Dadka ku biiray liiska sugitaanka bogga hore, kuwa ugu dambeeyay marka hore.",
+      "total": "Ku jira liiska sugitaanka",
+      "totalHint": "qof walba oo ku biiray, waqti kasta",
+      "search": "Ku raadi iimayl ama magac",
+      "searchLabel": "Raadi liiska sugitaanka",
+      "columns": {
+        "email": "Iimayl",
+        "name": "Magac",
+        "language": "Luqadda bogga",
+        "consent": "Siyaasadda asturnaanta",
+        "joined": "Ku biiray"
+      },
+      "noName": "Lama bixin",
+      "agreed": "La oggolaaday {{date}}",
+      "empty": "Weli qofna kuma biirin liiska sugitaanka.",
+      "noMatch": "Raadintan wax natiijo ah kama soo bixin liiska sugitaanka.",
+      "error": "Liiska sugitaanka lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
+      "retry": "Isku day mar kale",
+      "range": "{{from}}–{{to}} ee {{total}}",
+      "previous": "Hore",
+      "next": "Xiga",
+      "exportHint": "Ma u baahan tahay xaashi xog ah?",
+      "exportLink": "Ka soo deji liiska sugitaanka (CSV) bogga Warbixinnada"
     },
     "quizzes": {
       "title": "Xirfadaha iyo imtixaannada",

@@ -18,6 +18,7 @@ import { ReportsPage } from './pages/ReportsPage';
 import { ResearchRunDetailPage } from './pages/ResearchRunDetailPage';
 import { ResearchRunsPage } from './pages/ResearchRunsPage';
 import { UsagePage } from './pages/UsagePage';
+import { WaitlistPage } from './pages/WaitlistPage';
 import { JobSourcesPage } from './pages/JobSourcesPage';
 import { OverviewPage } from './pages/OverviewPage';
 import { UserDetailPage } from './pages/UserDetailPage';
@@ -41,6 +42,7 @@ export default function App() {
             <Route path="overview" element={<OverviewPage />} />
             <Route path="users" element={<UsersPage />} />
             <Route path="users/:id" element={<UserDetailPage />} />
+            <Route path="waitlist" element={<WaitlistPage />} />
             <Route path="skills" element={<AssessmentsPage />} />
             <Route path="skills/:id" element={<AssessmentDetailPage />} />
             <Route path="cvs" element={<CvsPage />} />
