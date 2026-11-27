@@ -342,28 +342,28 @@
     "waitlist": {
       "title": "Liiska sugitaanka",
       "subtitle": "Dadka ku biiray liiska sugitaanka bogga hore, kuwa ugu dambeeyay marka hore.",
-      "total": "Liiska sugitaanka ku jira",
-      "totalHint": "qof walba oo ku biiray, waqtiga oo dhan",
+      "total": "Ku jira liiska sugitaanka",
+      "totalHint": "qof walba oo ku biiray, waqti kasta",
       "search": "Ku raadi iimayl ama magac",
       "searchLabel": "Raadi liiska sugitaanka",
       "columns": {
         "email": "Iimayl",
         "name": "Magac",
         "language": "Luqadda bogga",
-        "consent": "Siyaasadda arrimaha gaarka ah",
+        "consent": "Siyaasadda asturnaanta",
         "joined": "Ku biiray"
       },
       "noName": "Lama bixin",
-      "agreed": "Wuu ogolaaday {{date}}",
+      "agreed": "La oggolaaday {{date}}",
       "empty": "Weli qofna kuma biirin liiska sugitaanka.",
-      "noMatch": "Qofna oo liiska sugitaanka ku jira kuma habboona raadintan.",
-      "error": "Liiska sugitaanka lama soo rari karin. Hubi in backend-ku shaqaynayo.",
+      "noMatch": "Raadintan wax natiijo ah kama soo bixin liiska sugitaanka.",
+      "error": "Liiska sugitaanka lama soo dejin karo. Hubi in backend-ku shaqaynayo.",
       "retry": "Isku day mar kale",
       "range": "{{from}}–{{to}} ee {{total}}",
       "previous": "Hore",
       "next": "Xiga",
-      "exportHint": "Ma u baahan tahay xaashi xog?",
-      "exportLink": "Ka soo dejiso liiska sugitaanka CSV ahaan bogga Warbixinnada"
+      "exportHint": "Ma u baahan tahay xaashi xog ah?",
+      "exportLink": "Ka soo deji liiska sugitaanka (CSV) bogga Warbixinnada"
     },
     "quizzes": {
       "title": "Xirfadaha iyo imtixaannada",
