@@ -20,3 +20,6 @@ package-lock.json
 
 # Firebase app config, kept exactly as downloaded from Firebase.
 app-frontend/google-services.json
+
+# Working copies made by tools (Claude Code worktrees); each is its own checkout.
+.claude/worktrees/

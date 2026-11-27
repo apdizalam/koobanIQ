@@ -156,6 +156,7 @@ export default function InterviewScreen() {
             <Input
               testID="interview-answer"
               label={t('mobile.interview.yourAnswer')}
+              placeholder={t('mobile.inputs.interview.answer')}
               hint={t('mobile.interview.answerHint', {
                 count: answer.length,
                 max: MAX_ANSWER_LENGTH,

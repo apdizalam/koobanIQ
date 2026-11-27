@@ -90,6 +90,7 @@ export default function ResetPasswordScreen() {
           <Input
             testID="reset-password"
             label={t('mobile.auth.reset.newPassword')}
+            placeholder={t('mobile.inputs.auth.newPassword')}
             icon="lock"
             value={password}
             onChangeText={setPassword}

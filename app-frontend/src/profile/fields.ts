@@ -22,51 +22,122 @@ export interface FieldDef {
   maxLength?: number;
   /** Show the help line from `mobile.profile.hints.<key>` under the field. */
   hint?: boolean;
+  /** Translation key of the example shown inside the empty field (`mobile.inputs.*`). */
+  placeholder?: string;
+  /** Translation key of a short help line under the field (`mobile.inputs.*`). */
+  help?: string;
 }
 
+/** `mobile.inputs.<group>.<name>` — where the examples and help lines live. */
+const ph = (group: string, name: string) => `mobile.inputs.${group}.${name}`;
+
 export const PERSONAL_FIELDS: FieldDef[] = [
-  { key: 'fullName', kind: 'text', maxLength: 100 },
-  { key: 'headline', kind: 'text', maxLength: 100 },
-  { key: 'profession', kind: 'text', maxLength: 100 },
+  { key: 'fullName', kind: 'text', maxLength: 100, placeholder: ph('personal', 'fullName') },
+  { key: 'headline', kind: 'text', maxLength: 100, placeholder: ph('personal', 'headline') },
+  { key: 'profession', kind: 'text', maxLength: 100, placeholder: ph('personal', 'profession') },
   { key: 'region', kind: 'choice', choices: REGION_KEYS, choiceLabels: 'common.region' },
-  { key: 'city', kind: 'text', maxLength: 60 },
-  { key: 'phone', kind: 'phone', maxLength: 20 },
+  { key: 'city', kind: 'text', maxLength: 60, placeholder: ph('personal', 'city') },
+  { key: 'phone', kind: 'phone', maxLength: 20, placeholder: ph('personal', 'phone') },
   // Email shown on CVs; separate from the login email (changing it never changes the account).
-  { key: 'contactEmail', kind: 'email', maxLength: 254, hint: true },
-  { key: 'summary', kind: 'multiline', maxLength: 1000 },
+  {
+    key: 'contactEmail',
+    kind: 'email',
+    maxLength: 254,
+    hint: true,
+    placeholder: 'mobile.auth.login.emailPlaceholder',
+  },
+  {
+    key: 'summary',
+    kind: 'multiline',
+    maxLength: 1000,
+    placeholder: ph('personal', 'summary'),
+    help: ph('personal', 'summaryHelp'),
+  },
 ];
 
 export const SECTION_FIELDS: Record<ProfileSection, FieldDef[]> = {
   experience: [
-    { key: 'title', kind: 'text', required: true, maxLength: 100 },
-    { key: 'employer', kind: 'text', required: true, maxLength: 100 },
-    { key: 'city', kind: 'text', maxLength: 60 },
+    {
+      key: 'title',
+      kind: 'text',
+      required: true,
+      maxLength: 100,
+      placeholder: ph('experience', 'title'),
+    },
+    {
+      key: 'employer',
+      kind: 'text',
+      required: true,
+      maxLength: 100,
+      placeholder: ph('experience', 'employer'),
+    },
+    { key: 'city', kind: 'text', maxLength: 60, placeholder: ph('experience', 'city') },
     { key: 'region', kind: 'choice', choices: REGION_KEYS, choiceLabels: 'common.region' },
     { key: 'startDate', kind: 'month', required: true },
     { key: 'endDate', kind: 'month' },
-    { key: 'description', kind: 'multiline', maxLength: 2000 },
+    {
+      key: 'description',
+      kind: 'multiline',
+      maxLength: 2000,
+      placeholder: ph('experience', 'description'),
+      help: ph('experience', 'descriptionHelp'),
+    },
   ],
   education: [
-    { key: 'school', kind: 'text', required: true, maxLength: 150 },
-    { key: 'degree', kind: 'text', maxLength: 100 },
-    { key: 'field', kind: 'text', maxLength: 100 },
-    { key: 'startYear', kind: 'year' },
-    { key: 'endYear', kind: 'year' },
+    {
+      key: 'school',
+      kind: 'text',
+      required: true,
+      maxLength: 150,
+      placeholder: ph('education', 'school'),
+    },
+    { key: 'degree', kind: 'text', maxLength: 100, placeholder: ph('education', 'degree') },
+    { key: 'field', kind: 'text', maxLength: 100, placeholder: ph('education', 'field') },
+    { key: 'startYear', kind: 'year', placeholder: ph('education', 'startYear') },
+    {
+      key: 'endYear',
+      kind: 'year',
+      placeholder: ph('education', 'endYear'),
+      help: ph('education', 'endYearHelp'),
+    },
   ],
   projects: [
-    { key: 'name', kind: 'text', required: true, maxLength: 100 },
-    { key: 'description', kind: 'multiline', maxLength: 1000 },
+    {
+      key: 'name',
+      kind: 'text',
+      required: true,
+      maxLength: 100,
+      placeholder: ph('projects', 'name'),
+    },
+    {
+      key: 'description',
+      kind: 'multiline',
+      maxLength: 1000,
+      placeholder: ph('projects', 'description'),
+    },
     { key: 'url', kind: 'url' },
-    { key: 'skills', kind: 'list' },
+    { key: 'skills', kind: 'list', placeholder: ph('projects', 'skills') },
   ],
   certifications: [
-    { key: 'name', kind: 'text', required: true, maxLength: 150 },
-    { key: 'issuer', kind: 'text', maxLength: 100 },
+    {
+      key: 'name',
+      kind: 'text',
+      required: true,
+      maxLength: 150,
+      placeholder: ph('certifications', 'name'),
+    },
+    { key: 'issuer', kind: 'text', maxLength: 100, placeholder: ph('certifications', 'issuer') },
     { key: 'issuedOn', kind: 'month' },
     { key: 'url', kind: 'url' },
   ],
   languages: [
-    { key: 'language', kind: 'text', required: true, maxLength: 60 },
+    {
+      key: 'language',
+      kind: 'text',
+      required: true,
+      maxLength: 60,
+      placeholder: ph('languages', 'language'),
+    },
     {
       key: 'level',
       kind: 'choice',

@@ -130,20 +130,26 @@ export function ProfileForm({
             autoCorrect={field.kind !== 'url' && field.kind !== 'email'}
             autoComplete={field.kind === 'email' ? 'email' : undefined}
             hint={
-              field.hint
-                ? t(`mobile.profile.hints.${field.key}` as 'mobile.profile.hints.contactEmail')
-                : undefined
+              field.help
+                ? t(field.help as 'mobile.inputs.skill.nameHelp')
+                : field.hint
+                  ? t(`mobile.profile.hints.${field.key}` as 'mobile.profile.hints.contactEmail')
+                  : field.kind === 'list' && field.placeholder
+                    ? t('mobile.profile.hints.list')
+                    : undefined
             }
             placeholder={
-              field.kind === 'month'
-                ? field.key === 'endDate'
-                  ? t('mobile.profile.hints.endDate')
-                  : t('mobile.profile.hints.month')
-                : field.kind === 'list'
-                  ? t('mobile.profile.hints.list')
-                  : field.kind === 'url'
-                    ? 'https://'
-                    : undefined
+              field.placeholder
+                ? t(field.placeholder as 'mobile.inputs.skill.name')
+                : field.kind === 'month'
+                  ? field.key === 'endDate'
+                    ? t('mobile.profile.hints.endDate')
+                    : t('mobile.profile.hints.month')
+                  : field.kind === 'list'
+                    ? t('mobile.profile.hints.list')
+                    : field.kind === 'url'
+                      ? 'https://'
+                      : undefined
             }
             editable={!busy}
             errorMessage={fieldErrors[field.key] || undefined}

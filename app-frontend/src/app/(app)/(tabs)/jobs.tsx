@@ -222,6 +222,7 @@ export default function JobsTab() {
       <Input
         testID={`${prefix}-city`}
         label={t('mobile.jobs.filters.city')}
+        placeholder={t('mobile.inputs.jobs.city')}
         hint={t('mobile.jobs.filters.cityHint')}
         value={cityValue}
         onChangeText={setCityValue}
@@ -278,6 +279,7 @@ export default function JobsTab() {
           <Input
             testID="jobs-q"
             label={t('mobile.jobs.search.q')}
+            placeholder={t('mobile.inputs.jobs.search')}
             value={q}
             onChangeText={setQ}
             maxLength={100}
@@ -382,6 +384,7 @@ export default function JobsTab() {
               <Input
                 testID="jobs-links"
                 label={t('mobile.jobs.research.links')}
+                placeholder="https://…/careers"
                 hint={t('mobile.jobs.research.linksHint', { max: MAX_LINKS })}
                 errorMessage={links.trim() ? linksProblem : undefined}
                 value={links}
@@ -418,6 +421,7 @@ export default function JobsTab() {
           <Input
             testID="jobs-title"
             label={t('mobile.jobs.research.title')}
+            placeholder={t('mobile.inputs.jobs.researchTitle')}
             hint={t('mobile.jobs.research.titleHint')}
             value={title}
             onChangeText={setTitle}

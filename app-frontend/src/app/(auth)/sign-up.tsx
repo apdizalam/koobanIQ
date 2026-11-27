@@ -103,6 +103,7 @@ export default function SignUpScreen() {
           <Input
             testID="sign-up-password"
             label={t('mobile.auth.signUp.password')}
+            placeholder={t('mobile.inputs.auth.newPassword')}
             icon="lock"
             value={password}
             onChangeText={setPassword}

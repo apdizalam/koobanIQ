@@ -4371,6 +4371,170 @@
     "state": "approved",
     "en": "Top match today"
   },
+  "mobile.inputs.auth.newPassword": {
+    "state": "pending",
+    "en": "At least 8 characters"
+  },
+  "mobile.inputs.auth.password": {
+    "state": "pending",
+    "en": "Your password"
+  },
+  "mobile.inputs.certifications.issuer": {
+    "state": "pending",
+    "en": "The organisation that gave the certificate"
+  },
+  "mobile.inputs.certifications.name": {
+    "state": "pending",
+    "en": "e.g. First aid certificate"
+  },
+  "mobile.inputs.cv.bullets": {
+    "state": "pending",
+    "en": "One result per line, e.g. Prepared the monthly finance reports"
+  },
+  "mobile.inputs.cv.headline": {
+    "state": "pending",
+    "en": "e.g. Accountant with 3 years of experience"
+  },
+  "mobile.inputs.cv.summary": {
+    "state": "pending",
+    "en": "Briefly describe your experience, skills and strengths…"
+  },
+  "mobile.inputs.education.degree": {
+    "state": "pending",
+    "en": "e.g. Bachelor's degree, Diploma"
+  },
+  "mobile.inputs.education.endYear": {
+    "state": "pending",
+    "en": "e.g. 2023"
+  },
+  "mobile.inputs.education.endYearHelp": {
+    "state": "pending",
+    "en": "Leave empty if you are still studying."
+  },
+  "mobile.inputs.education.field": {
+    "state": "pending",
+    "en": "e.g. Accounting, Nursing"
+  },
+  "mobile.inputs.education.school": {
+    "state": "pending",
+    "en": "e.g. University of Hargeisa"
+  },
+  "mobile.inputs.education.startYear": {
+    "state": "pending",
+    "en": "e.g. 2019"
+  },
+  "mobile.inputs.experience.city": {
+    "state": "pending",
+    "en": "e.g. Hargeisa"
+  },
+  "mobile.inputs.experience.description": {
+    "state": "pending",
+    "en": "Describe your role, responsibilities and results…"
+  },
+  "mobile.inputs.experience.descriptionHelp": {
+    "state": "pending",
+    "en": "Write only what you really did. Your CVs are built from it."
+  },
+  "mobile.inputs.experience.employer": {
+    "state": "pending",
+    "en": "Company or organisation name"
+  },
+  "mobile.inputs.experience.title": {
+    "state": "pending",
+    "en": "e.g. Accountant"
+  },
+  "mobile.inputs.interview.answer": {
+    "state": "pending",
+    "en": "Answer as you would in the interview. Give a real example from your work or studies."
+  },
+  "mobile.inputs.interview.role": {
+    "state": "pending",
+    "en": "The job you are preparing for"
+  },
+  "mobile.inputs.jobs.city": {
+    "state": "pending",
+    "en": "City name"
+  },
+  "mobile.inputs.jobs.researchTitle": {
+    "state": "pending",
+    "en": "The job title to look for"
+  },
+  "mobile.inputs.jobs.search": {
+    "state": "pending",
+    "en": "e.g. Accountant, Excel or a company name"
+  },
+  "mobile.inputs.languages.language": {
+    "state": "pending",
+    "en": "e.g. Somali, English, Arabic"
+  },
+  "mobile.inputs.personal.city": {
+    "state": "pending",
+    "en": "e.g. Hargeisa"
+  },
+  "mobile.inputs.personal.fullName": {
+    "state": "pending",
+    "en": "Enter your full name"
+  },
+  "mobile.inputs.personal.headline": {
+    "state": "pending",
+    "en": "e.g. Accountant"
+  },
+  "mobile.inputs.personal.phone": {
+    "state": "pending",
+    "en": "e.g. +252 63 1234567"
+  },
+  "mobile.inputs.personal.profession": {
+    "state": "pending",
+    "en": "e.g. Accounting and finance"
+  },
+  "mobile.inputs.personal.summary": {
+    "state": "pending",
+    "en": "Briefly describe your experience, skills and strengths…"
+  },
+  "mobile.inputs.personal.summaryHelp": {
+    "state": "pending",
+    "en": "A few sentences in your own words. Your CVs start from this."
+  },
+  "mobile.inputs.preferences.cities": {
+    "state": "pending",
+    "en": "e.g. Hargeisa, Burao"
+  },
+  "mobile.inputs.preferences.titles": {
+    "state": "pending",
+    "en": "e.g. Accountant, Data officer"
+  },
+  "mobile.inputs.projects.description": {
+    "state": "pending",
+    "en": "What the project does and what you did in it…"
+  },
+  "mobile.inputs.projects.name": {
+    "state": "pending",
+    "en": "e.g. School library website"
+  },
+  "mobile.inputs.projects.skills": {
+    "state": "pending",
+    "en": "e.g. Excel, Data analysis"
+  },
+  "mobile.inputs.skill.category": {
+    "state": "pending",
+    "en": "e.g. Office software"
+  },
+  "mobile.inputs.skill.name": {
+    "state": "pending",
+    "en": "e.g. Excel, Customer service, Nursing"
+  },
+  "mobile.inputs.skill.nameHelp": {
+    "state": "pending",
+    "en": "One skill you really have. Add each skill separately."
+  },
+  "mobile.inputs.skill.yearsExp": {
+    "state": "pending",
+    "en": "e.g. 2"
+  },
+  "mobile.inputs.skill.yearsExpHelp": {
+    "state": "pending",
+    "en": "How many years you have used this skill."
+  },
   "mobile.interview.again": {
     "state": "approved",
     "en": "Practise again"

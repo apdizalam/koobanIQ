@@ -13,7 +13,14 @@ import { goBackOrHome } from '../../../components/ui/BackButton';
 
 /** What the user can set. The assessed level is not here: only a quiz sets it. */
 const SKILL_FIELDS: FieldDef[] = [
-  { key: 'name', kind: 'text', required: true, maxLength: 60 },
+  {
+    key: 'name',
+    kind: 'text',
+    required: true,
+    maxLength: 60,
+    placeholder: 'mobile.inputs.skill.name',
+    help: 'mobile.inputs.skill.nameHelp',
+  },
   {
     key: 'selfLevel',
     kind: 'choice',
@@ -21,8 +28,13 @@ const SKILL_FIELDS: FieldDef[] = [
     choices: SKILL_LEVELS,
     choiceLabels: 'mobile.skills.levels',
   },
-  { key: 'category', kind: 'text', maxLength: 40 },
-  { key: 'yearsExp', kind: 'year' },
+  { key: 'category', kind: 'text', maxLength: 40, placeholder: 'mobile.inputs.skill.category' },
+  {
+    key: 'yearsExp',
+    kind: 'year',
+    placeholder: 'mobile.inputs.skill.yearsExp',
+    help: 'mobile.inputs.skill.yearsExpHelp',
+  },
 ];
 
 /** Add a skill (`id` = "new"), or edit / delete one. */
