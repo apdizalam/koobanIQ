@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Navigate, useLocation, useNavigate } from 'react-router';
 import { useAuth } from '../auth/authContext';
 import { LanguageSwitcher } from '../components/ui/LanguageSwitcher';
+import { ThemeToggle } from '../components/ui/ThemeToggle';
 import { ApiError } from '../services/api';
 
 type ErrorKey =
@@ -64,7 +65,10 @@ export function LoginPage() {
       <form className="card login-card" onSubmit={onSubmit} noValidate>
         <div className="login-top">
           <p className="brand">{t('admin.appName')}</p>
-          <LanguageSwitcher />
+          <div className="login-switches">
+            <ThemeToggle />
+            <LanguageSwitcher />
+          </div>
         </div>
         <h1>{t('admin.login.title')}</h1>
         <p className="muted">{t('admin.login.subtitle')}</p>

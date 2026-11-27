@@ -2039,6 +2039,10 @@
     "state": "approved",
     "en": "Close menu"
   },
+  "admin.shell.darkMode": {
+    "state": "approved",
+    "en": "Dark mode"
+  },
   "admin.shell.logout": {
     "state": "approved",
     "en": "Log out"

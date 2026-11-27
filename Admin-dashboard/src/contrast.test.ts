@@ -8,6 +8,8 @@ import { describe, expect, it } from 'vitest';
  * dashboard uses, in the light and the dark theme, read from index.css.
  */
 const css = readFileSync(new URL('./index.css', import.meta.url), 'utf8');
+const NEWLINE = /\r?\n/;
+const FIXED_COLOUR = /#[0-9a-f]{3,6}\b|rgba?\(/gi;
 
 function tokens(block: string): Record<string, string> {
   return Object.fromEntries(
@@ -19,10 +21,35 @@ function tokens(block: string): Record<string, string> {
 }
 
 const lightBlock = css.slice(css.indexOf(':root {'), css.indexOf('}', css.indexOf(':root {')));
-const darkStart = css.indexOf('@media (prefers-color-scheme: dark)');
-const darkBlock = css.slice(darkStart, css.indexOf('}', css.indexOf(':root {', darkStart)));
+/** The dark theme chosen with the switch (<html data-theme="dark">). */
+const chosenStart = css.indexOf(":root[data-theme='dark'] {");
+const darkBlock = css.slice(chosenStart, css.indexOf('}', chosenStart));
+/** The same tokens for the device setting, used before / without the switch. */
+const mediaStart = css.indexOf(":root:not([data-theme='light']) {");
+const mediaBlock = css.slice(mediaStart, css.indexOf('}', mediaStart));
 const light = tokens(lightBlock);
 const THEMES = { light, dark: { ...light, ...tokens(darkBlock) } };
+
+const lines = (block: string) =>
+  block
+    .slice(block.indexOf('{') + 1)
+    .split(NEWLINE)
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+describe('light and dark themes', () => {
+  it('the switch and the device setting give the same dark theme', () => {
+    expect(chosenStart).toBeGreaterThan(0);
+    expect(mediaStart).toBeGreaterThan(0);
+    expect(lines(mediaBlock)).toEqual(lines(darkBlock));
+    expect(Object.keys(tokens(darkBlock)).length).toBeGreaterThan(12);
+  });
+
+  it('colours are tokens: no fixed colour outside the token blocks', () => {
+    const rules = css.slice(css.indexOf('* {'));
+    expect(rules.match(FIXED_COLOUR)).toBeNull();
+  });
+});
 
 function luminance(hex: string) {
   const n = parseInt(hex.slice(1), 16);

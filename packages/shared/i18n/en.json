@@ -204,7 +204,8 @@
       "signedInAs": "Signed in as",
       "logout": "Log out",
       "openMenu": "Open menu",
-      "closeMenu": "Close menu"
+      "closeMenu": "Close menu",
+      "darkMode": "Dark mode"
     },
     "nav": {
       "label": "Admin sections",

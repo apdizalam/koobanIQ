@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Outlet, useNavigate } from 'react-router';
 import { useAuth } from '../../auth/authContext';
 import { LanguageSwitcher } from '../ui/LanguageSwitcher';
+import { ThemeToggle } from '../ui/ThemeToggle';
 import { Sidebar } from './Sidebar';
 
-/** Sidebar + top bar (language, signed-in admin, log out) around every admin page. */
+/** Sidebar + top bar (light/dark, language, signed-in admin, log out) around every admin page. */
 export function AdminLayout() {
   const { t } = useTranslation();
   const { user, signOut } = useAuth();
@@ -49,6 +50,7 @@ export function AdminLayout() {
             </svg>
           </button>
           <div className="topbar-user">
+            <ThemeToggle />
             <LanguageSwitcher />
             <span className="muted topbar-email">
               {t('admin.shell.signedInAs')} <strong>{user?.email}</strong>
