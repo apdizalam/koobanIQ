@@ -2899,6 +2899,18 @@
     "state": "approved",
     "en": "Free for everyone"
   },
+  "landing.hero.android": {
+    "state": "approved",
+    "en": "Android testing version"
+  },
+  "landing.hero.androidAction": {
+    "state": "approved",
+    "en": "Download APK · {{size}} MB"
+  },
+  "landing.hero.androidNote": {
+    "state": "approved",
+    "en": "Try KOBANIQ before its official release: download the Android testing version (APK) and explore the app today."
+  },
   "landing.hero.appStore": {
     "state": "approved",
     "en": "App Store"
@@ -2931,6 +2943,26 @@
     "state": "approved",
     "en": "See how it works"
   },
+  "landing.hero.installNote": {
+    "state": "approved",
+    "en": "This is a testing version for Android phones only. It is not on Google Play yet, and test accounts may be reset before the official release."
+  },
+  "landing.hero.installStep1": {
+    "state": "approved",
+    "en": "Open this page on your Android phone and tap Download APK (about {{size}} MB, Wi-Fi is best)."
+  },
+  "landing.hero.installStep2": {
+    "state": "approved",
+    "en": "Open the downloaded file. If Android asks, allow your browser to install unknown apps."
+  },
+  "landing.hero.installStep3": {
+    "state": "approved",
+    "en": "Tap Install, then open KOBANIQ and create your account."
+  },
+  "landing.hero.installTitle": {
+    "state": "approved",
+    "en": "How to install the APK on Android"
+  },
   "landing.hero.join": {
     "state": "approved",
     "en": "Join the waitlist"
@@ -2942,6 +2974,10 @@
   "landing.hero.soonBadge": {
     "state": "approved",
     "en": "Coming soon"
+  },
+  "landing.hero.storesLabel": {
+    "state": "approved",
+    "en": "Where to get KOBANIQ"
   },
   "landing.hero.title": {
     "state": "approved",

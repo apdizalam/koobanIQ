@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
+import { ANDROID_APK } from '../androidApk';
 import { CvScreen, JobsScreen, ProfileScreen, QuizScreen } from '../components/AppScreens';
 import { Waitlist } from '../components/Waitlist';
 import type { Lang } from '../routes';
-import type { Texts } from '../texts';
+import { fmt, type Texts } from '../texts';
 
 /** Small line icons (24px, current colour), drawn inline so nothing extra loads. */
 const ICONS: Record<string, ReactNode> = {
@@ -70,14 +71,41 @@ export function Home({ t, lang }: { t: Texts; lang: Lang }) {
               </a>
             </div>
             <p className="hero-soon">{t.hero.soon}</p>
-            <ul className="stores" aria-label={t.hero.soon}>
+            <ul className="stores" aria-label={t.hero.storesLabel}>
               {[t.hero.appStore, t.hero.googlePlay].map((store) => (
                 <li key={store} className="store-badge">
                   <span className="store-name">{store}</span>
                   <span className="store-soon">{t.hero.soonBadge}</span>
                 </li>
               ))}
+              {/* Available now for testing: the latest Android build (see androidApk.ts). */}
+              <li>
+                <a
+                  className="store-badge store-download"
+                  href={ANDROID_APK.url}
+                  download
+                  rel="noopener"
+                  aria-describedby="android-note"
+                >
+                  <span className="store-name">{t.hero.android}</span>
+                  <span className="store-action">
+                    {fmt(t.hero.androidAction, { size: ANDROID_APK.sizeMb })}
+                  </span>
+                </a>
+              </li>
             </ul>
+            <p id="android-note" className="android-note">
+              {t.hero.androidNote}
+            </p>
+            <details className="apk-help">
+              <summary>{t.hero.installTitle}</summary>
+              <ol>
+                <li>{fmt(t.hero.installStep1, { size: ANDROID_APK.sizeMb })}</li>
+                <li>{t.hero.installStep2}</li>
+                <li>{t.hero.installStep3}</li>
+              </ol>
+              <p>{t.hero.installNote}</p>
+            </details>
           </div>
           {/* A picture of what the app shows, built from text: nothing to download. */}
           <div className="hero-visual" aria-hidden="true">
