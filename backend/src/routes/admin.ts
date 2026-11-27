@@ -47,6 +47,7 @@ import {
   patchJobSource,
   patchRegion,
 } from '../controllers/jobSourcesController.js';
+import { getAdminWaitlist } from '../controllers/adminWaitlistController.js';
 import { requireAuth } from '../middleware/requireAuth.js';
 import { requireRole } from '../middleware/requireRole.js';
 
@@ -109,6 +110,9 @@ adminRouter.post('/jobs/:id/restore', postRestoreJob);
 
 // Reports (TIQ-33): CSV exports of users, AI usage, runs, jobs, CVs (status only), quizzes. Audited.
 adminRouter.get('/reports/:kind', getReportCsv);
+
+// Landing page waitlist (read-only): who joined, newest first, searchable. Admins only.
+adminRouter.get('/waitlist', getAdminWaitlist);
 
 // Audit log (read-only).
 adminRouter.get('/audit-logs', getAuditLogs);
