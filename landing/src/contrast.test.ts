@@ -56,6 +56,7 @@ const TEXT_PAIRS: [string, string, string][] = [
   ['hero-text', 'hero-bg', 'hero text'],
   ['hero-muted', 'hero-bg', 'hero body text'],
   ['#1e3a5f', '#ffffff', 'hero "Join the waitlist" button'],
+  ['#1e3a5f', '#e3eaf3', 'Android download badge on hover'],
 ];
 /** Borders and icons that carry meaning (3:1). */
 const UI_PAIRS: [string, string, string][] = [

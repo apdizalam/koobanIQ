@@ -356,6 +356,58 @@ summary:focus-visible {
   color: var(--hero-muted);
 }
 
+/* The Android testing version: the one option available now (same badge shape, light like the main button). */
+.store-download {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #1e3a5f;
+  text-decoration: none;
+}
+
+.store-download:hover {
+  background: #e3eaf3;
+}
+
+.store-download:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+.store-action {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.android-note {
+  max-width: 34em;
+  margin: 12px 0 6px;
+  font-size: 0.95rem;
+  color: var(--hero-muted);
+}
+
+.apk-help {
+  max-width: 34em;
+  font-size: 0.9rem;
+  color: var(--hero-muted);
+}
+
+.apk-help summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--hero-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.apk-help ol {
+  margin: 8px 0;
+  padding-left: 1.3em;
+}
+
+.apk-help p {
+  margin: 0;
+}
+
 .hero-visual {
   display: flex;
   justify-content: center;
