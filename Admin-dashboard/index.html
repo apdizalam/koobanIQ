@@ -7,6 +7,8 @@
     <!-- Admin pages are private: never in search results (the server sends X-Robots-Tag too). -->
     <meta name="robots" content="noindex, nofollow" />
     <title>KOBANIQ Admin</title>
+    <!-- Light / dark before the first paint (a file: the CSP allows no inline script). -->
+    <script src="%BASE_URL%theme-init.js"></script>
   </head>
   <body>
     <div id="root"></div>
