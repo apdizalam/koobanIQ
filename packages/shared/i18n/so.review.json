@@ -3367,6 +3367,10 @@
     "state": "approved",
     "en": "KOBANIQ — Know your skills. Find your opportunity."
   },
+  "landing.nav.darkMode": {
+    "state": "approved",
+    "en": "Dark mode"
+  },
   "landing.nav.faq": {
     "state": "approved",
     "en": "Questions"
